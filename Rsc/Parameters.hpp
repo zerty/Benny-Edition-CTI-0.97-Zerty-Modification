@@ -217,6 +217,13 @@ class Params {
 		default = 0;
 	};
 
+	class CTI_BUY_RESTRICT_LEADER {
+		title = "Zerty: GROUPS: Restrict purchases to group leader";
+		values[] = {0,1};
+		texts[] = {"False","True"};
+		default = 0;
+	};
+
 	class CTI_AI_TEAMS_GROUPSIZE {
 		title = "Zerty: GROUPS: Size (AI) -- Resistance, West, East ";
 		values[] = {0,4,6,8,10,12,14,16};

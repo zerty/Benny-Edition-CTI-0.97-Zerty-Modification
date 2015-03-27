@@ -645,5 +645,7 @@ with missionNamespace do {
 	if (isnil "CACHE_EMPTY") then {CACHE_EMPTY = 1};
 	if (isnil "CTI_GAMEPLAY_DARTER") then {CTI_GAMEPLAY_DARTER = 500};
 	if (isnil "CTI_GAMEPLAY_DARTER_FUEL") then {CTI_GAMEPLAY_DARTER_FUEL = 1};
+	if (isnil "CTI_BUY_RESTRICT_LEADER") then {CTI_BUY_RESTRICT_LEADER = 0};
+
 
 };
