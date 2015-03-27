@@ -273,11 +273,20 @@ if (CTI_IsServer) then {
 		// hc balance
 		0 spawn HCGA_Init;
 
-		  //UAV lim
+		  //UAv Lim
 
-	if ((missionNamespace getVariable "CTI_GAMEPLAY_DARTER_FUEL") == 1) then {
-		0 spawn UAV_FUEL;
-	};
+		if ((missionNamespace getVariable "CTI_GAMEPLAY_DARTER_FUEL") == 1) then {
+			0 spawn UAV_FUEL;
+		};
+		// PhysX artifacts cleanup
+		if ((missionNamespace getVariable "CACHE_EMPTY") == 1) then {
+			0 spawn {
+				while {!CTI_Gameover} do {
+					{if !(simulationEnabled _x ) then {_x enableSimulationGlobal True};True} count (allUnits + vehicles + allDead );
+					sleep 1200;
+				};
+			};
+		};
 
 };
 
