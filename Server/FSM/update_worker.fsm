@@ -1,0 +1,403 @@
+/*%FSM<COMPILE "E:\Bohemia Interactive\ArmA 2\FSM Editor Personal Edition\scriptedFSM.cfg, update_worker.fsm">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"Start_FSM",0,250,-100.000000,-400.000000,0.000000,-350.000000,0.000000,"Start FSM"};
+item1[] = {"Cycle",4,218,-100.000000,-300.000000,0.000000,-250.000000,1.000000,"Cycle"};
+item2[] = {"Worker_Update",2,250,-100.000000,-200.000000,0.000000,-150.000000,0.000000,"Worker Update"};
+item3[] = {"Jobless",4,218,50.000000,-200.000000,150.000000,-150.000000,2.000000,"Jobless"};
+item4[] = {"Has_job",4,218,-250.000000,-200.000000,-150.000000,-150.000000,1.000000,"Has job"};
+item5[] = {"Gameover_or_Dead",4,218,-100.000000,-100.000000,0.000000,-50.000000,0.000000,"Gameover" \n "or Dead"};
+item6[] = {"Assignment",2,250,50.000000,-300.000000,150.000000,-250.000000,0.000000,"Assignment"};
+item7[] = {"End_FSM",1,250,-100.000000,0.000000,0.000000,50.000000,0.000000,"End FSM"};
+item8[] = {"Determine_Assign",2,250,-250.000000,-100.000000,-150.000000,-50.000000,0.000000,"Determine" \n "Assignment"};
+item9[] = {"Construction",4,218,-400.000000,-200.000000,-300.000000,-150.000000,3.000000,"Construction"};
+item10[] = {"Repair",4,218,-400.000000,0.000000,-300.000000,50.000000,1.000000,"Repair"};
+item11[] = {"Wander",4,218,-400.000000,-100.000000,-300.000000,-50.000000,2.000000,"Wander"};
+item12[] = {"Construct",2,250,-550.000000,-200.000000,-450.000000,-150.000000,0.000000,"Construct"};
+item13[] = {"Wander",2,250,-550.000000,-100.000000,-450.000000,-50.000000,0.000000,"Wander"};
+item14[] = {"Repair",2,250,-550.000000,0.000000,-450.000000,50.000000,0.000000,"Repair"};
+item15[] = {"",7,210,-629.000000,-29.000004,-621.000000,-20.999996,0.000000,""};
+item16[] = {"",7,210,-629.000000,-279.000000,-621.000000,-271.000000,0.000000,""};
+item17[] = {"Repair__Entities",4,218,-400.000000,100.000000,-300.000000,150.000000,0.000000,"Repair" \n "(Entities)"};
+item18[] = {"Repair_Entities",2,4346,-550.000000,100.000000,-450.000000,150.000000,0.000000,"Repair Entities"};
+link0[] = {0,1};
+link1[] = {1,2};
+link2[] = {2,3};
+link3[] = {2,4};
+link4[] = {2,5};
+link5[] = {3,6};
+link6[] = {4,8};
+link7[] = {5,7};
+link8[] = {6,1};
+link9[] = {8,9};
+link10[] = {8,10};
+link11[] = {8,11};
+link12[] = {8,17};
+link13[] = {9,12};
+link14[] = {10,14};
+link15[] = {11,13};
+link16[] = {12,15};
+link17[] = {13,15};
+link18[] = {14,15};
+link19[] = {15,16};
+link20[] = {16,1};
+link21[] = {17,18};
+link22[] = {18,15};
+globals[] = {25.000000,1,0,0,0,640,480,1,183,6316128,1,-606.224731,226.770905,289.870453,-490.044037,973,911,1};
+window[] = {2,-1,-1,-1,-1,806,25,1280,25,3,991};
+*//*%FSM</HEAD>*/
+class FSM
+{
+  fsmName = "update_worker.fsm";
+  class States
+  {
+    /*%FSM<STATE "Start_FSM">*/
+    class Start_FSM
+    {
+      name = "Start_FSM";
+      init = /*%FSM<STATEINIT""">*/"_side = _this select 0;" \n
+       "_worker = _this select 1;" \n
+       "" \n
+       "_sideLogic = (_side) call CTI_CO_FNC_GetSideLogic;" \n
+       "" \n
+       "_animations = [""AinvPknlMstpSrasWrflDnon_Putdown_AmovPknlMstpSrasWrflDnon"", ""AinvPknlMstpSrasWrflDnon_Putdown_AmovPknlMstpSrasWrflDnon"", ""AinvPknlMstpSlayWrflDnon_AmovPercMstpSrasWrflDnon"", ""AinvPknlMstpSlayWrflDnon_AmovPercMstpSrasWrflDnon"", ""AinvPknlMstpSlayWrflDnon_healed"", ""AinvPknlMstpSlayWrflDnon_healed2""];" \n
+       "_ncycle = 0;" \n
+       "" \n
+       "_worker_center = getPos _worker;" \n
+       "_worker_lastpos = _worker_center;" \n
+       "_worker_assignment = """";" \n
+       "_worker_assignment_target = objNull;" \n
+       "_worker_lastmove = -60;" \n
+       "_worker_idled = 0;" \n
+       "_worker_lastwandermove = -60;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Cycle">*/
+        class Cycle
+        {
+          priority = 1.000000;
+          to="Worker_Update";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"time > _ncycle "/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Worker_Update">*/
+    class Worker_Update
+    {
+      name = "Worker_Update";
+      init = /*%FSM<STATEINIT""">*/"_ncycle = time + 5;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Jobless">*/
+        class Jobless
+        {
+          priority = 2.000000;
+          to="Assignment";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!CTI_GameOver && alive _worker && _worker_assignment == """""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Has_job">*/
+        class Has_job
+        {
+          priority = 1.000000;
+          to="Determine_Assign";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!CTI_GameOver && alive _worker && _worker_assignment != """""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Gameover_or_Dead">*/
+        class Gameover_or_Dead
+        {
+          priority = 0.000000;
+          to="End_FSM";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"CTI_GameOver || !alive _worker"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Assignment">*/
+    class Assignment
+    {
+      name = "Assignment";
+      init = /*%FSM<STATEINIT""">*/"_structures_wip = _sideLogic getVariable ""cti_structures_wip"";" \n
+       "_structures = _side call CTI_CO_FNC_GetSideStructures;" \n
+       "" \n
+       "_tasks_build = [];" \n
+       "_tasks_repair = [];" \n
+       "" \n
+       "{" \n
+       "	_structure_completion = if (isNil {_x getVariable ""cti_completion""}) then {1000} else {_x getVariable ""cti_completion""};" \n
+       "	if (_structure_completion < 100 && (_worker_center distance _x < CTI_BASE_WORKERS_RANGE)) then { [_tasks_build, _x] call CTI_CO_FNC_ArrayPush };" \n
+       "} forEach _structures_wip;" \n
+       "" \n
+       "{" \n
+       "	_virtual_damages = _x getVariable ""cti_altdmg""; if (isNil '_virtual_damages') then {_virtual_damages = -1};" \n
+       "	if ((getDammage _x != 0 || _virtual_damages > 0) && (_worker_center distance _x < CTI_BASE_WORKERS_RANGE) && alive _x) then { [_tasks_repair, _x] call CTI_CO_FNC_ArrayPush };" \n
+       "} forEach _structures;" \n
+       "" \n
+       "if (count _tasks_build > 0) then { //--- 1: Construction" \n
+       "	_worker_assignment = ""Construction"";" \n
+       "	_worker_assignment_target = _tasks_build select floor(random count _tasks_build);" \n
+       "} else {" \n
+       "	if (count _tasks_repair > 0) then { //--- 2: Repair" \n
+       "		_worker_assignment = ""Repair"";" \n
+       "		_worker_assignment_target = _tasks_repair select floor(random count _tasks_repair);" \n
+       "	} else { //--- 3: Repair (Entities)" \n
+       "		_vehicles_service = [];" \n
+       "		{ if (getDammage _x > .01 && speed _x < 5 && position _x select 2 < 3 && side _x == _side) then {[_vehicles_service, _x] call CTI_CO_FNC_ArrayPush} } forEach (_worker nearEntities [[""Car"", ""Motorcycle"", ""Tank"", ""Air"", ""StaticWeapon""], (CTI_BASE_WORKERS_RANGE * .8)]);" \n
+       "		" \n
+       "		if (count _vehicles_service > 0) then {" \n
+       "			_worker_assignment_target = [_worker, _vehicles_service] call CTI_CO_FNC_GetClosestEntity;" \n
+       "			_worker_assignment = ""RepairEntity"";" \n
+       "		} else {" \n
+       "			_worker_assignment = ""Wander"";" \n
+       "		};" \n
+       "	};" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Cycle">*/
+        class Cycle
+        {
+          priority = 1.000000;
+          to="Worker_Update";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"time > _ncycle "/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "End_FSM">*/
+    class End_FSM
+    {
+      name = "End_FSM";
+      init = /*%FSM<STATEINIT""">*/"_sideLogic setVariable [""cti_workers"", (_sideLogic getVariable ""cti_workers"") - [_worker, objNull], true];"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Determine_Assign">*/
+    class Determine_Assign
+    {
+      name = "Determine_Assign";
+      init = /*%FSM<STATEINIT""">*/"if (_worker_lastpos distance (getPos _worker) < 5 && _worker distance _worker_assignment_target > CTI_BASE_WORKERS_BUILD_RANGE && _worker_assignment != ""Wander"") then {" \n
+       "	_worker_idled = _worker_idled + 5;" \n
+       "} else {" \n
+       "	_worker_idled = 0;" \n
+       "};" \n
+       "" \n
+       "if (_worker_idled > 30) then {" \n
+       "	_worker_idled = 0;" \n
+       "	[_worker, _worker_lastpos, 50] Call CTI_CO_FNC_PlaceSafe;" \n
+       "};" \n
+       "" \n
+       "if (behaviour _worker != ""CARELESS"") then {_worker setBehaviour ""CARELESS""};" \n
+       "_worker_lastpos = getPos _worker;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Construction">*/
+        class Construction
+        {
+          priority = 3.000000;
+          to="Construct";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_worker_assignment == ""Construction"""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Wander">*/
+        class Wander
+        {
+          priority = 2.000000;
+          to="Wander";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_worker_assignment == ""Wander"""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Repair">*/
+        class Repair
+        {
+          priority = 1.000000;
+          to="Repair";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_worker_assignment == ""Repair"""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Repair__Entities">*/
+        class Repair__Entities
+        {
+          priority = 0.000000;
+          to="Repair_Entities";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_worker_assignment == ""RepairEntity"""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Construct">*/
+    class Construct
+    {
+      name = "Construct";
+      init = /*%FSM<STATEINIT""">*/"_completion = _worker_assignment_target getVariable ""cti_completion"";" \n
+       "" \n
+       "if !(isNil '_completion') then {" \n
+       "	if (_worker distance _worker_assignment_target > CTI_BASE_WORKERS_BUILD_RANGE) then {" \n
+       "		if (time - _worker_lastmove > 40) then {_worker commandMove (getPos _worker_assignment_target);_worker_lastmove = time};" \n
+       "	} else {" \n
+       "		doStop _worker;" \n
+       "		_worker playMove (_animations select floor(random (count _animations)));" \n
+       "		_addin = _completion + ((CTI_BASE_WORKERS_BUILD_COEFFICIENT/(_worker_assignment_target getVariable ""cti_structures_iteration"")) * (_worker_assignment_target getVariable ""cti_completion_ratio""));" \n
+       "		if (_addin > 100) then {_addin = 100};" \n
+       "		_worker_assignment_target setVariable [""cti_completion"", _addin];" \n
+       "	};" \n
+       "} else {" \n
+       "	_worker_assignment = """";" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Cycle">*/
+        class Cycle
+        {
+          priority = 1.000000;
+          to="Worker_Update";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"time > _ncycle "/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Wander">*/
+    class Wander
+    {
+      name = "Wander";
+      init = /*%FSM<STATEINIT""">*/"if (time - _worker_lastwandermove > 25 && random 100 > 50) then {" \n
+       "	_worker_lastwandermove = time;" \n
+       "	_move_to = if (_worker distance _worker_center > CTI_BASE_WORKERS_WANDER_RANGE_MAX) then {_worker_center} else {position _worker};" \n
+       "" \n
+       "	_worker commandMove ([_move_to, 10, CTI_BASE_WORKERS_WANDER_RANGE] Call CTI_CO_FNC_GetRandomPosition);" \n
+       "};" \n
+       "" \n
+       "_worker_assignment = """";"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Cycle">*/
+        class Cycle
+        {
+          priority = 1.000000;
+          to="Worker_Update";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"time > _ncycle "/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Repair">*/
+    class Repair
+    {
+      name = "Repair";
+      init = /*%FSM<STATEINIT""">*/"if (alive _worker_assignment_target) then {" \n
+       "	_virtual_damages = _worker_assignment_target getVariable ""cti_altdmg"";" \n
+       "	if (isNil '_virtual_damages') then {_virtual_damages = -1};" \n
+       "	if (_worker distance _worker_assignment_target > CTI_BASE_WORKERS_RANGE) then {" \n
+       "		if (time - _worker_lastmove > 40) then {_worker commandMove (getPos _worker_assignment_target);_worker_lastmove = time};" \n
+       "	} else {" \n
+       "		doStop _worker;" \n
+       "		_worker playMove (_animations select floor(random (count _animations)));" \n
+       "		" \n
+       "		if (_virtual_damages < 0) then {" \n
+       "			_addin = getDammage _worker_assignment_target - CTI_BASE_WORKERS_REPAIR;" \n
+       "			if (_addin < 0) then {_addin = 0};" \n
+       "			_worker_assignment_target setDammage _addin;" \n
+       "		} else {" \n
+       "			_addin = _virtual_damages - CTI_BASE_WORKERS_REPAIR;" \n
+       "			if (_addin < 0) then {_addin = 0};" \n
+       "			if (_addin != _virtual_damages) then {_worker_assignment_target setVariable [""cti_altdmg"", _addin]};" \n
+       "		};" \n
+       "	};" \n
+       "	if (getDammage _worker_assignment_target == 0 || _virtual_damages == 0) then {_worker_assignment = """"};" \n
+       "} else {" \n
+       "	_worker_assignment = """";" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Cycle">*/
+        class Cycle
+        {
+          priority = 1.000000;
+          to="Worker_Update";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"time > _ncycle "/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Repair_Entities">*/
+    class Repair_Entities
+    {
+      name = "Repair_Entities";
+      init = /*%FSM<STATEINIT""">*/"if (alive _worker_assignment_target) then {" \n
+       "	if (_worker distance _worker_assignment_target > CTI_BASE_WORKERS_REPAIR_RANGE) then {" \n
+       "		if (time - _worker_lastmove > 40) then {_worker commandMove (getPos _worker_assignment_target);_worker_lastmove = time};" \n
+       "	} else {" \n
+       "		doStop _worker;" \n
+       "		_worker playMove (_animations select floor(random (count _animations)));" \n
+       "		_worker_assignment_target setDammage ((getDammage _worker_assignment_target) - CTI_BASE_WORKERS_REPAIR_ENTITY);" \n
+       "	};" \n
+       "};" \n
+       "" \n
+       "_worker_assignment = """"; //--- This assignment is optionnal so we check if there's a better assignment around or not everytime (why repair a bike while the base is burning?)"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Cycle">*/
+        class Cycle
+        {
+          priority = 1.000000;
+          to="Worker_Update";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"time > _ncycle "/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+  };
+  initState="Start_FSM";
+  finalStates[] =
+  {
+    "End_FSM",
+  };
+};
+/*%FSM</COMPILE>*/

@@ -1,0 +1,102 @@
+/*%FSM<COMPILE "E:\Bohemia Interactive\ArmA 2\FSM Editor Personal Edition\scriptedFSM.cfg, update_netunits_team.fsm">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"Start_FSM",0,250,-275.000000,-100.000000,-175.000000,-50.000000,0.000000,"Start FSM"};
+item1[] = {"Cycle",4,218,-100.000000,-100.000000,0.000000,-50.000000,1.000000,"Cycle"};
+item2[] = {"Update_Vehicles",2,4346,-100.000000,-225.000000,0.000000,-175.000000,0.000000,"Update" \n "Vehicles"};
+item3[] = {"End_FSM",1,250,50.000000,-325.000000,150.000000,-275.000000,0.000000,"End FSM"};
+item4[] = {"Terminate",4,218,50.000000,-225.000000,150.000000,-175.000000,0.000000,"Terminate"};
+link0[] = {0,1};
+link1[] = {1,2};
+link2[] = {2,1};
+link3[] = {2,4};
+link4[] = {4,3};
+globals[] = {25.000000,1,0,0,0,640,480,1,133,6316128,1,-425.937500,390.754150,209.164307,-489.915039,743,636,1};
+window[] = {0,-1,-1,-1,-1,806,25,1280,25,1,761};
+*//*%FSM</HEAD>*/
+class FSM
+{
+  fsmName = "update_netunits_team.fsm";
+  class States
+  {
+    /*%FSM<STATE "Start_FSM">*/
+    class Start_FSM
+    {
+      name = "Start_FSM";
+      init = /*%FSM<STATEINIT""">*/"_ncycle = 0;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Cycle">*/
+        class Cycle
+        {
+          priority = 1.000000;
+          to="Update_Vehicles";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!CTI_GameOver && time > _ncycle "/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Update_Vehicles">*/
+    class Update_Vehicles
+    {
+      name = "Update_Vehicles";
+      init = /*%FSM<STATEINIT""">*/"_ncycle = time + 5;" \n
+       "" \n
+       "_scan = vehicles;" \n
+       "if (missionNamespace getVariable ""CTI_MARKERS_INFANTRY"" == 1) then {_scan =_scan + allUnits};" \n
+       "" \n
+       "{" \n
+       "	if (alive _x && !isNil{_x getVariable ""cti_net""} && isNil{_x getVariable ""cti_initialized""}) then {" \n
+       "		_x setVariable [""cti_initialized"", true];" \n
+       "		[_x, _x getVariable ""cti_net""] spawn CTI_CO_FNC_InitializeNetVehicle;" \n
+       "	};" \n
+       "} forEach _scan;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Cycle">*/
+        class Cycle
+        {
+          priority = 1.000000;
+          to="Update_Vehicles";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!CTI_GameOver && time > _ncycle "/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Terminate">*/
+        class Terminate
+        {
+          priority = 0.000000;
+          to="End_FSM";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"CTI_GameOver"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "End_FSM">*/
+    class End_FSM
+    {
+      name = "End_FSM";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+  };
+  initState="Start_FSM";
+  finalStates[] =
+  {
+    "End_FSM",
+  };
+};
+/*%FSM</COMPILE>*/

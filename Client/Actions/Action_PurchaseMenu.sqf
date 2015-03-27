@@ -1,0 +1,1 @@
+createDialog "CTI_RscPurchaseMenu";

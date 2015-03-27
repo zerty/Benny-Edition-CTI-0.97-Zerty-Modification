@@ -1,0 +1,157 @@
+/*%FSM<COMPILE "scriptedFSM.cfg, update_victory.fsm">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"Start_FSM",0,250,-250.000000,-300.000000,-150.000000,-250.000000,0.000000,"Start FSM"};
+item1[] = {"Cycle",4,218,-100.000000,-300.000000,0.000000,-250.000000,1.000000,"Cycle"};
+item2[] = {"Update_Victory",2,250,-100.000000,-200.000000,0.000000,-150.000000,0.000000,"Update" \n "Victory"};
+item3[] = {"End_FSM",1,250,-250.000000,-100.000000,-150.000000,-50.000000,0.000000,"End FSM"};
+item4[] = {"Gameover",4,218,-250.000000,-200.000000,-150.000000,-150.000000,0.000000,"Gameover"};
+item5[] = {"Sleep",2,250,-400.000000,-200.000000,-300.000000,-150.000000,0.000000,"Sleep"};
+item6[] = {"_",4,218,-400.000000,-100.000000,-300.000000,-50.000000,0.000000,""};
+link0[] = {0,1};
+link1[] = {1,2};
+link2[] = {2,1};
+link3[] = {2,4};
+link4[] = {4,5};
+link5[] = {5,6};
+link6[] = {6,3};
+globals[] = {25.000000,1,0,0,0,640,480,1,164,6316128,1,-620.422607,163.824570,138.236649,-571.857727,973,881,1};
+window[] = {2,-1,-1,-1,-1,856,75,1330,75,3,991};
+*//*%FSM</HEAD>*/
+class FSM
+{
+  fsmName = "update_victory.fsm";
+  class States
+  {
+    /*%FSM<STATE "Start_FSM">*/
+    class Start_FSM
+    {
+      name = "Start_FSM";
+      init = /*%FSM<STATEINIT""">*/"_ncycle = time + 5;" \n
+       "" \n
+       "_total = count CTI_Towns;" \n
+       "" \n
+       "// --- Zerty was here" \n
+       "_victory_hq= missionNamespace getVariable ""CTI_VICTORY_HQ"";" \n
+       "_max_time = missionNamespace getVariable ""CTI_MAX_MISSION_TIME"";" \n
+       "_max_time=_max_time*60*60;" \n
+       "" \n
+       "_total_value=0;" \n
+       "{" \n
+       "	_total_value = _total_value + (_x getVariable ""cti_town_value"");" \n
+       "} forEach CTI_Towns;" \n
+       "" \n
+       "diag_log _total_value;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Cycle">*/
+        class Cycle
+        {
+          priority = 1.000000;
+          to="Update_Victory";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!CTI_GameOver && time > _ncycle "/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Update_Victory">*/
+    class Update_Victory
+    {
+      name = "Update_Victory";
+      init = /*%FSM<STATEINIT""">*/"_ncycle = time + 5;" \n
+       "" \n
+       "{" \n
+       "	_side = _x;" \n
+       "	_hq = (_x) call CTI_CO_FNC_GetSideHQ;" \n
+       "	_structures = (_x) call CTI_CO_FNC_GetSideStructures;" \n
+       "	_towns = (_x) call CTI_CO_FNC_GetSideTownCount;" \n
+       "	_townvalue=0;" \n
+       "	{_townvalue=_townvalue+ (_x getVariable ""cti_town_value""); } ForEach ((_x) call CTI_CO_FNC_GetFriendlyTowns);" \n
+       "	_factories = 0;" \n
+       "	{_factories = _factories + count([_x, _structures] call CTI_CO_FNC_GetSideStructuresByType)} forEach (missionNamespace getVariable format[""CTI_%1_Factories"", _side]);" \n
+       "	if (( ( time > _max_time && _max_time != 0)  || !(alive _hq) && _victory_hq == 1 || (!(alive _hq) && _factories == 0)) && !CTI_GameOver) exitWith {" \n
+       "		[""CLIENT"", ""Client_OnMissionEnding"", [_x, ""loose""]] call CTI_CO_FNC_NetSend;" \n
+       "		CTI_GameOver = true;" \n
+       "	};" \n
+       "	if (_towns == _total && !CTI_GameOver) exitWith {" \n
+       "		[""CLIENT"", ""Client_OnMissionEnding"", [_x, ""win""]] call CTI_CO_FNC_NetSend;" \n
+       "		CTI_GameOver = true;" \n
+       "	};" \n
+       "	if (_townvalue > (_total_value*0.75) && !CTI_GameOver) exitWith {" \n
+       "		[""CLIENT"", ""Client_OnMissionEnding"", [_x, ""win""]] call CTI_CO_FNC_NetSend;" \n
+       "		CTI_GameOver = true;" \n
+       "	};" \n
+       "} forEach [west, east];"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Cycle">*/
+        class Cycle
+        {
+          priority = 1.000000;
+          to="Update_Victory";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!CTI_GameOver && time > _ncycle "/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Gameover">*/
+        class Gameover
+        {
+          priority = 0.000000;
+          to="Sleep";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"CTI_GameOver"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "End_FSM">*/
+    class End_FSM
+    {
+      name = "End_FSM";
+      init = /*%FSM<STATEINIT""">*/"//todo add some delay before ending the game (calc the client win time)" \n
+       "" \n
+       "" \n
+       "if (isDedicated) then {endMission ""END1""};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Sleep">*/
+    class Sleep
+    {
+      name = "Sleep";
+      init = /*%FSM<STATEINIT""">*/"_endtime=time+10;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="End_FSM";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"time > _endtime"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+  };
+  initState="Start_FSM";
+  finalStates[] =
+  {
+    "End_FSM"
+  };
+};
+/*%FSM</COMPILE>*/
