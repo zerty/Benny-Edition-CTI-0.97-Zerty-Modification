@@ -71,7 +71,7 @@ call CTI_CL_FNC_AddMissionActions;
 
 
 //--- Make sure that player is always the leader (of his group).
-if (leader(group player) != player&& !(CTI_P_SideJoined == resistance)) then {(group player) selectLeader player};
+//if (leader(group player) != player&& !(CTI_P_SideJoined == resistance)) then {(group player) selectLeader player};
 
 createDialog "CTI_RscRespawnMenu";
 /*
