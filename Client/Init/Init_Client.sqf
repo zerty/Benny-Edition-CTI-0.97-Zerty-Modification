@@ -40,6 +40,9 @@ CTI_CL_FNC_OnTownCaptured = compileFinal preprocessFile "Client\Functions\Client
 CTI_CL_FNC_PurchaseUnit = compileFinal preprocessFile "Client\Functions\Client_PurchaseUnit.sqf";
 CTI_CL_FNC_RemoveRuins = compileFinal preprocessFile "Client\Functions\Client_RemoveRuins.sqf";
 
+
+DYNG_WAIT = compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Functions\DYNG_waitforgroup.sqf";
+
 call compile preprocessFileLineNumbers "Client\Functions\FSM\Functions_FSM_UpdateClientAI.sqf";
 call compile preprocessFileLineNumbers "Client\Functions\FSM\Functions_FSM_UpdateOrders.sqf";
 
@@ -122,14 +125,7 @@ if (CTI_P_SideJoined == west) then {(west) call compile preprocessFileLineNumber
 if (CTI_P_SideJoined == east) then {(east) call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_East.sqf"};
 
 
-
-12453 cutText ["","BLACK OUT"];
-["InitializePlayer",[player] ] call BIS_fnc_dynamicGroups;
-while  {!(["PlayerHasGroup",[player] ] call BIS_fnc_dynamicGroups)} do {
-	createDialog "RscDisplayDynamicGroups";
-	waitUntil {isnull (findDisplay 60490) };
-};
-
+0 spawn DYNG_WAIT;
 
 
 CTI_InitClient = true;
@@ -177,7 +173,8 @@ if (isNil {profileNamespace getVariable "CTI_PERSISTENT_HINTS"}) then { profileN
 
 
 	//--- Place the player the "best" location (if not jailed!).
-	if !(CTI_P_Jailed) then {
+	// Moved to dyngroups handler
+	/*if !(CTI_P_Jailed) then {
 		_hq = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideHQ;
 		_structures = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideStructures;
 
@@ -186,7 +183,7 @@ if (isNil {profileNamespace getVariable "CTI_PERSISTENT_HINTS"}) then { profileN
 
 		_spawn_at = [_spawn_at, 8, 30] call CTI_CO_FNC_GetRandomPosition;
 		player setPos _spawn_at;
-	};
+	};*/
 	execFSM "Client\FSM\update_actions.fsm";
 };
 
@@ -386,5 +383,5 @@ if ((missionNamespace getVariable "CTI_UNITS_FATIGUE") == 0) then {player enable
 ["SERVER", "Request_NoobLogger", [player,0]] call CTI_CO_FNC_NetSend;
 0 execVM "Addons\MapMarkersTitling.sqf";
 
-12453 cutText ["","BLACK IN"];
+
 CTI_Init_Client = true;
