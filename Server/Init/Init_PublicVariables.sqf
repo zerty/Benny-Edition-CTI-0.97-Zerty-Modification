@@ -87,7 +87,7 @@ with missionNamespace do {
 		_get = missionNamespace getVariable Format["CTI_SERVER_CLIENT_%1",_uid];
 
 		if !(isNil '_get') then { //--- Retrieve JIP Information if there's any.
-			_side_origin = _get select 2; //--- Get the original side.
+			_side_origin = _get select 1; //--- Get the original side.
 
 			if (_side_origin != _side && ! (_side_origin == resistance) && ! (_side_origin == civilian) && CTI_TEAMSWAP == 1) then { //--- The joined side differs from the original one.
 				_join = false;

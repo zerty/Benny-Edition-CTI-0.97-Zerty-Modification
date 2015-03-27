@@ -1,14 +1,14 @@
 //--- Respawn options.
 respawn = 3;
-respawnDelay = 10;
+respawnDelay = 0;
 respawnDialog = false;
 
 //--- Require briefing.html to show up.
-onLoadMission = "BECTI 0.97 - Zerty 1.3.0.6[Test V]";
+onLoadMission = "BECTI 0.97 - Zerty 1.3.X.X";
 onLoadMissionTime = false;
-onLoadName = "BECTI 0.97 - Zerty 1.3.0.6[Test V]";
+onLoadName = "BECTI 0.97 - Zerty 1.3.X.X";
 
-briefingName = "BECTI 0.97 - Zerty 1.3.0.6[Test V]";
+briefingName = "BECTI 0.97 - Zerty 1.3.X.X";
 
 //--- ArmA 3 Specifics
 dev = "Benny";

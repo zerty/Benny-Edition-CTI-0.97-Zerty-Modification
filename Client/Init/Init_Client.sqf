@@ -102,6 +102,7 @@ if (isMultiplayer) then {
 
 
 };
+0 spawn DYNG_WAIT;
 
 
 //--- Initialize the client PV
@@ -125,7 +126,7 @@ if (CTI_P_SideJoined == west) then {(west) call compile preprocessFileLineNumber
 if (CTI_P_SideJoined == east) then {(east) call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_East.sqf"};
 
 
-0 spawn DYNG_WAIT;
+
 
 
 CTI_InitClient = true;
@@ -385,3 +386,4 @@ if ((missionNamespace getVariable "CTI_UNITS_FATIGUE") == 0) then {player enable
 
 
 CTI_Init_Client = true;
+
