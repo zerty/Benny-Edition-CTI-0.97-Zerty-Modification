@@ -58,7 +58,7 @@ _side_joinned=side _unit;
 //==========
 _get = missionNamespace getVariable [format["CTI_SERVER_CLIENT_%1", _uid],["",civilian,0,grpNull]];
 _get set [0,_uid];
-_get set [1,_side_joinned];
+if ((_get select 1) == civilian || (missionNamespace getVariable "CTI_TEAMSWAP" == 0)) then {_get set [1,_side_joinned]};
 if (isNil {missionNamespace getVariable format["CTI_SERVER_CLIENT_%1", _uid]}) then {missionNamespace setVariable [format["CTI_SERVER_CLIENT_%1", _uid],_get] };
 (owner _unit) publicVariableClient format["CTI_SERVER_CLIENT_%1", _uid];
 if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FILE: Server\Functions\Server_OnPlayerConnected.sqf", format["Sent to   [%1]  found : [%2] ",(owner _unit),_get]] call CTI_CO_FNC_Log};

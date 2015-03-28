@@ -55,7 +55,7 @@ if (isNil '_get') exitWith {if (CTI_Log_Level >= CTI_Log_Warning) then {["WARNIN
 if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FILE: Server\Functions\Server_OnPlayerDisconnected.sqf", format["Player [%1] [%2] has left the current session", _name, _uid]] call CTI_CO_FNC_Log};
 
 if !(isNil {(_get select 3)} || isNull (_get select 3)) then { // there are still players in the initial player group
-	_get set [1,0];
+	_get set [2,0];
 	missionNamespace setVariable [format["CTI_SERVER_CLIENT_%1", _uid],_get];
 };
 
