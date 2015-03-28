@@ -49,18 +49,6 @@ if (_uid in ((CTI_WEST getvariable ["CTI_COM_BLACKLIST",[]])+(CTI_EAST getvariab
 	CTI_WEST setvariable ["CTI_COM_BLACKLIST",(CTI_WEST getvariable ["CTI_COM_BLACKLIST",[]])-[_uid],true];
 };
 
-_get = missionNamespace getVariable format["CTI_SERVER_CLIENT_%1", _uid];
-if (isNil '_get') exitWith {if (CTI_Log_Level >= CTI_Log_Warning) then {["WARNING", "FILE: Server\Functions\Server_OnPlayerDisconnected.sqf", format["Disconnected Player [%1] [%2] information couldn't be retrieved", _name, _uid]] call CTI_CO_FNC_Log}};
-
-if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FILE: Server\Functions\Server_OnPlayerDisconnected.sqf", format["Player [%1] [%2] has left the current session", _name, _uid]] call CTI_CO_FNC_Log};
-
-if !(isNil (_get select 3) || isNull (_get select 3)) then { // there are still players in the initial player group
-	_get set [1,0];
-	missionNamespace setVariable [format["CTI_SERVER_CLIENT_%1", _uid],_get,true];
-};
-
-
-
 //--- Get the disconnected group
 /*_team = grpNull;
 {if ((group _x getVariable "cti_uid") == _uid) exitWith {_team = group _x}} forEach playableUnits;

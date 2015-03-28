@@ -13,8 +13,8 @@ item8[] = {"Phase_III_Group",2,250,-100.000000,200.000000,0.000000,250.000000,0.
 item9[] = {"In_Need",8,218,50.000000,200.000000,150.000000,250.000000,0.000000,"In Need"};
 item10[] = {"Attempt_Purchase",2,250,200.000000,200.000000,300.000000,250.000000,0.000000,"Attempt" \n "Purchases"};
 item11[] = {"No_Need",4,218,-100.000000,300.000000,0.000000,350.000000,1.000000,"No Need"};
-item12[] = {"Phase_II_Respawn",2,4346,-100.000000,0.000000,0.000000,50.000000,0.000000,"Phase II" \n "Respawning"};
-item13[] = {"Ready",4,218,-100.000000,100.000000,0.000000,150.000000,1.000000,"Ready"};
+item12[] = {"Phase_II_Respawn",2,250,-100.000000,0.000000,0.000000,50.000000,0.000000,"Phase II" \n "Respawning"};
+item13[] = {"Ready",4,4314,-100.000000,100.000000,0.000000,150.000000,1.000000,"Ready"};
 item14[] = {"Respawning",8,218,-525.000000,0.000000,-425.000000,50.000000,0.000000,"Respawning"};
 item15[] = {"Skip",2,250,-525.000000,-300.000000,-425.000000,-250.000000,0.000000,"Skip"};
 item16[] = {"Phase_IV_Leader",2,250,-100.000000,400.000000,0.000000,450.000000,0.000000,"Phase IV" \n "Leader Update"};
@@ -65,8 +65,8 @@ link30[] = {26,27};
 link31[] = {27,28};
 link32[] = {28,29};
 link33[] = {29,6};
-globals[] = {25.000000,1,0,0,0,640,480,1,273,6316128,1,-957.199219,904.695557,813.216370,-780.513245,854,731,1};
-window[] = {2,-1,-1,-32000,-32000,881,100,1355,100,3,872};
+globals[] = {25.000000,1,0,0,0,640,480,1,273,6316128,1,-957.199219,904.695557,813.216370,-780.513245,854,881,1};
+window[] = {2,-1,-1,-1,-1,981,200,1455,200,3,872};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -361,7 +361,7 @@ class FSM
           priority = 1.000000;
           to="Phase_III_Group";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"time > (_group getVariable ""cti_nextrespawn"") && !(_group == _sidelogic  getVariable [""cti_ai_commander_group"",grpNull])"/*%FSM</CONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/" (_group getVariable [""cti_nextrespawn"",-1]) >0 && time > (_group getVariable [""cti_nextrespawn"",-1]) && !(_group == _sidelogic  getVariable [""cti_ai_commander_group"",grpNull])"/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/

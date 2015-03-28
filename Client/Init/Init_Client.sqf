@@ -102,7 +102,7 @@ if (isMultiplayer) then {
 
 
 };
-0 spawn DYNG_WAIT;
+
 
 
 //--- Initialize the client PV
@@ -132,7 +132,7 @@ if (CTI_P_SideJoined == east) then {(east) call compile preprocessFileLineNumber
 CTI_InitClient = true;
 
 //--- Wait for a proper overall init (disabled slot?)
-waitUntil {!isNil {(group player) getVariable "cti_funds"} || (CTI_P_SideJoined == resistance)} ;
+//waitUntil {!isNil {(group player) getVariable "cti_funds"} || (CTI_P_SideJoined == resistance)} ;
 
 player addEventHandler ["killed", {_this spawn CTI_CL_FNC_OnPlayerKilled}];
 if !(CTI_IsServer) then {[player, missionNamespace getVariable format ["CTI_AI_%1_DEFAULT_GEAR", CTI_P_SideJoined]] call CTI_CO_FNC_EquipUnit}; //--- Equip pure clients
@@ -144,22 +144,8 @@ if (isNil {profileNamespace getVariable "CTI_PERSISTENT_HINTS"}) then { profileN
 	if (CTI_P_SideJoined == resistance) exitWith {false};
 	waitUntil {!isNil {CTI_P_SideLogic getVariable "cti_teams"}};
 
-	//execFSM "Client\FSM\update_markers_team.fsm";
 	execFSM "Client\FSM\update_netunits_team.fsm";
 };
-
-//strat mode
-//0 execVM "Addons\Strat_mode\init.sqf";
-
-//--- Town init thread
-
-/*0 spawn {
-	waitUntil {!isNil 'CTI_InitTowns'};
-	if (missionNamespace getVariable "CTI_SM_STRATEGIC" == 0 && !(side group player == resistance)) then {
-		execFSM "Client\FSM\town_markers.fsm";
-	};
-};
-*/
 
 
 //--- HQ / Base markers thread
@@ -169,22 +155,6 @@ if (isNil {profileNamespace getVariable "CTI_PERSISTENT_HINTS"}) then { profileN
 	waitUntil {!isNil {CTI_P_SideLogic getVariable "cti_structures"} && !isNil {CTI_P_SideLogic getVariable "cti_hq"}};
 	//--- Initialize the structures (JIP or prefab) along with HQ.
 	execVM "Client\Init\Init_JIP.sqf";
-	//if (CTI_P_SideJoined == resistance) exitWith {false};
-	//--- Execute the client update context
-
-
-	//--- Place the player the "best" location (if not jailed!).
-	// Moved to dyngroups handler
-	/*if !(CTI_P_Jailed) then {
-		_hq = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideHQ;
-		_structures = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideStructures;
-
-		_spawn_at = _hq;
-		if (count _structures > 0) then { _spawn_at = [_hq, _structures] call CTI_CO_FNC_GetClosestEntity };
-
-		_spawn_at = [_spawn_at, 8, 30] call CTI_CO_FNC_GetRandomPosition;
-		player setPos _spawn_at;
-	};*/
 	execFSM "Client\FSM\update_actions.fsm";
 };
 
@@ -194,29 +164,7 @@ if (isNil {profileNamespace getVariable "CTI_PERSISTENT_HINTS"}) then { profileN
 	waitUntil {!isNil {CTI_P_SideLogic getVariable "cti_commander"} && !isNil {CTI_P_SideLogic getVariable "cti_hq"} && !isNil {CTI_P_SideLogic getVariable "cti_salvagers"}};
 
 	_hq = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideHQ;
-	/*
-	if (!(side player == resistance) &&typeOf player == (missionNamespace getVariable format["CTI_%1_Commander", CTI_P_SideJoined])) then {
-		CTI_P_SideLogic setVariable ["cti_commander", group player, true];
 
-		if (alive _hq) then {
-			player reveal _hq;
-			if (isMultiplayer) then {["SERVER", "Request_HQLocality", [CTI_P_SideJoined, player]] call CTI_CO_FNC_NetSend};
-			waitUntil {local _hq};
-			_hq lock 2;
-			_hq addAction ["<t color='#86F078'>Unlock</t>","Client\Actions\Action_ToggleLock.sqf", [], 99, false, true, '', '_this != player &&alive _target && locked _target == 2'];
-			_hq addAction ["<t color='#86F078'>Lock</t>","Client\Actions\Action_ToggleLock.sqf", [], 99, false, true, '', '_this != player &&alive _target && locked _target == 0'];
-			_hq spawn {
-				sleep 1;
-				while {!CTI_GameOver && !isnull _this } do {
-					waitUntil {alive player && ! isnull player && (0 call CTI_CL_FNC_IsPlayerCommander)};
-					if !((getPlayerUID player) in (_this getvariable["v_keys",[]])) then {_this setVariable ["v_keys",[getPlayerUID player],true];};
-					sleep 2;
-				};
-			} ;
-		};
- 		//{_x addAction ["<t color='#1111cc'>Delete defense</t>", "deleteVehicle (_this select 0)", "", -1, false, true, "", "vehicle player == player && !CTI_P_PreBuilding "]; } forEach (CTI_P_SideLogic getVariable ["cti_defences", []]);
-
-	};*/
 	CTI_Init_CommanderClient = true;
 
 	if !(call CTI_CL_FNC_IsPlayerCommander ||(side player == resistance))  then {
@@ -292,25 +240,6 @@ if !(isNil {profileNamespace getVariable format["CTI_PERSISTENT_GEAR_TEMPLATE_%1
 TABLET_KEY_DOWN={
 	_return=false;
 	disableSerialization;
-	/*if (! (_this select 2) && ! (_this select 3) && ! (_this select 4) &&(_this select 1) in ([DIK_U]+(actionKeys "User4")) && !CTI_P_PreBuilding&&!CTI_P_Repairing && !visibleMap ) then { // Tablet menu
-		if ({! isnull (uinamespace getvariable [_x,objnull])} count (CTI_DIALOGS - [CTI_TABLET_DIALOG])>0) then {
-			{
-				uiNamespace setVariable [_x,nil];
-			} forEach (CTI_DIALOGS - [CTI_TABLET_DIALOG]);
-			closeDialog 2; // return to tabletmain
-			createdialog "CTI_RscTablet_main";
-			_return=true;
-		} else {
-			if !(isnull (uiNamespace getVariable [CTI_TABLET_DIALOG,objnull])) then {
-				closeDialog 0;
-				_return=true;
-			} else {
-				createdialog "CTI_RscTablet_main";
-				_return=true;
-			};
-		};
-
-	};*/
 
 	if (! (_this select 2) && ! (_this select 3) && ! (_this select 4) &&(_this select 1) in ([(profilenamespace getvariable ['CTI_TABLET_KEY',41])]+(actionKeys "User5"))  && !visibleMap && !CTI_P_PreBuilding &&!CTI_P_Repairing && isNull (uiNamespace getVariable ['cti_dialog_ui_interractions',objNull]) && isNull (uiNamespace getVariable ['cti_dialog_ui_defensemenu',objnull]) && isNull (uiNamespace getVariable ['cti_dialog_ui_purchasemenu',objnull]) && isnull (uiNamespace getVariable ["cti_dialog_ui_tabletmain",objnull]) ) then {
 			uiNamespace setVariable ["INT_TARG", call TABLET_GET_TARGET];

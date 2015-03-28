@@ -176,12 +176,12 @@ class Params {
 		default = 1;
 	};
 
-	/*class CTI_TEAMSWAP {
+	class CTI_TEAMSWAP {
 		title = "Zerty:Team swap protection";
 		values[] = {0,1};
 		texts[] = {"off","on"};
 		default = 1;
-	};*/
+	};
 
 
 	class CTI_AI_SKILL {
