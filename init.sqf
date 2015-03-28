@@ -19,7 +19,7 @@ CTI_Log_Warning = 1;
 CTI_Log_Error = 0;
 
 //--- Log level to use
-CTI_Log_Level =CTI_Log_Warning;
+CTI_Log_Level = 2;
 
 //--- We define the log function early so that we can use it
 CTI_CO_FNC_Log = compile preprocessFileLineNumbers "Common\Functions\Common_Log.sqf";
@@ -72,9 +72,10 @@ if (isMultiplayer) then {call Compile preprocessFileLineNumbers "Common\Init\Ini
 if (isMultiplayer && CTI_IsServer) then {
 	CTI_SE_FNC_OnPlayerConnected = compileFinal preprocessFileLineNumbers "Server\Functions\Server_OnPlayerConnected.sqf";
 	CTI_SE_FNC_OnPlayerDisconnected = compileFinal preprocessFileLineNumbers "Server\Functions\Server_OnPlayerDisconnected.sqf";
-
-	onPlayerConnected {[_uid, _name, _id] spawn CTI_SE_FNC_OnPlayerConnected};
-	onPlayerDisconnected {[_uid, _name, _id] call CTI_SE_FNC_OnPlayerDisconnected};
+	_null=["CTI_Join", "onPlayerConnected", {[_uid, _name, _id] spawn CTI_SE_FNC_OnPlayerConnected}] call BIS_fnc_addStackedEventHandler;
+	_null = ["CTI_Left", "onPlayerDisconnected", {[_uid, _name, _id] spawn CTI_SE_FNC_OnPlayerDisconnected}] call BIS_fnc_addStackedEventHandler;
+	//onPlayerConnected {[_uid, _name, _id] spawn CTI_SE_FNC_OnPlayerConnected};
+	//onPlayerDisconnected {[_uid, _name, _id] call CTI_SE_FNC_OnPlayerDisconnected};
 };
 
 //--- JIP Part is over

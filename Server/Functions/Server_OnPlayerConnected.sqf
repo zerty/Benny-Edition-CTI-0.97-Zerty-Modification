@@ -38,25 +38,29 @@ waitUntil {!isNil 'CTI_Init_Common'};
 //Find Unit
 //==========
 _unit=objnull;
-while {!(side _unit) in [east,west] } do {
+while {!((side _unit) in [east,west]) } do {
 	waitUntil {! isnull (_uid call BIS_fnc_getUnitByUid)};
 	_unit=_uid call BIS_fnc_getUnitByUid;
-	sleep 0.5
+	sleep 0.5;
+	if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FILE: Server\Functions\Server_OnPlayerConnected.sqf", format["Unit for  [%1]  found : [%2] ",_uid,_unit]] call CTI_CO_FNC_Log};
 };
 
-_side_joinned=side _unit;
+
 
 //Sanitize
 //==========
 _unit setDamage 0;
-if !(isNull assignedVehicle _unit) then { unassignVehicle _unit; [unit] orderGetIn false; [_unit] allowGetIn false };
+if !(isNull assignedVehicle _unit) then { unassignVehicle _unit; [_unit] orderGetIn false; [_unit] allowGetIn false };
 
+_side_joinned=side _unit;
 
-//Save data
+//Send data
 //==========
-//_get = missionNamespace getVariable [format["CTI_SERVER_CLIENT_%1", _uid],["",civilian,0,grpNull]];
-//_get set [0,_uid];
-//_get set [1,_side_joinned];
-
-missionNamespace setVariable [format["CTI_SERVER_CLIENT_%1", _uid],_get,true];
+_get = missionNamespace getVariable [format["CTI_SERVER_CLIENT_%1", _uid],["",civilian,0,grpNull]];
+_get set [0,_uid];
+_get set [1,_side_joinned];
+if (isNil {missionNamespace getVariable format["CTI_SERVER_CLIENT_%1", _uid]}) then {missionNamespace setVariable [format["CTI_SERVER_CLIENT_%1", _uid],_get] };
+(owner _unit) publicVariableClient format["CTI_SERVER_CLIENT_%1", _uid];
+if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FILE: Server\Functions\Server_OnPlayerConnected.sqf", format["Sent to   [%1]  found : [%2] ",(owner _unit),_get]] call CTI_CO_FNC_Log};
+//missionNamespace setVariable [format["CTI_SERVER_CLIENT_%1", _uid],_get];
 

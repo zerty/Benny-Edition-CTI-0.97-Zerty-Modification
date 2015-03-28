@@ -7,6 +7,7 @@
 	_pos=getMarkerPos format ["CTI_%1Respawn",CTI_P_SideJoined];
 	_pos = [_pos,0,10] call CTI_CO_FNC_GetRandomPosition;
 	player setpos _pos;
+	player setCaptive false;
 	waitUntil {(["PlayerHasGroup",[player] ] call BIS_fnc_dynamicGroups)};
 	waitUntil {!isNil 'CTI_Init_CommanderClient'};
 	waitUntil {!isNil {CTI_P_SideLogic getVariable "cti_structures"} && !isNil {CTI_P_SideLogic getVariable "cti_hq"}};
@@ -23,12 +24,15 @@
 	//Save data
 	//==========
 	_uid=getPlayerUID player;
-	_get=[_uid,CTI_P_SideJoined,0,group player];
-	//_get = missionNamespace getVariable [format["CTI_SERVER_CLIENT_%1", _uid],["",civilian,0,grpNull]];
-	//_get set [3,group player];
-	missionNamespace setVariable [format["CTI_SERVER_CLIENT_%1", _uid],_get];
-	publicVariableServer format["CTI_SERVER_CLIENT_%1", _uid];
-
+	if (isMultiplayer ) then {
+		waitUntil {!isNil {missionNamespace getVariable format["CTI_SERVER_CLIENT_%1", _uid] }};
+		_get = missionNamespace getVariable format["CTI_SERVER_CLIENT_%1", _uid];
+		_get set [3,group player];
+		missionNamespace setVariable [format["CTI_SERVER_CLIENT_%1", _uid],_get];
+		publicVariableServer format["CTI_SERVER_CLIENT_%1", _uid];
+	} else {
+		missionNamespace setVariable [format["CTI_SERVER_CLIENT_%1", _uid],[_uid,CTI_P_SideJoined,0,group player]];
+	};
 	//==========
 	12453 cutText ["","BLACK IN"];
 	WAIT_GROUP=nil;
