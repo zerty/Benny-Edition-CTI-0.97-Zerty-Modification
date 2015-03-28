@@ -1,6 +1,7 @@
 0 spawn {
 	private ["_pos","_hq","_structures","_spawn_at"];
 	if (missionNamespace getVariable ["WAIT_GROUP",false]) exitWith {};
+	waitUntil {!isNull (findDisplay 46)};
 	WAIT_GROUP=true;
 	["InitializePlayer",[player] ] call BIS_fnc_dynamicGroups;
 	12453 cutText ["Please either join or create a group","BLACK OUT"];
