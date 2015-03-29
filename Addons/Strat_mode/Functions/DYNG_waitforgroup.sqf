@@ -32,8 +32,16 @@
 		missionNamespace setVariable [format["CTI_SERVER_CLIENT_%1", _uid],_get];
 		publicVariableServer format["CTI_SERVER_CLIENT_%1", _uid];
 	} else {
-		missionNamespace setVariable [format["CTI_SERVER_CLIENT_%1", _uid],[_uid,CTI_P_SideJoined,0,group player]];
+		missionNamespace setVariable [format["CTI_SERVER_CLIENT_%1", _uid],[_uid,CTI_P_SideJoined,-10,group player]];
 	};
+	// setup group funds
+	//==========
+	if (((missionNamespace getVariable format["CTI_SERVER_CLIENT_%1", _uid]) select 2) <0) then{
+		(group player) setVariable ["cti_funds", missionNamespace getVariable format ["CTI_ECONOMY_STARTUP_FUNDS_%1", (side group player )], true];
+	} else {
+		(group player) setVariable ["cti_funds", ((group player) getvariable ["cti_funds",0]) + ((missionNamespace getVariable format["CTI_SERVER_CLIENT_%1", _uid]) select 2), true];
+	};
+	// Done
 	//==========
 	12453 cutText ["","BLACK IN"];
 	WAIT_GROUP=nil;

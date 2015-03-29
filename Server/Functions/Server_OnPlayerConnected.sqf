@@ -56,7 +56,7 @@ _side_joinned=side _unit;
 
 //Send data
 //==========
-_get = missionNamespace getVariable [format["CTI_SERVER_CLIENT_%1", _uid],["",civilian,0,grpNull]];
+_get = missionNamespace getVariable [format["CTI_SERVER_CLIENT_%1", _uid],["",civilian,-1,grpNull]];
 _get set [0,_uid];
 if ((_get select 1) == civilian || (missionNamespace getVariable "CTI_TEAMSWAP" == 0)) then {_get set [1,_side_joinned]};
 if (isNil {missionNamespace getVariable format["CTI_SERVER_CLIENT_%1", _uid]}) then {missionNamespace setVariable [format["CTI_SERVER_CLIENT_%1", _uid],_get] };
