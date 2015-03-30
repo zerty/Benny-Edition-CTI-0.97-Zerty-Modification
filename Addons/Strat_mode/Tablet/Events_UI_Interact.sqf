@@ -89,7 +89,7 @@ switch (_action) do {
 			    };
 			    case 7: {// CTI_Icon_Lock // ok
 
-			    	if (! isnull _target && getplayeruid player in (_target getVariable ["v_keys",[]])&& alive _target) then  {
+			    	if (! isnull _target && ((getplayeruid player) == ((_target getVariable ["v_keys",["",grpnull]]) select 0 ) || (group player) == ((_target getVariable ["v_keys",["",grpnull]]) select 1 )) && alive _target) then  {
 			    		if (locked _target >0 ) then {((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTextColor [1,0,0,1];} else {((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTextColor [0,1,0,1];};
 
 			    		((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetPosition [_base_x+(_offset*_base_w),_base_y+_h_offset*_base_h,_base_w,_base_h];

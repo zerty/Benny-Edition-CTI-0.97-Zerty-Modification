@@ -95,7 +95,7 @@ with missionNamespace do {
 		_this lock 2;
 		_this addAction ["<t color='#86F078'>Unlock</t>","Client\Actions\Action_ToggleLock.sqf", [], 99, false, true, '', '_this != player &&alive _target && locked _target == 2'];
 		_this addAction ["<t color='#86F078'>Lock</t>","Client\Actions\Action_ToggleLock.sqf", [], 99, false, true, '', '_this != player &&alive _target && locked _target == 0'];
-		_this setVariable ["v_keys",[getPlayerUID player],true];
+		_this setVariable ["v_keys",[getPlayerUID player,group player],true];
 	};
 
 	CTI_PVF_Client_OnRequestAnswered = { _this spawn CTI_UI_Request_OnRequestAnswered }; //--- The commander answer a request
@@ -153,7 +153,7 @@ with missionNamespace do {
 				sleep 1;
 				while {!CTI_GameOver && !isnull _this} do {
 					waitUntil {alive player && ! isnull player };
-					if !((getPlayerUID player) in (_this getvariable["v_keys",[]])) then {_this setVariable ["v_keys",[getPlayerUID player],true];};
+					if !((getPlayerUID player) in (_this getvariable["v_keys",[]])) then {_this setVariable ["v_keys",[getPlayerUID player, group player],true];};
 					sleep 2;
 				};
 			} ;

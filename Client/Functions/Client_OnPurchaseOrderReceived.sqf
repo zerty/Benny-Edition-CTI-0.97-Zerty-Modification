@@ -162,7 +162,7 @@ if (_model isKindOf "Man") then {
 
 	_vehicle addAction ["<t color='#86F078'>Unlock</t>","Client\Actions\Action_ToggleLock.sqf", [], 99, false, true, '', '_this != player &&alive _target && locked _target == 2'];
 	_vehicle addAction ["<t color='#86F078'>Lock</t>","Client\Actions\Action_ToggleLock.sqf", [], 99, false, true, '', '_this != player &&alive _target && locked _target == 0'];
-	if (! (_vehicle isKindOf "Thing") && !( _vehicle isKindOf "StaticWeapon")) then {_vehicle setVariable ["v_keys",[getPlayerUID player],true]};
+	if (! (_vehicle isKindOf "Thing") && !( _vehicle isKindOf "StaticWeapon")) then {_vehicle setVariable ["v_keys",[getPlayerUID player,group player],true]};
 	player reveal _vehicle;
 
 	//--- Authorize the air loadout depending on the parameters set

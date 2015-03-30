@@ -90,7 +90,7 @@ SM_Force_entry={
 		if ( !(_target getVariable "forced") ) then {
 			_target addAction ["<t color='#86F078'>Unlock</t>","Client\Actions\Action_ToggleLock.sqf", [], 99, false, true, '', '_this != player && alive _target && locked _target == 2'];
 			_target addAction ["<t color='#86F078'>Lock</t>","Client\Actions\Action_ToggleLock.sqf", [], 99, false, true, '', '_this != player && alive _target && locked _target == 0'];
-			_target setVariable ["v_keys",(_target getVariable ["v_keys",[]]) + [getPlayerUID player],true];
+			_target setVariable ["v_keys",[getPlayerUID player,group player],true];
 		};
 		0 call HUD_PBar_stop;
 		CTI_P_Repairing = false ;
