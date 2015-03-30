@@ -279,7 +279,7 @@ if (CTI_IsServer) then {
 			0 spawn {
 				while {!CTI_Gameover} do {
 					{if !(simulationEnabled _x ) then {_x enableSimulationGlobal True};True} count (allUnits + vehicles + allDead );
-					sleep 1200;
+					sleep 600;
 				};
 			};
 		};
