@@ -39,7 +39,7 @@ _id = _this select 2;
 
 if (_name == '__SERVER__' || _uid == '') exitWith {}; //--- We don't care about the server!
 waitUntil {!isNil 'CTI_Init_Common'};
-
+if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FILE: Server\Functions\Server_OnPlayerConnected.sqf", format["Player [%1] [%2] has joined the current session", _name, _uid]] call CTI_CO_FNC_Log};
 
 // BLacklists CleanUp
 //====================
@@ -48,6 +48,43 @@ if (_uid in ((CTI_WEST getvariable ["CTI_COM_BLACKLIST",[]])+(CTI_EAST getvariab
 	CTI_EAST setvariable ["CTI_COM_BLACKLIST",(CTI_EAST getvariable ["CTI_COM_BLACKLIST",[]])-[_uid],true];
 	CTI_WEST setvariable ["CTI_COM_BLACKLIST",(CTI_WEST getvariable ["CTI_COM_BLACKLIST",[]])-[_uid],true];
 };
+
+
+{
+	if ((_x getVariable ["CTI_UID",""]) == _uid) then {
+		_g=group _x;
+		_s= side _g;
+		_sl= _s call CTI_CO_FNC_GetSideLogic;
+		if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FILE: Server\Functions\Server_OnPlayerConnected.sqf", format["Player [%1] [%2] previous unit has been found as %3 from %4", _name, _uid,_x,_g]] call CTI_CO_FNC_Log};
+		[_x] joinsilent grpNull;
+		_x setDamage 1;
+		if !(isNull _g) then {
+			[_g,_sl] spawn {
+				_g=_this select 0;
+				_sl=_this select 1;
+				sleep 30;
+				_teams= (_sl getVariable ["cti_teams",[]]);
+				if ((_g in _teams) && !(isplayer leader _g)) then {
+					_teams = _teams -[_g];
+					{
+						if !(vehicle _x == _x ) then {
+							unAssignVehicle _x;
+  	 						_x action ["eject", vehicle _x];
+   							_x action ["getOut", (vehicle _x)];
+   						};
+   						deleteVehicle _x;
+   						true
+   					}count (units _g);
+   					_sl setVariable ["cti_teams",_teams,true];
+				};
+			};
+		};
+
+
+
+	};
+	true
+}count (switchableUnits + playableUnits +allDead)
 
 //--- Get the disconnected group
 /*_team = grpNull;

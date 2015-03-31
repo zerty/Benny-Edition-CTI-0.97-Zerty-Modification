@@ -8,6 +8,7 @@ while {!CTI_Gameover} do {
 			_nbp= count (_x select 5);
 			_ppl=_g getvariable ["last_player_count",0];
 			if (_nbp < _ppl) then { // someone has left
+				diag_log format [" :: DYNG :: removing money for %1 : %2 => %3",_g , (_g getVariable "cti_funds"), floor ((_g getVariable "cti_funds")-((_g getVariable "cti_funds")/_ppl)) ];
 				_g setVariable ["cti_funds",floor ((_g getVariable "cti_funds")-((_g getVariable "cti_funds")/_ppl)),true];
 				_g setvariable ["last_player_count",_nbp];
 			}else {
@@ -16,6 +17,7 @@ while {!CTI_Gameover} do {
 					if (!isNil "_get") then {
 						_get set [2,floor ((_g getVariable "cti_funds")/_nbp)];
 						missionNamespace setVariable [format["CTI_SERVER_CLIENT_%1", _x],_get];
+						diag_log format [" :: DYNG :: saving money for %1 : %2 => %3", _get select 0 , _get select 2, _get ];
 					};
 					true
 				}count (_x select 5);

@@ -20,6 +20,7 @@
   # EXAMPLE #
     call CTI_CL_FNC_AddMissionActions
 */
+(vehicle player) setVariable ["CTI_UID",getPlayerUID player,true];
 
 player setcaptive false;
 0 call HUD_PBar_stop;

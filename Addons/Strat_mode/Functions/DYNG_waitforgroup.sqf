@@ -30,7 +30,7 @@
 		_get = missionNamespace getVariable format["CTI_SERVER_CLIENT_%1", _uid];
 		_get set [3,group player];
 		missionNamespace setVariable [format["CTI_SERVER_CLIENT_%1", _uid],_get];
-		publicVariableServer format["CTI_SERVER_CLIENT_%1", _uid];
+		//publicVariableServer format["CTI_SERVER_CLIENT_%1", _uid];
 	} else {
 		missionNamespace setVariable [format["CTI_SERVER_CLIENT_%1", _uid],[_uid,CTI_P_SideJoined,-10,group player]];
 	};

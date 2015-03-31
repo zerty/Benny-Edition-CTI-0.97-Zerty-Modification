@@ -103,6 +103,7 @@ class Mission
 					vehicle="O_Soldier_F";
 					player="PLAY CDG";
 					leader=1;
+					rank="CAPTAIN";
 					skill=0.60000002;
 					description="Alpha";
 					syncId=2;
@@ -124,6 +125,7 @@ class Mission
 					vehicle="O_Soldier_F";
 					player="PLAY CDG";
 					leader=1;
+					rank="CAPTAIN";
 					skill=0.60000002;
 					description="Bravo";
 					syncId=3;
@@ -145,6 +147,7 @@ class Mission
 					vehicle="O_Soldier_F";
 					player="PLAY CDG";
 					leader=1;
+					rank="CAPTAIN";
 					skill=0.60000002;
 					description="Charlie";
 					syncId=4;
@@ -166,6 +169,7 @@ class Mission
 					vehicle="O_Soldier_F";
 					player="PLAY CDG";
 					leader=1;
+					rank="CAPTAIN";
 					skill=0.60000002;
 					description="Delta";
 					syncId=5;
@@ -187,6 +191,7 @@ class Mission
 					vehicle="O_Soldier_F";
 					player="PLAY CDG";
 					leader=1;
+					rank="CAPTAIN";
 					skill=0.60000002;
 					description="Echo";
 					syncId=6;
@@ -208,6 +213,7 @@ class Mission
 					vehicle="O_Soldier_F";
 					player="PLAY CDG";
 					leader=1;
+					rank="CAPTAIN";
 					skill=0.60000002;
 					description="Foxtrot";
 					syncId=7;
@@ -229,6 +235,7 @@ class Mission
 					vehicle="O_Soldier_F";
 					player="PLAY CDG";
 					leader=1;
+					rank="CAPTAIN";
 					skill=0.60000002;
 					description="Golf";
 					syncId=8;
@@ -250,6 +257,7 @@ class Mission
 					vehicle="O_Soldier_F";
 					player="PLAY CDG";
 					leader=1;
+					rank="CAPTAIN";
 					skill=0.60000002;
 					description="Hotel";
 					syncId=9;
@@ -271,6 +279,7 @@ class Mission
 					vehicle="O_Soldier_F";
 					player="PLAY CDG";
 					leader=1;
+					rank="CAPTAIN";
 					skill=0.60000002;
 					description="India";
 					syncId=10;
@@ -292,6 +301,7 @@ class Mission
 					vehicle="O_Soldier_F";
 					player="PLAY CDG";
 					leader=1;
+					rank="CAPTAIN";
 					skill=0.60000002;
 					description="Juliet";
 					syncId=11;
@@ -313,6 +323,7 @@ class Mission
 					vehicle="O_Soldier_F";
 					player="PLAY CDG";
 					leader=1;
+					rank="CAPTAIN";
 					skill=0.60000002;
 					description="Kilo";
 					syncId=12;
@@ -334,6 +345,7 @@ class Mission
 					vehicle="O_Soldier_F";
 					player="PLAY CDG";
 					leader=1;
+					rank="CAPTAIN";
 					skill=0.60000002;
 					description="Lima";
 					syncId=13;
@@ -355,6 +367,7 @@ class Mission
 					vehicle="O_Soldier_F";
 					player="PLAY CDG";
 					leader=1;
+					rank="CAPTAIN";
 					skill=0.60000002;
 					description="Mike";
 					syncId=14;
@@ -376,6 +389,7 @@ class Mission
 					vehicle="O_Soldier_F";
 					player="PLAY CDG";
 					leader=1;
+					rank="CAPTAIN";
 					skill=0.60000002;
 					description="November";
 					syncId=15;
@@ -397,6 +411,7 @@ class Mission
 					vehicle="O_Soldier_F";
 					player="PLAY CDG";
 					leader=1;
+					rank="CAPTAIN";
 					skill=0.60000002;
 					description="Oscar";
 					syncId=16;
@@ -418,6 +433,7 @@ class Mission
 					vehicle="B_Soldier_F";
 					player="PLAY CDG";
 					leader=1;
+					rank="CAPTAIN";
 					skill=0.60000002;
 					description="Alpha";
 					syncId=17;
@@ -439,6 +455,7 @@ class Mission
 					vehicle="B_Soldier_F";
 					player="PLAY CDG";
 					leader=1;
+					rank="CAPTAIN";
 					skill=0.60000002;
 					description="Bravo";
 					syncId=18;
@@ -460,6 +477,7 @@ class Mission
 					vehicle="B_Soldier_F";
 					player="PLAY CDG";
 					leader=1;
+					rank="CAPTAIN";
 					skill=0.60000002;
 					description="Charlie";
 					syncId=19;
@@ -481,6 +499,7 @@ class Mission
 					vehicle="B_Soldier_F";
 					player="PLAY CDG";
 					leader=1;
+					rank="CAPTAIN";
 					skill=0.60000002;
 					description="Delta";
 					syncId=20;
@@ -502,6 +521,7 @@ class Mission
 					vehicle="B_Soldier_F";
 					player="PLAY CDG";
 					leader=1;
+					rank="CAPTAIN";
 					skill=0.60000002;
 					description="Echo";
 					syncId=21;
@@ -523,6 +543,7 @@ class Mission
 					vehicle="B_Soldier_F";
 					player="PLAY CDG";
 					leader=1;
+					rank="CAPTAIN";
 					skill=0.60000002;
 					description="Foxtrot";
 					syncId=22;
@@ -544,6 +565,7 @@ class Mission
 					vehicle="B_Soldier_F";
 					player="PLAY CDG";
 					leader=1;
+					rank="CAPTAIN";
 					skill=0.60000002;
 					description="Golf";
 					syncId=23;
@@ -565,6 +587,7 @@ class Mission
 					vehicle="B_Soldier_F";
 					player="PLAY CDG";
 					leader=1;
+					rank="CAPTAIN";
 					skill=0.60000002;
 					description="Hotel";
 					syncId=24;
@@ -586,6 +609,7 @@ class Mission
 					vehicle="B_Soldier_F";
 					player="PLAY CDG";
 					leader=1;
+					rank="CAPTAIN";
 					skill=0.60000002;
 					description="India";
 					syncId=25;
@@ -607,6 +631,7 @@ class Mission
 					vehicle="B_Soldier_F";
 					player="PLAY CDG";
 					leader=1;
+					rank="CAPTAIN";
 					skill=0.60000002;
 					description="Juliet";
 					syncId=26;
@@ -628,6 +653,7 @@ class Mission
 					vehicle="B_Soldier_F";
 					player="PLAY CDG";
 					leader=1;
+					rank="CAPTAIN";
 					skill=0.60000002;
 					description="Kilo";
 					syncId=27;
@@ -649,6 +675,7 @@ class Mission
 					vehicle="B_Soldier_F";
 					player="PLAY CDG";
 					leader=1;
+					rank="CAPTAIN";
 					skill=0.60000002;
 					description="Lima";
 					syncId=28;
@@ -670,6 +697,7 @@ class Mission
 					vehicle="B_Soldier_F";
 					player="PLAY CDG";
 					leader=1;
+					rank="CAPTAIN";
 					skill=0.60000002;
 					description="Mike";
 					syncId=29;
@@ -691,6 +719,7 @@ class Mission
 					vehicle="B_Soldier_F";
 					player="PLAY CDG";
 					leader=1;
+					rank="CAPTAIN";
 					skill=0.60000002;
 					description="November";
 					syncId=30;
@@ -712,6 +741,7 @@ class Mission
 					vehicle="B_Soldier_F";
 					player="PLAY CDG";
 					leader=1;
+					rank="CAPTAIN";
 					skill=0.60000002;
 					description="Oscar";
 					syncId=31;
@@ -733,6 +763,7 @@ class Mission
 					vehicle="B_Soldier_F";
 					player="PLAY CDG";
 					leader=1;
+					rank="CAPTAIN";
 					skill=0.60000002;
 					description="Papa";
 					syncId=32;
@@ -754,6 +785,7 @@ class Mission
 					vehicle="B_Soldier_F";
 					player="PLAY CDG";
 					leader=1;
+					rank="CAPTAIN";
 					skill=0.60000002;
 					description="Quebec";
 					syncId=33;
@@ -775,6 +807,7 @@ class Mission
 					vehicle="B_Soldier_F";
 					player="PLAY CDG";
 					leader=1;
+					rank="CAPTAIN";
 					skill=0.60000002;
 					description="Romeo";
 					syncId=34;
@@ -795,6 +828,7 @@ class Mission
 					side="WEST";
 					vehicle="B_Soldier_F";
 					leader=1;
+					rank="CAPTAIN";
 					skill=0.60000002;
 					description="Sierra";
 					syncId=35;
@@ -815,6 +849,7 @@ class Mission
 					side="WEST";
 					vehicle="B_Soldier_F";
 					leader=1;
+					rank="CAPTAIN";
 					skill=0.60000002;
 					description="Tango";
 					syncId=36;
@@ -835,6 +870,7 @@ class Mission
 					side="WEST";
 					vehicle="B_Soldier_F";
 					leader=1;
+					rank="CAPTAIN";
 					skill=0.60000002;
 					description="Uniform";
 					syncId=37;
@@ -855,6 +891,7 @@ class Mission
 					side="WEST";
 					vehicle="B_Soldier_F";
 					leader=1;
+					rank="CAPTAIN";
 					skill=0.60000002;
 					description="Victor";
 					syncId=38;
@@ -875,6 +912,7 @@ class Mission
 					side="WEST";
 					vehicle="B_Soldier_F";
 					leader=1;
+					rank="CAPTAIN";
 					skill=0.60000002;
 					description="Wiskey";
 					syncId=39;
@@ -896,6 +934,7 @@ class Mission
 					vehicle="O_Soldier_F";
 					player="PLAY CDG";
 					leader=1;
+					rank="CAPTAIN";
 					skill=0.60000002;
 					description="Papa";
 					syncId=40;
@@ -917,6 +956,7 @@ class Mission
 					vehicle="O_Soldier_F";
 					player="PLAY CDG";
 					leader=1;
+					rank="CAPTAIN";
 					skill=0.60000002;
 					description="Quebec";
 					syncId=41;
@@ -938,6 +978,7 @@ class Mission
 					vehicle="O_Soldier_F";
 					player="PLAYER COMMANDER";
 					leader=1;
+					rank="CAPTAIN";
 					skill=0.60000002;
 					description="Romeo";
 					syncId=42;
@@ -958,6 +999,7 @@ class Mission
 					side="EAST";
 					vehicle="O_Soldier_F";
 					leader=1;
+					rank="CAPTAIN";
 					skill=0.60000002;
 					description="Sierra";
 					syncId=43;
@@ -978,6 +1020,7 @@ class Mission
 					side="EAST";
 					vehicle="O_Soldier_F";
 					leader=1;
+					rank="CAPTAIN";
 					skill=0.60000002;
 					description="Tango";
 					syncId=44;
@@ -998,6 +1041,7 @@ class Mission
 					side="EAST";
 					vehicle="O_Soldier_F";
 					leader=1;
+					rank="CAPTAIN";
 					skill=0.60000002;
 					description="Uniform";
 					syncId=45;
@@ -1018,6 +1062,7 @@ class Mission
 					side="EAST";
 					vehicle="O_Soldier_F";
 					leader=1;
+					rank="CAPTAIN";
 					skill=0.60000002;
 					description="Victor";
 					syncId=46;
@@ -1038,6 +1083,7 @@ class Mission
 					side="EAST";
 					vehicle="O_Soldier_F";
 					leader=1;
+					rank="CAPTAIN";
 					skill=0.60000002;
 					description="Wiskey";
 					syncId=47;

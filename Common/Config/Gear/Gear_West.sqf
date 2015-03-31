@@ -1611,7 +1611,7 @@ _p = _p		+ [500];
 
 //static designator
 
-_i = _i		+ ["O_Static_Designator_02_weapon_F"];
+_i = _i		+ ["B_Static_Designator_01_weapon_F"];
 _u = _u		+ [2];
 _p = _p		+ [200];
 
