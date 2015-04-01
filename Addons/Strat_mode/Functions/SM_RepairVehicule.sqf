@@ -17,7 +17,7 @@ SM_repair_vehicle={
 	if (! isNil {_target getHitPointDamage "HitGun"}) then {_d=_d+(_target getHitPointDamage "HitGun");_count=_count+1;};
 	if (! isNil {_target getHitPointDamage "HitTurret"}) then {_d=_d+(_target getHitPointDamage "HitTurret");_count=_count+1;};
 
-	_rk = {_x == "Toolkit"} count (backpackItems _caller) +{_x == "Toolkit"} count (vestItems _caller);
+	_rk = ({_x == "Toolkit"} count (backpackItems _caller)) +({_x == "Toolkit"} count (vestItems _caller));
 	if (_rk > 0) then {
 		CTI_P_Repairing = true ;
 		_pos = getPos _caller;

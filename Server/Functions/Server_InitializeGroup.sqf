@@ -29,7 +29,7 @@ _side = _this select 1;
 _nbplayers=_this select 2;
 _side_logic=_side call CTI_CO_FNC_GetSideLogic;
 
-//if (isNil {_team getVariable "cti_funds"}) then {_team setVariable ["cti_funds", missionNamespace getVariable format ["CTI_ECONOMY_STARTUP_FUNDS_%1", _side], true]};
+if (isNil {_team getVariable "cti_funds"}) then {_team setVariable ["cti_funds", missionNamespace getVariable format ["CTI_ECONOMY_STARTUP_FUNDS_%1", _side], true]};
 if (isNil {_team getVariable "cti_role_evo"}) then {_team setVariable ["cti_role_evo", "Infantry"]}; //--- Evolutive role
 if (isNil {_team getVariable "cti_order"}) then {_team setVariable ["cti_order", CTI_ORDER_TAKETOWNS, true]};
 if (isNil {_team getVariable "cti_order_pos"}) then {_team setVariable ["cti_order_pos", [0,0], true]};
