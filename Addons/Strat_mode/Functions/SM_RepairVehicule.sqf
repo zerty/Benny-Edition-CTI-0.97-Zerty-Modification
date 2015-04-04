@@ -17,7 +17,7 @@ SM_repair_vehicle={
 	if (! isNil {_target getHitPointDamage "HitGun"}) then {_d=_d+(_target getHitPointDamage "HitGun");_count=_count+1;};
 	if (! isNil {_target getHitPointDamage "HitTurret"}) then {_d=_d+(_target getHitPointDamage "HitTurret");_count=_count+1;};
 
-	_rk = {_x == "Toolkit"} count (backpackItems _caller) +{_x == "Toolkit"} count (vestItems _caller);
+	_rk = ({_x == "Toolkit"} count (backpackItems _caller)) +({_x == "Toolkit"} count (vestItems _caller));
 	if (_rk > 0) then {
 		CTI_P_Repairing = true ;
 		_pos = getPos _caller;
@@ -90,7 +90,7 @@ SM_Force_entry={
 		if ( !(_target getVariable "forced") ) then {
 			_target addAction ["<t color='#86F078'>Unlock</t>","Client\Actions\Action_ToggleLock.sqf", [], 99, false, true, '', '_this != player && alive _target && locked _target == 2'];
 			_target addAction ["<t color='#86F078'>Lock</t>","Client\Actions\Action_ToggleLock.sqf", [], 99, false, true, '', '_this != player && alive _target && locked _target == 0'];
-			_target setVariable ["v_keys",(_target getVariable ["v_keys",[]]) + [getPlayerUID player],true];
+			_target setVariable ["v_keys",[getPlayerUID player,group player],true];
 		};
 		0 call HUD_PBar_stop;
 		CTI_P_Repairing = false ;

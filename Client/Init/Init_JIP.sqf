@@ -47,7 +47,8 @@ if (isMultiplayer) then {sleep 5}; //--- Wait in MP for the net var to kick in
 
 
 {_x spawn CTI_PVF_Client_HandleDefense} forEach (CTI_P_SideLogic getVariable ["cti_defences", []]);
-//--- Add lock/unlock to team vehicles if needed.
+//--- Add lock/unlock to team vehicles if needed. === Deprecated with group system
+/*
 {
 	if (effectiveCommander _x in units player) then {
 		_x addAction ["<t color='#86F078'>Unlock</t>","Client\Actions\Action_ToggleLock.sqf", [], 99, false, true, '', '_this != player &&alive _target && locked _target == 2'];
@@ -68,6 +69,6 @@ if (isMultiplayer) then {sleep 5}; //--- Wait in MP for the net var to kick in
 		};
 	};
 } forEach (units player call CTI_CO_FNC_GetLiveUnits);
-
+*/
 
 

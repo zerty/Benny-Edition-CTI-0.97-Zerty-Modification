@@ -1590,9 +1590,28 @@ _u = _u		+ [2];
 _p = _p		+ [150];
 
 
+_i = _i		+ ["MMG_02_camo_F"];
+_u = _u		+ [3];
+_p = _p		+ [500];
+
+_i = _i		+ ["MMG_02_sand_F"];
+_u = _u		+ [3];
+_p = _p		+ [500];
+_i = _i		+ ["MMG_02_black_F"];
+_u = _u		+ [3];
+_p = _p		+ [500];
+
+_i = _i		+ ["130Rnd_338_Mag"];
+_u = _u		+ [3];
+_p = _p		+ [5];
+
+_i = _i		+ [["MMG_02_sand_RCO_LP_F"]];
+_u = _u		+ [3];
+_p = _p		+ [500];
+
 //static designator
 
-_i = _i		+ ["O_Static_Designator_02_weapon_F"];
+_i = _i		+ ["B_Static_Designator_01_weapon_F"];
 _u = _u		+ [2];
 _p = _p		+ [200];
 

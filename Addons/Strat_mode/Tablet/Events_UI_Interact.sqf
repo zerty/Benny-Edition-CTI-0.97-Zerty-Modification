@@ -61,7 +61,7 @@ switch (_action) do {
 			    	};
 			    };
 			    case 5: { // CTI_Icon_fact
-					if ((CTI_P_SideLogic getVariable "cti_commander") == group player && !CTI_P_PreBuilding && CTI_Base_HQInRange) then {
+					if ((CTI_P_SideLogic getVariable "cti_commander") == group player && (leader group player) == player && !CTI_P_PreBuilding && CTI_Base_HQInRange) then {
 
 						((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTextColor [1,1,0,1];
 
@@ -89,7 +89,7 @@ switch (_action) do {
 			    };
 			    case 7: {// CTI_Icon_Lock // ok
 
-			    	if (! isnull _target && getplayeruid player in (_target getVariable ["v_keys",[]])&& alive _target) then  {
+			    	if (! isnull _target &&( (getplayeruid player) in (_target getVariable ["v_keys",["",grpnull]]) || (group player) in (_target getVariable ["v_keys",["",grpnull]]) && alive _target)) then  {
 			    		if (locked _target >0 ) then {((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTextColor [1,0,0,1];} else {((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTextColor [0,1,0,1];};
 
 			    		((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetPosition [_base_x+(_offset*_base_w),_base_y+_h_offset*_base_h,_base_w,_base_h];
@@ -160,7 +160,7 @@ switch (_action) do {
 			    	};
 			    };
 				case 12: { // CTI_Icon_rev //ok
-			    	if (_target iskindof "Man" && _target getVariable ['REV_UNC',false] && isNull (player getVariable ['REV_DRAGGING',objNull])&& (side group player)==(side group _target)) then  {
+			    	if (_target iskindof "Man" && _target getVariable ['REV_UNC',false] && !( player getVariable ['REV_UNC',true])  && isNull (player getVariable ['REV_DRAGGING',objNull])&& (side group player)==(side group _target)) then  {
 			    		((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTextColor [1,0,0,1];
 			    		((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetPosition [_base_x+(_offset*_base_w),_base_y+_h_offset*_base_h,_base_w,_base_h];
 			    		_offset=_offset+1;
@@ -336,7 +336,7 @@ switch (_action) do {
 			    	};
 			    };
 				case 28: {// CTI_Icon_Com
-			    	if (! isnull _target && alive _target && (_target == (CTI_P_SideJoined call CTI_CO_FNC_GetSideHQ) || _target in (CTI_P_SideJoined call CTI_CO_FNC_GetSideStructures))) then  {
+			    	if (! isnull _target && alive _target && (_target == (CTI_P_SideJoined call CTI_CO_FNC_GetSideHQ) || _target in (CTI_P_SideJoined call CTI_CO_FNC_GetSideStructures)) ) then  {
 			    		if (isNull (CTI_P_SideJoined  call CTI_CO_FNC_GetSideCommander )&& !( (getplayeruid player) in (CTI_P_SideLogic getVariable ["CTI_COM_BLACKLIST",[] ]))) then {
 			    			((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTextColor [1,1,0,1];
 			    		} else {
@@ -537,7 +537,7 @@ switch (_action) do {
 	};
 
 	case "OnBFact": {
-		if !((CTI_P_SideLogic getVariable "cti_commander") == group player && !CTI_P_PreBuilding && CTI_Base_HQInRange) exitwith {false};
+		if !((CTI_P_SideLogic getVariable "cti_commander") == group player&& (leader group player) == player  && !CTI_P_PreBuilding && CTI_Base_HQInRange) exitwith {false};
 		closedialog 0;
 		createDialog "CTI_RscBuildMenu_Tablet";
 	};

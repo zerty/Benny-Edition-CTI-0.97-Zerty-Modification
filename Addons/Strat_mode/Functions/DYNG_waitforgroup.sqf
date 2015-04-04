@@ -25,15 +25,10 @@
 	//Save data
 	//==========
 	_uid=getPlayerUID player;
-	if (isMultiplayer ) then {
-		waitUntil {!isNil {missionNamespace getVariable format["CTI_SERVER_CLIENT_%1", _uid] }};
-		_get = missionNamespace getVariable format["CTI_SERVER_CLIENT_%1", _uid];
-		_get set [3,group player];
-		missionNamespace setVariable [format["CTI_SERVER_CLIENT_%1", _uid],_get];
-		publicVariableServer format["CTI_SERVER_CLIENT_%1", _uid];
-	} else {
-		missionNamespace setVariable [format["CTI_SERVER_CLIENT_%1", _uid],[_uid,CTI_P_SideJoined,0,group player]];
+	if !(isMultiplayer ) then {
+		missionNamespace setVariable [format["CTI_SERVER_CLIENT_%1", _uid],[_uid,CTI_P_SideJoined,-10,group player]];
 	};
+	// Done
 	//==========
 	12453 cutText ["","BLACK IN"];
 	WAIT_GROUP=nil;

@@ -7,7 +7,7 @@ _unit setVelocity [0,0,0];
 _unit setCaptive true;
 _unit setVariable ["REV_UNC", true, true];
 _unit spawn REV_UNC_LOOP;
-if (isplayer _unit) then { CTI_P_PreBuilding=True;};
+//if (isplayer _unit) then { CTI_P_PreBuilding=True;};
 _unit spawn {
 	private ["_unit"];
 	_unit=_this;

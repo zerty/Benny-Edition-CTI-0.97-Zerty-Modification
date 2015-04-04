@@ -46,6 +46,8 @@ with missionNamespace do {
 	   	HCGA_Init = compileFinal preprocessFileLineNumbers "Addons\Strat_mode\HC_GA\HCGA_Init.sqf";
 	   	UAV_FUEL = compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Functions\UAV_Fuel.sqf";
 	   	UAV_RANGE = compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Functions\UAV_Range.sqf";
+	   	DYNG_WAIT = compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Functions\DYNG_waitforgroup.sqf";
+	   	DYNG_SERVERLOOP = compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Functions\DYNG_serverloop.sqf";
 };
 
 //Common stuff
@@ -80,13 +82,7 @@ if (CTI_IsServer) then {
 	} count [east,west];
 
 	//dynamic group loop
-	0 spawn {
-		waitUntil {(["IsInitialized"] call BIS_fnc_dynamicGroups)};
-		while {!CTI_Gameover} do {
-			{ if (isNil {(_x select 3) getVariable "cti_funds"}) then ([_x select 3, _x select 6] call CTI_SE_FNC_InitializeGroup)}count ("GetAllGroups" call BIS_fnc_dynamicGroups);
-			sleep 1;
-		};
-	};
+	0 spawn DYNG_SERVERLOOP;
 
 	//PVF
 	with missionNamespace do {
@@ -283,7 +279,7 @@ if (CTI_IsServer) then {
 			0 spawn {
 				while {!CTI_Gameover} do {
 					{if !(simulationEnabled _x ) then {_x enableSimulationGlobal True};True} count (allUnits + vehicles + allDead );
-					sleep 1200;
+					sleep 600;
 				};
 			};
 		};
