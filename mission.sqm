@@ -48,7 +48,7 @@ class Mission
 	};
 	class Groups
 	{
-		items=56;
+		items=58;
 		class Item0
 		{
 			side="LOGIC";
@@ -65,7 +65,7 @@ class Mission
 					skill=0.60000002;
 					text="CTI_WEST";
 					syncId=0;
-					synchronizations[]={17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39};
+					synchronizations[]={17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,51};
 				};
 			};
 		};
@@ -85,7 +85,7 @@ class Mission
 					skill=0.60000002;
 					text="CTI_EAST";
 					syncId=1;
-					synchronizations[]={1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,40,41,42,43,44,45,46,47};
+					synchronizations[]={1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,40,41,42,43,44,45,46,47,50};
 				};
 			};
 		};
@@ -105,7 +105,6 @@ class Mission
 					leader=1;
 					rank="CAPTAIN";
 					skill=0.60000002;
-					description="Alpha";
 					syncId=2;
 					synchronizations[]={1};
 				};
@@ -127,7 +126,6 @@ class Mission
 					leader=1;
 					rank="CAPTAIN";
 					skill=0.60000002;
-					description="Bravo";
 					syncId=3;
 					synchronizations[]={1};
 				};
@@ -149,7 +147,6 @@ class Mission
 					leader=1;
 					rank="CAPTAIN";
 					skill=0.60000002;
-					description="Charlie";
 					syncId=4;
 					synchronizations[]={1};
 				};
@@ -171,7 +168,6 @@ class Mission
 					leader=1;
 					rank="CAPTAIN";
 					skill=0.60000002;
-					description="Delta";
 					syncId=5;
 					synchronizations[]={1};
 				};
@@ -193,7 +189,6 @@ class Mission
 					leader=1;
 					rank="CAPTAIN";
 					skill=0.60000002;
-					description="Echo";
 					syncId=6;
 					synchronizations[]={1};
 				};
@@ -215,7 +210,6 @@ class Mission
 					leader=1;
 					rank="CAPTAIN";
 					skill=0.60000002;
-					description="Foxtrot";
 					syncId=7;
 					synchronizations[]={1};
 				};
@@ -237,7 +231,6 @@ class Mission
 					leader=1;
 					rank="CAPTAIN";
 					skill=0.60000002;
-					description="Golf";
 					syncId=8;
 					synchronizations[]={1};
 				};
@@ -259,7 +252,6 @@ class Mission
 					leader=1;
 					rank="CAPTAIN";
 					skill=0.60000002;
-					description="Hotel";
 					syncId=9;
 					synchronizations[]={1};
 				};
@@ -281,7 +273,6 @@ class Mission
 					leader=1;
 					rank="CAPTAIN";
 					skill=0.60000002;
-					description="India";
 					syncId=10;
 					synchronizations[]={1};
 				};
@@ -303,7 +294,6 @@ class Mission
 					leader=1;
 					rank="CAPTAIN";
 					skill=0.60000002;
-					description="Juliet";
 					syncId=11;
 					synchronizations[]={1};
 				};
@@ -325,7 +315,6 @@ class Mission
 					leader=1;
 					rank="CAPTAIN";
 					skill=0.60000002;
-					description="Kilo";
 					syncId=12;
 					synchronizations[]={1};
 				};
@@ -347,7 +336,6 @@ class Mission
 					leader=1;
 					rank="CAPTAIN";
 					skill=0.60000002;
-					description="Lima";
 					syncId=13;
 					synchronizations[]={1};
 				};
@@ -369,7 +357,6 @@ class Mission
 					leader=1;
 					rank="CAPTAIN";
 					skill=0.60000002;
-					description="Mike";
 					syncId=14;
 					synchronizations[]={1};
 				};
@@ -391,7 +378,6 @@ class Mission
 					leader=1;
 					rank="CAPTAIN";
 					skill=0.60000002;
-					description="November";
 					syncId=15;
 					synchronizations[]={1};
 				};
@@ -413,7 +399,6 @@ class Mission
 					leader=1;
 					rank="CAPTAIN";
 					skill=0.60000002;
-					description="Oscar";
 					syncId=16;
 					synchronizations[]={1};
 				};
@@ -435,7 +420,6 @@ class Mission
 					leader=1;
 					rank="CAPTAIN";
 					skill=0.60000002;
-					description="Alpha";
 					syncId=17;
 					synchronizations[]={0};
 				};
@@ -457,7 +441,6 @@ class Mission
 					leader=1;
 					rank="CAPTAIN";
 					skill=0.60000002;
-					description="Bravo";
 					syncId=18;
 					synchronizations[]={0};
 				};
@@ -479,7 +462,6 @@ class Mission
 					leader=1;
 					rank="CAPTAIN";
 					skill=0.60000002;
-					description="Charlie";
 					syncId=19;
 					synchronizations[]={0};
 				};
@@ -501,7 +483,6 @@ class Mission
 					leader=1;
 					rank="CAPTAIN";
 					skill=0.60000002;
-					description="Delta";
 					syncId=20;
 					synchronizations[]={0};
 				};
@@ -523,7 +504,6 @@ class Mission
 					leader=1;
 					rank="CAPTAIN";
 					skill=0.60000002;
-					description="Echo";
 					syncId=21;
 					synchronizations[]={0};
 				};
@@ -545,7 +525,6 @@ class Mission
 					leader=1;
 					rank="CAPTAIN";
 					skill=0.60000002;
-					description="Foxtrot";
 					syncId=22;
 					synchronizations[]={0};
 				};
@@ -567,7 +546,6 @@ class Mission
 					leader=1;
 					rank="CAPTAIN";
 					skill=0.60000002;
-					description="Golf";
 					syncId=23;
 					synchronizations[]={0};
 				};
@@ -589,7 +567,6 @@ class Mission
 					leader=1;
 					rank="CAPTAIN";
 					skill=0.60000002;
-					description="Hotel";
 					syncId=24;
 					synchronizations[]={0};
 				};
@@ -611,7 +588,6 @@ class Mission
 					leader=1;
 					rank="CAPTAIN";
 					skill=0.60000002;
-					description="India";
 					syncId=25;
 					synchronizations[]={0};
 				};
@@ -633,7 +609,6 @@ class Mission
 					leader=1;
 					rank="CAPTAIN";
 					skill=0.60000002;
-					description="Juliet";
 					syncId=26;
 					synchronizations[]={0};
 				};
@@ -655,7 +630,6 @@ class Mission
 					leader=1;
 					rank="CAPTAIN";
 					skill=0.60000002;
-					description="Kilo";
 					syncId=27;
 					synchronizations[]={0};
 				};
@@ -677,7 +651,6 @@ class Mission
 					leader=1;
 					rank="CAPTAIN";
 					skill=0.60000002;
-					description="Lima";
 					syncId=28;
 					synchronizations[]={0};
 				};
@@ -699,7 +672,6 @@ class Mission
 					leader=1;
 					rank="CAPTAIN";
 					skill=0.60000002;
-					description="Mike";
 					syncId=29;
 					synchronizations[]={0};
 				};
@@ -721,7 +693,6 @@ class Mission
 					leader=1;
 					rank="CAPTAIN";
 					skill=0.60000002;
-					description="November";
 					syncId=30;
 					synchronizations[]={0};
 				};
@@ -743,7 +714,6 @@ class Mission
 					leader=1;
 					rank="CAPTAIN";
 					skill=0.60000002;
-					description="Oscar";
 					syncId=31;
 					synchronizations[]={0};
 				};
@@ -765,7 +735,6 @@ class Mission
 					leader=1;
 					rank="CAPTAIN";
 					skill=0.60000002;
-					description="Papa";
 					syncId=32;
 					synchronizations[]={0};
 				};
@@ -787,7 +756,6 @@ class Mission
 					leader=1;
 					rank="CAPTAIN";
 					skill=0.60000002;
-					description="Quebec";
 					syncId=33;
 					synchronizations[]={0};
 				};
@@ -809,7 +777,6 @@ class Mission
 					leader=1;
 					rank="CAPTAIN";
 					skill=0.60000002;
-					description="Romeo";
 					syncId=34;
 					synchronizations[]={0};
 				};
@@ -827,10 +794,10 @@ class Mission
 					id=35;
 					side="WEST";
 					vehicle="B_Soldier_F";
+					player="PLAY CDG";
 					leader=1;
 					rank="CAPTAIN";
 					skill=0.60000002;
-					description="Sierra";
 					syncId=35;
 					synchronizations[]={0};
 				};
@@ -848,10 +815,10 @@ class Mission
 					id=36;
 					side="WEST";
 					vehicle="B_Soldier_F";
+					player="PLAY CDG";
 					leader=1;
 					rank="CAPTAIN";
 					skill=0.60000002;
-					description="Tango";
 					syncId=36;
 					synchronizations[]={0};
 				};
@@ -869,10 +836,10 @@ class Mission
 					id=37;
 					side="WEST";
 					vehicle="B_Soldier_F";
+					player="PLAY CDG";
 					leader=1;
 					rank="CAPTAIN";
 					skill=0.60000002;
-					description="Uniform";
 					syncId=37;
 					synchronizations[]={0};
 				};
@@ -890,10 +857,10 @@ class Mission
 					id=38;
 					side="WEST";
 					vehicle="B_Soldier_F";
+					player="PLAY CDG";
 					leader=1;
 					rank="CAPTAIN";
 					skill=0.60000002;
-					description="Victor";
 					syncId=38;
 					synchronizations[]={0};
 				};
@@ -911,10 +878,10 @@ class Mission
 					id=39;
 					side="WEST";
 					vehicle="B_Soldier_F";
+					player="PLAY CDG";
 					leader=1;
 					rank="CAPTAIN";
 					skill=0.60000002;
-					description="Wiskey";
 					syncId=39;
 					synchronizations[]={0};
 				};
@@ -936,7 +903,6 @@ class Mission
 					leader=1;
 					rank="CAPTAIN";
 					skill=0.60000002;
-					description="Papa";
 					syncId=40;
 					synchronizations[]={1};
 				};
@@ -958,7 +924,6 @@ class Mission
 					leader=1;
 					rank="CAPTAIN";
 					skill=0.60000002;
-					description="Quebec";
 					syncId=41;
 					synchronizations[]={1};
 				};
@@ -976,11 +941,10 @@ class Mission
 					id=42;
 					side="EAST";
 					vehicle="O_Soldier_F";
-					player="PLAYER COMMANDER";
+					player="PLAY CDG";
 					leader=1;
 					rank="CAPTAIN";
 					skill=0.60000002;
-					description="Romeo";
 					syncId=42;
 					synchronizations[]={1};
 				};
@@ -998,10 +962,10 @@ class Mission
 					id=43;
 					side="EAST";
 					vehicle="O_Soldier_F";
+					player="PLAY CDG";
 					leader=1;
 					rank="CAPTAIN";
 					skill=0.60000002;
-					description="Sierra";
 					syncId=43;
 					synchronizations[]={1};
 				};
@@ -1019,10 +983,10 @@ class Mission
 					id=44;
 					side="EAST";
 					vehicle="O_Soldier_F";
+					player="PLAY CDG";
 					leader=1;
 					rank="CAPTAIN";
 					skill=0.60000002;
-					description="Tango";
 					syncId=44;
 					synchronizations[]={1};
 				};
@@ -1040,10 +1004,10 @@ class Mission
 					id=45;
 					side="EAST";
 					vehicle="O_Soldier_F";
+					player="PLAY CDG";
 					leader=1;
 					rank="CAPTAIN";
 					skill=0.60000002;
-					description="Uniform";
 					syncId=45;
 					synchronizations[]={1};
 				};
@@ -1061,10 +1025,10 @@ class Mission
 					id=46;
 					side="EAST";
 					vehicle="O_Soldier_F";
+					player="PLAY CDG";
 					leader=1;
 					rank="CAPTAIN";
 					skill=0.60000002;
-					description="Victor";
 					syncId=46;
 					synchronizations[]={1};
 				};
@@ -1082,10 +1046,10 @@ class Mission
 					id=47;
 					side="EAST";
 					vehicle="O_Soldier_F";
+					player="PLAY CDG";
 					leader=1;
 					rank="CAPTAIN";
 					skill=0.60000002;
-					description="Wiskey";
 					syncId=47;
 					synchronizations[]={1};
 				};
@@ -1105,7 +1069,7 @@ class Mission
 						items=4;
 						class Item0
 						{
-							value="Headless Client";
+							value="";
 							parentCls="ModuleCurator_F";
 							typeName="Owner";
 						};
@@ -1306,6 +1270,48 @@ class Mission
 				};
 			};
 		};
+		class Item56
+		{
+			side="EAST";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					position[]={14501.479,9.3636322,5865.707};
+					id=56;
+					side="EAST";
+					vehicle="O_Soldier_F";
+					player="PLAYER COMMANDER";
+					leader=1;
+					rank="CAPTAIN";
+					skill=0.60000002;
+					syncId=50;
+					synchronizations[]={1};
+				};
+			};
+		};
+		class Item57
+		{
+			side="WEST";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					position[]={2303.3457,10.714132,9280.4434};
+					id=57;
+					side="WEST";
+					vehicle="B_Soldier_F";
+					player="PLAY CDG";
+					leader=1;
+					rank="CAPTAIN";
+					skill=0.60000002;
+					syncId=51;
+					synchronizations[]={0};
+				};
+			};
+		};
 	};
 	class Vehicles
 	{
@@ -1313,7 +1319,7 @@ class Mission
 		class Item0
 		{
 			position[]={20825.619,32.838898,6824.252};
-			id=56;
+			id=58;
 			side="EMPTY";
 			vehicle="FlagPole_F";
 			leader=1;
@@ -1324,7 +1330,7 @@ class Mission
 		class Item1
 		{
 			position[]={16820.852,22.565004,12712.556};
-			id=57;
+			id=59;
 			side="EMPTY";
 			vehicle="FlagPole_F";
 			leader=1;
@@ -1335,7 +1341,7 @@ class Mission
 		class Item2
 		{
 			position[]={19407.9,38.693455,13262.088};
-			id=58;
+			id=60;
 			side="EMPTY";
 			vehicle="FlagPole_F";
 			leader=1;
@@ -1346,7 +1352,7 @@ class Mission
 		class Item3
 		{
 			position[]={18089.859,22.824734,15199.989};
-			id=59;
+			id=61;
 			side="EMPTY";
 			vehicle="FlagPole_F";
 			leader=1;
@@ -1357,7 +1363,7 @@ class Mission
 		class Item4
 		{
 			position[]={21381.629,22.070915,16414.539};
-			id=60;
+			id=62;
 			side="EMPTY";
 			vehicle="FlagPole_F";
 			leader=1;
@@ -1368,7 +1374,7 @@ class Mission
 		class Item5
 		{
 			position[]={18810.266,31.689552,16633.275};
-			id=61;
+			id=63;
 			side="EMPTY";
 			vehicle="FlagPole_F";
 			leader=1;
@@ -1379,7 +1385,7 @@ class Mission
 		class Item6
 		{
 			position[]={20945.211,43.265831,16965.209};
-			id=62;
+			id=64;
 			side="EMPTY";
 			vehicle="FlagPole_F";
 			leader=1;
@@ -1390,7 +1396,7 @@ class Mission
 		class Item7
 		{
 			position[]={27018.105,21.288395,23167.232};
-			id=63;
+			id=65;
 			side="EMPTY";
 			vehicle="FlagPole_F";
 			leader=1;
@@ -1401,7 +1407,7 @@ class Mission
 		class Item8
 		{
 			position[]={16640.861,15.311831,16056.291};
-			id=64;
+			id=66;
 			side="EMPTY";
 			vehicle="FlagPole_F";
 			leader=1;
@@ -1412,7 +1418,7 @@ class Mission
 		class Item9
 		{
 			position[]={16244.086,25.383575,17314.133};
-			id=65;
+			id=67;
 			side="EMPTY";
 			vehicle="FlagPole_F";
 			leader=1;
@@ -1423,7 +1429,7 @@ class Mission
 		class Item10
 		{
 			position[]={14032.146,26.173725,18736.453};
-			id=66;
+			id=68;
 			side="EMPTY";
 			vehicle="FlagPole_F";
 			leader=1;
@@ -1434,7 +1440,7 @@ class Mission
 		class Item11
 		{
 			position[]={11745.227,53.825466,18331.76};
-			id=67;
+			id=69;
 			side="EMPTY";
 			vehicle="FlagPole_F";
 			leader=1;
@@ -1445,7 +1451,7 @@ class Mission
 		class Item12
 		{
 			position[]={10292.298,130.57362,19118.584};
-			id=68;
+			id=70;
 			side="EMPTY";
 			vehicle="FlagPole_F";
 			leader=1;
@@ -1456,7 +1462,7 @@ class Mission
 		class Item13
 		{
 			position[]={4588.3965,299.57266,21381.559};
-			id=69;
+			id=71;
 			side="EMPTY";
 			vehicle="FlagPole_F";
 			leader=1;
@@ -1467,7 +1473,7 @@ class Mission
 		class Item14
 		{
 			position[]={8649.2607,180.78143,18284.334};
-			id=70;
+			id=72;
 			side="EMPTY";
 			vehicle="FlagPole_F";
 			leader=1;
@@ -1478,7 +1484,7 @@ class Mission
 		class Item15
 		{
 			position[]={9298.0518,115.68201,15931.293};
-			id=71;
+			id=73;
 			side="EMPTY";
 			vehicle="FlagPole_F";
 			leader=1;
@@ -1489,7 +1495,7 @@ class Mission
 		class Item16
 		{
 			position[]={12362.489,21.373016,15765.027};
-			id=72;
+			id=74;
 			side="EMPTY";
 			vehicle="FlagPole_F";
 			leader=1;
@@ -1500,7 +1506,7 @@ class Mission
 		class Item17
 		{
 			position[]={12608.155,12.069146,14320.225};
-			id=73;
+			id=75;
 			side="EMPTY";
 			vehicle="FlagPole_F";
 			leader=1;
@@ -1511,7 +1517,7 @@ class Mission
 		class Item18
 		{
 			position[]={9037.6641,22.711802,11954.102};
-			id=74;
+			id=76;
 			side="EMPTY";
 			vehicle="FlagPole_F";
 			leader=1;
@@ -1522,7 +1528,7 @@ class Mission
 		class Item19
 		{
 			position[]={3507.6545,8.3902617,12996.579};
-			id=75;
+			id=77;
 			side="EMPTY";
 			vehicle="FlagPole_F";
 			leader=1;
@@ -1533,7 +1539,7 @@ class Mission
 		class Item20
 		{
 			position[]={14181.345,19.534584,16285.963};
-			id=76;
+			id=78;
 			side="EMPTY";
 			vehicle="FlagPole_F";
 			leader=1;
@@ -1544,7 +1550,7 @@ class Mission
 		class Item21
 		{
 			position[]={15190.963,17.926081,17301.402};
-			id=77;
+			id=79;
 			side="EMPTY";
 			vehicle="FlagPole_F";
 			leader=1;
@@ -1555,7 +1561,7 @@ class Mission
 		class Item22
 		{
 			position[]={20274.338,48.545704,11714.167};
-			id=78;
+			id=80;
 			side="EMPTY";
 			vehicle="FlagPole_F";
 			leader=1;
@@ -1566,7 +1572,7 @@ class Mission
 		class Item23
 		{
 			position[]={12842.337,42.538578,19633.029};
-			id=79;
+			id=81;
 			side="EMPTY";
 			vehicle="FlagPole_F";
 			leader=1;
@@ -1577,7 +1583,7 @@ class Mission
 		class Item24
 		{
 			position[]={4864.103,78.734192,16151.131};
-			id=80;
+			id=82;
 			side="EMPTY";
 			vehicle="FlagPole_F";
 			leader=1;
@@ -1588,7 +1594,7 @@ class Mission
 		class Item25
 		{
 			position[]={25623.414,18.961836,21285.135};
-			id=81;
+			id=83;
 			side="EMPTY";
 			vehicle="FlagPole_F";
 			leader=1;
@@ -1599,7 +1605,7 @@ class Mission
 		class Item26
 		{
 			position[]={20517.623,34.347401,8883.4932};
-			id=82;
+			id=84;
 			side="EMPTY";
 			vehicle="FlagPole_F";
 			leader=1;
@@ -1610,7 +1616,7 @@ class Mission
 		class Item27
 		{
 			position[]={7119.0552,112.20673,16439.621};
-			id=83;
+			id=85;
 			side="EMPTY";
 			vehicle="FlagPole_F";
 			leader=1;
@@ -1621,7 +1627,7 @@ class Mission
 		class Item28
 		{
 			position[]={22949.941,5.1312866,18859.293};
-			id=84;
+			id=86;
 			side="EMPTY";
 			vehicle="FlagPole_F";
 			leader=1;
@@ -1632,7 +1638,7 @@ class Mission
 		class Item29
 		{
 			position[]={13587.536,15.338679,12209.509};
-			id=85;
+			id=87;
 			side="EMPTY";
 			vehicle="FlagPole_F";
 			leader=1;
@@ -1643,7 +1649,7 @@ class Mission
 		class Item30
 		{
 			position[]={14963.775,6.6390843,11105.222};
-			id=86;
+			id=88;
 			side="EMPTY";
 			vehicle="FlagPole_F";
 			leader=1;
@@ -1654,7 +1660,7 @@ class Mission
 		class Item31
 		{
 			position[]={17745.396,2.4041259,18107.26};
-			id=87;
+			id=89;
 			side="EMPTY";
 			vehicle="FlagPole_F";
 			leader=1;
@@ -1665,7 +1671,7 @@ class Mission
 		class Item32
 		{
 			position[]={11574.642,19.334652,9442.4111};
-			id=88;
+			id=90;
 			side="EMPTY";
 			vehicle="FlagPole_F";
 			leader=1;
@@ -1676,7 +1682,7 @@ class Mission
 		class Item33
 		{
 			position[]={17077.318,19.274895,10059.375};
-			id=89;
+			id=91;
 			side="EMPTY";
 			vehicle="FlagPole_F";
 			leader=1;
@@ -1687,7 +1693,7 @@ class Mission
 		class Item34
 		{
 			position[]={14651.67,45.808598,20758.533};
-			id=90;
+			id=92;
 			side="EMPTY";
 			vehicle="FlagPole_F";
 			leader=1;
@@ -1698,7 +1704,7 @@ class Mission
 		class Item35
 		{
 			position[]={16854.229,10.163662,21871.5};
-			id=91;
+			id=93;
 			side="EMPTY";
 			vehicle="FlagPole_F";
 			leader=1;
@@ -1709,7 +1715,7 @@ class Mission
 		class Item36
 		{
 			position[]={20113.754,18.234924,20031.732};
-			id=92;
+			id=94;
 			side="EMPTY";
 			vehicle="FlagPole_F";
 			leader=1;
@@ -1720,7 +1726,7 @@ class Mission
 		class Item37
 		{
 			position[]={20943.635,13.950194,19257.447};
-			id=93;
+			id=95;
 			side="EMPTY";
 			vehicle="FlagPole_F";
 			leader=1;
@@ -1731,7 +1737,7 @@ class Mission
 		class Item38
 		{
 			position[]={9220.6689,15.541404,21622.381};
-			id=94;
+			id=96;
 			side="EMPTY";
 			vehicle="FlagPole_F";
 			leader=1;
@@ -1742,7 +1748,7 @@ class Mission
 		class Item39
 		{
 			position[]={23199.391,14.160164,19970.885};
-			id=95;
+			id=97;
 			side="EMPTY";
 			vehicle="FlagPole_F";
 			leader=1;
@@ -1753,7 +1759,7 @@ class Mission
 		class Item40
 		{
 			position[]={11622.856,23.044977,11943.228};
-			id=96;
+			id=98;
 			side="EMPTY";
 			vehicle="FlagPole_F";
 			leader=1;
@@ -1764,7 +1770,7 @@ class Mission
 		class Item41
 		{
 			position[]={26850.996,26.644085,24465.85};
-			id=97;
+			id=99;
 			side="EMPTY";
 			vehicle="FlagPole_F";
 			leader=1;
@@ -1775,7 +1781,7 @@ class Mission
 		class Item42
 		{
 			position[]={5068.2002,52.933868,11305.81};
-			id=98;
+			id=100;
 			side="EMPTY";
 			vehicle="FlagPole_F";
 			leader=1;
@@ -1786,7 +1792,7 @@ class Mission
 		class Item43
 		{
 			position[]={21895.857,22.792114,21010.406};
-			id=99;
+			id=101;
 			side="EMPTY";
 			vehicle="FlagPole_F";
 			leader=1;
@@ -1797,7 +1803,7 @@ class Mission
 		class Item44
 		{
 			position[]={5475.5547,27.299999,14999.154};
-			id=100;
+			id=102;
 			side="EMPTY";
 			vehicle="FlagPole_F";
 			leader=1;
@@ -1808,7 +1814,7 @@ class Mission
 		class Item45
 		{
 			position[]={21091.408,1.8777747,14768.015};
-			id=101;
+			id=103;
 			side="EMPTY";
 			vehicle="FlagPole_F";
 			leader=1;
@@ -1819,7 +1825,7 @@ class Mission
 		class Item46
 		{
 			position[]={3853.8726,15.184759,17472.529};
-			id=102;
+			id=104;
 			side="EMPTY";
 			vehicle="FlagPole_F";
 			leader=1;
@@ -1830,7 +1836,7 @@ class Mission
 		class Item47
 		{
 			position[]={21752.055,15.716534,7519.8467};
-			id=103;
+			id=105;
 			side="EMPTY";
 			vehicle="FlagPole_F";
 			leader=1;
@@ -1841,7 +1847,7 @@ class Mission
 		class Item48
 		{
 			position[]={5853.2905,225.94914,20093.674};
-			id=104;
+			id=106;
 			side="EMPTY";
 			vehicle="FlagPole_F";
 			leader=1;
@@ -1852,7 +1858,7 @@ class Mission
 		class Item49
 		{
 			position[]={23236.742,34.798389,21793.98};
-			id=105;
+			id=107;
 			side="EMPTY";
 			vehicle="FlagPole_F";
 			leader=1;
