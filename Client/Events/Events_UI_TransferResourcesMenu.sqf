@@ -15,7 +15,7 @@ switch (_action) do {
 		};
 
 		{
-			((uiNamespace getVariable "cti_dialog_ui_transferresourcesmenu") displayCtrl 140001) lnbAddRow [format["$%1", [_x, CTI_P_SideJoined] call CTI_CO_FNC_GetFunds], format["%1 (%2)", _x getVariable ["cti_alias",CTI_PLAYER_DEFAULT_ALIAS], if (isPlayer leader _x) then {""} else {"AI"}]];
+			((uiNamespace getVariable "cti_dialog_ui_transferresourcesmenu") displayCtrl 140001) lnbAddRow [format["$%1", [_x, CTI_P_SideJoined] call CTI_CO_FNC_GetFunds], format["%1 %2", _x getVariable ["cti_alias",CTI_PLAYER_DEFAULT_ALIAS], if (isPlayer leader _x) then {""} else {"(AI)"}]];
 		} forEach _groups;
 		((uiNamespace getVariable "cti_dialog_ui_transferresourcesmenu") displayCtrl 140001) lnbSetCurSelRow 0;
 
@@ -47,7 +47,7 @@ switch (_action) do {
 		if (_changeto != -1) then {
 			_group = (uiNamespace getVariable "cti_dialog_ui_transferresourcesmenu_groups") select _changeto;
 			_funds = [_group, CTI_P_SideJoined] call CTI_CO_FNC_GetFunds;
-			((uiNamespace getVariable "cti_dialog_ui_transferresourcesmenu") displayCtrl 140003) ctrlSetStructuredText (parseText format["Player Resources: <t color='%1'>$%2</t>", CTI_P_Coloration_Money, _funds]);
+			((uiNamespace getVariable "cti_dialog_ui_transferresourcesmenu") displayCtrl 140003) ctrlSetStructuredText (parseText format["Group Resources: <t color='%1'>$%2</t>", CTI_P_Coloration_Money, _funds]);
 			uiNamespace setVariable ["cti_dialog_ui_transferresourcesmenu_group", _group];
 		};
 	};
