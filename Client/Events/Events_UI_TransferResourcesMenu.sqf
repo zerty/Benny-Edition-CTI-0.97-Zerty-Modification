@@ -15,7 +15,7 @@ switch (_action) do {
 		};
 
 		{
-			((uiNamespace getVariable "cti_dialog_ui_transferresourcesmenu") displayCtrl 140001) lnbAddRow [format["$%1", [_x, CTI_P_SideJoined] call CTI_CO_FNC_GetFunds], format["%1 (%2)", _x getVariable ["cti_alias",CTI_PLAYER_DEFAULT_ALIAS], if (isPlayer leader _x) then {name leader _x} else {"AI"}]];
+			((uiNamespace getVariable "cti_dialog_ui_transferresourcesmenu") displayCtrl 140001) lnbAddRow [format["$%1", [_x, CTI_P_SideJoined] call CTI_CO_FNC_GetFunds], format["%1 (%2)", _x getVariable ["cti_alias",CTI_PLAYER_DEFAULT_ALIAS], if (isPlayer leader _x) then {""} else {"AI"}]];
 		} forEach _groups;
 		((uiNamespace getVariable "cti_dialog_ui_transferresourcesmenu") displayCtrl 140001) lnbSetCurSelRow 0;
 
@@ -60,20 +60,24 @@ switch (_action) do {
 		_amount = floor parseNumber(ctrlText ((uiNamespace getVariable "cti_dialog_ui_transferresourcesmenu") displayCtrl 140009));
 
 		if (_amount > 0 && _amount <= call CTI_CL_FNC_GetPlayerFunds) then {
-			_group = (uiNamespace getVariable "cti_dialog_ui_transferresourcesmenu_groups") select (lnbCurSelRow 140001);
-			if (_group != group player) then {
-				[_group, CTI_P_SideJoined, _amount] call CTI_CO_FNC_ChangeFunds;
-				-(_amount) call CTI_CL_FNC_ChangePlayerFunds;
-				[["CLIENT", leader _group], "Client_OnMessageReceived", ["funds-transfer", [_amount ,(group player)]]] call CTI_CO_FNC_NetSend;
-				hint parseText format ["<t size='1.3' color='#2394ef'>Information</t><br /><br />Transfered <t color='%1'>$%2</t> to group <t color='#55bcfc'>%3</t>.", CTI_P_Coloration_Money, _amount, _group getVariable ["cti_alias",CTI_PLAYER_DEFAULT_ALIAS]];
-				uiNamespace setVariable ["cti_dialog_ui_transferresourcesmenu_forceupdate", true];
+			if (player == (leader group player)) then {
+				_group = (uiNamespace getVariable "cti_dialog_ui_transferresourcesmenu_groups") select (lnbCurSelRow 140001);
+				if (_group != group player) then {
+					[_group, CTI_P_SideJoined, _amount] call CTI_CO_FNC_ChangeFunds;
+					-(_amount) call CTI_CL_FNC_ChangePlayerFunds;
+					[["CLIENT", leader _group], "Client_OnMessageReceived", ["funds-transfer", [_amount ,(group player)]]] call CTI_CO_FNC_NetSend;
+					hint parseText format ["<t size='1.3' color='#2394ef'>Information</t><br /><br />Transfered <t color='%1'>$%2</t> to group <t color='#55bcfc'>%3</t>.", CTI_P_Coloration_Money, _amount, _group getVariable ["cti_alias",CTI_PLAYER_DEFAULT_ALIAS]];
+					uiNamespace setVariable ["cti_dialog_ui_transferresourcesmenu_forceupdate", true];
 
-				_funds = call CTI_CL_FNC_GetPlayerFunds;
-				if (_amount > _funds) then {
-					((uiNamespace getVariable "cti_dialog_ui_transferresourcesmenu") displayCtrl 140009) ctrlSetText str round _funds;
+					_funds = call CTI_CL_FNC_GetPlayerFunds;
+					if (_amount > _funds) then {
+						((uiNamespace getVariable "cti_dialog_ui_transferresourcesmenu") displayCtrl 140009) ctrlSetText str round _funds;
+					};
+				} else {
+					hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br />You cannot transfer funds to yourself.";
 				};
-			} else {
-				hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br />You cannot transfer funds to yourself.";
+			}else {
+				hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br />You are not the leader of your group.";
 			};
 		} else {
 			hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br />Invalid operation.";
