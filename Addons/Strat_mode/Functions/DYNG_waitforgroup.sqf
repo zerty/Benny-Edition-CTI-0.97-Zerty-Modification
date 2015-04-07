@@ -26,7 +26,7 @@
 	//==========
 	_uid=getPlayerUID player;
 	if !(isMultiplayer ) then {
-		missionNamespace setVariable [format["CTI_SERVER_CLIENT_%1", _uid],[_uid,CTI_P_SideJoined,-10,group player]];
+		missionNamespace setVariable [format["CTI_SERVER_CLIENT_%1", _uid],[_uid,CTI_P_SideJoined, (missionNamespace getVariable format ["CTI_ECONOMY_STARTUP_FUNDS_%1", CTI_P_SideJoined]),group player]];
 	};
 	// Done
 	//==========

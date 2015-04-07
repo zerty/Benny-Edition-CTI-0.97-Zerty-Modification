@@ -2994,7 +2994,7 @@ class CTI_RscGearMenu {
 			action = "['onPurchase'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_GearMenu.sqf'";
 		};
 		class CTI_Menu_Control_Info : RscStructuredText {
-			idc = 70025;
+			idc = 70028;
 			x = "SafeZoneX + (SafeZoneW * 0.41)";
 			y = "SafeZoneY + (SafezoneH * 0.21)";
 			w = "SafeZoneW * 0.28";
@@ -3003,7 +3003,7 @@ class CTI_RscGearMenu {
 			size = "0.9 * (			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
 		};
 		class CTI_Gear_Control_Clear : RscButton_Lesser {
-			idc = 70026;
+			idc = 70029;
 			x = "SafeZoneX + (SafeZoneW * 0.01)";
 			y = "SafeZoneY + (SafezoneH * 0.96)";
 			w = "SafeZoneW * 0.185";
@@ -3014,7 +3014,7 @@ class CTI_RscGearMenu {
 			action = "['onInventoryClear'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_GearMenu.sqf'";
 		};
 		class CTI_Gear_Control_Reload : CTI_Gear_Control_Clear {
-			idc = 70027;
+			idc = 70030;
 			x = "SafeZoneX + (SafeZoneW * 0.205)";
 
 			text = "Reload";

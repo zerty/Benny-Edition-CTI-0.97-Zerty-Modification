@@ -52,7 +52,7 @@ if (_pv_can_exec) then {
 	//waitUntil {!isNil {(missionNamespace getVariable format ["CTI_PVF_%1", _this select 1])}};
 	if !(isNil {missionNamespace getVariable format ["CTI_PVF_%1", _this select 1]}) then { //--- Make sure that the desired PVF is set as a function
 		_pv_parameters = if (count _this > 2) then { _this select 2 } else { [] };
-		waitUntil {!isNil "_pv_parameters"};
+		//waitUntil {!isNil "_pv_parameters"};
 		_pv_parameters spawn (missionNamespace getVariable format ["CTI_PVF_%1", _this select 1]);
 	} else {
 		if (CTI_Log_Level >= CTI_Log_Error && !CTI_IsHeadless) then { //--- Error (Skip for HC)

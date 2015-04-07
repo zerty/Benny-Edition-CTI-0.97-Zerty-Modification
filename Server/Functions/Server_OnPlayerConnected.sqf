@@ -53,10 +53,11 @@ _unit setDamage 0;
 if !(isNull assignedVehicle _unit) then { unassignVehicle _unit; [_unit] orderGetIn false; [_unit] allowGetIn false };
 
 _side_joinned=side _unit;
+_default_funds = (missionNamespace getVariable format ["CTI_ECONOMY_STARTUP_FUNDS_%1", _side_joinned]);
 
 //Save data
 //==========
-_get = missionNamespace getVariable [format["CTI_SERVER_CLIENT_%1", _uid],["",civilian,0,grpNull]];
+_get = missionNamespace getVariable [format["CTI_SERVER_CLIENT_%1", _uid],["",civilian,_default_funds,grpNull]];
 _get set [0,_uid];
 if ((_get select 1) == civilian || (missionNamespace getVariable "CTI_TEAMSWAP" == 0)) then {_get set [1,_side_joinned]};
 if (isNil {missionNamespace getVariable format["CTI_SERVER_CLIENT_%1", _uid]}) then {missionNamespace setVariable [format["CTI_SERVER_CLIENT_%1", _uid],_get] };
