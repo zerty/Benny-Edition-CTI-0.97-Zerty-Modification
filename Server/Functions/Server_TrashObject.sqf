@@ -89,6 +89,8 @@ if (_object_isman) then {
 		};
 	};
 } else {
+	_object setPosASL [0,0,0];
+	sleep 1;
 	deleteVehicle _object; //--- Delete the generic object
 };
 
