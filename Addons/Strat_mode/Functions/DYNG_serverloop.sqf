@@ -8,7 +8,9 @@ while {!CTI_Gameover} do {
 			_g = _x select 3;
 			_ppl=_g getVariable ["last_known_players",[]];
 			_pl= (_x select 5);
-
+			//==================
+			//Money handle
+			//==================
 			if (count _pl < count _ppl) then { // someone has left
 				diag_log format [" :: DYNG :: removing money for %1 : %2 => %3",_g , (_g getVariable "cti_funds"), floor ((_g getVariable "cti_funds")-((_g getVariable "cti_funds")/(count _pl))) ];
 				_g setVariable ["cti_funds", floor ((_g getVariable "cti_funds")-((_g getVariable "cti_funds")/(count _pl))),true];
@@ -24,19 +26,26 @@ while {!CTI_Gameover} do {
 					true
 				}count _delta;
 			};
-			if (count _pl == count _ppl) then { // Save money
-				{
-					_get = missionNamespace getVariable format["CTI_SERVER_CLIENT_%1", _x];
-					if (!isNil "_get") then {
-						_get set [2,floor ((_g getVariable "cti_funds")/count(_pl))];
-						missionNamespace setVariable [format["CTI_SERVER_CLIENT_%1", _x],_get];
-						diag_log format [" :: DYNG :: saving money for %1 : %2 => %3", _get select 0 , _get select 2, _get ];
-					};
-					true
-				}count _pl;
-			};
+			//if (count _pl == count _ppl) then { // Save money
+			{
+				_get = missionNamespace getVariable format["CTI_SERVER_CLIENT_%1", _x];
+				if (!isNil "_get") then {
+					_get set [2,floor ((_g getVariable "cti_funds")/count(_pl))];
+					missionNamespace setVariable [format["CTI_SERVER_CLIENT_%1", _x],_get];
+					diag_log format [" :: DYNG :: saving money for %1 : %2 => %3", _get select 0 , _get select 2, _get ];
+				};
+				true
+			}count _pl;
+			//};
 
 			_g setVariable ["last_known_players",_pl];
+			//==================
+			//Updateing group name
+			//==================
+			_name =_x select 1;
+			if !((groupID _g) == _name) then {_g setGroupId [_name]};
+			if !((_g getVariable ["cti_alias",""]) == _name) then {_g setVariable ["cti_alias", _name,true]};
+
 		};
 		true
 	}count ("GetAllGroups" call BIS_fnc_dynamicGroups);

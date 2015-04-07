@@ -125,7 +125,7 @@ if (CTI_IsHeadless) then {
 //0 execVM "Addons\Zeus\Z_init_GUER.sqf";
 
 //--- Set the group ID
-execVM "Common\Init\Init_GroupsID.sqf";
+//execVM "Common\Init\Init_GroupsID.sqf";
 waitUntil {CTI_Init_Client || CTI_Init_Server};
 0 execVM "Addons\Strat_mode\init.sqf";
 waitUntil {CTI_Init_Strat};

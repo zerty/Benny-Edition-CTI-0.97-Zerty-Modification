@@ -40,5 +40,5 @@ if (isNil {_team getVariable "cti_independent"}) then {_team setVariable ["cti_i
 if (isNil {_team getVariable "last_player_count"}) then {_team setVariable ["last_player_count",_nbplayers]};
 
 
-if !(_team in ((_side) call CTI_CO_FNC_GetSideGroups) ) then {_side_logic setvariable ["cti_teams",(_side_logic getVariable ["cti_teams",[]] )+ [_team],true]};
+if !(_team in ((_side) call CTI_CO_FNC_GetSideGroups) ) then {_side_logic setvariable ["cti_teams",(_side_logic getVariable ["cti_teams",[]] ) - [grpNull] + [_team],true]};
 
