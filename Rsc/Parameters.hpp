@@ -198,7 +198,7 @@ class Params {
 		default = 12;
 	};
 	class MIN_TOWNS {
-		title = "Zerty: Mission: Minimum number of towns";
+		title = "Zerty: MISSION: Minimum number of towns";
 		values[] = {0,10,20,30,40};
 		texts[] = {"all","10","20","30","40"};
 		default = 0;
@@ -222,6 +222,12 @@ class Params {
 		values[] = {0,1};
 		texts[] = {"False","True"};
 		default = 0;
+	};
+	class CTI_GROUP_AWARD_MULT {
+		title = "Zerty: GROUPS: Award multiplyer";
+		values[] = {0,1};
+		texts[] = {"False","True"};
+		default = 1;
 	};
 
 	class CTI_AI_TEAMS_GROUPSIZE {

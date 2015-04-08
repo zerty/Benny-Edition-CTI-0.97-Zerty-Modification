@@ -14,6 +14,7 @@ while {!CTI_Gameover} do {
 			if (count _pl < count _ppl) then { // someone has left
 				diag_log format [" :: DYNG :: removing money for %1 : %2 => %3",_g , (_g getVariable "cti_funds"), floor ((_g getVariable "cti_funds")-((_g getVariable "cti_funds")/(count _pl))) ];
 				_g setVariable ["cti_funds", floor ((_g getVariable "cti_funds")-((_g getVariable "cti_funds")/(count _pl))),true];
+				_g setVariable ["last_known_players",_pl,true];
 			};
 			if (count _pl > count _ppl) then { // someone has joined
 				_delta=_pl-_ppl;
@@ -25,6 +26,7 @@ while {!CTI_Gameover} do {
 					};
 					true
 				}count _delta;
+				_g setVariable ["last_known_players",_pl,true];
 			};
 			//if (count _pl == count _ppl) then { // Save money
 			{
@@ -38,7 +40,7 @@ while {!CTI_Gameover} do {
 			}count _pl;
 			//};
 
-			_g setVariable ["last_known_players",_pl];
+
 			//==================
 			//Updateing group name
 			//==================
