@@ -411,13 +411,14 @@ player createDiaryRecord ["CL",["* 1.3.0.6 [TestVersion]","
   - Fix: Air and artillery radar for assembled weapons or UAVs <br />
 "]];
 
-player createDiaryRecord ["CL",["* 1.3.1.0 [Alpha]","
+player createDiaryRecord ["CL",["* 1.3.1.0","
   - Feature: Group system from BiS <br />
   - Feature: Marksman new items <br /><br />
 
   - PARAM: FFAR upgrade limitation <br />
   - PARAM: Buy limitation with players groups<br /><br />
 
+  - Fix : Hud showing without tac glasses <br />
   - Fix : Upgrade forcing through param making Upg Dialog bug <br />
   - Fix : Gear menu for bipods <br /><br />
 "]];
