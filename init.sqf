@@ -2,7 +2,7 @@
 setViewDistance 4000;
 setObjectViewDistance 4000;
 
-
+NET_LOG=False;
 
 MADE_FOR_STRATIS=false;
 //--- Early definition, will be override later on in the init files.

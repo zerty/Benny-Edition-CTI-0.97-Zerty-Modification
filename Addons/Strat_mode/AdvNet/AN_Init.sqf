@@ -22,7 +22,8 @@ if (CTI_IsClient && hasinterface) then {
 			waitUntil {! (isNull player) && alive player};
 			[player,CTI_P_SideID] spawn AN_Launch;
 			waitUntil {! (isNil {player getVariable "CTI_Net"} || isNil {player getVariable "AN_iNet"})};
-			while {alive player && !CTI_GameOver} do {
+			if (NET_LOG) then {diag_log ":: NET :: Starting Client_AN_Connected loop for player"};
+			while {alive player && !CTI_GameOver } do {
 				if (!(player getVariable "CTI_Net"==player getVariable "AN_iNet" && player getVariable "CTI_Net" == CTI_P_SideID) || player getVariable "CTI_Net" <= -1) then{Client_AN_Connected=False;} else {Client_AN_Connected=true;} ;
 				sleep 0.2;
 			};

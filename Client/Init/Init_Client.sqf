@@ -2,6 +2,9 @@
 #define DIK_U               0x16
 #define DIK_TILDE             0x29
 
+
+NET_LOG=True;
+
 CTI_P_SideJoined = side player;
 
 CTI_P_SideID = CTI_P_SideJoined call CTI_CO_FNC_GetSideID;

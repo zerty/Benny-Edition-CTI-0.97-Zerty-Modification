@@ -58,17 +58,17 @@ while { alive _factory } do {
 
 //todo req_toai for indep salvager from client!
 	if (_req_toai) then { //--- Send a purchase request to the client if the target is not an AI.
-		if (isPlayer leader _req_buyer && typeName _req_target != "SIDE") then {
-			if (_req_buyer != _req_target) then {[["CLIENT", leader _req_buyer], "Client_PurchaseDelegationStart", [_req_seed, _req_classname, _req_target, _factory]] call CTI_CO_FNC_NetSend};
+		if (isPlayer _req_buyer && typeName _req_target != "SIDE") then {
+			if (group (_req_buyer) != _req_target) then {[["CLIENT",  _req_buyer], "Client_PurchaseDelegationStart", [_req_seed, _req_classname, _req_target, _factory]] call CTI_CO_FNC_NetSend};
 		};
 
 		[_req_seed, _req_classname, _req_buyer, _req_target, _factory, _req_side] spawn CTI_SE_FNC_HandleAIPurchase;
 	} else {
 		//--- Target != source? notify the source that his remote req is being handled.
 		if (typeName _req_target != "SIDE") then {
-			if (_req_buyer != _req_target) then {[["CLIENT", leader _req_buyer], "Client_PurchaseDelegationStart", [_req_seed, _req_classname, _req_target, _factory]] call CTI_CO_FNC_NetSend};
+			if (group(_req_buyer) != _req_target) then {[["CLIENT", _req_buyer], "Client_PurchaseDelegationStart", [_req_seed, _req_classname, _req_target, _factory]] call CTI_CO_FNC_NetSend};
 
-			[["CLIENT", leader _req_target], "Client_OnPurchaseOrderReceived", [_req_seed, _req_classname, _req_buyer, _factory, _req_veh_infos]] call CTI_CO_FNC_NetSend;
+			[["CLIENT", _req_buyer], "Client_OnPurchaseOrderReceived", [_req_seed, _req_classname, _req_buyer, _factory, _req_veh_infos]] call CTI_CO_FNC_NetSend;
 			if (CTI_Log_Level >= CTI_Log_Information) then { ["INFORMATION", "FILE: Server\Functions\Server_StartFactoryQueue.sqf", format["Request from group [%1] concerning classname [%2] with seed [%3] in queue thread [%4] was forwarded to team [%5]", _req_buyer, _req_classname, _req_seed, _thread_id, _req_target]] call CTI_CO_FNC_Log };
 		};
 	};

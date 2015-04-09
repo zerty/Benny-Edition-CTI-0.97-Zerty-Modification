@@ -53,7 +53,7 @@ SM_Force_entry={
 	_target = _this select 0;
 	_caller = _this select 1;
 	_rk=1;
-	_rk = {_x == "Toolkit"} count (backpackItems _caller) +{_x == "Toolkit"} count (vestItems _caller);
+	_rk = ({_x == "Toolkit"} count (backpackItems _caller)) +({_x == "Toolkit"} count (vestItems _caller));
 	if ((_target getVariable "forced") ) exitWith { hint "This vehicle has already been forced";};
 	_pos = getPos _caller;
 	if (_rk > 0 ) then {

@@ -12,7 +12,7 @@ while {!CTI_Gameover} do {
 			//Money handle
 			//==================
 			if (count _pl < count _ppl) then { // someone has left
-				diag_log format [" :: DYNG :: removing money for %1 : %2 => %3",_g , (_g getVariable "cti_funds"), floor ((_g getVariable "cti_funds")-((_g getVariable "cti_funds")/(count _pl))) ];
+				diag_log format [" :: DYNG :: removing money for %1 : %2 => %3",_g , (_g getVariable "cti_funds"), floor ((_g getVariable "cti_funds")-((_g getVariable "cti_funds")/(count _ppl))) ];
 				_g setVariable ["cti_funds", floor ((_g getVariable "cti_funds")-((_g getVariable "cti_funds")/(count _pl))),true];
 				_g setVariable ["last_known_players",_pl,true];
 			};
@@ -34,7 +34,7 @@ while {!CTI_Gameover} do {
 				if (!isNil "_get") then {
 					_get set [2,floor ((_g getVariable "cti_funds")/count(_pl))];
 					missionNamespace setVariable [format["CTI_SERVER_CLIENT_%1", _x],_get];
-					diag_log format [" :: DYNG :: saving money for %1 : %2 => %3", _get select 0 , _get select 2, _get ];
+					//diag_log format [" :: DYNG :: saving money for %1 : %2 => %3", _get select 0 , _get select 2, _get ];
 				};
 				true
 			}count _pl;
@@ -51,5 +51,8 @@ while {!CTI_Gameover} do {
 		};
 		true
 	}count ("GetAllGroups" call BIS_fnc_dynamicGroups);
+
+	// group cleanup since BIS has fucked it
+	{if ((count(units _x) == 0) && local _x && ! ( groupID _x == "Defense Team") && ! ( groupID _x == "Default Team")) then {deleteGroup _x} ;true }count allgroups;
 	sleep 1;
-};/*
+};
