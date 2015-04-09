@@ -1376,6 +1376,38 @@ _i = _i		+ ["U_O_FullGhillie_lsh"];
 _u = _u		+ [3];
 _p = _p		+ [50];
 
+//vests
+_i = _i		+ ["V_PlateCarrierGL_blk"];
+_u = _u		+ [3];
+_p = _p		+ [20];
+
+_i = _i		+ ["V_PlateCarrierGL_mtp"];
+_u = _u		+ [3];
+_p = _p		+ [20];
+
+_i = _i		+ ["V_PlateCarrierGL_rgr"];
+_u = _u		+ [3];
+_p = _p		+ [20];
+
+_i = _i		+ ["V_PlateCarrierIAGL_dgtl"];
+_u = _u		+ [3];
+_p = _p		+ [20];
+
+_i = _i		+ ["V_PlateCarrierIAGL_oli"];
+_u = _u		+ [3];
+_p = _p		+ [20];
+
+_i = _i		+ ["V_PlateCarrierSpec_blk"];
+_u = _u		+ [3];
+_p = _p		+ [20];
+
+_i = _i		+ ["V_PlateCarrierSpec_mtp"];
+_u = _u		+ [3];
+_p = _p		+ [20];
+
+_i = _i		+ ["V_PlateCarrierSpec_rgr"];
+_u = _u		+ [3];
+_p = _p		+ [20];
 
 //bipods
 
