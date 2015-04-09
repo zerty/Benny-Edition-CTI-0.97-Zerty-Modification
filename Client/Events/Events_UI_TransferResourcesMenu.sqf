@@ -15,7 +15,7 @@ switch (_action) do {
 		};
 
 		{
-			((uiNamespace getVariable "cti_dialog_ui_transferresourcesmenu") displayCtrl 140001) lnbAddRow [format["$%1", [_x, CTI_P_SideJoined] call CTI_CO_FNC_GetFunds], format["%1 %2", _x getVariable ["cti_alias",CTI_PLAYER_DEFAULT_ALIAS], if (isPlayer leader _x) then {""} else {"(AI)"}]];
+			((uiNamespace getVariable "cti_dialog_ui_transferresourcesmenu") displayCtrl 140001) lnbAddRow [format["$%1", [_x, CTI_P_SideJoined] call CTI_CO_FNC_GetFunds], format["%1 %2", _x getVariable ["cti_alias",CTI_PLAYER_DEFAULT_ALIAS], if (isPlayer leader _x) then {name leader _x} else {"(AI)"}]];
 		} forEach _groups;
 		((uiNamespace getVariable "cti_dialog_ui_transferresourcesmenu") displayCtrl 140001) lnbSetCurSelRow 0;
 

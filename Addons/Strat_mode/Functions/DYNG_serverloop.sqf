@@ -11,11 +11,11 @@ while {!CTI_Gameover} do {
 			//==================
 			//Money handle
 			//==================
-			if (count _pl < count _ppl) then { // someone has left
+			/*if (count _pl < count _ppl) then { // someone has left
 				diag_log format [" :: DYNG :: removing money for %1 : %2 => %3",_g , (_g getVariable "cti_funds"), floor ((_g getVariable "cti_funds")-((_g getVariable "cti_funds")/(count _ppl))) ];
 				_g setVariable ["cti_funds", floor ((_g getVariable "cti_funds")-((_g getVariable "cti_funds")/(count _pl))),true];
 				_g setVariable ["last_known_players",_pl,true];
-			};
+			};*/
 			if (count _pl > count _ppl) then { // someone has joined
 				_delta=_pl-_ppl;
 				{
@@ -28,13 +28,15 @@ while {!CTI_Gameover} do {
 				}count _delta;
 				_g setVariable ["last_known_players",_pl,true];
 			};
-			//if (count _pl == count _ppl) then { // Save money
+			//if (count _pl == count _ppl) then { // Save money only for leader
 			{
-				_get = missionNamespace getVariable format["CTI_SERVER_CLIENT_%1", _x];
-				if (!isNil "_get") then {
-					_get set [2,floor ((_g getVariable "cti_funds")/count(_pl))];
-					missionNamespace setVariable [format["CTI_SERVER_CLIENT_%1", _x],_get];
-					//diag_log format [" :: DYNG :: saving money for %1 : %2 => %3", _get select 0 , _get select 2, _get ];
+				if (_x == (getPlayerUID leader _g)) then {
+					_get = missionNamespace getVariable format["CTI_SERVER_CLIENT_%1", _x];
+					if (!isNil "_get") then {
+						_get set [2,floor ((_g getVariable "cti_funds")/count(_pl))];
+						missionNamespace setVariable [format["CTI_SERVER_CLIENT_%1", _x],_get];
+						//diag_log format [" :: DYNG :: saving money for %1 : %2 => %3", _get select 0 , _get select 2, _get ];
+					};
 				};
 				true
 			}count _pl;

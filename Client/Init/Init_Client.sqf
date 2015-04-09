@@ -3,7 +3,7 @@
 #define DIK_TILDE             0x29
 
 
-NET_LOG=True;
+NET_LOG=false;
 
 CTI_P_SideJoined = side player;
 
