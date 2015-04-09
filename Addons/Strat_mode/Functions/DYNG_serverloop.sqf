@@ -11,11 +11,18 @@ while {!CTI_Gameover} do {
 			//==================
 			//Money handle
 			//==================
-			/*if (count _pl < count _ppl) then { // someone has left
-				diag_log format [" :: DYNG :: removing money for %1 : %2 => %3",_g , (_g getVariable "cti_funds"), floor ((_g getVariable "cti_funds")-((_g getVariable "cti_funds")/(count _ppl))) ];
-				_g setVariable ["cti_funds", floor ((_g getVariable "cti_funds")-((_g getVariable "cti_funds")/(count _pl))),true];
+			if (count _pl < count _ppl) then { // someone has left
+				_delta=_ppl-_pl;
+				{
+					_get = missionNamespace getVariable format["CTI_SERVER_CLIENT_%1", _x];
+					if (!isNil "_get") then {
+						diag_log format [" :: DYNG :: removing money for %1 : %2 => %3",_g , (_g getVariable "cti_funds"), floor ((_g getVariable "cti_funds")-(_get select 2)) ];
+						_g setVariable ["cti_funds", floor ((_g getVariable "cti_funds")-(_get select 2)),true];
+					};
+					true
+				}count _delta;
 				_g setVariable ["last_known_players",_pl,true];
-			};*/
+			};
 			if (count _pl > count _ppl) then { // someone has joined
 				_delta=_pl-_ppl;
 				{
