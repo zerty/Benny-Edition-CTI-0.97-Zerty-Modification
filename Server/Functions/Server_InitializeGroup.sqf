@@ -29,7 +29,8 @@ _side = _this select 1;
 _nbplayers=_this select 2;
 _side_logic=_side call CTI_CO_FNC_GetSideLogic;
 
-if (isNil {_team getVariable "cti_funds"}) then {_team setVariable ["cti_funds", missionNamespace getVariable format ["CTI_ECONOMY_STARTUP_FUNDS_%1", _side], true]};
+//if (isNil {_team getVariable "cti_funds"}) then {_team setVariable ["cti_funds", missionNamespace getVariable format ["CTI_ECONOMY_STARTUP_FUNDS_%1", _side], true]};
+if (isNil {_team getVariable "cti_funds"}) then {_team setVariable ["cti_funds", 0, true]};
 if (isNil {_team getVariable "cti_role_evo"}) then {_team setVariable ["cti_role_evo", "Infantry"]}; //--- Evolutive role
 if (isNil {_team getVariable "cti_order"}) then {_team setVariable ["cti_order", CTI_ORDER_TAKETOWNS, true]};
 if (isNil {_team getVariable "cti_order_pos"}) then {_team setVariable ["cti_order_pos", [0,0], true]};
@@ -39,5 +40,5 @@ if (isNil {_team getVariable "cti_independent"}) then {_team setVariable ["cti_i
 if (isNil {_team getVariable "last_player_count"}) then {_team setVariable ["last_player_count",_nbplayers]};
 
 
-if !(_team in ((_side) call CTI_CO_FNC_GetSideGroups) ) then {_side_logic setvariable ["cti_teams",(_side_logic getVariable ["cti_teams",[]] )+ [_team],true]};
+if !(_team in ((_side) call CTI_CO_FNC_GetSideGroups) ) then {_side_logic setvariable ["cti_teams",(_side_logic getVariable ["cti_teams",[]] ) - [grpNull] + [_team],true]};
 

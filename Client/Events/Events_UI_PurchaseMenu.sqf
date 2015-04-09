@@ -34,7 +34,7 @@ switch (_action) do {
 				if (leader _x == player) then {((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 110018) lbSetCurSel _forEachIndex};
 			} forEach (_groups);
 		} else {
-			((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 110018) lbAdd format ["%1 (%2)", group player, name player];
+			((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 110018) lbAdd format ["%1", group player];
 			((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 110018) lbSetCurSel 0;
 		};
 
@@ -123,10 +123,10 @@ switch (_action) do {
 			if (alive(uiNamespace getVariable "cti_dialog_ui_purchasemenu_factory")) then {
 				_ai_enabled = missionNamespace getVariable "CTI_AI_TEAMS_ENABLED";
 				if (_ai_enabled >0 || ((isPlayer leader _selected_group || (missionNamespace getVariable "CTI_BUY_RESTRICT_LEADER" == 0 ))&& _ai_enabled == 0)) then {
-					if ((count units _selected_group)+1 <= CTI_PLAYERS_GROUPSIZE || _isEmpty) then { //todo ai != player limit
+					if ((count units _selected_group) <= (CTI_PLAYERS_GROUPSIZE + (count (_selected_group getVariable ["last_known_players",[""]]))) || _isEmpty) then { //todo ai != player limit
 						_proc_purchase = true;
 						if (_isEmpty && _selected_group != group player) then { _proc_purchase = false; hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br />Empty vehicles may not be purchased for other groups."; };
-
+						if ! (_classname in ( missionNamespace getVariable format ["CTI_%1_%2Units", CTI_P_SideJoined,(uiNamespace getVariable "cti_dialog_ui_purchasemenu_factory_type")])) then { _proc_purchase = false; hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br />This vehicles may not be purchased in that factory."; };
 						if (_proc_purchase) then {
 							_get = missionNamespace getVariable _classname;
 							_picture = if ((_get select CTI_UNIT_PICTURE) != "") then {format["<img image='%1' size='2.5'/><br /><br />", _get select CTI_UNIT_PICTURE]} else {""};

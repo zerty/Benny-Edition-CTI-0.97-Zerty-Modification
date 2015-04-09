@@ -1,6 +1,8 @@
 #define	AN_Range_V	1000
 #define	AN_Range_I	100
 
+
+
 /*
 _vehicle getVariable "AN_Conn"
 _vehicle getVariable "AN_iNet"
@@ -91,9 +93,11 @@ if ! (isNull _final) then {
 		_vehicle setVariable ["AN_Conn",_final,_global];
 	};
 	_vehicle setVariable ["AN_Parrents",((_vehicle getVariable "AN_Conn") getVariable ["AN_Parrents",[]]) + [_vehicle],false];
+	if (NET_LOG) then {diag_log format [":: NET :: Sucess in reconf %1 to %2 through %3",_vehicle,_final,((_vehicle getVariable "AN_Conn") getVariable ["AN_Parrents",[]]) ]};
 } else {
 	_vehicle setVariable ["AN_Conn",_final,_global];
 	_vehicle setVariable ["AN_iNet",-1,true];
 	_vehicle setVariable ["AN_Parrents",[],false];
+	if (NET_LOG) then {diag_log format [":: NET ::Failure in reconf %1",_vehicle ]};
 
 };

@@ -104,7 +104,8 @@ if (!isNil '_var' && _isplayable_killer) then {
 				if (CTI_IsServer) then {[leader _group_killer, _points] spawn CTI_SE_FNC_AddScore} else {["SERVER", "Request_AddScore", [leader _group_killer, _points]] call CTI_CO_FNC_NetSend};
 			};
 
-			if (_side_killed_original == _side_killed) then { //--- If the side of the vehicle was different from the side of the illed unit (which can be the last occupant), then we skip the bounty part.
+			if (_side_killed_original == _side_killed) then {
+			//--- If the side of the vehicle was different from the side of the illed unit (which can be the last occupant), then we skip the bounty part.
 				_award_groups = [_group_killer];
 
 				//--- The kill was not made by proxy and the killer is in a vehicle
@@ -114,7 +115,8 @@ if (!isNil '_var' && _isplayable_killer) then {
 				};
 
 				//--- If there is more than one group to award then we split the bounty equally
-				_bounty = round(_cost * CTI_VEHICLES_BOUNTY /100);
+				_mult=if ((missionNamespace getVariable "CTI_GROUP_AWARD_MULT") == 1) then {(count (_group_killer getVariable ["last_known_players",[""]]))} else {1};
+				_bounty = round( _mult * _cost * CTI_VEHICLES_BOUNTY /100);
 				if (count _award_groups > 1) then { _bounty = round(_bounty / (count _award_groups))};
 
 				//--- Award

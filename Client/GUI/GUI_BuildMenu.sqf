@@ -1,6 +1,7 @@
 _last_funds = -1;
 _last_workercount = -1;
 
+
 while { true } do {
 	if (isNil {uiNamespace getVariable "cti_dialog_ui_buildmenu"}) exitWith {}; //--- Menu is closed.
 	if !(alive (CTI_P_SideJoined call CTI_CO_FNC_GetSideHQ)) exitWith {closeDialog 0}; //--- The target has been destroyed
@@ -25,5 +26,5 @@ while { true } do {
 	_last_funds = _funds;
 	_last_workercount = _count;
 
-	sleep .1;
+	sleep .5;
 };

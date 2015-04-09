@@ -3,16 +3,19 @@
 	if (missionNamespace getVariable ["WAIT_GROUP",false]) exitWith {};
 	waitUntil {!isNull (findDisplay 46)};
 	WAIT_GROUP=true;
+	[player] joinsilent (group (missionNamespace getvariable format ["CTI_%1_DEFAULT_GROUP",CTI_P_SideJoined] )) ;
+	// group cleanup since BIS has fucked it
+	{if ((count(units _x) == 0) && local _x && ! ( groupID _x == "Defense Team") && ! ( groupID _x == "Default Team")) then {deleteGroup _x} ;true }count allgroups;
 	["InitializePlayer",[player] ] call BIS_fnc_dynamicGroups;
-	12453 cutText ["Please either join or create a group","BLACK OUT"];
+	12453 cutText ["Please either join or create a group","BLACK OUT",0];
 	_pos=getMarkerPos format ["CTI_%1Respawn",CTI_P_SideJoined];
 	_pos = [_pos,0,10] call CTI_CO_FNC_GetRandomPosition;
-	player setpos _pos;
-	player setCaptive false;
+	//player setpos _pos;
+	//player setCaptive false;
 	waitUntil {(["PlayerHasGroup",[player] ] call BIS_fnc_dynamicGroups)};
 	waitUntil {!isNil 'CTI_Init_CommanderClient'};
 	waitUntil {!isNil {CTI_P_SideLogic getVariable "cti_structures"} && !isNil {CTI_P_SideLogic getVariable "cti_hq"}};
-	if !(CTI_P_Jailed) then {
+	if (!(CTI_P_Jailed) && ((player distance _pos) <1000)) then {
 		_hq = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideHQ;
 		_structures = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideStructures;
 
@@ -26,7 +29,7 @@
 	//==========
 	_uid=getPlayerUID player;
 	if !(isMultiplayer ) then {
-		missionNamespace setVariable [format["CTI_SERVER_CLIENT_%1", _uid],[_uid,CTI_P_SideJoined,-10,group player]];
+		missionNamespace setVariable [format["CTI_SERVER_CLIENT_%1", _uid],[_uid,CTI_P_SideJoined, (missionNamespace getVariable format ["CTI_ECONOMY_STARTUP_FUNDS_%1", CTI_P_SideJoined]),group player]];
 	};
 	// Done
 	//==========

@@ -33,14 +33,7 @@ SM_repair_vehicle={
 		["Repairing",0,1,0] call HUD_PBar_start;
 		while {alive _caller && alive _target  && (getDammage _target) > 0 && (_caller distance _target) <5 && (_caller distance _pos)<=1 && (vehicle _caller) ==_caller} do {
 			sleep 1;
-			/*"if ((_target getHitPointDamage (configName _x))>0) then {_target setHitPointDamage [(configName _x),(_target getHitPointDamage (configName _x))-0.007]} else {_target setHitPointDamage [(configName _x),0]}; true" configClasses (configfile >> "CfgVehicles" >> (typeof _target) >> "HitPoints");
-			if (! isNil {_target getHitPointDamage "HitGun"}) then {if ((_target getHitPointDamage ("HitGun"))>0) then {_target setHitPointDamage ["HitGun",(_target getHitPointDamage "HitGun")-0.007]} else {_target setHitPointDamage ["HitGun",0]};};
-			if (! isNil {_target getHitPointDamage "HitTurret"}) then {if ((_target getHitPointDamage ("HitTurret"))>0) then {_target setHitPointDamage ["HitTurret",(_target getHitPointDamage "HitGun")-0.007]} else {_target setHitPointDamage ["HitTurret",0]};};
-			_d=0;
-			"_d=_d+(_target getHitPointDamage (configName _x)); true" configClasses (configfile >> "CfgVehicles" >> (typeof _target) >> "HitPoints");
-			if (! isNil {_target getHitPointDamage "HitGun"}) then {_d=_d+(_target getHitPointDamage "HitGun")};
-			if (! isNil {_target getHitPointDamage "HitTurret"}) then {_d=_d+(_target getHitPointDamage "HitTurret")};
-			*/
+
 			(1-(getDammage _target)) call HUD_PBar_update;
 			_target setDammage (getDammage _target) - 0.005;
 		};
@@ -60,7 +53,7 @@ SM_Force_entry={
 	_target = _this select 0;
 	_caller = _this select 1;
 	_rk=1;
-	_rk = {_x == "Toolkit"} count (backpackItems _caller) +{_x == "Toolkit"} count (vestItems _caller);
+	_rk = ({_x == "Toolkit"} count (backpackItems _caller)) +({_x == "Toolkit"} count (vestItems _caller));
 	if ((_target getVariable "forced") ) exitWith { hint "This vehicle has already been forced";};
 	_pos = getPos _caller;
 	if (_rk > 0 ) then {
@@ -102,25 +95,3 @@ SM_Force_entry={
 	};
 };
 0 spawn _respawn_reset;
-/*while {!CTI_GameOver} do {
-
-	_vehicles=  (player nearEntities [["Car","Tank","Air","Ship"], 150]);
-	{
-			_hqs=[];
-			{_hqs set [count _hqs, _x call CTI_CO_FNC_GetSideHQ];true} count [east,west];
-			_prevent=false;
-			if (_x getVariable "SM_Repairable") then { _prevent =true};
-			if (! _prevent) then {
-			//diag_log format ["adding repair for %1",_x];
-			_x addAction ["<t color='#CC2222'>Repair Vehicle</t>",SM_repair_vehicle, [], 98, false, true,'', '!CTI_P_PreBuilding && ((getDammage _target) >0  ) && alive _target && vehicle _this == _this && ! CTI_P_Repairing'];
-			//_x addAction ["<t color='#CC2222'>Force Lock</t>",SM_Force_entry, [], 98, false, true,'', ''];
-			if !(_x in _hqs ) then { _x addAction ["<t color='#CC2222'>Force Lock</t>",SM_Force_entry, [], 98, false, true,'', '!CTI_P_PreBuilding  && alive _target && vehicle _this == _this && ! CTI_P_Repairing && !(_target getVariable ["cti_occupant",civilian] == CTI_P_SideJoined)']};
-			 //_x addAction ["<t color='#CC2222'>Force Lock</t>",SM_Force_entry, [], 98, false, true,'', '!CTI_P_PreBuilding  && alive _target && vehicle _this == _this && ! CTI_P_Repairing '];
-						//diag_log _rs;
-
-				_x setVariable ["SM_Repairable",true,false];
-			};
-	} forEach _vehicles;
-	sleep 20;
-};
-*/

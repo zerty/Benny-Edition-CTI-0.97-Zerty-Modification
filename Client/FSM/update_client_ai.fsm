@@ -6,16 +6,22 @@ item1[] = {"Cycle",4,218,-100.000000,-300.000000,0.000000,-250.000000,0.000000,"
 item2[] = {"Phase_I_AI_Alive",2,250,-100.000000,-200.000000,0.000000,-150.000000,0.000000,"Phase I" \n "AI Alive"};
 item3[] = {"End_FSM",1,250,-100.000000,0.000000,0.000000,50.000000,0.000000,"End FSM"};
 item4[] = {"Dead",8,218,-100.000000,-100.000000,0.000000,-50.000000,0.000000,"Dead"};
-item5[] = {"Alive",4,218,50.000000,-200.000000,150.000000,-150.000000,1.000000,"Alive"};
-item6[] = {"Phase_II_Duty",2,4346,50.000000,-300.000000,150.000000,-250.000000,0.000000,"Phase II" \n "Duty"};
+item5[] = {"Alive_1",4,4314,50.000000,-200.000000,150.000000,-150.000000,1.000000,"Alive"};
+item6[] = {"Phase_II_Duty",2,250,50.000000,-300.000000,150.000000,-250.000000,0.000000,"Phase II" \n "Duty"};
+item7[] = {"Alive",4,218,50.000000,-125.000000,150.000000,-75.000000,1.000000,"Alive"};
+item8[] = {"Standby",2,250,200.000000,-175.000000,300.000000,-125.000000,0.000000,"Standby"};
 link0[] = {0,1};
 link1[] = {1,2};
 link2[] = {2,4};
 link3[] = {2,5};
-link4[] = {4,3};
-link5[] = {5,6};
-link6[] = {6,1};
-globals[] = {25.000000,1,0,0,0,640,480,1,272,6316128,1,-489.064819,425.210815,396.643402,-572.168213,855,881,1};
+link4[] = {2,7};
+link5[] = {4,3};
+link6[] = {5,6};
+link7[] = {6,1};
+link8[] = {7,8};
+link9[] = {8,5};
+link10[] = {8,7};
+globals[] = {25.000000,1,0,0,0,640,480,1,274,6316128,1,-489.064819,425.210815,396.643402,-572.168213,855,881,1};
 window[] = {2,-1,-1,-1,-1,981,200,1455,200,3,873};
 *//*%FSM</HEAD>*/
 class FSM
@@ -63,7 +69,17 @@ class FSM
           priority = 1.000000;
           to="Phase_II_Duty";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"alive _ai && !CTI_GameOver"/*%FSM</CONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"time > _ncycle && alive _ai && !CTI_GameOver && ! (isnil { _ai getVariable ""cti_ai_order""})"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Alive_1">*/
+        class Alive_1
+        {
+          priority = 1.000000;
+          to="Standby";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"time > _ncycle && alive _ai && !CTI_GameOver&& isnil { _ai getVariable ""cti_ai_order""}"/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/
@@ -139,11 +155,42 @@ class FSM
       };
     };
     /*%FSM</STATE>*/
+    /*%FSM<STATE "Standby">*/
+    class Standby
+    {
+      name = "Standby";
+      init = /*%FSM<STATEINIT""">*/"_ncycle = time + 10;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Alive">*/
+        class Alive
+        {
+          priority = 1.000000;
+          to="Standby";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"time > _ncycle && alive _ai && !CTI_GameOver&& isnil { _ai getVariable ""cti_ai_order""}"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Alive_1">*/
+        class Alive_1
+        {
+          priority = 1.000000;
+          to="Phase_II_Duty";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"time > _ncycle && alive _ai && !CTI_GameOver && ! (isnil { _ai getVariable ""cti_ai_order""})"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
   };
   initState="Start_FSM";
   finalStates[] =
   {
-    "End_FSM",
+    "End_FSM"
   };
 };
 /*%FSM</COMPILE>*/

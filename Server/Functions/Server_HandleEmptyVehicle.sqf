@@ -48,5 +48,9 @@ while {alive _vehicle && time - _timeout <= _delay} do {
 	};
 };
 
-if (alive _vehicle) then {deleteVehicle _vehicle};
+if (alive _vehicle) then {
+	_vehicle setPosASL [0,0,0];
+	sleep 2;
+	deleteVehicle _vehicle
+};
 //--- If we got out of the loop then we can just delete the vehicle

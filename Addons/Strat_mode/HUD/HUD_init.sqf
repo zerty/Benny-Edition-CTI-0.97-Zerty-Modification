@@ -50,7 +50,7 @@ waitUntil {!isNil {uiNamespace getVariable 'HUD'}};
 				HUD_T_OBJ=[];
 				HUD_Targets=[];
 				HUD_Towns=[];
-				if ("hudFrame" in (missionNameSpace getVariable ["BIS_stackedEventHandlers_onEachFrame", []])) then {0 call HUD_RemoveFrameHandler};
+				if ( {(_x select 0) == "hudFrame"} count (missionNameSpace getVariable ["BIS_stackedEventHandlers_onEachFrame", []]) > 0) then {0 call HUD_RemoveFrameHandler};
 		};
 		sleep 5;
 

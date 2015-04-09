@@ -15,7 +15,7 @@ while {!CTI_GameOver} do {
 		{if (isplayer _x) then {_curent_com_pl=_x};true}count (units _curent_com_gr);
 		if (!isNull _curent_com_gr) then {
 			[_side,true] call CTI_COM_UNSET_SERVER;
-			if ! (isnull _curent_com_pl) then {
+			if (! (isnull _curent_com_pl) && (count units (_side_logic getvariable "cti_commander")) >0) then {
 				_side_logic setvariable ["CTI_COM_BLACKLIST",(_side_logic getvariable ["CTI_COM_BLACKLIST",[]])+[getPlayerUID _curent_com_pl],true];
 				[_side_logic, (getPlayerUID _curent_com_pl)] spawn {
 					sleep 600;

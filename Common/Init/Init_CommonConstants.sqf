@@ -546,12 +546,9 @@ CTI_HALO_ALTITUDE = 3000;
 CTI_HALO_RATIO = 3;
 CTI_UPGRADE_RATIO=if !(MADE_FOR_STRATIS) then {7} else {2};
 
-CTI_WEST_AMMOS = ["Box_NATO_Wps_F","Box_NATO_WpsSpecial_F","Box_NATO_Ammo_F","Box_NATO_Ammo_F","Box_NATO_AmmoOrd_F","Box_NATO_Grenades_F","Box_NATO_Support_F","Box_NATO_Support_F","Box_NATO_Support_F","Box_NATO_WpsLaunch_F"];
-CTI_EAST_AMMOS = ["Box_East_Wps_F","Box_East_WpsSpecial_F","Box_East_Ammo_F","Box_East_Ammo_F","Box_East_AmmoOrd_F","Box_East_Grenades_F","Box_East_Support_F","Box_East_Support_F","Box_East_Support_F","Box_East_WpsLaunch_F"];
 
 CTI_VOTE_RATIO=0.51;
 
-CTI_RADIOS=["German","French","Russian","Other","Other"];
 
 with missionNamespace do {
 	if (isNil 'CTI_ARTILLERY_SETUP') then {CTI_ARTILLERY_SETUP = -1}; //--- Artillery status (-2: Disabled, -1: Artillery Computer, 0: Short, 1: Medium, 2: Long, 3: Far)
@@ -646,6 +643,6 @@ with missionNamespace do {
 	if (isnil "CTI_GAMEPLAY_DARTER") then {CTI_GAMEPLAY_DARTER = 500};
 	if (isnil "CTI_GAMEPLAY_DARTER_FUEL") then {CTI_GAMEPLAY_DARTER_FUEL = 1};
 	if (isnil "CTI_BUY_RESTRICT_LEADER") then {CTI_BUY_RESTRICT_LEADER = 0};
-
+	if (isnil "CTI_GROUP_AWARD_MULT") then {CTI_GROUP_AWARD_MULT = 0};
 
 };
