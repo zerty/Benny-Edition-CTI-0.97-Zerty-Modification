@@ -36,9 +36,9 @@ class CfgDebriefing {
 		pictureBackground = "";
 	};
 	class End7 {
-		title = "RESERVED FOR ADMIN";
+		title = "TEAM STACKING";
 		subtitle = "";
-		description = "";
+		description = "You probably have not seen that the oposite team needs players, please join that side.";
 		pictureBackground = "";
 	};
 };

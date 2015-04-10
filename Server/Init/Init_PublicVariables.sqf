@@ -82,28 +82,40 @@ with missionNamespace do {
 
 		_name = name _client;
 		_uid = getPlayerUID _client;
-		_join = true;
+		_teamswap = false;
+		_teamstack=false;
+
+		waitUntil {!isNil {missionNamespace getVariable Format["CTI_SERVER_CLIENT_%1",_uid];}};
 
 		_get = missionNamespace getVariable Format["CTI_SERVER_CLIENT_%1",_uid];
+		_side_origin = _get select 1; //--- Get the original side.
 
-		if !(isNil '_get') then { //--- Retrieve JIP Information if there's any.
-			_side_origin = _get select 1; //--- Get the original side.
+		// TEAMSWAP
+		if (_side_origin != _side && !(_side_origin == civilian) && CTI_TEAMSWAP == 1) then { //--- The joined side differs from the original one.
+			_teamswap = true;
+			["CLIENT", "Client_OnMessageReceived", ["teamswap", _name]] call CTI_CO_FNC_NetSend;
+			if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FUNCTION: CTI_PVF_Request_Join", format["Player [%1] [%2] tried to teamswap from it's original side [%3] to side [%4]. The server explicitely answered that he should be sent back to the lobby.", _name, _uid, _side_origin, _side]] call CTI_CO_FNC_Log};
+		};
+		//TEAWSTACK
+		_west_count=0;
+		_east_count=0;
+		{_west_count=_west_count + count(_x select 5);true }count (["GetAllGroupsOfSide",[west]]call BIS_fnc_dynamicGroups);
+		{_east_count=_east_count + count(_x select 5);true }count (["GetAllGroupsOfSide",[east]]call BIS_fnc_dynamicGroups);
+		_teamstack=if ((_side_origin == civilian) && CTI_TEAMSTACK == 1 &&((_side == west && _west_count >(_east_count +2)) ||	(_side == east && _east_count >(_west_count +2)))) then {true} else {false};
 
-			if (_side_origin != _side && ! (_side_origin == resistance) && ! (_side_origin == civilian) && CTI_TEAMSWAP == 1) then { //--- The joined side differs from the original one.
-				_join = false;
-				["CLIENT", "Client_OnMessageReceived", ["teamswap", _name]] call CTI_CO_FNC_NetSend;
-				if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FUNCTION: CTI_PVF_Request_Join", format["Player [%1] [%2] tried to teamswap from it's original side [%3] to side [%4]. The server explicitely answered that he should be sent back to the lobby.", _name, _uid, _side_origin, _side]] call CTI_CO_FNC_Log};
-			};
-		} else {
-			//if (CTI_Log_Level >= CTI_Log_Warning) then {["WARNING", "FUNCTION: CTI_PVF_Request_Join", format["Player [%1] [%2] doesn't have any JIP information yet. If this is the start of the mission then this message can be safely ignored.", _name, _uid]] call CTI_CO_FNC_Log};
+		//SAVE
+		if !(_teamstack || _teamswap ) then {
+			_get set [1,_side];
+			missionNamespace setVariable [Format["CTI_SERVER_CLIENT_%1",_uid],_get];
 		};
 
-		if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FUNCTION: CTI_PVF_Request_Join", format["Player [%1] [%2] can join? -> [%3].", _name, _uid, _join]] call CTI_CO_FNC_Log};
+		//jail
+		if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FUNCTION: CTI_PVF_Request_Join", format["Player [%1] [%2] can join? -> teamswap [%3] | teawstack [%4].", _name, _uid, _teamswap,_teamstack]] call CTI_CO_FNC_Log};
 
 		_was_jailed = false;
 		_get = missionNamespace getVariable format ["CTI_SERVER_CLIENT_ELITE_%1", _uid];
 		if !(isNil '_get') then {if (_get select 1 == 1) then {_was_jailed = true}};
-		[["CLIENT", _client], "Client_JoinRequestAnswer", [_join, _was_jailed]] call CTI_CO_FNC_NetSend;
+		[["CLIENT", _client], "Client_JoinRequestAnswer", [_teamswap,_teamstack,_was_jailed]] call CTI_CO_FNC_NetSend;
 	};
 
 	CTI_PVF_Request_NoobLogger = { _this spawn CTI_SE_FNC_NoobLogger };

@@ -182,6 +182,12 @@ class Params {
 		texts[] = {"off","on"};
 		default = 1;
 	};
+	class CTI_TEAMSTACK {
+		title = "Zerty:Team Stack protection";
+		values[] = {0,1};
+		texts[] = {"off","on"};
+		default = 1;
+	};
 
 
 	class CTI_AI_SKILL {
