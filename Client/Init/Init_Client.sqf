@@ -288,6 +288,7 @@ TABLET_GET_TARGET={
 if (/*profileNamespace getVariable "CTI_PERSISTENT_HINTS"*/true) then {
 	0 spawn {
 		sleep 2;
+		waitUntil {(!isNull (findDisplay 46)) && (["PlayerHasGroup",[player] ] call BIS_fnc_dynamicGroups) && isnull (findDisplay 60490) };};
 		createdialog "CTI_RscTabletOnlineHelpMenu";
 
 	};
