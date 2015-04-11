@@ -275,14 +275,14 @@ if (CTI_IsServer) then {
 			0 spawn UAV_FUEL;
 		};
 		// PhysX artifacts cleanup
-		if ((missionNamespace getVariable "CACHE_EMPTY") == 1) then {
+		/*if ((missionNamespace getVariable "CACHE_EMPTY") == 1) then {
 			0 spawn {
 				while {!CTI_Gameover} do {
 					{if !(simulationEnabled _x ) then {_x enableSimulationGlobal True};True} count (allUnits + vehicles + allDead );
 					sleep 600;
 				};
 			};
-		};
+		};*/
 
 };
 
