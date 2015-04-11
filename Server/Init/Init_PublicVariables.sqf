@@ -93,7 +93,7 @@ with missionNamespace do {
 		// TEAMSWAP
 		if (_side_origin != _side && !(_side_origin == civilian) && CTI_TEAMSWAP == 1) then { //--- The joined side differs from the original one.
 			_teamswap = true;
-			["CLIENT", "Client_OnMessageReceived", ["teamswap", _name]] call CTI_CO_FNC_NetSend;
+			//["CLIENT", "Client_OnMessageReceived", ["teamswap", _name]] call CTI_CO_FNC_NetSend;
 			if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FUNCTION: CTI_PVF_Request_Join", format["Player [%1] [%2] tried to teamswap from it's original side [%3] to side [%4]. The server explicitely answered that he should be sent back to the lobby.", _name, _uid, _side_origin, _side]] call CTI_CO_FNC_Log};
 		};
 		//TEAWSTACK
@@ -101,7 +101,7 @@ with missionNamespace do {
 		_east_count=0;
 		{_west_count=_west_count + count(_x select 5);true }count (["GetAllGroupsOfSide",[west]]call BIS_fnc_dynamicGroups);
 		{_east_count=_east_count + count(_x select 5);true }count (["GetAllGroupsOfSide",[east]]call BIS_fnc_dynamicGroups);
-		_teamstack=if ((_side_origin == civilian) && CTI_TEAMSTACK == 1 &&((_side == west && _west_count >(_east_count +2)) ||	(_side == east && _east_count >(_west_count +2)))) then {true} else {false};
+		_teamstack=if ((_side_origin == civilian) && CTI_TEAMSTACK == 1 &&((_side == west && _west_count >=(_east_count +1)) ||	(_side == east && _east_count >=(_west_count +1)))) then {true} else {false};
 
 		//SAVE
 		if !(_teamstack || _teamswap ) then {
