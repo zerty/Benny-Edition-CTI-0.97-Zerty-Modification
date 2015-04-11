@@ -1,9 +1,9 @@
 waitUntil {(["IsInitialized"] call BIS_fnc_dynamicGroups)};
-diag_log ":: DYNG :: Starting servre watchdog";
+diag_log ":: DYNG :: Starting server watchdog";
 while {!CTI_Gameover} do {
 	{
 		if (isNil {(_x select 3) getVariable "cti_order"}) then {
-			[_x select 3, _x select 6,count (_x select 5)] call CTI_SE_FNC_InitializeGroup;
+			[_x select 3, _x select 6,_x select 5] call CTI_SE_FNC_InitializeGroup;
 		}else {
 			_g = _x select 3;
 			_ppl=_g getVariable ["last_known_players",[]];
@@ -14,11 +14,10 @@ while {!CTI_Gameover} do {
 			if (count _pl < count _ppl) then { // someone has left
 				_delta=_ppl-_pl;
 				{
-					_get = missionNamespace getVariable format["CTI_SERVER_CLIENT_%1", _x];
-					if (!isNil "_get") then {
-						diag_log format [" :: DYNG :: removing money for %1 : %2 => %3",_g , (_g getVariable "cti_funds"), floor ((_g getVariable "cti_funds")-(_get select 2)) ];
-						_g setVariable ["cti_funds", floor ((_g getVariable "cti_funds")-(_get select 2)),true];
-					};
+					_to_remove=((missionNamespace getVariable format ["CTI_ECONOMY_STARTUP_FUNDS_%1", side _g])) min ((_g getVariable "cti_funds")/(count _ppl));
+					_new_funds=(floor (_g getVariable "cti_funds") - _to_remove) max (0);
+					_g setVariable ["cti_funds",_new_funds,true];
+					diag_log format [" :: DYNG :: Add money for %1 : %2 => %3",_g , (_g getVariable "cti_funds"), _new_funds];
 					true
 				}count _delta;
 				_g setVariable ["last_known_players",_pl,true];
@@ -37,12 +36,18 @@ while {!CTI_Gameover} do {
 			};
 			//if (count _pl == count _ppl) then { // Save money only for leader
 			{
+				_get = missionNamespace getVariable format["CTI_SERVER_CLIENT_%1", _x];
 				if (_x == (getPlayerUID leader _g)) then {
-					_get = missionNamespace getVariable format["CTI_SERVER_CLIENT_%1", _x];
 					if (!isNil "_get") then {
-						_get set [2,floor ((_g getVariable "cti_funds")/count(_pl))];
+						_get set [2,floor (_g getVariable "cti_funds")];
 						missionNamespace setVariable [format["CTI_SERVER_CLIENT_%1", _x],_get];
-						//diag_log format [" :: DYNG :: saving money for %1 : %2 => %3", _get select 0 , _get select 2, _get ];
+						diag_log format [" :: DYNG :: saving money for %1 : %2 => %3", _get select 0 , _get select 2, _get ];
+					};
+				}else {
+					if (!isNil "_get") then {
+						_get set [2,(missionNamespace getVariable format ["CTI_ECONOMY_STARTUP_FUNDS_%1", side _g])];
+						missionNamespace setVariable [format["CTI_SERVER_CLIENT_%1", _x],_get];
+						diag_log format [" :: DYNG :: saving money for %1 : %2 => %3", _get select 0 , _get select 2, _get ];
 					};
 				};
 				true
@@ -63,5 +68,5 @@ while {!CTI_Gameover} do {
 
 	// group cleanup since BIS has fucked it
 	{if ((count(units _x) == 0) && local _x && ! ( groupID _x == "Defense Team") && ! ( groupID _x == "Default Team")) then {deleteGroup _x} ;true }count allgroups;
-	sleep 1;
+	sleep 2;
 };

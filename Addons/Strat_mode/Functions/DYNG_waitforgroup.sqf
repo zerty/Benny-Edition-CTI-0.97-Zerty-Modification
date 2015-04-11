@@ -28,7 +28,7 @@
 	//Save data
 	//==========
 	_uid=getPlayerUID player;
-	if !(isMultiplayer ) then {
+	if (!(isMultiplayer) && isnil {missionNamespace getVariable format["CTI_SERVER_CLIENT_%1", _uid]} ) then {
 		missionNamespace setVariable [format["CTI_SERVER_CLIENT_%1", _uid],[_uid,CTI_P_SideJoined, (missionNamespace getVariable format ["CTI_ECONOMY_STARTUP_FUNDS_%1", CTI_P_SideJoined]),group player]];
 	};
 	// Done
