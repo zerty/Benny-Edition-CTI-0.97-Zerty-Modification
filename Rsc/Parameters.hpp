@@ -454,6 +454,12 @@ class Params {
 		texts[] = {"high","medium high", "medium low", "low","Disable target report"};
 		default = 2;
 	};
+	class CTI_EW_HUD_I {
+		title = "Zerty: Electronic Warfare : Tactical HUD report infantry";
+		values[] = {0,1};
+		texts[] = {"false","true"};
+		default = 0;
+	};
 	class CTI_EW_ANET {
 		title = "Zerty: Electronic Warfare : Field Network Meshing";
 		values[] = {0,1};

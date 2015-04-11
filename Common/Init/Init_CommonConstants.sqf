@@ -633,6 +633,7 @@ with missionNamespace do {
 
 	if (isnil "CTI_EW_HUD") then {CTI_EW_HUD = 1};
 	if (isnil "CTI_EW_HUD_S") then {CTI_EW_HUD_S = 1};
+	if (isnil "CTI_EW_HUD_I") then {CTI_EW_HUD_I = 0};
 	if (isnil "CTI_EW_ANET") then {CTI_EW_ANET = 1};
 
 
