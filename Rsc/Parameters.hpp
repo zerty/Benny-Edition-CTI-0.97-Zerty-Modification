@@ -158,6 +158,18 @@ class Params {
 
 		//Additionnal Parameter (Zerty)
 	class SEPARATOR {
+		title = "========================== PERSISTENCY ============================";
+		values[] = {1};
+		texts[] = {""};
+		default = 1;
+	};
+	class CTI_PERSISTANT {
+		title = "Zerty: PERSISTANCY";
+		values[] = {0,1};
+		texts[] = {"DISABLED", "ENABLED"};
+		default = 1;
+	};
+	class SEPARATOR0 {
 		title = "===================== Gameplay and Mission =======================";
 		values[] = {1};
 		texts[] = {""};
@@ -201,7 +213,7 @@ class Params {
 		title = "Zerty: MISSION : Time Limit";
 		values[] = {0,2,4,6,8,12,24};
 		texts[] = {"Never","2h","4h","6h","8h","12h","24h"};
-		default = 12;
+		default = 0;
 	};
 	class MIN_TOWNS {
 		title = "Zerty: MISSION: Minimum number of towns";

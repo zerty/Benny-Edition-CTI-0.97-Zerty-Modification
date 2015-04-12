@@ -647,4 +647,7 @@ with missionNamespace do {
 	if (isnil "CTI_BUY_RESTRICT_LEADER") then {CTI_BUY_RESTRICT_LEADER = 0};
 	if (isnil "CTI_GROUP_AWARD_MULT") then {CTI_GROUP_AWARD_MULT = 0};
 
+	if (isnil "CTI_PERSISTANT") then {CTI_PERSISTANT = 1};
+
+
 };
