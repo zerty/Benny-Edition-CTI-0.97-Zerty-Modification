@@ -45,7 +45,7 @@ _structure setDir _direction;
 _structure setVectorUp [0,0,0];
 
 
-_structure setVariable ["cti_save", _save,false];
+_structure setVariable ["cti_save", _save,true];
 _structure setVariable ["cti_completion", 10,true];
 _structure setVariable ["cti_completion_ratio", CTI_BASE_CONSTRUCTION_RATIO_INIT,true];
 // _structure setVariable ["cti_structures_iteration", round(CTI_BASE_WORKERS_BUILD_COEFFICIENT / ((_var select 3)/100))];
