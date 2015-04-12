@@ -31,6 +31,9 @@ profileNamespace setVariable ["CTI_SAVE_TOWNS",_towns];
 	_save_structures=[];
 	{_save_structures pushBack (_x getVariable "cti_save");true} count (_logic getVariable "cti_defences");
 	_save pushBack _save_structures;
+	//Current upgrade
+	_save pushBack [(_logic getVariable "cti_upgrade"),(_logic getVariable "cti_upgrade_level"),(_logic getVariable "cti_upgrade_lt")];
+
 
 	profileNamespace setVariable [format ["CTI_SAVE_%1", _side],_save];
 } forEach [east,west];

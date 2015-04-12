@@ -15,7 +15,7 @@ diag_log " :: SAVE :: Loading";
 	_hq=(_side) call CTI_CO_FNC_GetSideHQ;
 	_hq setposATL (((_load select 0 ) select 0)select 0);
 	_hq setdir (((_load select 0 ) select 0)select 1);
-	if (((_load select 0 ) select 2)) then {_hq setDamage 1};
+	if (((_load select 0 ) select 1)) then {_hq setDamage 1};
 
     // com funds
     _logic setvariable ["cti_commander_funds",(_load select 1 ),true];
@@ -34,6 +34,10 @@ diag_log " :: SAVE :: Loading";
 
     //defences
     {[_x select 0, _side,(( _x select 1) select 0), (( _x select 1) select 1),objnull, false, _x select 2] call CTI_SE_FNC_BuildDefense;true} count (_load select 6);
+
+    //curent upgrade
+    if (((_load select 7) select 0 ) > -1) then { [_side,((_load select 7) select 0 ), ((_load select 7) select 1 )] spawn CTI_SE_FNC_StartUpgrade; sleep 1; _logic setvariable ["cti_upgrade_lt",((_load select 7) select 1 ),true]; };
+
 
 } forEach [east,west];
 
