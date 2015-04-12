@@ -1267,10 +1267,10 @@ _i = _i		+ ["NVGoggles_OPFOR"];
 _u = _u		+ [0];
 _p = _p		+ [15];
 
-_i = _i		+ ["Binocular"];
+/*_i = _i		+ ["Binocular"];
 _u = _u		+ [0];
 _p = _p		+ [5];
-
+*/
 
 _i = _i		+ ["Rangefinder"];
 _u = _u		+ [1];

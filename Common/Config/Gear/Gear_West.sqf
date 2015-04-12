@@ -1440,11 +1440,11 @@ _p = _p		+ [2];
 _i = _i		+ ["NVGoggles"];
 _u = _u		+ [0];
 _p = _p		+ [15];
-
+/*
 _i = _i		+ ["Binocular"];
 _u = _u		+ [0];
 _p = _p		+ [5];
-
+*/
 _i = _i		+ ["Rangefinder"];
 _u = _u		+ [1];
 _p = _p		+ [20];
