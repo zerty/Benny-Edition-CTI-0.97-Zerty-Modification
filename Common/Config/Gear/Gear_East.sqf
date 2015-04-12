@@ -58,7 +58,7 @@ _i = _i		+ ["6Rnd_45ACP_Cylinder"];
 _u = _u		+ [0];
 _p = _p		+ [5];
 
-_i = _i		+ ["10Rnd_762x51_Mag"];
+_i = _i		+ ["10Rnd_762x54_Mag"];
 _u = _u		+ [0];
 _p = _p		+ [10];
 
@@ -102,13 +102,21 @@ _i = _i		+ ["30Rnd_65x39_caseless_green_mag_Tracer"];
 _u = _u		+ [0];
 _p = _p		+ [5];
 
-_i = _i		+ ["150Rnd_762x51_Box"];
+_i = _i		+ ["150Rnd_762x54_Box"];
 _u = _u		+ [0];
-_p = _p		+ [15];
+_p = _p		+ [25];
 
-_i = _i		+ ["150Rnd_762x51_Box_Tracer"];
+_i = _i		+ ["150Rnd_762x54_Box_Tracer"];
 _u = _u		+ [0];
-_p = _p		+ [15];
+_p = _p		+ [25];
+
+_i = _i		+ ["200Rnd_65x39_cased_Box"];
+_u = _u		+ [0];
+_p = _p		+ [20];
+
+_i = _i		+ ["200Rnd_65x39_cased_Box_Tracer"];
+_u = _u		+ [0];
+_p = _p		+ [20];
 
 _i = _i		+ ["RPG32_F"];
 _u = _u		+ [0];
