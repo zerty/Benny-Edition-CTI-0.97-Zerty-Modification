@@ -42,7 +42,5 @@ diag_log " :: SAVE :: Loading";
 } forEach [east,west];
 
 
-//players
 
-_players= profileNamespace getVariable ["CTI_SAVE_PLAYERS",[]];
-{missionNamespace setVariable [_x select 0,_x select 1];true} count _players;
+
