@@ -106,7 +106,7 @@ if (CTI_IsServer) then {
 	if (missionNamespace getvariable "CTI_PERSISTANT" == 1) then {
 		if (profileNamespace getvariable ["CTI_SAVE_ENABLED",false]) then {
 			_players= profileNamespace getVariable ["CTI_SAVE_PLAYERS",[]];
-			{ diag_log format [" :: SAVE ::Loading player ",(_x select 1 )];missionNamespace setVariable [_x select 0,_x select 1];true} count _players;
+			{ diag_log format [" :: SAVE ::Loading player %1 ",(_x select 1 )];missionNamespace setVariable [_x select 0,_x select 1];true} count _players;
 		};
 	};
 	if (CTI_Log_Level >= CTI_Log_Information) then { ["INFORMATION", "FILE: init.sqf", "Running server initialization"] call CTI_CO_FNC_Log	};
