@@ -1695,6 +1695,51 @@ _i = _i		+ ["B_Static_Designator_01_weapon_F"];
 _u = _u		+ [2];
 _p = _p		+ [200];
 
+
+
+//TFR
+
+_i = _i + ["tf_rt1523g_rhs"];
+_u = _u + [0];
+_p = _p + [55];
+
+_i = _i + ["tf_anprc152"];
+_u = _u + [0];
+_p = _p + [500];
+
+_i = _i + ["tf_rf7800str"];
+_u = _u + [0];
+_p = _p + [100];
+
+_i = _i + ["tf_rt1523g"];
+_u = _u + [0];
+_p = _p + [200];
+
+_i = _i + ["tf_rt1523g_big"];
+_u = _u + [0];
+_p = _p + [250];
+
+_i = _i + ["tf_rt1523g_black"];
+_u = _u + [0];
+_p = _p + [250];
+
+_i = _i + ["tf_rt1523g_fabric"];
+_u = _u + [0];
+_p = _p + [250];
+
+_i = _i + ["tf_rt1523g_green"];
+_u = _u + [0];
+_p = _p + [250];
+
+_i = _i + ["tf_rt1523g_sage"];
+_u = _u + [0];
+_p = _p + [250];
+
+_i = _i + ["tf_anarc210"];
+_u = _u + [0];
+_p = _p + [1000];
+
+
 [_faction, _i, _u, _p] call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_Config_Set.sqf";
 
 //--- Templates (Generated on purchase by uncommenting the diag_log in Events_UI_GearMenu.sqf >> "onPurchase").

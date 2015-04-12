@@ -1529,6 +1529,34 @@ _i = _i		+ ["muzzle_snds_93mmg_tan"];
 _u = _u		+ [3];
 _p = _p		+ [10];
 
+
+//TFR
+
+_i = _i + ["tf_mr3000_rhs"];
+_u = _u + [0];
+_p = _p + [55];
+
+_i = _i + ["tf_fadak"];
+_u = _u + [0];
+_p = _p + [500];
+
+_i = _i + ["tf_pnr1000a"];
+_u = _u + [0];
+_p = _p + [100];
+
+_i = _i + ["tf_mr3000"];
+_u = _u + [0];
+_p = _p + [200];
+
+_i = _i + ["tf_mr3000_multicam"];
+_u = _u + [0];
+_p = _p + [200];
+
+_i = _i + ["tf_mr6000l"];
+_u = _u + [0];
+_p = _p + [1000];
+
+
 [_faction, _i, _u, _p] call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_Config_Set.sqf";
 
 //--- Templates (Those lines can be generated in the RPT on purchase by uncommenting the diag_log in Events_UI_GearMenu.sqf >> "onPurchase").
