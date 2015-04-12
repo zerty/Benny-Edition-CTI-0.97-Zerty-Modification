@@ -41,13 +41,13 @@ while {!CTI_Gameover} do {
 					if (!isNil "_get") then {
 						_get set [2,floor (_g getVariable "cti_funds")];
 						missionNamespace setVariable [format["CTI_SERVER_CLIENT_%1", _x],_get];
-						diag_log format [" :: DYNG :: saving money for %1 : %2 => %3", _get select 0 , _get select 2, _get ];
+						//diag_log format [" :: DYNG :: saving money for %1 : %2 => %3", _get select 0 , _get select 2, _get ];
 					};
 				}else {
 					if (!isNil "_get") then {
 						_get set [2,(missionNamespace getVariable format ["CTI_ECONOMY_STARTUP_FUNDS_%1", side _g])];
 						missionNamespace setVariable [format["CTI_SERVER_CLIENT_%1", _x],_get];
-						diag_log format [" :: DYNG :: saving money for %1 : %2 => %3", _get select 0 , _get select 2, _get ];
+						//diag_log format [" :: DYNG :: saving money for %1 : %2 => %3", _get select 0 , _get select 2, _get ];
 					};
 				};
 				true
