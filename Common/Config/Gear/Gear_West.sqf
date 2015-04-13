@@ -967,10 +967,6 @@ _i = _i		+ ["G_Bandanna_aviator"];
 _u = _u		+ [1];
 _p = _p		+ [3];
 
-_i = _i		+ ["G_Bandanna_beas"];
-_u = _u		+ [1];
-_p = _p		+ [3];
-
 _i = _i		+ ["G_Bandanna_blk"];
 _u = _u		+ [1];
 _p = _p		+ [3];

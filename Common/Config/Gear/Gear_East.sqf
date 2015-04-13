@@ -479,10 +479,6 @@ _i = _i		+ [["arifle_Katiba_GL_ACO_pointer_F"]];
 _u = _u		+ [1];
 _p = _p		+ [40];
 
-_i = _i		+ [["arifle_Katiba_GL_COWS_pointer_F"]];
-_u = _u		+ [1];
-_p = _p		+ [40];
-
 _i = _i		+ [["arifle_Katiba_GL_Nstalker_pointer_F"]];
 _u = _u		+ [1];
 _p = _p		+ [40];
@@ -693,10 +689,6 @@ _i = _i		+ ["B_Kitbag_cbr"];
 _u = _u		+ [1];
 _p = _p		+ [20];
 
-_i = _i		+ ["B_Bergen_sgg_Exp"];
-_u = _u		+ [1];
-_p = _p		+ [25];
-
 
 
 _i = _i		+ ["B_Carryall_ocamo"];
@@ -829,10 +821,6 @@ _u = _u		+ [1];
 _p = _p		+ [3];
 
 _i = _i		+ ["G_Bandanna_aviator"];
-_u = _u		+ [1];
-_p = _p		+ [3];
-
-_i = _i		+ ["G_Bandanna_beas"];
 _u = _u		+ [1];
 _p = _p		+ [3];
 
