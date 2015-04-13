@@ -41,7 +41,7 @@ diag_log " :: SAVE :: Loading";
 
     //curent upgrade
     diag_log format [" :: SAVE :: Loading upgrade %1",(_load select 7)];
-    if (((_load select 7) select 0 ) > -1) then { [_side,((_load select 7) select 0 ), ((_load select 7) select 1 )] spawn CTI_SE_FNC_StartUpgrade; sleep 1; _logic setvariable ["cti_upgrade_lt",((_load select 7) select 2 ),true]; };
+    if (((_load select 7) select 0 ) > -1) then {_logic setvariable ["cti_upgrade_lt",((_load select 7) select 2 ),true]; [_side,((_load select 7) select 0 ), ((_load select 7) select 1 )] spawn CTI_SE_FNC_StartUpgrade;   };
 
 
 } forEach [east,west];

@@ -103,10 +103,11 @@ CTI_Init_Common = true;
 //--- Server execution
 if (CTI_IsServer) then {
 	// load player saved informations
+	CTI_PLAYER_VARIABLES=[];
 	if (missionNamespace getvariable "CTI_PERSISTANT" == 1) then {
 		if (profileNamespace getvariable ["CTI_SAVE_ENABLED",false]) then {
 			_players= profileNamespace getVariable ["CTI_SAVE_PLAYERS",[]];
-			{ diag_log format [" :: SAVE ::Loading player %1 ",(_x select 1 )];missionNamespace setVariable [_x select 0,_x select 1];true} count _players;
+			{ diag_log format [" :: SAVE ::Loading player %1 ",(_x select 1 )];missionNamespace setVariable [_x select 0,_x select 1];CTI_PLAYER_VARIABLES pushBack (_x select 0); true} count _players;
 		};
 	};
 	if (CTI_Log_Level >= CTI_Log_Information) then { ["INFORMATION", "FILE: init.sqf", "Running server initialization"] call CTI_CO_FNC_Log	};

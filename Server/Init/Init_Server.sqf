@@ -61,7 +61,7 @@ execVM "Server\Init\Init_Prison.sqf";
 CTI_Structure_Lock=False;
 CTI_Worker_Lock=False;
 
-CTI_PLAYER_VARIABLES=[];
+
 
 CENTER_POS=getMarkerPos "CENTER_POS";
 "CENTER_POS" setmarkeralpha 0;
