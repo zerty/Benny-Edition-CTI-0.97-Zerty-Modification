@@ -158,6 +158,18 @@ class Params {
 
 		//Additionnal Parameter (Zerty)
 	class SEPARATOR {
+		title = "========================== PERSISTENCY ============================";
+		values[] = {1};
+		texts[] = {""};
+		default = 1;
+	};
+	class CTI_PERSISTANT {
+		title = "Zerty: PERSISTANCY";
+		values[] = {0,1};
+		texts[] = {"DISABLED", "ENABLED"};
+		default = 1;
+	};
+	class SEPARATOR0 {
 		title = "===================== Gameplay and Mission =======================";
 		values[] = {1};
 		texts[] = {""};
@@ -173,11 +185,17 @@ class Params {
 		title = "Zerty: Perf: PhysX Caching System";
 		values[] = {0,1};
 		texts[] = {"Disabled","Enabled"};
-		default = 1;
+		default = 0;
 	};
 
 	class CTI_TEAMSWAP {
 		title = "Zerty:Team swap protection";
+		values[] = {0,1};
+		texts[] = {"off","on"};
+		default = 1;
+	};
+	class CTI_TEAMSTACK {
+		title = "Zerty:Team Stack protection";
 		values[] = {0,1};
 		texts[] = {"off","on"};
 		default = 1;
@@ -195,7 +213,7 @@ class Params {
 		title = "Zerty: MISSION : Time Limit";
 		values[] = {0,2,4,6,8,12,24};
 		texts[] = {"Never","2h","4h","6h","8h","12h","24h"};
-		default = 12;
+		default = 0;
 	};
 	class MIN_TOWNS {
 		title = "Zerty: MISSION: Minimum number of towns";
@@ -447,6 +465,12 @@ class Params {
 		values[] = {1,2,3,4,5};
 		texts[] = {"high","medium high", "medium low", "low","Disable target report"};
 		default = 2;
+	};
+	class CTI_EW_HUD_I {
+		title = "Zerty: Electronic Warfare : Tactical HUD report infantry";
+		values[] = {0,1};
+		texts[] = {"false","true"};
+		default = 0;
 	};
 	class CTI_EW_ANET {
 		title = "Zerty: Electronic Warfare : Field Network Meshing";

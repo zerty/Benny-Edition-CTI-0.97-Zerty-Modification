@@ -19,7 +19,7 @@ CTI_Log_Warning = 1;
 CTI_Log_Error = 0;
 
 //--- Log level to use
-CTI_Log_Level = 2;
+CTI_Log_Level = 0;
 
 //--- We define the log function early so that we can use it
 CTI_CO_FNC_Log = compile preprocessFileLineNumbers "Common\Functions\Common_Log.sqf";
@@ -102,6 +102,14 @@ CTI_Init_Common = true;
 
 //--- Server execution
 if (CTI_IsServer) then {
+	// load player saved informations
+	CTI_PLAYER_VARIABLES=[];
+	if (missionNamespace getvariable "CTI_PERSISTANT" == 1) then {
+		if (profileNamespace getvariable ["CTI_SAVE_ENABLED",false]) then {
+			_players= profileNamespace getVariable ["CTI_SAVE_PLAYERS",[]];
+			{ diag_log format [" :: SAVE ::Loading player %1 ",(_x select 1 )];missionNamespace setVariable [_x select 0,_x select 1];CTI_PLAYER_VARIABLES pushBack (_x select 0); true} count _players;
+		};
+	};
 	if (CTI_Log_Level >= CTI_Log_Information) then { ["INFORMATION", "FILE: init.sqf", "Running server initialization"] call CTI_CO_FNC_Log	};
 	execVM "Server\Init\Init_Server.sqf";
 };

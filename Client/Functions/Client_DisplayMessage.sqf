@@ -97,7 +97,6 @@ switch (_message_var) do {
 	case "jailed": {CTI_P_ChatID commandChat format ["::JAIL:: Player %1 has been jailed for %2 minutes! ", _parameters select 0, _parameters select 1];};
 	case "town_award": {
 		CTI_P_ChatID commandChat  format ["$%1 awarded for the capture of %2",_parameters select 0, _parameters select 1];
-		CTI_P_ChatID commandChat format ["[Base value:$%1][Team balance corrector:$%2][Teamplay balance:$%3]", _parameters select 2, _parameters select 3, _parameters select 4];
 	};
 	case "take_com": {CTI_P_ChatID commandChat format ["::Commander:: Player %1 has taken command of your side. ", _parameters select 0];};
 	case "leave_com": {CTI_P_ChatID commandChat format ["::Commander:: Player %1 has left command of your side. ", _parameters select 0];};

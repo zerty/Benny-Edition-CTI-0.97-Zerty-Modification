@@ -29,13 +29,14 @@
 	  -> The client cannot join
 */
 
-_can_join = _this select 0;
-_was_jailed = _this select 1;
+_teamswap = _this select 0;
+_teamstack = _this select 1;
 
-if (_can_join) then {
+if !(_teamswap || _teamstack) then {
 	CTI_P_CanJoin = true;
 } else {
-	failMission "END6"; //--- Teamswap
+	if (_teamswap) then {failMission "END6"}; //--- Teamswap
+	if (_teamstack) then {failMission "END7"}; //--- Teamsstack
 };
 
 //CTI_P_CanJoin = true;

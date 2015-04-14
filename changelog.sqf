@@ -413,10 +413,17 @@ player createDiaryRecord ["CL",["* 1.3.0.6 [TestVersion]","
 
 player createDiaryRecord ["CL",["* 1.3.1.0","
   - Feature: Group system from BiS <br />
-  - Feature: Marksman new items <br /><br />
+  - Feature: Marksman new items <br />
+  - Feature: Teamstack protection <br />
+  - Feature: Weak server persistency <br /><br />
 
   - PARAM: FFAR upgrade limitation <br />
-  - PARAM: Buy limitation with players groups<br /><br />
+  - PARAM: Buy limitation with players groups<br />
+  - PARAM: server persistency<br />
+  - PARAM: infantry on tac hud<br /><br />
+
+  - CHANGE: Gear upgrades refactored <br />
+  - CHANGE: vehicle prices and upgrades refactored<br />
 
   - Fix : Hud showing without tac glasses <br />
   - Fix : Upgrade forcing through param making Upg Dialog bug <br />

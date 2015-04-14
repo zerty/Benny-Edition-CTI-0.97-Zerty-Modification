@@ -40,12 +40,16 @@ _upgrades = (_side) call CTI_CO_FNC_GetSideUpgrades;
 
 _upgrade_time = ((missionNamespace getVariable Format["CTI_%1_UPGRADES_TIMES", _side]) select _upgrade) select _level;
 if (CTI_DEBUG) then {_upgrade_time =0};
-_end_time=time + _upgrade_time;
-while {time < _end_time} do{
-	_logic setVariable ["cti_upgrade_lt", (ceil (_end_time -time )), true];
+
+if ((_logic getVariable ["cti_upgrade_lt",-1]) <0) then {_logic setVariable ["cti_upgrade_lt",_upgrade_time,true];};
+_logic  setVariable ["cti_upgrade", _upgrade,true];
+_logic  setVariable ["cti_upgrade_level", _level];
+
+while {(_logic getVariable "cti_upgrade_lt") >0 } do{
 	sleep 10;
+	_logic setVariable ["cti_upgrade_lt", (_logic getVariable "cti_upgrade_lt") -10 , true];
 };
-_logic setVariable ["cti_upgrade_lt",0, true];
+_logic setVariable ["cti_upgrade_lt",-1, true];
 
 _upgrades set [_upgrade, (_upgrades select _upgrade) + 1];
 
