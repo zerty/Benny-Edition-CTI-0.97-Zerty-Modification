@@ -85,7 +85,7 @@ if (_fob) then {
 	_logic setVariable ["cti_fobs", (_logic getVariable "cti_fobs") + [_defense], true];
 
 };
-
+_defense setVariable ["cti_save",[_varname,[_position,_direction],_manned],false];
 _defense setDir _direction;
 _defense setPos _position;
 if (_defense emptyPositions "gunner" < 1 && !_fob) then { //--- Soft defense

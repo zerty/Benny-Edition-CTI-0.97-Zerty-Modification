@@ -596,6 +596,7 @@ with missionNamespace do {
 
 	if (isNil 'CTI_BASEBUILDING') then {CTI_BASEBUILDING = 1}; //DOn
 	if (isNil 'CTI_TEAMSWAP') then {CTI_TEAMSWAP = 1}; //DOn
+	if (isNil 'CTI_TEAMSTACK') then {CTI_TEAMSTACK = 1}; //DOn
 	if (isNil 'CTI_MAX_MISSION_TIME') then {CTI_MAX_MISSION_TIME = 12}; //DOne
 	if (isNil 'CTI_VICTORY_HQ') then {CTI_VICTORY_HQ = 0}; //Done
 	if (isNil 'CTI_HALO_POLES') then {CTI_HALO_POLES = 1};
@@ -632,6 +633,7 @@ with missionNamespace do {
 
 	if (isnil "CTI_EW_HUD") then {CTI_EW_HUD = 1};
 	if (isnil "CTI_EW_HUD_S") then {CTI_EW_HUD_S = 1};
+	if (isnil "CTI_EW_HUD_I") then {CTI_EW_HUD_I = 0};
 	if (isnil "CTI_EW_ANET") then {CTI_EW_ANET = 1};
 
 
@@ -644,5 +646,8 @@ with missionNamespace do {
 	if (isnil "CTI_GAMEPLAY_DARTER_FUEL") then {CTI_GAMEPLAY_DARTER_FUEL = 1};
 	if (isnil "CTI_BUY_RESTRICT_LEADER") then {CTI_BUY_RESTRICT_LEADER = 0};
 	if (isnil "CTI_GROUP_AWARD_MULT") then {CTI_GROUP_AWARD_MULT = 0};
+
+	if (isnil "CTI_PERSISTANT") then {CTI_PERSISTANT = 1};
+
 
 };

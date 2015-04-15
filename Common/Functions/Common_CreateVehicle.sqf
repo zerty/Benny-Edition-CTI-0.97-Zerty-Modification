@@ -111,7 +111,7 @@ if ((missionNamespace getVariable [format ["%1", typeOf _vehicle],["","","","","
 
 
 
-if (_locked && !( _vehicle isKindOf "Thing") && !( _vehicle isKindOf "StaticWeapon")) then {_vehicle lock 2};
+if (_locked && !( _vehicle isKindOf "Thing") && !( _vehicle isKindOf "StaticWeapon") && !( _vehicle isKindOf "UAV") && !( _vehicle isKindOf "UGV_01_base_F")) then {_vehicle lock 2} else {_vehicle lock 0};
 if (_net) then {_vehicle setVariable ["cti_net", _side, true]};
 if (_handle) then {
 	_vehicle addEventHandler ["killed", format["[_this select 0, _this select 1, %1] spawn CTI_CO_FNC_OnUnitKilled", _side]]; //--- Called on destruction
@@ -169,7 +169,7 @@ if ((_vehicle isKindOf "Pod_Heli_Transport_04_base_F") || (_vehicle isKindOf "Sl
 
 //cache
 
-if ! ((_vehicle isKindOf "Plane") || (_vehicle isKindOf "UAV") ||(_vehicle isKindOf "Pod_Heli_Transport_04_base_F") || (_vehicle isKindOf "Slingload_01_Base_F")  && (missionNamespace getVariable "CACHE_EMPTY") == 1)then {
+if ((!((_vehicle isKindOf "Plane") || (_vehicle isKindOf "UAV") ||(_vehicle isKindOf "Pod_Heli_Transport_04_base_F") || (_vehicle isKindOf "Slingload_01_Base_F")))  && (missionNamespace getVariable "CACHE_EMPTY") == 1)then {
  ["SERVER", "Request_Cache", _vehicle] call CTI_CO_FNC_NetSend;
 };
 

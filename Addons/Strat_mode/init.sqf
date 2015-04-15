@@ -48,6 +48,7 @@ with missionNamespace do {
 	   	UAV_RANGE = compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Functions\UAV_Range.sqf";
 	   	DYNG_WAIT = compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Functions\DYNG_waitforgroup.sqf";
 	   	DYNG_SERVERLOOP = compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Functions\DYNG_serverloop.sqf";
+
 };
 
 //Common stuff
@@ -141,6 +142,9 @@ if (CTI_IsServer) then {
 		CTI_PVF_Server_Assign_Zeus= {
   		_this  assignCurator ADMIN_ZEUS;
 		};
+		CTI_PVF_Server_UAV_FUEL={
+			_this spawn UAV_FUEL;
+		};
 	};
 
 };
@@ -176,6 +180,10 @@ if (CTI_IsClient) then {
 			_marker setMarkerSizeLocal [CTI_BASE_AREA_RANGE,CTI_BASE_AREA_RANGE];
 			_marker setMarkerColorLocal  ((_side) call CTI_CO_FNC_GetSideColoration);
 			_marker setMarkerAlphaLocal 0.5;
+		};
+		CTI_PVF_SetFuel={
+			diag_log format [":: Fuel :: setting %1 at %2", _this select 0 , _this select 1];
+			(vehicle (_this select 0)) setfuel (_this select 1);
 		};
 	};
 
@@ -269,20 +277,15 @@ if (CTI_IsServer) then {
 		// hc balance
 		0 spawn HCGA_Init;
 
-		  //UAv Lim
-
-		if ((missionNamespace getVariable "CTI_GAMEPLAY_DARTER_FUEL") == 1) then {
-			0 spawn UAV_FUEL;
-		};
 		// PhysX artifacts cleanup
-		if ((missionNamespace getVariable "CACHE_EMPTY") == 1) then {
+		/*if ((missionNamespace getVariable "CACHE_EMPTY") == 1) then {
 			0 spawn {
 				while {!CTI_Gameover} do {
 					{if !(simulationEnabled _x ) then {_x enableSimulationGlobal True};True} count (allUnits + vehicles + allDead );
 					sleep 600;
 				};
 			};
-		};
+		};*/
 
 };
 
@@ -420,9 +423,6 @@ if (CTI_IsClient) then {
 
   //UAV lim
 
-	if ((missionNamespace getVariable "CTI_GAMEPLAY_DARTER_FUEL") == 1) then {
-		0 spawn UAV_FUEL;
-	};
 	if ((missionNamespace getVariable "CTI_GAMEPLAY_DARTER") >0 ) then {
 		["darter","onEachFrame",'call UAV_RANGE ' ] call BIS_fnc_addStackedEventHandler;
 	};

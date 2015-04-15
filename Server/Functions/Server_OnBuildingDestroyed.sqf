@@ -66,6 +66,7 @@ if !(_sell) then {
 	_structure setDir _direction;
 	_structure setVectorUp [0,0,0];
 
+	_structure setVariable ["cti_save", _variable,true];
 	_structure setVariable ["cti_completion", 10,true];
 	_structure setVariable ["cti_completion_ratio", _completion_ratio * CTI_BASE_CONSTRUCTION_RATIO_ON_DEATH,true];
 	// _structure setVariable ["cti_structures_iteration", round(CTI_BASE_WORKERS_BUILD_COEFFICIENT / ((_var select 3)/100))];

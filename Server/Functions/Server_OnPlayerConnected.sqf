@@ -59,8 +59,11 @@ _default_funds = (missionNamespace getVariable format ["CTI_ECONOMY_STARTUP_FUND
 //==========
 _get = missionNamespace getVariable [format["CTI_SERVER_CLIENT_%1", _uid],["",civilian,_default_funds,grpNull]];
 _get set [0,_uid];
-if ((_get select 1) == civilian || (missionNamespace getVariable "CTI_TEAMSWAP" == 0)) then {_get set [1,_side_joinned]};
-if (isNil {missionNamespace getVariable format["CTI_SERVER_CLIENT_%1", _uid]}) then {missionNamespace setVariable [format["CTI_SERVER_CLIENT_%1", _uid],_get] };
+//if ((_get select 1) == civilian || (missionNamespace getVariable "CTI_TEAMSWAP" == 0)) then {_get set [1,_side_joinned]};
+if (isNil {missionNamespace getVariable format["CTI_SERVER_CLIENT_%1", _uid]}) then {
+	missionNamespace setVariable [format["CTI_SERVER_CLIENT_%1", _uid],_get];
+	CTI_PLAYER_VARIABLES pushBack  (format["CTI_SERVER_CLIENT_%1", _uid]);
+};
 
 if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FILE: Server\Functions\Server_OnPlayerConnected.sqf", format["Sent to   [%1]  found : [%2] ",(owner _unit),_get]] call CTI_CO_FNC_Log};
 

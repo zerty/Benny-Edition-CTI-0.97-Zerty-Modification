@@ -2,24 +2,29 @@
 /*%FSM<HEAD>*/
 /*
 item0[] = {"Start_FSM",0,250,-100.000000,-200.000000,0.000000,-150.000000,0.000000,"Start FSM"};
-item1[] = {"Cycle",4,218,-100.000000,-100.000000,0.000000,-50.000000,1.000000,"Cycle"};
-item2[] = {"Duty",2,250,-100.000000,0.000000,0.000000,50.000000,0.000000,"Duty"};
-item3[] = {"Gameover",4,218,-100.000000,100.000000,0.000000,150.000000,0.000000,"Gameover"};
-item4[] = {"End_FSM",1,250,-100.000000,200.000000,0.000000,250.000000,0.000000,"End FSM"};
+item1[] = {"Cycle",4,218,-125.000000,100.000000,-25.000000,150.000000,1.000000,"Cycle"};
+item2[] = {"Duty",2,250,-125.000000,200.000000,-25.000000,250.000000,0.000000,"Duty"};
+item3[] = {"Gameover",4,218,-125.000000,300.000000,-25.000000,350.000000,0.000000,"Gameover"};
+item4[] = {"End_FSM",1,250,-125.000000,400.000000,-25.000000,450.000000,0.000000,"End FSM"};
 item5[] = {"_",4,4314,100.000000,-100.000000,200.000000,-50.000000,0.000000,""};
 item6[] = {"Sleep",2,250,125.000000,25.000000,225.000000,75.000000,0.000000,"Sleep"};
-link0[] = {0,1};
-link1[] = {0,5};
+item7[] = {"_",4,218,-200.000000,-125.000000,-100.000000,-75.000000,0.000000,""};
+item8[] = {"_",2,250,-225.000000,-25.000000,-125.000000,25.000000,0.000000,""};
+link0[] = {0,5};
+link1[] = {0,7};
 link2[] = {1,2};
 link3[] = {2,1};
 link4[] = {2,3};
 link5[] = {2,5};
 link6[] = {3,4};
 link7[] = {5,6};
-link8[] = {6,1};
-link9[] = {6,5};
-globals[] = {25.000000,1,0,0,0,640,480,1,142,6316128,1,-503.710999,312.980652,1095.947510,-451.375793,465,731,1};
-window[] = {2,-1,-1,-1,-1,619,25,790,25,3,483};
+link8[] = {6,5};
+link9[] = {6,7};
+link10[] = {7,8};
+link11[] = {8,1};
+link12[] = {8,5};
+globals[] = {25.000000,1,0,0,0,640,480,1,145,6316128,1,-503.710999,312.980652,1095.947510,-451.375793,465,881,1};
+window[] = {2,-1,-1,-1,-1,669,75,840,75,3,483};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -39,18 +44,18 @@ class FSM
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
-        /*%FSM<LINK "Cycle">*/
-        class Cycle
+        /*%FSM<LINK "_">*/
+        class _
         {
-          priority = 1.000000;
-          to="Duty";
+          priority = 0.000000;
+          to="_";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"!CTI_GameOver && time > _ncycle && !(isnil ""DYNG_WAIT"") && ( [""PlayerHasGroup"",[player]] call BIS_fnc_dynamicGroups)&& ! (isnil {group player getVariable ""cti_order""})&& ! (isnil {group player getVariable ""cti_order_pos""})&& ! (isnil {group player getVariable ""cti_team_reload""})"/*%FSM</CONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!CTI_GameOver && time > _ncycle && !(isnil ""DYNG_WAIT"") && ( [""PlayerHasGroup"",[player]] call BIS_fnc_dynamicGroups)&& ! (isnil {(group player) getVariable ""cti_order""})&& ! (isnil {(group player) getVariable ""cti_order_pos""})"/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/
-        /*%FSM<LINK "_">*/
-        class _
+        /*%FSM<LINK "__1">*/
+        class __1
         {
           priority = 0.000000;
           to="Sleep";
@@ -105,7 +110,7 @@ class FSM
           priority = 1.000000;
           to="Duty";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"!CTI_GameOver && time > _ncycle && !(isnil ""DYNG_WAIT"") && ( [""PlayerHasGroup"",[player]] call BIS_fnc_dynamicGroups)&& ! (isnil {group player getVariable ""cti_order""})&& ! (isnil {group player getVariable ""cti_order_pos""})&& ! (isnil {group player getVariable ""cti_team_reload""})"/*%FSM</CONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!CTI_GameOver && time > _ncycle && !(isnil ""DYNG_WAIT"") && ( [""PlayerHasGroup"",[player]] call BIS_fnc_dynamicGroups)&& ! (isnil {(group player) getVariable ""cti_order""})&& ! (isnil {(group player) getVariable ""cti_order_pos""})"/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/
@@ -152,13 +157,45 @@ class FSM
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="_";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!CTI_GameOver && time > _ncycle && !(isnil ""DYNG_WAIT"") && ( [""PlayerHasGroup"",[player]] call BIS_fnc_dynamicGroups)&& ! (isnil {(group player) getVariable ""cti_order""})&& ! (isnil {(group player) getVariable ""cti_order_pos""})"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "__1">*/
+        class __1
+        {
+          priority = 0.000000;
+          to="Sleep";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!CTI_GameOver && time > _ncycle && !(isnil ""DYNG_WAIT"") &&!( [""PlayerHasGroup"",[player]] call BIS_fnc_dynamicGroups)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "_">*/
+    class _
+    {
+      name = "_";
+      init = /*%FSM<STATEINIT""">*/"_order_last = -1;" \n
+       "_order_pos_last = group player getVariable ""cti_order_pos"";"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
         /*%FSM<LINK "Cycle">*/
         class Cycle
         {
           priority = 1.000000;
           to="Duty";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"!CTI_GameOver && time > _ncycle && !(isnil ""DYNG_WAIT"") && ( [""PlayerHasGroup"",[player]] call BIS_fnc_dynamicGroups)&& ! (isnil {group player getVariable ""cti_order""})&& ! (isnil {group player getVariable ""cti_order_pos""})&& ! (isnil {group player getVariable ""cti_team_reload""})"/*%FSM</CONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!CTI_GameOver && time > _ncycle && !(isnil ""DYNG_WAIT"") && ( [""PlayerHasGroup"",[player]] call BIS_fnc_dynamicGroups)&& ! (isnil {(group player) getVariable ""cti_order""})&& ! (isnil {(group player) getVariable ""cti_order_pos""})"/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/
