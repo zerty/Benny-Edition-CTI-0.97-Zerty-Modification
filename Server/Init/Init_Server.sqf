@@ -293,7 +293,7 @@ if (missionNamespace getvariable "CTI_PERSISTANT" == 1) then {
 	if (profileNamespace getvariable ["CTI_SAVE_ENABLED",false]) then { 0 call PERS_LOAD};
 	0 spawn {
 		while {!CTi_GameOver} do {
-			sleep 600 +random (100);
+			sleep 270 +random (60);
 			0 call PERS_SAVE;
 		};
 	};
