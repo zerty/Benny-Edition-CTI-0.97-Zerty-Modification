@@ -101,6 +101,7 @@ You may also choose to change or reload your gear at the nearest <t color='#eaff
 - <t color='#e8bd12'>Salvagers</t> are used to salvage destroyed vehicles thus reclaiming a certain part of the original wreck's value. If a player is the driver during the salvaging of a wreck then he will receive <t color='#f455aa'>50 percent</t> of it's value and earn some points while the rest is divided among the side's teams. <t color='#e8bd12'>Independent AI Salvagers</t> may be purchased by the Commander from the <t color='#eaff96'>Repair Depot</t>.<br /><br />
 ",
 "<t size='1.4' color='#2394ef'>Commander</t><br /><br />
+First step for player to begin duty as a Commander is to go to MHQ and in it's menu call function 'Take Command'. Then if most of players vote for new commander, player will be granted commander role. <br /><br />
 The <t color='#e8bd12'>Commander</t> is reponsible for <t color='#eaff96'>Constructing Bases</t> and <t color='#eaff96'>Managing</t> the side's teams. He may also diminish or increase the <t color='#eaff96'>Player Pool</t> and the <t color='#eaff96'>Award Pool</t>.<br /><br />
 The responsabilities that falls on the Commander are heavier than a regular player. It is recommended to practice this role in SinglePlayer if you're not used to it (your team may be very angry at you otherwise).<br /><br />
 Your very first duty as Commander is to find a suitable <t color='#eaff96'>Base Location</t>, the perfect area should be flat, easily defensible and not too far away from the battlefield.<br /><br />
