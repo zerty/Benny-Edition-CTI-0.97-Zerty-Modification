@@ -79,7 +79,7 @@ if (_unit isKindOf "Man") then {
 	_new = (_gear select 0) select 0;
 	_item = _new select 0;
 	_accessories = (_new select 1) call CTI_CO_FNC_ArrayToLower;
-	if ((count (_new select 2)) > 0 && ! isnull (uniformContainer _unit)) then  {
+	if ((count (_new select 2)) > 0 && ! isnull (uniformContainer _unit) && count (primaryWeaponMagazine player) == 0) then  {
 		_mag = (_new select 2)select 0;
 		(uniformContainer _unit) addItemCargoGlobal [_mag,1] ;
 	};
@@ -102,7 +102,7 @@ if (_unit isKindOf "Man") then {
 	_new = (_gear select 0) select 1;
 	_item = _new select 0;
 	_accessories = (_new select 1) call CTI_CO_FNC_ArrayToLower;
-	if (count (_new select 2)>0 && ! isnull (uniformContainer _unit)) then  {
+	if (count (_new select 2)>0 && ! isnull (uniformContainer _unit)&& count (secondaryWeaponMagazine player) == 0) then  {
 		_mag = (_new select 2)select 0;
 		(uniformContainer _unit) addItemCargoGlobal [_mag,1] ;
 	};
@@ -130,7 +130,7 @@ if (_unit isKindOf "Man") then {
 	_new = (_gear select 0) select 2;
 	_item = _new select 0;
 	_accessories = (_new select 1) call CTI_CO_FNC_ArrayToLower;
-	if (count (_new select 2)>0 && ! isnull (uniformContainer _unit) ) then  {
+	if (count (_new select 2)>0 && ! isnull (uniformContainer _unit) && count (handgunMagazine player) == 0) then  {
 		_mag = (_new select 2)select 0;
 		(uniformContainer _unit) addItemCargoGlobal [_mag,1] ;
 	};
