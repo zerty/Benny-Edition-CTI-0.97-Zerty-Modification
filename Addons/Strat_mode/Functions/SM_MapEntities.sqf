@@ -13,7 +13,7 @@ _cache= SHOWTOMAP;
 
 waitUntil {! isNil {player getVariable "AN_iNet" }};
 _ug=units player;
-if ( (player) getVariable "AN_iNet" == _side_id && (player getVariable ["CTI_Net",-10])>= 0 ) then {_ug=_ug-[player];};
+//if ( (player) getVariable "AN_iNet" == _side_id && (player getVariable ["CTI_Net",-10])>= 0 ) then {_ug=_ug-[player];};
 // player group
 {
 
@@ -47,7 +47,7 @@ if ( (player) getVariable "AN_iNet" == _side_id && (player getVariable ["CTI_Net
 		if (!isNil {_object getVariable "CTI_Net"}) then {_side_id=_object getVariable "CTI_Net";};
 		if (!isNil {_object getVariable "AN_iNet"}) then {_side_id=_object getVariable "AN_iNet";};
 		_side= (_side_id)  call CTI_CO_FNC_GetSideFromID;
-		if (_side_id == (player getVariable ["CTI_Net",-10]) && (vehicle _x == _x || !(((vehicle _x ) getVariable ["AN_iNet",-10] )== (_x getVariable ["CTI_Net",-11])))) then {
+		if (vehicle _x == _x && _side_id == (player getVariable ["CTI_Net",-10]) && (vehicle _x == _x || !(((vehicle _x ) getVariable ["AN_iNet",-10] )== (_x getVariable ["CTI_Net",-11])))) then {
 			_p_icon= switch (_side) do
 			{
 		    case 	west:{ "b_" };
@@ -84,7 +84,7 @@ if ( (player) getVariable "AN_iNet" == _side_id && (player getVariable ["CTI_Net
 				};
 			};*/
 		};TRUE} count units _x;TRUE
-}count ((_side call CTI_CO_FNC_GetSideGroups));
+}count ((_side call CTI_CO_FNC_GetSideGroups)-[group player] );
 
 //towns
 

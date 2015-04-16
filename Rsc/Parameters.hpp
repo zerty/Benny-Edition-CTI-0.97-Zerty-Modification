@@ -247,6 +247,12 @@ class Params {
 		texts[] = {"False","True"};
 		default = 1;
 	};
+	class CTI_GROUP_LEADER_RESP {
+		title = "Zerty: GROUPS: Respawn on leader";
+		values[] = {0,1};
+		texts[] = {"False","True"};
+		default = 1;
+	};
 
 	class CTI_AI_TEAMS_GROUPSIZE {
 		title = "Zerty: GROUPS: Size (AI) -- Resistance, West, East ";
