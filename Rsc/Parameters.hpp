@@ -185,7 +185,7 @@ class Params {
 		title = "Zerty: Perf: PhysX Caching System";
 		values[] = {0,1};
 		texts[] = {"Disabled","Enabled"};
-		default = 0;
+		default = 1;
 	};
 
 	class CTI_TEAMSWAP {
