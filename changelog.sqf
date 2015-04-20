@@ -415,7 +415,8 @@ player createDiaryRecord ["CL",["* 1.3.1.0","
   - Feature: Group system from BiS <br />
   - Feature: Marksman new items <br />
   - Feature: Teamstack protection <br />
-  - Feature: Weak server persistency <br /><br />
+  - Feature: Weak server persistency <br />
+  - Feature: Respawn on team leaders <br /><br />
 
   - PARAM: FFAR upgrade limitation <br />
   - PARAM: Buy limitation with players groups<br />
