@@ -103,51 +103,51 @@ class CTI_RscInteraction {
 
 
 		class CTI_Icon_Lock : CTI_Icon_Tablet {
-			idc = 511010;
+			idc = 511009;
 
 			text = "Rsc\Pictures\i_lock.paa";
 			toolTip="(Un)Lock";
 			action = "['OnLock'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_Interact.sqf'";
 		};
 		class CTI_Icon_Net : CTI_Icon_Tablet {
-			idc = 511011;
+			idc = 511010;
 			text = "a3\ui_f\data\gui\Rsc\RscDisplayArsenal\radio_ca.paa";
 			action = "['OnNet'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_Interact.sqf'";
 			toolTip="Network";
 		};
 		class CTI_Icon_Def : CTI_Icon_Lock {
-			idc = 511012;
+			idc = 511011;
 			text = "Rsc\Pictures\icon_def.paa";
 			action = "['OnDef'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_Interact.sqf'";
 			toolTip="Defence Menu";
 		};
 		class CTI_Icon_Rep : CTI_Icon_Lock {
-			idc = 511013;
+			idc = 511012;
 			text ="Rsc\Pictures\icon_rep.paa";
 			action = "['OnRepair'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_Interact.sqf'";
 			toolTip="Repair";
 		};
 		class CTI_Icon_fl : CTI_Icon_Lock {
-			idc = 511014;
+			idc = 511013;
 			text = "Rsc\Pictures\icon_force.paa";
 			action = "['OnForce'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_Interact.sqf'";
 			toolTip="Force Lock";
 		};
 		class CTI_Icon_rev : CTI_Icon_Lock {
-			idc = 511015;
+			idc = 511014;
 			text = "A3\ui_f\data\IGUI\Cfg\Actions\heal_ca.paa";
 			action = "['OnRev'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_Interact.sqf'";
 			toolTip="Revive";
 		};
 		class CTI_Icon_drag : CTI_Icon_Lock {
-			idc = 511016;
+			idc = 511015;
 			x = "SafeZoneX + SafeZoneW*0.85";
 			text = "Rsc\Pictures\icon_drag.paa";
 			action = "['OnDrag'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_Interact.sqf'";
 			toolTip="Drag/Release";
 		};
 		class CTI_Icon_fpk : CTI_Icon_Lock {
-			idc = 511017;
+			idc = 511016;
 			x = "SafeZoneX + SafeZoneW*0.50";
 			y = "SafeZoneY+safezoneH*0.55+5";
 			text = "Rsc\Pictures\icon_fpk.paa";
@@ -155,105 +155,105 @@ class CTI_RscInteraction {
 			toolTip="Force Public key";
 		};
 		class CTI_Icon_intru : CTI_Icon_fpk {
-			idc = 511018;
+			idc = 511017;
 			x = "SafeZoneX + SafeZoneW*0.55";
 			text = "Rsc\Pictures\icon_intru.paa";
 			action = "['OnIntru'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_Interact.sqf'";
 			toolTip="Start Intrusion";
 		};
 		class CTI_Icon_load : CTI_Icon_fpk {
-			idc = 511019;
+			idc = 511018;
 			x = "SafeZoneX + SafeZoneW*0.60";
 			text = "Rsc\Pictures\icon_load.paa";
 			action = "['OnLoad'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_Interact.sqf'";
 			toolTip="Load Static/Crate";
 		};
 		class CTI_Icon_fact : CTI_Icon_fpk {
-			idc = 511020;
+			idc = 511019;
 			x = "SafeZoneX + SafeZoneW*0.60";
 			text = "Rsc\Pictures\icon_fact.paa";
 			action = "['OnFact'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_Interact.sqf'";
 			toolTip="Use Factory";
 		};
 		class CTI_Icon_del : CTI_Icon_fpk {
-			idc = 511021;
+			idc = 511020;
 			x = "SafeZoneX + SafeZoneW*0.60";
 			text = "Rsc\Pictures\icon_del.paa";
 			action = "['OnDel'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_Interact.sqf'";
 			toolTip="Delete Factory";
 		};
 		class CTI_Icon_repHQ : CTI_Icon_fpk {
-			idc = 511022;
+			idc = 511021;
 			x = "SafeZoneX + SafeZoneW*0.60";
 			text = "Rsc\Pictures\icon_rephq.paa";
 			action = "['OnRepHQ'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_Interact.sqf'";
 			toolTip="Repair HQ";
 		};
 		class CTI_Icon_push : CTI_Icon_fpk {
-			idc = 511023;
+			idc = 511022;
 			x = "SafeZoneX + SafeZoneW*0.60";
 			text = "Rsc\Pictures\icon_push.paa";
 			action = "['OnPush'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_Interact.sqf'";
 			toolTip="Push";
 		};
 		class CTI_Icon_pull : CTI_Icon_fpk {
-			idc = 511024;
+			idc = 511023;
 			x = "SafeZoneX + SafeZoneW*0.60";
 			text = "Rsc\Pictures\icon_pull.paa";
 			action = "['OnPull'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_Interact.sqf'";
 			toolTip="Pull";
 		};
 		class CTI_Icon_pack : CTI_Icon_fpk {
-			idc = 511025;
+			idc = 511024;
 			x = "SafeZoneX + SafeZoneW*0.60";
 			text = "Rsc\Pictures\icon_pack.paa";
 			action = "['OnPack'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_Interact.sqf'";
 			toolTip="(Un)Pack";
 		};
 		class CTI_Icon_att : CTI_Icon_fpk {
-			idc = 511026;
+			idc = 511025;
 			x = "SafeZoneX + SafeZoneW*0.60";
 			text = "Rsc\Pictures\icon_att.paa";
 			action = "['OnAtt'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_Interact.sqf'";
 			toolTip="Attach Slingload";
 		};
 		class CTI_Icon_para : CTI_Icon_fpk {
-			idc = 511027;
+			idc = 511026;
 			x = "SafeZoneX + SafeZoneW*0.60";
 			text = "Rsc\Pictures\icon_para.paa";
 			action = "['OnPara'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_Interact.sqf'";
 			toolTip="Paradrop Slingload/Attachment";
 		};
 		class CTI_Icon_build : CTI_Icon_fpk {
-			idc = 511028;
+			idc = 511027;
 			x = "SafeZoneX + SafeZoneW*0.60";
 			text = "Rsc\Pictures\icon_build.paa";
 			action = "['OnBuild'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_Interact.sqf'";
 			toolTip="Build Structure";
 		};
 		class CTI_Icon_srep : CTI_Icon_fpk {
-			idc = 511029;
+			idc = 511028;
 			x = "SafeZoneX + SafeZoneW*0.60";
 			text = "Rsc\Pictures\icon_build.paa";
 			action = "['OnSRep'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_Interact.sqf'";
 			toolTip="Repair Structure";
 		};
 		class CTI_Icon_AC : CTI_Icon_fpk {
-			idc = 511030;
+			idc = 511029;
 			x = "SafeZoneX + SafeZoneW*0.60";
 			text = "Rsc\Pictures\icon_al.paa";
 			action = "['OnAircraftCust'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_Interact.sqf'";
 			toolTip="Aircraft Loadout Customisation";
 		};
 		class CTI_Icon_Com : CTI_Icon_fpk {
-			idc = 511031;
+			idc = 511030;
 			x = "SafeZoneX + SafeZoneW*0.55";
 			text = "Rsc\Pictures\icon_com.paa";
 			action = "['OnCom'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_Interact.sqf'";
 			toolTip="Take Command";
 		};
 		class CTI_Icon_Pilot : CTI_Icon_fpk {
-			idc = 511032;
+			idc = 511031;
 			x = "SafeZoneX + SafeZoneW*0.55";
 			text = "Rsc\Pictures\i_driver.paa";
 			action = "['OnPilot'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_Interact.sqf'";
