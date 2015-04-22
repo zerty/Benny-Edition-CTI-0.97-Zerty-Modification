@@ -244,7 +244,7 @@ TABLET_KEY_DOWN={
 	_return=false;
 	disableSerialization;
 
-	if (! (_this select 2) && ! (_this select 3) && ! (_this select 4) &&(_this select 1) in ([(profilenamespace getvariable ['CTI_TABLET_KEY',41])]+(actionKeys "User5"))  && !visibleMap && !CTI_P_PreBuilding &&!CTI_P_Repairing && isNull (uiNamespace getVariable ['cti_dialog_ui_interractions',objNull]) && isNull (uiNamespace getVariable ['cti_dialog_ui_defensemenu',objnull]) && isNull (uiNamespace getVariable ['cti_dialog_ui_purchasemenu',objnull]) && isnull (uiNamespace getVariable ["cti_dialog_ui_tabletmain",objnull]) ) then {
+	if (! (_this select 2) && ! (_this select 3) && ! (_this select 4) &&(_this select 1) in ([(profilenamespace getvariable ['CTI_TABLET_KEY',41])]+(actionKeys "User5"))  && !visibleMap && !CTI_P_PreBuilding &&!CTI_P_Repairing && isNull (uiNamespace getVariable ['cti_dialog_ui_interractions',objNull]) && isNull (uiNamespace getVariable ['cti_dialog_ui_defensemenu',objnull]) && isNull (uiNamespace getVariable ['cti_dialog_ui_purchasemenu',objnull]) && isnull (uiNamespace getVariable ["cti_dialog_ui_tabletmain",objnull]) && (isnull (findDisplay 60490))) then {
 			uiNamespace setVariable ["INT_TARG", call TABLET_GET_TARGET];
 			createdialog "CTI_RscInteraction";
 			_return=true;
@@ -254,7 +254,7 @@ TABLET_KEY_DOWN={
 TABLET_KEY_UP={
 	_return=false;
 	disableSerialization;
-	if (! (_this select 2) && ! (_this select 3) && ! (_this select 4) && (_this select 1) in [(profilenamespace getvariable ['CTI_TABLET_KEY',41])]  && !isNil {uiNamespace getVariable 'cti_dialog_ui_interractions'}&& isNil {uiNamespace getVariable 'cti_dialog_ui_purchasemenu'} && isNil {uiNamespace getVariable 'cti_dialog_ui_buildmenu'} && isNil {uiNamespace getVariable 'cti_dialog_ui_defensemenu'}&& isNil {uiNamespace getVariable 'cti_dialog_ui_gear'}&& isNil {uiNamespace getVariable 'cti_dialog_ui_aircraftloadoutmenu'} && isnil {uiNamespace getVariable "cti_dialog_ui_tabletmain"} ) then {
+	if (! (_this select 2) && ! (_this select 3) && ! (_this select 4) && (_this select 1) in [(profilenamespace getvariable ['CTI_TABLET_KEY',41])]  && !isNil {uiNamespace getVariable 'cti_dialog_ui_interractions'}&& isNil {uiNamespace getVariable 'cti_dialog_ui_purchasemenu'} && isNil {uiNamespace getVariable 'cti_dialog_ui_buildmenu'} && isNil {uiNamespace getVariable 'cti_dialog_ui_defensemenu'}&& isNil {uiNamespace getVariable 'cti_dialog_ui_gear'}&& isNil {uiNamespace getVariable 'cti_dialog_ui_aircraftloadoutmenu'} && isnil {uiNamespace getVariable "cti_dialog_ui_tabletmain"} && (isnull (findDisplay 60490)) ) then {
 		closeDialog 0;
 	};
 	_return
