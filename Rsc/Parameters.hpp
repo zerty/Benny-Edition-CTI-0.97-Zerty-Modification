@@ -307,7 +307,7 @@ class Params {
 		title = "Zerty: GAMEPLAY: Darter Fuel limitation";
 		values[] = {0,1};
 		texts[] = {"Disabled", "Enabled"};
-		default = 1;
+		default = 0;
 	};
 	class CTI_SM_NONV {
 		title = "Zerty: GAMEPLAY: No NVs, No Thermal";
