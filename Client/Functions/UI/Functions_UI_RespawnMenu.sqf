@@ -232,7 +232,7 @@ CTI_UI_Respawn_OnRespawnReady = {
 
 	_respawn_ai = false;
 	_respawn_ai_gear = [];
-	if (_where isKindOf "Man") then { //--- The location is an AI?
+	if (_where isKindOf "Man" && ! (isPlayer _where)) then { //--- The location is an AI?
 		if (_where in units player) then { //--- The AI is in the player group?
 			_pos = getPos _where; //--- Get the AI position (todo: copy the stance)
 			_respawn_ai_gear = (_where) call CTI_UI_Gear_GetUnitEquipment; //--- Get the AI current equipment using the Gear UI function
