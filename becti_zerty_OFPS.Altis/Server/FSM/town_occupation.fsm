@@ -1,0 +1,391 @@
+/*%FSM<COMPILE "scriptedFSM.cfg, town_occupation.fsm">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"Start_FSM",0,250,-100.000000,-500.000000,0.000000,-450.000000,0.000000,"Start FSM"};
+item1[] = {"Cycle",4,218,-100.000000,-400.000000,0.000000,-350.000000,0.000000,"Cycle"};
+item2[] = {"Occupation_hold",2,250,-100.000000,-200.000000,0.000000,-150.000000,0.000000,"Occupation hold" \n "the town?"};
+item3[] = {"End_FSM",1,250,-250.000000,-100.000000,-150.000000,-50.000000,0.000000,"End FSM"};
+item4[] = {"Held_by_Occupati",4,218,-100.000000,-100.000000,0.000000,-50.000000,2.000000,"Held by" \n "Occupation"};
+item5[] = {"Gameover",8,218,-250.000000,-200.000000,-150.000000,-150.000000,0.000000,"Gameover"};
+item6[] = {"Enemy_Near_",2,250,-100.000000,0.000000,0.000000,50.000000,0.000000,"Enemy Near?"};
+item7[] = {"Not_held_by_Occu",4,218,50.000000,-200.000000,150.000000,-150.000000,1.000000,"Not held by" \n "Occupation"};
+item8[] = {"Occupation_Timeout",2,250,175.000000,100.000000,275.000000,150.000000,0.000000,"Occupation" \n "Timeout?"};
+item9[] = {"Active",8,218,175.000000,0.000000,275.000000,50.000000,0.000000,"Active"};
+item10[] = {"Inactive",4,218,175.000000,-200.000000,275.000000,-150.000000,1.000000,"Inactive"};
+item11[] = {"Still_active",8,218,300.000000,0.000000,400.000000,50.000000,0.000000,"Still active"};
+item12[] = {"Timed_out",4,218,375.000000,100.000000,475.000000,150.000000,1.000000,"Timed out"};
+item13[] = {"Skip",2,250,300.000000,-200.000000,400.000000,-150.000000,0.000000,"Skip"};
+item14[] = {"Cleanup",2,250,375.000000,-400.000000,475.000000,-350.000000,0.000000,"Cleanup"};
+item15[] = {"Occupation_Active",2,250,50.000000,-100.000000,150.000000,-50.000000,0.000000,"Occupation" \n "Active?"};
+item16[] = {"Contact",8,218,-100.000000,100.000000,0.000000,150.000000,0.000000,"Contact"};
+item17[] = {"Clear",4,218,50.000000,0.000000,150.000000,50.000000,1.000000,"Clear"};
+item18[] = {"Create",2,4346,-400.000000,200.000000,-300.000000,250.000000,0.000000,"Create"};
+item19[] = {"Occupation_Active_1",2,250,-100.000000,200.000000,0.000000,250.000000,0.000000,"Occupation" \n "Active?"};
+item20[] = {"Inactive",8,218,-250.000000,200.000000,-150.000000,250.000000,0.000000,"Inactive"};
+item21[] = {"Active",4,218,175.000000,200.000000,275.000000,250.000000,1.000000,"Active"};
+item22[] = {"",7,210,-354.000000,-379.000000,-346.000000,-371.000000,0.000000,""};
+link0[] = {0,1};
+link1[] = {1,2};
+link2[] = {2,4};
+link3[] = {2,5};
+link4[] = {2,7};
+link5[] = {4,6};
+link6[] = {5,3};
+link7[] = {6,16};
+link8[] = {6,17};
+link9[] = {7,15};
+link10[] = {8,11};
+link11[] = {8,12};
+link12[] = {9,8};
+link13[] = {10,13};
+link14[] = {11,13};
+link15[] = {12,14};
+link16[] = {13,1};
+link17[] = {14,1};
+link18[] = {15,9};
+link19[] = {15,10};
+link20[] = {16,19};
+link21[] = {17,15};
+link22[] = {18,22};
+link23[] = {19,20};
+link24[] = {19,21};
+link25[] = {20,18};
+link26[] = {21,8};
+link27[] = {22,1};
+globals[] = {25.000000,1,0,0,0,640,480,1,160,6316128,1,-411.897064,719.329102,396.646790,-557.132141,867,881,1};
+window[] = {2,-1,-1,-1,-1,981,200,1455,200,3,885};
+*//*%FSM</HEAD>*/
+class FSM
+{
+  fsmName = "town_occupation.fsm";
+  class States
+  {
+    /*%FSM<STATE "Start_FSM">*/
+    class Start_FSM
+    {
+      name = "Start_FSM";
+      init = /*%FSM<STATEINIT""">*/"_town = _this;" \n
+       "_town setVariable [""cti_town_occupation_groups"",[]];" \n
+       "_town setVariable [""cti_town_occupation_active"", false];" \n
+       "_town setVariable [""cti_town_occupation_active_vehicles"", []];" \n
+       "_town setVariable [""cti_town_occupation_activeTime"", -1000];" \n
+       "" \n
+       "_ncycle = time + 5.5;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Cycle">*/
+        class Cycle
+        {
+          priority = 0.000000;
+          to="Occupation_hold";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"time > _ncycle "/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Occupation_hold">*/
+    class Occupation_hold
+    {
+      name = "Occupation_hold";
+      init = /*%FSM<STATEINIT""">*/"_ncycle = time + 5;" \n
+       "" \n
+       "_sideID = _town getVariable ""cti_town_sideID"";" \n
+       "_side = (_sideID) call CTI_CO_FNC_GetSideFromID;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Held_by_Occupati">*/
+        class Held_by_Occupati
+        {
+          priority = 2.000000;
+          to="Enemy_Near_";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!CTI_GameOver && _sideID != CTI_RESISTANCE_ID"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Not_held_by_Occu">*/
+        class Not_held_by_Occu
+        {
+          priority = 1.000000;
+          to="Occupation_Active";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!CTI_GameOver && _sideID == CTI_RESISTANCE_ID"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Gameover">*/
+        class Gameover
+        {
+          priority = 0.000000;
+          to="End_FSM";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "End_FSM">*/
+    class End_FSM
+    {
+      name = "End_FSM";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Enemy_Near_">*/
+    class Enemy_Near_
+    {
+      name = "Enemy_Near_";
+      init = /*%FSM<STATEINIT""">*/"_a_objects=[];" \n
+       "{_a_objects = _a_objects + (units group _x);true}count (playableUnits + switchableUnits);" \n
+       "_resistunits=[];" \n
+       "{_resistunits=_resistunits+(units _x);true} count SM_PATROLS;" \n
+       "" \n
+       "_objects = [];" \n
+       "{if (((side _x) !=_side) && (_x distance _town)<= CTI_TOWNS_OCCUPATION_DETECTION_RANGE ) then {_objects set [count _objects,_x]};true } count (_a_objects+_resistunits);" \n
+       "_count_enemies =count ( _objects unitsBelowHeight CTI_TOWNS_OCCUPATION_DETECTION_RANGE_AIR);" \n
+       ""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Clear">*/
+        class Clear
+        {
+          priority = 1.000000;
+          to="Occupation_Active";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_count_enemies < 1"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Contact">*/
+        class Contact
+        {
+          priority = 0.000000;
+          to="Occupation_Active_1";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Occupation_Timeout">*/
+    class Occupation_Timeout
+    {
+      name = "Occupation_Timeout";
+      init = /*%FSM<STATEINIT""">*/"//--- Occupation is Active..." \n
+       "if (_sideID != (_town getVariable ""cti_town_occupation_active_sideID"")) then { //--- ....yet the current side holding the town is not the one which is active" \n
+       "	//--- Do we still have some fighting units?" \n
+       "	_lives = 0;" \n
+       "	{_lives = _lives + count(_x call CTI_CO_FNC_GetLiveUnits)} forEach _town_groups;" \n
+       "	" \n
+       "	if (_lives >= CTI_TOWNS_OCCUPATION_MIN_ACTIVE) then { //--- There's still some units fighting! it's not that inactive!" \n
+       "		_town setVariable [""cti_town_occupation_activeTime"", time];" \n
+       "	};" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Timed_out">*/
+        class Timed_out
+        {
+          priority = 1.000000;
+          to="Cleanup";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"time - (_town getVariable ""cti_town_occupation_activeTime"") > CTI_TOWNS_OCCUPATION_INACTIVE_MAX"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Still_active">*/
+        class Still_active
+        {
+          priority = 0.000000;
+          to="Skip";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Skip">*/
+    class Skip
+    {
+      name = "Skip";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Cycle">*/
+        class Cycle
+        {
+          priority = 0.000000;
+          to="Occupation_hold";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"time > _ncycle "/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Cleanup">*/
+    class Cleanup
+    {
+      name = "Cleanup";
+      init = /*%FSM<STATEINIT""">*/"_town setVariable [""cti_town_occupation_active"", false];" \n
+       "" \n
+       "//--- Teams Units." \n
+       "{" \n
+       "	if !(isNil '_x') then {" \n
+       "		if !(isNull _x) then {" \n
+       "			{deleteVehicle _x} forEach units _x;" \n
+       "			deleteGroup _x;" \n
+       "		};" \n
+       "	};" \n
+       "} forEach _town_groups;" \n
+       "" \n
+       "//--- Teams vehicles." \n
+       "{" \n
+       "	if (alive _x) then {" \n
+       "		if (!isPlayer _x) then {deleteVehicle _x};" \n
+       "	};" \n
+       "} forEach (_town getVariable ""cti_town_occupation_active_vehicles"");" \n
+       "_town setVariable [""cti_town_occupation_active_vehicles"", []];"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Cycle">*/
+        class Cycle
+        {
+          priority = 0.000000;
+          to="Occupation_hold";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"time > _ncycle "/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Occupation_Active">*/
+    class Occupation_Active
+    {
+      name = "Occupation_Active";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Inactive">*/
+        class Inactive
+        {
+          priority = 1.000000;
+          to="Skip";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!(_town getVariable ""cti_town_occupation_active"")"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Active">*/
+        class Active
+        {
+          priority = 0.000000;
+          to="Occupation_Timeout";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Create">*/
+    class Create
+    {
+      name = "Create";
+      init = /*%FSM<STATEINIT""">*/"//--- We get the main information first (The teams, the groups and the positions)" \n
+       "_return = [_town, _side] call CTI_SE_FNC_SpawnTownOccupation;" \n
+       "_town_teams = _return select 0;" \n
+       "_town_groups = _return select 1;" \n
+       "_town_positions = _return select 2;" \n
+       "" \n
+       "//--- Warn" \n
+       "[[""CLIENT"", _side], ""Client_OnMessageReceived"", [""town-hostilenear"", _town]] call CTI_CO_FNC_NetSend;" \n
+       "" \n
+       "if (count _town_groups > 0) then {" \n
+       "		_town setVariable [""cti_town_occupation_groups"",_return select 1];" \n
+       "		_town_vehicles = [_town, _side, _town_teams, _town_groups, _town_positions] call CTI_CO_FNC_CreateTownUnits;" \n
+       "		_town setVariable [""cti_town_occupation_active_vehicles"", (_town getVariable ""cti_town_occupation_active_vehicles"") + _town_vehicles];" \n
+       "" \n
+       "};" \n
+       "" \n
+       "_town setVariable [""cti_town_occupation_active"", true];" \n
+       "_town setVariable [""cti_town_occupation_active_sideID"", _sideID];"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Cycle">*/
+        class Cycle
+        {
+          priority = 0.000000;
+          to="Occupation_hold";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"time > _ncycle "/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Occupation_Active_1">*/
+    class Occupation_Active_1
+    {
+      name = "Occupation_Active_1";
+      init = /*%FSM<STATEINIT""">*/"_town setVariable [""cti_town_occupation_activeTime"", time];"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Active">*/
+        class Active
+        {
+          priority = 1.000000;
+          to="Occupation_Timeout";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_town getVariable ""cti_town_occupation_active"""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Inactive">*/
+        class Inactive
+        {
+          priority = 0.000000;
+          to="Create";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+  };
+  initState="Start_FSM";
+  finalStates[] =
+  {
+    "End_FSM"
+  };
+};
+/*%FSM</COMPILE>*/

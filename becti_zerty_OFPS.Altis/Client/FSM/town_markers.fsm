@@ -1,0 +1,116 @@
+/*%FSM<COMPILE "scriptedFSM.cfg, town_markers.fsm">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"Start_FSM",0,250,-275.000000,-100.000000,-175.000000,-50.000000,0.000000,"Start FSM"};
+item1[] = {"Cycle",4,218,-100.000000,-100.000000,0.000000,-50.000000,1.000000,"Cycle"};
+item2[] = {"Update_Markers",2,4346,-100.000000,-225.000000,0.000000,-175.000000,0.000000,"Update" \n "Markers"};
+item3[] = {"End_FSM",1,250,50.000000,-325.000000,150.000000,-275.000000,0.000000,"End FSM"};
+item4[] = {"Terminate",4,218,50.000000,-225.000000,150.000000,-175.000000,0.000000,"Terminate"};
+link0[] = {0,1};
+link1[] = {1,2};
+link2[] = {2,1};
+link3[] = {2,4};
+link4[] = {4,3};
+globals[] = {25.000000,1,0,0,0,640,480,1,133,6316128,1,-456.160217,360.531433,242.139771,-456.939575,743,636,1};
+window[] = {0,-1,-1,-1,-1,831,50,1305,50,1,761};
+*//*%FSM</HEAD>*/
+class FSM
+{
+  fsmName = "town_markers.fsm";
+  class States
+  {
+    /*%FSM<STATE "Start_FSM">*/
+    class Start_FSM
+    {
+      name = "Start_FSM";
+      init = /*%FSM<STATEINIT""">*/"_ncycle = time + 5.5;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Cycle">*/
+        class Cycle
+        {
+          priority = 1.000000;
+          to="Update_Markers";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!CTI_GameOver && time > _ncycle "/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Update_Markers">*/
+    class Update_Markers
+    {
+      name = "Update_Markers";
+      init = /*%FSM<STATEINIT""">*/"_ncycle = time + 5.5;" \n
+       "" \n
+       "{" \n
+       "	_sideID = if (isNil {_x getVariable ""cti_town_sideID""}) then {-1} else {_x getVariable ""cti_town_sideID""};" \n
+       "	_marker_area = Format [""cti_town_areaMarker_%1"", _x];" \n
+       "	" \n
+       "	if (CTI_P_SideID == _sideID) then {" \n
+       "		if (CTI_P_SideJoined countSide (_x nearEntities [""AllVehicles"", CTI_MARKERS_TOWN_AREA_RANGE]) > 0) then {" \n
+       "			if (markerAlpha _marker_area == 0) then { _marker_area setMarkerAlphaLocal CTI_MARKERS_OPACITY };" \n
+       "		} else {" \n
+       "			if (markerAlpha _marker_area != 0) then { _marker_area setMarkerAlphaLocal 0 };" \n
+       "		};" \n
+       "	} else {" \n
+       "		if (markerAlpha _marker_area != 0) then { _marker_area setMarkerAlphaLocal 0 };" \n
+       "	};" \n
+       "	// --- zerty was here " \n
+       "	_marker_area = Format [""cti_town_HALLOMarker_%1"", _x];" \n
+       "	if (CTI_P_SideID == _sideID) then {" \n
+       "		" \n
+       "		if (markerAlpha _marker_area == 0) then { _marker_area setMarkerAlphaLocal CTI_MARKERS_OPACITY };" \n
+       "" \n
+       "	} else {" \n
+       "		if (markerAlpha _marker_area != 0) then { _marker_area setMarkerAlphaLocal 0 };" \n
+       "	};" \n
+       "} forEach CTI_Towns;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Cycle">*/
+        class Cycle
+        {
+          priority = 1.000000;
+          to="Update_Markers";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!CTI_GameOver && time > _ncycle "/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Terminate">*/
+        class Terminate
+        {
+          priority = 0.000000;
+          to="End_FSM";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"CTI_GameOver"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "End_FSM">*/
+    class End_FSM
+    {
+      name = "End_FSM";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+  };
+  initState="Start_FSM";
+  finalStates[] =
+  {
+    "End_FSM",
+  };
+};
+/*%FSM</COMPILE>*/

@@ -1,0 +1,1 @@
+CTI_VAR_StructurePlaced = true;

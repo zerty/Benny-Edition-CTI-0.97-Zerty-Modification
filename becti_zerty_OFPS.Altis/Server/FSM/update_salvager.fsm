@@ -1,0 +1,218 @@
+/*%FSM<COMPILE "D:\ArmA2\FSM Editor Personal Edition\scriptedFSM.cfg, update_salvager.fsm">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"Start_FSM",0,250,-100.000000,-400.000000,0.000000,-350.000000,0.000000,"Start FSM"};
+item1[] = {"Cycle",4,218,-100.000000,-300.000000,0.000000,-250.000000,1.000000,"Cycle"};
+item2[] = {"Phase_I_ETA",2,250,-100.000000,-200.000000,0.000000,-150.000000,0.000000,"Phase I" \n "ETA"};
+item3[] = {"Alive",4,218,-100.000000,-100.000000,0.000000,-50.000000,1.000000,"Alive"};
+item4[] = {"Phase_II_Driver",2,250,-100.000000,0.000000,0.000000,50.000000,0.000000,"Phase II" \n "Driver"};
+item5[] = {"Terminate",8,218,50.000000,-200.000000,150.000000,-150.000000,0.000000,"Terminate"};
+item6[] = {"None",8,218,-250.000000,0.000000,-150.000000,50.000000,0.000000,"None"};
+item7[] = {"End_FSM",1,4346,200.000000,-200.000000,300.000000,-150.000000,0.000000,"End FSM"};
+item8[] = {"Manned",4,218,50.000000,0.000000,150.000000,50.000000,1.000000,"Manned"};
+item9[] = {"Sleep",2,250,-400.000000,0.000000,-300.000000,50.000000,0.000000,"Sleep"};
+item10[] = {"Phase_III_Detect",2,250,200.000000,0.000000,300.000000,50.000000,0.000000,"Phase III" \n "Detection"};
+item11[] = {"",7,210,-354.000000,-279.000000,-346.000000,-271.000000,0.000000,""};
+item12[] = {"",7,210,371.000000,21.000004,379.000000,28.999998,0.000000,""};
+item13[] = {"",7,210,371.000000,-279.000000,379.000000,-271.000000,0.000000,""};
+link0[] = {0,1};
+link1[] = {1,2};
+link2[] = {2,3};
+link3[] = {2,5};
+link4[] = {3,4};
+link5[] = {4,6};
+link6[] = {4,8};
+link7[] = {5,7};
+link8[] = {6,9};
+link9[] = {8,10};
+link10[] = {9,11};
+link11[] = {10,12};
+link12[] = {11,1};
+link13[] = {12,13};
+link14[] = {13,1};
+globals[] = {25.000000,1,0,0,0,640,480,1,200,6316128,1,-488.236145,529.525024,476.747345,-444.781525,973,906,1};
+window[] = {2,-1,-1,-1,-1,906,125,1380,125,3,991};
+*//*%FSM</HEAD>*/
+class FSM
+{
+  fsmName = "update_salvager.fsm";
+  class States
+  {
+    /*%FSM<STATE "Start_FSM">*/
+    class Start_FSM
+    {
+      name = "Start_FSM";
+      init = /*%FSM<STATEINIT""">*/"_salvager = _this;" \n
+       "" \n
+       "_ncycle = 0;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Cycle">*/
+        class Cycle
+        {
+          priority = 1.000000;
+          to="Phase_I_ETA";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"time > _ncycle "/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Phase_I_ETA">*/
+    class Phase_I_ETA
+    {
+      name = "Phase_I_ETA";
+      init = /*%FSM<STATEINIT""">*/"_ncycle = time + 5;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Alive">*/
+        class Alive
+        {
+          priority = 1.000000;
+          to="Phase_II_Driver";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!CTI_GameOver && alive _salvager"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Terminate">*/
+        class Terminate
+        {
+          priority = 0.000000;
+          to="End_FSM";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Phase_II_Driver">*/
+    class Phase_II_Driver
+    {
+      name = "Phase_II_Driver";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Manned">*/
+        class Manned
+        {
+          priority = 1.000000;
+          to="Phase_III_Detect";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"alive driver _salvager"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "None">*/
+        class None
+        {
+          priority = 0.000000;
+          to="Sleep";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "End_FSM">*/
+    class End_FSM
+    {
+      name = "End_FSM";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Sleep">*/
+    class Sleep
+    {
+      name = "Sleep";
+      init = /*%FSM<STATEINIT""">*/"_ncycle = time + 10;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Cycle">*/
+        class Cycle
+        {
+          priority = 1.000000;
+          to="Phase_I_ETA";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"time > _ncycle "/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Phase_III_Detect">*/
+    class Phase_III_Detect
+    {
+      name = "Phase_III_Detect";
+      init = /*%FSM<STATEINIT""">*/"_entities = [];" \n
+       "{if (!alive _x && isNil {_x getVariable ""cti_gc_noremove""}) then {[_entities, _x] call CTI_CO_FNC_ArrayPush}} foreach ((nearestObjects [_salvager, ['Car','Motorcycle','Ship','Air','Tank','StaticWeapon'], CTI_VEHICLES_SALVAGE_RANGE]) - [_salvager]);" \n
+       "" \n
+       "if (count _entities > 0) then {" \n
+       "	_wreck = [_salvager, _entities] call CTI_CO_FNC_GetClosestEntity;" \n
+       "	_wreck_kind = typeOf _wreck;" \n
+       "	" \n
+       "	_var_name = if (isNil {_wreck getVariable ""cti_customid""}) then {_wreck_kind} else {missionNamespace getVariable format[""CTI_CUSTOM_ENTITY_%1"", _wreck getVariable ""cti_customid""]};" \n
+       "	_var_classname = missionNamespace getVariable _var_name;" \n
+       "	if !(isNil '_var_classname') then {" \n
+       "		_side = side driver _salvager;" \n
+       "		_group = group driver _salvager;" \n
+       "		if (_side in [west,east]) then {" \n
+       "			_salvage_value = round((_var_classname select 2) * CTI_VEHICLES_SALVAGE_RATE);" \n
+       "			_commander_get = 0;" \n
+       "			_player_get = 0;" \n
+       "			if (_group call CTI_CO_FNC_IsGroupPlayable) then { //--- Group is among our cti players" \n
+       "				_salvage_value = round(_salvage_value / 2); //--- Split resources in half, half goes to the team which salvaged the wreck, the other half goes to the side." \n
+       "				_return = [_side, _salvage_value] call CTI_CO_FNC_AddSideFunds;" \n
+       "				_player_get = _return select 1;	_commander_get = _return select 2;" \n
+       "				[_group, _side, _salvage_value] call CTI_CO_FNC_ChangeFunds;" \n
+       "				if (isPlayer leader _group) then {[[""CLIENT"", leader _group], ""Client_OnMessageReceived"", [""salvage-by"", [_var_name, _salvage_value, driver _salvager]]] call CTI_CO_FNC_NetSend};" \n
+       "			} else { //--- Group is not among our cti players, award the side still." \n
+       "				_return = [_side, _salvage_value] call CTI_CO_FNC_AddSideFunds;" \n
+       "				_player_get = _return select 1;	_commander_get = _return select 2;" \n
+       "			};" \n
+       "			" \n
+       "			[[""CLIENT"", _side], ""Client_OnMessageReceived"", [""salvage"", [_var_name, _player_get, _commander_get]]] call CTI_CO_FNC_NetSend;" \n
+       "		};" \n
+       "	};" \n
+       "	" \n
+       "	deleteVehicle _wreck;" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Cycle">*/
+        class Cycle
+        {
+          priority = 1.000000;
+          to="Phase_I_ETA";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"time > _ncycle "/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+  };
+  initState="Start_FSM";
+  finalStates[] =
+  {
+    "End_FSM",
+  };
+};
+/*%FSM</COMPILE>*/

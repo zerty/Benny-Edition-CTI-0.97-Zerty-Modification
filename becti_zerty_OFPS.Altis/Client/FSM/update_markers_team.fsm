@@ -1,0 +1,136 @@
+/*%FSM<COMPILE "E:\Bohemia Interactive\ArmA 2\FSM Editor Personal Edition\scriptedFSM.cfg, update_markers_team.fsm">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"Start_FSM",0,250,-275.000000,-100.000000,-175.000000,-50.000000,0.000000,"Start FSM"};
+item1[] = {"Cycle",4,218,-100.000000,-100.000000,0.000000,-50.000000,1.000000,"Cycle"};
+item2[] = {"Update_Markers",2,4346,-100.000000,-225.000000,0.000000,-175.000000,0.000000,"Update" \n "Markers"};
+item3[] = {"End_FSM",1,250,50.000000,-325.000000,150.000000,-275.000000,0.000000,"End FSM"};
+item4[] = {"Terminate",4,218,50.000000,-225.000000,150.000000,-175.000000,0.000000,"Terminate"};
+link0[] = {0,1};
+link1[] = {1,2};
+link2[] = {2,1};
+link3[] = {2,4};
+link4[] = {4,3};
+globals[] = {25.000000,1,0,0,0,640,480,1,133,6316128,1,-346.052856,249.315308,147.414398,-362.214325,743,636,1};
+window[] = {0,-1,-1,-1,-1,806,25,1280,25,1,761};
+*//*%FSM</HEAD>*/
+class FSM
+{
+  fsmName = "update_markers_team.fsm";
+  class States
+  {
+    /*%FSM<STATE "Start_FSM">*/
+    class Start_FSM
+    {
+      name = "Start_FSM";
+      init = /*%FSM<STATEINIT""">*/"_ncycle = 0;" \n
+       "" \n
+       "_track_leader = {" \n
+       "	_group = _this;" \n
+       "	" \n
+       "	sleep (random .5);" \n
+       "	" \n
+       "	_marker = Format[""cti_teammarker_%1"", CTI_P_MarkerIterator]; CTI_P_MarkerIterator = CTI_P_MarkerIterator + 1;" \n
+       "	createMarkerLocal [_marker, [0,0,0]];" \n
+       "	_marker setMarkerTypeLocal (CTI_P_MarkerPrefix+""inf"");" \n
+       "	_marker setMarkerColorLocal CTI_P_SideColor;" \n
+       "	_marker setMarkerSizeLocal [0.75, 0.75];" \n
+       "	" \n
+       "	while {!isNull _group} do {" \n
+       "		_color = CTI_P_SideColor;" \n
+       "		" \n
+       "		if (missionNamespace getVariable ""CTI_AI_TEAMS_ENABLED"" == 0) then {" \n
+       "			_marker setMarkerAlphaLocal (if !(isPlayer leader _group) then {0} else {1});" \n
+       "		};" \n
+       "		" \n
+       "		if (alive leader _group) then {" \n
+       "			_label = if (isPlayer leader _group) then { format[""%1 [%2]"", _group getVariable [""cti_alias"",CTI_PLAYER_DEFAULT_ALIAS], name (leader _group)] } else { format[""%1 [AI]"", _group getVariable [""cti_alias"",CTI_PLAYER_DEFAULT_ALIAS]] };" \n
+       "			_marker setMarkerTextLocal _label;" \n
+       "			_marker setMarkerPosLocal visiblePosition (leader _group);" \n
+       "		} else {" \n
+       "			_color = ""ColorBlack"";" \n
+       "		};" \n
+       "	" \n
+       "		_marker setMarkerColorLocal _color;" \n
+       "		" \n
+       "		sleep .4;" \n
+       "	};" \n
+       "	" \n
+       "	deleteMarkerLocal _marker;" \n
+       "};" \n
+       "" \n
+       "_tracker = [];"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Cycle">*/
+        class Cycle
+        {
+          priority = 1.000000;
+          to="Update_Markers";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!CTI_GameOver && time > _ncycle "/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Update_Markers">*/
+    class Update_Markers
+    {
+      name = "Update_Markers";
+      init = /*%FSM<STATEINIT""">*/"_ncycle = time + 4;" \n
+       "" \n
+       "{" \n
+       "	if !(_x in _tracker) then {" \n
+       "		_tracker = _tracker - [objNull];" \n
+       "		[_tracker, _x] call CTI_CO_FNC_ArrayPush;" \n
+       "		(_x) spawn _track_leader;" \n
+       "	};" \n
+       "} forEach (CTI_P_SideJoined call CTI_CO_FNC_GetSideGroups);"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Cycle">*/
+        class Cycle
+        {
+          priority = 1.000000;
+          to="Update_Markers";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!CTI_GameOver && time > _ncycle "/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Terminate">*/
+        class Terminate
+        {
+          priority = 0.000000;
+          to="End_FSM";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"CTI_GameOver"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "End_FSM">*/
+    class End_FSM
+    {
+      name = "End_FSM";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+  };
+  initState="Start_FSM";
+  finalStates[] =
+  {
+    "End_FSM",
+  };
+};
+/*%FSM</COMPILE>*/
