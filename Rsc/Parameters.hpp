@@ -496,12 +496,12 @@ class Params {
 		texts[] = {"Disabled","Enabled"};
 		default = 1;
 	};
-	class CTI_SM_FAR {
+	/*class CTI_SM_FAR {
 		title = "Zerty: Revive: Enabled";
 		values[] = {0,1};
 		texts[] = {"disabled","Enabled"};
 		default = 1;
-	};
+	};*/
 	class CTI_SM_HALO {
 		title = "Zerty: Halo Jump: Enabled";
 		values[] = {0,1};

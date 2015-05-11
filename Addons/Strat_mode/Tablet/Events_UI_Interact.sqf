@@ -173,7 +173,8 @@ switch (_action) do {
 			    	};
 			    };
 				case 14: { // CTI_Icon_rev //ok
-			    	if (_target iskindof "Man" && _target getVariable ['REV_UNC',false] && !( player getVariable ['REV_UNC',true])  && isNull (player getVariable ['REV_DRAGGING',objNull])&& (side group player)==(side group _target)) then  {
+			    	//if (_target iskindof "Man" && _target getVariable ['REV_UNC',false] && !( player getVariable ['REV_UNC',true])  && isNull (player getVariable ['REV_DRAGGING',objNull])&& (side group player)==(side group _target)) then  {
+			    	if (false) then {
 			    		((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTextColor [1,0,0,1];
 			    		((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetPosition [_base_x+(_offset*_base_w),_base_y+_h_offset*_base_h,_base_w,_base_h];
 			    		_offset=_offset+1;

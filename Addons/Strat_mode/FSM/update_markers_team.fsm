@@ -43,7 +43,7 @@ class FSM
        "			_marker setMarkerAlphaLocal (if !(isPlayer leader _group) then {0} else {1});" \n
        "		};" \n
        "		" \n
-       "		if (! isNil {(leader _group) getvariable ""REV_UNC""} ) then {_unc =(leader _group) getvariable ""REV_UNC"";};" \n
+       "		if (! isNil {(leader _group) getvariable ""BIS_revive_incapacitated""} ) then {_unc =(leader _group) getvariable ""BIS_revive_incapacitated"";};" \n
        "		if (alive leader _group && ! _unc ) then {" \n
        "			_label = if (isPlayer leader _group) then { format[""%1 [%2]"", _group getVariable [""cti_alias"",CTI_PLAYER_DEFAULT_ALIAS], name (leader _group)] } else { format[""%1 [AI]"", _group getVariable [""cti_alias"",CTI_PLAYER_DEFAULT_ALIAS]] };" \n
        "			_marker setMarkerTextLocal _label;" \n

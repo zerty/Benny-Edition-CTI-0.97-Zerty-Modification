@@ -1,7 +1,7 @@
 SM_CLEAN_REVIVES={
 	while {!CTI_GameOver} do
 	{
-	    {if (!isnil {_x getVariable "REV_UNC"}) then  {if (!isPlayer _x && (_x getVariable "REV_UNC")  ) then {_x setDammage 1;}};true}count playableUnits;
+	    {if (!isnil {_x getVariable ["BIS_revive_incapacitated",false]}) then  {if (!isPlayer _x && (_x getVariable ["BIS_revive_incapacitated",false])  ) then {_x setDammage 1;}};true}count playableUnits;
 	    sleep 3;
 	};
 };

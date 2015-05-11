@@ -40,6 +40,7 @@ with missionNamespace do {
 	 	SM_BP_ProtectLoop = compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Functions\SM_BP_ProtectLoop.sqf";
 		SM_Maps_Hook = compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Functions\SM_Maps_Hook.sqf";
 	  	REV_INIT = compileFinal preprocessFileLineNumbers "Addons\Strat_mode\REV\REV_init.sqf";
+	  	REV_UI_MOD=compile preprocessfilelinenumbers "Addons\Strat_mode\REV\REV_ui_mod.sqf";
 	  	SM_ACTION_BUILD = compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Functions\SM_Action_Build.sqf";
 	    SM_ACTION_REPAIR = compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Functions\SM_Action_Repair.sqf";
 	    SM_COM_Init = compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Old_Com_Eject\SM_COM_init.sqf";
@@ -311,10 +312,11 @@ if (CTI_IsClient) then {
 	};
 
 	// NEW Revive
-	if (CTI_SM_FAR == 1) then {
+	/*if (CTI_SM_FAR == 1) then {
 		0 spawn REV_INIT;
 		//call compileFinal preprocessFileLineNumbers "Addons\FAR_revive\FAR_revive_init.sqf";
-	};
+	};*/
+	0 spawn REV_UI_MOD;
 
 	// Thermal / NV restriction
 	if ( (missionNamespace getVariable 'CTI_SM_NONV')==1) then {

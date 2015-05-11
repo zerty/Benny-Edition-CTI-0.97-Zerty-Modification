@@ -10,7 +10,7 @@ while {!CTI_GameOver } do {
 	if (! isNull _main_disp) then {
 		_ntime=time +REVIVE_DELAY;
 
-		while {time < _ntime && ! (isNull _main_disp) && ! ( player getVariable ['REV_UNC',false] )} do {
+		while {time < _ntime && ! (isNull _main_disp) } do {
 			(_main_disp displayctrl 1010) ctrlEnable false;
 			(_main_disp displayctrl 1010)  ctrlSetText format ["Respawn (%1)", (ceil (_ntime-time))];
 			sleep 0.1;
