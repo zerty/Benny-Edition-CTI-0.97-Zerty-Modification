@@ -64,7 +64,7 @@ _ug=units player;
 			    default { [1,1,1,1]  };
 				};
 			if (! alive _object) then {_color = [0,0,0,1];};
-			if (_object getvariable ["BIS_revive_incapacitated",false]) then {_color = [0.5,0.32,0.09,1]};
+			if (_object getvariable ["REV_UNC",false]) then {_color = [0.5,0.32,0.09,1]};
 			_pos =getPosASL _x;
 			_size = [18, 18];
 			_text="";

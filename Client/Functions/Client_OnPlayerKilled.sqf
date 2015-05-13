@@ -32,7 +32,7 @@ private ["_killed", "_killer"];
 _killed = _this select 0;
 _killer = _this select 1;
 
-
+_killed connectTerminalToUAV objNull;
 
 CTI_DeathPosition = getPos _killed;
 CTI_P_LastDeathTime=time;
@@ -42,11 +42,7 @@ if !(isNil "CTI_DeathCamera") then {
 	CTI_DeathCamera cameraEffect ["TERMINATE", "BACK"];
 	camDestroy CTI_DeathCamera;
 };*/
-//"BIS_revive_incapacitated"
 
-waitUntil {!(player getVariable ["BIS_revive_incapacitated",false])};
-
-_killed connectTerminalToUAV objNull;
 
 //--- Close dialogs if needed (check 2 times).
 if (dialog) then {closeDialog 0};
@@ -77,7 +73,7 @@ call CTI_CL_FNC_AddMissionActions;
 //--- Make sure that player is always the leader (of his group).
 if (! (isPlayer (leader(group player))) && !(CTI_P_SideJoined == resistance)) then {(group player) selectLeader player};
 
-if (isNull( findDisplay 120000)) then { createDialog "CTI_RscRespawnMenu"};
+createDialog "CTI_RscRespawnMenu";
 /*
 titleCut["","BLACK IN",1];
 
