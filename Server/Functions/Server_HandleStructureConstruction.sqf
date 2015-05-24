@@ -55,6 +55,7 @@ _lasttouch = time;
 
 //--- Await for the site to be constructed or "abandonned"
 while {_completion > 0 && _completion < 100} do {
+	waitUntil {!isNil {_structure getVariable "cti_completion"}};
 	_completion = _structure getVariable "cti_completion";
 	sleep CTI_BASE_CONSTRUCTION_DECAY_DELAY;
 
