@@ -143,7 +143,7 @@ if (CTI_IsServer) then {
   		_this  assignCurator ADMIN_ZEUS;
 		};
 		CTI_PVF_Server_UAV_FUEL={
-			if (missionNamespace getvariable (CTI_GAMEPLAY_DARTER_FUEL) > 0) then {
+			if (missionNamespace getvariable "CTI_GAMEPLAY_DARTER_FUEL" > 0) then {
 				_this spawn UAV_FUEL;
 			};
 		};
@@ -288,6 +288,10 @@ if (CTI_IsServer) then {
 				};
 			};
 		};*/
+
+		/*{
+			(_x) execFSM "Addons\Strat_mode\FSM\shared_objectives.fsm";
+		} forEach [east,west];*/
 
 };
 
