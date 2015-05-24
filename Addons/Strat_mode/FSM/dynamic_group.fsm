@@ -1,0 +1,94 @@
+/*%FSM<COMPILE "C:\Users\zerty\Documents\Poseidon\Data\Packages\Bin\fsmEditor\scriptedFSM.cfg, DYN_Groups">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"START",0,250,-39.366196,-150.352112,50.633804,-100.352112,0.000000,"START"};
+item1[] = {"_",4,218,-40.070419,-74.295761,49.929581,-24.295761,0.000000,""};
+item2[] = {"Standby",2,250,-40.070427,-1.760565,49.929588,48.239433,0.000000,"Standby"};
+item3[] = {"timeout_and__no",4,218,83.591545,-10.281689,173.591553,39.718311,0.000000,"timeout and " \n "no group"};
+item4[] = {"end",4,218,-38.661938,74.295776,51.338039,124.295761,0.000000,"end"};
+item5[] = {"Game_Over",1,250,-39.676048,141.197174,50.323982,191.197159,0.000000,"Game Over"};
+link0[] = {0,1};
+link1[] = {1,2};
+link2[] = {2,3};
+link3[] = {2,4};
+link4[] = {3,2};
+link5[] = {4,5};
+globals[] = {0.000000,0,0,0,0,640,480,1,8,6316128,1,-382.676056,277.323944,158.028168,-213.802826,825,731,1};
+window[] = {2,-1,-1,-1,-1,725,100,1300,100,3,843};
+*//*%FSM</HEAD>*/
+class FSM
+{
+  fsmName = "DYN_Groups";
+  class States
+  {
+    /*%FSM<STATE "START">*/
+    class START
+    {
+      name = "START";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="Standby";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"CTI_Init_Client &&  !(isnil ""DYNG_WAIT"")"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Standby">*/
+    class Standby
+    {
+      name = "Standby";
+      init = /*%FSM<STATEINIT""">*/"0 spawn DYNG_WAIT;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "end">*/
+        class end
+        {
+          priority = 0.000000;
+          to="Game_Over";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"CTI_GameOver"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "timeout_and__no">*/
+        class timeout_and__no
+        {
+          priority = 0.000000;
+          to="Standby";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!( [""PlayerHasGroup"",[player]] call BIS_fnc_dynamicGroups) &&  !(isnil ""DYNG_WAIT"") && ! CTI_GameOver && isnull (findDisplay 60490)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Game_Over">*/
+    class Game_Over
+    {
+      name = "Game_Over";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+  };
+  initState="START";
+  finalStates[] =
+  {
+    "Game_Over"
+  };
+};
+/*%FSM</COMPILE>*/

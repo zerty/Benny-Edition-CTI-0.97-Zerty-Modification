@@ -170,10 +170,10 @@ if (isNil {profileNamespace getVariable "CTI_PERSISTENT_HINTS"}) then { profileN
 
 	CTI_Init_CommanderClient = true;
 
-	if !(call CTI_CL_FNC_IsPlayerCommander ||(side player == resistance))  then {
+	/*if !(call CTI_CL_FNC_IsPlayerCommander ||(side player == resistance))  then {
 		//--- Execute the client orders context
 		execFSM "Client\FSM\update_orders.fsm";
-	};
+	};*/
 
 	call CTI_CL_FNC_AddMissionActions;
 
@@ -315,7 +315,7 @@ if (missionNamespace getVariable "CTI_TROPHY_APS" == 1) then {
 if ((missionNamespace getVariable "CTI_UNITS_FATIGUE") == 0) then {player enableFatigue false} else  {player enableFatigue true}; //--- Disable the unit's fatigue
 ["SERVER", "Request_NoobLogger", [player,0]] call CTI_CO_FNC_NetSend;
 0 execVM "Addons\MapMarkersTitling.sqf";
-
+0 execFSM "Addons\Strat_mode\FSM\dynamic_group.fsm";
 
 CTI_Init_Client = true;
 
