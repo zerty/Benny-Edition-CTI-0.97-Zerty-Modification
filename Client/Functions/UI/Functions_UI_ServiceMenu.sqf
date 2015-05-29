@@ -108,7 +108,7 @@ CTI_UI_Service_ProcessRearm = {
 	_var_name = if (isNil {_unit getVariable "cti_customid"}) then {typeOf _unit} else {missionNamespace getVariable format["CTI_CUSTOM_ENTITY_%1", _unit getVariable "cti_customid"]};
 	_var_classname = missionNamespace getVariable _var_name;
 	_label = if !(isNil '_var_classname') then {_var_classname select CTI_UNIT_LABEL} else {getText(configFile >> "CfgVehicles" >> typeOf _unit >> "displayName")};
-	if _unit isKindOf "Air" then {
+	if (_unit isKindOf "Air") then {
 		{
 			_times set [_forEachIndex,_x * CTI_AIR_REARM_RATIO];
 		} forEach _times;
