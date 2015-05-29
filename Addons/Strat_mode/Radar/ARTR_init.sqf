@@ -29,8 +29,22 @@ with missionnamespace do {
 		_m setMarkerBrushLocal "Solid";
 		_m setMarkerColorLocal "ColorYellow";
 		_m setMarkerAlphaLocal 0.8;
-		_m spawn {sleep 600; deleteMarkerLocal _this; };
+		if ((count ARTR_MARKERS) >20) then {_marker_name_del=ARTR_MARKERS deleteat 0; deleteMarkerLocal _marker_name_del;};
+		ARTR_MARKERS pushBack _marker_name;
+		//_m spawn {sleep 600; deleteMarkerLocal _this; };
 	};
 
 };
 
+if (CTI_isClient) then {
+	0 spawn {
+		while {!(CTI_GameOver)} do {
+			_marker_name=ARTR_MARKERS deleteat 0;
+			if ! (isnil "_m") then {
+				deleteMarkerLocal _marker_name;
+			} else {
+				sleep 400;
+			};
+		};
+	};
+};
