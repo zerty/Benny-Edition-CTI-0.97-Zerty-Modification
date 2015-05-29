@@ -125,6 +125,64 @@ if (missionNamespace getVariable "CTI_EW_ANET" == 0) then {
 //--- Perform side-speficic operations
 if (_sideID != CTI_P_SideID) exitWith {};
 
+//--- Retexture the vehicle if it's one defined in Ini_CommonConstants.sqf
+if (typeOf _vehicle in (CTI_VEHICLES_RETEXTURE)) then { 
+    switch (_side) do { 
+        case west: { 
+            _vehicle setObjectTextureGlobal  [0,"\A3\armor_f_beta\APC_Tracked_01\Data\apc_tracked_01_body_crv_co.paa"]; 
+            _vehicle setObjectTextureGlobal  [1,"\A3\armor_f_beta\APC_Tracked_01\Data\apc_tracked_01_body_crv_co.paa"]; 
+            _vehicle setObjectTextureGlobal  [2,"\A3\armor_f_beta\APC_Tracked_01\Data\apc_tracked_01_body_crv_co.paa"]; 
+        }; 
+		
+		case east: { 
+            _vehicle setObjectTextureGlobal [0,"\A3\armor_f_beta\APC_Tracked_01\Data\apc_tracked_01_crv_opfor_co.paa"]; 
+            _vehicle setObjectTextureGlobal [1,"\A3\armor_f_beta\APC_Tracked_01\Data\apc_tracked_01_crv_opfor_co.paa"]; 
+            _vehicle setObjectTextureGlobal [2,"\A3\armor_f_beta\APC_Tracked_01\Data\apc_tracked_01_crv_opfor_co.paa"]; 
+			_vehicle setObjectTextureGlobal [3,"\A3\armor_f_beta\APC_Tracked_01\Data\apc_tracked_01_crv_opfor_co.paa"]; 
+        };
+		
+    }; 
+}; 
+
+//--- Retexture the mobile respawn as defined in common constants
+if (typeOf _vehicle in (CTI_MR_RETEXTURE)) then { 
+    switch (_side) do { 
+        		
+		case west: { 
+            _vehicle setObjectTextureGlobal  [0,"Rsc\Pictures\mr_blue_camo.paa"];  			
+            _vehicle setObjectTextureGlobal  [1,"Rsc\Pictures\mr_blue_camo.paa"];  			
+            _vehicle setObjectTextureGlobal  [2,"Rsc\Pictures\mr_blue_camo.paa"];  			
+        }; 
+		
+		case east: { 
+            _vehicle setObjectTextureGlobal [0,"Rsc\Pictures\mr_red_camo.paa"];  			
+            _vehicle setObjectTextureGlobal [1,"Rsc\Pictures\mr_red_camo.paa"];  			
+            _vehicle setObjectTextureGlobal [2,"Rsc\Pictures\mr_red_camo.paa"];  			
+		};
+		
+    }; 
+}; 
+
+//--- Retexture the AA jet fighter as defined in common constants
+if (typeOf _vehicle in (CTI_AFIGHTER_RETEXTURE)) then { 
+    switch (_side) do { 
+        		
+		case west: { 
+            _vehicle setObjectTextureGlobal  [0,"Rsc\Pictures\plane_fighter_blufor.paa"];  			
+            _vehicle setObjectTextureGlobal  [1,"Rsc\Pictures\plane_fighter_blufor2.paa"]; //wings  			
+            //_vehicle setObjectTextureGlobal  [2,"Rsc\Pictures\plane_fighter_blufor.paa"];  			
+        }; 
+		
+		case east: { 
+            _vehicle setObjectTextureGlobal [0,"Rsc\Pictures\plane_fighter_opfor.paa"];  			
+            _vehicle setObjectTextureGlobal [1,"Rsc\Pictures\plane_fighter_opfor2.paa"]; //wings 			
+            //_vehicle setObjectTextureGlobal [2,"Rsc\Pictures\plane_fighter_opfor.paa"];  			
+		};
+		
+    }; 
+}; 
+
+
 /*if (CTI_SPECIAL_REPAIRTRUCK in _special) then { //--- Repair truck.
 	if (CTI_BASE_FOB_MAX > 0) then {
 		_vehicle addAction ["<t color='#eac6ff'>ACTION: Request FOB Build Permission</t>", "Client\Actions\Action_RequestAction.sqf", [CTI_REQUEST_FOB, []], 92, false, true, "", "_this == player && time - CTI_P_TeamsRequests_Last > 30 && !(call CTI_CL_FNC_IsPlayerCommander) && CTI_P_TeamsRequests_FOB < 1 && ( missionNamespace getVariable 'CTI_BASE_FOB_PERMISSION') == 1 "];
