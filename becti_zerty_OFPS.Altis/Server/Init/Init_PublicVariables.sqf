@@ -85,6 +85,30 @@ with missionNamespace do {
 		_join = true;
 
 		_get = missionNamespace getVariable Format["CTI_SERVER_CLIENT_%1",_uid];
+		
+		//--- Team-stack check // CSM modify this 7/24/14
+		_imbalance = CTI_GAMEPLAY_TEAMSTACK_VARIABLE;
+		if (_imbalance > 0) then {
+			_east = 0;
+			_west = 0;
+			//--- Check each player slot to see which ones are being controlled by actual players
+			{
+				if (isPlayer _x) then {
+					_sideJoined = side _x;
+					if (_sideJoined == west) then {_west = _west +1};
+					if (_sideJoined == east) then {_east = _east +1};
+				};	
+			} forEach playableUnits;
+
+
+			//--- If a large enough imbalance is detected, name and shame the player and deny the request
+			if ((_side == west && _west > _east + _imbalance) || (_side == east && _east > _west + _imbalance)) then {
+				_join = false;
+				_end = 7;
+				["CLIENT", "Client_OnMessageReceived", ["teamstack", _name]] call CTI_CO_FNC_NetSend;
+				if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FUNCTION: CTI_PVF_Request_Join", format["Player [%1] [%2] tried to teamstack on side [%3]. The server explicitely answered that he should be sent back to the lobby.", _name, _uid, _uid]] call CTI_CO_FNC_Log};	
+			};
+		};
 
 		if !(isNil '_get') then { //--- Retrieve JIP Information if there's any.
 			_side_origin = _get select 1; //--- Get the original side.

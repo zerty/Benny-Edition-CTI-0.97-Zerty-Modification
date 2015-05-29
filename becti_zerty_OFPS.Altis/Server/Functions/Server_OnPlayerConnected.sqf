@@ -61,7 +61,12 @@ _get = missionNamespace getVariable [format["CTI_SERVER_CLIENT_%1", _uid],["",ci
 _get set [0,_uid];
 if ((_get select 1) == civilian || (missionNamespace getVariable "CTI_TEAMSWAP" == 0)) then {_get set [1,_side_joinned]};
 if (isNil {missionNamespace getVariable format["CTI_SERVER_CLIENT_%1", _uid]}) then {missionNamespace setVariable [format["CTI_SERVER_CLIENT_%1", _uid],_get] };
-
+	
+	// Sari anti stack, ss83
+	//--- Format is [UID, Funds, First Joined side, Last Joined side (current one), First time join]
+	missionNamespace setVariable [format["CTI_SERVER_CLIENT_%1", _uid], [_uid, 0, _side, _side, true]];
+	//end of sari teamstack
+	
 if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FILE: Server\Functions\Server_OnPlayerConnected.sqf", format["Sent to   [%1]  found : [%2] ",(owner _unit),_get]] call CTI_CO_FNC_Log};
 
 
