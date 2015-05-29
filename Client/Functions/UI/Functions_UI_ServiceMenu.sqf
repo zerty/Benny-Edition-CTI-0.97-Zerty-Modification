@@ -108,8 +108,12 @@ CTI_UI_Service_ProcessRearm = {
 	_var_name = if (isNil {_unit getVariable "cti_customid"}) then {typeOf _unit} else {missionNamespace getVariable format["CTI_CUSTOM_ENTITY_%1", _unit getVariable "cti_customid"]};
 	_var_classname = missionNamespace getVariable _var_name;
 	_label = if !(isNil '_var_classname') then {_var_classname select CTI_UNIT_LABEL} else {getText(configFile >> "CfgVehicles" >> typeOf _unit >> "displayName")};
-
-	hint parseText format ["<t size='1.3' color='#2394ef'>Information</t><br /><br />Rearming a <t color='#ccffaf'>%1</t>... Please stand by...", _label];
+	if _unit isKindOf "Air" then {
+		{
+			_times set [_forEachIndex,_x * CTI_AIR_REARM_RATIO];
+		} forEach _times;
+	};
+	hint parseText format ["<t size='1.3' color='#2394ef'>Information</t><br /><br />Rearming a <t color='#ccffaf'>%1</t>... Please stand by ...", _label];
 	_unit setVehicleAmmo 0;
 
 	_start_at = time;
@@ -219,7 +223,7 @@ CTI_UI_Service_GetPrice = {
 
 	_cost = _base_cost;
 	if (!(isNil {missionNamespace getVariable typeOf _unit}) && _coefficient > -1) then {
-		_cost = ((missionNamespace getVariable typeOf _unit) select CTI_UNIT_PRICE) * _coefficient;
+		_cost = _cost +  ((missionNamespace getVariable typeOf _unit) select CTI_UNIT_PRICE) * _coefficient;
 	};
 
 	round(_cost)
