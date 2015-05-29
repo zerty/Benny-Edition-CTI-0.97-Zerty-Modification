@@ -1,6 +1,6 @@
 //--- Initial View Distance and Object View Distance for both clients and server
-setViewDistance 4000;
-setObjectViewDistance 4000;
+setViewDistance 3000;
+setObjectViewDistance 3000;
 
 NET_LOG=False;
 
@@ -130,5 +130,17 @@ waitUntil {CTI_Init_Client || CTI_Init_Server};
 0 execVM "Addons\Strat_mode\init.sqf";
 waitUntil {CTI_Init_Strat};
 0 execVM "changelog.sqf";
+
+//---Igiload script
+_igiload = execVM "IgiLoad\IgiLoadInit.sqf";
+
+
+//--Drag Crates script
+_logistic = execVM "=BTC=_logistic\=BTC=_logistic_Init.sqf";
+
+//-- Explosives on Vehicles Script
+waitUntil {time > 0};
+execVM "Addons\EtV.sqf";
+waitUntil {!isNil "EtVInitialized"};
 
 addMissionEventHandler ["Loaded",{execVM "Client\Init\Init_Client.sqf";execVM "Addons\strat_mode\init.sqf";}];

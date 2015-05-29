@@ -26,22 +26,22 @@ class Mission
 	randomSeed=7374927;
 	class Intel
 	{
-		briefingName="BECTI BE 0.97 - Zerty 1.3.1.0 [PreRelease2]";
+		briefingName="BECTI - Zerty - OFPS";
 		overviewText="By Benny - Adapted from OFP era MFCTI (Mike Melvin)";
 		resistanceWest=0;
 		startWeather=0;
 		startWind=0;
-		startWaves=0.099999994;
+		startWaves=0;
 		forecastWeather=0;
 		forecastWind=0;
 		forecastWaves=0.099999994;
 		forecastLightnings=0.099999994;
-		year=2012;
-		month=6;
-		day=21;
-		hour=5;
+		year=2015;
+		month=8;
+		day=23;
+		hour=6;
 		minute=0;
-		startFogBase=0.001;
+		startFogBase=0.000;
 		forecastFogBase=0.001;
 		startFogDecay=0.0049999999;
 		forecastFogDecay=0.0049999999;

@@ -12,14 +12,16 @@
 #include "Rsc\Parameters.hpp"
 
 #include "Addons\Strat_mode\res.hpp"
-#include "Addons\Henroth_AirLoadout\dialogs.hpp"
 
-loadScreen = "banner.jpg";
+
 // ^HS^ for Headless Client
-joinUnassigned = 0;
-//disableChannels[]={0,3};
 
-enableDebugConsole = 1;
 
-wreckManagerMode=0;
-corpseManagerMode = 0;
+
+loadScreen = "loadscreen.jpg"; //SS83 The Load screen jpg file
+enableDebugConsole	= 1;		// <!-- Enable the debug console where (0=disabled),(1=Admins Only),(2=Everyone) DO NOT SET AS 2!
+showGPS			= 1;			// <!-- Allow GPS
+showCompass		= 1;			// <!-- Allow Compass
+showWatch		= 1;			// <!-- Allow Watch
+disableChannels[]= {3, 6};	// <!-- Restrict chat channels where (0=Global),(1=Side),(2=Command),(3=Group),(4=Vehicle),(5=Direct),(6=System)
+joinUnassigned	= 0;		// <!-- Where 0 forces joining players into the first empty slot, 1 leaves them to select their own
