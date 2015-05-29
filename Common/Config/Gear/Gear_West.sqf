@@ -1571,9 +1571,6 @@ _i = _i		+ ["srifle_DMR_03_woodland_F"];
 _u = _u		+ [2];
 _p = _p		+ [150];
 
-_i = _i		+ ["srifle_DMR_03_spotter_F"];
-_u = _u		+ [2];
-_p = _p		+ [150];
 
 _i = _i		+ [["srifle_DMR_03_ARCO_F"]];
 _u = _u		+ [2];
