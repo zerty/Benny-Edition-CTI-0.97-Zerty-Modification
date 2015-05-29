@@ -749,7 +749,7 @@ _u = _u + [0];
 _f = _f + [CTI_FACTORY_AIR];
 _s = _s + [""];
 
-_c = _c + ["B_CargoNet_01_ammo_F"];
+_c = _c + ["B_supplyCrate_F"];
 _p = _p + [''];
 _n = _n + ['Mobile Gear access Crate'];
 _o = _o + [3000];

@@ -772,7 +772,7 @@ _u = _u + [0];
 _f = _f + [CTI_FACTORY_REPAIR];
 _s = _s + ["service-fueltruck"];
 
-_c = _c + ["O_CargoNet_01_ammo_F"];
+_c = _c + ["O_supplyCrate_F"];
 _p = _p + [''];
 _n = _n + ['Mobile Gear access Crate'];
 _o = _o + [3000];
