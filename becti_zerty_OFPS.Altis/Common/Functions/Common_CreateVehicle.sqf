@@ -156,6 +156,12 @@ if (missionNamespace getVariable "CTI_SM_RADAR" == 1) then {
 	["SERVER", "Server_AIRR_handle",_vehicle] call CTI_CO_FNC_NetSend;
 };
 
+//SS83 Clear out the cargo of the vehicle
+       clearItemCargoGlobal _vehicle;
+       clearMagazineCargoGlobal _vehicle;
+       clearWeaponCargoGlobal _vehicle;
+	   clearBackpackCargoGlobal _vehicle;
+
 
 
 //trophy system
