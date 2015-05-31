@@ -40,8 +40,9 @@ if (CTI_isClient) then {
 	0 spawn {
 		while {!(CTI_GameOver)} do {
 			_marker_name=ARTR_MARKERS deleteat 0;
-			if ! (isnil "_m") then {
+			if ! (isnil "_marker_name") then {
 				deleteMarkerLocal _marker_name;
+				sleep 60;
 			} else {
 				sleep 400;
 			};
