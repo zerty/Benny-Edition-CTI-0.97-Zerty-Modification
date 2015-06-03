@@ -6,22 +6,22 @@
 	Author: 		Benny
 	Creation Date:	18-09-2013
 	Revision Date:	18-09-2013
-	
+
   # PARAMETERS #
     0	[Object]: The vehicle
     1	[String]: The crew classname to use
     2	[Group]: The group of the crew
     3	[Integer]: The Side ID of the vehicle
-	
+
   # RETURNED VALUE #
 	[Array]: The created crew
-	
+
   # SYNTAX #
 	[VEHICLE, CREW, GROUP, SIDE ID] call CTI_CO_FNC_ManVehicle
-	
+
   # DEPENDENCIES #
 	Common Function: CTI_CO_FNC_CreateUnit
-	
+
   # EXAMPLE #
     _crew = [tank1, "B_crew_F", group player, CTI_P_SideID] call CTI_CO_FNC_ManVehicle
 	  -> Assuming tank1 is an empty tank, a crew will be spawned in it and will join the player's group
@@ -39,7 +39,7 @@ _config = configFile >> "CfgVehicles" >> typeOf _vehicle >> "turrets";
 for '_i' from 0 to (count _config)-1 do {
 	_turret_main = _config select _i;
 	_turrets = _turrets + [[_i]];
-	
+
 	_config_sub = _turret_main >> "turrets";
 	for '_j' from 0 to (count _config_sub) -1 do {
 		_turret_sub = _config_sub select _j;
@@ -60,10 +60,22 @@ if (_vehicle emptyPositions "driver" > 0) then {
 	_units = _units + [_unit];
 };
 
+if (_vehicle emptyPositions "commander" > 0) then {
+	_unit = [_crew, _group, _position, _sideID, _net] call CTI_CO_FNC_CreateUnit;
+	_unit moveInCommander _vehicle;
+	_units = _units + [_unit];
+};
+
+if (_vehicle emptyPositions "gunner" > 0) then {
+	_unit = [_crew, _group, _position, _sideID, _net] call CTI_CO_FNC_CreateUnit;
+	_unit moveInGunner _vehicle;
+	_units = _units + [_unit];
+};
+/*
 {
 	_unit = [_crew, _group, _position, _sideID, _net] call CTI_CO_FNC_CreateUnit;
 	_unit moveInTurret [_vehicle, _x];
 	_units = _units + [_unit];
 } forEach _turrets;
-
+*/
 _units

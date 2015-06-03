@@ -55,7 +55,7 @@ while { true } do {
 
 
 	if (!(call CTI_CL_FNC_IsPlayerCommander) || ! Client_AN_Connected) then {
-		{((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl _x) ctrlEnable false} forEach [210003,210004,210006,210008,210010,210011]; };
+		{((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl _x) ctrlEnable false} forEach [210003,210004,210008,210010,210011]; };
 	if ((missionNamespace getVariable "CTI_ARTILLERY_SETUP") < 0) then {((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210009) ctrlEnable false};
 
 

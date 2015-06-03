@@ -307,7 +307,11 @@ switch (_action) do {
 
 						// Reresh vehicle loadout
 						_wait = _selected_vehicle call CTI_AC_UPDATE_UI_CURRENT_LOADOUT;
-						[_selected_vehicle, CTI_P_SideJoined] call CTI_CO_FNC_RearmVehicle;
+						//[_selected_vehicle, CTI_P_SideJoined] call CTI_CO_FNC_RearmVehicle;
+						_structures = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideStructures;
+						_ammo_depots = [CTI_AMMO, _structures, _selected_vehicle] call CTI_CO_FNC_GetSideStructuresByType;
+						_available_ammo_depots = [_selected_vehicle, _ammo_depots, CTI_SERVICE_AMMO_DEPOT_RANGE] call CTI_UI_Service_GetBaseDepots;
+						[_selected_vehicle,  [[],[["Base", _available_ammo_depots], ["Mobile",[]]],[],[]], [CTI_SERVICE_AMMO_DEPOT_RANGE, CTI_SERVICE_AMMO_TRUCK_RANGE], [CTI_SERVICE_AMMO_DEPOT_TIME, CTI_SERVICE_AMMO_TRUCK_TIME], 1] spawn CTI_UI_Service_ProcessRearm;
 					}
 					else
 					{

@@ -28,7 +28,7 @@ missionNamespace setVariable [format["CTI_%1_Vehicles_Startup", _side], [
 		["optic_Holosight", 2],
 		["optic_MRCO", 1],
 		["Toolkit", 1],
-		["B_Bergen_sgg_Exp", 4]
+		["B_Kitbag_cbr", 4]
 	]],
 	["O_MRAP_02_F", [	["Toolkit", 1],["firstaidkit", 10],["30Rnd_556x45_Stanag", 15],["launch_RPG32_F", 5], ["RPG32_F", 20]]]
 	//,	["O_Heli_Light_02_unarmed_F", []]
@@ -131,7 +131,7 @@ _u = _u		+ ['Box_East_Grenades_F'];
 _u = _u		+ ['Box_East_AmmoOrd_F'];
 _u = _u		+ ['Box_East_WpsLaunch_F'];
 _u = _u		+ ['Box_East_WpsSpecial_F'];
-_u = _u		+ ['O_CargoNet_01_ammo_F'];
+_u = _u		+ ['O_supplyCrate_F'];
 //_u = _u		+ ['Land_Pod_Heli_Transport_04_repair_F'];
 _u = _u		+ ['O_Quadbike_01_F'];
 _u = _u		+ ['O_G_Offroad_01_F'];

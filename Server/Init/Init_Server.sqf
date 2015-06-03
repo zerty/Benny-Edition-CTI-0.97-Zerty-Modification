@@ -37,6 +37,9 @@ CTI_SE_FNC_StartUpgrade = compileFinal preprocessFileLineNumbers "Server\Functio
 CTI_SE_FNC_TrashObject = compileFinal preprocessFileLineNumbers "Server\Functions\Server_TrashObject.sqf";
 CTI_SE_FNC_Cache = compileFinal preprocessFileLineNumbers "Server\Functions\Server_CacheVehicle.sqf";
 
+PERS_SAVE = compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Functions\PERS_save.sqf";
+PERS_LOAD = compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Functions\PERS_Load.sqf";
+
 
 funcCalcAlignPosDir = compileFinal preprocessFileLineNumbers "Server\Functions\Externals\fCalcAlignPosDir.sqf";
 funcVectorAdd = compileFinal preprocessFileLineNumbers "Server\Functions\Externals\fVectorAdd.sqf";
@@ -57,6 +60,8 @@ execVM "Server\Init\Init_Prison.sqf";
 
 CTI_Structure_Lock=False;
 CTI_Worker_Lock=False;
+
+
 
 CENTER_POS=getMarkerPos "CENTER_POS";
 "CENTER_POS" setmarkeralpha 0;
@@ -283,7 +288,16 @@ while {! (((getMarkerPos format ["HELO_START_%1", _i])select 0) == 0)} do
 	execFSM "Server\FSM\update_resources.fsm";
 	execFSM "Server\FSM\update_victory.fsm";
 };
-
+if (missionNamespace getvariable "CTI_PERSISTANT" == 1) then {
+	waitUntil {!isNil 'CTI_InitTowns'};
+	if (profileNamespace getvariable ["CTI_SAVE_ENABLED",false]) then { 0 call PERS_LOAD};
+	0 spawn {
+		while {!CTi_GameOver} do {
+			sleep 270 +random (60);
+			0 call PERS_SAVE;
+		};
+	};
+};
 
 CTI_Init_Server=True;
 

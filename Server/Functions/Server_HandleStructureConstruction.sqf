@@ -55,6 +55,7 @@ _lasttouch = time;
 
 //--- Await for the site to be constructed or "abandonned"
 while {_completion > 0 && _completion < 100} do {
+	waitUntil {!isNil {_structure getVariable "cti_completion"}};
 	_completion = _structure getVariable "cti_completion";
 	sleep CTI_BASE_CONSTRUCTION_DECAY_DELAY;
 
@@ -77,7 +78,7 @@ if (_completion >= 100) then {
 	_structure setPos _position;
 	_structure setDir _direction;
 	_structure setVectorUp [0,0,0];
-
+	_structure setVariable ["cti_save", _variable,false];
 	_structure setVariable ["cti_structure_type", ((_var select 0) select 0)];
 
 	//--- Do we use our alternative damage system to prevent some bisteries from happening?

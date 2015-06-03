@@ -15,9 +15,10 @@ _starting_town=(_possible_town select floor random count _possible_town);
 _roads=_starting_town nearRoads 500;
 if (count _roads >0 ) then {
 	_pos = _roads select floor random count _roads;
-	_group=createGroup resistance;
 	_class= GUER_VEHICLES_PATROL select floor( random (count GUER_VEHICLES_PATROL));
 	_v=[_class, _pos, random(360), resistance, true, false, true] call CTI_CO_FNC_CreateVehicle;
+	//waitUntil {!isnull _group && !isNull _v};
+	_group=createGroup resistance;
 	[_v,_group] call bis_fnc_spawncrew;
 	if !( isNil "ADMIN_ZEUS") then { ADMIN_ZEUS addCuratorEditableObjects [[_v],true];};
 	_group setvariable ["defending",false,true];

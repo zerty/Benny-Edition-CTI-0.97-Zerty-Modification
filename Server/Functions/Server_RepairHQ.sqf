@@ -49,8 +49,8 @@ _hq = [missionNamespace getVariable Format["CTI_%1_HQ", _side], _position, _dire
 _hq setVariable ["cti_gc_noremove", true]; //--- HQ wreck cannot be removed nor salvaged
 _hq setVariable ["cti_ai_prohib", true]; //--- HQ may not be used by AI as a commandable vehicle
 _hq addEventHandler ["getIn", {_this spawn CTI_CO_FNC_OnUnitGetOut}];
-	_hq addEventHandler ["getOut", {_this spawn CTI_CO_FNC_OnUnitGetOut}];
-	_hq setVariable ["cti_occupant", _side,true];
+_hq addEventHandler ["getOut", {_this spawn CTI_CO_FNC_OnUnitGetOut}];
+_hq setVariable ["cti_occupant", _side,true];
 _hq addEventHandler ["killed", format["[_this select 0, _this select 1, %1] spawn CTI_SE_FNC_OnHQDestroyed", _sideID]];
 if (CTI_BASE_NOOBPROTECTION == 1) then {
 	_hq addEventHandler ["handleDamage", format["[_this select 2, _this select 3, %1] call CTI_CO_FNC_OnHQHandleDamage", _sideID]]; //--- You want that on public
@@ -61,6 +61,7 @@ _logic setVariable ["cti_hq", _hq, true];
 // [["CLIENT", _side], "Client_HQAddDefense", _hq] call CTI_CO_FNC_NetSend;
 
 [["CLIENT", _side], "Client_OnMessageReceived", ["hq-repair"]] call CTI_CO_FNC_NetSend;
+[["CLIENT", _side], "Client_RenewHQ", []] call CTI_CO_FNC_NetSend;
 
 //--- Set the HQ to be local to a player commander if possible.
 _commander = (_side) call CTI_CO_FNC_GetSideCommander;

@@ -5,7 +5,7 @@ _a_targs= player nearTargets (HUD_MAX_RANGE);
 
 {
 	if (!((_x select 2) == civilian) && !((_x select 2) == CTI_P_SideJoined) && (group player ) knowsAbout (_x select 4) >(missionNamespace getVariable "CTI_EW_HUD_S")) then {
-		//if ((_x select 4) isKindOf "CAManBase" && vehicle (_x select 4) == (_x select 4) && !((_x select 2) == CTI_P_SideJoined) ) then {_targs =_targs + [_x];};
+		if (((missionNamespace getVariable "CTI_EW_HUD_I") == 1) && (_x select 4) isKindOf "CAManBase" && vehicle (_x select 4) == (_x select 4) && !((_x select 2) == CTI_P_SideJoined) ) then {_targs =_targs + [_x];};
 		if ((_x select 4) isKindOf "Car") then {_targs =_targs + [_x];};
 		if ((_x select 4) isKindOf "Tank") then {_targs =_targs + [_x];};
 		if ((_x select 4) isKindOf "Air") then {_targs =_targs + [_x];};

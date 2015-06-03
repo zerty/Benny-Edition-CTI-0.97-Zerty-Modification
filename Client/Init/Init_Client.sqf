@@ -170,10 +170,10 @@ if (isNil {profileNamespace getVariable "CTI_PERSISTENT_HINTS"}) then { profileN
 
 	CTI_Init_CommanderClient = true;
 
-	if !(call CTI_CL_FNC_IsPlayerCommander ||(side player == resistance))  then {
+	/*if !(call CTI_CL_FNC_IsPlayerCommander ||(side player == resistance))  then {
 		//--- Execute the client orders context
 		execFSM "Client\FSM\update_orders.fsm";
-	};
+	};*/
 
 	call CTI_CL_FNC_AddMissionActions;
 
@@ -244,7 +244,7 @@ TABLET_KEY_DOWN={
 	_return=false;
 	disableSerialization;
 
-	if (! (_this select 2) && ! (_this select 3) && ! (_this select 4) &&(_this select 1) in ([(profilenamespace getvariable ['CTI_TABLET_KEY',41])]+(actionKeys "User5"))  && !visibleMap && !CTI_P_PreBuilding &&!CTI_P_Repairing && isNull (uiNamespace getVariable ['cti_dialog_ui_interractions',objNull]) && isNull (uiNamespace getVariable ['cti_dialog_ui_defensemenu',objnull]) && isNull (uiNamespace getVariable ['cti_dialog_ui_purchasemenu',objnull]) && isnull (uiNamespace getVariable ["cti_dialog_ui_tabletmain",objnull]) ) then {
+	if (! (_this select 2) && ! (_this select 3) && ! (_this select 4) &&(_this select 1) in ([(profilenamespace getvariable ['CTI_TABLET_KEY',41])]+(actionKeys "User5"))  && !visibleMap && !CTI_P_PreBuilding &&!CTI_P_Repairing && isNull (uiNamespace getVariable ['cti_dialog_ui_interractions',objNull]) && isNull (uiNamespace getVariable ['cti_dialog_ui_defensemenu',objnull]) && isNull (uiNamespace getVariable ['cti_dialog_ui_purchasemenu',objnull]) && isnull (uiNamespace getVariable ["cti_dialog_ui_tabletmain",objnull]) && (isnull (findDisplay 60490))) then {
 			uiNamespace setVariable ["INT_TARG", call TABLET_GET_TARGET];
 			createdialog "CTI_RscInteraction";
 			_return=true;
@@ -254,7 +254,7 @@ TABLET_KEY_DOWN={
 TABLET_KEY_UP={
 	_return=false;
 	disableSerialization;
-	if (! (_this select 2) && ! (_this select 3) && ! (_this select 4) && (_this select 1) in [(profilenamespace getvariable ['CTI_TABLET_KEY',41])]  && !isNil {uiNamespace getVariable 'cti_dialog_ui_interractions'}&& isNil {uiNamespace getVariable 'cti_dialog_ui_purchasemenu'} && isNil {uiNamespace getVariable 'cti_dialog_ui_buildmenu'} && isNil {uiNamespace getVariable 'cti_dialog_ui_defensemenu'}&& isNil {uiNamespace getVariable 'cti_dialog_ui_gear'}&& isNil {uiNamespace getVariable 'cti_dialog_ui_aircraftloadoutmenu'} && isnil {uiNamespace getVariable "cti_dialog_ui_tabletmain"} ) then {
+	if (! (_this select 2) && ! (_this select 3) && ! (_this select 4) && (_this select 1) in [(profilenamespace getvariable ['CTI_TABLET_KEY',41])]  && !isNil {uiNamespace getVariable 'cti_dialog_ui_interractions'}&& isNil {uiNamespace getVariable 'cti_dialog_ui_purchasemenu'} && isNil {uiNamespace getVariable 'cti_dialog_ui_buildmenu'} && isNil {uiNamespace getVariable 'cti_dialog_ui_defensemenu'}&& isNil {uiNamespace getVariable 'cti_dialog_ui_gear'}&& isNil {uiNamespace getVariable 'cti_dialog_ui_aircraftloadoutmenu'} && isnil {uiNamespace getVariable "cti_dialog_ui_tabletmain"} && (isnull (findDisplay 60490)) ) then {
 		closeDialog 0;
 	};
 	_return
@@ -288,8 +288,8 @@ TABLET_GET_TARGET={
 if (/*profileNamespace getVariable "CTI_PERSISTENT_HINTS"*/true) then {
 	0 spawn {
 		sleep 2;
+		waitUntil {(!isNull (findDisplay 46)) && (["PlayerHasGroup",[player] ] call BIS_fnc_dynamicGroups) && isnull (findDisplay 60490) };
 		createdialog "CTI_RscTabletOnlineHelpMenu";
-
 	};
 };
 
@@ -315,7 +315,7 @@ if (missionNamespace getVariable "CTI_TROPHY_APS" == 1) then {
 if ((missionNamespace getVariable "CTI_UNITS_FATIGUE") == 0) then {player enableFatigue false} else  {player enableFatigue true}; //--- Disable the unit's fatigue
 ["SERVER", "Request_NoobLogger", [player,0]] call CTI_CO_FNC_NetSend;
 0 execVM "Addons\MapMarkersTitling.sqf";
-
+0 execFSM "Addons\Strat_mode\FSM\dynamic_group.fsm";
 
 CTI_Init_Client = true;
 

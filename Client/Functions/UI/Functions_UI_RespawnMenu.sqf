@@ -92,7 +92,8 @@ CTI_UI_Respawn_GetRespawnLabel = {
 			_var = missionNamespace getVariable format ["CTI_%1_%2", CTI_P_SideJoined, _location getVariable "cti_structure_type"];
 			_value = (_var select 0) select 1;
 		};
-		case (_location isKindOf "AllVehicles"): { _value = getText(configFile >> "CfgVehicles" >> typeOf _location >> "displayName") };
+		case (_location == (leader group player)) : {_value=format ["[LEADER] %1",name _location]};
+		case (_location isKindOf "AllVehicles"&& !(_location == (leader group player))): { _value = getText(configFile >> "CfgVehicles" >> typeOf _location >> "displayName") };
 	};
 
 	_value
@@ -153,8 +154,8 @@ CTI_UI_Respawn_AppendTracker = {
 CTI_UI_Respawn_LoadLocations = {
 	private ["_old_locations", "_respawn_locations", "_respawn_locations_formated", "_set", "_spawn"];
 	_respawn_locations = call CTI_UI_Respawn_GetAvailableLocations;
-
-	_respawn_locations = [CTI_DeathPosition, _respawn_locations] call CTI_CO_FNC_SortByDistance;
+	_leader= if (!((leader group player) == player) && isPlayer (leader group player)&& (missionNamespace getVariable "CTI_GROUP_LEADER_RESP") == 1 && ((leader group player) distance (getMarkerPos "prison")) >500 && ((leader group player) distance (getMarkerPos format ["CTI_%1Respawn",side (group player)])) >2000 ) then {[leader group player]} else {[]};
+	_respawn_locations =_leader + ([CTI_DeathPosition, _respawn_locations] call CTI_CO_FNC_SortByDistance);
 	_respawn_locations_formated = (_respawn_locations) call CTI_UI_Respawn_GetListLabels;
 
 	_old_locations = uiNamespace getVariable "cti_dialog_ui_respawnmenu_locations";
@@ -231,7 +232,7 @@ CTI_UI_Respawn_OnRespawnReady = {
 
 	_respawn_ai = false;
 	_respawn_ai_gear = [];
-	if (_where isKindOf "Man") then { //--- The location is an AI?
+	if (_where isKindOf "Man" && ! (isPlayer _where)) then { //--- The location is an AI?
 		if (_where in units player) then { //--- The AI is in the player group?
 			_pos = getPos _where; //--- Get the AI position (todo: copy the stance)
 			_respawn_ai_gear = (_where) call CTI_UI_Gear_GetUnitEquipment; //--- Get the AI current equipment using the Gear UI function
@@ -304,7 +305,7 @@ CTI_UI_Respawn_GetTime={
 	private ["_time_factor","_distance_factor"];
 	_target=_this;
 	_time=240;
-	if (_target in CTI_TOWNS) then {
+	if ((_target in CTI_TOWNS) || (isPlayer _target)) then {
 		_time_factor=((CTI_P_LastDeathTime-CTI_P_LastRespawnTime)/240) min 1;
 		_distance_factor =((CTI_DeathPosition distance _target)/4000) min 1;
 		_time = (missionNamespace getVariable "CTI_RESPAWN_TIMER") max (_time - _time * (_time_factor + _distance_factor));

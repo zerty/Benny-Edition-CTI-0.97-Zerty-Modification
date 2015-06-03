@@ -1,13 +1,13 @@
 /*%FSM<COMPILE "scriptedFSM.cfg, town_resistance.fsm">*/
 /*%FSM<HEAD>*/
 /*
-item0[] = {"Start_FSM",0,4346,-100.000000,-500.000000,0.000000,-450.000000,0.000000,"Start FSM"};
+item0[] = {"Start_FSM",0,250,-100.000000,-500.000000,0.000000,-450.000000,0.000000,"Start FSM"};
 item1[] = {"Cycle",4,218,-100.000000,-400.000000,0.000000,-350.000000,0.000000,"Cycle"};
 item2[] = {"Units_near_Cente",2,250,-100.000000,-300.000000,0.000000,-250.000000,0.000000,"Units near" \n "Center"};
 item3[] = {"End_FSM",1,250,-100.000000,-100.000000,0.000000,-50.000000,0.000000,"End FSM"};
 item4[] = {"Empty",4,218,50.000000,-300.000000,150.000000,-250.000000,2.000000,"Empty"};
 item5[] = {"Gameover",8,218,-100.000000,-200.000000,0.000000,-150.000000,0.000000,"Gameover"};
-item6[] = {"Not_Empty",4,218,-250.000000,-300.000000,-150.000000,-250.000000,1.000000,"Not Empty"};
+item6[] = {"Not_Empty",4,4314,-250.000000,-300.000000,-150.000000,-250.000000,1.000000,"Not Empty"};
 item7[] = {"Skip",2,250,50.000000,-400.000000,150.000000,-350.000000,0.000000,"Skip"};
 item8[] = {"Check_Capture",2,250,-250.000000,-200.000000,-150.000000,-150.000000,0.000000,"Check" \n "Capture"};
 item9[] = {"Ready",8,218,-400.000000,-200.000000,-300.000000,-150.000000,0.000000,"Ready"};
@@ -32,7 +32,7 @@ link13[] = {11,13};
 link14[] = {12,1};
 link15[] = {13,1};
 globals[] = {25.000000,1,0,0,0,640,480,1,172,6316128,1,-549.415588,390.034454,787.911072,-568.901123,610,881,1};
-window[] = {2,-1,-1,-32000,-32000,662,50,1086,50,3,628};
+window[] = {2,-1,-1,-1,-1,787,175,1211,175,3,628};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -86,6 +86,8 @@ class FSM
        "" \n
        "_west = west countSide _objects;" \n
        "_east = east countSide _objects;" \n
+       "_west_def= _west;" \n
+       "_east_def= _east;" \n
        "" \n
        "if !(" \n
        "(_town getVariable ""cti_town_occupation_active"") && (  (_town getVariable ""cti_town_occupation_active_sideID"")  Call CTI_CO_FNC_GetSideFromID ) == west  " \n
@@ -191,9 +193,9 @@ class FSM
     class Check_Capture
     {
       name = "Check_Capture";
-      init = /*%FSM<STATEINIT""">*/"_resistanceDominion = if (_resistance > _east && _resistance > _west) then {true} else {false};" \n
-       "_westDominion = if (_west > _east && _west > _resistance) then {true} else {false};" \n
-       "_eastDominion = if (_east > _west && _east > _resistance) then {true} else {false};" \n
+      init = /*%FSM<STATEINIT""">*/"_resistanceDominion = if (_resistance > _east_def && _resistance > _west_def) then {true} else {false};" \n
+       "_westDominion = if (_west > _east_def && _west > _resistance) then {true} else {false};" \n
+       "_eastDominion = if (_east > _west_def && _east > _resistance) then {true} else {false};" \n
        "" \n
        "_force = switch (true) do { case _resistanceDominion: { resistance }; case _westDominion: { west }; case _eastDominion: { east }; default { civilian } };" \n
        "" \n

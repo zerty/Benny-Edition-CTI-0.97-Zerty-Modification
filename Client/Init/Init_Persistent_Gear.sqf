@@ -6,6 +6,7 @@ _side_gear = missionNamespace getVariable "cti_gear_all";
 _list = [];
 if (typeName _templates == "ARRAY") then { //--- The variable itself is an array
 	{
+		_flag_load = true;
 		// [_label, _picture, _cost, _x]
 		if (typeName _x == "ARRAY") then { //--- Each items are arrays >> [_label, _picture, _cost, _x, upgrade]
 			_gear = _x select 3;
@@ -28,13 +29,13 @@ if (typeName _templates == "ARRAY") then { //--- The variable itself is an array
 										if ((!isClass (configFile >> "CfgWeapons" >> _weapon) || !(_weapon in _side_gear)) && _weapon != "") exitWith {_flag_load = false}; //--- Abort if: the weapon is invalid or if it's not within the side's owned templates
 										if (!(getNumber(configFile >> "CfgWeapons" >> _weapon >> "type") in [CTI_TYPE_RIFLE,CTI_TYPE_PISTOL,CTI_TYPE_LAUNCHER,CTI_TYPE_RIFLE2H]) && _weapon != "") exitWith {_flag_load = false}; //--- Make sure that the weapon is a weapon
 
-										if !(count _accessories in [0,3]) exitWith {_flag_load = false}; //--- The data format is invalid for the accesories
+										if !(count _accessories in [0,4]) exitWith {_flag_load = false}; //--- The data format is invalid for the accesories
 										{
 											if (typeName _x == "STRING") then { //--- The accessory is a string
 												if (_x != "") then { //--- Empty accessories are skipped
 													if (!isClass (configFile >> "CfgWeapons" >> _x) || !(_x in _side_gear)) exitWith {_flag_load = false}; //--- The accessory ain't valid or it's not within the side's gear
 													if (getNumber(configFile >> "CfgWeapons" >> _x >> "type") != CTI_TYPE_ITEM) exitWith {_flag_load = false}; //--- The accessory is not a valid base class!
-													if !(getNumber(configFile >> "CfgWeapons" >> _x >> "ItemInfo" >> "type") in [CTI_SUBTYPE_ACC_MUZZLE,CTI_SUBTYPE_ACC_OPTIC,CTI_SUBTYPE_ACC_SIDE]) exitWith {_flag_load = false}; //--- The accessory is not a valid base class (we don't care bout the order)!
+													if !(getNumber(configFile >> "CfgWeapons" >> _x >> "ItemInfo" >> "type") in [CTI_SUBTYPE_ACC_MUZZLE,CTI_SUBTYPE_ACC_OPTIC,CTI_SUBTYPE_ACC_SIDE,CTI_SUBTYPE_ACC_BIPOD]) exitWith {_flag_load = false}; //--- The accessory is not a valid base class (we don't care bout the order)!
 												};
 											};
 											if !(_flag_load) exitWith {};
@@ -62,7 +63,6 @@ if (typeName _templates == "ARRAY") then { //--- The variable itself is an array
 					} else {
 						_flag_load = false;
 					};
-
 					if (_flag_load) then {
 						//--- #2 then we check the containers (uniform/vest/backpack)
 						_gear_sub = _gear select 1;
@@ -124,7 +124,6 @@ if (typeName _templates == "ARRAY") then { //--- The variable itself is an array
 							_flag_load = false;
 						};
 					};
-
 					if (_flag_load) then {
 						//--- #3 next we check the head equipment (helm/goggles)
 						_gear_sub = _gear select 2;
@@ -220,6 +219,7 @@ if (typeName _templates == "ARRAY") then { //--- The variable itself is an array
 				};
 			};
 		};
+
 	} forEach _templates;
 };
 

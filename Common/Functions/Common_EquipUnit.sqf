@@ -72,7 +72,7 @@ if (_unit isKindOf "Man") then {
 
 	//--- Binoculars are special, they can't be linked like the other items.
 	if (((_gear select 3) select 0) select 1 != "") then {_unit addWeapon (((_gear select 3) select 0) select 1)};
-	if  (((_gear select 3) select 0) select 1 == "Laserdesignator" && ! isnull (uniformContainer _unit)) then { (uniformContainer _unit) addItemCargoGlobal ["Laserbatteries",1]} ;
+	if  ((((_gear select 3) select 0) select 1) in ["Laserdesignator","Laserdesignator_02"] && ! isnull (uniformContainer _unit)) then { (uniformContainer _unit) addItemCargoGlobal ["Laserbatteries",1]} ;
 
 	//--- [Weapons check-in]
 	//--- Primary
