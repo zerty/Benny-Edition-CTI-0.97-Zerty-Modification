@@ -67,6 +67,7 @@ if (CTI_SPECIAL_REPAIRTRUCK in _special) then { //--- Repair truck.
 if (CTI_SPECIAL_AMMOTRUCK in _special) then { //--- Ammo truck.
 	_marker_size = [0.75,0.75];
 	_marker_type = CTI_P_MarkerPrefix+"support";
+	_vehicle setAmmoCargo 0;  // No free ammo, sorry Acalc  
 };
 if (CTI_SPECIAL_MEDICALVEHICLE in _special) then { //--- Medical vehicle.
 	_marker_size = [0.75,0.75];
