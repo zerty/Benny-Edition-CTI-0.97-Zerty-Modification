@@ -27,7 +27,7 @@ _t=_t+			[[20*CTI_UPGRADE_RATIO]];
 
 _l=_l+			[["Factory: Heavy Factory", "Unlock better armored units"]];
 _a=_a	+			[true];
-_c=_c +			[[5000,10000]];
+_c=_c +			[[15000,10000]];
 _lev=_lev+	[2];
 _lin=_lin+	[[[CTI_UPGRADE_LIGHT,1],[]]];
 _t=_t+			[[50*CTI_UPGRADE_RATIO,240*CTI_UPGRADE_RATIO]];
