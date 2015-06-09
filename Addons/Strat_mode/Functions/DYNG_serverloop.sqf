@@ -17,7 +17,7 @@ while {!CTI_Gameover} do {
 					_to_remove=((missionNamespace getVariable format ["CTI_ECONOMY_STARTUP_FUNDS_%1", side _g])) min ((_g getVariable "cti_funds")/(count _ppl));
 					_new_funds=(floor (_g getVariable "cti_funds") - _to_remove) max (0);
 					_g setVariable ["cti_funds",_new_funds,true];
-					diag_log format [" :: DYNG :: Add money for %1 : %2 => %3",_g , (_g getVariable "cti_funds"), _new_funds];
+					diag_log format [" :: DYNG :: Removing money for %1 : %2 => %3",_g , (_g getVariable "cti_funds"), _new_funds];
 					true
 				}count _delta;
 				_g setVariable ["last_known_players",_pl,true];
