@@ -58,7 +58,7 @@ while { alive _factory } do {
 
 //todo req_toai for indep salvager from client!
 	if (_req_toai) then { //--- Send a purchase request to the client if the target is not an AI.
-		if (isPlayer _req_buyer && typeName _req_target != "SIDE") then {
+		if (isPlayer (leader _req_buyer) && typeName _req_target != "SIDE") then {
 			if (group (_req_buyer) != _req_target) then {[["CLIENT",  _req_buyer], "Client_PurchaseDelegationStart", [_req_seed, _req_classname, _req_target, _factory]] call CTI_CO_FNC_NetSend};
 		};
 
