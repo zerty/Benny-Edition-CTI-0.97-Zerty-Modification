@@ -462,7 +462,7 @@ CTI_UI_Gear_AddItem = {
 				};
 			};
 		} else {
-			[_item] call CTI_UI_Gear_TryContainerAddItem;
+			_updated =[_item] call CTI_UI_Gear_TryContainerAddItem;
 		};
 	};
 
@@ -1219,11 +1219,10 @@ CTI_UI_Gear_GetGearCostDelta = {
 
 	_gear_old_flat = (_gear_old) call CTI_CO_FNC_ConvertGearToFlat;
 	_gear_new_flat = (_gear_new) call CTI_CO_FNC_ConvertGearToFlat;
-
 	_cost = 0;
 	{
 		_find = _gear_new_flat find _x;
-		_item_cost = (_x) call CTI_CO_FNC_GetGearItemCost;
+		_item_cost = if (typeName ((missionNamespace getVariable [_x,[0,0]]) select 1) == "ARRAY") then {(_x) call CTI_CO_FNC_GetGearItemCost} else {0};
 		if (_find != -1) then {
 			_gear_new_flat set [_find, false];
 		} else {
