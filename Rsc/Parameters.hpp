@@ -394,7 +394,12 @@ class Params {
 		texts[] = {"False","True"};
 		default = 1;
 	};
-
+	class CTI_WEATHER_ALLOWRAIN {
+		title = "Zerty: WEATHER: Allow Rain";
+		values[] = {0,1};
+		texts[] = {"False","True"};
+		default = 0;
+	};
 	class initialWeatherParam {
 	    title = "Zerty: WEATHER:Starting Weather";
 	    values[] = {0,1,2,3,4};

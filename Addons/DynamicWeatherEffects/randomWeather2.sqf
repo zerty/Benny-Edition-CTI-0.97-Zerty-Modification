@@ -69,6 +69,16 @@ weatherTemplates = [
         ["Dense Fog",[12,12,12,13],[0.5,0,[0.4,0.05,50],0,0]]
 	];
 
+
+if ((missionNamespace getVariable "CTI_WEATHER_ALLOWRAIN") == 0) then {
+    {
+        _temp=_x;
+        _temp_set=_temp select 2;
+        _temp_set set [1,0];
+        _temp set [2,_temp_set];
+        weatherTemplates set [_foreachindex,_temp];
+    } forEach weatherTemplates;
+};
 // DO NOT EDIT BELOW THIS LINE //
 
 // Setup Initial Weather Function

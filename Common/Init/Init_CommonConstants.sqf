@@ -652,4 +652,5 @@ with missionNamespace do {
 	if (isnil "CTI_PERSISTANT") then {CTI_PERSISTANT = 0};
 
 	if (isNil 'CTI_AI_TEAMS_NB') then { CTI_AI_TEAMS_NB = 10};
+	if (isNil 'CTI_WEATHER_ALLOWRAIN') then {CTI_WEATHER_ALLOWRAIN = 0};
 };
