@@ -254,7 +254,7 @@ switch (_action) do {
 			    	};
 			    };
 			    case 22: { // CTI_Icon_push //ok
-			    	if (vehicle player != player && driver vehicle player ==player && (_target iskindof "Plane" || _target iskindof "Ship") && speed _target <1 && speed _target >-1 && alive _target ) then  {
+			    	if (!(_target iskindof "Man" ) && speed _target <1 && speed _target >-1 && alive _target&& locked _target < 2 ) then  {
 			    		((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTextColor [0,0,1,1];
 			    		((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetPosition [_base_x+(_offset*_base_w),_base_y+_h_offset*_base_h,_base_w,_base_h];
 			    		_offset=_offset+1;
@@ -263,7 +263,7 @@ switch (_action) do {
 			    	};
 			    };
 			    case 23: { // CTI_Icon_pull //OK
-			    	if (vehicle player != player && driver vehicle player ==player && (_target iskindof "Plane" || _target iskindof "Ship") && speed _target <1 && speed _target >-1 && alive _target ) then  {
+			    	if (!(_target iskindof "Man" ) && speed _target <1 && speed _target >-1 && alive _target && locked _target < 2 ) then  {
 			    		((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTextColor [0,0,1,1];
 			    		((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetPosition [_base_x+(_offset*_base_w),_base_y+_h_offset*_base_h,_base_w,_base_h];
 			    		_offset=_offset+1;
