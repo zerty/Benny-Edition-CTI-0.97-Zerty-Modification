@@ -246,7 +246,7 @@ while {! (((getMarkerPos format ["HELO_START_%1", _i])select 0) == 0)} do
 						waitUntil {!isNull _new_group};
 						[_unit] joinSilent _new_group;
 						waitUntil {group _unit == _new_group};
-
+						_unit enableFatigue false;
 						_new_group selectLeader  _unit;
 						[_new_group,_side ] call CTI_SE_FNC_InitializeGroup;
 						_unit addEventHandler ["killed", format["[_this select 0, _this select 1, %1] spawn CTI_CO_FNC_OnUnitKilled", _sideID]];
