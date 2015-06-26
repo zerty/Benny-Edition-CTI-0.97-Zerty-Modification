@@ -786,7 +786,7 @@ class Mission
 						};
 						class Item3
 						{
-							value="""A3_Modules_F_Curator_Effects"",""A3_Modules_F_Curator_Misc"",""A3_Modules_F_Curator_Lightning""";
+							value="""A3_Modules_F_Curator_Environment"",""A3_Modules_F_Curator_Smokeshells"",""A3_Modules_F_Curator_Effects"",""A3_Modules_F_Curator_Misc"",""A3_Modules_F_Curator_Lightning""";
 							parentCls="ModuleCuratorAddAddons_F";
 							typeName="Addons";
 						};
