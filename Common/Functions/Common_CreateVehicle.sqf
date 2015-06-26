@@ -173,6 +173,14 @@ if ((!((_vehicle isKindOf "Plane") || (_vehicle isKindOf "UAV") ||(_vehicle isKi
  ["SERVER", "Request_Cache", _vehicle] call CTI_CO_FNC_NetSend;
 };
 
+//wheel protection
+if (_vehicle isKindOf "Car" && ! isnil "H_PROTECT_WHEELS") then {
+	_vehicle setVariable ["wheel_prot",true,true];
+	["CLIENT", "Protect_Wheels", _vehicle,true] call CTI_CO_FNC_NetSend;
+	["SERVER", "Protect_Wheels", _vehicle,true] call CTI_CO_FNC_NetSend;
+
+};
+
 //Dynamic group Fix
 
 //_vehicle addEventHandler ["getIn", {if ((isplayer (_this select 2)) && ({isplayer _x} count (crew (_this select 0)))<2) exitwith {(_this select 2) assignAsCommander (_this select 0)}}];

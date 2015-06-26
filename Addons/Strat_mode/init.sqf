@@ -48,7 +48,7 @@ with missionNamespace do {
 	   	UAV_RANGE = compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Functions\UAV_Range.sqf";
 	   	DYNG_WAIT = compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Functions\DYNG_waitforgroup.sqf";
 	   	DYNG_SERVERLOOP = compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Functions\DYNG_serverloop.sqf";
-
+	   	H_PROTECT_WHEELS= compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Functions\handler_protec_wheels.sqf";
 };
 
 //Common stuff
@@ -65,6 +65,13 @@ HUD_T_OBJ=[];
 
 
 0 call SM_COM_Init;
+
+with missionNamespace do {
+
+	CTI_PVF_Protect_Wheels ={
+		_this addEventHandler ["HandleDamage",{_this call H_PROTECT_WHEELS}];
+	};
+};
 
 if (CTI_IsServer) then {
 

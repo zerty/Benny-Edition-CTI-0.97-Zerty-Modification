@@ -45,7 +45,10 @@ if (isMultiplayer) then {sleep 5}; //--- Wait in MP for the net var to kick in
 //--- Track FOB if needed
 {[_x, "FOB"] spawn CTI_PVF_Client_OnSpecialConstructed} forEach (CTI_P_SideLogic getVariable ["cti_fobs", []]);
 
-
+0 spawn {
+	waitUntil {(! isNil "CTI_PVF_Protect_Wheels") && (! isNil "H_PROTECT_WHEELS")};
+	{if (_x getvariable ["wheel_prot",false]) then {_x call CTI_PVF_Protect_Wheels }; true}count vehicles;
+};
 {_x spawn CTI_PVF_Client_HandleDefense} forEach (CTI_P_SideLogic getVariable ["cti_defences", []]);
 //--- Add lock/unlock to team vehicles if needed. === Deprecated with group system
 /*
