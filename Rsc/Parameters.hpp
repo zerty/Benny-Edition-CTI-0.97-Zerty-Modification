@@ -5,6 +5,12 @@ class Params {
 		texts[] = {"Disabled", "Enabled West", "Enabled East", "Fully Enabled"};
 		default = 0;
 	};
+	class CTI_AI_TEAMS_NB{
+		title = "AI: Teams : Max number per side";
+		values[] = {2,4,6,8,10,16};
+		texts[] = {"2","4","6","8","10","16"};
+		default = 10;
+	};
 	class CTI_ARTILLERY_SETUP {
 		title = "ARTILLERY: Setup";
 		values[] = {-2,-1,0,1,2,3};
