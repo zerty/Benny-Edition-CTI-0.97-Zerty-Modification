@@ -7,7 +7,7 @@ item2[] = {"Occupation_hold",2,250,-100.000000,-200.000000,0.000000,-150.000000,
 item3[] = {"End_FSM",1,250,-250.000000,-100.000000,-150.000000,-50.000000,0.000000,"End FSM"};
 item4[] = {"Held_by_Occupati",4,218,-100.000000,-100.000000,0.000000,-50.000000,2.000000,"Held by" \n "Occupation"};
 item5[] = {"Gameover",8,218,-250.000000,-200.000000,-150.000000,-150.000000,0.000000,"Gameover"};
-item6[] = {"Enemy_Near_",2,250,-100.000000,0.000000,0.000000,50.000000,0.000000,"Enemy Near?"};
+item6[] = {"Enemy_Near_",2,4346,-100.000000,0.000000,0.000000,50.000000,0.000000,"Enemy Near?"};
 item7[] = {"Not_held_by_Occu",4,218,50.000000,-200.000000,150.000000,-150.000000,1.000000,"Not held by" \n "Occupation"};
 item8[] = {"Occupation_Timeout",2,250,175.000000,100.000000,275.000000,150.000000,0.000000,"Occupation" \n "Timeout?"};
 item9[] = {"Active",8,218,175.000000,0.000000,275.000000,50.000000,0.000000,"Active"};
@@ -19,7 +19,7 @@ item14[] = {"Cleanup",2,250,425.000000,-400.000000,525.000000,-350.000000,0.0000
 item15[] = {"Occupation_Active",2,250,50.000000,-100.000000,150.000000,-50.000000,0.000000,"Occupation" \n "Active?"};
 item16[] = {"Contact",8,218,-100.000000,100.000000,0.000000,150.000000,0.000000,"Contact"};
 item17[] = {"Clear",4,218,50.000000,0.000000,150.000000,50.000000,1.000000,"Clear"};
-item18[] = {"Create",2,4346,-400.000000,200.000000,-300.000000,250.000000,0.000000,"Create"};
+item18[] = {"Create",2,250,-400.000000,200.000000,-300.000000,250.000000,0.000000,"Create"};
 item19[] = {"Occupation_Active_1",2,250,-100.000000,200.000000,0.000000,250.000000,0.000000,"Occupation" \n "Active?"};
 item20[] = {"Inactive",4,218,-250.000000,200.000000,-150.000000,250.000000,1.000000,"Inactive"};
 item21[] = {"Active",4,218,175.000000,200.000000,275.000000,250.000000,2.000000,"Active"};
@@ -63,7 +63,7 @@ link31[] = {24,26};
 link32[] = {25,24};
 link33[] = {26,24};
 globals[] = {25.000000,1,0,0,0,640,480,1,171,6316128,1,-533.074707,741.001282,387.194458,-1161.027588,725,881,1};
-window[] = {2,-1,-1,-1,-1,837,225,1261,225,3,743};
+window[] = {2,-1,-1,-1,-1,687,75,1111,75,3,743};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -164,7 +164,9 @@ class FSM
        "//_count_enemies = {isPlayer _x && side _x != _side } count _objects;" \n
        "//_objects = (_town nearEntities [""AllVehicles"", CTI_TOWNS_CAPTURE_RANGE]) unitsBelowHeight CTI_TOWNS_OCCUPATION_DETECTION_RANGE_AIR;" \n
        "_PATROLS=(PATROL_logic getVariable [""patrols"",[]]);" \n
-       "_a_objects=playableUnits + switchableUnits;" \n
+       "//_a_objects=playableUnits + switchableUnits;" \n
+       "_a_objects=[];" \n
+       "{_a_objects pushBack (leader _x);true} count ((CTI_EAST getVariable [""CTI_Teams"",[]])+(CTI_WEST getVariable [""CTI_Teams"",[]]));" \n
        "_objects = [];" \n
        "{if (((side _x) !=_side) && (_x distance _town)<= CTI_TOWNS_OCCUPATION_DETECTION_RANGE ) then {_objects set [count _objects,_x]};true } count _a_objects;" \n
        "_count_enemies =count ( _objects unitsBelowHeight CTI_TOWNS_OCCUPATION_DETECTION_RANGE_AIR);" \n

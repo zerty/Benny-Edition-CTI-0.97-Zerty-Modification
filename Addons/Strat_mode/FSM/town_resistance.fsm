@@ -7,7 +7,7 @@ item2[] = {"Resistance_hold",2,250,-100.000000,-200.000000,0.000000,-150.000000,
 item3[] = {"End_FSM",1,250,-250.000000,-100.000000,-150.000000,-50.000000,0.000000,"End FSM"};
 item4[] = {"Held_by_Resistan",4,218,-100.000000,-100.000000,0.000000,-50.000000,2.000000,"Held by" \n "Resistance"};
 item5[] = {"Gameover",8,218,-250.000000,-200.000000,-150.000000,-150.000000,0.000000,"Gameover"};
-item6[] = {"Town_active_",2,250,-100.000000,0.000000,0.000000,50.000000,0.000000,"Town active?"};
+item6[] = {"Town_active_",2,4346,-100.000000,0.000000,0.000000,50.000000,0.000000,"Town active?"};
 item7[] = {"Not_held_by_Resi",4,218,50.000000,-200.000000,150.000000,-150.000000,1.000000,"Not held by" \n "Resistance"};
 item8[] = {"Resistance_Timeout",2,250,175.000000,100.000000,275.000000,150.000000,0.000000,"Resistance" \n "Timeout?"};
 item9[] = {"Active",8,218,175.000000,0.000000,275.000000,50.000000,0.000000,"Active"};
@@ -19,7 +19,7 @@ item14[] = {"Cleanup",2,250,475.000000,-400.000000,575.000000,-350.000000,0.0000
 item15[] = {"Resistance_Active",2,250,50.000000,-100.000000,150.000000,-50.000000,0.000000,"Resistance" \n "Active?"};
 item16[] = {"Contact",8,218,-100.000000,100.000000,0.000000,150.000000,0.000000,"Contact"};
 item17[] = {"Clear",4,218,50.000000,0.000000,150.000000,50.000000,1.000000,"Clear"};
-item18[] = {"Create",2,4346,-400.000000,200.000000,-300.000000,250.000000,0.000000,"Create"};
+item18[] = {"Create",2,250,-400.000000,200.000000,-300.000000,250.000000,0.000000,"Create"};
 item19[] = {"Resistance_Active_1",2,250,-100.000000,200.000000,0.000000,250.000000,0.000000,"Resistance" \n "Active?"};
 item20[] = {"Inactive",4,218,-250.000000,200.000000,-150.000000,250.000000,1.000000,"Inactive"};
 item21[] = {"Active",4,218,175.000000,200.000000,275.000000,250.000000,2.000000,"Active"};
@@ -63,7 +63,7 @@ link31[] = {25,1};
 link32[] = {25,26};
 link33[] = {26,25};
 globals[] = {25.000000,1,0,0,0,640,480,1,173,6316128,1,-594.429260,559.376343,412.170746,-1019.523315,710,881,1};
-window[] = {2,-1,-1,-32000,-32000,812,200,1236,200,3,728};
+window[] = {2,-1,-1,-1,-1,812,200,1236,200,3,728};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -162,7 +162,9 @@ class FSM
        "//_objects = (_town nearEntities [""AllVehicles"", CTI_TOWNS_RESISTANCE_DETECTION_RANGE]) unitsBelowHeight CTI_TOWNS_RESISTANCE_DETECTION_RANGE_AIR;" \n
        "//_count_enemies = {isPlayer _x && side _x != resistance } count _objects;" \n
        "" \n
-       "_a_objects=playableUnits + switchableUnits;" \n
+       "//_a_objects=playableUnits + switchableUnits;" \n
+       "_a_objects=[];" \n
+       "{_a_objects pushBack (leader _x);true} count ((CTI_EAST getVariable [""CTI_Teams"",[]])+(CTI_WEST getVariable [""CTI_Teams"",[]]));" \n
        "_objects = [];" \n
        "{if (((side _x) !=resistance) && (_x distance _town)<= CTI_TOWNS_RESISTANCE_DETECTION_RANGE ) then {_objects set [count _objects,_x]};true } count _a_objects;" \n
        "_count_enemies =count ( _objects unitsBelowHeight CTI_TOWNS_RESISTANCE_DETECTION_RANGE_AIR);" \n

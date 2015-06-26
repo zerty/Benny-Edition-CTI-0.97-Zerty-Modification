@@ -64,7 +64,10 @@ while  {!CTI_GameOver} do {
 		_priority=if (_pr_s == _t) then {true} else {false}; //priority check
 		// own many of our side around?
 		//_groups=   (_side) call CTI_CO_FNC_GetSideGroups;
-		_a_objects= switchableUnits + playableUnits;
+		//_a_objects= switchableUnits + playableUnits;
+		_a_objects=[];
+		{_a_objects pushBack (leader _x);true} count (_sl getVariable ["CTI_Teams",[]]);
+		hintSilent format ["%1", _a_objects] ;
 		//{if (!isNull leader _x ) then {_a_objects set [count _a_objects,leader _x]};true} count _groups;
 		_objects = [];
 		{if (((side _x) ==_side)  && (_x distance _t)<= CTI_TOWNS_RESISTANCE_DETECTION_RANGE ) then {_objects set [count _objects,_x]};true } count _a_objects;
