@@ -619,7 +619,7 @@ _o = _o + [400];
 _t = _t + [25];
 _u = _u + [0];
 _f = _f + [CTI_FACTORY_NAVAL];
-_s = _s + [""];
+_s = _s + ["service-repairtruck"];
 
 
 
