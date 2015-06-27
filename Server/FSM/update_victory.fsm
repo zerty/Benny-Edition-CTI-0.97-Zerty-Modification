@@ -16,7 +16,7 @@ link4[] = {4,5};
 link5[] = {5,6};
 link6[] = {6,3};
 globals[] = {25.000000,1,0,0,0,640,480,1,164,6316128,1,-620.422607,163.824570,138.236649,-571.857727,973,881,1};
-window[] = {2,-1,-1,-1,-1,981,200,1455,200,3,991};
+window[] = {2,-1,-1,-1,-1,806,25,1280,25,3,991};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -76,6 +76,8 @@ class FSM
        "	if (( ( time > _max_time && _max_time != 0)  || !(alive _hq) && _victory_hq == 1 || (!(alive _hq) && _factories == 0)) && !CTI_GameOver) exitWith {" \n
        "		[""CLIENT"", ""Client_OnMissionEnding"", [_x, ""loose""]] call CTI_CO_FNC_NetSend;" \n
        "		CTI_GameOver = true;" \n
+       "		profileNamespace setVariable [""CTI_SAVE_ENABLED"",false];" \n
+       "		saveProfileNamespace;" \n
        "	};" \n
        "	if (_towns == _total && !CTI_GameOver) exitWith {" \n
        "		[""CLIENT"", ""Client_OnMissionEnding"", [_x, ""win""]] call CTI_CO_FNC_NetSend;" \n
