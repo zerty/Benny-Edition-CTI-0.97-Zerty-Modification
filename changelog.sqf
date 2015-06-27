@@ -430,3 +430,56 @@ player createDiaryRecord ["CL",["* 1.3.1.0","
   - Fix : Upgrade forcing through param making Upg Dialog bug <br />
   - Fix : Gear menu for bipods <br /><br />
 "]];
+
+
+player createDiaryRecord ["CL",["* 1.3.1.1","
+6b594ba - zerty : Persitancy cleenup on mission end happening sooner <br />
+97f56f9 - zerty : Fix buying to group <br />
+0d5972e - zerty : SDV has repair hability <br />
+0a0b990 - zerty : Regenerate hq on destruction while packed <br />
+0a62bd6 - zerty : Parameter to disable rain <br />
+fd055c8 - zerty : removing fatigue for AI leaders <br />
+4b66aaf - zerty : Protecting wheels  from bad AI/player drivers <br />
+c2588d8 - zerty : Removing some logging <br />
+3c34ef8 - zerty : Some more zeus modules <br />
+d3a190e - zerty : AI Teams capture and town activation <br />
+265ede6 - zerty : THud icon in the interraction Menu <br />
+d7f5e53 - zerty : Fix missing battery for CSAT <br />
+3997cbc - zerty : Prevent push pull on static objects <br />
+d948196 - zerty : Allowing push pull on all unlocked vehicles <br />
+be08709 - zerty : Tring to limit lag in interraction menu <br />
+a1e4cac - zerty : Fixing AI teams first part <br />
+5b9de90 - zerty : Price change on the titans <br />
+95119da - zerty : Fix for free gear in vehicles <br />
+5aa9d69 - zerty : Fix for salvagers #54 luggage66#17 <br />
+c6a8646 - zerty : Change in plane price, loggin fix <br />
+2f46f0f - zerty : Small error in ART radar <br />
+5358a25 - zerty : Longer rearm for heavy arty <br />
+6704468 - zerty : Fixed manning vehicle with extra turrets (RHS) <br />
+15efc70 - zerty : Additionnal brackets <br />
+d385cc8 - zerty : Small error <br />
+8ce2b47 - zerty : Longer rearm for Air, Increased service costs <br />
+5c51bb9 - zerty : Trying to fix Marker/script leak from Art radar <br />
+67d9893 - zerty : Changing object for mobile gear #45 <br />
+f42e26e - zerty : Trying to add additionnal checks for #49 <br />
+86f8e4c - zerty : Fix for #48 <br />
+2112f66 - zerty : Fix for #47 <br />
+f217ca3 - Zerty : Merge pull request #50 from luggage66/zerty <br />
+4a527c6 - Donald Mull Jr : Fixed missing action menu items <br />
+49743d6 - zerty : Small var problem with construction handle <br />
+0e9084a - zerty : Small error on uav fuel limitation <br />
+2643b6a - zerty : Small error on assembling handle <br />
+40f1b04 - zerty : FSM for Dyn groups, removal of Player tasks <br />
+dbb2570 - zerty : Fix for quick rearm #44 <br />
+2508a48 - zerty : Renewing HQ handles on repair, client side #42 <br />
+d1e816a - zerty : Disabling totally uav fuel limitation with parameter <br />
+91a3ba7 - zerty : Revert 'BiS revive system '<br />
+3cf1c83 - zerty : Fix for #40 <br />
+28638b9 - zerty : BiS revive system <br />
+67d0d66 - zerty : keep template if respawn on leader <br />
+728ea68 - zerty : Somehing is fucked with uav fuel <br />
+b42f3c3 - zerty : Offset fail <br />
+ed74bde - zerty : Earplug and group in interraction menu <br />
+286e08e - zerty : I am a noob <br />
+fdb0b4d - zerty : putting tac glasses in lower <br />
+"]];
