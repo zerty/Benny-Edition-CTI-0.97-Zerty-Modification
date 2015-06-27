@@ -144,7 +144,7 @@ while {! (((getMarkerPos format ["HELO_START_%1", _i])select 0) == 0)} do
 	// for '_i' from 1 to count(missionNamespace getVariable format["CTI_%1_UPGRADES_LEVELS", _side]) do { [_upgrades, 1] Call CTI_CO_FNC_ArrayPush };
 	_logic setVariable ["cti_upgrades", _upgrades, true];
 	_logic setVariable ["cti_upgrade", -1, true];
-	_logic setVariable ["cti_upgrade_lt", 0, true];
+	_logic setVariable ["cti_upgrade_lt", -1, true];
 
 
 	//--- Create the defensive teams if needed
