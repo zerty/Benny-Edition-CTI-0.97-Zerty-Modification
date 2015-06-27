@@ -251,7 +251,7 @@ while {! (((getMarkerPos format ["HELO_START_%1", _i])select 0) == 0)} do
 						[_new_group,_side ] call CTI_SE_FNC_InitializeGroup;
 						_unit addEventHandler ["killed", format["[_this select 0, _this select 1, %1] spawn CTI_CO_FNC_OnUnitKilled", _sideID]];
 
-						if (isMultiplayer) then { sleep 20 };
+						if (isMultiplayer) then { sleep 20 }else {sleep 2};
 						_new_group allowFleeing 0;
 						if (isNil {_new_group getVariable "cti_aifsm_handled"}) then {
 							[_new_group, _side] execFSM "Server\FSM\update_ai.fsm";
