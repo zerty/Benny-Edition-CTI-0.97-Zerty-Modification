@@ -236,26 +236,25 @@ while {! (((getMarkerPos format ["HELO_START_%1", _i])select 0) == 0)} do
 				if (!(isPlayer _unit) && (_side in [east,west]) && ((_side == west && CTI_AI_TEAMS_ENABLED == 1) || (_side == east && CTI_AI_TEAMS_ENABLED == 2) || CTI_AI_TEAMS_ENABLED == 3)) then {
 					if ({!(isPlayer leader _x)} count (_side_logic getVariable "CTI_TEAMS") < CTI_AI_TEAMS_NB) then {
 						_new_group=grpNull;
-						//if !(_group in (_side_logic getvariable["cti_teams",[]])) then {
-							_new_group =createGroup _side;
-							[_unit] joinSilent _new_group;
-							[_unit, missionNamespace getVariable format ["CTI_AI_%1_DEFAULT_GEAR", _side]] call CTI_CO_FNC_EquipUnit;
-						/*} else {
-							_new_group=_group;
-						};*/
+						_new_group =createGroup _side;
+						[_unit] joinSilent _new_group;
+						[_unit, missionNamespace getVariable format ["CTI_AI_%1_DEFAULT_GEAR", _side]] call CTI_CO_FNC_EquipUnit;
+
 						waitUntil {!isNull _new_group};
 						[_unit] joinSilent _new_group;
 						waitUntil {group _unit == _new_group};
+						diag_log format ["%1- %2", units _new_group,_new_group];
 						_unit enableFatigue false;
 						_new_group selectLeader  _unit;
 						[_new_group,_side ] call CTI_SE_FNC_InitializeGroup;
-						_unit addEventHandler ["killed", format["[_this select 0, _this select 1, %1] spawn CTI_CO_FNC_OnUnitKilled", _sideID]];
-
-						if (isMultiplayer) then { sleep 20 }else {sleep 2};
 						_new_group allowFleeing 0;
 						if (isNil {_new_group getVariable "cti_aifsm_handled"}) then {
 							[_new_group, _side] execFSM "Server\FSM\update_ai.fsm";
 						};
+						_unit addEventHandler ["killed", format["[_this select 0, _this select 1, %1] spawn CTI_CO_FNC_OnUnitKilled", _sideID]];
+
+						if (isMultiplayer) then { sleep 20 }else {sleep 2};
+
 						_unit setDamage 1; //force respawn
 					};
 
