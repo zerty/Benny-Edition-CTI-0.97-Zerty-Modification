@@ -47,6 +47,9 @@ _req_target = _this select 3;
 _factory = _this select 4;
 _req_side = _this select 5;
 
+
+if !((typeName _req_buyer) == "GROUP") then {_req_buyer = group _req_buyer};
+
 //--- First of all, make sure that we don't go "softly" above the AI group size
 _process = true;
 if (typeName _req_target != "SIDE") then { if ((count units _req_target)+1 > CTI_AI_TEAMS_GROUPSIZE) then {_process = false} };
@@ -72,7 +75,7 @@ if !(_model isKindOf "Man") then { //--- Add the vehicle crew cost if applicable
 	if !(isNil '_var_crew_classname') then { _cost = _cost + ((count(_model call CTI_CO_FNC_GetVehicleTurrets)+1) * (_var_crew_classname select 2)) };
 };
 
-_funds = [group _req_buyer, _req_side] call CTI_CO_FNC_GetFunds;
+_funds = [_req_buyer, _req_side] call CTI_CO_FNC_GetFunds;
 if (_funds < _cost) exitWith { [_req_seed, _req_classname, _req_target, _factory] call CTI_SE_FNC_OnClientPurchaseComplete };
 // [_req_buyer, _req_side, -_cost] call CTI_CO_FNC_ChangeFunds; //--- Change the buyer's funds
 
@@ -94,9 +97,9 @@ if (_req_classname == format["CTI_Salvager_Independent_%1", _req_side]) then {if
 if !(_process) exitWith {[_req_seed, _req_classname, _req_target, _factory] call CTI_SE_FNC_OnClientPurchaseComplete};
 if (typeName _req_target != "SIDE") then {if ((count units _req_target) > CTI_AI_TEAMS_GROUPSIZE) exitWith { [_req_seed, _req_classname, _req_target, _factory] call CTI_SE_FNC_OnClientPurchaseComplete }};
 
-_funds = [group _req_buyer, _req_side] call CTI_CO_FNC_GetFunds;
+_funds = [_req_buyer, _req_side] call CTI_CO_FNC_GetFunds;
 if (_funds < _cost) exitWith { [_req_seed, _req_classname, _req_target, _factory] call CTI_SE_FNC_OnClientPurchaseComplete };
-[group _req_buyer, _req_side, -_cost] call CTI_CO_FNC_ChangeFunds; //--- Change the buyer's funds
+[_req_buyer, _req_side, -_cost] call CTI_CO_FNC_ChangeFunds; //--- Change the buyer's funds
 
 if (typeName _req_target == "SIDE") then { _req_target = createGroup _req_side };
 

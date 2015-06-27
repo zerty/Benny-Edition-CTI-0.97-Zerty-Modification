@@ -437,7 +437,7 @@ if (CTI_IsClient) then {
   //UAV lim
 
 	if ((missionNamespace getVariable "CTI_GAMEPLAY_DARTER") >0 ) then {
-		["darter","onEachFrame",'call UAV_RANGE ' ] call BIS_fnc_addStackedEventHandler;
+		["darter","onEachFrame",{0 call UAV_RANGE } ] call BIS_fnc_addStackedEventHandler;
 	};
 
 

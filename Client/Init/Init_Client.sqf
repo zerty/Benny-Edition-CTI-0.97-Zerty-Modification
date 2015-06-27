@@ -280,6 +280,8 @@ TABLET_GET_TARGET={
 		_maindisplay=findDisplay 46;
 		sleep 0.1;
 	};
+	_maindisplay displayRemoveAllEventHandlers  "KeyDown";
+	_maindisplay displayRemoveAllEventHandlers  "KeyUp";
 	_maindisplay  displayAddEventHandler ["KeyDown", TABLET_KEY_DOWN];
 	_maindisplay  displayAddEventHandler ["KeyUp", TABLET_KEY_UP];
 };
