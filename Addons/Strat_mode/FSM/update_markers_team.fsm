@@ -1,9 +1,9 @@
 /*%FSM<COMPILE "scriptedFSM.cfg, update_markers_team.fsm">*/
 /*%FSM<HEAD>*/
 /*
-item0[] = {"Start_FSM",0,4346,-275.000000,-100.000000,-175.000000,-50.000000,0.000000,"Start FSM"};
+item0[] = {"Start_FSM",0,250,-275.000000,-100.000000,-175.000000,-50.000000,0.000000,"Start FSM"};
 item1[] = {"Cycle",4,218,-100.000000,-100.000000,0.000000,-50.000000,1.000000,"Cycle"};
-item2[] = {"Update_Markers",2,250,-100.000000,-225.000000,0.000000,-175.000000,0.000000,"Update" \n "Markers"};
+item2[] = {"Update_Markers",2,4346,-100.000000,-225.000000,0.000000,-175.000000,0.000000,"Update" \n "Markers"};
 item3[] = {"End_FSM",1,250,50.000000,-325.000000,150.000000,-275.000000,0.000000,"End FSM"};
 item4[] = {"Terminate",4,218,50.000000,-225.000000,150.000000,-175.000000,0.000000,"Terminate"};
 link0[] = {0,1};
@@ -12,7 +12,7 @@ link2[] = {2,1};
 link3[] = {2,4};
 link4[] = {4,3};
 globals[] = {25.000000,1,0,0,0,640,480,1,133,6316128,1,-224.148239,127.410683,43.065350,-257.865295,968,881,1};
-window[] = {2,-1,-1,-1,-1,806,25,1280,25,3,986};
+window[] = {2,-1,-1,-1,-1,881,100,1355,100,3,986};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -90,7 +90,7 @@ class FSM
        "{" \n
        "	if !(_x in _tracker) then {" \n
        "		_tracker = _tracker - [objNull];" \n
-       "		[_tracker, _x] call CTI_CO_FNC_ArrayPush;" \n
+       "		_tracker pushback _x;" \n
        "		(_x) spawn _track_leader;" \n
        "	};" \n
        "} forEach (CTI_P_SideJoined call CTI_CO_FNC_GetSideGroups);"/*%FSM</STATEINIT""">*/;

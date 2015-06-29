@@ -62,7 +62,7 @@ CTI_FSM_UpdateOrders_TakeTown = {
 	_task setSimpleTaskDescription [_task_label, _task_title, _task_title];
 	_task setSimpleTaskDestination getPos _town;
 	player setCurrentTask _task;
-	[CTI_P_CurrentTasks, _task] call CTI_CO_FNC_ArrayPush;
+	CTI_P_CurrentTasks pushBack _task;
 
 	["CTI_TaskAssigned",[_task_title]] call bis_fnc_showNotification;
 

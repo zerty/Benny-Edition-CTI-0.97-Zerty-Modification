@@ -131,7 +131,7 @@ switch (_action) do {
 				{if (_order != (_x getVariable "cti_order")) then {_x setVariable ["cti_order", _order, true]}} forEach (uiNamespace getVariable "cti_dialog_ui_teamsmenu_groups");
 			} else {
 				_ais = [];
-				{if!(isPlayer leader _x) then {[_ais, _x] call CTI_CO_FNC_ArrayPush}} forEach (uiNamespace getVariable "cti_dialog_ui_teamsmenu_groups");
+				{if!(isPlayer leader _x) then {_ais pushBack _x}} forEach (uiNamespace getVariable "cti_dialog_ui_teamsmenu_groups");
 				if (count _ais > 0) then {["SERVER", "Request_AIOrderAction", [_ais, _order, CTI_P_SideJoined]] call CTI_CO_FNC_NetSend};
 			};
 		};

@@ -19,7 +19,7 @@
 	[POSITION / OBJECT, ID, RANGE] call CTI_CO_FNC_GetNearestSpecialVehicles
 
   # DEPENDENCIES #
-	Common Function: CTI_CO_FNC_ArrayPush
+
 
   # EXAMPLE #
     _vehicles = [vehicle player, CTI_SPECIAL_REPAIRTRUCK, 100] call CTI_CO_FNC_GetNearestSpecialVehicles;
@@ -36,7 +36,7 @@ _available = [];
 	if !(isNil {_x getVariable "cti_spec"}) then {
 		_spec = _x getVariable "cti_spec";
 		if (typeName _spec != "ARRAY") then {_spec = [_spec]};
-		if (_type in _spec && getPos _x select 2 < 5) then {[_available, _x] call CTI_CO_FNC_ArrayPush};
+		if (_type in _spec && getPos _x select 2 < 5) then {_available pushBack _x};
 	};
 } forEach (_unit nearEntities [["Car", "Ship", "Motorcycle", "Tank", "Air","Slingload_01_Base_F","Pod_Heli_Transport_04_base_F"], _range]);
 

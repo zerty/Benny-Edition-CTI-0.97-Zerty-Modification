@@ -9,7 +9,7 @@ if (CTI_isServer) then
 
 		_town = call compile Format ["Town%1", _i];
 		//waitUntil {!isNil {_town getVariable "cti_town_value"}};
-		[CTI_Towns, _town] call CTI_CO_FNC_ArrayPush;
+		CTI_Towns pushBack _town;
 	};
 	if (MIN_TOWNS==0) then {
 		_CENTER_POS=getMarkerPos "CENTER_POS";

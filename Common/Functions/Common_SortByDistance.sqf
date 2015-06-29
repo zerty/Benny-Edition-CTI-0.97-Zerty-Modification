@@ -6,20 +6,20 @@
 	Author: 		Benny
 	Creation Date:	19-09-2013
 	Revision Date:	19-09-2013
-	
+
   # PARAMETERS #
     0	[Array/Object]: The center
     1	[Array]: The list of entities to sort
-	
+
   # RETURNED VALUE #
 	[Array]: The sorted entities
-	
+
   # SYNTAX #
 	[CENTER, LIST] call CTI_CO_FNC_SortByDistance
-	
+
   # DEPENDENCIES #
-	Common Function: CTI_CO_FNC_ArrayPush
-	
+
+
   # EXAMPLE #
     _sort = [player, [Town0, Town1, Town2, Town3]] call CTI_CO_FNC_SortByDistance
 	  -> Will sort the towns by their distance from the player (closest to furthest)
@@ -42,7 +42,7 @@ for '_i' from 0 to count(_objects)-1 do {
 		if (_distance < _nearestDistance) then {_nearest = _current;_nearestDistance = _distance;_index = _j};
 	};
 
-	[_sorted, _nearest] call CTI_CO_FNC_ArrayPush;
+	_sorted pushBack _nearest;
 	_objects set [_index, "!"];
 	_objects = _objects - ["!"];
 };

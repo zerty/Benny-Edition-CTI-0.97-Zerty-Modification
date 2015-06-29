@@ -5,7 +5,7 @@ CTI_UI_Service_GetBaseDepots = {
 	_range = _this select 2;
 
 	_available = [];
-	{if (_x distance _unit <= _range) then {[_available, _x] call CTI_CO_FNC_ArrayPush}} forEach _structures;
+	{if (_x distance _unit <= _range) then {_available pushBack _x}} forEach _structures;
 	_available
 };
 /*
@@ -18,7 +18,7 @@ CTI_UI_Service_GetGroupMobileSupports = {
 		if !(isNil {_x getVariable "cti_spec"}) then {
 			_spec = _x getVariable "cti_spec";
 			if (typeName _spec != "ARRAY") then {_spec = [_spec]};
-			if (_type in _spec && getPos _x select 2 < 5) then {[_available, _x] call CTI_CO_FNC_ArrayPush};
+			if (_type in _spec && getPos _x select 2 < 5) then {_available pushback _x};
 		};
 	} forEach units player;
 

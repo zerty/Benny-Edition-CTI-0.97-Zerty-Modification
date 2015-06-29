@@ -141,8 +141,8 @@ CTI_UI_Gear_DisplayContainerItems = {
 		{
 			_find = (_items select 0) find _x;
 			if (_find == -1) then {
-				[_items select 0, _x] call CTI_CO_FNC_ArrayPush;
-				[_items select 1, 1] call CTI_CO_FNC_ArrayPush;
+				(_items select 0) pushBack _x;
+				(_items select 1) pushBack 1;
 			} else {
 				(_items select 1) set [_find, ((_items select 1) select _find) + 1];
 			};
@@ -565,7 +565,7 @@ CTI_UI_Gear_CheckMagazines = {
 	_replace = [];
 	{
 		if (_x in _magazines_old && !(_x in _magazines) && !(_x in _replace)) then {
-			[_replace, _x] call CTI_CO_FNC_ArrayPush;
+			_replace pushBack _x;
 		};
 	} forEach ((((_gear select 1) select 0) select 1) + (((_gear select 1) select 1) select 1) + (((_gear select 1) select 2) select 1));
 
@@ -1291,7 +1291,7 @@ CTI_UI_Gear_LoadAvailableUnits = {/*
 			if (_fob distance _x <= (CTI_BASE_GEAR_FOB_RANGE*2)) then {_fob_in_range = true};
 		};
 		if (!isNull _nearest || _x == player || count _ammo_trucks > 0 || _fob_in_range) then {//todo add fob
-			[_list, _x] call CTI_CO_FNC_ArrayPush;
+			_list pushback _x;
 			if (_x isKindOf "Man") then {
 				((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl 70201) lbAdd Format["[%1] %2", _x call CTI_CL_FNC_GetAIDigit, getText(configFile >> "CfgVehicles" >> typeOf _x >> "displayName")];
 			} else {

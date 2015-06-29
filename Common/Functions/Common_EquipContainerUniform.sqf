@@ -7,22 +7,22 @@
 	Author: 		Benny
 	Creation Date:	16-09-2013
 	Revision Date:	16-09-2013
-	
+
   # PARAMETERS #
     0	[Object]: The unit
     1	[String]: The uniform classname
     2	[Array]: The items to add in the uniform
-	
+
   # RETURNED VALUE #
 	None
-	
+
   # SYNTAX #
 	[UNIT, CLASSNAME, ITEMS] call CTI_CO_FNC_EquipContainerUniform
-	
+
   # DEPENDENCIES #
-	Common Function: CTI_CO_FNC_ArrayPush
+
 	Common Function: CTI_CO_FNC_GetItemBaseConfig
-	
+
   # EXAMPLE #
 	[player, "U_B_CombatUniform_mcam", ["Laserbatteries","7Rnd_408_Mag",...]] call CTI_CO_FNC_EquipContainerUniform;
 */
@@ -43,9 +43,9 @@ _added = [];
 	if (_item != "") then {
 		if !(_item in _added) then {
 			//_base = (_item) call CTI_CO_FNC_GetItemBaseConfig;
-			[_added, _item] call CTI_CO_FNC_ArrayPush;
+			_added pushBack _item;
 			_count = {_x == _item} count _items;
-			
+
 			(uniformContainer _unit) addItemCargoGlobal [_item, _count];
 			/*switch (_base) do { //todo figure out bout that goggle mystery
 				case "CfgMagazines": { (uniformContainer _unit) addMagazineCargoGlobal [_item, _count] };

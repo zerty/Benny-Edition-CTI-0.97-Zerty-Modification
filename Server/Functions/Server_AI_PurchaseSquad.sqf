@@ -7,24 +7,24 @@
 	Author: 		Benny
 	Creation Date:	20-09-2013
 	Revision Date:	20-09-2013
-	
+
   # PARAMETERS #
     0	[Group]: The CTI Group
     1	[Side]: The Side of the group
     2	[Array]: The units pool with force and probability
     3	[Object]: The factory to purchase from
-	
+
   # RETURNED VALUE #
 	None
-	
+
   # SYNTAX #
 	[GROUP, SIDE, POOL, FACTORY] call CTI_SE_FNC_AI_PurchaseSquad
-	
+
   # DEPENDENCIES #
-	Common Function: CTI_CO_FNC_ArrayPush
+
 	Common Function: CTI_CO_FNC_ArrayShuffle
 	Server Function: CTI_SE_FNC_OnClientPurchase
-	
+
   # EXAMPLE #
     [_group, _side, _var select 2, _factory_nearest] call CTI_SE_FNC_AI_PurchaseSquad;
 */
@@ -40,21 +40,21 @@ _need = round(3 + random 2); //--- The amount of units to purchase
 _compose = [];
 
 _flaten = [];
-{ for '_i' from 1 to (_x select 1) do {[_flaten, _x] call CTI_CO_FNC_ArrayPush} } forEach _pool;
+{ for '_i' from 1 to (_x select 1) do {_flaten pushBack _x} } forEach _pool;
 
 _pool = _flaten call CTI_CO_FNC_ArrayShuffle;
 
 while {_need > 0} do {
 	_picked = _pool select floor(random count _pool);
 	_probability = if (count _picked > 2) then {_picked select 2} else {100};
-	
+
 	_can_use = true;
 	if (_probability != 100) then {
 		if (random 100 > _probability) then {_can_use = false};
 	};
-	
+
 	if (_can_use) then {
-		[_compose, _picked select 0] call CTI_CO_FNC_ArrayPush;
+		_compose pushBack (_picked select 0);
 		_need = _need - 1;
 	};
 };

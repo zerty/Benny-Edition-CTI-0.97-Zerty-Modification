@@ -24,7 +24,7 @@ switch (_action) do {
 
 			_markerLine = format["cti_commandline_%1", CTI_P_MarkerIterator];
 			CTI_P_MarkerIterator = CTI_P_MarkerIterator + 1;
-			[_markers, _markerLine] call CTI_CO_FNC_ArrayPush;
+			_markers pushBack _markerLine;
 			[_x, _markerLine] spawn CTI_UI_MapCommanding_TrackGroupOrder;
 		} forEach _groups;
 
@@ -99,7 +99,7 @@ switch (_action) do {
 				case (_order in CTI_AI_ORDERS_ONETIMERS): {
 					if (_all) then {
 						_ais = [];
-						{if!(isPlayer leader _x) then {[_ais, _x] call CTI_CO_FNC_ArrayPush}} forEach (uiNamespace getVariable "cti_dialog_ui_mapcommandmenu_groups");
+						{if!(isPlayer leader _x) then {_ais pushBack _x}} forEach (uiNamespace getVariable "cti_dialog_ui_mapcommandmenu_groups");
 						if (count _ais > 0) then {["SERVER", "Request_AIOrderAction", [_ais, _order, CTI_P_SideJoined]] call CTI_CO_FNC_NetSend};
 					} else {
 						_who = (uiNamespace getVariable "cti_dialog_ui_mapcommandmenu_groups") select _value;
@@ -173,7 +173,7 @@ switch (_action) do {
 					case (_order == CTI_ORDER_HOLDTOWNSBASE): {
 						_closest_town = [_mappos, CTI_P_SideID] call CTI_CO_FNC_GetClosestFriendlyTown;
 						_list = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideStructures;
-						if !(isNull _closest_town) then {[_list, _closest_town] call CTI_CO_FNC_ArrayPush}; //--- Add the closest town
+						if !(isNull _closest_town) then {_list pushBack _closest_town}; //--- Add the closest town
 						_nearest = [_mappos, _list] call CTI_CO_FNC_GetClosestEntity;
 						if !(isNull _nearest) then {
 							if (_mappos distance _nearest < 500) then {
@@ -241,7 +241,7 @@ switch (_action) do {
 				} else {
 					if (_all) then {
 						_ais = [];
-						{if!(isPlayer leader _x) then {[_ais, _x] call CTI_CO_FNC_ArrayPush}} forEach (uiNamespace getVariable "cti_dialog_ui_mapcommandmenu_groups");
+						{if!(isPlayer leader _x) then {_ais pushBack _x}} forEach (uiNamespace getVariable "cti_dialog_ui_mapcommandmenu_groups");
 						if (count _ais > 0) then {["SERVER", "Request_AIOrderAction", [_ais, _order, CTI_P_SideJoined]] call CTI_CO_FNC_NetSend};
 					} else {
 						_who = (uiNamespace getVariable "cti_dialog_ui_mapcommandmenu_groups") select _value;

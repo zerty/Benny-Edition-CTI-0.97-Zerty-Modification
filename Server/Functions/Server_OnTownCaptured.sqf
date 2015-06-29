@@ -18,7 +18,7 @@
 	[TOWN, SIDE] call CTI_SE_FNC_OnTownCaptured
 
   # DEPENDENCIES #
-	Common Function: CTI_CO_FNC_ArrayPush
+
 	Common Function: CTI_CO_FNC_ChangeFunds
 	Common Function: CTI_CO_FNC_GetSideID
 	Common Function: CTI_CO_FNC_GetSideLogic

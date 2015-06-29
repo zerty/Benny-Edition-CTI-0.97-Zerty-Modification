@@ -43,7 +43,7 @@ for '_i' from 0 to count(_items)-1 do {
 			switch (_config_type) do { //--- Each item is handled differently
 				case "CfgGlasses": {
 					missionNamespace setVariable [_item, [[_upgrades select _i, _prices select _i], "Goggles", _config_type]];
-					if (_pushtogear) then {[_gear_glasses, _item] call CTI_CO_FNC_ArrayPush};
+					if (_pushtogear) then {_gear_glasses pushBack _item};
 					_cpt = _cpt + 1;
 
 					if (CTI_Log_Level >= CTI_Log_Debug) then { ["DEBUG", "FILE: Common\Config\Gear\Gear_Config_Set.sqf", format ["Set Glasses [%1].", _item]] call CTI_CO_FNC_Log };
@@ -53,9 +53,9 @@ for '_i' from 0 to count(_items)-1 do {
 
 					if (_pushtogear) then {
 						if (getText(configFile >> 'CfgMagazines' >> _item >> "nameSound") in ["mine", "satchelcharge"]) then {
-							[_gear_explosives, _item] call CTI_CO_FNC_ArrayPush;
+							_gear_explosives pushBack _item;
 						} else {
-							[_gear_magazines, _item] call CTI_CO_FNC_ArrayPush;
+							_gear_magazines pushBack _item;
 						};
 					};
 					_cpt = _cpt + 1;
@@ -65,7 +65,7 @@ for '_i' from 0 to count(_items)-1 do {
 				case "CfgVehicles": {
 					if (getNumber(configFile >> _config_type >> _item >> 'isbackpack') == 1) then { //--- Make sure that this is a backpack
 						missionNamespace setVariable [_item, [[_upgrades select _i, _prices select _i], "Backpack", _config_type]];
-						if (_pushtogear) then {[_gear_backpacks, _item] call CTI_CO_FNC_ArrayPush};
+						if (_pushtogear) then {_gear_backpacks pushBack _item};
 						_cpt = _cpt + 1;
 
 						if (CTI_Log_Level >= CTI_Log_Debug) then { ["DEBUG", "FILE: Common\Config\Gear\Gear_Config_Set.sqf", format ["Set Backpack [%1].", _item]] call CTI_CO_FNC_Log };
@@ -99,20 +99,20 @@ for '_i' from 0 to count(_items)-1 do {
 
 						if (_pushtogear) then {
 							switch (true) do { //--- Parse
-								case (_item_subtype == "Uniform"): { [_gear_uniforms, _item] call CTI_CO_FNC_ArrayPush };
-								case (_item_subtype == "Vest"): { [_gear_vests, _item] call CTI_CO_FNC_ArrayPush };
-								case (_item_subtype == "Headgear"): { [_gear_headgear, _item] call CTI_CO_FNC_ArrayPush };
-								case (_item_subtype in ["Acc-Muzzle", "Acc-Optics", "Acc-Side","Acc-Bipod"]): { [_gear_accessories, _item] call CTI_CO_FNC_ArrayPush };
-								case (_item_subtype in ["BaseItem", ""]): { [_gear_misc, _item] call CTI_CO_FNC_ArrayPush };
+								case (_item_subtype == "Uniform"): { _gear_uniforms pushBack _item };
+								case (_item_subtype == "Vest"): { _gear_vests pushBack _item };
+								case (_item_subtype == "Headgear"): { _gear_headgear pushBack _item };
+								case (_item_subtype in ["Acc-Muzzle", "Acc-Optics", "Acc-Side","Acc-Bipod"]): { _gear_accessories pushBack _item };
+								case (_item_subtype in ["BaseItem", ""]): { _gear_misc pushBack _item };
 							};
 						};
 					} else {
 						if (_pushtogear) then {
 							switch (true) do { //--- Parse
-								case (_item_type in ["Rifle", "Rifle 2H"]): { [_gear_primary, _item] call CTI_CO_FNC_ArrayPush };
-								case (_item_type == "Pistol"): { [_gear_pistol, _item] call CTI_CO_FNC_ArrayPush };
-								case (_item_type == "Launcher"): { [_gear_secondary, _item] call CTI_CO_FNC_ArrayPush };
-								case (_item_type == "Equipment"): { [_gear_special, _item] call CTI_CO_FNC_ArrayPush };
+								case (_item_type in ["Rifle", "Rifle 2H"]): { _gear_primary pushBack _item  };
+								case (_item_type == "Pistol"): { _gear_pistol pushBack _item  };
+								case (_item_type == "Launcher"): { _gear_secondary pushBack _item  };
+								case (_item_type == "Equipment"): { _gear_special pushBack _item  };
 							};
 						};
 					};

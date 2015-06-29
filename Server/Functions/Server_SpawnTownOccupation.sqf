@@ -22,7 +22,7 @@
 	[TOWN, SIDE] call CTI_SE_FNC_SpawnTownOccupation
 
   # DEPENDENCIES #
-	Common Function: CTI_CO_FNC_ArrayPush
+
 	Common Function: CTI_CO_FNC_ArrayShuffle
 	Common Function: CTI_CO_FNC_CreateUnit
 	Common Function: CTI_CO_FNC_CreateVehicle
@@ -119,7 +119,7 @@ _pool_u = [];
 				if (count _content > 0) then { //--- We have some content
 					//--- Sanitize
 					_sanitized = [];
-					{[_sanitized, _x select 0] call CTI_CO_FNC_ArrayPush} forEach _content;
+					{_sanitized pushBack (_x select 0)} forEach _content;
 
 					_content = _sanitized; //--- Replace if altered
 					// if (_altered) then {_content set [0, _content]}; //--- Replace if altered
@@ -133,7 +133,7 @@ _pool_u = [];
 		};
 
 		if (_load) then { //--- Finally load if available
-			for '_i' from 1 to _presence do { [_pool_u, [_content, _probability] ] call CTI_CO_FNC_ArrayPush };
+			for '_i' from 1 to _presence do { _pool_u pushBack [_content, _probability] };
 		};
 	};
 } forEach (_pool_units select 0);
@@ -162,7 +162,7 @@ _pool_v = [];
 				if (count _content > 0) then { //--- We have some content
 					//--- Sanitize
 					_sanitized = [];
-					{[_sanitized, _x select 0] call CTI_CO_FNC_ArrayPush} forEach _content;
+					{_sanitized pushBack (_x select 0)} forEach _content;
 
 					_content = _sanitized; //--- Replace if altered
 					// if (_altered) then {_content set [0, _content]}; //--- Replace if altered
@@ -176,7 +176,7 @@ _pool_v = [];
 		};
 
 		if (_load) then { //--- Finally load if available
-			for '_i' from 1 to _presence do { [_pool_v, [_content, _probability] ] call CTI_CO_FNC_ArrayPush };
+			for '_i' from 1 to _presence do { _pool_v pushBack [_content, _probability]  };
 		};
 	};
 } forEach (_pool_units select 1);
@@ -210,14 +210,14 @@ for '_i' from 1 to _totalGroups do {
 
 		if (_can_use) then {
 			if (typeName _unit == "ARRAY") then { _unit = _unit select floor(random count _unit) };
-			[_units, _unit] call CTI_CO_FNC_ArrayPush;
+			_units pushBack _unit;
 
 			_pool_group_size_current = _pool_group_size_current - 1;
 		};
 		_ci=_ci+1;
 	};
 
-	[_teams, _units] call CTI_CO_FNC_ArrayPush;
+	_teams pushBack _units;
 };
 
 diag_log format ["OCCUPATION POOL Composer for %1 (value %2)", _town getVariable "cti_town_name", _value];
@@ -232,10 +232,10 @@ _positions = [];
 	_position = [_position, 50] call CTI_CO_FNC_GetEmptyPosition;
 	_road_pos=(_position nearRoads 100);
 	if (count _road_pos > 0) then {_position = _road_pos select floor random (count _road_pos);};
-	[_positions, _position] call CTI_CO_FNC_ArrayPush;
+	_positions pushBack _position;
 
 	_group = createGroup _side;
-	[_groups, _group] call CTI_CO_FNC_ArrayPush;
+	_groups pushBack _group;
 
 	/*
 	{
@@ -250,7 +250,7 @@ _positions = [];
 			if (typeName _crew == "ARRAY") then {_crew = _crew select 0};
 			_vehicle = [_x, [_position, 2, 15] call CTI_CO_FNC_GetRandomPosition, random 360, _sideID, false, false, true] call CTI_CO_FNC_CreateVehicle;
 			[_vehicle, _crew, _group, _sideID] call CTI_CO_FNC_ManVehicle;
-			[_vehicles, _vehicle] call CTI_CO_FNC_ArrayPush;
+			_vehicles pushback _vehicle;
 			[_vehicle] spawn CTI_SE_FNC_HandleEmptyVehicle;
 		};
 	} forEach _x;

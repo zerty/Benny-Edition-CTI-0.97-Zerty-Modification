@@ -10,7 +10,7 @@ _levels = missionNamespace getVariable Format ["CTI_%1_UPGRADES_LEVELS", _side];
 
 _values = [];
 for '_i' from 0 to count(_levels)-1 do {
-	[_values, []] call CTI_CO_FNC_ArrayPush;
+	_values pushBack [];
 };
 
 {
@@ -26,9 +26,9 @@ for '_i' from 0 to count(_values)-1 do {
 	if (_enabled select _i) then {
 		_found = _values select _i;
 		_level = _levels select _i;
-		
+
 		for '_j' from 1 to _level do {
-			if !(_j in _found) then { [_add, [_i, _j]] call CTI_CO_FNC_ArrayPush };
+			if !(_j in _found) then { _add pushBack [_i, _j] };
 		};
 	};
 };

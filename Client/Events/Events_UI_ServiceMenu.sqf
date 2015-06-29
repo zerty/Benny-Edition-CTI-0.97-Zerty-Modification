@@ -11,7 +11,7 @@ switch (_action) do {
 		_ammo_depots = [CTI_AMMO, _structures, player] call CTI_CO_FNC_GetSideStructuresByType;
 
 		_list = [group player, false] Call CTI_CO_FNC_GetTeamVehicles;
-		{if (vehicle _x == _x) then {[_list, _x] call CTI_CO_FNC_ArrayPush}} forEach units player;
+		{if (vehicle _x == _x) then {_list pushBack _x}} forEach units player;
 
 		_player_support_repair = (CTI_SPECIAL_REPAIRTRUCK) call CTI_UI_Service_GetGroupMobileSupports;
 		_player_support_ammo = (CTI_SPECIAL_AMMOTRUCK) call CTI_UI_Service_GetGroupMobileSupports;
@@ -24,7 +24,7 @@ switch (_action) do {
 			_range = _x select 1;
 			{
 				{
-					if !(_x in _list) then {[_list, _x] call CTI_CO_FNC_ArrayPush};
+					if !(_x in _list) then { _list pushBack _x};
 				} forEach (_x nearEntities [["Car", "Ship", "Motorcycle", "Tank", "Air", "StaticWeapon"], _range]);
 			} forEach (_x select 0);
 		} forEach [[_available_repair_depots, CTI_SERVICE_REPAIR_DEPOT_RANGE],[_available_ammo_depots, CTI_SERVICE_AMMO_DEPOT_RANGE],[_player_support_repair, CTI_SERVICE_REPAIR_TRUCK_RANGE],[_player_support_ammo, CTI_SERVICE_AMMO_TRUCK_RANGE]];
@@ -66,8 +66,8 @@ switch (_action) do {
 			};
 
 			if (_load_content) then { //--- Load in the list
-				[_list_real, _x] call CTI_CO_FNC_ArrayPush;
-				[_list_content, _content] call CTI_CO_FNC_ArrayPush;
+				_list_real pushBack _x;
+				_list_content pushBack _content;
 				if (_x isKindOf "Man") then {
 					_digit = if (group _x == group player) then {format["[%1] ",(_x) call CTI_CL_FNC_GetAIDigit]} else {""};
 					_var_name = if (isNil {_x getVariable "cti_customid"}) then {typeOf _x} else {missionNamespace getVariable format["CTI_CUSTOM_ENTITY_%1", _x getVariable "cti_customid"]};
@@ -86,7 +86,7 @@ switch (_action) do {
 					_digits = "";
 					if (count _crew > 0 && group _vehicle == group player) then {
 						_digit_parsed = [];
-						{if (group _x == group player) then {[_digit_parsed, _x call CTI_CL_FNC_GetAIDigit] call CTI_CO_FNC_ArrayPush}} forEach _crew;
+						{if (group _x == group player) then {_digit_parsed pushBack (_x call CTI_CL_FNC_GetAIDigit)}} forEach _crew;
 						{
 							if (_forEachIndex >= 3) exitWith {_digits = _digits + "..."};
 							_digits = _digits + (_x);
@@ -112,10 +112,10 @@ switch (_action) do {
 		if !(isNil '_selected') then {
 			if (alive _selected) then {
 				_enables = [];
-				if (count (_selected_content select 0) > 0) then {[_enables, 230001] call CTI_CO_FNC_ArrayPush};
-				if (count (_selected_content select 1) > 0) then {[_enables, 230002] call CTI_CO_FNC_ArrayPush};
-				if (count (_selected_content select 2) > 0) then {[_enables, 230003] call CTI_CO_FNC_ArrayPush};
-				if (count (_selected_content select 3) > 0) then {[_enables, 230004] call CTI_CO_FNC_ArrayPush};
+				if (count (_selected_content select 0) > 0) then {_enables pushBack 230001};
+				if (count (_selected_content select 1) > 0) then {_enables pushBack 230002};
+				if (count (_selected_content select 2) > 0) then {_enables pushBack 230003};
+				if (count (_selected_content select 3) > 0) then {_enables pushBack 230004};
 				{((uiNamespace getVariable "cti_dialog_ui_servicemenu") displayCtrl _x) ctrlEnable false} forEach ([230001, 230002, 230003, 230004] - _enables);
 				{((uiNamespace getVariable "cti_dialog_ui_servicemenu") displayCtrl _x) ctrlEnable true} forEach (_enables);
 

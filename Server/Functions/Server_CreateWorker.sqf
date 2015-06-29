@@ -18,7 +18,7 @@
 	[SIDE, AI REQUEST] spawn CTI_SE_FNC_CreateWorker
 
   # DEPENDENCIES #
-	Common Function: CTI_CO_FNC_ArrayPush
+
 	Common Function: CTI_CO_FNC_GetRandomPosition
 	Common Function: CTI_CO_FNC_GetSideHQ
 	Common Function: CTI_CO_FNC_GetSideLogic
@@ -54,8 +54,8 @@ if (isNil '_model') then {_model = "C_man_1"};
 if (typeName _model == "ARRAY") then {_model = _model select floor(random count _model)};
 
 _worker = _group createUnit [_model, [_hq, 5, 20] call CTI_CO_FNC_GetRandomPosition, [], 0, "FORM"];
-//if !(_ai_order) then {_workers set [_index, _worker]} else {[_workers, _worker] call CTI_CO_FNC_ArrayPush};
-[_workers, _worker] call CTI_CO_FNC_ArrayPush;
+//if !(_ai_order) then {_workers set [_index, _worker]} else {_workers pushback _worker};
+_workers pushBack _worker;
 _logic setVariable ["cti_workers", _workers, true];
 sleep (random 0.5);
 CTI_Worker_Lock=False;

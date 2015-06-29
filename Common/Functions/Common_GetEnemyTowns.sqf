@@ -6,20 +6,20 @@
 	Author: 		Benny
 	Creation Date:	18-09-2013
 	Revision Date:	18-09-2013
-	
+
   # PARAMETERS #
     0	[Integer/Side]: The "friendly" side which we want to get enemy towns from
-	
+
   # RETURNED VALUE #
 	[Array]: The enemy towns
-	
+
   # SYNTAX #
 	(SIDE) call CTI_CO_FNC_GetEnemyTowns
-	
+
   # DEPENDENCIES #
-	Common Function: CTI_CO_FNC_ArrayPush
+
 	Common Function: CTI_CO_FNC_GetSideID
-	
+
   # EXAMPLE #
     _towns_enemy = (CTI_P_SideID) call CTI_CO_FNC_GetEnemyTowns;
 	  -> Return the towns which are considered enemy to the player
@@ -35,6 +35,6 @@ _sideID = _this;
 if (typeName _sideID == "SIDE") then { _sideID = (_sideID) call CTI_CO_FNC_GetSideID };
 
 _towns = [];
-{if (_x getVariable "cti_town_sideID" != _sideID) then {[_towns, _x] call CTI_CO_FNC_ArrayPush}} forEach CTI_Towns;
+{if (_x getVariable "cti_town_sideID" != _sideID) then { _towns pushBack _x}} forEach CTI_Towns;
 
 _towns

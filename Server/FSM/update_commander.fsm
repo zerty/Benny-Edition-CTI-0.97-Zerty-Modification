@@ -19,7 +19,7 @@ item14[] = {"Update_Upgrades",2,250,550.000000,500.000000,650.000000,550.000000,
 item15[] = {"Teams",4,218,-500.000000,400.000000,-400.000000,450.000000,3.000000,"Teams"};
 item16[] = {"Update_Teams",2,250,-500.000000,500.000000,-400.000000,550.000000,0.000000,"Update" \n "Teams"};
 item17[] = {"Orders",4,218,-375.000000,400.000000,-275.000000,450.000000,2.000000,"Orders"};
-item18[] = {"Update_Orders",2,250,-375.000000,500.000000,-275.000000,550.000000,0.000000,"Update" \n "Orders"};
+item18[] = {"Update_Orders",2,4346,-375.000000,500.000000,-275.000000,550.000000,0.000000,"Update" \n "Orders"};
 item19[] = {"",7,210,-54.000004,696.000000,-46.000000,704.000000,0.000000,""};
 item20[] = {"",7,210,696.000000,696.000000,704.000000,704.000000,0.000000,""};
 item21[] = {"",7,210,696.000000,-279.000000,704.000000,-271.000000,0.000000,""};
@@ -37,7 +37,7 @@ item32[] = {"Respawning",8,218,-250.000000,0.000000,-150.000000,50.000000,0.0000
 item33[] = {"Skip_1",2,250,-500.000000,0.000000,-400.000000,50.000000,0.000000,"Skip"};
 item34[] = {"",7,210,-454.000000,-279.000000,-446.000000,-271.000000,0.000000,""};
 item35[] = {"Salvagers",4,218,425.000000,400.000000,525.000000,450.000000,1.000000,"Salvagers"};
-item36[] = {"Update_Salvagers",2,4346,425.000000,500.000000,525.000000,550.000000,0.000000,"Update" \n "Salvagers"};
+item36[] = {"Update_Salvagers",2,250,425.000000,500.000000,525.000000,550.000000,0.000000,"Update" \n "Salvagers"};
 link0[] = {0,1};
 link1[] = {1,2};
 link2[] = {2,4};
@@ -86,8 +86,8 @@ link44[] = {33,34};
 link45[] = {34,1};
 link46[] = {35,36};
 link47[] = {36,19};
-globals[] = {25.000000,1,0,0,0,640,480,1,223,6316128,1,-505.609863,910.706909,936.954651,-404.738892,930,881,1};
-window[] = {2,-1,-1,-1,-1,956,175,1430,175,3,948};
+globals[] = {25.000000,1,0,0,0,640,480,1,223,6316128,1,-505.609863,910.706909,936.954651,-404.738892,635,881,1};
+window[] = {2,-1,-1,-1,-1,1006,225,1480,225,3,653};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -594,7 +594,7 @@ class FSM
        "_defensive_teams = [];" \n
        "" \n
        "{" \n
-       "	if ((_x getVariable ""cti_order"") in [CTI_ORDER_HOLDTOWNSBASE, CTI_ORDER_HOLDTOWNSBASES]) then {[_defensive_teams, _x] call CTI_CO_FNC_ArrayPush};" \n
+       "	if ((_x getVariable ""cti_order"") in [CTI_ORDER_HOLDTOWNSBASE, CTI_ORDER_HOLDTOWNSBASES]) then {_defensive_teams pushback _x};" \n
        "} forEach ((_side call CTI_CO_FNC_GetSideGroups) - [_sideCommander]);" \n
        "" \n
        "if (count _defensive_teams > 0) then { //--- Update our defenders" \n
@@ -605,7 +605,7 @@ class FSM
        "		_enemyside = ([west,east] - [_side]) select 0;" \n
        "		_enemy_hq = (_enemyside) call CTI_CO_FNC_GetSideHQ;" \n
        "		_focus_list = [];" \n
-       "		if (alive _enemy_hq) then {[_focus_list, _enemy_hq] call CTI_CO_FNC_ArrayPush};" \n
+       "		if (alive _enemy_hq) then {_focus_list pushback _enemy_hq};" \n
        "		_focus_list = _focus_list + (_side call CTI_CO_FNC_GetSideStructures);" \n
        "		if (count _focus_list < 1) then {_focus_list = [_enemy_hq]};" \n
        "		" \n

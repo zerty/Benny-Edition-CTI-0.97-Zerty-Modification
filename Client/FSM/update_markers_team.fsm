@@ -1,4 +1,4 @@
-/*%FSM<COMPILE "E:\Bohemia Interactive\ArmA 2\FSM Editor Personal Edition\scriptedFSM.cfg, update_markers_team.fsm">*/
+/*%FSM<COMPILE "scriptedFSM.cfg, update_markers_team.fsm">*/
 /*%FSM<HEAD>*/
 /*
 item0[] = {"Start_FSM",0,250,-275.000000,-100.000000,-175.000000,-50.000000,0.000000,"Start FSM"};
@@ -12,7 +12,7 @@ link2[] = {2,1};
 link3[] = {2,4};
 link4[] = {4,3};
 globals[] = {25.000000,1,0,0,0,640,480,1,133,6316128,1,-346.052856,249.315308,147.414398,-362.214325,743,636,1};
-window[] = {0,-1,-1,-1,-1,806,25,1280,25,1,761};
+window[] = {0,-1,-1,-1,-1,1006,225,1480,225,1,761};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -85,7 +85,7 @@ class FSM
        "{" \n
        "	if !(_x in _tracker) then {" \n
        "		_tracker = _tracker - [objNull];" \n
-       "		[_tracker, _x] call CTI_CO_FNC_ArrayPush;" \n
+       "		_tracker pushback _x;" \n
        "		(_x) spawn _track_leader;" \n
        "	};" \n
        "} forEach (CTI_P_SideJoined call CTI_CO_FNC_GetSideGroups);"/*%FSM</STATEINIT""">*/;
@@ -130,7 +130,7 @@ class FSM
   initState="Start_FSM";
   finalStates[] =
   {
-    "End_FSM",
+    "End_FSM"
   };
 };
 /*%FSM</COMPILE>*/

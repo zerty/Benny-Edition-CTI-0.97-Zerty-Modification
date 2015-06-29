@@ -2,9 +2,9 @@
  * Name: CTI_AC_GET_STANDARD_EMPTY_LOADOUT
  *
  * Purpose: Gets an array representation of an empty loadout for a particular vehicle
- * 
+ *
  * Input: _vehicle => Vehicle to determine empty loadout from
- *        
+ *
  * Return: _return => Array representation of empty loadout
  *
  * Side effects: <NONE>
@@ -20,6 +20,6 @@ _default_option_mount_points = _loadout_options select 1; // First element is na
 _return = [ 1 ]; // Add the first loadout as default
 {
 	_element = [ 0 , 0 , false ];
-	[ _return, _element ] call CTI_CO_FNC_ArrayPush;
-} forEach ( _default_option_mount_points ); 
+	_return pushBack _element;
+} forEach ( _default_option_mount_points );
 _return

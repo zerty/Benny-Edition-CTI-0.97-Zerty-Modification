@@ -209,7 +209,7 @@ if (typeName _templates == "ARRAY") then { //--- The variable itself is an array
 									_x set [2, _cost];
 									_x set [4, _upgrade];
 
-									[_list, _x] call CTI_CO_FNC_ArrayPush;
+									_list pushBack _x;
 								} else {
 									//todo diaglog error
 								};

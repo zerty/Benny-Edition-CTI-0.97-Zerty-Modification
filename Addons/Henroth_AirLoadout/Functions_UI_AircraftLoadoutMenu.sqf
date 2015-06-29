@@ -322,7 +322,7 @@ CTI_AC_UPDATE_UI_VEHICLE_SELECT_LIST =
 
 	// Get the vehicles from this players team
 	_list = [group player, false] Call CTI_CO_FNC_GetTeamVehicles;
-	{if ( (vehicle _x == _x ) && ( local ( vehicle _x ) )) then {[_list, _x] call CTI_CO_FNC_ArrayPush}} forEach units player;
+	{if ( (vehicle _x == _x ) && ( local ( vehicle _x ) )) then {_list pushback _x}} forEach units player;
 
 	// Only ammo depots permit weapon customisation
 	_available_ammo_depots = [vehicle player, _ammo_depots, CTI_SERVICE_AMMO_DEPOT_RANGE] call CTI_UI_Service_GetBaseDepots;
@@ -332,7 +332,7 @@ CTI_AC_UPDATE_UI_VEHICLE_SELECT_LIST =
 		_range = _x select 1;
 		{
 			{
-				if !(_x in _list) then {[_list, _x] call CTI_CO_FNC_ArrayPush};
+				if !(_x in _list) then {_list pushBack _x};
 			} forEach (_x nearEntities [["Car", "Ship", "Motorcycle", "Tank", "Air", "StaticWeapon"], _range]);
 		} forEach (_x select 0);
 	} forEach [[_available_ammo_depots, CTI_SERVICE_AMMO_DEPOT_RANGE]];
@@ -352,7 +352,7 @@ CTI_AC_UPDATE_UI_VEHICLE_SELECT_LIST =
 
 		if (_load_content) then
 		{ //--- Load in the list
-			[_list_real, _x] call CTI_CO_FNC_ArrayPush;
+			_list_real pushBack _x;
 
 			// Applies only to aircraft
 			if (_x isKindOf "Air") then
@@ -366,7 +366,7 @@ CTI_AC_UPDATE_UI_VEHICLE_SELECT_LIST =
 				if (count _crew > 0 && group _vehicle == group player) then
 				{
 					_digit_parsed = [];
-					{if (group _x == group player) then {[_digit_parsed, _x call CTI_CL_FNC_GetAIDigit] call CTI_CO_FNC_ArrayPush}} forEach _crew;
+					{if (group _x == group player) then {_digit_parsed pushback (_x call CTI_CL_FNC_GetAIDigit)}} forEach _crew;
 					{
 						if (_forEachIndex >= 3) exitWith {_digits = _digits + "..."};
 						_digits = _digits + (_x);
@@ -983,7 +983,7 @@ CTI_AC_ACCEPT_VEHICLE_LOADOUT =
 			_mount_set = _index_position call CTI_AC_UI_WEAPON_MOUNT_BUTTON_IS_SET;
 
 
-			[ _loadout_details, ( [ _selected_weapon_index , _selected_magazine_index , _mount_set ] ) ] call CTI_CO_FNC_ArrayPush;
+			_loadout_details pushback ( [ _selected_weapon_index , _selected_magazine_index , _mount_set ] ) ;
 		};
 	} forEach ( CTI_AC_UI_ALL_WEAPON_COMBOBOX_IDCS );
 

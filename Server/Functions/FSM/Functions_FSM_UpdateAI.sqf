@@ -10,7 +10,7 @@ CTI_FSM_UpdateAI_GetRespawnLocation = {
 	_structures = (_side) call CTI_CO_FNC_GetSideStructures;
 
 	_list = _structures;
-	if (alive _hq) then { [_list, _hq] call CTI_CO_FNC_ArrayPush };
+	if (alive _hq) then { _list pushBack _hq };
 
 	if (count _list == 0) then { _list = [_hq] };
 
@@ -97,17 +97,17 @@ CTI_FSM_UpdateAI_EmbarkCommandableVehicles = {
 		_roles = assignedVehicleRole _x;
 		if (count _roles > 0) then { //--- It's assigned
 			if (_roles select 0 == "cargo" || (vehicle _x isKindOf "StaticWeapon" || assignedVehicle _x isKindOf "StaticWeapon")) then {
-				[_interacts, _x] call CTI_CO_FNC_ArrayPush;
+				_interacts pushBack _x;
 			};
 		} else { //--- No given roles
-			[_interacts, _x] call CTI_CO_FNC_ArrayPush;
+			_interacts pushBack _x;
 		};
 	} forEach _units;
 
 	if (count _interacts > 0) then { //--- We have some units, what about the vehicles?
 		//--- Create a vehicle list
 		_vehicles = [];
-		{if (alive assignedVehicle _x && !(assignedVehicle _x in _vehicles)) then {[_vehicles, assignedVehicle _x] call CTI_CO_FNC_ArrayPush}} forEach _units;
+		{if (alive assignedVehicle _x && !(assignedVehicle _x in _vehicles)) then {_vehicles pushBack (assignedVehicle _x)}} forEach _units;
 
 		//--- Sort by preference
 		_group_air = [];
@@ -117,9 +117,9 @@ CTI_FSM_UpdateAI_EmbarkCommandableVehicles = {
 		{
 			if (local _x && canMove _x) then {
 				switch (true) do {
-					case (_x isKindOf "Air"): {if !(_x in _group_air) then {[_group_air, _x] call CTI_CO_FNC_ArrayPush}};
-					case (_x isKindOf "Tank"): {if !(_x in _group_heavy) then {[_group_heavy, _x] call CTI_CO_FNC_ArrayPush}};
-					case (_x isKindOf "Car"): {if !(_x in _group_light) then {[_group_light, _x] call CTI_CO_FNC_ArrayPush}};
+					case (_x isKindOf "Air"): {if !(_x in _group_air) then {_group_air pushBack _x}};
+					case (_x isKindOf "Tank"): {if !(_x in _group_heavy) then {_group_heavy pushBack _x}};
+					case (_x isKindOf "Car"): {if !(_x in _group_light) then {_group_light pushBack _x}};
 				};
 			};
 		} forEach _vehicles;
@@ -148,9 +148,9 @@ CTI_FSM_UpdateAI_EmbarkCommandableVehicles = {
 
 					if (count _assigned == 0 && _enemies == 0) then { //--- There is no "outsiders" among the main roles and no enemies
 						switch (true) do {
-							case (_x isKindOf "Air"): {if !(_x in _interacts_with_air) then {[_interacts_with_air, _x] call CTI_CO_FNC_ArrayPush}};
-							case (_x isKindOf "Tank"): {if !(_x in _interacts_with_heavy) then {[_interacts_with_heavy, _x] call CTI_CO_FNC_ArrayPush}};
-							case (_x isKindOf "Car"): {if !(_x in _interacts_with_light) then {[_interacts_with_light, _x] call CTI_CO_FNC_ArrayPush}};
+							case (_x isKindOf "Air"): {if !(_x in _interacts_with_air) then {_interacts_with_air pushBack _x}};
+							case (_x isKindOf "Tank"): {if !(_x in _interacts_with_heavy) then {_interacts_with_heavy pushBack _x}};
+							case (_x isKindOf "Car"): {if !(_x in _interacts_with_light) then {_interacts_with_light pushBack _x}};
 						};
 					};
 				};
@@ -158,16 +158,16 @@ CTI_FSM_UpdateAI_EmbarkCommandableVehicles = {
 
 			//--- Combine the arrays by importance
 			_in_range = [];
-			{if (_x distance _unit <= CTI_AI_TEAMS_COMMAND_VEHICLES_RANGE) then {[_in_range, _x] call CTI_CO_FNC_ArrayPush}} forEach _group_vehicles;
+			{if (_x distance _unit <= CTI_AI_TEAMS_COMMAND_VEHICLES_RANGE) then {_in_range pushBack _x}} forEach _group_vehicles;
 			_interacts_with = (_in_range) + ((_interacts_with_air + _interacts_with_heavy + _interacts_with_light) - _in_range);
 
 			//--- Iterate all vehicles available for that unit (exit when they're all browsed or when the unit found one)
 			{
 				_vehicle = _x;
 				_has_vehicle = false;
-				if (_vehicle emptyPositions "driver" > 0 && !alive driver _vehicle && !alive assignedDriver _vehicle) then {[_assigned_in, _unit] call CTI_CO_FNC_ArrayPush; unassignVehicle _unit; _unit assignAsDriver _vehicle; [_unit] orderGetIn true;_has_vehicle = true};
-				if (_vehicle emptyPositions "gunner" > 0 && !alive gunner _vehicle && !alive assignedGunner _vehicle && !_has_vehicle) then {[_assigned_in, _unit] call CTI_CO_FNC_ArrayPush; unassignVehicle _unit; _unit assignAsGunner _vehicle; [_unit] orderGetIn true;_has_vehicle = true};
-				if (_vehicle emptyPositions "commander" > 0 && !alive commander _vehicle && !alive assignedCommander _vehicle && !_has_vehicle) then {[_assigned_in, _unit] call CTI_CO_FNC_ArrayPush; unassignVehicle _unit; _unit assignAsCommander _vehicle; [_unit] orderGetIn true;_has_vehicle = true};
+				if (_vehicle emptyPositions "driver" > 0 && !alive driver _vehicle && !alive assignedDriver _vehicle) then {_assigned_in pushBack _unit; unassignVehicle _unit; _unit assignAsDriver _vehicle; [_unit] orderGetIn true;_has_vehicle = true};
+				if (_vehicle emptyPositions "gunner" > 0 && !alive gunner _vehicle && !alive assignedGunner _vehicle && !_has_vehicle) then {_assigned_in pushBack _unit; unassignVehicle _unit; _unit assignAsGunner _vehicle; [_unit] orderGetIn true;_has_vehicle = true};
+				if (_vehicle emptyPositions "commander" > 0 && !alive commander _vehicle && !alive assignedCommander _vehicle && !_has_vehicle) then {_assigned_in pushBack _unit; unassignVehicle _unit; _unit assignAsCommander _vehicle; [_unit] orderGetIn true;_has_vehicle = true};
 
 				if (_has_vehicle) then {_i = _i + 1}; //--- The unit has been assigned. Assign the next one
 
@@ -189,7 +189,7 @@ CTI_FSM_UpdateAI_EmbarkCommandableVehicles = {
 
 			//--- Create a new vehicle list
 			_vehicles = [];
-			{if (alive assignedVehicle _x && !(assignedVehicle _x in _vehicles)) then {[_vehicles, assignedVehicle _x] call CTI_CO_FNC_ArrayPush}} forEach _units;
+			{if (alive assignedVehicle _x && !(assignedVehicle _x in _vehicles)) then {_vehicles pushBack (assignedVehicle _x)}} forEach _units;
 
 			_interacts_with_air = [];
 			_interacts_with_heavy = [];
@@ -198,9 +198,9 @@ CTI_FSM_UpdateAI_EmbarkCommandableVehicles = {
 			{
 				if (_x emptyPositions "cargo" > 0 && canMove _x) then { //--- Has cargo room?
 					switch (true) do {
-						case (_x isKindOf "Air"): {if !(_x in _interacts_with_air) then {[_interacts_with_air, _x] call CTI_CO_FNC_ArrayPush}};
-						case (_x isKindOf "Tank"): {if !(_x in _interacts_with_heavy) then {[_interacts_with_heavy, _x] call CTI_CO_FNC_ArrayPush}};
-						case (_x isKindOf "Car"): {if !(_x in _interacts_with_light) then {[_interacts_with_light, _x] call CTI_CO_FNC_ArrayPush}};
+						case (_x isKindOf "Air"): {if !(_x in _interacts_with_air) then {_interacts_with_air pushBack _x}};
+						case (_x isKindOf "Tank"): {if !(_x in _interacts_with_heavy) then {_interacts_with_heavy pushBack _x}};
+						case (_x isKindOf "Car"): {if !(_x in _interacts_with_light) then {_interacts_with_light pushBack _x}};
 					};
 				};
 			} forEach _vehicles;
@@ -249,10 +249,10 @@ CTI_FSM_UpdateAI_EmbarkCargoVehicles = {
 		_roles = assignedVehicleRole _x;
 		if (count _roles > 0) then { //--- It's assigned
 			if ((_roles select 0 != "cargo") || (vehicle _x isKindOf "StaticWeapon" || assignedVehicle _x isKindOf "StaticWeapon")) then {
-				[_interacts, _x] call CTI_CO_FNC_ArrayPush;
+				_interacts pushBack _x;
 			};
 		} else { //--- No given roles
-			[_interacts, _x] call CTI_CO_FNC_ArrayPush;
+			_interacts pushBack _x;
 		};
 	} forEach _units;
 
@@ -389,7 +389,7 @@ CTI_FSM_UpdateAI_Order_TakeTown = {
 			_move_defend_last = 0;_move_patrol_reload = true;
 			_action = "";_last_action = "";_patrol_area = [];_start_patrol = time;
 
-			for '_i' from 1 to CTI_AI_ORDER_TAKEHOLDTOWNS_HOPS do {[_patrol_area, [_town, 5, CTI_AI_ORDER_TAKEHOLDTOWNS_PATROL_RANGE] call CTI_CO_FNC_GetRandomPosition] call CTI_CO_FNC_ArrayPush};
+			for '_i' from 1 to CTI_AI_ORDER_TAKEHOLDTOWNS_HOPS do {_patrol_area pushBack ([_town, 5, CTI_AI_ORDER_TAKEHOLDTOWNS_PATROL_RANGE] call CTI_CO_FNC_GetRandomPosition)};
 
 			while {true} do {
 				if (isNil '_group') exitWith {};
@@ -478,7 +478,7 @@ CTI_FSM_UpdateAI_Order_HoldTownsBase = {
 	_action = "patrol";_last_action = "";_patrol_area = [];_start_patrol = time;
 	_pos_patrol = getPos _defend; _pos_patrol_isbase = if (isNil {_defend getVariable "cti_town_sideID"}) then {true} else {false};
 
-	for '_i' from 1 to CTI_AI_ORDER_HOLDTOWNSBASES_HOPS do {[_patrol_area, [_defend, 5, CTI_AI_ORDER_HOLDTOWNSBASES_PATROL_RANGE] call CTI_CO_FNC_GetRandomPosition] call CTI_CO_FNC_ArrayPush};
+	for '_i' from 1 to CTI_AI_ORDER_HOLDTOWNSBASES_HOPS do {_patrol_area pushBack ([_defend, 5, CTI_AI_ORDER_HOLDTOWNSBASES_PATROL_RANGE] call CTI_CO_FNC_GetRandomPosition) };
 
 	_destroyed = false;
 	while {true} do {

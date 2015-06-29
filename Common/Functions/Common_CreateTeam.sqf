@@ -21,7 +21,7 @@ _v_groups=[];
 {
 	if (_x isKindOf "Man") then {
 		_unit = [_x, _group, [_position, 2, 15] call CTI_CO_FNC_GetRandomPosition, _sideID] call CTI_CO_FNC_CreateUnit;
-		[_created_units, _unit] call CTI_CO_FNC_ArrayPush;
+		_created_units pushBack _unit;
 	} else {
 		_crew = switch (true) do {
 			case (_x isKindOf "Tank"): { missionNamespace getVariable format["%1_SOLDIER_CREW", _side] };
@@ -32,7 +32,7 @@ _v_groups=[];
 		_road_pos=(_position nearRoads 100);
 		if (count _road_pos > 0) then {_position = _road_pos select floor random (count _road_pos);} else { _position= [_position, 150] call CTI_CO_FNC_GetEmptyPosition ;};
 		_vehicle = [_x, _position, random 360, _sideID, _locked, _net, _bounty] call CTI_CO_FNC_CreateVehicle;
-		[_created_vehicles, _vehicle] call CTI_CO_FNC_ArrayPush;
+		_created_vehicles pushBack _vehicle;
 		_n_group= createGroup _side;
 		waitUntil {!isNil "_n_group"};
 		waitUntil {!isNull _n_group};

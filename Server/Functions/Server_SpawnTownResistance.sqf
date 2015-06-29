@@ -21,7 +21,7 @@
 	(TOWN) call CTI_SE_FNC_SpawnTownResistance
 
   # DEPENDENCIES #
-	Common Function: CTI_CO_FNC_ArrayPush
+
 	Common Function: CTI_CO_FNC_ArrayShuffle
 	Common Function: CTI_CO_FNC_CreateUnit
 	Common Function: CTI_CO_FNC_CreateVehicle
@@ -108,7 +108,7 @@ _pool_u = [];
 	_unit = _x select 0;
 	_presence = _x select 1;
 	if !(isNil {missionNamespace getVariable _unit}) then {
-		for '_i' from 1 to _presence do { [_pool_u, [missionNamespace getVariable _unit, if (count _x > 2) then {_x select 2} else {100}] ] call CTI_CO_FNC_ArrayPush };
+		for '_i' from 1 to _presence do { _pool_u pushBack [missionNamespace getVariable _unit, if (count _x > 2) then {_x select 2} else {100}] };
 	};
 } forEach (_pool_units select 0);
 _pool_u = _pool_u call CTI_CO_FNC_ArrayShuffle;
@@ -119,7 +119,7 @@ _pool_v = [];
 	_unit = _x select 0;
 	_presence = _x select 1;
 	if !(isNil {missionNamespace getVariable _unit}) then {
-		for '_i' from 1 to _presence do { [_pool_v, [missionNamespace getVariable _unit, if (count _x > 2) then {_x select 2} else {100}] ] call CTI_CO_FNC_ArrayPush };
+		for '_i' from 1 to _presence do { _pool_v pushBack [missionNamespace getVariable _unit, if (count _x > 2) then {_x select 2} else {100}]};
 	};
 } forEach (_pool_units select 1);
 _pool_v =_pool_v call CTI_CO_FNC_ArrayShuffle;
@@ -150,15 +150,14 @@ for '_i' from 1 to _totalGroups do {
 		//diag_log [_unit,_probability,_can_use];
 		if (_can_use) then {
 			if (typeName _unit == "ARRAY") then { _unit = _unit select floor(random count _unit) };
-			[_units, _unit] call CTI_CO_FNC_ArrayPush;
+			_units pushBack _unit;
 
 			_pool_group_size_current = _pool_group_size_current - 1;
 		};
 		_ci=_ci+1;
 	};
 
-	[_teams, _units] call CTI_CO_FNC_ArrayPush;
-	diag_log [_units, count _units];
+	_teams pushBack _units;
 };
 
 //todo: calculate group size (don't go over the limit if possible).
@@ -174,10 +173,10 @@ _positions = [];
 	_position = [_position, 50] call CTI_CO_FNC_GetEmptyPosition;
 	_road_pos=(_position nearRoads 100);
 	if (count _road_pos > 0) then {_position = _road_pos select floor random (count _road_pos);};
-	[_positions, _position] call CTI_CO_FNC_ArrayPush;
+	_positions pushBack _position;
 
 	_group = createGroup resistance;
-	[_groups, _group] call CTI_CO_FNC_ArrayPush;
+	_groups pushBack _group;
 
 } forEach _teams;
 

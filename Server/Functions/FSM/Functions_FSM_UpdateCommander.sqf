@@ -90,7 +90,7 @@ CTI_FSM_UpdateCommander_SetAIRole = {
 	_type = _group getVariable "cti_role_evo";
 
 	_flaten = [];
-	{ for '_i' from 1 to (_x select 1) do { [_flaten, _x] call CTI_CO_FNC_ArrayPush } } forEach _category;
+	{ for '_i' from 1 to (_x select 1) do { _flaten pushBack _x } } forEach _category;
 
 	_pool = _flaten call CTI_CO_FNC_ArrayShuffle;
 
@@ -139,7 +139,7 @@ CTI_FSM_UpdateCommander_GetMostValuedTowns = {
 	if (typeName _sideID == "SIDE") then { _sideID = _this call CTI_CO_FNC_GetSideID };
 
 	_towns = [];
-	{if ((_x getVariable "cti_town_sideID") == _sideID && (_x getVariable "cti_town_value") > CTI_AI_TEAMS_DEFEND_TOWNS_WORTH) then {[_towns, _x] call CTI_CO_FNC_ArrayPush}} forEach CTI_Towns;
+	{if ((_x getVariable "cti_town_sideID") == _sideID && (_x getVariable "cti_town_value") > CTI_AI_TEAMS_DEFEND_TOWNS_WORTH) then {_towns pushBack _x}} forEach CTI_Towns;
 
 	_towns
 };

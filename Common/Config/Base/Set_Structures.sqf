@@ -24,7 +24,7 @@ for '_i' from 0 to (count _headers) -1 do {
 	];
 
 	missionNamespace setVariable [format ["CTI_%1_%2", _side, _head select 0], _stored];
-	[_structures, format ["CTI_%1_%2", _side, _head select 0]] call CTI_CO_FNC_ArrayPush;
+	_structures pushBack (format ["CTI_%1_%2", _side, _head select 0]);
 
 	missionNamespace setVariable [format ["CTI_%1_%2", _side, (_classes select _i) select 0], _stored];
 };

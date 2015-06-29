@@ -1,4 +1,4 @@
-/*%FSM<COMPILE "E:\Bohemia Interactive\ArmA 2\FSM Editor Personal Edition\scriptedFSM.cfg, update_worker.fsm">*/
+/*%FSM<COMPILE "scriptedFSM.cfg, update_worker.fsm">*/
 /*%FSM<HEAD>*/
 /*
 item0[] = {"Start_FSM",0,250,-100.000000,-400.000000,0.000000,-350.000000,0.000000,"Start FSM"};
@@ -7,7 +7,7 @@ item2[] = {"Worker_Update",2,250,-100.000000,-200.000000,0.000000,-150.000000,0.
 item3[] = {"Jobless",4,218,50.000000,-200.000000,150.000000,-150.000000,2.000000,"Jobless"};
 item4[] = {"Has_job",4,218,-250.000000,-200.000000,-150.000000,-150.000000,1.000000,"Has job"};
 item5[] = {"Gameover_or_Dead",4,218,-100.000000,-100.000000,0.000000,-50.000000,0.000000,"Gameover" \n "or Dead"};
-item6[] = {"Assignment",2,250,50.000000,-300.000000,150.000000,-250.000000,0.000000,"Assignment"};
+item6[] = {"Assignment",2,4346,50.000000,-300.000000,150.000000,-250.000000,0.000000,"Assignment"};
 item7[] = {"End_FSM",1,250,-100.000000,0.000000,0.000000,50.000000,0.000000,"End FSM"};
 item8[] = {"Determine_Assign",2,250,-250.000000,-100.000000,-150.000000,-50.000000,0.000000,"Determine" \n "Assignment"};
 item9[] = {"Construction",4,218,-400.000000,-200.000000,-300.000000,-150.000000,3.000000,"Construction"};
@@ -19,7 +19,7 @@ item14[] = {"Repair",2,250,-550.000000,0.000000,-450.000000,50.000000,0.000000,"
 item15[] = {"",7,210,-629.000000,-29.000004,-621.000000,-20.999996,0.000000,""};
 item16[] = {"",7,210,-629.000000,-279.000000,-621.000000,-271.000000,0.000000,""};
 item17[] = {"Repair__Entities",4,218,-400.000000,100.000000,-300.000000,150.000000,0.000000,"Repair" \n "(Entities)"};
-item18[] = {"Repair_Entities",2,4346,-550.000000,100.000000,-450.000000,150.000000,0.000000,"Repair Entities"};
+item18[] = {"Repair_Entities",2,250,-550.000000,100.000000,-450.000000,150.000000,0.000000,"Repair Entities"};
 link0[] = {0,1};
 link1[] = {1,2};
 link2[] = {2,3};
@@ -43,8 +43,8 @@ link19[] = {15,16};
 link20[] = {16,1};
 link21[] = {17,18};
 link22[] = {18,15};
-globals[] = {25.000000,1,0,0,0,640,480,1,183,6316128,1,-606.224731,226.770905,289.870453,-490.044037,973,911,1};
-window[] = {2,-1,-1,-1,-1,806,25,1280,25,3,991};
+globals[] = {25.000000,1,0,0,0,640,480,1,183,6316128,1,-487.126923,345.868683,289.870453,-490.044037,535,881,1};
+window[] = {2,-1,-1,-1,-1,806,25,1280,25,3,553};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -139,12 +139,12 @@ class FSM
        "" \n
        "{" \n
        "	_structure_completion = if (isNil {_x getVariable ""cti_completion""}) then {1000} else {_x getVariable ""cti_completion""};" \n
-       "	if (_structure_completion < 100 && (_worker_center distance _x < CTI_BASE_WORKERS_RANGE)) then { [_tasks_build, _x] call CTI_CO_FNC_ArrayPush };" \n
+       "	if (_structure_completion < 100 && (_worker_center distance _x < CTI_BASE_WORKERS_RANGE)) then { _tasks_build pushback _x };" \n
        "} forEach _structures_wip;" \n
        "" \n
        "{" \n
        "	_virtual_damages = _x getVariable ""cti_altdmg""; if (isNil '_virtual_damages') then {_virtual_damages = -1};" \n
-       "	if ((getDammage _x != 0 || _virtual_damages > 0) && (_worker_center distance _x < CTI_BASE_WORKERS_RANGE) && alive _x) then { [_tasks_repair, _x] call CTI_CO_FNC_ArrayPush };" \n
+       "	if ((getDammage _x != 0 || _virtual_damages > 0) && (_worker_center distance _x < CTI_BASE_WORKERS_RANGE) && alive _x) then { _tasks_repair pushback _x };" \n
        "} forEach _structures;" \n
        "" \n
        "if (count _tasks_build > 0) then { //--- 1: Construction" \n
@@ -156,7 +156,7 @@ class FSM
        "		_worker_assignment_target = _tasks_repair select floor(random count _tasks_repair);" \n
        "	} else { //--- 3: Repair (Entities)" \n
        "		_vehicles_service = [];" \n
-       "		{ if (getDammage _x > .01 && speed _x < 5 && position _x select 2 < 3 && side _x == _side) then {[_vehicles_service, _x] call CTI_CO_FNC_ArrayPush} } forEach (_worker nearEntities [[""Car"", ""Motorcycle"", ""Tank"", ""Air"", ""StaticWeapon""], (CTI_BASE_WORKERS_RANGE * .8)]);" \n
+       "		{ if (getDammage _x > .01 && speed _x < 5 && position _x select 2 < 3 && side _x == _side) then {_vehicles_service pushback _x} } forEach (_worker nearEntities [[""Car"", ""Motorcycle"", ""Tank"", ""Air"", ""StaticWeapon""], (CTI_BASE_WORKERS_RANGE * .8)]);" \n
        "		" \n
        "		if (count _vehicles_service > 0) then {" \n
        "			_worker_assignment_target = [_worker, _vehicles_service] call CTI_CO_FNC_GetClosestEntity;" \n
@@ -397,7 +397,7 @@ class FSM
   initState="Start_FSM";
   finalStates[] =
   {
-    "End_FSM",
+    "End_FSM"
   };
 };
 /*%FSM</COMPILE>*/

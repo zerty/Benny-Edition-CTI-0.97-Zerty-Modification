@@ -1,4 +1,4 @@
-/*%FSM<COMPILE "D:\ArmA2\FSM Editor Personal Edition\scriptedFSM.cfg, update_salvager.fsm">*/
+/*%FSM<COMPILE "scriptedFSM.cfg, update_salvager.fsm">*/
 /*%FSM<HEAD>*/
 /*
 item0[] = {"Start_FSM",0,250,-100.000000,-400.000000,0.000000,-350.000000,0.000000,"Start FSM"};
@@ -8,10 +8,10 @@ item3[] = {"Alive",4,218,-100.000000,-100.000000,0.000000,-50.000000,1.000000,"A
 item4[] = {"Phase_II_Driver",2,250,-100.000000,0.000000,0.000000,50.000000,0.000000,"Phase II" \n "Driver"};
 item5[] = {"Terminate",8,218,50.000000,-200.000000,150.000000,-150.000000,0.000000,"Terminate"};
 item6[] = {"None",8,218,-250.000000,0.000000,-150.000000,50.000000,0.000000,"None"};
-item7[] = {"End_FSM",1,4346,200.000000,-200.000000,300.000000,-150.000000,0.000000,"End FSM"};
+item7[] = {"End_FSM",1,250,200.000000,-200.000000,300.000000,-150.000000,0.000000,"End FSM"};
 item8[] = {"Manned",4,218,50.000000,0.000000,150.000000,50.000000,1.000000,"Manned"};
 item9[] = {"Sleep",2,250,-400.000000,0.000000,-300.000000,50.000000,0.000000,"Sleep"};
-item10[] = {"Phase_III_Detect",2,250,200.000000,0.000000,300.000000,50.000000,0.000000,"Phase III" \n "Detection"};
+item10[] = {"Phase_III_Detect",2,4346,200.000000,0.000000,300.000000,50.000000,0.000000,"Phase III" \n "Detection"};
 item11[] = {"",7,210,-354.000000,-279.000000,-346.000000,-271.000000,0.000000,""};
 item12[] = {"",7,210,371.000000,21.000004,379.000000,28.999998,0.000000,""};
 item13[] = {"",7,210,371.000000,-279.000000,379.000000,-271.000000,0.000000,""};
@@ -30,8 +30,8 @@ link11[] = {10,12};
 link12[] = {11,1};
 link13[] = {12,13};
 link14[] = {13,1};
-globals[] = {25.000000,1,0,0,0,640,480,1,200,6316128,1,-488.236145,529.525024,476.747345,-444.781525,973,906,1};
-window[] = {2,-1,-1,-1,-1,906,125,1380,125,3,991};
+globals[] = {25.000000,1,0,0,0,640,480,1,200,6316128,1,-488.236145,529.525024,476.747345,-444.781525,555,881,1};
+window[] = {2,-1,-1,-1,-1,881,100,1355,100,3,573};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -160,7 +160,7 @@ class FSM
     {
       name = "Phase_III_Detect";
       init = /*%FSM<STATEINIT""">*/"_entities = [];" \n
-       "{if (!alive _x && isNil {_x getVariable ""cti_gc_noremove""}) then {[_entities, _x] call CTI_CO_FNC_ArrayPush}} foreach ((nearestObjects [_salvager, ['Car','Motorcycle','Ship','Air','Tank','StaticWeapon'], CTI_VEHICLES_SALVAGE_RANGE]) - [_salvager]);" \n
+       "{if (!alive _x && isNil {_x getVariable ""cti_gc_noremove""}) then {_entities pushback _x}} foreach ((nearestObjects [_salvager, ['Car','Motorcycle','Ship','Air','Tank','StaticWeapon'], CTI_VEHICLES_SALVAGE_RANGE]) - [_salvager]);" \n
        "" \n
        "if (count _entities > 0) then {" \n
        "	_wreck = [_salvager, _entities] call CTI_CO_FNC_GetClosestEntity;" \n
@@ -212,7 +212,7 @@ class FSM
   initState="Start_FSM";
   finalStates[] =
   {
-    "End_FSM",
+    "End_FSM"
   };
 };
 /*%FSM</COMPILE>*/

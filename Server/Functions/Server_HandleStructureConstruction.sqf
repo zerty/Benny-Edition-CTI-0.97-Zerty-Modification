@@ -21,7 +21,7 @@
 	[SIDE, RUIN, STRUCTURE VARIABLE, POSITION, DIRECTION] spawn CTI_SE_FNC_HandleStructureConstruction
 
   # DEPENDENCIES #
-	Common Function: CTI_CO_FNC_ArrayPush
+
 	Common Function: CTI_CO_FNC_GetClosestEntity
 	Common Function: CTI_CO_FNC_GetSideID
 	Common Function: CTI_CO_FNC_GetSideLogic
@@ -110,7 +110,7 @@ if (_completion >= 100) then {
 	{
 		_pos = getPos _x;
 		_pos = [_pos select 0, _pos select 1];
-		[_structures_positions, _pos] call CTI_CO_FNC_ArrayPush;
+		_structures_positions pushBack _pos;
 	} forEach ((_side call CTI_CO_FNC_GetSideStructures) + (_logic getVariable "cti_structures_wip"));
 
 	//--- Check for empty areas now

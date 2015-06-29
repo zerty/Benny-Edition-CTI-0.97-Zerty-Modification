@@ -21,7 +21,7 @@ switch (_action) do {
 		if (isNil '_hooked') then {_hooked = objNull};
 
 		_entities = [];
-		{if (getPos _x select 2 < 5 && speed _x < 10 && count crew _x == 0) then {[_entities, _x] call CTI_CO_FNC_ArrayPush}} forEach (CTI_P_HookVehicle nearEntities [_list, 15]);
+		{if (getPos _x select 2 < 5 && speed _x < 10 && count crew _x == 0) then {_entities pushBack _x}} forEach (CTI_P_HookVehicle nearEntities [_list, 15]);
 		_entities = _entities - [_hooked, CTI_P_HookVehicle];
 		uiNamespace setVariable ["cti_dialog_ui_hookmenu_list", _entities];
 

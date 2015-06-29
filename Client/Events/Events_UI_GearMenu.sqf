@@ -376,7 +376,7 @@ switch (_action) do {
 		[missionNamespace getVariable "cti_gear_list_templates", [_label, _picture, _cost, _gear, _upgrade, _seed]] call CTI_CO_FNC_ArrayPush;
 
 		_templates = if !(isNil {profileNamespace getVariable format["CTI_PERSISTENT_GEAR_TEMPLATE_%1", CTI_P_SideJoined]}) then {profileNamespace getVariable format["CTI_PERSISTENT_GEAR_TEMPLATE_%1", CTI_P_SideJoined]} else {+(missionNamespace getVariable "cti_gear_list_templates")};
-		[_templates, [_label, _picture, _cost, _gear, _upgrade, _seed]] call CTI_CO_FNC_ArrayPush;
+		_templates pushBack [_label, _picture, _cost, _gear, _upgrade, _seed];
 		profileNamespace setVariable [format["CTI_PERSISTENT_GEAR_TEMPLATE_%1", CTI_P_SideJoined], _templates];
 		saveProfileNamespace;
 
