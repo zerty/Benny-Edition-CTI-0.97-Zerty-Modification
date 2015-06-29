@@ -148,7 +148,7 @@ switch (_action) do {
 			    		if (_target in (CTI_P_SideLogic getVariable ["cti_structures",[]]) ) then {
 			    			if ((((missionNamespace getVariable [format ["CTI_%1_%2", CTI_P_SideJoined, typeOf _target],[[""]]]) select 0) select 0  == CTI_REPAIR )) then {_ok=true}
 			    		};
-			    		if (_target in (CTI_P_SideLogic getVariable ["cti_service",[]]) ) then {
+			    		if (_target in ((CTI_WEST getvariable ["cti_service", []]) + (CTI_EAST getvariable ["cti_service", []])) ) then {
 			    			if ((missionNamespace getVariable [format ["%1", typeOf _target],["","","","","","","",""]]) select 7 == "service-repairtruck") then {_ok=true}
 			    		};
 			    		//if (_target == ((CTI_P_sidejoined) call CTI_CO_FNC_GetSideHQ) || (missionNamespace getVariable [format ["%1", typeOf _target],["","","","","","","",""]]) select 7 == "service-repairtruck"  || ((missionNamespace getVariable [format ["CTI_%1_%2", CTI_P_SideJoined, typeOf _target],[[""]]]) select 0) select 0  == CTI_REPAIR )) then  {
