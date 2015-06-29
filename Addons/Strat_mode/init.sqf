@@ -33,6 +33,7 @@ with missionNamespace do {
 		TR_PROJ_HANDLER = compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Functions\TR_proj_handler.sqf";
 		TR_HANDLER = compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Functions\TR_handler.sqf";
 		F_REVAMP = compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Functions\F_revamp.sqf";
+		F_REVAMP_FRAME = compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Functions\F_revamp_frame.sqf";
 		SM_BP_Init = compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Functions\SM_BP_Init.sqf";
 		SM_BP_Hook = compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Functions\SM_BP_Hook.sqf";
 		SM_BP_Link = compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Functions\SM_BP_Link.sqf";
@@ -350,7 +351,10 @@ if (CTI_IsClient) then {
 		0 execVM "Addons\Strat_mode\Functions\SM_AdaptGroup.sqf";
 	};
  	// fatique revamp
-  	0 spawn F_REVAMP;
+  	//0 spawn F_REVAMP;
+  	if (missionNamespace getVariable "CTI_UNITS_FATIGUE" == 1) then {
+  		["F_FRAME", "onEachFrame", {0 call F_REVAMP_FRAME}] call bis_fnc_addStackedEventHandler;
+  	};
 
   	// a Radar
 	if (missionNamespace getVariable "CTI_SM_RADAR" == 1) then {

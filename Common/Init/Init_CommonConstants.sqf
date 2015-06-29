@@ -653,4 +653,5 @@ with missionNamespace do {
 
 	if (isNil 'CTI_AI_TEAMS_NB') then { CTI_AI_TEAMS_NB = 10};
 	if (isNil 'CTI_WEATHER_ALLOWRAIN') then {CTI_WEATHER_ALLOWRAIN = 0};
+	if (isNil 'CTI_FATIGUE_RATIO') then {CTI_FATIGUE_RATIO = 80};
 };
