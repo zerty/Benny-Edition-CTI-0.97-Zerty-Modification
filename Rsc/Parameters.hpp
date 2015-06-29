@@ -146,7 +146,7 @@ class Params {
 	class CTI_FATIGUE_RATIO {
 		title = "UNITS: Fatigue reduction ratio for players";
 		values[] = {0,20,40,60,80,100};
-		texts[] = {"0%","20%","40%","60%","80%","100%"};
+		texts[] = {"Full Fatigue","20%","40%","60%","80%","No Fatigue"};
 		default = 40;
 	};
 	class CTI_VEHICLES_EMPTY_TIMEOUT {
