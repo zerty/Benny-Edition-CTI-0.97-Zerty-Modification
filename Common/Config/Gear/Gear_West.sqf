@@ -899,11 +899,11 @@ _p = _p		+ [300];
 if !(MADE_FOR_STRATIS) then {
 _i = _i		+ ["B_Mortar_01_support_F"];
 _u = _u		+ [3];
-_p = _p		+ [50];
+_p = _p		+ [1000];
 
 _i = _i		+ ["B_Mortar_01_weapon_F"];
 _u = _u		+ [3];
-_p = _p		+ [700];
+_p = _p		+ [2000];
 };
 //--- Glasses
 
