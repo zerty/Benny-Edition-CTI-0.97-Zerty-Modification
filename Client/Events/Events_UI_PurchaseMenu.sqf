@@ -73,15 +73,15 @@ switch (_action) do {
 		_factory_index = _this select 1;
 		_factory_type = _this select 2;
 
-		_available = [CTI_Base_BarracksInRange, CTI_Base_LightInRange, CTI_Base_HeavyInRange, CTI_Base_AirInRange, CTI_Base_RepairInRange, CTI_Base_AmmoInRange, CTI_Base_NavalInRange];
+		_available = [CTI_Base_BarracksInRange, CTI_Base_LightInRange, CTI_Base_HeavyInRange, CTI_Base_AirInRange, CTI_Base_RepairInRange, CTI_Base_AmmoInRange, CTI_Base_NavalInRange,CTI_Town_InRange];
 
 		if (_available select _factory_index) then {
 			(_factory_index) call CTI_UI_Purchase_SetIcons;
 			(_factory_type) call CTI_UI_Purchase_FillUnitsList;
+			if (_factory_type == CTI_REPAIR && (call CTI_CL_FNC_IsPlayerCommander)) then {((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 100016) ctrlenable true} else {((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 100016) ctrlenable false};
 			call CTI_UI_Purchase_OnUnitListLoad;
 
 			(_factory_type) call CTI_UI_Purchase_LoadFactories;
-			if (call CTI_CL_FNC_IsPlayerCommander) then {((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 100016) ctrlShow (if (_factory_type == CTI_REPAIR) then {true} else {false})};
 		};
 	};
 	case "onVehicleIconClicked": {
