@@ -103,7 +103,7 @@ if (_funds < _cost) exitWith { ["SERVER", "Answer_Purchase", [_req_seed, _req_cl
 while { time <= _req_time_out && alive _factory } do { sleep .25 };
 
 if !(alive _factory) exitWith { diag_log "the factory is dead" };
-if (_factory in CTI_TOWNS && ! ((_factory getvariable ["cti_town_sideID",-1]) == CTI_P_SideID)) exitWith { ["SERVER", "Answer_Purchase", [_req_seed, _req_classname, _req_buyer, _factory]] call CTI_CO_FNC_NetSend; };
+if (_factory in CTI_TOWNS && ( ! ((_factory getvariable ["cti_town_sideID",-1]) == CTI_P_SideID) || (_factory getvariable ["cti_town_capture",-1]) != CTI_TOWNS_CAPTURE_VALUE_CEIL) ) exitWith { ["SERVER", "Answer_Purchase", [_req_seed, _req_classname, _req_buyer, _factory]] call CTI_CO_FNC_NetSend; };
 //--- Soft limit (skip for empty vehicles)
 if !(_process) then { if ((count units (group player))+1 <= CTI_PLAYERS_GROUPSIZE) then { _process = true }};
 if !(_process) exitWith { ["SERVER", "Answer_Purchase", [_req_seed, _req_classname, _req_buyer, _factory]] call CTI_CO_FNC_NetSend }; //--- Can't do it but we answer to the server.
