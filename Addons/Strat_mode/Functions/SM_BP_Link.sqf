@@ -2,7 +2,7 @@ private ["_base","_side","_ind","_side_id","_sidelogic","_neigh","_new_neigh","_
 _base= _this select 0;
 _side = _this select 1;
 _ind= _this select 2;
-diag_log _ind;
+
 _side_id=(_side) call CTI_CO_FNC_GetSideID;
 _sidelogic= (_side) call CTI_CO_FNC_GetSideLogic;
 _neigh=( _sidelogic getVariable "CTI_BASES_NEIGH");
