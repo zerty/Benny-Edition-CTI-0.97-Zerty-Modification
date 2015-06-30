@@ -61,11 +61,12 @@ _deh = (findDisplay 46) displayAddEventHandler ["KeyDown", "nullReturn = _this s
 
 _var = missionNamespace getVariable _variable;
 _classname = _var select 1;
-_local = _classname createVehicleLocal getPos player;
+_local = _classname createVehicleLocal [0,0,0];
 _direction_structure = (_var select 4) select 0;
 _distance_structure = (_var select 4) select 1;
-
-// {_local disableCollisionWith _x} forEach (_center nearEntities (_center_distance+500));
+{_local disableCollisionWith _x} forEach (player nearObjects 150);
+_local enableSimulation false;
+_local setpos (getPos player);
 
 _last_collision_update = -600;
 _condition = {true};
