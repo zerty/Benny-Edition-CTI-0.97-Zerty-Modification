@@ -855,4 +855,13 @@ _f = _f + [CTI_FACTORY_TOWN];
 _s = _s + [""];
 
 
+_c = _c + ['O_Mortar_01_F'];
+_p = _p + [''];
+_n = _n + [''];
+_o = _o + [5000];
+_t = _t + [10];
+_u = _u + [0];
+_f = _f + [CTI_FACTORY_TOWN];
+_s = _s + [""];
+
 [_side, _faction, _c, _p, _n, _o, _t, _u, _f, _s] call compile preprocessFileLineNumbers "Common\Config\Units\Set_Units.sqf";
