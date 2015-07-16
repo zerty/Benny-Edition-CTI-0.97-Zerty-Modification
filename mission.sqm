@@ -413,7 +413,7 @@ class Mission
 					rank="COLONEL";
 					skill=0.60000002;
 					text="CTI_WEST_DEFAULT_GROUP";
-					init="this allowDamage false;(group this) setGroupID [""Default Team""];";
+					init="this allowDamage false;(group this) setGroupIDGlobal [""Default Team""];";
 				};
 				class Item1
 				{

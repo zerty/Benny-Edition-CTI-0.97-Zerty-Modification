@@ -123,7 +123,7 @@ switch (_action) do {
 			if (alive(uiNamespace getVariable "cti_dialog_ui_purchasemenu_factory")) then {
 				_ai_enabled = missionNamespace getVariable "CTI_AI_TEAMS_ENABLED";
 				if (_ai_enabled >0 || ((isPlayer leader _selected_group || (missionNamespace getVariable "CTI_BUY_RESTRICT_LEADER" == 0 ))&& _ai_enabled == 0)) then {
-					if ((count units _selected_group) <= (CTI_PLAYERS_GROUPSIZE + (count (_selected_group getVariable ["last_known_players",[""]]))) || _isEmpty) then { //todo ai != player limit
+					if ((count units _selected_group) <= (CTI_PLAYERS_GROUPSIZE + ({isplayer _x } count ( units _selected_group ))) || _isEmpty) then { //todo ai != player limit
 						_proc_purchase = true;
 						if (_isEmpty && _selected_group != group player) then { _proc_purchase = false; hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br />Empty vehicles may not be purchased for other groups."; };
 						if ! (_classname in ( missionNamespace getVariable format ["CTI_%1_%2Units", CTI_P_SideJoined,(uiNamespace getVariable "cti_dialog_ui_purchasemenu_factory_type")])) then { _proc_purchase = false; hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br />This vehicles may not be purchased in that factory."; };

@@ -48,6 +48,7 @@ class CTI_RscInteraction {
 			h = "SafeZoneH * 0.05";
 
 			color[] = {1,0,0,1};
+			colorDisabled[] = {1,0,0,1};
 			colorActive[] = {1,1,1,0.7};
 			colorBackground[] = {0.6, 0.8392, 0.4706, 0.7};
 			colorBackgroundSelected[] = {0.6, 0.8392, 0.4706, 0.7};
@@ -1364,6 +1365,7 @@ class CTI_RscTabletPurchaseMenu {
 			h = "SafeZoneH * 0.041";
 
 			color[] = {0.75,0.75,0.75,0.7};
+			colorDisabled[] = {1,0,0,1};
 			colorActive[] = {1,1,1,0.7};
 			colorBackground[] = {0.6, 0.8392, 0.4706, 0.7};
 			colorBackgroundSelected[] = {0.6, 0.8392, 0.4706, 0.7};
@@ -2582,6 +2584,7 @@ class CTI_RscGearMenu {
 			colorFocused[] = {0, 0, 0, 0};
 			color[] = {0.85, 0.85, 0.85, 1};
 			colorText[] = {0.85, 0.85, 0.85, 1};
+			colorDisabled[] = {1,0,0,1};
 			colorActive[] = {1, 1, 1, 1};
 
 			canDrag = 1;
@@ -2928,6 +2931,7 @@ class CTI_RscGearMenu {
 			h = "SafeZoneH * 0.08";
 
 			color[] = {0.75,0.75,0.75,0.7};
+			colorDisabled[] = {1,0,0,1};
 			colorActive[] = {1,1,1,0.7};
 			colorBackground[] = {0.6, 0.8392, 0.4706, 0.7};
 			colorBackgroundSelected[] = {0.6, 0.8392, 0.4706, 0.7};

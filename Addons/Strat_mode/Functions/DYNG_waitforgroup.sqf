@@ -3,9 +3,10 @@
 	if (missionNamespace getVariable ["WAIT_GROUP",false]) exitWith {};
 	waitUntil {!isNull (findDisplay 46)&& !isnull player};
 	WAIT_GROUP=true;
-	[player] joinsilent (group (missionNamespace getvariable format ["CTI_%1_DEFAULT_GROUP",CTI_P_SideJoined] )) ;
+	[player] joinsilent grpNull;
+	//[player] joinsilent (group (missionNamespace getvariable format ["CTI_%1_DEFAULT_GROUP",CTI_P_SideJoined] )) ;
 	// group cleanup since BIS has fucked it
-	{if ((count(units _x) == 0) && local _x && ! ( groupID _x == "Defense Team") && ! ( groupID _x == "Default Team")) then {deleteGroup _x} ;true }count allgroups;
+	//{if ((count(units _x) == 0) && local _x && ! ( groupID _x == "Defense Team") && ! ( groupID _x == "Default Team")) then {deleteGroup _x} ;true }count allgroups;
 	["InitializePlayer",[player] ] call BIS_fnc_dynamicGroups;
 	12453 cutText ["Please either join or create a group","BLACK OUT",0];
 	_pos=getMarkerPos format ["CTI_%1Respawn",CTI_P_SideJoined];

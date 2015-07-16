@@ -99,8 +99,8 @@ with missionNamespace do {
 		//TEAWSTACK
 		_west_count=0;
 		_east_count=0;
-		{_west_count=_west_count + count(_x select 5);true }count (["GetAllGroupsOfSide",[west]]call BIS_fnc_dynamicGroups);
-		{_east_count=_east_count + count(_x select 5);true }count (["GetAllGroupsOfSide",[east]]call BIS_fnc_dynamicGroups);
+		{_west_count=_west_count + ({isplayer _x} count(units _x));true }count (["GetAllGroupsOfSide",[west]]call BIS_fnc_dynamicGroups);
+		{_east_count=_east_count + ({isplayer _x} count(units _x));true }count (["GetAllGroupsOfSide",[east]]call BIS_fnc_dynamicGroups);
 		_teamstack=if ((_side_origin == civilian) && CTI_TEAMSTACK == 1 &&((_side == west && _west_count >=(_east_count +2)) ||	(_side == east && _east_count >=(_west_count +2)))) then {true} else {false};
 
 		//SAVE

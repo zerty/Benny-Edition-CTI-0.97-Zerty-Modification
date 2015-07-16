@@ -75,7 +75,7 @@ if (count _award_teams > 0) then {
 
 	if !(((_newSide) call CTI_CO_FNC_GetSideCommander) in _award_teams) then {_award_teams set [count _award_teams,((_newSide) call CTI_CO_FNC_GetSideCommander)]};
 	{
-		_mult=if ((missionNamespace getVariable "CTI_GROUP_AWARD_MULT") == 1) then {(count (_x getVariable ["last_known_players",[""]]))} else {1};
+		_mult=if ((missionNamespace getVariable "CTI_GROUP_AWARD_MULT") == 1) then {{isplayer _x}count (units _x)} else {1};
 		{if (isplayer _x )then {[["CLIENT", _x], "Client_OnMessageReceived", ["town_award",[( _value*_mult), (_town getVariable "cti_town_name")]],true] call CTI_CO_FNC_NetSend};true} count (units _x);
 		[_x, _newSide,( _value*_mult)] call CTI_CO_FNC_ChangeFunds;
 	} count _award_teams;

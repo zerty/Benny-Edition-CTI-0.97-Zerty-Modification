@@ -36,7 +36,7 @@ if (isNil {_team getVariable "cti_order_pos"}) then {_team setVariable ["cti_ord
 if (isNil {_team getVariable "cti_nextrespawn"}) then {_team setVariable ["cti_nextrespawn", -600]};
 if (isNil {_team getVariable "cti_role"}) then {_team setVariable ["cti_role", "Infantry", true]}; //--- AI use Infantry by default
 if (isNil {_team getVariable "cti_independent"}) then {_team setVariable ["cti_independent", true, true]}; //--- AI leaders may purchase things by their own
-if (isNil {_team getVariable "last_known_players"}) then {_team setVariable ["last_known_players",[],true]};
+//if (isNil {_team getVariable "last_known_players"}) then {_team setVariable ["last_known_players",[],true]};
 if (isNil {_team getVariable "cti_funds"}) then {
 	if (isPlayer leader _team) then {_team setVariable ["cti_funds", 0, true]} else {_team setVariable ["cti_funds",  missionNamespace getVariable format ["CTI_ECONOMY_STARTUP_FUNDS_%1", _side], true]};
 	};

@@ -155,18 +155,17 @@ private ["_weatherUpdateArray","_weatherUpdateForecasts"];
    // Start recurring weather loop.
     while {true} do {
 		// Pick weather template from possible forecasts for next weather update
-		sleep 10;
+		//sleep 10;
 		_weatherUpdateArray = weatherTemplates select rw2_Current_Weather;
 		_weatherUpdateForecasts = _weatherUpdateArray select 1;
 		rw2_Next_Weather = _weatherUpdateForecasts select floor(random(count(_weatherUpdateForecasts)));
-		publicVariable "rw2_Next_Weather";
+		//publicVariable "rw2_Next_Weather";
         _n_time= (abs((((weatherTemplates select rw2_Next_Weather) select 2) select 1)-(((weatherTemplates select rw2_Current_Weather) select 2) select 1))*6000 / CTI_WEATHER_FAST);
-        diag_log _n_time;
         if (_n_time <600) then {_n_time = 600};
-        [[_n_time],"mb_fnc_UpdateWeather",true] spawn Bis_fnc_MP;
+        // [[_n_time],"mb_fnc_UpdateWeather",true] spawn Bis_fnc_MP;
         sleep _n_time;
 		rw2_Current_Weather = rw2_Next_Weather;
-		publicVariable "rw2_Current_Weather";
+		//publicVariable "rw2_Current_Weather";
 	};
 };
 
