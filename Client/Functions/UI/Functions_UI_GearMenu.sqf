@@ -1186,7 +1186,7 @@ CTI_UI_Gear_UpdateLinkedItems = {
 
 	_config_type = (_item) call CTI_UI_Gear_GetItemBaseConfig;
 
-	if ((lnbSize 70601) select 0 > 0) then {lnbClear 70601};
+	if ((lbSize 70601) > 0) then {lbClear 70601};
 
 	if (_config_type == "CfgWeapons") then {
 		// _magazines = (getArray(configFile >> 'CfgWeapons' >> _item >> 'magazines')) call CTI_CO_FNC_ArrayToLower;
@@ -1203,10 +1203,10 @@ CTI_UI_Gear_UpdateLinkedItems = {
 			_get = missionNamespace getVariable _x;
 
 			if !(isNil "_get") then {
-				_row = lnbAddRow [70601, [getText(configFile >> _get select 2 >> _x >> 'displayName'), format ["$%1", (_get select 0) select 1]]];
-				lnbSetPicture [70601, [_row, 1], getText(configFile >> _get select 2 >> _x >> 'picture')];
-				lnbSetPictureColor [70601, [_row, 1], [1,1,1,1]];
-				lnbSetData [70601, [_row, 0], toLower(_x)];
+				_row = lbAdd[70601, format ["%1 -- ($%2)",getText(configFile >> _get select 2 >> _x >> 'displayName'), (_get select 0) select 1]];
+				lbSetPicture [70601, _row, getText(configFile >> _get select 2 >> _x >> 'picture')];
+				lbSetPictureColor [70601, _row, [1,1,1,1]];
+				lbSetData [70601, _row, toLower(_x)];
 			};
 		} forEach (_magazines call CTI_CO_FNC_ArrayToLower);
 	};

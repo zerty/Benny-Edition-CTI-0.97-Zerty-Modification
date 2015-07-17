@@ -124,7 +124,7 @@ switch (_action) do {
 		//--- Item
 		_selected = _this select 1;
 
-		//(lnbData [70108, [_selected,0]]) call CTI_UI_Gear_UpdateLinkedItems;
+		(lbData [70108, _selected]) call CTI_UI_Gear_UpdateLinkedItems;
 	};
 	case "onShoppingListMouseUp": {
 		_idcs = if (isNil {uiNamespace getVariable "cti_dialog_ui_gear_drag_colored_idc"}) then {[]} else {uiNamespace getVariable "cti_dialog_ui_gear_drag_colored_idc"};
@@ -141,7 +141,7 @@ switch (_action) do {
 		//--- Item
 		_selected = _this select 1;
 
-		_updated = (lnbData [70601, [_selected,0]]) call CTI_UI_Gear_AddItem;
+		_updated = (lbData [70601, _selected]) call CTI_UI_Gear_AddItem;
 		if (_updated) then { call CTI_UI_Gear_UpdatePrice };
 	};
 	case "onItemContainerClicked": { //--- Uniform (0), vest (1) or backpack (2) container was clicked upon
