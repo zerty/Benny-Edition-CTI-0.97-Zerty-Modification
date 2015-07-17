@@ -89,7 +89,7 @@ while {!CTI_Gameover} do {
 			//==================
 			//_name =_x select 1;
 			//if !((groupID _g) == _name) then {_g setGroupIdGlobal [_name]};
-			if !((_g getVariable ["cti_alias",""]) == (groupID _x) ) then {_g setVariable ["cti_alias", (groupID _x),true]};
+			if !((_x getVariable ["cti_alias",""]) == (groupID _x) ) then {_x setVariable ["cti_alias", (groupID _x),true]};
 
 		};
 		true
