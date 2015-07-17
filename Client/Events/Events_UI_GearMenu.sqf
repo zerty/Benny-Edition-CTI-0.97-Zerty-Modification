@@ -96,15 +96,16 @@ switch (_action) do {
 
 		//--- Get the current tab
 		if (uiNamespace getVariable "cti_dialog_ui_gear_shop_tab" != 7) then {
-			_updated = (lnbData [70108, [_selected,0]]) call CTI_UI_Gear_AddItem;
+			_updated = (lbData [70108,_selected]) call CTI_UI_Gear_AddItem;
 			if (_updated) then { call CTI_UI_Gear_UpdatePrice };
 		} else {
-			_selected = lnbValue[70108, [_selected,1]];
+			_selected = lbValue[70108, _selected];
 			(_selected) call CTI_UI_Gear_EquipTemplate;
 		};
 	};
 	case "onShoppingListLBDrag": {
 		//--- Item (Data)
+
 		_selected = ((_this select 1) select 0) select 2;
 
 		uiNamespace setVariable ["cti_dialog_ui_gear_dragging", true];
@@ -123,7 +124,7 @@ switch (_action) do {
 		//--- Item
 		_selected = _this select 1;
 
-		(lnbData [70108, [_selected,0]]) call CTI_UI_Gear_UpdateLinkedItems;
+		//(lnbData [70108, [_selected,0]]) call CTI_UI_Gear_UpdateLinkedItems;
 	};
 	case "onShoppingListMouseUp": {
 		_idcs = if (isNil {uiNamespace getVariable "cti_dialog_ui_gear_drag_colored_idc"}) then {[]} else {uiNamespace getVariable "cti_dialog_ui_gear_drag_colored_idc"};
@@ -389,11 +390,13 @@ switch (_action) do {
 
 	case "onTemplateDeletion": {
 		//todo: lnbvalue later when they're hidden
+
 		_index = _this select 1;
 		if (uiNamespace getVariable "cti_dialog_ui_gear_shop_tab" == CTI_GEAR_TAB_TEMPLATES) then {
-			_seed = lnbValue[70108, [_index,0]];
-			if (_index > -1 && _index < ((lnbSize((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl 70108)) select 0)) then {
-				_index = lnbValue[70108, [_index,1]];
+			//_seed = lnbValue[70108, [_index,0]];
+			_seed =( (missionNamespace getVariable "cti_gear_list_templates") select _index) select 5;
+			if (_index > -1 && _index < (lbSize ((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl 70108) )) then {
+				_index = lbValue [70108,_index];
 				_templates = missionNamespace getVariable "cti_gear_list_templates";
 				_templates set [_index, "!nil!"];
 				_templates = _templates - ["!nil!"];
