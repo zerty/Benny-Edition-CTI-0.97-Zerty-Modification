@@ -51,7 +51,7 @@ if (CTI_IsClient && isMultiplayer) then {
 
 	0 spawn {
 		waitUntil {!(isNull player)};
-		12452 cutText ["Receiving mission intel...", "BLACK FADED", 50000];
+
 		while {side player == civilian} do
 		{
 		 		player enableSimulation true;

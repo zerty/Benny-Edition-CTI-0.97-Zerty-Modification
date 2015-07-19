@@ -87,7 +87,19 @@ enableEngineArtillery true;
 if ((missionNamespace getVariable "CTI_ARTILLERY_SETUP") != -1) then {enableEngineArtillery false};
 
 if (isMultiplayer) then {
-	//--- Can I join?
+	12452 cutText ["Waiting for server to approve connexion...", "BLACK FADED", 50000];
+	waitUntil {!isnil {player getVariable "CTI_SERVER_ANWSER"}};
+	12452 cutText ["Got anwser from the server.", "BLACK FADED", 50000];
+	(player getVariable "CTI_SERVER_ANWSER") call CTI_CL_FNC_JoinRequestAnswer;
+	if (CTI_P_Jailed) then {
+		hintSilent "The ride never ends!";
+		0 spawn CTI_CL_FNC_OnJailed;
+	};
+	12452 cutText ["", "BLACK IN", 5];
+
+
+
+/*	//--- Can I join?
 		missionNamespace setVariable ["CTI_PVF_Client_JoinRequestAnswer", {_this spawn CTI_CL_FNC_JoinRequestAnswer}]; //--- Early PVF, do not spoil the game with the others.
 
 		_last_req = -100;
@@ -102,7 +114,7 @@ if (isMultiplayer) then {
 		hintSilent "The ride never ends!";
 		0 spawn CTI_CL_FNC_OnJailed;
 	};
-
+*/
 
 };
 

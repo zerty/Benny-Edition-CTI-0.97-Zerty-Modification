@@ -47,3 +47,4 @@ if (CTI_SM_FAR == 1) then {
 	};
 };
 
+player setVariable ["CTI_UID",getPlayerUID player, true];
