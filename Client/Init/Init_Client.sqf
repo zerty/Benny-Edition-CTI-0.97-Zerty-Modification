@@ -304,7 +304,7 @@ if (/*profileNamespace getVariable "CTI_PERSISTENT_HINTS"*/true) then {
 		createdialog "CTI_RscTabletOnlineHelpMenu";
 	};
 };
-
+/*
 0 spawn
 {
 	while {!CTI_GameOver} do
@@ -316,7 +316,7 @@ if (/*profileNamespace getVariable "CTI_PERSISTENT_HINTS"*/true) then {
 		sleep 3;
 	};
 };
-
+*/
 if (CTI_BASE_NOOBPROTECTION == 1) then {player addEventHandler ["fired", {_this spawn CTI_CL_FNC_OnPlayerFired}]}; //--- Trust me, you want that
 
 //trophy system
