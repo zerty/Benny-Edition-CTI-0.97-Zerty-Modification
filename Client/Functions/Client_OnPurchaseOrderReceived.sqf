@@ -71,8 +71,8 @@ if !(_req_classname isKindOf "Man") then {
 _req_time_out = time + (_var_classname select CTI_UNIT_TIME);
 
 //--- Soft limit (skip for empty vehicles)
-if !(_process) then { if ((count units (group player))+1 <= CTI_PLAYERS_GROUPSIZE) then { _process = true }};
-if !(_process) exitWith { ["SERVER", "Answer_Purchase", [_req_seed, _req_classname, _req_buyer, _factory]] call CTI_CO_FNC_NetSend }; //--- Can't do it but we answer to the server.
+if !(_process) then { if (((count units (group player))- ({isplayer _x} count units (group player))) <= CTI_PLAYERS_GROUPSIZE) then { _process = true }};
+if !(_process) exitWith { ["SERVER", "Answer_Purchase", [_req_seed, _req_classname, _req_buyer, _factory]] call CTI_CO_FNC_NetSend ; hint parseText format ["<t size='1.3' color='#BB0000'>Information</t><br /><br />%2<t>Your <t color='#ccffaf'>%1</t> order has been <t color='#fcffaf'>Denied</t>, too much units in group.", _var_classname select CTI_UNIT_LABEL, _picture];}; //--- Can't do it but we answer to the server.
 
 //--- Check if the buyer has enough funds to perform this operation
 _cost = _var_classname select 2;
