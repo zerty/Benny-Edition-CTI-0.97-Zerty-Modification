@@ -195,7 +195,7 @@ switch (_action) do {
 			{
 				_value = ((uiNamespace getVariable "cti_dialog_ui_aimicromenu") displayCtrl 270002) lbValue _x;
 				_who = (uiNamespace getVariable "cti_dialog_ui_aimicromenu_units") select _value;
-				if (_who == effectiveCommander vehicle _who && vehicle _who != _who) then {_vehicle setDammage 1};
+				if (_who == effectiveCommander vehicle _who && vehicle _who != _who) then {(vehicle _who) setDammage 1};
 				_who setDammage 1;
 			} forEach _selection;
 			{((uiNamespace getVariable "cti_dialog_ui_aimicromenu") displayCtrl 270002) lbDelete _x} forEach _selection;
