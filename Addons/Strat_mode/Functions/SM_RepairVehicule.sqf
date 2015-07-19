@@ -1,11 +1,4 @@
 CTI_P_Repairing = false;
-_respawn_reset={
-	while {!CTI_GameOver} do {
-		waitUntil {! (isNull player)&& ( alive player)};
-		CTI_P_Repairing = false;
-		waitUntil {! (alive player)}
-	};
-};
 
 SM_repair_vehicle={
 	_target = _this select 0;
@@ -96,4 +89,3 @@ SM_Force_entry={
 		hintsilent "";
 	};
 };
-0 spawn _respawn_reset;
