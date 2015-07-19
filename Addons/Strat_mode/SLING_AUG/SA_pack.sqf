@@ -41,7 +41,7 @@ if (_target == ((CTI_P_SideJoined) call CTI_CO_FNC_GetSideHQ)) then {
 	_packobject setVariable ["cti_ai_prohib", true,true]; //--- HQ may not be used by AI as a commandable vehicle
 	_packobject setVariable ["cti_occupant", _side,true];
 	["SERVER", "SERVER_SA_PROTECT_HQ",[_packobject,_side]] call CTI_CO_FNC_NetSend;
-	// [["CLIENT", _side], "CLIENT_SA_PROTECT_HQ",[_packobject],true] call CTI_CO_FNC_NetSend;
+	["CLIENT", "CLIENT_SA_PROTECT_HQ",[_packobject,_side],true] call CTI_CO_FNC_NetSend;
 	CTI_P_SideLogic setVariable ["cti_hq", _packobject, true];
 	//["SERVER", "SERVER_SA_SIMU",[_target,true]] call CTI_CO_FNC_NetSend;
 	//waitUntil {(simulationEnabled _target)};

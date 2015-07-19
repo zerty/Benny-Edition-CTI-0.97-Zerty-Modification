@@ -9,9 +9,9 @@ SA_DROP=compile preprocessfilelinenumbers "Addons\Strat_mode\SLING_AUG\SA_Drop.s
 with missionnamespace do {
 	CTI_PVF_CLIENT_SA_PROTECT_HQ={
 		diag_log  format ["HQ :: Handling death of hq %1 for player side",_this select 0];
-		(_this select 0) addEventHandler ["killed", format["[_this select 0, _this select 1, %1] spawn CTI_CL_FNC_OnHQDestroyed", CTI_P_SideID]];
+		(_this select 0) addEventHandler ["killed", format["[_this select 0, _this select 1, %1] spawn CTI_CL_FNC_OnHQDestroyed", (_this select 1)]];
 		if (CTI_BASE_NOOBPROTECTION == 1) then {
-			(_this select 0) addEventHandler ["handleDamage", format["[_this select 2, _this select 3, %1] call CTI_CO_FNC_OnHQHandleDamage", CTI_P_SideID]]; //--- You want that on public
+			(_this select 0) addEventHandler ["handleDamage", format["[_this select 2, _this select 3, %1] call CTI_CO_FNC_OnHQHandleDamage", ( _this select 1)]]; //--- You want that on public
 		};
 	};
 };
