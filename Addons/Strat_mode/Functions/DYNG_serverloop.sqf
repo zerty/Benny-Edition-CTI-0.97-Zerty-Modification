@@ -61,6 +61,10 @@ while {!CTI_Gameover} do {
 								_get set [2,floor (_g getVariable "cti_funds")];
 								missionNamespace setVariable [format["CTI_SERVER_CLIENT_%1", _x],_get];
 							} else {
+								if ((_get select 2 ) > (missionNamespace getVariable format ["CTI_ECONOMY_STARTUP_FUNDS_%1", side _g])) then
+								{
+									_g setVariable ["cti_funds", (_g getvariable "cti_funds")+ _get select 2,true ]; // automatic tranfer of money
+								};
 								_get set [2,(missionNamespace getVariable format ["CTI_ECONOMY_STARTUP_FUNDS_%1", side _g])];
 								missionNamespace setVariable [format["CTI_SERVER_CLIENT_%1", _x],_get];
 							};
