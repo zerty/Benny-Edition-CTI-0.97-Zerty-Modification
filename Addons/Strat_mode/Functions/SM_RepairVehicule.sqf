@@ -54,14 +54,14 @@ SM_Force_entry={
 	_caller = _this select 1;
 	_rk=1;
 	_rk = ({_x == "Toolkit"} count (backpackItems _caller)) +({_x == "Toolkit"} count (vestItems _caller));
-	if ((_target getVariable "forced") ) exitWith { hint "This vehicle has already been forced";};
+	if ((_target getVariable ["forced",false]) ) exitWith { hintSilent "This vehicle has already been forced";};
 	_pos = getPos _caller;
 	if (_rk > 0 ) then {
 		_lock=1;
 		CTI_P_Repairing = true ;
 		_caller switchMove "AinvPknlMstpSnonWrflDnon_medic4";
 		["Forcing vehicle lock",0,1,1] call HUD_PBar_start;
-		while {_lock >0  && (_caller distance _target) <5 && (_caller distance _pos)<0.5 && (vehicle _caller) ==_caller} do
+		while {_lock >0  && (_caller distance _target) <5 && (_caller distance _pos)<0.5 && (vehicle _caller) ==_caller && !(_target getVariable ["forced",false])} do
 		{
 				_lock=_lock-0.02;
 				_percent=(1-_lock)*100;
@@ -69,22 +69,24 @@ SM_Force_entry={
 		    //hint parseText format ["<t size='1.3' color='#2394ef'>Forcing Lock : %1 percent</t>",ceil (_percent)];
 		    sleep 1;
 		};
-		if ((_caller distance _target) >5 || (_caller distance _pos)>0.5 || !((vehicle _caller) ==_caller)) exitWith { _caller switchMove ""; hint "Failed";CTI_P_Repairing = false ;0 call HUD_PBar_stop;};
-		_target	setOwner (owner player);
+		if ((_caller distance _target) >5 || (_caller distance _pos)>0.5 || !((vehicle _caller) ==_caller) || (_target getVariable ["forced",false])) exitWith { _caller switchMove ""; hint "Failed";CTI_P_Repairing = false ;0 call HUD_PBar_stop;};
+
+
+		[_target,player] call CTI_PVF_Request_Locality;
 		sleep 0.1;
 		_caller switchMove "";
-		_target lock 0;
+		if (local _target ) then {_target lock 0;};
 
 
 		{
 			_x action [ "eject", _target];
 		} forEach crew _target;
-		_target setVariable ["forced",false];
-		if ( !(_target getVariable "forced") ) then {
-			_target addAction ["<t color='#86F078'>Unlock</t>","Client\Actions\Action_ToggleLock.sqf", [], 99, false, true, '', '_this != player && alive _target && locked _target == 2'];
-			_target addAction ["<t color='#86F078'>Lock</t>","Client\Actions\Action_ToggleLock.sqf", [], 99, false, true, '', '_this != player && alive _target && locked _target == 0'];
-			_target setVariable ["v_keys",[getPlayerUID player,group player],true];
-		};
+
+		_target addAction ["<t color='#86F078'>Unlock</t>","Client\Actions\Action_ToggleLock.sqf", [], 99, false, true, '', '_this != player && alive _target && locked _target == 2'];
+		_target addAction ["<t color='#86F078'>Lock</t>","Client\Actions\Action_ToggleLock.sqf", [], 99, false, true, '', '_this != player && alive _target && locked _target == 0'];
+		_target setVariable ["v_keys",[getPlayerUID player,group player],true];
+		_target setVariable ["forced",true,true];
+
 		0 call HUD_PBar_stop;
 		CTI_P_Repairing = false ;
 
