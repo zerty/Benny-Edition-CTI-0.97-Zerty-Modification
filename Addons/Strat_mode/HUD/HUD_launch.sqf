@@ -26,7 +26,13 @@ HUD_UpdateInfo={
 	_town=((player) call CTI_CO_FNC_GetClosestTown);
 	if ( player distance _town < CTI_MARKERS_TOWN_AREA_RANGE) then {
 		_pro ctrlShow true;
-		_pb=(CTI_TOWNS_CAPTURE_VALUE_CEIL - (_town getVariable "cti_town_capture")) / CTI_TOWNS_CAPTURE_VALUE_CEIL ;
+		_pb=((_town getVariable "cti_town_capture")) / CTI_TOWNS_CAPTURE_VALUE_CEIL ;
+		if ((_town getVariable ["cti_town_occupation_active",true]) || (_town getVariable ["cti_town_resistance_active",true])) then
+		{
+			_pro ctrlSetTextColor [1,1,0,1];
+		} else {
+			_pro ctrlSetTextColor [1,1,1,1];
+		};
 		_pro progressSetPosition  _pb ;
 	} else {
 		_pro ctrlShow false;

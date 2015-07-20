@@ -5,7 +5,7 @@
 _hud=_this select 0;
 
 disableSerialization;
-if (! (visibleMap  ) ) then {
+if ( (!visibleMap  ) && (profileNamespace getVariable ["HUD_Normal",true]) ) then {
 	for "_i" from 0 to HUD_TOWN_MAX  do {
 		_ct=(_hud displayCtrl(HUD_IDC+400+_i));
 		_ctl=(_hud displayCtrl(HUD_IDC+500+_i));

@@ -1,4 +1,7 @@
 #define DIK_LWIN            0xDB
+#define HUD_IDC 1500000
+#define	HUD_TOWN_MAX	20
+
 HUD_Normal=true;
 HUD_Tactical=false;
 HUD_Tactical_Allies=false;
@@ -50,7 +53,13 @@ waitUntil {!isNil {uiNamespace getVariable 'HUD'}};
 				HUD_T_OBJ=[];
 				HUD_Targets=[];
 				HUD_Towns=[];
-				if ( {(_x select 0) == "hudFrame"} count (missionNameSpace getVariable ["BIS_stackedEventHandlers_onEachFrame", []]) > 0) then {0 call HUD_RemoveFrameHandler};
+
+				if ( {(_x select 0) == "hudFrame"} count (missionNameSpace getVariable ["BIS_stackedEventHandlers_onEachFrame", []]) > 0) then {
+					0 call HUD_RemoveFrameHandler;
+					disableSerialization;
+					_hud=uiNamespace getVariable 'HUD';
+					for "_i" from 0 to HUD_TOWN_MAX  do {(_hud displayCtrl(HUD_IDC+400+_i)) ctrlShow false;(_hud displayCtrl(HUD_IDC+500+_i)) ctrlShow false;};
+				};
 		};
 		sleep 5;
 

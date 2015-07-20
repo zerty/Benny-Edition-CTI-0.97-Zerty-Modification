@@ -24,7 +24,7 @@ if ( profileNamespace getVariable ["HUD_Tactical",true]) then {
 
 	_pos=asltoatl getPosASL(_x select 0);
 	if ((_x select 0) isKindOf "Man") then {_pos set[2,(((_x select 0) modelToWorld((_x select 0) selectionPosition "head"))select 2)+0.5]} else {_pos set[2, (_pos select 2) +2 ];};
-	_dis= player distance _pos;
+	_dis= (positionCameraToWorld [0,0,0]) distance _pos;
 	_fade=1-(_dis/HUD_MAX_RANGE) max 0;
 	if ((_x select 0) == (vehicle player)) then {_fade=0;};
 	_size=(1-((_dis)/HUD_MAX_RANGE)*0.8) max 0;
