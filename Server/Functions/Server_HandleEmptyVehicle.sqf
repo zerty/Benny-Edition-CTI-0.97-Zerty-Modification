@@ -33,7 +33,7 @@ Diag_log format ["HANDLE :: Starting empty vehicle loop for %1",_vehicle];
 _timeout = time;
 
 
-if (_vehicle iskindof "UGV_01_base_F" ||_vehicle iskindof "StaticWeapon" ) then  {_delay=_delay/6};
+if (_vehicle iskindof "UGV_01_base_F"  ) then  {_delay=_delay/6};
 while {alive _vehicle && time - _timeout <= _delay} do {
 	switch (CTI_VEHICLES_HANDLER_EMPTY) do { //--- Before
 		case 0: {if ({alive _x} count crew _vehicle > 0 && !((_vehicle iskindof "UGV_01_base_F" || _vehicle iskindof "UAV_02_base_F" || _vehicle iskindof "Static_Designator_01_base_F") && !(isUAVConnected _vehicle) )) then {_timeout = time}};

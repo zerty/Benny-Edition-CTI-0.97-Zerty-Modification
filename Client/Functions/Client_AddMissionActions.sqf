@@ -49,4 +49,5 @@ if (CTI_SM_FAR == 1) then {
 
 CTI_P_Repairing = false;
 
+
 player setVariable ["CTI_UID",getPlayerUID player, true];

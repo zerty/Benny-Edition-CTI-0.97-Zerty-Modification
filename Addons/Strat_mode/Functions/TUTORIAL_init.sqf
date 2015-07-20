@@ -25,7 +25,7 @@ for "_i" from 0 to 3 /* step +1 */ do {
 	_lamp setDir (90+_i*-90);
 	_lamp addEventHandler ["handleDamage", {0}];
 	//ADMIN_ZEUS addCuratorEditableObjects [[_lamp],false];
-	_item_pos = [(0 * cos (_i*90) - (-26) * sin (_i*90)),(0 * sin (_i*90) + (-26) * cos (_i*90)),5.5];
+	_item_pos = [(0 * cos (_i*90) - (-23) * sin (_i*90)),(0 * sin (_i*90) + (-23) * cos (_i*90)),5.5];
 	_item_pos=_pos vectoradd _item_pos;
 	_item = _text createVehicle [0,0,0];
 	_item setPos _item_pos;
@@ -40,4 +40,4 @@ TUTORIAL_EXIT enableSimulationGlobal false;
 //ADMIN_ZEUS addCuratorEditableObjects [[TUTORIAL_EXIT],false];
 (TUTORIAL_HELP select 0) setObjectTextureGlobal [0,"Rsc\tuto\0.jpg"];
 (TUTORIAL_HELP select 1) setObjectTextureGlobal [0,"Rsc\tuto\1.jpg"];
-
+(TUTORIAL_HELP select 2) setObjectTextureGlobal [0,"Rsc\tuto\2.jpg"];

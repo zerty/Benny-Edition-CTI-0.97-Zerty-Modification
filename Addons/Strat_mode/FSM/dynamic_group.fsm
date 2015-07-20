@@ -11,8 +11,8 @@ link1[] = {1,2};
 link2[] = {1,3};
 link3[] = {2,1};
 link4[] = {3,4};
-globals[] = {0.000000,0,0,0,0,640,480,1,8,6316128,1,-382.676056,277.323944,158.028168,-213.802826,825,881,1};
-window[] = {2,-1,-1,-1,-1,650,25,1225,25,3,843};
+globals[] = {0.000000,0,0,0,0,640,480,1,9,6316128,1,-382.676056,277.323944,158.028168,-213.802826,825,881,1};
+window[] = {2,-1,-1,-1,-1,750,125,1325,125,3,843};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -33,7 +33,7 @@ class FSM
           priority = 0.000000;
           to="Standby";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"!( [""PlayerHasGroup"",[player]] call BIS_fnc_dynamicGroups) &&  !(isnil ""DYNG_WAIT"") && ! CTI_GameOver && isnull (findDisplay 60490) && CTI_Init_Client &&  !(isnil ""DYNG_WAIT"") && (missionnamespace getvariable [""CTI_Init_Group"",false])"/*%FSM</CONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!( [""PlayerHasGroup"",[player]] call BIS_fnc_dynamicGroups) &&  !(isnil ""DYNG_WAIT"") && ! CTI_GameOver && isnull (findDisplay 60490) && CTI_Init_Client && ((profileNamespace getVariable [""TUTO_COMPLETE"",false]) || missionNamespace getVariable [""TUTO_COMPLETE"",false])"/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/
@@ -65,7 +65,7 @@ class FSM
           priority = 0.000000;
           to="Standby";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"!( [""PlayerHasGroup"",[player]] call BIS_fnc_dynamicGroups) &&  !(isnil ""DYNG_WAIT"") && ! CTI_GameOver && isnull (findDisplay 60490) && CTI_Init_Client &&  !(isnil ""DYNG_WAIT"") && (missionnamespace getvariable [""CTI_Init_Group"",false])"/*%FSM</CONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!( [""PlayerHasGroup"",[player]] call BIS_fnc_dynamicGroups) &&  !(isnil ""DYNG_WAIT"") && ! CTI_GameOver && isnull (findDisplay 60490) && CTI_Init_Client && ((profileNamespace getVariable [""TUTO_COMPLETE"",false]) || missionNamespace getVariable [""TUTO_COMPLETE"",false])"/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/

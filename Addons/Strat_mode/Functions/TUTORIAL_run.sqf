@@ -6,11 +6,14 @@ player setPos _pos;
 waitUntil {(profileNamespace getVariable ["TUTO_COMPLETE",false]) || missionNamespace getVariable ["TUTO_COMPLETE",false]};
 waitUntil {!isNil {CTI_P_SideLogic getVariable "cti_structures"} && !isNil {CTI_P_SideLogic getVariable "cti_hq"}};
 
-12452 cutText ["Tutorial exited, sending to game ...", "PLAIN", 0];
+12452 cutText ["Tutorial exited, sending to group creation ...", "PLAIN", 0];
+sleep 1;
 
 _spawn_at=objNull;
 
 if (!(CTI_P_Jailed)) then {
+	12452 cutText ["Waiting for group creation...", "BLACK FADED", 50000];
+	waitUntil {(["PlayerHasGroup",[player] ] call BIS_fnc_dynamicGroups)};
 	player allowDamage true;
 	while {isNull _spawn_at} do {
 		_hq = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideHQ;
