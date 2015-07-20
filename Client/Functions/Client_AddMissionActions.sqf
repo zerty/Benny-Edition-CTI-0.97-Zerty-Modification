@@ -48,9 +48,6 @@ if (CTI_SM_FAR == 1) then {
 };
 
 CTI_P_Repairing = false;
-if !(isnil {profileNamespace getVariable "TUTO_COMPLETE"}) then {
-	12452 cutText ["Group created, Sending to tutorial area.", "BLACK IN", 5];
-	0 call TUTORIAL_RUN;
-};
+
 
 player setVariable ["CTI_UID",getPlayerUID player, true];

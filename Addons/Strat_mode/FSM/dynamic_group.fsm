@@ -3,18 +3,16 @@
 /*
 item0[] = {"START",0,250,-39.366196,-150.352112,50.633804,-100.352112,0.000000,"START"};
 item1[] = {"Standby",2,250,-40.070427,-1.760565,49.929588,48.239433,0.000000,"Standby"};
-item2[] = {"timeout_and__no",4,218,83.591545,-10.281689,173.591553,39.718311,0.000000,"timeout and " \n "no group"};
+item2[] = {"timeout_and__no",4,4314,83.591545,-10.281689,173.591553,39.718311,0.000000,"timeout and " \n "no group"};
 item3[] = {"end",4,218,-38.661938,74.295776,51.338039,124.295761,0.000000,"end"};
 item4[] = {"Game_Over",1,250,-39.676048,141.197174,50.323982,191.197159,0.000000,"Game Over"};
-item5[] = {"_",4,4314,-28.276056,-74.602829,61.723946,-24.602829,0.000000,""};
-link0[] = {0,5};
+link0[] = {0,2};
 link1[] = {1,2};
 link2[] = {1,3};
 link3[] = {2,1};
 link4[] = {3,4};
-link5[] = {5,1};
 globals[] = {0.000000,0,0,0,0,640,480,1,9,6316128,1,-382.676056,277.323944,158.028168,-213.802826,825,881,1};
-window[] = {2,-1,-1,-1,-1,725,100,1300,100,3,843};
+window[] = {2,-1,-1,-1,-1,750,125,1325,125,3,843};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -29,13 +27,13 @@ class FSM
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
-        /*%FSM<LINK "_">*/
-        class _
+        /*%FSM<LINK "timeout_and__no">*/
+        class timeout_and__no
         {
           priority = 0.000000;
           to="Standby";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/" !(isnil ""DYNG_WAIT"") "/*%FSM</CONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!( [""PlayerHasGroup"",[player]] call BIS_fnc_dynamicGroups) &&  !(isnil ""DYNG_WAIT"") && ! CTI_GameOver && isnull (findDisplay 60490) && CTI_Init_Client && ((profileNamespace getVariable [""TUTO_COMPLETE"",false]) || missionNamespace getVariable [""TUTO_COMPLETE"",false])"/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/
@@ -67,7 +65,7 @@ class FSM
           priority = 0.000000;
           to="Standby";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"!( [""PlayerHasGroup"",[player]] call BIS_fnc_dynamicGroups) &&  !(isnil ""DYNG_WAIT"") && ! CTI_GameOver && isnull (findDisplay 60490) && CTI_Init_Client "/*%FSM</CONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!( [""PlayerHasGroup"",[player]] call BIS_fnc_dynamicGroups) &&  !(isnil ""DYNG_WAIT"") && ! CTI_GameOver && isnull (findDisplay 60490) && CTI_Init_Client && ((profileNamespace getVariable [""TUTO_COMPLETE"",false]) || missionNamespace getVariable [""TUTO_COMPLETE"",false])"/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/

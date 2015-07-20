@@ -73,7 +73,12 @@ call CTI_CL_FNC_AddMissionActions;
 //--- Make sure that player is always the leader (of his group).
 if (! (isPlayer (leader(group player))) && !(CTI_P_SideJoined == resistance)) then {(group player) selectLeader player};
 
-createDialog "CTI_RscRespawnMenu";
+if !( missionNamespace getVariable ["TUTO_COMPLETE",false]) then {
+	12452 cutText ["Sending to tutorial area.", "BLACK IN", 5];
+	0 call TUTORIAL_RUN;
+} else {
+	createDialog "CTI_RscRespawnMenu";
+};
 /*
 titleCut["","BLACK IN",1];
 
