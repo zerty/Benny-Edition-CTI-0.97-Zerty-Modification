@@ -54,7 +54,7 @@ SM_Force_entry={
 		CTI_P_Repairing = true ;
 		_caller switchMove "AinvPknlMstpSnonWrflDnon_medic4";
 		["Forcing vehicle lock",0,1,1] call HUD_PBar_start;
-		while {_lock >0  && (_caller distance _target) <5 && (_caller distance _pos)<0.5 && (vehicle _caller) ==_caller && !(_target getVariable ["forced",false])} do
+		while {_lock >0  && (_caller distance _target) <5 && (_caller distance _pos)<0.5 && alive _caller && (vehicle _caller) ==_caller && !(_target getVariable ["forced",false])} do
 		{
 				_lock=_lock-0.02;
 				_percent=(1-_lock)*100;
@@ -62,10 +62,10 @@ SM_Force_entry={
 		    //hint parseText format ["<t size='1.3' color='#2394ef'>Forcing Lock : %1 percent</t>",ceil (_percent)];
 		    sleep 1;
 		};
-		if ((_caller distance _target) >5 || (_caller distance _pos)>0.5 || !((vehicle _caller) ==_caller) || (_target getVariable ["forced",false])) exitWith { _caller switchMove ""; hint "Failed";CTI_P_Repairing = false ;0 call HUD_PBar_stop;};
+		if ((_caller distance _target) >5 || (_caller distance _pos)>0.5 || !((vehicle _caller) ==_caller) || (_target getVariable ["forced",false] || ! alive _caller)) exitWith { _caller switchMove ""; hint "Failed";CTI_P_Repairing = false ;0 call HUD_PBar_stop;};
 
 
-		[_target,player] call CTI_PVF_Request_Locality;
+		["SERVER", "Request_Locality", [_target,player]] call CTI_CO_FNC_NetSend;
 		sleep 0.1;
 		_caller switchMove "";
 		if (local _target ) then {_target lock 0;};

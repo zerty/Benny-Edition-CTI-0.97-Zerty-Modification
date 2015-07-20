@@ -46,7 +46,7 @@ while {!CTI_Gameover} do {
 					if (isNil "_get") then {
 						_x setVariable ["cti_funds",(missionNamespace getVariable format ["CTI_ECONOMY_STARTUP_FUNDS_%1", side _x]) ,true];
 					} else {
-						_x setVariable ["cti_funds",((missionNamespace getVariable format ["CTI_ECONOMY_STARTUP_FUNDS_%1", side _x]) max (_get select 2)) ,true];
+						_x setVariable ["cti_funds", (_get select 2) ,true];
 					};
 				};
 
@@ -63,9 +63,9 @@ while {!CTI_Gameover} do {
 							} else {
 								if ((_get select 2 ) > (missionNamespace getVariable format ["CTI_ECONOMY_STARTUP_FUNDS_%1", side _g])) then
 								{
-									_g setVariable ["cti_funds", (_g getvariable "cti_funds")+ _get select 2,true ]; // automatic tranfer of money
+									_g setVariable ["cti_funds", (_g getvariable "cti_funds")+ (_get select 2),true ]; // automatic tranfer of money
 								};
-								_get set [2,(missionNamespace getVariable format ["CTI_ECONOMY_STARTUP_FUNDS_%1", side _g])];
+								_get set [2,0];
 								missionNamespace setVariable [format["CTI_SERVER_CLIENT_%1", _x],_get];
 							};
 						};
