@@ -183,6 +183,15 @@ if (_vehicle isKindOf "Car" && ! isnil "H_PROTECT_WHEELS") then {
 
 //Dynamic group Fix
 
+//tutorial protection
+
+_vehicle spawn {
+	while { !isNull _this && alive _this && ! cti_gameover } do {
+		    sleep 20;
+		    if ((([_this,getMarkerPos "CTI_TUTORIAL"] call  BIS_fnc_distance2D) < 1000) && !isNull _this && alive _this) then {_this setDamage 1};
+		};
+};
+
 //_vehicle addEventHandler ["getIn", {if ((isplayer (_this select 2)) && ({isplayer _x} count (crew (_this select 0)))<2) exitwith {(_this select 2) assignAsCommander (_this select 0)}}];
 
 

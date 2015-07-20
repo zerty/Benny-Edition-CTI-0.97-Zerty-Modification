@@ -269,6 +269,13 @@ class CTI_RscInteraction {
 			action = "['OnPilot'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_Interact.sqf'";
 			toolTip="Getin as Pilot";
 		};
+		class CTI_Icon_ExitT : CTI_Icon_fpk {
+			idc = 511033;
+			x = "SafeZoneX + SafeZoneW*0.55";
+			text = "Rsc\Pictures\icon_load.paa";
+			action = "['OnExitT'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_Interact.sqf'";
+			toolTip="Exit Tutorial";
+		};
 	};
 };
 
