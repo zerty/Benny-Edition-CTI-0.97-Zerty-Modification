@@ -327,14 +327,17 @@ CTI_Init_Client = true;
 
 
 12452 cutText ["Waiting for group creation...", "BLACK FADED", 50000];
-["InitializePlayer",[player] ] call BIS_fnc_dynamicGroups;
-_group= createGroup CTI_P_SideJoined;
-[player] joinsilent _group;
-_group selectLeader player;
-_data   = [nil, nil, true]; // [<Insignia>, <Group Name>, <Private>]
+/*while {!(["IsGroupRegistered",[group player] ] call BIS_fnc_dynamicGroups)} do {
+	["InitializePlayer",[player] ] call BIS_fnc_dynamicGroups;
+	_group= createGroup CTI_P_SideJoined;
+	[player] joinsilent _group;
+	_group selectLeader player;
+	_data   = [nil, nil, true]; // [<Insignia>, <Group Name>, <Private>]
 
-["RegisterGroup", [_group, player, _data]] call BIS_fnc_dynamicGroups;
-waitUntil {( ["PlayerHasGroup",[player]] call BIS_fnc_dynamicGroups) && _group in (CTI_P_SideJoined call CTI_CO_FNC_GetSideGroups)};
+	["RegisterGroup", [_group, player, _data]] call BIS_fnc_dynamicGroups;
+	sleep 5;
+};*/
+waitUntil {( ["PlayerHasGroup",[player]] call BIS_fnc_dynamicGroups) && (group player) in (CTI_P_SideJoined call CTI_CO_FNC_GetSideGroups)};
 waitUntil {!isNil {CTI_P_SideLogic getVariable "cti_structures"} && !isNil {CTI_P_SideLogic getVariable "cti_hq"}};
 if !(isnil {profileNamespace getVariable "TUTO_COMPLETE"}) then {
 	12452 cutText ["Group created, spawning ...", "BLACK IN", 5];
