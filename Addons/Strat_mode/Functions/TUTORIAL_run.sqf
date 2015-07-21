@@ -1,7 +1,20 @@
+private ["_pos","_spawn_at","_hq","_structures"];
 player allowDamage false;
+[player] joinsilent grpNull;
 _pos=getMarkerPos "CTI_TUTORIAL";
 _pos = [_pos,5,20] call CTI_CO_FNC_GetRandomPosition;
 player setPos _pos;
+//no escape
+0 spawn {
+	while {!((profileNamespace getVariable ["TUTO_COMPLETE",false]) || missionNamespace getVariable ["TUTO_COMPLETE",false])} do {
+		if (([player,getMarkerPos "CTI_TUTORIAL"] call  BIS_fnc_distance2D)> 42.5) then {
+			_pos=getMarkerPos "CTI_TUTORIAL";
+			_pos = [_pos,5,20] call CTI_CO_FNC_GetRandomPosition;
+			player setPos _pos;
+		};
+		sleep 5;
+	};
+};
 
 waitUntil {(profileNamespace getVariable ["TUTO_COMPLETE",false]) || missionNamespace getVariable ["TUTO_COMPLETE",false]};
 waitUntil {!isNil {CTI_P_SideLogic getVariable "cti_structures"} && !isNil {CTI_P_SideLogic getVariable "cti_hq"}};
