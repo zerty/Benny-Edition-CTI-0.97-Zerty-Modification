@@ -60,7 +60,7 @@ CTI_UI_Respawn_GetMobileRespawn = {
 	_available = [];
 
 	{
-		if (CTI_SPECIAL_MEDICALVEHICLE in (_x getVariable ["cti_spec", []]) && (_x getVariable ["cti_net", -1]) == CTI_P_SideID) then {_available pushBack _x};
+		if (CTI_SPECIAL_MEDICALVEHICLE in (_x getVariable ["cti_spec", []]) && (_x getVariable ["cti_net", -1]) == CTI_P_SideID && ((getPosASL _x) select 2)>0) then {_available pushBack _x};
 	} forEach (_center nearEntities [["Car","Air","Tank","Ship","Thing","StaticWeapon"], _range]);
 	_available
 };
