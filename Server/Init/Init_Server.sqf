@@ -53,7 +53,7 @@ call compile preprocessFileLineNumbers "Server\Functions\FSM\Functions_FSM_Repai
 call compile preprocessFileLineNumbers "Server\Functions\FSM\Functions_FSM_UpdateAI.sqf";
 call compile preprocessFileLineNumbers "Server\Functions\FSM\Functions_FSM_UpdateCommander.sqf";
 
-["Initialize"] call BIS_fnc_dynamicGroups
+["Initialize"] call BIS_fnc_dynamicGroups;
 
 
 execVM "Server\Init\Init_Prison.sqf";

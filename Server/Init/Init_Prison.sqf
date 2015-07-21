@@ -1,4 +1,5 @@
 //--- Create the area for our pro players.
+private ["_pos","_z","_m","_template","_item_modeltoworld","_item_pos","_item"];
 _pos = getMarkerPos "prison";
 
 _z = -1.5;
@@ -12,4 +13,5 @@ _template = [[_m, 90, [-5,2.6,_z]], [_m, 90, [-5,-2.6,_z]], [_m, 180, [-2.6,5,_z
 	_item setPos _item_pos;
 	_item setDir (_x select 1);
 	_item addEventHandler ["handleDamage", {0}];
+
 } forEach _template;
