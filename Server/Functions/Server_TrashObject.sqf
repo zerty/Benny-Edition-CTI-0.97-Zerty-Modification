@@ -66,6 +66,8 @@ if (_delay == -1) then {
 if (CTI_Log_Level >= CTI_Log_Information) then { ["INFORMATION", "FILE: Server\Functions\Server_TrashObject.sqf", format ["Begining the trashing process of object [%1] [%2] with a delay of [%3] with seed [%4].", _object_type, _object, _delay, _object_seed]] call CTI_CO_FNC_Log };
 
 //--- Wait before cleaning up the object.
+
+if (diag_fps <20) then {_delay =_delay/3};
 if (_delay > 0) then { sleep _delay };
 
 if (isNull _object) exitWith {
@@ -75,7 +77,6 @@ if !(simulationEnabled _object) then {_object enableSimulationGlobal true};
 waitUntil {simulationEnabled _object};
 if (_object_isman) then {
 	hideBody _object; //todo: broadcast too in mp (nearby players only tho)!
-	sleep 6;
 	deleteVehicle _object; //--- Delete the body first just in case we have to remove the group
 
 	//--- If we're dealing with the last man in a group then we may aswel remove the group if it isn't playable
@@ -90,7 +91,7 @@ if (_object_isman) then {
 	};
 } else {
 	_object setPosASL [0,0,0];
-	sleep 1;
+
 	deleteVehicle _object; //--- Delete the generic object
 };
 

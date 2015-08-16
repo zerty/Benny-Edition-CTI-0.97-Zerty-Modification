@@ -1,3 +1,5 @@
+#define MIN_FPS 20
+
 private ["_town","_town_groups","_side","_group","_pos"];
 
 _town= _this select 0;
@@ -19,15 +21,16 @@ _maingrouploop={
 	while {count(_group call CTI_CO_FNC_GetLiveUnits)>0 &&( _town getVariable "cti_town_sideID")==CTI_RESISTANCE_ID && (_town getVariable "cti_town_resistance_active")} do
 	{
 		_t=[];
-		{
-			_add=[];
-			 {_s= _x select 2;_nt=_x; if ({_x == _s} count [east,west] >0) then {_add set [count _add,_nt ]} ; true}count ((leader _x) nearTargets CTI_TOWNS_RESISTANCE_DETECTION_RANGE);
-			_t = _t + _add;
+		if (diag_fps > MIN_FPS) then {
+			{
+				_add=[];
+				 {_s= _x select 2;_nt=_x; if ({_x == _s} count [east,west] >0) then {_add set [count _add,_nt ]} ; true}count ((leader _x) nearTargets CTI_TOWNS_RESISTANCE_DETECTION_RANGE);
+				_t = _t + _add;
 
 
-		} count _town_groups;
-		if (count _t >4) then {_target = (_t select floor random count _t)};
-
+			} count _town_groups;
+			if (count _t >4) then {_target = (_t select floor random count _t)};
+		};
 		if (count _target >0 ) then {
 			//if (count _cas == 0) then {_cas = [_town,_t, "I_Heli_light_03_F"] call _create_cas	};
 			diag_log format [ "MORTAR ::  %1 Firing to %2", _group,_target select 0];

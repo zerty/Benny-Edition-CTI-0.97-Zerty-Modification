@@ -1,6 +1,8 @@
 // Server Loop for patrols
 // Input: None
 // Output : None
+#define MIN_FPS 25
+
 waitUntil {CTI_Init_Server && CTI_Init_Strat&& CTI_InitTowns};
 sleep 30;
 
@@ -14,15 +16,20 @@ while { !CTI_GameOver} do
 	} forEach _current_patrols;
 	_current_patrols=_current_patrols-[grpNull];
 	PATROL_logic setVariable ["patrols",_current_patrols,true];
-	if (count (PATROL_logic getVariable ["patrols",[]]) < SM_MAX_PATROLS) then{ //we need to create patrols
-		if ((0 call HCGA_GETHC) isEqualTo ["0"]) then {	0 spawn CTI_PVF_Patrol_Create} else {
+	if ( count (PATROL_logic getVariable ["patrols",[]]) < SM_MAX_PATROLS) then{ //we need to create patrols
+		if (diag_fps > MIN_FPS) then {0 spawn CTI_PVF_Patrol_Create} else {
+			{
+				{deleteVehicle (vehicle _x) ;true}count (units _x);
+			} forEach _current_patrols;
+		};
+		/*if ((0 call HCGA_GETHC) isEqualTo ["0"]) then {	0 spawn CTI_PVF_Patrol_Create} else {
 			_hcs=[];
 			{
 				if (isplayer _x )then {_hcs set [count _hcs, _x]};true
 			} count (entities "headlessclient_f");
 			_hc = _hcs select floor random (count _hcs);
 			[["CLIENT",_hc], "Patrol_Create",[]] call CTI_CO_FNC_NetSend;
-		};
+		};*/
 	};
 	sleep 60;
 };
