@@ -9,13 +9,13 @@ item4[] = {"Held_by_Occupati",4,218,-100.000000,-100.000000,0.000000,-50.000000,
 item5[] = {"Gameover",8,218,-250.000000,-200.000000,-150.000000,-150.000000,0.000000,"Gameover"};
 item6[] = {"Enemy_Near_",2,250,-100.000000,0.000000,0.000000,50.000000,0.000000,"Enemy Near?"};
 item7[] = {"Not_held_by_Occu",4,218,50.000000,-200.000000,150.000000,-150.000000,1.000000,"Not held by" \n "Occupation"};
-item8[] = {"Occupation_Timeout",2,250,175.000000,100.000000,275.000000,150.000000,0.000000,"Occupation" \n "Timeout?"};
+item8[] = {"Occupation_Timeout",2,4346,175.000000,100.000000,275.000000,150.000000,0.000000,"Occupation" \n "Timeout?"};
 item9[] = {"Active",8,218,175.000000,0.000000,275.000000,50.000000,0.000000,"Active"};
 item10[] = {"Inactive",4,218,175.000000,-200.000000,275.000000,-150.000000,1.000000,"Inactive"};
 item11[] = {"Still_active",8,218,300.000000,25.000000,400.000000,75.000000,0.000000,"Still active"};
 item12[] = {"Timed_out",4,218,425.000000,100.000000,525.000000,150.000000,1.000000,"Timed out"};
 item13[] = {"Skip",2,250,300.000000,-400.000000,400.000000,-350.000000,0.000000,"Skip"};
-item14[] = {"Cleanup",2,4346,425.000000,-400.000000,525.000000,-350.000000,0.000000,"Cleanup"};
+item14[] = {"Cleanup",2,250,425.000000,-400.000000,525.000000,-350.000000,0.000000,"Cleanup"};
 item15[] = {"Occupation_Active",2,250,50.000000,-100.000000,150.000000,-50.000000,0.000000,"Occupation" \n "Active?"};
 item16[] = {"Contact",8,218,-100.000000,100.000000,0.000000,150.000000,0.000000,"Contact"};
 item17[] = {"Clear",4,218,50.000000,0.000000,150.000000,50.000000,1.000000,"Clear"};
@@ -24,7 +24,7 @@ item19[] = {"Occupation_Active_1",2,250,-100.000000,200.000000,0.000000,250.0000
 item20[] = {"Inactive",4,218,-250.000000,200.000000,-150.000000,250.000000,1.000000,"Inactive"};
 item21[] = {"Active",4,218,175.000000,200.000000,275.000000,250.000000,2.000000,"Active"};
 item22[] = {"",7,210,-354.000000,-379.000000,-346.000000,-371.000000,0.000000,""};
-item23[] = {"_",8,218,300.000000,325.000000,400.000000,375.000000,0.000000,""};
+item23[] = {"_",8,218,350.000000,325.000000,450.000000,375.000000,0.000000,""};
 item24[] = {"SKIP_2_Possible",2,250,175.000000,-550.000000,300.000000,-500.000000,0.000000,"SKIP 2" \n "Possible owner change"};
 item25[] = {"_",8,218,425.000000,-550.000000,525.000000,-500.000000,0.000000,""};
 item26[] = {"_",4,218,-100.000000,-550.000000,0.000000,-500.000000,0.000000,""};
@@ -62,8 +62,8 @@ link30[] = {24,1};
 link31[] = {24,26};
 link32[] = {25,24};
 link33[] = {26,24};
-globals[] = {25.000000,1,0,0,0,640,480,1,171,6316128,1,-533.074707,741.001282,387.194458,-1161.027588,725,881,1};
-window[] = {2,-1,-1,-1,-1,712,100,1136,100,3,743};
+globals[] = {25.000000,1,0,0,0,640,480,1,172,6316128,1,-533.074707,741.001282,387.194458,-1161.027588,725,881,1};
+window[] = {2,-1,-1,-32000,-32000,737,125,1161,125,3,743};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -233,11 +233,11 @@ class FSM
           priority = 1.000000;
           to="Cleanup";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"time - (_town getVariable ""cti_town_occupation_activeTime"") > CTI_TOWNS_OCCUPATION_INACTIVE_MAX ||(" \n
-           " !(_town in (CTI_WEST getvariable ""CTI_ACTIVE"")) && _town ==  (CTI_EAST getvariable ""CTI_PREVENT"") || " \n
-           " !(_town in (CTI_EAST getvariable ""CTI_ACTIVE"")) && _town ==  (CTI_WEST getvariable ""CTI_PREVENT"") ||" \n
-           " !(_town in ((CTI_WEST getvariable ""CTI_ACTIVE"") + (CTI_EAST getvariable ""CTI_ACTIVE"") ))) && (_count_resist <1) && " \n
-           "((_town getVariable ""cti_town_occupation_active_sideID"") == (_town getVariable ""cti_town_sideID""))"/*%FSM</CONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(time - (_town getVariable ""cti_town_occupation_activeTime"") > CTI_TOWNS_OCCUPATION_INACTIVE_MAX )" \n
+           " && (" \n
+           "((_town getVariable ""cti_town_occupation_active_sideID"") == CTI_WEST_ID) && !(_town in (CTI_EAST getvariable ""CTI_ACTIVE"")) ||" \n
+           "((_town getVariable ""cti_town_occupation_active_sideID"") == CTI_EAST_ID) && !(_town in (CTI_West getvariable ""CTI_ACTIVE"")) ||  _count_resist ==0" \n
+           ")"/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/
@@ -404,7 +404,7 @@ class FSM
     class Occupation_Active_1
     {
       name = "Occupation_Active_1";
-      init = /*%FSM<STATEINIT""">*/"_town setVariable [""cti_town_occupation_activeTime"", time,true];"/*%FSM</STATEINIT""">*/;
+      init = /*%FSM<STATEINIT""">*/"_town  setVariable [""cti_town_occupation_activeTime"", time];"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
