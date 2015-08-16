@@ -52,7 +52,7 @@ rw2Param = 0;
 
 // Setup Weather Types Array [Weather Name, Possible Weather Forecasts, Weather Settings] - Suggested that they are left as is.
 
-weatherTemplates = [
+/*weatherTemplates = [
         ["Clear",[0,1,8,11],[0.30,0,0,1,1]],
         ["Overcast",[0,1,8,11],[0.50,0,0,2,2]],
         ["Overcast",[0,1,8,11],[0.50,0,0,2,2]],
@@ -69,6 +69,13 @@ weatherTemplates = [
         ["Dense Fog",[12,12,12,13],[0.5,0,[0.4,0.05,50],0,0]]
 	];
 
+*/
+weatherTemplates = [
+    ["Clear",[0,1],[0.10,0,01,1,1]],
+    ["Overcast",[0,1,2],[0.40,0,0.05,2,2]],
+    ["Light Fog",[1,2,3],[0.4,0,0.1,0,0]],
+    ["Medium Fog",[2,3],[0.4,0,0.2,0,0]]
+];
 
 if ((missionNamespace getVariable "CTI_WEATHER_ALLOWRAIN") == 0) then {
     {
