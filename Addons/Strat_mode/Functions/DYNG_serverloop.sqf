@@ -38,6 +38,8 @@ while {!CTI_Gameover} do {
 
 			if (isplayer (leader _x)) then { //group is behaving normaly
 				_g=_x;
+
+
 				if !(leader _g == _last_leader) then { // change of leadership settup the leader money or default
 					_last_leader= leader _g;
 					_x setVariable ["last_leader",leader _x,false];
@@ -46,7 +48,11 @@ while {!CTI_Gameover} do {
 					if (isNil "_get") then {
 						_x setVariable ["cti_funds",(missionNamespace getVariable format ["CTI_ECONOMY_STARTUP_FUNDS_%1", side _x]) ,true];
 					} else {
-						_x setVariable ["cti_funds", (_get select 2) ,true];
+						if ((_get select 2) <= 0) then {
+							_x setVariable ["cti_funds",(missionNamespace getVariable format ["CTI_ECONOMY_STARTUP_FUNDS_%1", side _x]) ,true];
+						} else {
+							_x setVariable ["cti_funds", (_get select 2) ,true];
+						};
 					};
 				};
 
