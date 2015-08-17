@@ -301,6 +301,23 @@ if (CTI_IsServer) then {
 			(_x) execFSM "Addons\Strat_mode\FSM\shared_objectives.fsm";
 		} forEach [east,west];*/
 
+		// time compression
+		0 spawn {
+			_day_ratio=14/CTI_WEATHER_FAST;
+			_nigth_ratio=10/CTI_WEATHER_FAST_NIGTH;
+			while {!CTI_Gameover} do {
+				if (daytime > 5 && daytime <19 ) then {
+					if (timeMultiplier != _day_ratio) then  {setTimeMultiplier _day_ratio; hint format ["%1", _day_ratio] ;};
+				} else {
+					if (timeMultiplier !=  _nigth_ratio) then {setTimeMultiplier _nigth_ratio; hint format ["%1", _nigth_ratio] ; }
+				};
+				sleep 120;
+			};
+
+		};
+		//if (CTI_WEATHER_FAST >1) then {setTimeMultiplier CTI_WEATHER_FAST};
+
+
 };
 
 if (CTI_IsClient) then {
@@ -320,9 +337,9 @@ if (CTI_IsClient) then {
 	};
 
 	// dynamic wheather
-	if ( CTI_WEATHER_DYNAMIC == 1) then {
+	/*if ( CTI_WEATHER_DYNAMIC == 1) then {
 	 execVM "Addons\DynamicWeatherEffects\randomWeather2.sqf"
-	};
+	};*/
 
 	// NEW Revive
 	if (CTI_SM_FAR == 1) then {

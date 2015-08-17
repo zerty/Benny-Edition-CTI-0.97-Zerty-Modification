@@ -588,8 +588,8 @@ with missionNamespace do {
 
 	if (isNil 'CTI_UNITS_FATIGUE') then {CTI_UNITS_FATIGUE = 1};
 
-	if (isNil 'CTI_WEATHER_FAST') then {CTI_WEATHER_FAST = 6};
-
+	if (isNil 'CTI_WEATHER_FAST') then {CTI_WEATHER_FAST = 3};
+	if (isNil 'CTI_WEATHER_FAST_NIGTH') then {CTI_WEATHER_FAST_NIGTH = 1};
 
 
 			//--- bl1p ai skills

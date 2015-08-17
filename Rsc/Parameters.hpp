@@ -413,10 +413,16 @@ class Params {
 	    default = 4;
 	};
   	class CTI_WEATHER_FAST {
-		title = "Zerty: WEATHER: Time ratio";
+		title = "Zerty: WEATHER: day duration";
 		values[] = {1,2,3,4,5,6,7,8,9,10,11,12};
-		texts[] = {"x1","x2","x3","x4","x5","x6","x7","x8","x9","x10","x11","x12"};
-		default = 4;
+		texts[] = {"1 hour","2 hours","3 hours","4 hours","5 hours","6 hours","7 hours","8 hours","9 hours","10 hours","11 hours","12 hours"};
+		default = 3;
+	};
+  	class CTI_WEATHER_FAST_NIGTH {
+		title = "Zerty: WEATHER: Nigth duration";
+		values[] = {1,2,3,4,5,6,7,8,9,10,11,12};
+		texts[] = {"1 hour","2 hours","3 hours","4 hours","5 hours","6 hours","7 hours","8 hours","9 hours","10 hours","11 hours","12 hours"};
+		default = 1;
 	};
 	class SEPARATOR2 {
 		title = "===================== Strategic Mode =======================";

@@ -71,10 +71,10 @@ rw2Param = 0;
 
 */
 weatherTemplates = [
-    ["Clear",[0,1],[0.10,0,01,1,1]],
+    ["Clear",[0,1],[0.10,0,0.01,1,1]],
     ["Overcast",[0,1,2],[0.40,0,0.05,2,2]],
-    ["Light Fog",[1,2,3],[0.4,0,0.1,0,0]],
-    ["Medium Fog",[2,3],[0.4,0,0.2,0,0]]
+    ["Light Fog",[1,2,3],[0.4,0,0.15,0,0]],
+    ["Medium Fog",[2,3],[0.4,0,0.3,0,0]]
 ];
 
 if ((missionNamespace getVariable "CTI_WEATHER_ALLOWRAIN") == 0) then {
@@ -141,7 +141,7 @@ mb_fnc_UpdateWeather = {
 
 if (isServer) then {
 private ["_weatherUpdateArray","_weatherUpdateForecasts"];
-    if (CTI_WEATHER_FAST >1) then {setTimeMultiplier CTI_WEATHER_FAST};
+
 
 // Check if there is no ParamsArray, and pick random if so, otherwise pick from paramsArray.
       if(isNil('paramsArray')) then {
@@ -167,7 +167,7 @@ private ["_weatherUpdateArray","_weatherUpdateForecasts"];
 		_weatherUpdateForecasts = _weatherUpdateArray select 1;
 		rw2_Next_Weather = _weatherUpdateForecasts select floor(random(count(_weatherUpdateForecasts)));
 		//publicVariable "rw2_Next_Weather";
-        _n_time= (abs((((weatherTemplates select rw2_Next_Weather) select 2) select 1)-(((weatherTemplates select rw2_Current_Weather) select 2) select 1))*6000 / CTI_WEATHER_FAST);
+        _n_time= (abs((((weatherTemplates select rw2_Next_Weather) select 2) select 1)-(((weatherTemplates select rw2_Current_Weather) select 2) select 1))*6000 / timeMultiplier );
         if (_n_time <600) then {_n_time = 600};
         // [[_n_time],"mb_fnc_UpdateWeather",true] spawn Bis_fnc_MP;
         sleep _n_time;
