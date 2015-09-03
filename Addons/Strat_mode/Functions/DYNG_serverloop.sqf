@@ -62,7 +62,7 @@ while {!CTI_Gameover} do {
 					if (isplayer _x) then {
 						_uid=getPlayerUID (_x);
 						_get = missionNamespace getVariable format["CTI_SERVER_CLIENT_%1", _uid];
-						if !(isNil "_get") then {
+						if (!(isNil "_get") && alive _x )then {
 							if (_x == leader _g) then {
 								_get set [2,floor (_g getVariable "cti_funds")];
 								missionNamespace setVariable [format["CTI_SERVER_CLIENT_%1", _x],_get];
