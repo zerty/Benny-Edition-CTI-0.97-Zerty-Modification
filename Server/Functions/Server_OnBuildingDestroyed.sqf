@@ -43,10 +43,15 @@ _position = _this select 4;
 _direction = _this select 5;
 _completion_ratio = _this select 6;
 
+
+
 _side = (_sideID) call CTI_CO_FNC_GetSideFromID;
 _logic = (_side) call CTI_CO_FNC_GetSideLogic;
 //_sell = if (isNil {_killed getVariable "cti_sell"}) then {false} else {true};
 _sell = if (_killer == _killed) then {true} else {false};
+
+diag_log format [" :: FACTORY :: %1 Killed, side %2 -- Sold: %3 -- Current Com group %4 -- ",_killed,_side,(_killer == _killed),(_side) call CTI_CO_FNC_GetSideCommander,name leader((_side) call CTI_CO_FNC_GetSideCommander)];
+
 sleep (random 0.5);
 while{CTI_Structure_Lock} do {sleep random 0.5};
 CTI_Structure_Lock=True;
