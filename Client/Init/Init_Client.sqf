@@ -289,11 +289,11 @@ TABLET_GET_TARGET={
 	disableSerialization;
 	waitUntil {!isNil {findDisplay 46} && !isNull (findDisplay 46) && !isnil "TABLET_KEY_DOWN" && !isNil "TABLET_KEY_UP"};
 	_maindisplay=findDisplay 46;
-	_maindisplay displayRemoveAllEventHandlers  "KeyDown";
-	_maindisplay displayRemoveAllEventHandlers  "KeyUp";
+	//_maindisplay displayRemoveAllEventHandlers  "KeyDown";
+	//_maindisplay displayRemoveAllEventHandlers  "KeyUp";
 	sleep 0.5;
-	_maindisplay  displayAddEventHandler ["KeyDown", TABLET_KEY_DOWN];
-	_maindisplay  displayAddEventHandler ["KeyUp", TABLET_KEY_UP];
+	KD_BECTI=_maindisplay  displayAddEventHandler ["KeyDown", TABLET_KEY_DOWN];
+	KU_BECTI=_maindisplay  displayAddEventHandler ["KeyUp", TABLET_KEY_UP];
 };
 
 
