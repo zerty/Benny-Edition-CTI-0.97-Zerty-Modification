@@ -31,10 +31,9 @@ class Mission
 		briefingName="BECTI BE 0.97 - Zerty 1.3.1.1 [preRelease]";
 		overviewText="By Benny - Adapted from OFP era MFCTI (Mike Melvin)";
 		resistanceWest=0;
-		startWeather=0;
+		timeOfChanges=24720;
 		startWind=0;
 		startWaves=0.099999994;
-		forecastWeather=0;
 		forecastWind=0;
 		forecastWaves=0.099999994;
 		forecastLightnings=0.099999994;
@@ -43,10 +42,8 @@ class Mission
 		day=21;
 		hour=5;
 		minute=0;
-		startFogBase=0.001;
-		forecastFogBase=0.001;
-		startFogDecay=0.0049999999;
-		forecastFogDecay=0.0049999999;
+		startFogDecay=0;
+		forecastFogDecay=0;
 	};
 	class Groups
 	{

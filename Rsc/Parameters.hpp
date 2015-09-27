@@ -394,23 +394,11 @@ class Params {
 		texts[] = {"Morning","Noon","Evening","Midnigth","Random"};
 		default = 10;
 	};
-	class CTI_WEATHER_DYNAMIC {
-		title = "Zerty: WEATHER: Dynamic";
-		values[] = {0,1};
-		texts[] = {"False","True"};
-		default = 1;
-	};
 	class CTI_WEATHER_ALLOWRAIN {
 		title = "Zerty: WEATHER: Allow Rain";
 		values[] = {0,1};
 		texts[] = {"False","True"};
 		default = 0;
-	};
-	class initialWeatherParam {
-	    title = "Zerty: WEATHER:Starting Weather";
-	    values[] = {0,1,2,3,4};
-	    texts[] = {"Clear","Overcast","Rain","Fog","Random"};
-	    default = 4;
 	};
   	class CTI_WEATHER_FAST {
 		title = "Zerty: WEATHER: day duration";

@@ -50,6 +50,7 @@ with missionNamespace do {
 	   	DYNG_WAIT = compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Functions\DYNG_waitforgroup.sqf";
 	   	DYNG_SERVERLOOP = compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Functions\DYNG_serverloop.sqf";
 	   	H_PROTECT_WHEELS= compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Functions\handler_protec_wheels.sqf";
+	   	WEATHER_HOOK= compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Functions\WEATHER_HOOK.sqf";
 };
 
 //Common stuff
@@ -234,9 +235,7 @@ if (CTI_IsServer) then {
 		skipTime _it;
 
 		// dynamic wheather
-		if ( CTI_WEATHER_DYNAMIC == 1) then {
-		 execVM "Addons\DynamicWeatherEffects\randomWeather2.sqf"
-		};
+		0 spawn WEATHER_HOOK;
 
 		// Strat mode init
 		0 call CTI_SM_Map_setup;

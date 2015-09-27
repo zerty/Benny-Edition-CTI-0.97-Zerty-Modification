@@ -607,8 +607,6 @@ with missionNamespace do {
 	if (isNil 'CTI_PLAYER_REEQUIP') then {CTI_PLAYER_REEQUIP = 1}; //Done
 	if (isNil 'CTI_PLAYER_TOWN_RESPAWN') then {CTI_PLAYER_TOWN_RESPAWN = 1}; //Done
 	if (isNil 'CTI_WEATHER_INITIAL') then {CTI_WEATHER_INITIAL = 10};
-	if (isNil 'initialWeatherParam') then {initialWeatherParam = 4};
-	if (isNil 'CTI_WEATHER_DYNAMIC') then {CTI_WEATHER_DYNAMIC = 1}; //Done
 	if (isNil 'CTI_GAMEPLAY_MISSILES_RANGE') then {CTI_GAMEPLAY_MISSILES_RANGE = 3000}; //Done
 	if (isNil 'CTI_GAMEPLAY_3P') then {CTI_GAMEPLAY_3P = -1}; //Done
 	if (isNil 'CTI_GAMEPLAY_REARM_AMMO') then {CTI_GAMEPLAY_REARM_AMMO = 1}; //Done
