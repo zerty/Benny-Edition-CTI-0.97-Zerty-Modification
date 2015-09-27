@@ -37,14 +37,27 @@ waitUntil {!isNil 'CTI_Init_Common'};
 
 //Find Unit
 //==========
+_try=0;
 _unit=objnull;
-while {isNull _unit && !((side _unit) in [east,west]) } do {
+while {isNull _unit && !((side _unit) in [east,west]) && _try <20} do {
 	//waitUntil {! isnull (_uid call BIS_fnc_getUnitByUid)};
-	_unit=_uid call BIS_fnc_getUnitByUid;
-	sleep 3;
+	sleep 10;
+	{
+		if (getPlayerUid _x == _uid) then
+		{
+		_unit = _x;
+		};
+	} forEach allUnits + allDead ;
+
+
+
 	["INFORMATION", "FILE: Server\Functions\Server_OnPlayerConnected.sqf", format["Unit for  [%1]  found : [%2] ",_uid,_unit]] call CTI_CO_FNC_Log;
+	_try=_try+1;
+
 	//if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FILE: Server\Functions\Server_OnPlayerConnected.sqf", format["Unit for  [%1]  found : [%2] ",_uid,_unit]] call CTI_CO_FNC_Log};
 };
+
+if (_try >=20) exitWith {false};
 
 
 
