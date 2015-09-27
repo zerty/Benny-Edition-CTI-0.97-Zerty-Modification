@@ -50,7 +50,7 @@ _logic = (_side) call CTI_CO_FNC_GetSideLogic;
 //_sell = if (isNil {_killed getVariable "cti_sell"}) then {false} else {true};
 _sell = if (_killer == _killed) then {true} else {false};
 
-diag_log format [" :: FACTORY :: %1 Killed, side %2 -- Sold: %3 -- Current Com group %4 -- ",_killed,_side,(_killer == _killed),(_side) call CTI_CO_FNC_GetSideCommander,name leader((_side) call CTI_CO_FNC_GetSideCommander)];
+diag_log format [" :: FACTORY :: %1 Killed, side %2 -- Sold: %3 -- Current Com group %4 -- %5",_killed,_side,(_killer == _killed),(_side) call CTI_CO_FNC_GetSideCommander,name leader((_side) call CTI_CO_FNC_GetSideCommander)];
 
 sleep (random 0.5);
 while{CTI_Structure_Lock} do {sleep random 0.5};
