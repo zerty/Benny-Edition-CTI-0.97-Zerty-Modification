@@ -3,6 +3,16 @@
 
 private ["_main_disp","_ntime"];
 
+
+
+inGameUISetEventHandler ["Action", "
+	if (_this select 5 != 666 && player getVariable ['REV_UNC',false]) then {
+		hint 'Sorry, You are down!';
+		true
+	}
+"];
+
+
 disableSerialization;
 _main_disp = displayNull;
 while {!CTI_GameOver } do {
