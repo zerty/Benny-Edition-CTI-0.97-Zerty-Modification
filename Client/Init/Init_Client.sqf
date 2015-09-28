@@ -95,26 +95,7 @@ if (isMultiplayer) then {
 		hintSilent "The ride never ends!";
 		0 spawn CTI_CL_FNC_OnJailed;
 	};
-	//12452 cutText ["", "BLACK IN", 5];
 
-
-
-/*	//--- Can I join?
-		missionNamespace setVariable ["CTI_PVF_Client_JoinRequestAnswer", {_this spawn CTI_CL_FNC_JoinRequestAnswer}]; //--- Early PVF, do not spoil the game with the others.
-
-		_last_req = -100;
-		while {!CTI_P_CanJoin} do {
-			if (time - _last_req > 15) then {_last_req = time; ["SERVER", "Request_Join", [player, CTI_P_SideJoined]] call CTI_CO_FNC_NetSend};
-			sleep 1;
-		};
-
-	12452 cutText ["Receiving mission intel... If you are getting an error press ESC and respawn and then reconnect.", "BLACK IN", 5];
-
-	if (CTI_P_Jailed) then {
-		hintSilent "The ride never ends!";
-		0 spawn CTI_CL_FNC_OnJailed;
-	};
-*/
 
 };
 
@@ -182,10 +163,6 @@ if (isNil {profileNamespace getVariable "CTI_PERSISTENT_HINTS"}) then { profileN
 
 	CTI_Init_CommanderClient = true;
 
-	/*if !(call CTI_CL_FNC_IsPlayerCommander ||(side player == resistance))  then {
-		//--- Execute the client orders context
-		execFSM "Client\FSM\update_orders.fsm";
-	};*/
 
 	call CTI_CL_FNC_AddMissionActions;
 
@@ -203,8 +180,7 @@ if (isNil {profileNamespace getVariable "CTI_PERSISTENT_HINTS"}) then { profileN
 
 //--- Gear templates (persitent)
 if !(CTI_P_SideJoined == resistance) then {if (isNil {profileNamespace getVariable format["CTI_PERSISTENT_GEAR_TEMPLATE_%1", CTI_P_SideJoined]}) then {call CTI_UI_Gear_InitializeProfileTemplates};
-// profileNamespace setVariable [format["CTI_PERSISTENT_GEAR_TEMPLATE_%1", CTI_P_SideJoined], nil];
-// saveProfileNamespace;
+
 if !(isNil {profileNamespace getVariable format["CTI_PERSISTENT_GEAR_TEMPLATE_%1", CTI_P_SideJoined]}) then {execVM "Client\Init\Init_Persistent_Gear.sqf"};};
 
 //--- Graphics/video thread (persistent)
@@ -298,19 +274,7 @@ TABLET_GET_TARGET={
 
 
 
-/*
-0 spawn
-{
-	while {!CTI_GameOver} do
-	{
-		if (animationState player == "acinpknlmstpsraswrfldnon_acinpercmrunsraswrfldnon" || animationState player == "helper_switchtocarryrfl" || animationState player == "AcinPknlMstpSrasWrflDnon") then
-		{
-			if (! isNull (player getvariable ["REV_DRAGGING",objnull])) then{player switchMove "AcinPknlMstpSrasWrflDnon";}	else{player switchMove "amovpknlmstpsraswrfldnon";};
-		};
-		sleep 3;
-	};
-};
-*/
+
 if (CTI_BASE_NOOBPROTECTION == 1) then {player addEventHandler ["fired", {_this spawn CTI_CL_FNC_OnPlayerFired}]}; //--- Trust me, you want that
 
 //trophy system
@@ -327,18 +291,7 @@ CTI_Init_Client = true;
 
 
 12452 cutText ["Sending to tutorial area.", "BLACK IN", 7];
-/*while {!(["IsGroupRegistered",[group player] ] call BIS_fnc_dynamicGroups)} do {
-	["InitializePlayer",[player] ] call BIS_fnc_dynamicGroups;
-	_group= createGroup CTI_P_SideJoined;
-	[player] joinsilent _group;
-	_group selectLeader player;
-	_data   = [nil, nil, true]; // [<Insignia>, <Group Name>, <Private>]
 
-	["RegisterGroup", [_group, player, _data]] call BIS_fnc_dynamicGroups;
-	sleep 5;
-};
-waitUntil {( ["PlayerHasGroup",[player]] call BIS_fnc_dynamicGroups) && (group player) in (CTI_P_SideJoined call CTI_CO_FNC_GetSideGroups)};
-*/
 
 0 call TUTORIAL_RUN;
 
@@ -354,11 +307,4 @@ CTI_Init_Group= true;
 
 
 
-/*if (true) then {
-	0 spawn {
-		sleep 2;
-		waitUntil {(!isNull (findDisplay 46)) && (["PlayerHasGroup",[player] ] call BIS_fnc_dynamicGroups) && isnull (findDisplay 60490) };
-		createdialog "CTI_RscTabletOnlineHelpMenu";
-	};
-};
-*/
+

@@ -127,7 +127,6 @@ if (CTI_IsServer) then {
 						_side=(_this select 1);
 						_sl= (_this select 1) call CTI_CO_FNC_GetSideLogic;
 						_to=time+180;
-						//waitUntil {({_x knowsabout _o >(missionNamespace getVariable "CTI_EW_HUD_S")} count (_side call CTI_CO_FNC_GetSidePlayerGroups) == 0 )};
 						waitUntil {time > _to};
 						while {HUD_WRITE} do {sleep random (1);};
 						HUD_WRITE=true;
@@ -137,10 +136,9 @@ if (CTI_IsServer) then {
 						HUD_WRITE=false;
 					}; true
 				} count (_this select 0);
-				//if !((_this select 0) in _hud) then { _hud set [count _hud, (_this select 0)]};
+
 				_sl setVariable ["CTI_HUD_SHARED",_hud,true];
 				HUD_WRITE=false;
-				// [["CLIENT",(_this select 1)], "Client_HUD_reveal",[(_this select 0)]] call CTI_CO_FNC_NetSend;
 			};
 		};
 
@@ -239,15 +237,9 @@ if (CTI_IsServer) then {
 
 		// Strat mode init
 		0 call CTI_SM_Map_setup;
-		//if ( (missionNamespace getVariable 'CTI_SM_STRATEGIC')==1) then {
-			{_x spawn CTI_SM_Allow_Capture;true} count [east,west];
-		//};
+		{_x spawn CTI_SM_Allow_Capture;true} count [east,west];
+		{_x spawn SM_BP_Hook;true} count [east,west];
 
-		// Bse prot Init
-		//if ( (missionNamespace getVariable 'CTI_SM_BASEP')==1) then {
-			 //0 spawn CTI_SM_Base_Prot;
-			 {_x spawn SM_BP_Hook;true} count [east,west];
-		//};
 
 		// Patrols
 
@@ -286,19 +278,6 @@ if (CTI_IsServer) then {
 		// hc balance
 		0 spawn HCGA_Init;
 
-		// PhysX artifacts cleanup
-		/*if ((missionNamespace getVariable "CACHE_EMPTY") == 1) then {
-			0 spawn {
-				while {!CTI_Gameover} do {
-					{if !(simulationEnabled _x ) then {_x enableSimulationGlobal True};True} count (allUnits + vehicles + allDead );
-					sleep 600;
-				};
-			};
-		};*/
-
-		/*{
-			(_x) execFSM "Addons\Strat_mode\FSM\shared_objectives.fsm";
-		} forEach [east,west];*/
 
 		// time compression
 		0 spawn {
@@ -314,7 +293,7 @@ if (CTI_IsServer) then {
 			};
 
 		};
-		//if (CTI_WEATHER_FAST >1) then {setTimeMultiplier CTI_WEATHER_FAST};
+
 
 
 };
@@ -335,15 +314,11 @@ if (CTI_IsClient) then {
 		};
 	};
 
-	// dynamic wheather
-	/*if ( CTI_WEATHER_DYNAMIC == 1) then {
-	 execVM "Addons\DynamicWeatherEffects\randomWeather2.sqf"
-	};*/
 
 	// NEW Revive
 	if (CTI_SM_FAR == 1) then {
 		0 spawn REV_INIT;
-		//call compileFinal preprocessFileLineNumbers "Addons\FAR_revive\FAR_revive_init.sqf";
+
 	};
 
 	// Thermal / NV restriction
@@ -355,11 +330,11 @@ if (CTI_IsClient) then {
 	0 execVM "Addons\Strat_mode\SLING_AUG\SA_Init.sqf";
 
 	// 3P restrict
-  0 execVM "Addons\Strat_mode\Functions\SM_3pRestrict.sqf";
+  	0 execVM "Addons\Strat_mode\Functions\SM_3pRestrict.sqf";
 
-  // Statics on offroads handlers
-  0 execVM "Addons\Strat_mode\Functions\SM_AttachStatics.sqf";
- if ( (missionNamespace getVariable 'CTI_SM_STRATEGIC')==1) then { 0 call CTI_SM_Draw_Connect_Towns;};
+  	// Statics on offroads handlers
+  	0 execVM "Addons\Strat_mode\Functions\SM_AttachStatics.sqf";
+ 	if ( (missionNamespace getVariable 'CTI_SM_STRATEGIC')==1) then { 0 call CTI_SM_Draw_Connect_Towns;};
 
 
 	//adaptative group size
@@ -378,19 +353,19 @@ if (CTI_IsClient) then {
 		0 execVM "Addons\Strat_mode\Radar\AIRR_init.sqf";
 	};
 
-  // vehicle repairs and forcelock
-  if ( (missionNamespace getVariable 'CTI_SM_REPAIR')==1) then {
+ 	 // vehicle repairs and forcelock
+ 	 if ( (missionNamespace getVariable 'CTI_SM_REPAIR')==1) then {
 		0 execVM "Addons\Strat_mode\Functions\SM_RepairVehicule.sqf";
 	};
 
-  // Strat Mode Help and fuctions
-	//if ( (missionNamespace getVariable 'CTI_SM_STRATEGIC')==1) then {
-		0 execVM "Addons\Strat_mode\Functions\SM_DrawHelp.sqf";
-		if !((side player) == resistance) then{
-			0 execVM "Addons\Strat_mode\Functions\SM_Orders.sqf";
-			0 execVM "Addons\Strat_mode\Functions\SM_TownPriority.sqf";
-		};
-	//};
+  	// Strat Mode Help and fuctions
+
+	0 execVM "Addons\Strat_mode\Functions\SM_DrawHelp.sqf";
+	if !((side player) == resistance) then{
+		0 execVM "Addons\Strat_mode\Functions\SM_Orders.sqf";
+		0 execVM "Addons\Strat_mode\Functions\SM_TownPriority.sqf";
+	};
+
 
 
 	// henroth air loadout
@@ -403,11 +378,9 @@ if (CTI_IsClient) then {
 		waitUntil {!isNil 'CTI_InitTowns'};
 		sleep 1;
 		if !(CTI_P_SideJoined == resistance) then {
-			//if (missionNamespace getVariable "CTI_SM_STRATEGIC" == 1) then {
-				execFSM "Addons\Strat_mode\FSM\town_markers.fsm";
-			/*} else {
-				execFSM "Client\FSM\town_markers.fsm";
-			};*/
+
+			execFSM "Addons\Strat_mode\FSM\town_markers.fsm";
+
 		};
 	};
 

@@ -13,55 +13,14 @@
 #define HUD_IDC 				1500000
 
 
-////////////////////////////////////////////////////////
-// GUI EDITOR OUTPUT START (by zerty, v1.063, #Dusipe)
-////////////////////////////////////////////////////////
-class CTI_VoteMenu {
-	movingEnable = 0;
-	idd = 3500000;
-	onLoad = "";
-	onUnload = "";
-	class controlsBackground {
-		class CTI_Background : RscText {
-			x = "SafeZoneX + (SafeZoneW * 0.0)";
-			y = "SafeZoneY + (SafezoneH * 0.30)";
-			w = "SafeZoneW * 0.25";
-			h = "SafeZoneH * 0.30";
-			colorBackground[] = {0, 0, 0, 0.7};
-		};
-		class CTI_Menu_Title : RscText {
-			style = ST_LEFT;
-			x = "SafeZoneX + (SafeZoneW * 0.005)";
-			y = "SafeZoneY + (SafezoneH * 0.180)";
-			w = "SafeZoneW * 0.24";
-			h = "SafeZoneH * 0.037";
-			text = "VoteMenu";
-			colorText[] = {0.258823529, 0.713725490, 1, 1};
-			
-			sizeEx = "(			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
-		};
-	};
-	class controls {
-		class CTI_Control_Exit : RscButton {
-			idc = 3500001;
-			
-			x = "SafeZoneX + (SafeZoneW * 0.77)";
-			y = "SafeZoneY + (SafezoneH * 0.18)";
-			w = "SafeZoneW * 0.04";
-			h = "SafeZoneH * 0.04";
-			
-			text = "X";
-			action = "closeDialog 0";
-		};
-	};
-};
+
 
 class RscTitles{
 		class CTI_HUD_RSC {
 			idd=-1;
 			duration=1e+011;
 			name="HUD_RSC";
-			movingEnable = false; 
+			movingEnable = false;
 			onLoad="uiNamespace setVariable ['HUD', _this select 0];";
 			objects[]={};
 			class RscProgress {
@@ -73,28 +32,16 @@ class RscTitles{
 					texture = "#(argb,8,8,3)color(1,1,1,1)";
 			};
 			class controls {
-				
-				/*class HUD_INFO: RscStructuredText {
-					idc = HUD_IDC+1;
-					x = 0.80 * safezoneW + safezoneX;
-					y = 0.40 * safezoneH + safezoneY;
-					w = 0.2 * safezoneW;
-					h = 0.20 * safezoneH;
-					colorBackground[] = {0, 0, 0, 0};
-				};*/
+
 
 				class HUD_INFO: RscStructuredText {
 					idc = HUD_IDC+1;
-					/*x = 0.60 * safezoneW + safezoneX;
-					y = 0.177 * safezoneH + safezoneY;
-					w = 0.2 * safezoneW;
-					h = 0.20 * safezoneH;*/
-					x="-15 * 					(((safezoneW / safezoneH) min 1.2) / 40) + 		((profilenamespace getvariable ['IGUI_GRID_WEAPON_X',str (		((safezoneX + safezoneW) - 		(12.4 * 			(			((safezoneW / safezoneH) min 1.2) / 40)) - 0.5 * 			(			((safezoneW / safezoneH) min 1.2) / 40)))]))";
-          y="0.015+ 0 * 					((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) + 		((profilenamespace getvariable ['IGUI_GRID_WEAPON_Y',str (		(safezoneY + 0.5 * 			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25)))]))";
-          w="15 * 					(			((safezoneW / safezoneH) min 1.2) / 40)";
-          h="6 * 					(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
-                        
-                        
+					x="-15 *(((safezoneW / safezoneH) min 1.2) / 40) +((profilenamespace getvariable ['IGUI_GRID_WEAPON_X',str ((safezoneX + safezoneW) - 		(12.4 *(((safezoneW / safezoneH) min 1.2) / 40)) - 0.5 *(((safezoneW / safezoneH) min 1.2) / 40)))]))";
+         			y="0.015+ 0 *((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) +((profilenamespace getvariable ['IGUI_GRID_WEAPON_Y',str ((safezoneY + 0.5 *((((safezoneW / safezoneH) min 1.2) / 1.2) / 25)))]))";
+         			w="15 *(((safezoneW / safezoneH) min 1.2) / 40)";
+          			h="6 *((((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
+
+
 					colorBackground[] = {0, 0, 0, 0};
 				};
 				class HUD_Vehicle: RscStructuredText {
@@ -107,9 +54,9 @@ class RscTitles{
 				};
 				class HUD_CAPTURE : RscProgress {
 					idc = HUD_IDC+3;
-					x = "-15 * 					(((safezoneW / safezoneH) min 1.2) / 40) + 		((profilenamespace getvariable ['IGUI_GRID_WEAPON_X',str (		((safezoneX + safezoneW) - 		(12.4 * 			(			((safezoneW / safezoneH) min 1.2) / 40)) - 0.5 * 			(			((safezoneW / safezoneH) min 1.2) / 40)))]))";
-					y = "0 * 					((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) + 		((profilenamespace getvariable ['IGUI_GRID_WEAPON_Y',str (		(safezoneY + 0.5 * 			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25)))]))";
-					w = "15 * 					(			((safezoneW / safezoneH) min 1.2) / 40)";
+					x = "-15 *(((safezoneW / safezoneH) min 1.2) / 40) +((profilenamespace getvariable ['IGUI_GRID_WEAPON_X',str (safezoneX + safezoneW) - 		(12.4 *(((safezoneW / safezoneH) min 1.2) / 40)) - 0.5 *(((safezoneW / safezoneH) min 1.2) / 40)))]))";
+					y = "0 *((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) +((profilenamespace getvariable ['IGUI_GRID_WEAPON_Y',str ((safezoneY + 0.5 * 			((((safezoneW / safezoneH) min 1.2) / 1.2) / 25)))]))";
+					w = "15 *(((safezoneW / safezoneH) min 1.2) / 40)";
 					h = 0.01 * safezoneH;
 				};
 				class HUD_PB_Background : RscText {
@@ -139,7 +86,7 @@ class RscTitles{
 					text = "";
 					colorText[]={1,1,1,1};
 				};
-				
+
 				class IconTown: RscText {
 					idc=-1;
 					colorText[]={1,1,1,1};

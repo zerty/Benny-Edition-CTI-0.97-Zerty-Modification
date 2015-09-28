@@ -172,59 +172,9 @@ while {! (((getMarkerPos format ["HELO_START_%1", _i])select 0) == 0)} do
 		if ((missionNamespace getVariable [format ["%1", _model],["","","","","","","",""]]) select 7 != "") then {[_vehicle, _side, ((missionNamespace getVariable [format ["%1", _model],["","","","","","","",""]]) select 7)] call CTI_CO_FNC_InitializeCustomVehicle;};
 	} forEach (missionNamespace getVariable format["CTI_%1_Vehicles_Startup", _side]);
 
-	//Radios
-	/*
-	_logic setVariable ["cti_radios", [],true];
-	{
-		_l=format ["%1_%2", _side,_x];
-		_rindex=radioChannelCreate [[0.8,0.1,0.1,1], _l, "%UNIT_NAME",[]];
-		_logic setVariable ["cti_radios", (_logic getVariable "cti_radios")+[[_rindex,_l]],true];
-	} forEach CTI_RADIOS;*/
 
-
-	//--- Handle the Team
 	_teams = [];
-	/*
-	{
-		if !(isNil '_x') then {
-			if (_x isKindOf "Man") then {
-				_group = group _x;
-				_teams pushback _group;
-				[_group, _side] call CTI_SE_FNC_InitializeGroup;
 
-				[leader _group, missionNamespace getVariable format ["CTI_AI_%1_DEFAULT_GEAR", _side]] call CTI_CO_FNC_EquipUnit;
-
-				if !(isPlayer leader _group) then {
-					if ((missionNamespace getVariable "CTI_AI_TEAMS_ENABLED") == 3 || _side == west && (missionNamespace getVariable "CTI_AI_TEAMS_ENABLED") == 1 || _side == east && (missionNamespace getVariable "CTI_AI_TEAMS_ENABLED") == 2 ) then { //--- Wait for the player to be "ready"
-						(leader _group) setPos ([_startPos, 8, 30] call CTI_CO_FNC_GetRandomPosition);
-						leader _group addEventHandler ["killed", format["[_this select 0, _this select 1, %1] spawn CTI_CO_FNC_OnUnitKilled", _sideID]]; //--- Called on destruction
-						//if ((missionNamespace getVariable "CTI_UNITS_FATIGUE") == 0) then {leader _group enableFatigue false}; //--- Disable the unit's fatigue
-						[leader _group, missionNamespace getVariable format ["CTI_AI_%1_DEFAULT_GEAR_AI", _side]] call CTI_CO_FNC_EquipUnit;
-						[_group, _side, _logic] spawn {
-							_group = _this select 0;
-							_side = _this select 1;
-							_logic = _this select 2;
-
-							if (isMultiplayer) then { sleep 20 };
-							_group allowFleeing 0;
-
-							if (typeOf (leader _group) != (missionNamespace getVariable format["CTI_%1_Commander", _side])) then { //--- An AI Team
-								sleep (random 5); //--- Differ each threads.
-								if (isNil {_group getVariable "cti_aifsm_handled"}) then {
-									[_group, _side] execFSM "Server\FSM\update_ai.fsm";
-								};
-							};
-							} else { //--- The Commander
-								if (isNull (_logic getVariable "cti_commander")) then { _logic setVariable ["cti_commander", _group, true] };
-							};
-
-						};
-					};
-				};
-			};
-		};
-	} forEach (synchronizedObjects _logic);
-	*/
 	0 spawn {
 		waitUntil {CTI_Init_Server};
 		while {! CTi_GameOver} do {
@@ -268,23 +218,7 @@ while {! (((getMarkerPos format ["HELO_START_%1", _i])select 0) == 0)} do
 
 	_logic setVariable ["cti_teams", _teams, true];
 
-	//--- Handle the Commander
-	/*if ((missionNamespace getVariable "CTI_AI_TEAMS_ENABLED") == 3 || _side == west && (missionNamespace getVariable "CTI_AI_TEAMS_ENABLED") == 1 || _side == east && (missionNamespace getVariable "CTI_AI_TEAMS_ENABLED") == 2 ) then {
-		[_side, _logic] spawn {
-			_side = _this select 0;
-			_logic = _this select 1;
 
-			sleep 2;
-			while {!CTi_GameOver} do {
-				if (isMultiplayer) then { sleep 25 };
-
-				if !(isNull (_logic getVariable "cti_commander")) then {
-						_logic setVariable ["cti_ai_commander", true];
-						(_side) execFSM "Server\FSM\update_commander.fsm";
-					};
-				};
-		};
-	};*/
 	if ((missionNamespace getVariable "CTI_AI_TEAMS_ENABLED") == 3 || _side == west && (missionNamespace getVariable "CTI_AI_TEAMS_ENABLED") == 1 || _side == east && (missionNamespace getVariable "CTI_AI_TEAMS_ENABLED") == 2 ) then {
 		[_side, _logic] spawn {
 			private ["_side","_logic","_teams","_possible","_next_commander"];
@@ -344,4 +278,3 @@ if (missionNamespace getvariable "CTI_PERSISTANT" == 1) then {
 CTI_Init_Server=True;
 
 
-//0 execVM "Addons\Zeus\Z_init_GUER.sqf";

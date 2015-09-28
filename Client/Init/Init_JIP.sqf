@@ -12,7 +12,7 @@
 
 0 spawn {
 	_hq = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideHQ;
-	//_hq addAction ["<t color='#a5c4ff'>MENU: Defense (HQ)</t>", "Client\Actions\Action_DefenseMenu.sqf", "", 93, false, true, "", " !CTI_P_PreBuilding &&CTI_Base_HQInRange && _this == player "];
+
 	_marker = createMarkerLocal ["HQ", getPos _hq];
 	_marker setMarkerTypeLocal (CTI_P_MarkerPrefix+"hq");
 	_marker setMarkerTextLocal "HQ";
@@ -50,28 +50,6 @@ if (isMultiplayer) then {sleep 5}; //--- Wait in MP for the net var to kick in
 	{if (_x getvariable ["wheel_prot",false]) then {_x call CTI_PVF_Protect_Wheels }; true}count vehicles;
 };
 {_x spawn CTI_PVF_Client_HandleDefense} forEach (CTI_P_SideLogic getVariable ["cti_defences", []]);
-//--- Add lock/unlock to team vehicles if needed. === Deprecated with group system
-/*
-{
-	if (effectiveCommander _x in units player) then {
-		_x addAction ["<t color='#86F078'>Unlock</t>","Client\Actions\Action_ToggleLock.sqf", [], 99, false, true, '', '_this != player &&alive _target && locked _target == 2'];
-		_x addAction ["<t color='#86F078'>Lock</t>","Client\Actions\Action_ToggleLock.sqf", [], 99, false, true, '', '_this != player &&alive _target && locked _target == 0'];
-		_x setVariable ["v_keys",[getPlayerUID player],true];
-	};
-} forEach ([group player, false] call CTI_CO_FNC_GetTeamVehicles);
 
-{
-	if (vehicle _x == _x) then { //--- On foot
-		_x setPos ([player, 8, 30] call CTI_CO_FNC_GetRandomPosition);
-	} else { //--- In vehicle
-		if ((effectiveCommander vehicle _x) in units player) then { //--- The vehicle is lead by us
-			vehicle _x setPos ([player, 10, 35] call CTI_CO_FNC_GetRandomPosition);
-		} else { //--- The vehicle is lead by someone else
-			unassignVehicle _x;
-			_x setPos ([player, 8, 30] call CTI_CO_FNC_GetRandomPosition);
-		};
-	};
-} forEach (units player call CTI_CO_FNC_GetLiveUnits);
-*/
 
 
