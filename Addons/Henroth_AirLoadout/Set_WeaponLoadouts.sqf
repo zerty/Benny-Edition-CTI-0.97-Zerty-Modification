@@ -136,6 +136,32 @@ CTI_LOADOUT_B_Plane_CAS_01_F_MNT_OPTIONS =
 // ***************************
 CTI_LOADOUT_B_UAV_02_CAS_F_MNT_OPTIONS =
 [
+	"Anti Ground - Configurations" ,
+	[
+		[
+			"Mk82BombLauncher" ,
+			[
+				[ "2Rnd_Mk82" , "3000" ]
+			] ,
+			"GBU12BombLauncher" ,
+			[
+				[ "2Rnd_GBU12_LGB" , "4000" ]
+			]
+		] ,
+		[ "Laserdesignator_mounted" ,
+			[
+				[ "Laserbatteries" , "500" ]
+			]
+		] ,
+		[ "CMFlareLauncher" ,
+			[
+				[ "240Rnd_CMFlare_Chaff_Magazine" , "2000" , [-1] ] ,
+				[ "120Rnd_CMFlare_Chaff_Magazine" , "500" , [-1] ] ,
+				[ "168Rnd_CMFlare_Chaff_Magazine" , "1000" , [-1] ] ,
+				[ "192Rnd_CMFlare_Chaff_Magazine" , "1500" , [-1] ]
+			]
+		]
+	],
 	"Anti Tank - Configurations" ,
 	[
 		[
@@ -187,33 +213,8 @@ CTI_LOADOUT_B_UAV_02_CAS_F_MNT_OPTIONS =
 				[ "192Rnd_CMFlare_Chaff_Magazine" , "1500" , [-1] ]
 			]
 		]
-	] ,
-	"Anti Ground - Configurations" ,
-	[
-		[
-			"Mk82BombLauncher" ,
-			[
-				[ "2Rnd_Mk82" , "3000" ]
-			] ,
-			"GBU12BombLauncher" ,
-			[
-				[ "2Rnd_GBU12_LGB" , "4000" ]
-			]
-		] ,
-		[ "Laserdesignator_mounted" ,
-			[
-				[ "Laserbatteries" , "500" ]
-			]
-		] ,
-		[ "CMFlareLauncher" ,
-			[
-				[ "240Rnd_CMFlare_Chaff_Magazine" , "2000" , [-1] ] ,
-				[ "120Rnd_CMFlare_Chaff_Magazine" , "500" , [-1] ] ,
-				[ "168Rnd_CMFlare_Chaff_Magazine" , "1000" , [-1] ] ,
-				[ "192Rnd_CMFlare_Chaff_Magazine" , "1500" , [-1] ]
-			]
-		]
 	]
+
 ];
 
 
@@ -1028,6 +1029,32 @@ CTI_LOADOUT_O_Plane_CAS_02_F_MNT_OPTIONS =
 
 CTI_LOADOUT_O_UAV_02_CAS_F_MNT_OPTIONS =
 [
+	"Anti Ground - Configurations" ,
+	[
+		[
+			"Mk82BombLauncher" ,
+			[
+				[ "2Rnd_Mk82" , "3000" ]
+			] ,
+			"GBU12BombLauncher" ,
+			[
+				[ "2Rnd_GBU12_LGB" , "4000" ]
+			]
+		] ,
+		[ "Laserdesignator_mounted" ,
+			[
+				[ "Laserbatteries" , "500" ]
+			]
+		] ,
+		[ "CMFlareLauncher" ,
+			[
+				[ "240Rnd_CMFlare_Chaff_Magazine" , "2000" , [-1] ] ,
+				[ "120Rnd_CMFlare_Chaff_Magazine" , "500" , [-1] ] ,
+				[ "168Rnd_CMFlare_Chaff_Magazine" , "1000" , [-1] ] ,
+				[ "192Rnd_CMFlare_Chaff_Magazine" , "1500" , [-1] ]
+			]
+		]
+	],
 	"Anti Tank - Configurations" ,
 	[
 		[
@@ -1080,33 +1107,8 @@ CTI_LOADOUT_O_UAV_02_CAS_F_MNT_OPTIONS =
 				[ "192Rnd_CMFlare_Chaff_Magazine" , "1500" , [-1] ]
 			]
 		]
-	] ,
-	"Anti Ground - Configurations" ,
-	[
-		[
-			"Mk82BombLauncher" ,
-			[
-				[ "2Rnd_Mk82" , "3000" ]
-			] ,
-			"GBU12BombLauncher" ,
-			[
-				[ "2Rnd_GBU12_LGB" , "4000" ]
-			]
-		] ,
-		[ "Laserdesignator_mounted" ,
-			[
-				[ "Laserbatteries" , "500" ]
-			]
-		] ,
-		[ "CMFlareLauncher" ,
-			[
-				[ "240Rnd_CMFlare_Chaff_Magazine" , "2000" , [-1] ] ,
-				[ "120Rnd_CMFlare_Chaff_Magazine" , "500" , [-1] ] ,
-				[ "168Rnd_CMFlare_Chaff_Magazine" , "1000" , [-1] ] ,
-				[ "192Rnd_CMFlare_Chaff_Magazine" , "1500" , [-1] ]
-			]
-		]
 	]
+
 ];
 
 // ***************************
