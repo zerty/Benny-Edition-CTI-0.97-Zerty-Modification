@@ -58,5 +58,5 @@ if !(simulationEnabled _killed) then {_killed enableSimulationGlobal true;};
 
 [["CLIENT", leader group _killer], "Client_AwardBounty", [(typeOf _killed), 30000]] call CTI_CO_FNC_NetSend;
 
-[["CLIENT", _sideID call CTI_CO_FNC_GetSideFromID], "Client_OnMessageReceived", ["hq-destroyed"]] call CTI_CO_FNC_NetSend;
+[["CLIENT", _sideID call CTI_CO_FNC_GetSideFromID], "Client_OnMessageReceived", ["hq-destroyed"],true] call CTI_CO_FNC_NetSend;
 
