@@ -76,29 +76,44 @@ switch (_action) do {
 		if (isNil {uiNamespace getVariable "cti_dialog_ui_gear_shop_tab"}) then {uiNamespace setVariable ["cti_dialog_ui_gear_shop_tab", CTI_GEAR_TAB_TEMPLATES]};
 		(uiNamespace getVariable "cti_dialog_ui_gear_shop_tab") call CTI_UI_Gear_DisplayShoppingItems;
 
-		if (_target isKindOf "Man") then {
+		/*if (_target isKindOf "Man") then {
+			for "_i" from  77000 to 77027   do {
+				((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl _i) ctrlshow true;
+			};
+			for "_i" from  70900 to 70910  do {
+				((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl _i) ctrlshow true;
+			};
+			for "_i" from  70300 to 70305   do {
+				((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl _i) ctrlshow true;
+			};
+		} else {*/
+		if !(_target isKindOf "Man") then {
+		  	//77001-77026
+		  	//77109
+		  	// 70000 - 70027
+		  	for "_i" from  70000 to 70028  /* step +1 */ do {
+				((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl _i) ctrlshow false;
+			};
 			for "_i" from  77000 to 77027  /* step +1 */ do {
-				((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl _i) ctrlshow true;
-			};
-			for "_i" from  70900 to 70910  /* step +1 */ do {
-				((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl _i) ctrlshow true;
-			};
-			for "_i" from  70300 to 70305  /* step +1 */ do {
-				((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl _i) ctrlshow true;
-			};
-		} else {
-			for "_i" from  77000 to 77027  /* step +1 */ do {
 				((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl _i) ctrlshow false;
 			};
-			for "_i" from  70900 to 70910  /* step +1 */ do {
+			for "_i" from  77900 to 77904  /* step +1 */ do {
 				((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl _i) ctrlshow false;
 			};
-			for "_i" from  70300 to 70305  /* step +1 */ do {
+			for "_i" from  70900 to 70904  /* step +1 */ do {
 				((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl _i) ctrlshow false;
 			};
+			for "_i" from  70301 to 70303  /* step +1 */ do {
+				((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl _i) ctrlshow false;
+			};
+			for "_i" from  70401 to 70402  /* step +1 */ do {
+				((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl _i) ctrlshow false;
+			};
+
 			((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl 70303) ctrlshow true;
 			((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl 77003) ctrlshow true;
 			((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl 70003) ctrlshow true;
+
 
 		};
 
