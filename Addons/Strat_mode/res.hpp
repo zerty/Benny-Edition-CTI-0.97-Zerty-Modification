@@ -36,7 +36,7 @@ class RscTitles{
 
 				class HUD_INFO: RscStructuredText {
 					idc = HUD_IDC+1;
-					x="-15 *(((safezoneW / safezoneH) min 1.2) / 40) +((profilenamespace getvariable ['IGUI_GRID_WEAPON_X',str ((safezoneX + safezoneW) - 		(12.4 *(((safezoneW / safezoneH) min 1.2) / 40)) - 0.5 *(((safezoneW / safezoneH) min 1.2) / 40)))]))";
+					x="-15 *(((safezoneW / safezoneH) min 1.2) / 40) +((profilenamespace getvariable ['IGUI_GRID_WEAPON_X',str ((safezoneX + safezoneW) - 		(12.4 *(((safezoneW / safezoneH) min 1.2) / 40)) - 0.5 *(((safezoneW / safezoneH) min 1.2) / 40))]))";
          			y="0.015+ 0 *((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) +((profilenamespace getvariable ['IGUI_GRID_WEAPON_Y',str ((safezoneY + 0.5 *((((safezoneW / safezoneH) min 1.2) / 1.2) / 25)))]))";
          			w="15 *(((safezoneW / safezoneH) min 1.2) / 40)";
           			h="6 *((((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
@@ -54,7 +54,7 @@ class RscTitles{
 				};
 				class HUD_CAPTURE : RscProgress {
 					idc = HUD_IDC+3;
-					x = "-15 *(((safezoneW / safezoneH) min 1.2) / 40) +((profilenamespace getvariable ['IGUI_GRID_WEAPON_X',str (safezoneX + safezoneW) - 		(12.4 *(((safezoneW / safezoneH) min 1.2) / 40)) - 0.5 *(((safezoneW / safezoneH) min 1.2) / 40)))]))";
+					x = "-15 *(((safezoneW / safezoneH) min 1.2) / 40) +((profilenamespace getvariable ['IGUI_GRID_WEAPON_X',str ((safezoneX + safezoneW) - 		(12.4 *(((safezoneW / safezoneH) min 1.2) / 40)) - 0.5 *(((safezoneW / safezoneH) min 1.2) / 40))]))";
 					y = "0 *((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) +((profilenamespace getvariable ['IGUI_GRID_WEAPON_Y',str ((safezoneY + 0.5 * 			((((safezoneW / safezoneH) min 1.2) / 1.2) / 25)))]))";
 					w = "15 *(((safezoneW / safezoneH) min 1.2) / 40)";
 					h = 0.01 * safezoneH;
