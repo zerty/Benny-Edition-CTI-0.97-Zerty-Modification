@@ -33,18 +33,11 @@ switch (_action) do {
 					((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetPosition [_base_x+(_offset*_base_w),_base_y+_h_offset*_base_h,_base_w,_base_h];
 		    		_offset=_offset+1;
 			    };
-			   	case 3: { // CTI_Icon_inventory
-					//_possible=call CTI_UI_Gear_LoadAvailableUnits;
-					//if (alive _target && count _possible >0) then  {
-
-					//	if (_target in _possible) then {((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTextColor [1,1,0,1];} else {
-					//		if (count _possible > 0) then {((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTextColor [1,1,0,0.5];};
-					//	};
-					if (CTI_Base_GearInRange || CTI_Base_GearInRange_Mobile) then {
+			   	case 3: {
+					if (CTI_Base_GearInRange) then {
 						((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTextColor [1,1,0,1];
 			    	} else {
 			    		((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTextColor [1,1,0,0.2];
-			    		//((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetPosition [_base_x+(_offset*_base_w),_base_y+5,_base_w,_base_h];
 			    	};
 			    	((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetPosition [_base_x+(_offset*_base_w),_base_y+_h_offset*_base_h,_base_w,_base_h];
 			    	_offset=_offset+1;
@@ -133,8 +126,10 @@ switch (_action) do {
 						((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetPosition [_base_x+(_offset*_base_w),_base_y+_h_offset*_base_h,_base_w,_base_h];
 						if (locked _target >0 ) Then {
 							((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTextColor [0.3,0.3,0.3,1];
+							((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTooltip "Network (Locked)";
 						} else{
 				    		if (((_target) getVariable 'CTI_Net')==CTI_P_SideID) then {((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTextColor [0,1,0,1];} else {((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTextColor [1,0,0,1];};
+				    			((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTooltip "Network";
 				    	};
 			    		_offset=_offset+1;
 			    	} else {
@@ -169,7 +164,13 @@ switch (_action) do {
 			    	if (vehicle player == player &&( _target iskindof "Car" || _target iskindof "Tank" || _target iskindof "Air"|| _target iskindof "Ship" || _target iskindof "Wheeled_APC_F"|| _target iskindof "Truck_F") && alive _target) then  {
 
 
-		    			if  ((({_x == "Toolkit"} count (backpackItems player)) +({_x == "Toolkit"} count (vestItems player))) >0) then {((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTextColor [0,0,1,1]; } else {((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTextColor [0.3,0.3,0.3,1];};
+		    			if  ((({_x == "Toolkit"} count (backpackItems player)) +({_x == "Toolkit"} count (vestItems player))) >0) then {
+		    				((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTextColor [0,0,1,1];
+		    				((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTooltip "Repair";
+		    				 } else {
+		    				 ((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTextColor [0.3,0.3,0.3,1];
+		    				 ((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTooltip "Repair (No Toolkit)";
+		    				};
 		    			((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetPosition [_base_x+(_offset*_base_w),_base_y+_h_offset*_base_h,_base_w,_base_h];
 		    			_offset=_offset+1;
 
@@ -181,7 +182,13 @@ switch (_action) do {
 					_hqs=[];
 					{_hqs set [count _hqs, _x call CTI_CO_FNC_GetSideHQ];true} count [east,west];
 					if (vehicle player == player &&( _target iskindof "Car" || _target iskindof "Tank" || _target iskindof "Air"|| _target iskindof "Ship" || _target iskindof "Wheeled_APC_F"|| _target iskindof "Truck_F") && alive _target && !( getplayeruid player in (_target getVariable ["v_keys",[]])) && !(_target getVariable ["cti_occupant",civilian] == CTI_P_SideJoined)&& !(_target in _hqs)) then  {
-			    		if ((({_x == "Toolkit"} count (backpackItems player)) +({_x == "Toolkit"} count (vestItems player))) >0) then {((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTextColor [0,0,1,1]; } else {((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTextColor [0.3,0.3,0.3,1];};
+			    		if ((({_x == "Toolkit"} count (backpackItems player)) +({_x == "Toolkit"} count (vestItems player))) >0) then {
+			    			((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTextColor [0,0,1,1];
+			    			((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTooltip "Force Lock";
+			    		} else {
+			    			((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTextColor [0.3,0.3,0.3,1];
+			    			((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTooltip "Force Lock (No ToolKit)";
+			    		};
 			    		((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetPosition [_base_x+(_offset*_base_w),_base_y+_h_offset*_base_h,_base_w,_base_h];
 			    		_offset=_offset+1;
 			    	} else {
@@ -392,10 +399,27 @@ switch (_action) do {
 			    		((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetPosition [_base_x+(_offset*_base_w),_base_y+5,_base_w,_base_h];
 			    	};
 			    };
-			    case 33: {// CTI_Icon_Pilot
+			    case 33: {// CTI_Icon_Exit Tutorial
 
 			    	if (_target isKindOf "Land_Wreck_Heli_Attack_01_F") then {
 			    		((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTextColor [1,1,1,1];
+			    		((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetPosition [_base_x+(_offset*_base_w),_base_y+_h_offset*_base_h,_base_w,_base_h];
+			    		_offset=_offset+1;
+			    	} else {
+			    		((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetPosition [_base_x+(_offset*_base_w),_base_y+5,_base_w,_base_h];
+			    	};
+			    };
+			   case 34: {// Mobile gear access
+
+			    	if ( CTI_SPECIAL_AMMOTRUCK in (_target getVariable ["cti_spec",[]]) || CTI_SPECIAL_GEAR in (_target getVariable ["cti_spec",[]]) || (CTI_SPECIAL_MEDICALVEHICLE in (_target getVariable ["cti_spec",[]])&& ((CTI_P_SideJoined) call CTI_CO_FNC_GetSideUpgrades) select CTI_UPGRADE_REST >=CTI_GAMEPLAY_REARM_MED )) then {
+			    		if ((time-(_target getvariable ["CTI_last_purchase_time",-10000])) >= CTI_GEAR_MOBILE_COOLOFF || (_target getvariable ["CTI_last_purchase_time",-10000])<0 ) then{
+			    			((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTextColor [0,0,1,1];
+			    			((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTooltip "Mobile Gear Access";
+			    		} else {
+			    			((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTextColor [0.3,0.3,0.3,1];
+			    			((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTooltip format ["Mobile Gear Access (%1 s.)", ceil(CTI_GEAR_MOBILE_COOLOFF-(time-(_target getvariable ["CTI_last_purchase_time",-10000])))];
+			    		};
+
 			    		((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetPosition [_base_x+(_offset*_base_w),_base_y+_h_offset*_base_h,_base_w,_base_h];
 			    		_offset=_offset+1;
 			    	} else {
@@ -541,7 +565,15 @@ switch (_action) do {
 		if ((count _possible) == 0) exitWith{false};
 		closedialog 0;
 		disableserialization;
+		//uiNamespace setVariable ['GEAR_TARG',_target];
+		uiNamespace setVariable ['GEAR_TARG_F',false];
+		createDialog "CTI_RscGearMenu";
+	};
+	case "OnGearM": {
+		closedialog 0;
+		disableserialization;
 		uiNamespace setVariable ['GEAR_TARG',_target];
+		uiNamespace setVariable ['GEAR_TARG_F',true];
 		createDialog "CTI_RscGearMenu";
 	};
 	case "OnBuild": {

@@ -3,20 +3,37 @@ _target= uiNamespace getVariable ['GEAR_TARG',objnull];
 switch (_action) do {
 	case "onLoad": { //--- Triggered on the very first loading of the UI
 		//-- Load the list.
-		_possible=call CTI_UI_Gear_LoadAvailableUnits;
-		_id=0;
-		{
-			if (_x isKindOf "Man") then {
-				((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl 70201) lbAdd Format["[%1] %2 (%3m)", _x call CTI_CL_FNC_GetAIDigit, getText(configFile >> "CfgVehicles" >> typeOf _x >> "displayName"),ceil (_x distance player)];
-			} else {
-				((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl 70201) lbAdd Format["%1 (%2m)", getText(configFile >> "CfgVehicles" >> typeOf _x >> "displayName"),ceil (_x distance player)];
-			};
-			if (!isnull _target && _target ==_x) then {_id =_forEachIndex;};
+		if !(uiNamespace getVariable ['GEAR_TARG_F',false]) then {
+			_possible=call CTI_UI_Gear_LoadAvailableUnits;
+			_id=0;
+			{
+				if (_x isKindOf "Man") then {
+					((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl 70201) lbAdd Format["[%1] %2 (%3m)", _x call CTI_CL_FNC_GetAIDigit, getText(configFile >> "CfgVehicles" >> typeOf _x >> "displayName"),ceil (_x distance player)];
+				} else {
+					((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl 70201) lbAdd Format["%1 (%2m)", getText(configFile >> "CfgVehicles" >> typeOf _x >> "displayName"),ceil (_x distance player)];
+				};
+				//if (!isnull _target && _target ==_x) then {_id =_forEachIndex;};
 
-		} forEach _possible;
-		uiNamespace setVariable ["cti_dialog_ui_gear_units",_possible];
-		if (count _possible == 0) then {((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl 70403) ctrlEnable false} else {((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl 70403) ctrlEnable true};
-		((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl 70201) lbSetCurSel _id;
+			} forEach _possible;
+			uiNamespace setVariable ["cti_dialog_ui_gear_units",_possible];
+			if (count _possible == 0) then {((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl 70403) ctrlEnable false} else {((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl 70403) ctrlEnable true};
+			((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl 70201) lbSetCurSel _id;
+		} else {
+			hint format ["%1", _target];
+			_possible=[_target];
+			{
+				if (_x isKindOf "Man") then {
+					((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl 70201) lbAdd Format["[%1] %2 (%3m)", _x call CTI_CL_FNC_GetAIDigit, getText(configFile >> "CfgVehicles" >> typeOf _x >> "displayName"),ceil (_x distance player)];
+				} else {
+					((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl 70201) lbAdd Format["%1 (%2m)", getText(configFile >> "CfgVehicles" >> typeOf _x >> "displayName"),ceil (_x distance player)];
+				};
+				//if (!isnull _target && _target ==_x) then {_id =_forEachIndex;};
+
+			} forEach _possible;
+			uiNamespace setVariable ["cti_dialog_ui_gear_units",_possible];
+			((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl 70201) lbSetCurSel 0;
+			((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl 70201) ctrlEnable false;
+		};
 		execVM "Client\GUI\GUI_GearMenu.sqf";
 
 		//--- Handle drag stop //todo check the getVariable modification.
@@ -60,28 +77,59 @@ switch (_action) do {
 		(uiNamespace getVariable "cti_dialog_ui_gear_shop_tab") call CTI_UI_Gear_DisplayShoppingItems;
 
 		if (_target isKindOf "Man") then {
+		  	for "_i" from  70000 to 70028  /* step +1 */ do {
+				((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl _i) ctrlshow true;
+			};
 			for "_i" from  77000 to 77027  /* step +1 */ do {
 				((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl _i) ctrlshow true;
 			};
-			for "_i" from  70900 to 70905  /* step +1 */ do {
+			for "_i" from  77900 to 77904  /* step +1 */ do {
 				((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl _i) ctrlshow true;
 			};
-			for "_i" from  70300 to 70305  /* step +1 */ do {
+			for "_i" from  70900 to 70904  /* step +1 */ do {
 				((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl _i) ctrlshow true;
 			};
+			for "_i" from  70301 to 70303  /* step +1 */ do {
+				((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl _i) ctrlshow true;
+			};
+			for "_i" from  70401 to 70402  /* step +1 */ do {
+				((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl _i) ctrlshow true;
+			};
+			((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl 77109) ctrlSetPosition [SafeZoneX + (SafeZoneW * 0.41),SafeZoneY + (SafezoneH * 0.25),SafeZoneW * 0.58,SafeZoneH * 0.28];
+			((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl 77109) ctrlCommit 0;
+			((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl 70109) ctrlSetPosition [SafeZoneX + (SafeZoneW * 0.41),SafeZoneY + (SafezoneH * 0.25),SafeZoneW * 0.58,SafeZoneH * 0.28];
+			((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl 70109) ctrlCommit 0;
 		} else {
+		//if !(_target isKindOf "Man") then {
+		  	//77001-77026
+		  	//77109
+		  	// 70000 - 70027
+		  	for "_i" from  70000 to 70028  /* step +1 */ do {
+				((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl _i) ctrlshow false;
+			};
 			for "_i" from  77000 to 77027  /* step +1 */ do {
 				((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl _i) ctrlshow false;
 			};
-			for "_i" from  70900 to 70905  /* step +1 */ do {
+			for "_i" from  77900 to 77904  /* step +1 */ do {
 				((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl _i) ctrlshow false;
 			};
-			for "_i" from  70300 to 70305  /* step +1 */ do {
+			for "_i" from  70900 to 70904  /* step +1 */ do {
 				((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl _i) ctrlshow false;
 			};
+			for "_i" from  70301 to 70303  /* step +1 */ do {
+				((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl _i) ctrlshow false;
+			};
+			for "_i" from  70401 to 70402  /* step +1 */ do {
+				((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl _i) ctrlshow false;
+			};
+
 			((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl 70303) ctrlshow true;
 			((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl 77003) ctrlshow true;
 			((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl 70003) ctrlshow true;
+			((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl 77109) ctrlSetPosition [SafeZoneX + (SafeZoneW * 0.41),SafeZoneY + (SafezoneH * 0.25),SafeZoneW * 0.58,SafeZoneH * 0.65];
+			((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl 77109) ctrlCommit 0;
+			((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl 70109) ctrlSetPosition [SafeZoneX + (SafeZoneW * 0.41),SafeZoneY + (SafezoneH * 0.25),SafeZoneW * 0.58,SafeZoneH * 0.65];
+			((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl 70109) ctrlCommit 0;
 
 		};
 
@@ -171,7 +219,7 @@ switch (_action) do {
 		_mouse = _this select 3;
 
 		//--- Remove the container & its content if needed
-		if (_mouse == 1) then { //--- Right click
+		if (_mouse == 1 && ((uiNamespace getVariable ["cti_dialog_ui_gear_target", objnull]) isKindOf "Man")) then { //--- Right click
 			_updated = ["", _container] call CTI_UI_Gear_ReplaceContainer;
 			if (_updated) then { call CTI_UI_Gear_UpdatePrice };
 		};
@@ -277,6 +325,7 @@ switch (_action) do {
 	case "onPurchase": {
 		_funds = call CTI_CL_FNC_GetPlayerFunds;
 		_cost = uiNamespace getVariable "cti_dialog_ui_gear_tradein";
+		_target=uiNamespace getVariable "cti_dialog_ui_gear_target";
 		if (_funds >= _cost) then {
 			[uiNamespace getVariable "cti_dialog_ui_gear_target", uiNamespace getVariable "cti_dialog_ui_gear_target_gear"] call CTI_CO_FNC_EquipUnit;
 			uiNamespace setVariable ["cti_dialog_ui_gear_target_staticgear", +(uiNamespace getVariable "cti_dialog_ui_gear_target_gear")];
@@ -286,7 +335,12 @@ switch (_action) do {
 			if ( ((uiNamespace getVariable "cti_dialog_ui_gear_target") == player ) && (CTI_PLAYER_REEQUIP == 1 ) ) then {
 				CTI_P_LastPurchase = uiNamespace getVariable "cti_dialog_ui_gear_target_gear";
 			};
-			missionNamespace setVariable ["cti_gear_lastpurchased", uiNamespace getVariable "cti_dialog_ui_gear_target_gear"];
+			if ((uiNamespace getVariable ["cti_dialog_ui_gear_target", objnull]) isKindOf "Man") then {
+				missionNamespace setVariable ["cti_gear_lastpurchased", uiNamespace getVariable "cti_dialog_ui_gear_target_gear"];
+			};
+			if ( uiNamespace getVariable ['GEAR_TARG_F',false]) then {
+				_target setVariable ["CTI_last_purchase_time",time,true];
+			} ;
 		} else {
 			hint "not enough funds";
 		};

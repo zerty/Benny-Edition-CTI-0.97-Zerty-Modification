@@ -498,6 +498,7 @@ CTI_UI_Gear_AddContainerItem = {
 			lnbSetPicture [70109, [_row, 0], getText(configFile >> _config >> _item >> 'picture')];
 			lnbSetData [70109, [_row, 0], _item];
 			lnbSetValue [70109, [_row, 0], 1];
+			lnbSetPictureColor [70109, [_row, 0], [1, 1, 1, 1]];
 		};
 	};
 };
@@ -1269,46 +1270,12 @@ CTI_UI_Gear_EquipTemplate = {
 	(_gear) call CTI_UI_Gear_DisplayInventory;
 };
 
-CTI_UI_Gear_LoadAvailableUnits = {/*
-	_structures = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideStructures;
-	_list = [];
-	_fobs = CTI_P_SideLogic getVariable ["cti_fobs", []];
-	_vh=[];
-	{
-		_v=_x;
-		if ( ({_x== (vehicle _v)} count _vh) <1  && ! ((vehicle _v) == _v)) then {_vh =_vh+[vehicle _v];};
-	} forEach ((group player) call CTI_CO_FNC_GetLiveUnits);
-	_u=((group player) call CTI_CO_FNC_GetLiveUnits)+_vh;
-
-
-
-	{
-		_nearest = [CTI_BARRACKS, _x, _structures, CTI_BASE_GEAR_RANGE] call CTI_CO_FNC_GetClosestStructure;
-		_ammo_trucks = ([_x, CTI_SPECIAL_AMMOTRUCK, CTI_BASE_GEAR_RANGE/4] call CTI_CO_FNC_GetNearestSpecialVehicles) + ([_x, CTI_SPECIAL_MEDICALVEHICLE, CTI_BASE_GEAR_RANGE/4] call CTI_CO_FNC_GetNearestSpecialVehicles);
-		_fob_in_range = false;
-		if (count _fobs > 0) then {
-			_fob = [_x, _fobs] call CTI_CO_FNC_GetClosestEntity;
-			if (_fob distance _x <= (CTI_BASE_GEAR_FOB_RANGE*2)) then {_fob_in_range = true};
-		};
-		if (!isNull _nearest || _x == player || count _ammo_trucks > 0 || _fob_in_range) then {//todo add fob
-			_list pushback _x;
-			if (_x isKindOf "Man") then {
-				((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl 70201) lbAdd Format["[%1] %2", _x call CTI_CL_FNC_GetAIDigit, getText(configFile >> "CfgVehicles" >> typeOf _x >> "displayName")];
-			} else {
-				((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl 70201) lbAdd Format["%1", getText(configFile >> "CfgVehicles" >> typeOf _x >> "displayName")];
-			};
-		};
-	} forEach _u;
-	//} forEach ((group player) call CTI_CO_FNC_GetLiveUnits);
-
-	uiNamespace setVariable ["cti_dialog_ui_gear_units", _list];
-
-	((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl 70201) lbSetCurSel 0;*/
+CTI_UI_Gear_LoadAvailableUnits = {
 	_fobs = CTI_P_SideLogic getVariable ["cti_fobs", []];
 	_structures = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideStructures;
 	_static=[CTI_BARRACKS, _structures] call CTI_CO_FNC_GetSideStructuresByType;
 	_mobiles=[];
-	{if (((CTI_SPECIAL_GEAR in (_x getVariable ["cti_spec",[]])) || (CTI_SPECIAL_AMMOTRUCK in (_x getVariable ["cti_spec",[]])) && (missionNamespace getvariable "CTI_GAMEPLAY_REARM_AMMO")>0 || (CTI_SPECIAL_MEDICALVEHICLE in (_x getVariable ["cti_spec",[]])) && (missionNamespace getvariable "CTI_GAMEPLAY_REARM_MED")<= (((CTI_P_SideJoined) call CTI_CO_FNC_GetSideUpgrades) select CTI_UPGRADE_REST) )&& alive _x && (_x getVariable ["cti_occupant",CTI_P_SideJoined])== CTI_P_SideJoined) then {_mobiles set [count _mobiles,_x]};true }count ((CTI_WEST getvariable ["cti_service", []]) + (CTI_EAST getvariable ["cti_service", []]));
+	//{if (((CTI_SPECIAL_GEAR in (_x getVariable ["cti_spec",[]])) || (CTI_SPECIAL_AMMOTRUCK in (_x getVariable ["cti_spec",[]])) && (missionNamespace getvariable "CTI_GAMEPLAY_REARM_AMMO")>0 || (CTI_SPECIAL_MEDICALVEHICLE in (_x getVariable ["cti_spec",[]])) && (missionNamespace getvariable "CTI_GAMEPLAY_REARM_MED")<= (((CTI_P_SideJoined) call CTI_CO_FNC_GetSideUpgrades) select CTI_UPGRADE_REST) )&& alive _x && (_x getVariable ["cti_occupant",CTI_P_SideJoined])== CTI_P_SideJoined) then {_mobiles set [count _mobiles,_x]};true }count ((CTI_WEST getvariable ["cti_service", []]) + (CTI_EAST getvariable ["cti_service", []]));
 	_candidates=[];
 	{_candidates = _candidates +(nearestObjects [_x,["Car_F","Tank","CAManBase","Air","Ship","ReammoBox_F"],CTI_BASE_GEAR_RANGE] );true}count (_static+_mobiles+_fobs);
 	_real_candidates=[];
