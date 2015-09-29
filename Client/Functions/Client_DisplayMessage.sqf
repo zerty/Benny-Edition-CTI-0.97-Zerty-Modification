@@ -72,7 +72,7 @@ switch (_message_var) do {
 	};
 	case "salvage-by": {
 		_var = missionNamespace getVariable (_parameters select 0);
-		HUD_NOTIFICATIONS pushBack [ format ["Salvage reward %1: $%2 " _var select CTI_UNIT_LABEL, _parameters select 1],time+40,"00bb00"];
+		HUD_NOTIFICATIONS pushBack [ format ["Salvage reward %1: $%2 ", _var select CTI_UNIT_LABEL, _parameters select 1],time+40,"00bb00"];
 	};
 	case "spot-base": {(_parameters select 0) sideChat format ["Enemy structure found near %1", mapGridPosition(_parameters select 1)]};
 	case "spot-unit": {(_parameters select 0) sideChat format ["Enemy presence spotted near %1", mapGridPosition(_parameters select 1)]};
@@ -101,4 +101,5 @@ switch (_message_var) do {
 	case "take_com": {HUD_NOTIFICATIONS pushBack [ format ["Player %1 has taken command. ", _parameters select 0],time+20,"ffffff"];};
 	case "leave_com": {HUD_NOTIFICATIONS pushBack [ format ["Player %1 has left command. ", _parameters select 0],time+20,"ffffff"];};
 	case "eject_com": {HUD_NOTIFICATIONS pushBack [ format ["Player %1 has been relieved of Command.", _parameters select 0],time+20,"ffffff"];};
+	case "player_joined": {HUD_NOTIFICATIONS pushBack [ format ["Player %1 joined %2.", _parameters select 0, _parameters select 1],time+30,"ffffff"];};
 };
