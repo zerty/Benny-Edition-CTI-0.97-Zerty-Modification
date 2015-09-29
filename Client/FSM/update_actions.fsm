@@ -12,7 +12,7 @@ link2[] = {2,1};
 link3[] = {2,4};
 link4[] = {4,3};
 globals[] = {25.000000,1,0,0,0,640,480,1,133,6316128,1,-355.061859,258.323914,98.173157,-593.751160,781,881,1};
-window[] = {2,-1,-1,-1,-1,831,50,1305,50,3,799};
+window[] = {2,-1,-1,-1,-1,856,75,1330,75,3,799};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -62,7 +62,6 @@ class FSM
        "_barracks = [CTI_BARRACKS, player, _structures, CTI_BASE_PURCHASE_UNITS_RANGE_EFFECTIVE] call CTI_CO_FNC_GetClosestStructure;" \n
        "CTI_Base_BarracksInRange = if !(isNull _barracks) then {true} else {false};" \n
        "CTI_Base_GearInRange = if (_barracks distance player < CTI_BASE_GEAR_RANGE) then {true} else {false};" \n
-       "CTI_Base_GearInRange_Mobile = if (count([player, CTI_SPECIAL_AMMOTRUCK, CTI_SERVICE_AMMO_TRUCK_RANGE] call CTI_CO_FNC_GetNearestSpecialVehicles)  + count([player, CTI_SPECIAL_MEDICALVEHICLE, CTI_SERVICE_AMMO_TRUCK_RANGE] call CTI_CO_FNC_GetNearestSpecialVehicles)  > 0) then {true} else {false};" \n
        "" \n
        "CTI_Base_LightInRange = if !(isNull ([CTI_LIGHT, player, _structures, CTI_BASE_PURCHASE_UNITS_RANGE_EFFECTIVE] call CTI_CO_FNC_GetClosestStructure)) then {true} else {false};" \n
        "CTI_Base_HeavyInRange = if !(isNull ([CTI_HEAVY, player, _structures, CTI_BASE_PURCHASE_UNITS_RANGE_EFFECTIVE] call CTI_CO_FNC_GetClosestStructure)) then {true} else {false};" \n
