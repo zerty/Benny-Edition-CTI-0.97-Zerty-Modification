@@ -1,5 +1,4 @@
 AN_Check_Connection=compile preprocessfilelinenumbers "Addons\Strat_mode\AdvNet\AN_CheckConn.sqf";
-AN_Disconnect=compile preprocessfilelinenumbers "Addons\Strat_mode\AdvNet\AN_Disconnect.sqf";
 AN_Reconfigure=compile preprocessfilelinenumbers "Addons\Strat_mode\AdvNet\AN_Reconfigure.sqf";
 AN_Launch=compile preprocessfilelinenumbers "Addons\Strat_mode\AdvNet\AN_Launch.sqf";
 AN_Update_Connection=compile preprocessfilelinenumbers "Addons\Strat_mode\AdvNet\AN_Update_Connection.sqf";
