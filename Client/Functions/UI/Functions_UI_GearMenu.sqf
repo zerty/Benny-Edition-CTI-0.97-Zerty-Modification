@@ -498,6 +498,7 @@ CTI_UI_Gear_AddContainerItem = {
 			lnbSetPicture [70109, [_row, 0], getText(configFile >> _config >> _item >> 'picture')];
 			lnbSetData [70109, [_row, 0], _item];
 			lnbSetValue [70109, [_row, 0], 1];
+			lnbSetPictureColor [70109, [_row, 0], [1, 1, 1, 1]];
 		};
 	};
 };
