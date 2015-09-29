@@ -47,7 +47,7 @@ switch (_message_var) do {
 	case "commander-disconnected": {HUD_NOTIFICATIONS pushBack ["The current commander has left the game",time+20,"ffffff"]};
 	case "hq-destroyed": {HUD_NOTIFICATIONS pushBack ["The HQ has been destroyed!",time+120,"ffff00"]};
 	case "hq-repair": {HUD_NOTIFICATIONS pushBack ["The HQ has been repaired",time+120,"ffff00"]};
-	case "funds-transfer": {HUD_NOTIFICATIONS pushBack [ format ["Got Tranfert from %2:  $%1", _parameters select 0, (name leader (_parameters select 1)) ],time+90,"00bb00"]};
+	case "funds-transfer": {HUD_NOTIFICATIONS pushBack [ format ["Got Tranfer from %2:  $%1", _parameters select 0, (name leader (_parameters select 1)) ],time+90,"00bb00"]};
 	case "order-taketowns": {_parameters sideChat "Acknowledged.  Advancing on neutral or enemy towns"};
 	case "order-takeholdtowns": {_parameters sideChat "Acknowledged.  Advancing on neutral or enemy towns with guard duty"};
 	case "order-holdtowns": {_parameters sideChat "Acknowledged.  Proceeding to nearest base or friendly town for guard duty"};
