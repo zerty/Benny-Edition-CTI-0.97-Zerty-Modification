@@ -19,7 +19,6 @@ switch (_action) do {
 			if (count _possible == 0) then {((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl 70403) ctrlEnable false} else {((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl 70403) ctrlEnable true};
 			((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl 70201) lbSetCurSel _id;
 		} else {
-			hint format ["%1", _target];
 			_possible=[_target];
 			{
 				if (_x isKindOf "Man") then {
