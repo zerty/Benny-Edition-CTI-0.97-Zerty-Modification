@@ -12,7 +12,7 @@ link2[] = {2,1};
 link3[] = {2,4};
 link4[] = {4,3};
 globals[] = {25.000000,1,0,0,0,640,480,1,133,6316128,1,-422.283691,326.652069,345.310455,-698.696411,632,881,1};
-window[] = {2,-1,-1,-1,-1,712,100,1136,100,3,650};
+window[] = {2,-1,-1,-1,-1,762,150,1186,150,3,650};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -99,7 +99,7 @@ class FSM
        "	if (CTI_P_SideID == _sideID) then {" \n
        "			if (markerColor _marker_area != CTI_P_SideColor) then { _marker_area setMarkerColorLocal CTI_P_SideColor };" \n
        "			if  !(  CTI_P_SideJoined  == resistance) then {" \n
-       "				if (CTI_Base_HaloInRange ) then {" \n
+       "				if (CTI_Base_HaloInRange && missionamespace getvariable [""CTI_Selecting_Halo"", false] ) then {" \n
        "					 if (markerAlpha _marker_area_halo != 1) then { _marker_area_halo setMarkerAlphaLocal 1 };" \n
        "				} else {" \n
        "					if (markerAlpha _marker_area_halo != 0) then { _marker_area_halo setMarkerAlphaLocal 0 };" \n

@@ -14,6 +14,7 @@ waitUntil { !isNull player };
 _funds = [group player, CTI_P_SideJoined] call CTI_CO_FNC_GetFunds;
 if (_funds < 500) exitWith {hintsilent "Not enougth funds"; sleep 1 ; hintsilent ""};
 
+CTI_Selecting_Halo=true;
 _position = GetPos player;
 _z = _position select 2;
 Altitude = CTI_HALO_ALTITUDE;
@@ -28,9 +29,11 @@ onMapSingleClick 'ATM_Jump_clickpos = _pos; _ct =[ATM_Jump_clickpos, CTI_P_SideJ
 //onMapSingleClick 'ATM_Jump_clickpos = _pos; ATM_Jump_mapclick = true; onMapSingleClick ""; true;';
 
 waitUntil {ATM_Jump_mapclick or !(visiblemap)};
+CTI_Selecting_Halo=false;
 if (!visibleMap) exitwith {
 	systemChat "Halo jump canceled.";
 	hintsilent "";
+
 	breakOut "main";
 };
 [group player, CTI_P_SideJoined, - 500] call CTI_CO_FNC_ChangeFunds;
