@@ -18,8 +18,8 @@ SM_Ask_Priority={
 			breakOut "main";
 		};
 		_sl =(CTI_P_SideJoined)  call CTI_CO_FNC_GetSideLogic;
-		[["CLIENT",CTI_P_SideJoined],"SM_message",format ["Next Priority Town is %1 ",(temp_Ask_Town getVariable "cti_town_name")]] call CTI_CO_FNC_NetSend ;
-		CTI_P_ChatID commandChat format  ["Next Priority Town is %1 ",(temp_Ask_Town getVariable "cti_town_name")];
+		[["CLIENT",CTI_P_SideJoined],"SM_message",format ["Next Priority Town is %1 ",(temp_Ask_Town getVariable "cti_town_name")],true] call CTI_CO_FNC_NetSend ;
+
 		openMap false;
 		hint parseText format ["Next Priority Town is <t  color='#2394ef'>%1</t>",(temp_Ask_Town getVariable "cti_town_name")];
 		_sl setVariable ["CTI_PRIORITY",temp_Ask_Town,true];
@@ -43,8 +43,8 @@ SM_Disactivate_Town={
 		};
 		_sl setVariable ["CTI_PREVENT",temp_Ask_Town,true];
 		if (temp_Ask_Town == (_sl getVariable "CTI_PRIORITY")) then {_sl setVariable ["CTI_PRIORITY",objNull,true];};
-		CTI_P_ChatID commandChat format ["Commander is disactivating %1",(temp_Ask_Town getVariable "cti_town_name")];
+
 		openMap false;
-		[["CLIENT",CTI_P_SideJoined],"SM_message",format ["Commander is disactivating %1",(temp_Ask_Town getVariable "cti_town_name")]] call CTI_CO_FNC_NetSend ;
+		[["CLIENT",CTI_P_SideJoined],"SM_message",format ["Commander is disactivating %1",(temp_Ask_Town getVariable "cti_town_name")],true] call CTI_CO_FNC_NetSend ;
 		SM_Last_dis=time;
 };

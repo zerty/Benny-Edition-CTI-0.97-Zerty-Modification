@@ -31,6 +31,7 @@ class RscTitles{
 					colorBar[] = {1,1,1,1};
 					texture = "#(argb,8,8,3)color(1,1,1,1)";
 			};
+
 			class controls {
 
 
@@ -86,7 +87,28 @@ class RscTitles{
 					text = "";
 					colorText[]={1,1,1,1};
 				};
-
+				class HUD_N_Background : RscText {
+					idc= HUD_IDC+7;
+					x = 0.01 * safezoneW + safezoneX;
+					y = 0.4* safezoneH + safezoneY;
+					w = 0.002 * safezoneW;
+					h = 0.3 * safezoneH;
+					colorBackground[] = {0, 0, 0,0.7};
+				};
+				class HUD_N : RscStructuredText {
+					idc= HUD_IDC+8;
+					x = 0.015 * safezoneW + safezoneX;
+					y = 0.4* safezoneH + safezoneY;
+					w = 0.3 * safezoneW;
+					h = 0.3 * safezoneH;
+					colorBackground[] = {0, 0, 0,0};
+					class Attributes {
+						font = "PuristaLight";
+						color = "#ffffff";
+						align = "left";
+						shadow = 1;
+					};
+				};
 				class IconTown: RscText {
 					idc=-1;
 					colorText[]={1,1,1,1};
@@ -102,6 +124,7 @@ class RscTitles{
 					colorBackground[] = {0,0,0,0};
 					colorText[] = {1,1,1,1};
 				};
+
 				class IconTown0: IconTown {idc=HUD_IDC+400+0; };
 				class LineTown0: LineTown {idc=HUD_IDC+500+0; };
 				class IconTown1: IconTown {idc=HUD_IDC+400+1; };

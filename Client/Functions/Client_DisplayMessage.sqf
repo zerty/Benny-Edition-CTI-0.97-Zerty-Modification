@@ -39,15 +39,15 @@ _message_var = _this select 0;
 _parameters = if (count _this > 1) then {_this select 1} else {[]};
 
 switch (_message_var) do {
-	case "award-bounty": {player groupChat format ["$%1 awarded for the neutralization of a %2", _parameters select 0, _parameters select 1]};
+	case "award-bounty": {HUD_NOTIFICATIONS pushBack [format ["Kill reward  %2: $%1", _parameters select 0, _parameters select 1],time+20,"00bb00"]};
 	case "build-by": {
 		_var = missionNamespace getVariable format ["CTI_%1_%2", CTI_P_SideJoined, _parameters select 1];
 		(_parameters select 0) groupChat format ["Constructing %1... %2%3", (_var select 0) select 1, _parameters select 2, "%"];
 	};
-	case "commander-disconnected": {CTI_P_ChatID sideChat "The current commander has left the game"};
-	case "hq-destroyed": {CTI_P_ChatID commandChat "The HQ has been destroyed!"};
-	case "hq-repair": {CTI_P_ChatID commandChat "The HQ has been repaired"};
-	case "funds-transfer": {player groupChat format ["%2 :: %3 has transfered you $%1", _parameters select 0, (_parameters select 1) getVariable ["cti_alias",CTI_PLAYER_DEFAULT_ALIAS], (name leader (_parameters select 1)) ]};
+	case "commander-disconnected": {HUD_NOTIFICATIONS pushBack ["The current commander has left the game",time+20,"ffffff"]};
+	case "hq-destroyed": {HUD_NOTIFICATIONS pushBack ["The HQ has been destroyed!",time+120,"ffff00"]};
+	case "hq-repair": {HUD_NOTIFICATIONS pushBack ["The HQ has been repaired",time+120,"ffff00"]};
+	case "funds-transfer": {HUD_NOTIFICATIONS pushBack [ format ["Got Tranfert from %2:  $%1", _parameters select 0, (name leader (_parameters select 1)) ],time+90,"00bb00"]};
 	case "order-taketowns": {_parameters sideChat "Acknowledged.  Advancing on neutral or enemy towns"};
 	case "order-takeholdtowns": {_parameters sideChat "Acknowledged.  Advancing on neutral or enemy towns with guard duty"};
 	case "order-holdtowns": {_parameters sideChat "Acknowledged.  Proceeding to nearest base or friendly town for guard duty"};
@@ -78,27 +78,27 @@ switch (_message_var) do {
 	case "spot-unit": {(_parameters select 0) sideChat format ["Enemy presence spotted near %1", mapGridPosition(_parameters select 1)]};
 	case "structure-preplaced": {
 		_var = missionNamespace getVariable (_parameters select 0);
-		CTI_P_ChatID commandChat format ["%1 is ready for construction at grid %2", (_var select 0) select 1, mapGridPosition (_parameters select 1)];
+		HUD_NOTIFICATIONS pushBack [format ["(%2) %1 ready for construction.", (_var select 0) select 1, mapGridPosition (_parameters select 1)],time+20,"ffffff"];
 	};
 	case "structure-attacked": {
 		_var = missionNamespace getVariable (_parameters select 0);
-		CTI_P_ChatID commandChat format ["%1 is under attack at grid %2!", (_var select 0) select 1, mapGridPosition (_parameters select 1)];
+		HUD_NOTIFICATIONS pushBack [ format ["(%2) %1  under attack !", (_var select 0) select 1, mapGridPosition (_parameters select 1)],90,"ffff00"];
 	};
 	case "structure-teamkill-attempt": {
 		CTI_P_ChatID commandChat format ["Player %1 from group %2 tried to place an explosive near a friendly %3! (the explosive was removed)", _parameters select 0, _parameters select 1, _parameters select 2];
 	};
-	case "teamkill": {CTI_P_ChatID sideChat "Watch your fire! you're shooting on friendly!"};
-	case "teamswap": {CTI_P_ChatID commandChat format ["Player %1 has been sent back to the lobby after teamswaping", _parameters]};
-	case "town-capture": {player groupChat format ["$%1 awarded for the capture of %2", _parameters select 1, (_parameters select 0) getVariable "cti_town_name"]};
-	case "town-hostilenear": {CTI_P_ChatID commandChat format ["Hostile detected near %1", _parameters getVariable "cti_town_name"]};
+	case "teamkill": {HUD_NOTIFICATIONS pushBack ["Watch your fire! you're shooting on friendly!",time+7,"ff0000"];};
+	case "teamswap": {HUD_NOTIFICATIONS pushBack [format ["Player %1 Sent back to the lobby for Teamswaping", _parameters],time+7,"ffffff"];};
+	case "town-capture": {HUD_NOTIFICATIONS pushBack ["Capt. reward for %2: $%1" , _parameters select 1, (_parameters select 0) getVariable "cti_town_name"],time+90,"00bb00"]};
+	case "town-hostilenear": {HUD_NOTIFICATIONS pushBack [ format ["Hostile detected near %1!", _parameters getVariable "cti_town_name"],90,"ffff00"]};
 	case "upgrade-ended": {
 		CTI_P_ChatID commandChat format ["%1 has been upgraded to level %2", ((missionNamespace getVariable format["CTI_%1_UPGRADES_LABELS", CTI_P_SideJoined]) select (_parameters select 0)) select 0, (_parameters select 1)];
 	};
-	case "jailed": {CTI_P_ChatID commandChat format ["::JAIL:: Player %1 has been jailed for %2 minutes! ", _parameters select 0, _parameters select 1];};
+	case "jailed": {HUD_NOTIFICATIONS pushBack [ format ["Player %1 Jailed for %2 minutes! ", _parameters select 0, _parameters select 1],time+20,"ffffff"];};
 	case "town_award": {
-		CTI_P_ChatID commandChat  format ["$%1 awarded for the capture of %2",_parameters select 0, _parameters select 1];
+		HUD_NOTIFICATIONS pushBack [ format ["Capt. reward for %2: $%1",_parameters select 0, _parameters select 1],time+90,"00bb00"];
 	};
-	case "take_com": {CTI_P_ChatID commandChat format ["::Commander:: Player %1 has taken command of your side. ", _parameters select 0];};
-	case "leave_com": {CTI_P_ChatID commandChat format ["::Commander:: Player %1 has left command of your side. ", _parameters select 0];};
-	case "eject_com": {CTI_P_ChatID commandChat format ["::Commander:: Player %1 has been relieved of Command. ", _parameters select 0];};
+	case "take_com": {HUD_NOTIFICATIONS pushBack [ format ["Player %1 has taken command. ", _parameters select 0],time+20,"ffffff"];};
+	case "leave_com": {HUD_NOTIFICATIONS pushBack [ format ["Player %1 has left command. ", _parameters select 0],time+20,"ffffff"];};
+	case "eject_com": {HUD_NOTIFICATIONS pushBack [ format ["Player %1 has been relieved of Command.", _parameters select 0],time+20,"ffffff"];};
 };
