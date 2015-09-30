@@ -17,7 +17,7 @@ _ug=units player;
 // player group
 {
 	_object = _x;
-	if (vehicle _x != vehicle player) then{
+	if (vehicle _x != vehicle player && vehicle player != player) then{
 		_texture= format ["a3\ui_f\data\map\Markers\NATO\%1inf",CTI_P_MarkerPrefix];
 		_color = [1,1,0,1];
 		if (! alive _object) then {_color = [0,0,0,1];};
