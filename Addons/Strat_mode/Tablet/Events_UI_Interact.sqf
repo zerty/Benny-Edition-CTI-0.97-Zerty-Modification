@@ -545,7 +545,9 @@ switch (_action) do {
 	case "OnUnits": {
 		closedialog 0;
 		//uiNamespace setVariable ['cti_dialog_ui_purchasemenu',objnull];
-		[_target] execVM "Client\Actions\Action_UseNearestFactory.sqf";
+		if (!CTI_P_PreBuilding &&(Client_AN_Connected && (CTI_Base_BarracksInRange || CTI_Base_LightInRange || CTI_Base_HeavyInRange || CTI_Base_AirInRange || CTI_Base_AmmoInRange || CTI_Base_RepairInRange || CTI_Base_NavalInRange )) ||  CTI_Town_InRange) then {
+			[_target] execVM "Client\Actions\Action_UseNearestFactory.sqf";
+		};
 	};
 	case "OnPara": {
 		closedialog 0;

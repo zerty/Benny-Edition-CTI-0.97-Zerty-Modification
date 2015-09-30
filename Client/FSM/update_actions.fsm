@@ -12,7 +12,7 @@ link2[] = {2,1};
 link3[] = {2,4};
 link4[] = {4,3};
 globals[] = {25.000000,1,0,0,0,640,480,1,133,6316128,1,-355.061859,258.323914,98.173157,-593.751160,781,881,1};
-window[] = {2,-1,-1,-1,-1,856,75,1330,75,3,799};
+window[] = {2,-1,-1,-1,-1,906,125,1380,125,3,799};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -79,7 +79,7 @@ class FSM
        "*/" \n
        "// --- Zerty Was here" \n
        "_ctown = [player , CTI_P_SideJoined] call CTI_CO_FNC_GetClosestFriendlyTown;" \n
-       "CTI_Town_InRange = if ((player distance _ctown) < CTI_BASE_PURCHASE_UNITS_RANGE_EFFECTIVE ) then {true} else {false};" \n
+       "CTI_Town_InRange = if ((player distance _ctown) < CTI_TOWNS_CAPTURE_RANGE ) then {true} else {false};" \n
        "CTI_Base_HaloInRange = if !(isNull ([CTI_AIR, player, _structures,300] call CTI_CO_FNC_GetClosestStructure)) then {true} else {false};" \n
        "" \n
        "CTI_Base_RealRepairInRange = if !(isNull ([CTI_REPAIR, player, _structures, 250] call CTI_CO_FNC_GetClosestStructure)) then {true} else {false};" \n

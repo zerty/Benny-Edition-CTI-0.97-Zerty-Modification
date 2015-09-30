@@ -21,9 +21,10 @@ CTI_UI_Purchase_GetFirstAvailableFactories = {
 
 	_structures = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideStructures;
 	_towns = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideTowns;
-	_factories = [CTI_BARRACKS, CTI_LIGHT, CTI_HEAVY, CTI_AIR, CTI_REPAIR, CTI_AMMO, CTI_NAVAL,CTI_FTOWN];
+	_factories = [CTI_BARRACKS, CTI_LIGHT, CTI_HEAVY, CTI_AIR, CTI_REPAIR, CTI_AMMO, CTI_NAVAL];
 	_availables = [];
-	{_availables = _availables + ([_x, _structures+_towns, player, CTI_BASE_PURCHASE_UNITS_RANGE_EFFECTIVE] call CTI_CO_FNC_GetSideStructuresByType)} forEach _factories;
+	{_availables = _availables + ([_x, _structures, player, CTI_BASE_PURCHASE_UNITS_RANGE_EFFECTIVE] call CTI_CO_FNC_GetSideStructuresByType)} forEach _factories;
+	_availables = _availables + ([CTI_FTOWN, _towns, player, CTI_TOWNS_CAPTURE_RANGE] call CTI_CO_FNC_GetSideStructuresByType);
 
 	if (count _availables > 0) then {
 		_fetched = [player, _availables] call CTI_CO_FNC_GetClosestEntity;
@@ -196,8 +197,11 @@ CTI_UI_Purchase_LoadFactories = {
 
 	_structures = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideStructures;
 	_towns= (CTI_P_SideJoined) call CTI_CO_FNC_GetSideTowns;
-	_fetched = [_type, _structures+_towns, player, CTI_BASE_PURCHASE_UNITS_RANGE_EFFECTIVE] call CTI_CO_FNC_GetSideStructuresByType;
-
+	if (_type != CTI_FTOWN ) then{
+		_fetched = [_type, _structures, player, CTI_BASE_PURCHASE_UNITS_RANGE_EFFECTIVE] call CTI_CO_FNC_GetSideStructuresByType;
+	}else {
+		_fetched = [_type, _towns, player, CTI_TOWNS_CAPTURE_RANGE] call CTI_CO_FNC_GetSideStructuresByType;
+	};
 	_var = missionNamespace getVariable [format ["CTI_%1_%2", CTI_P_SideJoined, _type],[[0,"Town"]]];
 	_structure_text = (_var select 0) select 1;
 

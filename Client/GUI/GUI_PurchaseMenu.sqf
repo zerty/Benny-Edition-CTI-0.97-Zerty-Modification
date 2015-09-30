@@ -6,7 +6,11 @@ _lb_queued_content = [];
 // ((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 110901) ctrlSetStructuredText parseText "<t>Producing: Soldier</t>";
 while { true } do {
 	if (isNil {uiNamespace getVariable "cti_dialog_ui_purchasemenu"}) exitWith {}; //--- Menu is closed.
-
+	if (Client_AN_Connected) then {
+		for "_i" from 110000 to 110007 /* step +1 */ do { ((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl _i) ctrlEnable true};
+	}else{
+		for "_i" from 110000 to 110007 /* step +1 */ do { ((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl _i) ctrlEnable false};
+	};
 	_factory = uiNamespace getVariable "cti_dialog_ui_purchasemenu_factory";
 	if !(isNil '_factory') then {
 		_in_use = _factory getVariable "cti_inuse";
