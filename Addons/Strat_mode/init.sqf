@@ -161,7 +161,7 @@ if (CTI_IsClient) then {
 	//PFV
 	with missionNamespace do {
 		//print a message
-		CTI_PVF_SM_message={ CTI_P_ChatID commandChat format ["Strat Mode : %1 ",_this] };
+		CTI_PVF_SM_message={ HUD_NOTIFICATIONS pushBack [format ["Strat: %1 ",_this],time+10000,"ffffff"] };
 
 
 		// Connect Marker 2 positions (POs1,POs2, color, offset)

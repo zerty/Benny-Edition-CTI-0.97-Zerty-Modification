@@ -43,12 +43,12 @@ _side_new = (_sideID_new) call CTI_CO_FNC_GetSideFromID;
 if ((CTI_P_SideJoined == resistance)&& _side_new == CTI_P_SideJoined) exitWith {CTI_P_ChatID commandChat format["%1 has been captured!", _town getVariable "cti_town_name"];};
 if (_side_new == CTI_P_SideJoined) then { //--- The player's side has captured it
 	//todo move to displaymessage
-	CTI_P_ChatID commandChat format["%1 has been captured!", _town getVariable "cti_town_name"];
+	HUD_NOTIFICATIONS pushBack [ format["%1 has been captured!", _town getVariable "cti_town_name"],time+180000,"ffffff"];
 
 } else { //--- The player's side has lost it
 	//todo move to displaymessage
 
-	if !(CTI_P_SideJoined == resistance) then{ CTI_P_ChatID commandChat format["%1 has been lost!", _town getVariable "cti_town_name"]};
+	if !(CTI_P_SideJoined == resistance) then{ HUD_NOTIFICATIONS pushBack [ format["%1 has been lost!", _town getVariable "cti_town_name"],time+18000,"ffff00"]};
 };
 
 //--- Paint it

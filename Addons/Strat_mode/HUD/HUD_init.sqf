@@ -2,6 +2,23 @@
 #define HUD_IDC 1500000
 #define	HUD_TOWN_MAX	20
 
+
+HUD_GetRevives=compile preprocessfilelinenumbers "Addons\Strat_mode\HUD\HUD_GetRevive.sqf";
+HUD_ShowRevives=compile preprocessfilelinenumbers "Addons\Strat_mode\HUD\HUD_ShowRevive.sqf";
+HUD_GetTowns=compile preprocessfilelinenumbers "Addons\Strat_mode\HUD\HUD_GetTowns.sqf";
+HUD_ShowTowns=compile preprocessfilelinenumbers "Addons\Strat_mode\HUD\HUD_ShowTowns.sqf";
+HUD_GetTargets=compile preprocessfilelinenumbers "Addons\Strat_mode\HUD\HUD_GetTargets.sqf";
+HUD_ShowTargets=compile preprocessfilelinenumbers "Addons\Strat_mode\HUD\HUD_ShowTargets.sqf";
+HUD_ShowNotifications=compile preprocessfilelinenumbers "Addons\Strat_mode\HUD\HUD_ShowNotifications.sqf";
+HUD_UpdateInfo=compile preprocessfilelinenumbers "Addons\Strat_mode\HUD\HUD_UpdateInfo.sqf";
+HUD_UpdateVehicle=compile preprocessfilelinenumbers "Addons\Strat_mode\HUD\HUD_UpdateVehicle.sqf";
+
+
+
+
+
+
+
 HUD_Normal=true;
 HUD_Tactical=false;
 HUD_Tactical_Allies=false;
@@ -15,6 +32,8 @@ HUD_T_OBJ=[];
 HUD_Targets=[];
 HUD_Towns=[];
 HUD_Revives=[];
+
+HUD_NOTIFICATIONS=[];
 
 
 waitUntil {!(isNull player)};

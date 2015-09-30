@@ -7,20 +7,20 @@
 	Author: 		Benny
 	Creation Date:	19-09-2013
 	Revision Date:	14-10-2013
-	
+
   # PARAMETERS #
     0	[Object]: The structure
     1	[String]: The structure variable name
-	
+
   # RETURNED VALUE #
 	None
-	
+
   # SYNTAX #
 	[STRUCTURE, VARIABLE] call CTI_CL_FNC_OnStructureConstructed
-	
+
   # DEPENDENCIES #
 	Common Function: CTI_CO_FNC_NetSend
-	
+
   # EXAMPLE #
 	[_structure, _variable] call CTI_CL_FNC_OnStructureConstructed
 */
@@ -33,7 +33,7 @@ _variable = _this select 1;
 _var = missionNamespace getVariable _variable;
 
 //todo move to displaymessage
-CTI_P_ChatID commandChat format ["%1 is now available at grid %2.", (_var select 0) select 1, mapGridPosition getPos _structure];
+HUD_NOTIFICATIONS pushBack [format ["%1 now available (%2).", (_var select 0) select 1, mapGridPosition getPos _structure],time +180 ,"ffffff",daytime];
 
 //--- Add score for the commander
 if (isNull (CTI_P_SideLogic getVariable "cti_commander")) then {

@@ -8,17 +8,17 @@
 	Author: 		Benny
 	Creation Date:	19-09-2013
 	Revision Date:	19-09-2013
-	
+
   # PARAMETERS #
     0	[Array]: The position of the destroyed structure
     1	[String]: The variable used by the structure
-	
+
   # RETURNED VALUE #
 	None
-	
+
   # SYNTAX #
 	[POSITION, STRUCTURE VARIABLE] call CTI_CL_FNC_OnFriendlyStructureDestroyed
-	
+
   # EXAMPLE #
     [_position, _variable] call CTI_CL_FNC_OnFriendlyStructureDestroyed
 	  -> Update the client purchase queue and display a message
@@ -34,9 +34,9 @@ _var = missionNamespace getVariable _variable;
 
 //todo move to displaymessage
 if !(_sell) then {
-	CTI_P_ChatID commandChat format ["A %1 has been destroyed at grid %2!", (_var select 0) select 1, mapGridPosition _position];
+	HUD_NOTIFICATIONS pushBack [format ["%1 Destroyed (%2)!", (_var select 0) select 1, mapGridPosition _position],time+18000,"ffff00"];
 } else {
-	CTI_P_ChatID commandChat format ["A %1 was sold at grid %2!", (_var select 0) select 1, mapGridPosition _position];
+	HUD_NOTIFICATIONS pushBack [ format ["%1 Sold (%2)!", (_var select 0) select 1, mapGridPosition _position],time+10,"ffffff"];
 };
 
 {

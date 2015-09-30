@@ -116,3 +116,4 @@ _was_jailed = false;
 _get = missionNamespace getVariable format ["CTI_SERVER_CLIENT_ELITE_%1", _uid];
 if !(isNil '_get') then {if (_get select 1 == 1) then {_was_jailed = true}};
 _unit setVariable ["CTI_SERVER_ANWSER",[_teamswap,_teamstack],true];
+["CLIENT", "Client_OnMessageReceived", ["player_joined",[_name,_side]],true] call CTI_CO_FNC_NetSend;
