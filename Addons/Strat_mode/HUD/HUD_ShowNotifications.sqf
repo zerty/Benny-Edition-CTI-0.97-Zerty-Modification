@@ -11,9 +11,9 @@ if (isNil "_hud" || _hud == displayNull) exitWith {false};
 } count HUD_NOTIFICATIONS;
 
 HUD_NOTIFICATIONS= _copy;
-if (count HUD_NOTIFICATIONS >15) then {
+if (count HUD_NOTIFICATIONS >17) then {
 	reverse HUD_NOTIFICATIONS;
-	HUD_NOTIFICATIONS resize 15;
+	HUD_NOTIFICATIONS resize 17;
 	reverse HUD_NOTIFICATIONS;
 };
 _reverse = + HUD_NOTIFICATIONS;
