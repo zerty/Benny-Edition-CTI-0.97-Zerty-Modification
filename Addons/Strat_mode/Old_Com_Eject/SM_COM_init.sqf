@@ -27,6 +27,7 @@ if (CTI_IsServer) then {
 			_side_logic=(_side) call CTI_CO_FNC_GetSideLogic;
 			if ((getPlayerUID _client) in (_side_logic getvariable "CTI_COM_VOTES")) exitwith{false};
 			_side_logic setvariable ["CTI_COM_VOTES",((_side_logic getvariable "CTI_COM_VOTES") + [getPlayerUID _client]),true];
+			[["CLIENT", _side], "Client_OnMessageReceived", ["vote_casted", [name _client]]] call CTI_CO_FNC_NetSend;
 		};
 		CTI_PVF_Server_Com_Leave={
 			diag_log "recieved leave";

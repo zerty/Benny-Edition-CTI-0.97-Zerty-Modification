@@ -11,17 +11,19 @@ while {!CTI_GameOver} do {
 	if (_ratio >= CTI_VOTE_RATIO  || (count units (_side_logic getvariable "cti_commander")) == 0) then {
 		_side_logic setvariable ["CTI_COM_VOTES",[],true];
 		_curent_com_gr=_side_logic getvariable  "cti_commander";
-		_curent_com_pl=objnull;
-		{if (isplayer _x) then {_curent_com_pl=_x};true}count (units _curent_com_gr);
+		_curent_com_pl=[];
+		{if (isplayer _x) then {_curent_com_pl pushBack _x};true}count (units _curent_com_gr);
 		if (!isNull _curent_com_gr) then {
-			[_side,true] call CTI_COM_UNSET_SERVER;
-			if (! (isnull _curent_com_pl) && (count units (_side_logic getvariable "cti_commander")) >0) then {
-				_side_logic setvariable ["CTI_COM_BLACKLIST",(_side_logic getvariable ["CTI_COM_BLACKLIST",[]])+[getPlayerUID _curent_com_pl],true];
-				[_side_logic, (getPlayerUID _curent_com_pl)] spawn {
+			if (count _curent_com_pl > 0 ) then {
+				_uids=[];
+				{_uids pushBack (getPlayerUID _x);true } count _curent_com_pl;
+				_side_logic setvariable ["CTI_COM_BLACKLIST",(_side_logic getvariable ["CTI_COM_BLACKLIST",[]])+_uids,true];
+				[_side_logic, _uids] spawn {
 					sleep 600;
-					(_this select 0 ) setvariable ["CTI_COM_BLACKLIST",((_this select 0) getvariable ["CTI_COM_BLACKLIST",[]])-[_this select 1],true];
+					(_this select 0 ) setvariable ["CTI_COM_BLACKLIST",((_this select 0) getvariable ["CTI_COM_BLACKLIST",[]])-(_this select 1),true];
 				};
 			};
+			[_side,true] call CTI_COM_UNSET_SERVER;
 		};
 		_side_logic setvariable ["CTI_COM_VOTES",[],true];
 	};

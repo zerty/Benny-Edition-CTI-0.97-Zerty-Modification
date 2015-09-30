@@ -105,4 +105,5 @@ switch (_message_var) do {
 	case "leave_com": {HUD_NOTIFICATIONS pushBack [ format ["Player %1 has left command. ", _parameters select 0],time+60000,"ffffff"];};
 	case "eject_com": {HUD_NOTIFICATIONS pushBack [ format ["Player %1 has been relieved of Command.", _parameters select 0],time+60000,"ffff00"];};
 	case "player_joined": {HUD_NOTIFICATIONS pushBack [ format ["Player %1 joined %2.", _parameters select 0, _parameters select 1],time+1800,"ffffff"];};
+	case "vote_casted": {HUD_NOTIFICATIONS pushBack [ format ["Vote against Com. from Player %1 ", _parameters select 0],time+60000,"ffff00"];};
 };
