@@ -570,7 +570,7 @@ switch (_action) do {
 		createDialog "CTI_RscGearMenu";
 	};
 	case "OnGearM": {
-		if ((time-(_target getvariable ["CTI_last_purchase_time",-10000])) >= CTI_GEAR_MOBILE_COOLOFF) exitWith {false};
+		if ((time-(_target getvariable ["CTI_last_purchase_time",-10000])) < CTI_GEAR_MOBILE_COOLOFF) exitWith {false};
 		closedialog 0;
 		disableserialization;
 		uiNamespace setVariable ['GEAR_TARG',_target];
