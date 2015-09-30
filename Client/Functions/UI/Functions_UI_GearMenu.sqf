@@ -73,7 +73,9 @@ CTI_UI_Gear_DisplayInventory = {
 	{
 		if (_x select 0 != "") then {
 			_config_base = (_x select 0) call CTI_UI_Gear_GetItemBaseConfig;
-			((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl 70001+_forEachIndex) ctrlSetText getText(configFile >> _config_base >> _x select 0 >> 'picture');
+			_picture = getText(configFile >> _config_base >> _x select 0 >> 'picture');
+			if (_picture == "pictureThing") then { _picture =""};
+			((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl 70001+_forEachIndex) ctrlSetText _picture;
 			((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl 70001+_forEachIndex) ctrlSetTooltip getText(configFile >> _config_base >> _x select 0 >> 'displayName');
 		} else {
 			((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl 70001+_forEachIndex) ctrlSetText (_default_clothes select _forEachIndex);
