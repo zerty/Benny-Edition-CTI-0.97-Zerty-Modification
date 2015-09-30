@@ -92,14 +92,17 @@ switch (_message_var) do {
 	case "town-capture": {HUD_NOTIFICATIONS pushBack [ format ["Capt. reward for %2: $%1" , _parameters select 1, (_parameters select 0) getVariable "cti_town_name"],time+90,"00bb00"]};
 	case "town-hostilenear": {HUD_NOTIFICATIONS pushBack [ format ["Hostile detected near %1!", _parameters getVariable "cti_town_name"],180,"ffff00"]};
 	case "upgrade-ended": {
-		HUD_NOTIFICATIONS pushBack [ format ["%1 has been upgraded to level %2", ((missionNamespace getVariable format["CTI_%1_UPGRADES_LABELS", CTI_P_SideJoined]) select (_parameters select 0)) select 0, (_parameters select 1)],120,"ffffff"];
+		HUD_NOTIFICATIONS pushBack [ format ["Up. %1 completed to lvl %2", ((missionNamespace getVariable format["CTI_%1_UPGRADES_LABELS", CTI_P_SideJoined]) select (_parameters select 0)) select 0, (_parameters select 1)],time + 120000,"ffffff"];
+	};
+	case "upgrade-started": {
+		HUD_NOTIFICATIONS pushBack [ format ["Up. %1 started to lvl %2", ((missionNamespace getVariable format["CTI_%1_UPGRADES_LABELS", CTI_P_SideJoined]) select (_parameters select 0)) select 0, (_parameters select 1)],time + 120000,"ffffff"];
 	};
 	case "jailed": {HUD_NOTIFICATIONS pushBack [ format ["Player %1 Jailed for %2 minutes! ", _parameters select 0, _parameters select 1],time+20,"ffffff"];};
 	case "town_award": {
 		HUD_NOTIFICATIONS pushBack [ format ["Capt. reward for %2: $%1",_parameters select 0, _parameters select 1],time+90,"00bb00"];
 	};
-	case "take_com": {HUD_NOTIFICATIONS pushBack [ format ["Player %1 has taken command. ", _parameters select 0],time+60,"ffffff"];};
-	case "leave_com": {HUD_NOTIFICATIONS pushBack [ format ["Player %1 has left command. ", _parameters select 0],time+60,"ffffff"];};
-	case "eject_com": {HUD_NOTIFICATIONS pushBack [ format ["Player %1 has been relieved of Command.", _parameters select 0],time+60,"ffffff"];};
+	case "take_com": {HUD_NOTIFICATIONS pushBack [ format ["Player %1 has taken command. ", _parameters select 0],time+60000,"ffffff"];};
+	case "leave_com": {HUD_NOTIFICATIONS pushBack [ format ["Player %1 has left command. ", _parameters select 0],time+60000,"ffffff"];};
+	case "eject_com": {HUD_NOTIFICATIONS pushBack [ format ["Player %1 has been relieved of Command.", _parameters select 0],time+60000,"ffff00"];};
 	case "player_joined": {HUD_NOTIFICATIONS pushBack [ format ["Player %1 joined %2.", _parameters select 0, _parameters select 1],time+1800,"ffffff"];};
 };

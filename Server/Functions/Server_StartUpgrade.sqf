@@ -40,7 +40,7 @@ _upgrades = (_side) call CTI_CO_FNC_GetSideUpgrades;
 
 _upgrade_time = ((missionNamespace getVariable Format["CTI_%1_UPGRADES_TIMES", _side]) select _upgrade) select _level;
 if (CTI_DEBUG) then {_upgrade_time =0};
-
+[["CLIENT", _side], "Client_OnMessageReceived", ["upgrade-started", [_upgrade, _level+1]]] call CTI_CO_FNC_NetSend;
 if ((_logic getVariable ["cti_upgrade_lt",-1]) <0) then {_logic setVariable ["cti_upgrade_lt",_upgrade_time,true];};
 _logic  setVariable ["cti_upgrade", _upgrade,true];
 _logic  setVariable ["cti_upgrade_level", _level];
