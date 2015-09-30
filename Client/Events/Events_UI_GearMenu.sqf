@@ -76,7 +76,7 @@ switch (_action) do {
 		(uiNamespace getVariable "cti_dialog_ui_gear_shop_tab") call CTI_UI_Gear_DisplayShoppingItems;
 
 		if (_target isKindOf "Man") then {
-		  	for "_i" from  70000 to 70028  /* step +1 */ do {
+		  	for "_i" from  70000 to 70027  /* step +1 */ do {
 				((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl _i) ctrlshow true;
 			};
 			for "_i" from  77000 to 77027  /* step +1 */ do {
@@ -103,7 +103,7 @@ switch (_action) do {
 		  	//77001-77026
 		  	//77109
 		  	// 70000 - 70027
-		  	for "_i" from  70000 to 70028  /* step +1 */ do {
+		  	for "_i" from  70000 to 70027 /* step +1 */ do {
 				((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl _i) ctrlshow false;
 			};
 			for "_i" from  77000 to 77027  /* step +1 */ do {
