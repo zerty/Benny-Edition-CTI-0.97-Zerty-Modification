@@ -33,7 +33,7 @@ HUD_Targets=[];
 HUD_Towns=[];
 HUD_Revives=[];
 
-HUD_NOTIFICATIONS=[];
+
 
 
 waitUntil {!(isNull player)};

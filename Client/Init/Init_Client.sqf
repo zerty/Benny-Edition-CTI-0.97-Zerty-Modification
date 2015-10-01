@@ -81,6 +81,7 @@ CTI_P_Locks=[];
 CTI_P_Interaction=false;
 CTI_DIALOGS=["cti_dialog_ui_interractions","cti_dialog_ui_tabletmain","cti_dialog_ui_buildmenu","cti_dialog_ui_videosettingsmenu","cti_dialog_ui_transferresourcesmenu","cti_dialog_ui_servicemenu","cti_dialog_ui_purchasemenu","cti_dialog_ui_upgrademenu","cti_dialog_ui_workersmenu","cti_dialog_ui_defensemenu","cti_dialog_ui_requestmenu","cti_dialog_ui_onlinehelpmenu","cti_dialog_ui_gear","cti_dialog_ui_satcam","cti_dialog_ui_unitscam","cti_dialog_ui_teamsmenu","cti_dialog_ui_mapcommandmenu","cti_dialog_ui_aimicromenu","cti_dialog_ui_artillerymenu","cti_dialog_ui_aircraftloadoutmenu"];
 CTI_TABLET_DIALOG="cti_dialog_ui_tabletmain";
+HUD_NOTIFICATIONS=[];
 
 //--- Artillery Computer is only enabled on demand
 enableEngineArtillery true;
