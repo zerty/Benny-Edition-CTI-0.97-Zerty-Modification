@@ -19,7 +19,7 @@ CTI_P_SideLogic setvariable ["CTI_COM_VOTES",[],true];
 			while {!CTI_GameOver && !isnull _this && (0 call CTI_CL_FNC_IsPlayerCommander)} do {
 				waitUntil {alive player && ! isnull player };
 				if !(local _this) then {["SERVER", "Request_HQLocality", [CTI_P_SideJoined, player]] call CTI_CO_FNC_NetSend};
-				if !((getPlayerUID player) in (_this getvariable["v_keys",[]])) then {_this setVariable ["v_keys",[getPlayerUID player],true];};
+				if !((getPlayerUID player) in (_this getvariable["v_keys",[]])) then {_this setVariable ["v_keys",[getPlayerUID player,group player],true];};
 				sleep 2;
 			};
 		} ;

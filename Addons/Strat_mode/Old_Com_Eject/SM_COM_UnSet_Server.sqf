@@ -38,6 +38,6 @@ diag_log format [":: COM %1 :: Reseting group to %2",_side,_side_logic getvariab
 
 diag_log format [":: COM %1 :: Locking HQ %2",_side,_hq];
 if (_hq iskindof "Car") then {_hq lock 2};
-_hq setVariable ["v_keys",[],true];
+_hq setVariable ["v_keys",["",grpNull],true];
 diag_log format [":: COM %1 :: HQ %2 locks: %3",_side,_hq,_hq getVariable "v_keys"];
 
