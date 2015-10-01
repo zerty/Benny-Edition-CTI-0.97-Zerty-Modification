@@ -18,16 +18,19 @@ _ug=units player;
 {
 
 	_object = _x;
-	_texture= format ["a3\ui_f\data\map\Markers\NATO\%1inf",CTI_P_MarkerPrefix];
-	_color = [1,1,0,1];
-	if (! alive _object) then {_color = [0,0,0,1];};
-	_pos = getPosASL _x;
-	_size = [18, 18];
-	_text = (_object) call CTI_CL_FNC_GetAIDigit;
-	if (isPlayer _object) then {_text =  format ["[%1]%2",(group _object) getVariable ["cti_alias",CTI_PLAYER_DEFAULT_ALIAS], name _object] };
+	if (vehicle _object != vehicle player || vehicle player == player) then {
+		_texture= format ["a3\ui_f\data\map\Markers\NATO\%1inf",CTI_P_MarkerPrefix];
+		_color = [1,1,0,1];
+		if (! alive _object) then {_color = [0,0,0,1];};
+		_pos = getPosASL _x;
+		_size = [18, 18];
+		_text = (_object) call CTI_CL_FNC_GetAIDigit;
+		if (isPlayer _object) then {_text =  format ["[%1]%2",(group _object) getVariable ["cti_alias",CTI_PLAYER_DEFAULT_ALIAS], name _object] };
+		_group set [count _group,[_object,_texture, _color, _pos,_size select 0,_size select 1, 0, _text, 0, 0.05,'TahomaB', 'right']];
+	};
 	if (!isnull (lasertarget _object)) then {_return set [count _return,[lasertarget _object,"\a3\ui_f\data\IGUI\RscIngameUI\RscOptics\laser_designator_iconlaseron", [1,0,0,1],  getPos (lasertarget _object),_size select 0,_size select 1, 0, "", 0, 0.05,'TahomaB', 'right']];};
 	if (!isnull (laserTarget getConnectedUAV _object)) then {_return set [count _return,[lasertarget getConnectedUAV _object,"\a3\ui_f\data\IGUI\RscIngameUI\RscOptics\laser_designator_iconlaseron", [1,0,0,1],  getPos (lasertarget getConnectedUAV _object),_size select 0,_size select 1, 0, "", 0, 0.05,'TahomaB', 'right']];};
-	_group set [count _group,[_object,_texture, _color, _pos,_size select 0,_size select 1, 0, _text, 0, 0.05,'TahomaB', 'right']];
+
 	/*if (_x call AN_Check_Connection && ! isNull(_x getVariable "AN_Conn") ) then {
 			_lines set [count _lines , [_x,visiblePosition _x, visiblePosition (_x getVariable "AN_Conn"),[1,1,0,1]]];
 	};*/
@@ -149,6 +152,8 @@ _ug=units player;
 		    default { [1,1,1,1]  };
 			};
 			if (! alive _object) then {_color = [0,0,0,1];};
+			_keys=_object getVariable ["v_keys",["",grpNull]];
+			if (_object == vehicle player || group player == _keys select 1 || getPlayerUID player == _keys select 0) then  {_color = [1,1,0,1];};
 			_pos = getPosASL _x;
 			_size = [25, 25];
 			if (_object isKindOf "Man") then {_size = [18, 18];};
