@@ -1,0 +1,292 @@
+/*%FSM<COMPILE "C:\Users\zerty\Documents\Poseidon\Data\Packages\Bin\fsmEditor\scriptedFSM.cfg, DYNG_handle">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"_",4,218,300.000000,-350.000000,400.000000,-300.000000,0.000000,""};
+item1[] = {"_",-1,250,-91.304344,-242.474915,-84.615387,-242.474915,0.000000,""};
+item2[] = {"Start",0,250,-50.000000,-375.000000,50.000000,-325.000000,0.000000,"Start"};
+item3[] = {"End_",1,250,-50.000000,75.000000,50.000000,125.000000,0.000000,"End" \n ""};
+item4[] = {"Group_is_init",8,218,150.000000,-375.000000,250.000000,-325.000000,0.000000,"Group is init"};
+item5[] = {"Check_init",4,218,-150.000000,-275.000000,-50.000000,-225.000000,1.000000,"Check init"};
+item6[] = {"Init_group",2,250,-275.000000,-275.000000,-175.000000,-225.000000,0.000000,"Init group"};
+item7[] = {"Init_done",4,218,-275.000000,-375.000000,-175.000000,-325.000000,0.000000,"Init done"};
+item8[] = {"__1",2,4346,150.000000,-300.000000,250.000000,-250.000000,0.000000,""};
+item9[] = {"Group_error_SINK",4,218,-50.000000,-25.000000,50.000000,25.000000,666.000000,"Group error" \n "SINK"};
+item10[] = {"Change_of_leader",4,218,75.000000,-225.000000,175.000000,-175.000000,1.000000,"Change of leader"};
+item11[] = {"Update_leader",2,250,150.000000,-150.000000,250.000000,-100.000000,0.000000,"Update leader"};
+item12[] = {"_",8,218,225.000000,-225.000000,325.000000,-175.000000,0.000000,""};
+item13[] = {"Register_money_",2,250,450.000000,-300.000000,550.000000,-250.000000,0.000000,"Register money" \n " and group size"};
+item14[] = {"_",8,218,300.000000,-275.000000,400.000000,-225.000000,0.000000,""};
+version=1;
+class LayoutItems
+{
+	class Item1
+	{
+		class ItemInfo
+		{
+			FontFace="Arial";
+			FontHeight=10;
+			lStyle=1;
+		};
+	};
+};
+link0[] = {0,13};
+link1[] = {2,4};
+link2[] = {2,5};
+link3[] = {2,9};
+link4[] = {4,8};
+link5[] = {5,6};
+link6[] = {6,7};
+link7[] = {6,9};
+link8[] = {7,2};
+link9[] = {8,0};
+link10[] = {8,9};
+link11[] = {8,10};
+link12[] = {9,3};
+link13[] = {10,11};
+link14[] = {11,9};
+link15[] = {11,12};
+link16[] = {12,8};
+link17[] = {13,9};
+link18[] = {13,14};
+link19[] = {14,8};
+globals[] = {25.000000,1,0,0,0,640,480,1,17,6316128,1,-103.946579,614.157654,38.721313,-478.149475,905,881,1};
+window[] = {2,-1,-1,-32000,-32000,821,410,1670,84,3,923};
+*//*%FSM</HEAD>*/
+class FSM
+{
+  fsmName = "DYNG_handle";
+  class States
+  {
+    /*%FSM<STATE "Start">*/
+    class Start
+    {
+      name = "Start";
+      init = /*%FSM<STATEINIT""">*/"diag_log format ["":: DYNG :: Starting FSM for %1"",_this];" \n
+       "_group=_this;" \n
+       "_side=side _group;" \n
+       "_last_leader=objnull;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Group_error_SINK">*/
+        class Group_error_SINK
+        {
+          priority = 666.000000;
+          to="End_";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"isnil ""_group"" || isnull _group"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Check_init">*/
+        class Check_init
+        {
+          priority = 1.000000;
+          to="Init_group";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"isNil {(_group) getVariable ""cti_order""}"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Group_is_init">*/
+        class Group_is_init
+        {
+          priority = 0.000000;
+          to="__1";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "End_">*/
+    class End_
+    {
+      name = "End_";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Init_group">*/
+    class Init_group
+    {
+      name = "Init_group";
+      init = /*%FSM<STATEINIT""">*/"[_group, _side ,_group getvariable ""bis_dg_cre""] call CTI_SE_FNC_InitializeGroup;" \n
+       "_group setvariable [""size"",0,false];" \n
+       "diag_log ""Init group"";"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Group_error_SINK">*/
+        class Group_error_SINK
+        {
+          priority = 666.000000;
+          to="End_";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"isnil ""_group"" || isnull _group"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Init_done">*/
+        class Init_done
+        {
+          priority = 0.000000;
+          to="Start";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!isNil {(_group) getVariable ""cti_order""}"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "__1">*/
+    class __1
+    {
+      name = "__1";
+      init = /*%FSM<STATEINIT""">*/"_ntime = time+5;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Group_error_SINK">*/
+        class Group_error_SINK
+        {
+          priority = 666.000000;
+          to="End_";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"isnil ""_group"" || isnull _group"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Change_of_leader">*/
+        class Change_of_leader
+        {
+          priority = 1.000000;
+          to="Update_leader";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"isplayer (leader _group) && _last_leader != leader _group "/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="Register_money_";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"isplayer (leader _group) && _last_leader == leader _group && time > _ntime"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Update_leader">*/
+    class Update_leader
+    {
+      name = "Update_leader";
+      init = /*%FSM<STATEINIT""">*/"_last_leader= leader _group;" \n
+       "_uid_leader=getPlayerUID (_last_leader);" \n
+       "_get = missionNamespace getVariable format[""CTI_SERVER_CLIENT_%1"", _uid_leader];" \n
+       "if (isNil ""_get"") then {" \n
+       "	_group setVariable [""cti_funds"",(missionNamespace getVariable format [""CTI_ECONOMY_STARTUP_FUNDS_%1"", _side]) ,true];" \n
+       "} else {" \n
+       "	if ((_get select 2) <= 0) then {" \n
+       "		_group setVariable [""cti_funds"",(missionNamespace getVariable format [""CTI_ECONOMY_STARTUP_FUNDS_%1"",_side]) ,true];" \n
+       "	} else {" \n
+       "		_group setVariable [""cti_funds"", (_get select 2) ,true];" \n
+       "	};" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Group_error_SINK">*/
+        class Group_error_SINK
+        {
+          priority = 666.000000;
+          to="End_";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"isnil ""_group"" || isnull _group"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="__1";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Register_money_">*/
+    class Register_money_
+    {
+      name = "Register_money_";
+      init = /*%FSM<STATEINIT""">*/"_players={isplayer _x} count (units _group);" \n
+       "_group setvariable [""size"",_players,false];" \n
+       "" \n
+       "{" \n
+       "	if (isplayer _x) then {" \n
+       "		_uid=getPlayerUID (_x);" \n
+       "		_get = missionNamespace getVariable format[""CTI_SERVER_CLIENT_%1"", _uid];" \n
+       "		if (!(isNil ""_get"") && alive _x )then {" \n
+       "			if (_x == leader _group) then {" \n
+       "				_get set [2,floor (_group getVariable ""cti_funds"")];" \n
+       "				missionNamespace setVariable [format[""CTI_SERVER_CLIENT_%1"", _x],_get];" \n
+       "			} else {" \n
+       "				if ((_get select 2 ) > (missionNamespace getVariable format [""CTI_ECONOMY_STARTUP_FUNDS_%1"", side _g])) then" \n
+       "				{" \n
+       "					_group setVariable [""cti_funds"", (_group getvariable ""cti_funds"")+ (_get select 2),true ]; // automatic tranfer of money" \n
+       "				};" \n
+       "				_get set [2,0];" \n
+       "				missionNamespace setVariable [format[""CTI_SERVER_CLIENT_%1"", _x],_get];" \n
+       "			};" \n
+       "		};" \n
+       "	};" \n
+       "" \n
+       "	true" \n
+       "}count units _group;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Group_error_SINK">*/
+        class Group_error_SINK
+        {
+          priority = 666.000000;
+          to="End_";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"isnil ""_group"" || isnull _group"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="__1";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+  };
+  initState="Start";
+  finalStates[] =
+  {
+    "End_"
+  };
+};
+/*%FSM</COMPILE>*/

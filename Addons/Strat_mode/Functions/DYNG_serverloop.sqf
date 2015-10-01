@@ -1,8 +1,21 @@
 waitUntil {(["IsInitialized"] call BIS_fnc_dynamicGroups)};
 diag_log ":: DYNG :: Starting server watchdog";
+_current=[];
 while {!CTI_Gameover} do {
+	_current=_current-[grpNull];
+
 	{
-		if (isNil {(_x) getVariable "cti_order"}) then {
+		_current pushBack _x;
+		diag_log format [":: DYNG :: Found %1", _x];
+		(_x) execFSM "Addons\Strat_mode\FSM\DYNG_Handle.fsm";
+		true
+	}count (("GetAllGroups" call BIS_fnc_dynamicGroups)-_current);
+
+	sleep 2;
+};
+
+
+		/*if (isNil {(_x) getVariable "cti_order"}) then {
 			[_x, side _x,_x getvariable "bis_dg_cre"] call CTI_SE_FNC_InitializeGroup;
 		}else {
 
@@ -58,8 +71,4 @@ while {!CTI_Gameover} do {
 
 		};
 		true
-	}count ("GetAllGroups" call BIS_fnc_dynamicGroups);
-
-
-	sleep 2;
-};
+	}count ("GetAllGroups" call BIS_fnc_dynamicGroups);*/
