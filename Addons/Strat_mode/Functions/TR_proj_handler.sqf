@@ -27,7 +27,7 @@ _side_time= if(_dir >20 && _dir <160) then {"TROPHY_time_r"} else {"TROPHY_time_
 
 //Check probability and ammo on side
 if (_veh getVariable _side_tr <=0 || time - (_veh getVariable _side_time)< (60/(1+_up_trt)) ) exitWith {diag_log "Trophy :: failed no ammo or cooldonw"};
-if (random (100) >= (50+(_up_trt*15))) exitWith {diag_log "Trophy :: probability failed"}; //protection failed
+if (random (100) >= (30+(_up_trt*15))) exitWith {diag_log "Trophy :: probability failed"}; //protection failed
 
 //Create the protection zone
 _b='ProtectionZone_Invisible_F' createVehicleLocal (getpos _veh);
