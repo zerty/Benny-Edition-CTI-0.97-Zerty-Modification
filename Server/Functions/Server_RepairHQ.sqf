@@ -42,6 +42,9 @@ _hq_wreck = (_side) call CTI_CO_FNC_GetSideHQ;
 _position = getPos _hq_wreck;
 _direction = getDir _hq_wreck;
 
+_position =[_position, 50] call CTI_CO_FNC_GetEmptyPosition;
+_position set [2,1];
+
 if (alive _hq_wreck) exitWith {};
 deleteVehicle _hq_wreck;
 
