@@ -24,7 +24,7 @@ HUD_Tactical=false;
 HUD_Tactical_Allies=false;
 HUD_Tactical_Inf=false;
 HUD_Time= Time;
-HUD_MAX_RANGE=3000;
+HUD_MAX_RANGE=4000;
 
 HUD_SHARED=[];
 HUD_T_OBJ=[];
