@@ -171,7 +171,6 @@ Be aware that it migth disconnect you from your current uav.
 - <t color='#e8bd12'>Benny</t> for the mission<br />
 - <t color='#e8bd12'>Bl1p, Fluit</t> for random AI skill<br />
 - <t color='#e8bd12'>=ATM=Pokertour</t> for ATM airdrop<br />
-- <t color='#e8bd12'>Meatball</t> for randomWeather2<br />
 - <t color='#e8bd12'>Prodavec</t> for Map Markers titling<br />
 - <t color='#e8bd12'>^HS^</t> for writting the diary help <br />
 - <t color='#e8bd12'>Farooq</t> for his original idea of a revive script <br />

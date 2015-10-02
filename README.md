@@ -13,7 +13,6 @@ This project is not affiliated or authorized by Bohemia Interactive a.s. Bohemia
 - *Benny* for the mission
 - *Bl1p, Fluit* for random AI skill
 - *=ATM=Pokertour* for ATM airdrop
-- *Meatball* for randomWeather2
 - *Prodavec* for Map Markers titling
 - *Farooq* for his original idea of a revive script
 - *Sari* for updating the sanitize scripts
