@@ -153,7 +153,8 @@ _ug=units player;
 			};
 			if (! alive _object) then {_color = [0,0,0,1];};
 			_keys=_object getVariable ["v_keys",["",grpNull]];
-			if (_object == vehicle player || group player == _keys select 1 || getPlayerUID player == _keys select 0) then  {_color = [1,1,0,1];};
+			_second_color=_color;
+			if (_object == vehicle player || group player == _keys select 1 || getPlayerUID player == _keys select 0) then  {_second_color = [1,1,0,1];};
 			_pos = getPosASL _x;
 			_size = [25, 25];
 			if (_object isKindOf "Man") then {_size = [18, 18];};
@@ -171,7 +172,7 @@ _ug=units player;
 				}count crew _x;
 			};
 
-			_return set [count _return,[_object,_texture, _color, _pos,_size select 0,_size select 1, 0, _text, 0, 0.05,'TahomaB', 'right']];
+			_return set [count _return,[_object,_texture, _second_color, _pos,_size select 0,_size select 1, 0, _text, 0, 0.05,'TahomaB', 'right']];
 			if (!isNil {_object getVariable "AN_Conn"} && !(_object isKindOf "Man") && _side_id == (player getvariable ["AN_iNet",-1])) then {
 				if (! isNull(_object getVariable "AN_Conn")) then {
 					_lines set [count _lines , [_object,visiblePosition _object, visiblePosition (_object getVariable "AN_Conn"),_color]];
