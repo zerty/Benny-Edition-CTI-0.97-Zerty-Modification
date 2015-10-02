@@ -50,7 +50,7 @@ link17[] = {13,9};
 link18[] = {13,14};
 link19[] = {14,8};
 globals[] = {25.000000,1,0,0,0,640,480,1,17,6316128,1,-7.934854,710.169373,38.721313,-478.149475,905,881,1};
-window[] = {2,-1,-1,-32000,-32000,821,410,1670,84,3,923};
+window[] = {2,-1,-1,-1,-1,912,175,1435,175,3,923};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -234,7 +234,7 @@ class FSM
       name = "Register_money_";
       init = /*%FSM<STATEINIT""">*/"_players={isplayer _x} count (units _group);" \n
        "_group setvariable [""size"",_players,false];" \n
-       "if !((_group getVariable [""cti_alias"",""""]) == (groupID _x) ) then {_group setVariable [""cti_alias"", (groupID _group),true]};" \n
+       "if !((_group getVariable [""cti_alias"",""""]) == (groupID _group) ) then {_group setVariable [""cti_alias"", (groupID _group),true]};" \n
        "{" \n
        "	if (isplayer _x) then {" \n
        "		_uid=getPlayerUID (_x);" \n
