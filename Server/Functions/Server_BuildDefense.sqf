@@ -58,7 +58,7 @@ if (_fob) then {
 };
 
 _defense = (_var select 1) createVehicle _position;
-_logic setVariable ["cti_defences",((_logic getVariable "cti_defences")+ [_defense]),true];
+_logic setVariable ["cti_defences",((_logic getVariable "cti_defences")+ [_defense] - [objNull]),true];
 [["CLIENT", _side], "Client_HandleDefense", _defense] call CTI_CO_FNC_NetSend;
 
 

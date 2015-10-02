@@ -283,6 +283,13 @@ class CTI_RscInteraction {
 			action = "['OnGearM'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_Interact.sqf'";
 			toolTip="Mobile Gear Access";
 		};
+		class CTI_Icon_DisDef : CTI_Icon_fpk {
+			idc = 511035;
+			x = "SafeZoneX + SafeZoneW*0.55";
+			text = "Rsc\Pictures\icon_build.paa";
+			action = "['OnDisDef'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_Interact.sqf'";
+			toolTip="Dismount Defense";
+		};
 	};
 };
 

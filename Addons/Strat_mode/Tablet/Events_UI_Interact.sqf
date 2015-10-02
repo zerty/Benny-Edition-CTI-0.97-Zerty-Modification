@@ -426,6 +426,18 @@ switch (_action) do {
 			    		((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetPosition [_base_x+(_offset*_base_w),_base_y+5,_base_w,_base_h];
 			    	};
 			    };
+			   case 35: {// Dismount defense
+
+			    	if (vehicle player == player && (_target in (CTI_WEST getVariable ["cti_defences", []]) +(CTI_EAST getVariable ["cti_defences", []]))&& (missionNamespace getVariable "CTI_BASEBUILDING") > 0) then  {
+			    			((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTextColor [1,0,0,1];
+
+			    			((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetPosition [_base_x+(_offset*_base_w),_base_y+_h_offset*_base_h,_base_w,_base_h];
+
+			    		_offset=_offset+1;
+			    	} else {
+			    		((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetPosition [_base_x+(_offset*_base_w),_base_y+5,_base_w,_base_h];
+			    	};
+			    };
 
 			};
 		};
@@ -586,6 +598,10 @@ switch (_action) do {
 	case "OnSRep": {
 		closedialog 0;
 		[player,_target] spawn SM_ACTION_REPAIR;
+	};
+	case "OnDisDef": {
+		closedialog 0;
+		[player,_target] spawn SM_ACTION_DISMANTLE;
 	};
 	case "OnAircraftCust": {
 		_structures = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideStructures;
