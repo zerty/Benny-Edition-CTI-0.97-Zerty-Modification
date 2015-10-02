@@ -1,7 +1,7 @@
 _targs =[];
 _sl= (CTI_P_SideJoined) call CTI_CO_FNC_GetSideLogic;
 
-_a_targs= player nearTargets (HUD_MAX_RANGE);
+_a_targs= player nearTargets (viewDistance);
 
 {
 	if (!((_x select 2) == civilian) && !((_x select 2) == CTI_P_SideJoined) && (group player ) knowsAbout (_x select 4) >(missionNamespace getVariable "CTI_EW_HUD_S")) then {
