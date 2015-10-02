@@ -48,6 +48,7 @@ ATM_Jump_mapclick = if(true) then{
 	'];
 };
 
+CTI_HALO_LASTTIME=time;
 _target = player;
 _loadout=[_target] call Getloadout;
 

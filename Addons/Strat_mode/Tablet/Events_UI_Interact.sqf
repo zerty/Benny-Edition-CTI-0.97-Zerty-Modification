@@ -60,11 +60,17 @@ switch (_action) do {
 			    case 5: { // CTI_Icon_halo
 					if (vehicle player == player && !CTI_P_PreBuilding && CTI_Base_HaloInRange && [CTI_P_SideJoined, CTI_UPGRADE_HALO, 1] call CTI_CO_FNC_HasUpgrade && ( (missionNamespace getVariable 'CTI_SM_HALO')==1)) then {
 
-						((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTextColor [1,1,0,1];
-						//((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetPosition [_base_x+(_offset*_base_w),_base_y+_h_offset*_base_h,_base_w,_base_h];
-		    			_base_x+(_offset*_base_w)
+						if (time - CTI_HALO_LASTTIME >= CTI_HALO_COOLDOWN) then {
+							((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTextColor [1,1,0,1];
+							((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTooltip "HALO Jump";
+						}else{
+							((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTextColor [1,1,0,0.3];
+							((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTooltip format ["HALO Jump (%1 min.)",floor((CTI_HALO_COOLDOWN-(time - CTI_HALO_LASTTIME))/60)];
+						};
+
 					} else {
-							((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTextColor [1,1,0,0.2];
+							((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTextColor [1,0,0,0.2];
+							((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTooltip "HALO Jump (Not Available)";
 					};
 					((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetPosition [_base_x+(_offset*_base_w),_base_y+_h_offset*_base_h,_base_w,_base_h];
 					_offset=-5;
@@ -635,7 +641,7 @@ switch (_action) do {
 		if  (isNull (driver _target)) then {player moveInDriver _target} else {0 spawn { hint "There is already a pilot";sleep 3;hintSilent "";}};
 	};
 	case "OnHalo": {
-		if !(vehicle player == player && !CTI_P_PreBuilding && CTI_Base_HaloInRange && [CTI_P_SideJoined, CTI_UPGRADE_HALO, 1] call CTI_CO_FNC_HasUpgrade && ( (missionNamespace getVariable 'CTI_SM_HALO')==1)) exitwith {false};
+		if !(vehicle player == player && !CTI_P_PreBuilding && CTI_Base_HaloInRange && [CTI_P_SideJoined, CTI_UPGRADE_HALO, 1] call CTI_CO_FNC_HasUpgrade && ( (missionNamespace getVariable 'CTI_SM_HALO')==1) && (time - CTI_HALO_LASTTIME >= CTI_HALO_COOLDOWN)) exitwith {false};
 		closedialog 0;
 		0 execvm "Addons\ATM_airdrop\atm_airdrop.sqf"
 	};
