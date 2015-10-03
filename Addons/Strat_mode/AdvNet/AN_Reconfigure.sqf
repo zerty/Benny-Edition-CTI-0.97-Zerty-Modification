@@ -25,7 +25,7 @@ if (_forced) exitWith {
 };
 
 // HQ
-if (_vehicle == (_side) call CTI_CO_FNC_GetSideHQ ) exitwith {
+if (_vehicle == (_side) call CTI_CO_FNC_GetSideHQ  ) exitwith {
 	if !(_vehicle getVariable "AN_Conn" == _vehicle ) then {_vehicle setVariable ["AN_Conn",_vehicle,true];};
 	if !(_vehicle getVariable "AN_iNet" == _side_id ) then {_vehicle setVariable ["AN_iNet",_side_id,true];};
 	if !({_x == _vehicle} count  (_vehicle getVariable "AN_Parrents")>1 ) then {_vehicle setVariable ["AN_Parrents",[_vehicle],false];};
@@ -74,7 +74,7 @@ if (count _candidates == 0 || _vehicle isKindOf "FlagPole_F"&& (_side in [east,w
 // try to connect to the HQ
 if ((count _candidates == 0) && _side in [east,west]) then {
 	_hq = (_side) call CTI_CO_FNC_GetSideHQ;
-	if (_vehicle distance _hq <= _max_distance) then { _candidates set [count _candidates,_hq]};
+	if ((_vehicle distance _hq <= _max_distance) && alive _hq) then { _candidates set [count _candidates,_hq]};
 };
 
 // try to connect to another connected vehicle
