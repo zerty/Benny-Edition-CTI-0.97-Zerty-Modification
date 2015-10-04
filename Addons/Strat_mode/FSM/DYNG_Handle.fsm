@@ -50,7 +50,7 @@ link17[] = {13,9};
 link18[] = {13,14};
 link19[] = {14,8};
 globals[] = {25.000000,1,0,0,0,640,480,1,17,6316128,1,-7.934854,710.169373,38.721313,-478.149475,905,881,1};
-window[] = {2,-1,-1,-1,-1,912,175,1435,175,3,923};
+window[] = {2,-1,-1,-1,-1,862,125,1385,125,3,923};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -244,7 +244,7 @@ class FSM
        "				_get set [2,floor (_group getVariable ""cti_funds"")];" \n
        "				missionNamespace setVariable [format[""CTI_SERVER_CLIENT_%1"", _x],_get];" \n
        "			} else {" \n
-       "				if ((_get select 2 ) > (missionNamespace getVariable format [""CTI_ECONOMY_STARTUP_FUNDS_%1"", side _g])) then" \n
+       "				if ((_get select 2 ) > (missionNamespace getVariable format [""CTI_ECONOMY_STARTUP_FUNDS_%1"", side _group])) then" \n
        "				{" \n
        "					_group setVariable [""cti_funds"", (_group getvariable ""cti_funds"")+ (_get select 2),true ]; // automatic tranfer of money" \n
        "				};" \n
