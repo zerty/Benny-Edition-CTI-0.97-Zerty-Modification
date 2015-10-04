@@ -122,7 +122,7 @@ _classes = _classes 		+ [["Land_Cargo_House_V1_F", "Land_Cargo_House_V1_ruins_F"
 _prices = _prices 			+ [1000];
 _times = _times 			+ [60];
 _placements = _placements 	+ [[180, 15]];
-_specials = _specials		+ [[["DMG_Reduce", 5]]];
+_specials = _specials		+ [[["DMG_Reduce", 2]]];
 
 _headers = _headers 		+ [[CTI_LIGHT, "Light Vehicle Factory", "Light"]];
 _classes = _classes 		+ [["Land_i_Garage_V1_F", "Land_Garage_V1_ruins_F"]];
