@@ -99,11 +99,8 @@ if (_side_origin != _side && (_side_origin in [east,west]) && CTI_TEAMSWAP == 1)
 	if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FUNCTION: CTI_PVF_Request_Join", format["Player [%1] [%2] tried to teamswap from it's original side [%3] to side [%4]. The server explicitely answered that he should be sent back to the lobby.", _name, _uid, _side_origin, _side]] call CTI_CO_FNC_Log};
 };
 //TEAWSTACK
-_west_count=0;
-_east_count=0;
-{_west_count=_west_count +(_x getVariable ["size",0]);true }count (["GetAllGroupsOfSide",[west]]call BIS_fnc_dynamicGroups);
-{_east_count=_east_count +(_x getVariable ["size",0]);true }count (["GetAllGroupsOfSide",[east]]call BIS_fnc_dynamicGroups);
-_teamstack=if ((_side_origin == civilian) && CTI_TEAMSTACK == 1 &&((_side == west && _west_count >=(_east_count +2)) ||	(_side == east && _east_count >=(_west_count +2)))) then {true} else {false};
+
+_teamstack=if ((_side_origin == civilian) && CTI_TEAMSTACK == 1 &&((_side == west && CTI_TEAMSTACK_WEST >=(CTI_TEAMSTACK_EAST +2)) ||	(_side == east && CTI_TEAMSTACK_EAST >=(CTI_TEAMSTACK_WEST +2)))) then {true} else {false};
 
 //SAVE
 if !(_teamstack || _teamswap ) then {

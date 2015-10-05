@@ -93,7 +93,7 @@ if (CTI_IsServer) then {
 
 	//dynamic group loop
 	0 spawn DYNG_SERVERLOOP;
-
+	0 execFSM "Addons\Strat_mode\FSM\TEAMSTACK_count.fsm";
 	//PVF
 	with missionNamespace do {
 

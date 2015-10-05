@@ -36,6 +36,10 @@ CTI_IsServer = if (isDedicated || CTI_IsHostedServer) then {true} else {false};
 CTI_IsClient = if (CTI_IsHostedServer || !isDedicated) then {true} else {false};
 CTI_IsHeadless = if !(hasInterface || isDedicated) then {true} else {false};
 
+CTI_TEAMSTACK_EAST=0;
+CTI_TEAMSTACK_WEST=0;
+
+
 if (CTI_Log_Level >= CTI_Log_Information) then { //--- Information
 	["INFORMATION", "FILE: init.sqf", format["Environment is Multiplayer? [%1]", isMultiplayer]] call CTI_CO_FNC_Log;
 	["INFORMATION", "FILE: init.sqf", format["Current Actor is: Hosted Server [%1]? Dedicated [%2]? Client [%3]? Headless [%4]?", CTI_IsHostedServer, isDedicated, CTI_IsClient, CTI_IsHeadless]] call CTI_CO_FNC_Log

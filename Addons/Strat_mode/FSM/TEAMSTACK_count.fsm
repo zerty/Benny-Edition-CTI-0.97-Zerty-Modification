@@ -1,0 +1,75 @@
+/*%FSM<COMPILE "C:\Users\zerty\Documents\Poseidon\Data\Packages\Bin\fsmEditor\scriptedFSM.cfg, TEAMSTACK_COUNT">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"Start",0,4346,-39.314381,-121.655533,50.685616,-71.655525,0.000000,"Start"};
+item1[] = {"__1",4,218,-137.642151,-51.086967,-47.642151,-1.086967,0.000000,""};
+item2[] = {"_",4,218,84.431442,-123.327766,174.431442,-73.327766,0.000000,""};
+item3[] = {"_",1,250,200.150497,-121.321083,290.150513,-71.321098,0.000000,""};
+link0[] = {0,1};
+link1[] = {0,2};
+link2[] = {1,0};
+link3[] = {2,3};
+globals[] = {0.000000,0,0,0,0,640,480,1,6,6316128,1,-300.000000,300.000000,264.214050,-131.772583,892,881,1};
+window[] = {2,-1,-1,-1,-1,912,175,1435,175,3,910};
+*//*%FSM</HEAD>*/
+class FSM
+{
+  fsmName = "TEAMSTACK_COUNT";
+  class States
+  {
+    /*%FSM<STATE "Start">*/
+    class Start
+    {
+      name = "Start";
+      init = /*%FSM<STATEINIT""">*/"_ntime=time+5;" \n
+       "_west_count=0;" \n
+       "_east_count=0;" \n
+       "{_west_count=_west_count +(_x getVariable [""size"",0]);true }count ([""GetAllGroupsOfSide"",[west]]call BIS_fnc_dynamicGroups);" \n
+       "{_east_count=_east_count +(_x getVariable [""size"",0]);true }count ([""GetAllGroupsOfSide"",[east]]call BIS_fnc_dynamicGroups);" \n
+       "missionnamespace setvariable [""CTI_TEAMSTACK_EAST"",_east_count];" \n
+       "missionnamespace setvariable [""CTI_TEAMSTACK_WEST"",_west_count];"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="_";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"CTI_GameOver"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "__1">*/
+        class __1
+        {
+          priority = 0.000000;
+          to="Start";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"time>=_ntime"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "_">*/
+    class _
+    {
+      name = "_";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+  };
+  initState="Start";
+  finalStates[] =
+  {
+    "_"
+  };
+};
+/*%FSM</COMPILE>*/
