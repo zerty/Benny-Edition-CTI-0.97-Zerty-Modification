@@ -62,17 +62,9 @@ if (_index == -1) exitWith { diag_log "debug: unknown index in onpurchaseorderre
 CTI_P_PurchaseRequests set [_index, "!REMOVE!"];
 CTI_P_PurchaseRequests = CTI_P_PurchaseRequests - ["!REMOVE!"];
 
-//--- Check if the group can handle the current unit without breaking the group size limit
-_process = false;
-if !(_req_classname isKindOf "Man") then {
-	if (!(_veh_infos select 0) && !(_veh_infos select 1) && !(_veh_infos select 2) && !(_veh_infos select 3)) then { _process = true }; //--- Empty
-};
 
 _req_time_out = time + (_var_classname select CTI_UNIT_TIME);
 
-//--- Soft limit (skip for empty vehicles)
-if !(_process) then { if (((count units (group player))- ({isplayer _x} count units (group player))) <= CTI_PLAYERS_GROUPSIZE) then { _process = true }};
-if !(_process) exitWith { ["SERVER", "Answer_Purchase", [_req_seed, _req_classname, _req_buyer, _factory]] call CTI_CO_FNC_NetSend ; hint parseText format ["<t size='1.3' color='#BB0000'>Information</t><br /><br />%2<t>Your <t color='#ccffaf'>%1</t> order has been <t color='#fcffaf'>Denied</t>, too much units in group.", _var_classname select CTI_UNIT_LABEL, _picture];}; //--- Can't do it but we answer to the server.
 
 //--- Check if the buyer has enough funds to perform this operation
 _cost = _var_classname select 2;
@@ -110,11 +102,18 @@ if !(alive _factory) exitWith { diag_log "the factory is dead" };
 if (_factory in CTI_TOWNS && ( ! ((_factory getvariable ["cti_town_sideID",-1]) == CTI_P_SideID) || (_factory getvariable ["cti_town_capture",-1]) != CTI_TOWNS_CAPTURE_VALUE_CEIL || ({!(side _x == CTI_P_SideJoined)} count (_factory nearEntities ["CAManBase", CTI_TOWNS_CAPTURE_RANGE])) >0 ) ) exitWith { ["SERVER", "Answer_Purchase", [_req_seed, _req_classname, _req_buyer, _factory]] call CTI_CO_FNC_NetSend; hint parseText format ["<t size='1.3' color='#BB0000'>Information</t><br /><br />%2<t>Your <t color='#ccffaf'>%1</t> order has been <t color='#fcffaf'>Denied</t>, Flag area is not clear.", _var_classname select CTI_UNIT_LABEL, _picture];};
 
 
+//--- Check if the group can handle the current unit without breaking the group size limit
+_process = false;
+if !(_req_classname isKindOf "Man") then {
+	if (!(_veh_infos select 0) && !(_veh_infos select 1) && !(_veh_infos select 2) && !(_veh_infos select 3)) then { _process = true }; //--- Empty
+};
 
 
 //--- Soft limit (skip for empty vehicles)
-if !(_process) then { if ((count units (group player))+1 <= CTI_PLAYERS_GROUPSIZE) then { _process = true }};
-if !(_process) exitWith { ["SERVER", "Answer_Purchase", [_req_seed, _req_classname, _req_buyer, _factory]] call CTI_CO_FNC_NetSend }; //--- Can't do it but we answer to the server.
+if !(_process) then { if (((count units (group player))- ({isplayer _x} count units (group player))) <= CTI_PLAYERS_GROUPSIZE) then { _process = true }};
+if !(_process) exitWith { ["SERVER", "Answer_Purchase", [_req_seed, _req_classname, _req_buyer, _factory]] call CTI_CO_FNC_NetSend ; hint parseText format ["<t size='1.3' color='#BB0000'>Information</t><br /><br />%2<t>Your <t color='#ccffaf'>%1</t> order has been <t color='#fcffaf'>Denied</t>, too much units in group.", _var_classname select CTI_UNIT_LABEL, _picture];}; //--- Can't do it but we answer to the server.
+
+//--- Check funds
 
 _funds = [group(_req_buyer), CTI_P_SideJoined] call CTI_CO_FNC_GetFunds;
 if (_funds < _cost) exitWith { ["SERVER", "Answer_Purchase", [_req_seed, _req_classname, _req_buyer, _factory]] call CTI_CO_FNC_NetSend; hint parseText format ["<t size='1.3' color='#BB0000'>Information</t><br /><br />%2<t>Your <t color='#ccffaf'>%1</t> order has been <t color='#fcffaf'>Denied</t>, not enougth funds.", _var_classname select CTI_UNIT_LABEL, _picture]; };
