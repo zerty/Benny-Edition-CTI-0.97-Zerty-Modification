@@ -51,6 +51,7 @@ with missionNamespace do {
 	   	DYNG_SERVERLOOP = compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Functions\DYNG_serverloop.sqf";
 	   	H_PROTECT_WHEELS= compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Functions\handler_protec_wheels.sqf";
 	   	WEATHER_HOOK= compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Functions\WEATHER_HOOK.sqf";
+	   	TUTO_Init_Client= compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Functions\TUTORIAL_init_client.sqf";
 };
 
 //Common stuff
@@ -300,7 +301,8 @@ if (CTI_IsServer) then {
 
 if (CTI_IsClient) then {
 
-
+	//tutorial
+	0 call TUTO_Init_Client;
 	//New Map if Adv Network
 	0 spawn SM_Maps_Hook;
 

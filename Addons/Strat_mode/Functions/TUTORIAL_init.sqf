@@ -25,7 +25,7 @@ for "_i" from 0 to 3 /* step +1 */ do {
 	_lamp setDir (90+_i*-90);
 	_lamp addEventHandler ["handleDamage", {0}];
 	//ADMIN_ZEUS addCuratorEditableObjects [[_lamp],false];
-	for "_j" from 0 to 3 /* step +1j*/ do {
+	/*for "_j" from 0 to 3  do {
 		_item_pos = [((15-_j*10) * cos (_i*90) - (-23) * sin (_i*90)),((15-_j*10) * sin (_i*90) + (-23) * cos (_i*90)),5.5];
 		_item_pos=_pos vectoradd _item_pos;
 		_item = _text createVehicle [0,0,0];
@@ -34,7 +34,7 @@ for "_i" from 0 to 3 /* step +1 */ do {
 		_item enableSimulationGlobal false;
 		_item setObjectTextureGlobal [0, format ["Rsc\tuto\%1.jpg",_j]];
 		//ADMIN_ZEUS addCuratorEditableObjects [[_item],false];
-	};
+	};*/
 };
 
 TUTORIAL_EXIT= "Land_Wreck_Heli_Attack_01_F" createVehicle _pos;
