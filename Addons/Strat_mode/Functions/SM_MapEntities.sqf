@@ -18,12 +18,13 @@ _ug=units player;
 {
 
 	_object = _x;
+	_size = [18, 18];
 	if (vehicle _object != vehicle player || vehicle player == player) then {
 		_texture= format ["a3\ui_f\data\map\Markers\NATO\%1inf",CTI_P_MarkerPrefix];
 		_color = [1,1,0,1];
 		if (! alive _object) then {_color = [0,0,0,1];};
 		_pos = getPosASL _x;
-		_size = [18, 18];
+
 		_text = (_object) call CTI_CL_FNC_GetAIDigit;
 		if (isPlayer _object) then {_text =  format ["[%1]%2",(group _object) getVariable ["cti_alias",CTI_PLAYER_DEFAULT_ALIAS], name _object] };
 		_group set [count _group,[_object,_texture, _color, _pos,_size select 0,_size select 1, 0, _text, 0, 0.05,'TahomaB', 'right']];
