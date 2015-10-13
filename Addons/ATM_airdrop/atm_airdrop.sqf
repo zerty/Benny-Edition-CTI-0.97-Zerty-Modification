@@ -12,7 +12,7 @@ waitUntil { !isNull player };
 [] execVM "Addons\ATM_airdrop\functions.sqf";
 
 _funds = [group player, CTI_P_SideJoined] call CTI_CO_FNC_GetFunds;
-if (_funds < 500) exitWith {hintsilent "Not enougth funds"; sleep 1 ; hintsilent ""};
+if (_funds < 500) exitWith {hintsilent "Not enough funds"; sleep 1 ; hintsilent ""};
 
 CTI_Selecting_Halo=true;
 _position = GetPos player;
@@ -62,12 +62,12 @@ openMap false;
 
 
 removeBackpack _target;
-sleep 0,5;
+sleep 0.5;
 _target addBackpack "B_Parachute";
 if ((getPos _target select 2) >= 8000) then{
 	removeHeadgear _target;
 	_target addHeadgear "H_CrewHelmetHeli_B";
-	sleep 0,5;
+	sleep 0.5;
 };
 
 
