@@ -12,7 +12,7 @@ waitUntil { !isNull player };
 [] execVM "Addons\ATM_airdrop\functions.sqf";
 
 _funds = [group player, CTI_P_SideJoined] call CTI_CO_FNC_GetFunds;
-if (_funds < 500) exitWith {hintsilent "Not enougth funds"; sleep 1 ; hintsilent ""};
+if (_funds < 500) exitWith {hintsilent "Not enough funds"; sleep 1 ; hintsilent ""};
 
 CTI_Selecting_Halo=true;
 _position = GetPos player;
