@@ -62,12 +62,12 @@ openMap false;
 
 
 removeBackpack _target;
-sleep 0,5;
+sleep 0.5;
 _target addBackpack "B_Parachute";
 if ((getPos _target select 2) >= 8000) then{
 	removeHeadgear _target;
 	_target addHeadgear "H_CrewHelmetHeli_B";
-	sleep 0,5;
+	sleep 0.5;
 };
 
 
