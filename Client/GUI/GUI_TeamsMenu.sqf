@@ -28,7 +28,7 @@ while { true } do {
 	
 	_funds = call CTI_CL_FNC_GetPlayerFunds;
 	if (_funds != _last_funds) then {
-		((uiNamespace getVariable "cti_dialog_ui_teamsmenu") displayCtrl 190004) ctrlSetStructuredText (parseText format["Resources: <t color='%1'>$%2</t>", CTI_P_Coloration_Money, _funds]);
+		((uiNamespace getVariable "cti_dialog_ui_teamsmenu") displayCtrl 190004) ctrlSetStructuredText (parseText format[localize "STR_GUI_Resources", CTI_P_Coloration_Money, _funds]);
 	};
 	_last_funds = _funds;
 	

@@ -41,7 +41,7 @@ while { true } do {
 		_last_running = _running;
 		_html = "";
 		if (_running > -1) then {
-			_html = format ["Running: <t color='#F5D363'>%1 :: %2 s left.</t>", ((missionNamespace getVariable format["CTI_%1_UPGRADES_LABELS", CTI_P_SideJoined]) select _running) select 0,CTI_P_SideLogic getVariable "cti_upgrade_lt"];
+			_html = format [localize "STR_GUI_UPGRADES_LABELS", ((missionNamespace getVariable format["CTI_%1_UPGRADES_LABELS", CTI_P_SideJoined]) select _running) select 0,CTI_P_SideLogic getVariable "cti_upgrade_lt"];
 		};
 		((uiNamespace getVariable "cti_dialog_ui_upgrademenu") displayCtrl 250009) ctrlSetStructuredText parseText _html;
 	};
