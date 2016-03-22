@@ -28,11 +28,11 @@ switch (_action) do {
 		if (isnull (CTI_P_SideLogic getVariable "cti_commander")) then {((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210020) ctrlshow false} else {((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210020) ctrlshow true};
 		if !(call CTI_CL_FNC_IsPlayerCommander) then {
 			if (time - CTI_P_LastVotedTime>10 && !((getplayeruid player) in (CTI_P_SideLogic getvariable ["CTI_COM_VOTES",[]]))) then {((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210020)ctrlenable true} else {((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210020) ctrlEnable false;};
-			((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210020) ctrlsettext format ["Eject Com. (%1/%2)",count (CTI_P_SideLogic getvariable ["CTI_COM_VOTES",[]]),ceil ((count (CTI_P_SideJoined call CTI_CO_FNC_GetSidePlayerGroups))*CTI_VOTE_RATIO)];
+			((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210020) ctrlsettext format [localize "STR_Eject_Com_UI",count (CTI_P_SideLogic getvariable ["CTI_COM_VOTES",[]]),ceil ((count (CTI_P_SideJoined call CTI_CO_FNC_GetSidePlayerGroups))*CTI_VOTE_RATIO)];
 			{((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl _x) ctrlEnable false} forEach [210003,210004,210006,210008];
 		} else {
 			((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210020) ctrlEnable true;
-			((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210020) ctrlsettext "Leave Com.";
+			((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210020) ctrlsettext localize "STR_Leave_Com_UI";
 		};
 
 		if ((missionNamespace getVariable "CTI_ARTILLERY_SETUP") < 0) then {((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210009) ctrlEnable false};
@@ -44,7 +44,7 @@ switch (_action) do {
 			((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210019) ctrlEnable false;
 			((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210019) ctrlSetPosition [SafeZoneX + (SafeZoneW - (3/4*SafeZoneH))/2+ (3/4*SafeZoneH) *0.191+(3/4*SafeZoneH)*0.615*0.76,SafeZoneY+safezoneH*(0.28+0.035*3+5),(3/4*SafeZoneH)*0.615*0.22,SafeZoneH * 0.03]; ((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210019) ctrlCommit 0;
 		};
-		if ((player getVariable ['CTI_Net',-1])!= -1) Then {((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210016) ctrlsettext "Net-Discon.";} else {((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210016) ctrlsettext "Net-Recon.";} ;
+		if ((player getVariable ['CTI_Net',-1])!= -1) Then {((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210016) ctrlsettext localize "STR_Net_Disc";} else {((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210016) ctrlsettext localize "STR_Net_Rec";} ;
 		execVM "Addons\Strat_mode\Tablet\GUI_TabletMain.sqf";
 		CTI_P_LastRootMenu = "Options";
 	};
@@ -164,12 +164,12 @@ switch (_action) do {
 		if ((player getVariable ['CTI_Net',-1])!= -1) Then {
 			player setVariable ['CTI_Net',-1,true];
 			player setVariable ['AN_iNet',CTI_P_SideID,true];
-			((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210016) ctrlsettext "Net-Recon.";
+			((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210016) ctrlsettext localize "STR_Net_Rec";
 			((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210016) ctrlSetBackgroundColor [0.7, 0, 0, 1];
 			((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210016) ctrlSetForegroundColor [0.7, 0, 0, 1];
 		} else {
 			player setVariable ['CTI_Net',CTI_P_SideID,true];
-			((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210016) ctrlsettext "Net-Disco.";
+			((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210016) ctrlsettext localize "STR_Net_Disc";
 		};
 	};
 	case "onVotePressed": {
