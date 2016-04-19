@@ -190,10 +190,10 @@ class RscButton {
 	colorShadow[] = {0,0,0,1};
 	colorBorder[] = {0,0,0,1};
 	borderSize = 0.0;
-	soundEnter[] = {"\A3\ui_f\data\sound\RscButton\soundEnter.wss",0.09,1};
-	soundPush[] = {"\A3\ui_f\data\sound\RscButton\soundPush.wss",0.0,0};
-	soundClick[] = {"\A3\ui_f\data\sound\RscButton\soundClick.wss",0.07,1};
-	soundEscape[] = {"\A3\ui_f\data\sound\RscButton\soundEscape.wss",0.09,1};
+	soundEnter[] = {"\A3\ui_f\data\sound\RscButton\soundEnter",0.09,1};
+	soundPush[] = {"\A3\ui_f\data\sound\RscButton\soundPush",0.0,0};
+	soundClick[] = {"\A3\ui_f\data\sound\RscButton\soundClick",0.07,1};
+	soundEscape[] = {"\A3\ui_f\data\sound\RscButton\soundEscape",0.09,1};
 };
 
 class RscButton_Lesser : RscButton {
@@ -271,10 +271,10 @@ class RscShortcutButton {
 	size = "(			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
 	sizeEx = "(			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
 	text = "";
-	soundEnter[] = {"\A3\ui_f\data\sound\onover",0.09,1};
-	soundPush[] = {"\A3\ui_f\data\sound\new1",0.0,0};
-	soundClick[] = {"\A3\ui_f\data\sound\onclick",0.07,1};
-	soundEscape[] = {"\A3\ui_f\data\sound\onescape",0.09,1};
+	soundEnter[] = {"\A3\ui_f\data\Sound\RscButton\soundEnter",0.09,1};
+	soundPush[] = {"\A3\ui_f\data\Sound\RscButton\soundPush",0.0,0};
+	soundClick[] = {"\A3\ui_f\data\Sound\RscButton\soundClick",0.07,1};
+	soundEscape[] = {"\A3\ui_f\data\Sound\RscButton\soundEscape",0.09,1};
 	action = "";
 	class Attributes {
 		font = "PuristaMedium";
@@ -327,10 +327,10 @@ class RscShortcutButtonMain: RscShortcutButton {
 	size = "(			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1.2)";
 	sizeEx = "(			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1.2)";
 	text = "";
-	soundEnter[] = {"\A3\ui_f\data\sound\onover",0.09,1};
-	soundPush[] = {"\A3\ui_f\data\sound\new1",0.0,0};
-	soundClick[] = {"\A3\ui_f\data\sound\onclick",0.07,1};
-	soundEscape[] = {"\A3\ui_f\data\sound\onescape",0.09,1};
+	soundEnter[] = {"\A3\ui_f\data\Sound\RscButton\soundEnter",0.09,1};
+	soundPush[] = {"\A3\ui_f\data\Sound\RscButton\soundPush",0.0,0};
+	soundClick[] = {"\A3\ui_f\data\Sound\RscButton\soundClick",0.07,1};
+	soundEscape[] = {"\A3\ui_f\data\Sound\RscButton\soundEscape",0.09,1};
 	action = "";
 	class Attributes {
 		font = "PuristaMedium";
@@ -367,7 +367,7 @@ class RscListBox {
 	autoScrollSpeed = -1;
 	autoScrollDelay = 5;
 	autoScrollRewind = 0;
-	soundSelect[] = {"\A3\ui_f\data\sound\new1",0.09,1};
+	soundSelect[] = {"\A3\ui_f\data\Sound\RscCombo\soundSelect",0.09,1};
 	class ListScrollBar {
 		color[] = {1,1,1,0.6};
 		colorActive[] = {1,1,1,1};
@@ -395,7 +395,7 @@ class RscListNBox {
 	colorSelectBackground[] = {0.95,0.95,0.95,1};
 	colorSelectBackground2[] = {1,1,1,0.5};
 	period = 1.2;
-	soundSelect[] = {"\A3\ui_f\data\sound\new1",0.09,1};
+	soundSelect[] = {"\A3\ui_f\data\Sound\RscCombo\soundSelect",0.09,1};
 	autoScrollSpeed = -1;
 	autoScrollDelay = 5;
 	autoScrollRewind = 0;
@@ -434,9 +434,9 @@ class RscCombo {
 	colorActive[] = {1,0,0,1};
 	colorDisabled[] = {1,1,1,0.25};
 	font = "PuristaMedium";
-	soundSelect[] = {"\A3\ui_f\data\sound\new1",0.09,1};
-	soundExpand[] = {"\A3\ui_f\data\sound\new1",0.09,1};
-	soundCollapse[] = {"\A3\ui_f\data\sound\new1",0.09,1};
+	soundSelect[] = {"\A3\ui_f\data\Sound\RscCombo\soundSelect",0.09,1};
+	soundExpand[] = {"\A3\ui_f\data\Sound\RscCombo\soundExpand",0.09,1};
+	soundCollapse[] = {"\A3\ui_f\data\Sound\RscCombo\soundCollapse",0.09,1};
 	maxHistoryDelay = 1.0;
 	sizeEx = "(			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
 	class ComboScrollBar	{

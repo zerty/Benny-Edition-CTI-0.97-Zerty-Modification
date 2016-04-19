@@ -56,58 +56,58 @@ class CTI_RscInteraction {
 
 			text = "Rsc\Pictures\icon_tablet.paa";
 			action = "['OnTablet'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_Interact.sqf'";
-			toolTip="Open tablet";
+			toolTip=$STR_Icon_Tablet;
 		};
 
 		class CTI_Icon_Units : CTI_Icon_Tablet {
 			idc = 511002;
 
 			text = "Rsc\Pictures\icon_wf_building_lvs.paa";
-			toolTip="Buy Units";
+			toolTip=$STR_Icon_Units;
 			action = "['OnUnits'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_Interact.sqf'";
 		};
 		class CTI_Icon_Gear : CTI_Icon_Tablet {
 			idc = 511003;
 			text = "Rsc\Pictures\icon_wf_gear_primary.paa";
 			action = "['OnGear'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_Interact.sqf'";
-			toolTip="Buy Gear";
+			toolTip=$STR_Icon_Gear;
 		};
 		class CTI_Icon_BFact : CTI_Icon_Tablet {
 			idc = 511004;
 			text = "Rsc\Pictures\icon_fact.paa";
 			action = "['OnBFact'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_Interact.sqf'";
-			toolTip="Build Factory/Def";
+			toolTip=$STR_Icon_BFact;
 		};
 		class CTI_Icon_halo : CTI_Icon_Tablet {
 			idc = 511005;
 			text = "Rsc\Pictures\icon_para.paa";
 			action = "['OnHalo'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_Interact.sqf'";
-			toolTip="Halo Jump";
+			toolTip=$STR_Icon_Halo;
 		};
 		class CTI_Icon_group : CTI_Icon_Tablet {
 			idc = 511006;
 			text = "a3\ui_f\data\gui\Rsc\RscDisplayArcadeMap\icon_toolbox_groups_ca.paa";
 			action = "['OnGroup'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_Interact.sqf'";
-			toolTip="Group Dialog";
+			toolTip=$STR_Icon_Group;
 		};
 		class CTI_Icon_Netp : CTI_Icon_Tablet {
 			idc = 511007;
 			text = "a3\ui_f\data\gui\Rsc\RscDisplayArsenal\radio_ca.paa";
 			action = "['OnNetp'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_Interact.sqf'";
-			toolTip="Network";
+			toolTip=$STR_Icon_Net;
 		};
 		class CTI_Icon_Thud : CTI_Icon_Tablet {
 			idc = 511008;
 			text = "Rsc\Pictures\icon_thud.paa";
 			action = "['OnThud'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_Interact.sqf'";
-			toolTip="Tactical hud";
+			toolTip=$STR_Icon_Thud;
 		};
 
 		class CTI_Icon_earp : CTI_Icon_Tablet {
 			idc = 511009;
 			text = "Rsc\Pictures\icon_earp.paa";
 			action = "['OnEarp'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_Interact.sqf'";
-			toolTip="Ear Plugs";
+			toolTip=$STR_Icon_Earp;
 		};
 
 
@@ -116,45 +116,45 @@ class CTI_RscInteraction {
 			idc = 511010;
 
 			text = "Rsc\Pictures\i_lock.paa";
-			toolTip="(Un)Lock";
+			toolTip=$STR_Icon_Lock;
 			action = "['OnLock'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_Interact.sqf'";
 		};
 		class CTI_Icon_Net : CTI_Icon_Tablet {
 			idc = 511011;
 			text = "a3\ui_f\data\gui\Rsc\RscDisplayArsenal\radio_ca.paa";
 			action = "['OnNet'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_Interact.sqf'";
-			toolTip="Network";
+			toolTip=$STR_Icon_Net;
 		};
 		class CTI_Icon_Def : CTI_Icon_Lock {
 			idc = 511012;
 			text = "Rsc\Pictures\icon_def.paa";
 			action = "['OnDef'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_Interact.sqf'";
-			toolTip="Defence Menu";
+			toolTip=$STR_Icon_Def;
 		};
 		class CTI_Icon_Rep : CTI_Icon_Lock {
 			idc = 511013;
 			text ="Rsc\Pictures\icon_rep.paa";
 			action = "['OnRepair'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_Interact.sqf'";
-			toolTip="Repair";
+			toolTip=$STR_Icon_Rep;
 		};
 		class CTI_Icon_fl : CTI_Icon_Lock {
 			idc = 511014;
 			text = "Rsc\Pictures\icon_force.paa";
 			action = "['OnForce'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_Interact.sqf'";
-			toolTip="Force Lock";
+			toolTip=$STR_Icon_FL;
 		};
 		class CTI_Icon_rev : CTI_Icon_Lock {
 			idc = 511015;
 			text = "A3\ui_f\data\IGUI\Cfg\Actions\heal_ca.paa";
 			action = "['OnRev'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_Interact.sqf'";
-			toolTip="Revive";
+			toolTip=$STR_Icon_Rev;
 		};
 		class CTI_Icon_drag : CTI_Icon_Lock {
 			idc = 511016;
 			x = "SafeZoneX + SafeZoneW*0.85";
 			text = "Rsc\Pictures\icon_drag.paa";
 			action = "['OnDrag'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_Interact.sqf'";
-			toolTip="Drag/Release";
+			toolTip=$STR_Icon_Drag;
 		};
 		class CTI_Icon_fpk : CTI_Icon_Lock {
 			idc = 511017;
@@ -162,133 +162,133 @@ class CTI_RscInteraction {
 			y = "SafeZoneY+safezoneH*0.55+5";
 			text = "Rsc\Pictures\icon_fpk.paa";
 			action = "['OnFpk'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_Interact.sqf'";
-			toolTip="Force Public key";
+			toolTip=$STR_Icon_FPk;
 		};
 		class CTI_Icon_intru : CTI_Icon_fpk {
 			idc = 511018;
 			x = "SafeZoneX + SafeZoneW*0.55";
 			text = "Rsc\Pictures\icon_intru.paa";
 			action = "['OnIntru'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_Interact.sqf'";
-			toolTip="Start Intrusion";
+			toolTip=$STR_Icon_Intru;
 		};
 		class CTI_Icon_load : CTI_Icon_fpk {
 			idc = 511019;
 			x = "SafeZoneX + SafeZoneW*0.60";
 			text = "Rsc\Pictures\icon_load.paa";
 			action = "['OnLoad'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_Interact.sqf'";
-			toolTip="Load Static/Crate";
+			toolTip=$STR_Icon_Load;
 		};
 		class CTI_Icon_fact : CTI_Icon_fpk {
 			idc = 511020;
 			x = "SafeZoneX + SafeZoneW*0.60";
 			text = "Rsc\Pictures\icon_fact.paa";
 			action = "['OnFact'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_Interact.sqf'";
-			toolTip="Use Factory";
+			toolTip=$STR_Icon_Fact;
 		};
 		class CTI_Icon_del : CTI_Icon_fpk {
 			idc = 511021;
 			x = "SafeZoneX + SafeZoneW*0.60";
 			text = "Rsc\Pictures\icon_del.paa";
 			action = "['OnDel'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_Interact.sqf'";
-			toolTip="Delete Factory";
+			toolTip=$STR_Icon_Del_Fact;
 		};
 		class CTI_Icon_repHQ : CTI_Icon_fpk {
 			idc = 511022;
 			x = "SafeZoneX + SafeZoneW*0.60";
 			text = "Rsc\Pictures\icon_rephq.paa";
 			action = "['OnRepHQ'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_Interact.sqf'";
-			toolTip="Repair HQ";
+			toolTip=$STR_Icon_RepHQ;
 		};
 		class CTI_Icon_push : CTI_Icon_fpk {
 			idc = 511023;
 			x = "SafeZoneX + SafeZoneW*0.60";
 			text = "Rsc\Pictures\icon_push.paa";
 			action = "['OnPush'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_Interact.sqf'";
-			toolTip="Push";
+			toolTip=$STR_Icon_Push;
 		};
 		class CTI_Icon_pull : CTI_Icon_fpk {
 			idc = 511024;
 			x = "SafeZoneX + SafeZoneW*0.60";
 			text = "Rsc\Pictures\icon_pull.paa";
 			action = "['OnPull'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_Interact.sqf'";
-			toolTip="Pull";
+			toolTip=$STR_Icon_Pull;
 		};
 		class CTI_Icon_pack : CTI_Icon_fpk {
 			idc = 511025;
 			x = "SafeZoneX + SafeZoneW*0.60";
 			text = "Rsc\Pictures\icon_pack.paa";
 			action = "['OnPack'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_Interact.sqf'";
-			toolTip="(Un)Pack";
+			toolTip=$STR_Icon_UPack;
 		};
 		class CTI_Icon_att : CTI_Icon_fpk {
 			idc = 511026;
 			x = "SafeZoneX + SafeZoneW*0.60";
 			text = "Rsc\Pictures\icon_att.paa";
 			action = "['OnAtt'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_Interact.sqf'";
-			toolTip="Attach Slingload";
+			toolTip=$STR_Icon_Att;
 		};
 		class CTI_Icon_para : CTI_Icon_fpk {
 			idc = 511027;
 			x = "SafeZoneX + SafeZoneW*0.60";
 			text = "Rsc\Pictures\icon_para.paa";
 			action = "['OnPara'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_Interact.sqf'";
-			toolTip="Paradrop Slingload/Attachment";
+			toolTip=$STR_Icon_Para;
 		};
 		class CTI_Icon_build : CTI_Icon_fpk {
 			idc = 511028;
 			x = "SafeZoneX + SafeZoneW*0.60";
 			text = "Rsc\Pictures\icon_build.paa";
 			action = "['OnBuild'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_Interact.sqf'";
-			toolTip="Build Structure";
+			toolTip=$STR_Icon_Build;
 		};
 		class CTI_Icon_srep : CTI_Icon_fpk {
 			idc = 511029;
 			x = "SafeZoneX + SafeZoneW*0.60";
 			text = "Rsc\Pictures\icon_build.paa";
 			action = "['OnSRep'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_Interact.sqf'";
-			toolTip="Repair Structure";
+			toolTip=$STR_Icon_Srep;
 		};
 		class CTI_Icon_AC : CTI_Icon_fpk {
 			idc = 511030;
 			x = "SafeZoneX + SafeZoneW*0.60";
 			text = "Rsc\Pictures\icon_al.paa";
 			action = "['OnAircraftCust'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_Interact.sqf'";
-			toolTip="Aircraft Loadout Customisation";
+			toolTip=$STR_Icon_ALC;
 		};
 		class CTI_Icon_Com : CTI_Icon_fpk {
 			idc = 511031;
 			x = "SafeZoneX + SafeZoneW*0.55";
 			text = "Rsc\Pictures\icon_com.paa";
 			action = "['OnCom'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_Interact.sqf'";
-			toolTip="Take Command";
+			toolTip=$STR_Icon_TCom;
 		};
 		class CTI_Icon_Pilot : CTI_Icon_fpk {
 			idc = 511032;
 			x = "SafeZoneX + SafeZoneW*0.55";
 			text = "Rsc\Pictures\i_driver.paa";
 			action = "['OnPilot'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_Interact.sqf'";
-			toolTip="Getin as Pilot";
+			toolTip=$STR_Icon_Pilot;
 		};
 		class CTI_Icon_ExitT : CTI_Icon_fpk {
 			idc = 511033;
 			x = "SafeZoneX + SafeZoneW*0.55";
 			text = "Rsc\Pictures\icon_load.paa";
 			action = "['OnExitT'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_Interact.sqf'";
-			toolTip="Exit Tutorial";
+			toolTip=$STR_Icon_ExitT;
 		};
 		class CTI_Icon_MobileG : CTI_Icon_fpk {
 			idc = 511034;
 			x = "SafeZoneX + SafeZoneW*0.55";
 			text = "Rsc\Pictures\icon_wf_gear_primary.paa";
 			action = "['OnGearM'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_Interact.sqf'";
-			toolTip="Mobile Gear Access";
+			toolTip=$STR_Icon_MobileG;
 		};
 		class CTI_Icon_DisDef : CTI_Icon_fpk {
 			idc = 511035;
 			x = "SafeZoneX + SafeZoneW*0.55";
 			text = "Rsc\Pictures\icon_build.paa";
 			action = "['OnDisDef'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_Interact.sqf'";
-			toolTip="Dismount Defense";
+			toolTip=$STR_Icon_DisDef;
 		};
 	};
 };
@@ -354,7 +354,7 @@ class CTI_RscTablet_main {
 			w = "(3/4*SafeZoneH)*0.615*0.42";
 			h = "SafeZoneH * 0.03";
 
-			text = "Online Help";
+			text = $STR_Menu_Options_OnlineHelp;
 			action = "['onOnlineHelpPressed'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_TabletMain.sqf'";
 		};
 		class CTI_Menu_Options_Video : CTI_Menu_Options_OnlineHelp {
@@ -362,7 +362,7 @@ class CTI_RscTablet_main {
 
 			y = "SafeZoneY+safezoneH*(0.420+0.005*2+0.03)";
 
-			text = "Video Settings";
+			text = $STR_Menu_Options_Video;
 			action = "['onVideoSettingsPressed'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_TabletMain.sqf'";
 		};
 
@@ -370,7 +370,7 @@ class CTI_RscTablet_main {
 			idc = 130009;
 
 			y = "SafeZoneY+safezoneH*(0.420+0.005*3+0.03*2)";
-			text = "Transfer Resources";
+			text = $STR_Menu_Options_TransferFunds;
 			action = "['onTransferResourcesPressed'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_TabletMain.sqf'";
 		};
 		class CTI_Menu_Options_Unflip : CTI_Menu_Options_OnlineHelp {
@@ -378,7 +378,8 @@ class CTI_RscTablet_main {
 
 			y = "SafeZoneY+safezoneH*(0.420+0.005*4+0.03*3)";
 
-			text = "Unflip Nearest Vehicle";
+			text = $STR_Menu_Options_Unflip;
+			tooltip = $STR_Menu_Options_Unflip_ToolTip;
 			action = "['onUnflipPressed'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_TabletMain.sqf'";
 		};
 		class CTI_Menu_Options_Service : CTI_Menu_Options_OnlineHelp {
@@ -386,7 +387,7 @@ class CTI_RscTablet_main {
 
 			y = "SafeZoneY+safezoneH*(0.420+0.005*5+0.03*4)";
 
-			text = "Service Menu";
+			text = $STR_Menu_Options_Service;
 			action = "['onServicePressed'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_TabletMain.sqf'";
 		};
 		class CTI_Menu_Options_AIMicro : CTI_Menu_Options_OnlineHelp {
@@ -394,7 +395,7 @@ class CTI_RscTablet_main {
 
 			y = "SafeZoneY+safezoneH*(0.420+0.005*6+0.03*5)";
 
-			text = "AI Management";
+			text = $STR_Menu_Options_AIMicro;
 			action = "['onAIMicroPressed'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_TabletMain.sqf'";
 		};
 		class CTI_Menu_Options_UnitsCam : CTI_Menu_Options_OnlineHelp { //--- Render out
@@ -402,7 +403,7 @@ class CTI_RscTablet_main {
 
 			y = "SafeZoneY+safezoneH*(0.420+0.005*7+0.03*6)";
 
-			text = "Units Camera";
+			text = $STR_Menu_Options_UnitsCam;
 			action = "['onUnitsCamPressed'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_TabletMain.sqf'";
 		};
 		class CTI_Menu_Options_SatCam : CTI_Menu_Options_OnlineHelp { //--- Render out
@@ -410,7 +411,7 @@ class CTI_RscTablet_main {
 
 			y = "SafeZoneY+safezoneH*(0.420+0.005*8+0.03*7)";
 
-			text = "Satellite Camera";
+			text = $STR_Menu_Options_SatCam;
 			action = "['onSatCamPressed'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_TabletMain.sqf'";
 		};
 		/*class CTI_Control_Resources : RscButton {
@@ -435,7 +436,7 @@ class CTI_RscTablet_main {
 			colorBackgroundActive[] = {0.258823529,1, 0.713725490,  1};
 			colorBackgroundDisabled[] = {0.95,0.95,0.95,1};
 
-			text = "Teams";
+			text = $STR_Control_Teams;
 			action = "['onTeamsPressed'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_TabletMain.sqf'";
 		};
 		class CTI_Control_Map : CTI_Control_Teams {
@@ -443,7 +444,7 @@ class CTI_RscTablet_main {
 
 			y = "SafeZoneY+safezoneH*(0.420+0.005*2+0.03*1)";
 
-			text = "Map Commanding";
+			text = $STR_Control_Map;
 			action = "['onMapPressed'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_TabletMain.sqf'";
 		};
 		class CTI_Control_Upgrades : CTI_Control_Teams {
@@ -451,7 +452,7 @@ class CTI_RscTablet_main {
 
 			y = "SafeZoneY+safezoneH*(0.420+0.005*3+0.03*2)";
 
-			text = "Upgrades";
+			text = $STR_Control_Upgrades;
 			action = "['onUpgradesPressed'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_TabletMain.sqf'";
 		};
 		class CTI_Control_Workers : CTI_Control_Teams {
@@ -459,7 +460,7 @@ class CTI_RscTablet_main {
 
 			y = "SafeZoneY+safezoneH*(0.420+0.005*4+0.03*3)";
 
-			text = "Base Management";
+			text = $STR_Control_Workers;
 			action = "['onWorkersPressed'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_TabletMain.sqf'";
 		};
 		class CTI_Control_RequestMenu : CTI_Control_Teams {
@@ -467,7 +468,7 @@ class CTI_RscTablet_main {
 
 			y = "SafeZoneY+safezoneH*(0.420+0.005*5+0.03*4)";
 
-			text = "Team Requests";
+			text = $STR_Control_RequestMenu;
 			action = "['onRequestMenuPressed'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_TabletMain.sqf'";
 		};
 		class CTI_Control_ArtilleryMenu : CTI_Control_Teams {
@@ -475,7 +476,7 @@ class CTI_RscTablet_main {
 
 			y = "SafeZoneY+safezoneH*(0.420+0.005*6+0.03*5)";
 
-			text = "Artillery";
+			text = $STR_Control_ArtilleryMenu;
 			action = "['onArtilleryMenuPressed'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_TabletMain.sqf'";
 		};
 		class CTI_Control_Setpriority : CTI_Control_Teams {
@@ -483,7 +484,8 @@ class CTI_RscTablet_main {
 
 			y = "SafeZoneY+safezoneH*(0.420+0.005*7+0.03*6)";
 
-			text = "Set Priority Town";
+			text = $STR_Control_Setpriority;
+			tooltip = $STR_Control_Setpriority_ToolTip;
 			action = "['onPriorityPressed'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_TabletMain.sqf'";
 		};
 		class CTI_Control_Disactivate : CTI_Control_Teams {
@@ -491,7 +493,7 @@ class CTI_RscTablet_main {
 
 			y = "SafeZoneY+safezoneH*(0.420+0.005*8+0.03*7)";
 
-			text = "Force disactivation";
+			text = $STR_Control_Disactivate;
 			action = "['onDisacPressed'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_TabletMain.sqf'";
 		};
 		/*class CTI_Control_Gear : RscButton_Lesser {
@@ -517,7 +519,7 @@ class CTI_RscTablet_main {
 			w = "(3/4*SafeZoneH)*0.615*0.22";
 			h = "SafeZoneH * 0.03";
 
-			text = "Units.";
+			text = $STR_Control_Fact;
 			action = "['onFactPressed'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_TabletMain.sqf'";
 		};
 		class CTI_Control_Halo : CTI_Control_Fact {
@@ -525,7 +527,7 @@ class CTI_RscTablet_main {
 
 			y = "SafeZoneY+safezoneH*(0.28+0.035*2)";
 
-			text = "HALO";
+			text = $STR_Control_Halo;
 			action = "['onHaloPressed'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_TabletMain.sqf'";
 		};
 		class CTI_Control_Build : CTI_Control_Fact {
@@ -533,14 +535,14 @@ class CTI_RscTablet_main {
 
 			y = "SafeZoneY+safezoneH*(0.28+0.035*3)";
 
-			text = "Build";
+			text = $STR_Control_Build;
 			action = "['onBuildPressed'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_TabletMain.sqf'";
 		};
 		class CTI_Control_Disco : CTI_Control_Fact {
 			idc = 210016;
 			x = "SafeZoneX + (SafeZoneW - (3/4*SafeZoneH))/2+ (3/4*SafeZoneH) *0.191+(3/4*SafeZoneH)*0.615*0.02";
 			y = "SafeZoneY+safezoneH*0.28";
-			text = "Net-Disco.";
+			text = $STR_Control_Disco;
 			size = "0.7 * 			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
 			colorBackground[] = {1, 0.7686274509803922,0.6470588235294118, 0.7};
 			colorBackgroundActive[] = {1, 0.7686274509803922,0.6470588235294118, 1};
@@ -554,7 +556,7 @@ class CTI_RscTablet_main {
 			colorBackground[] = {1, 0.7686274509803922,0.6470588235294118, 0.7};
 			colorBackgroundActive[] = {1, 0.7686274509803922,0.6470588235294118, 1};
 			colorFocused[] = {0.6470588235294118, 0.7686274509803922, 1, 1};
-			text = "Eject Com.";
+			text = $STR_Control_Eject;
 			action = "['onVotePressed'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_TabletMain.sqf'";
 		};
 		class CTI_Control_Log : CTI_Control_Eject {
@@ -564,14 +566,14 @@ class CTI_RscTablet_main {
 		class CTI_Control_Request : CTI_Control_Eject {
 			idc = 210018;
 			y = "SafeZoneY+safezoneH*(0.28+0.035*2+5)";
-			text = "Make request";
+			text = $STR_Control_Request;
 
 			action = "";
 		};
 		class CTI_Control_Zeus : CTI_Control_Eject {
 			idc = 210019;
 			y = "SafeZoneY+safezoneH*(0.28+0.035*3+5)";
-			text = "Zeus Con.";
+			text = $STR_Control_Zeus;
 
 			action = "['SERVER', 'Server_Assign_Zeus', player] call CTI_CO_FNC_NetSend;";
 		};
@@ -631,14 +633,14 @@ class CTI_RscBuildMenu_Tablet {
 			w = "(3/4*SafeZoneH)*0.615*0.47";
 			h = "SafeZoneH * 0.03";
 
-			text = "Undo Structure";
+			text = $STR_Menu_Control_Undo;
 			action = "['onUndoStructure'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_BuildMenu.sqf'";
 		};
 		class CTI_Menu_Control_UndoDefense : CTI_Menu_Control_Undo {
 			idc = 100010;
 
 			x = "SafeZoneX + (SafeZoneW - (3/4*SafeZoneH))/2+ (3/4*SafeZoneH) *0.505";
-			text = "Undo Defense";
+			text = $STR_Menu_Control_UndoDefense;
 			action = "['onUndoDefense'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_BuildMenu.sqf'";
 		};
 		class CTI_Menu_Control_BuildStructure : CTI_Menu_Control_Undo {
@@ -646,7 +648,7 @@ class CTI_RscBuildMenu_Tablet {
 
 			y="SafeZoneY+safezoneH*(0.275+0.07+0.035)";
 
-			text = "Build Structure";
+			text = $STR_Icon_Build;
 			action = "['onBuildStructure', lnbCurSelRow 100006] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_BuildMenu.sqf'";
 		};
 		class CTI_Menu_Control_AutoAlign : CTI_Menu_Control_Undo {
@@ -674,7 +676,7 @@ class CTI_RscBuildMenu_Tablet {
 
 			y="SafeZoneY+safezoneH*(0.280 +0.035+0.035)";
 
-			text = "Build Defense";
+			text = $STR_Menu_Control_BuildDefense;
 			action = "['onBuildDefense', lnbCurSelRow 100007] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_BuildMenu.sqf'";
 		};
 		class CTI_Menu_Control_AddWorker : CTI_Menu_Control_Undo {
@@ -682,7 +684,7 @@ class CTI_RscBuildMenu_Tablet {
 
 			y="SafeZoneY+safezoneH*(0.275+0.065)";
 
-			text = "Add Worker";
+			text = $STR_Menu_Control_AddWorker;
 			action = "['onAddWorker'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_BuildMenu.sqf'";
 		};
 
@@ -953,14 +955,14 @@ class CTI_RscTabletTransferResourcesMenu {
 			w = "SafeZoneW * 0.16";
 			h = "SafeZoneH * 0.035";
 
-			text = "Player Resources %";
+			text = $STR_Menu_PlayerPoolLabel;
 
 			sizeEx = "0.9 * (			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
 		};
 		class CTI_Menu_AwardPoolLabel : CTI_Menu_PlayerPoolLabel {
 			y = "SafeZoneY + (SafezoneH * 0.605)";
 
-			text = "Award Pool %";
+			text = $STR_Menu_AwardPoolLabel;
 		};
 	};
 
@@ -1033,7 +1035,7 @@ class CTI_RscTabletTransferResourcesMenu {
 			w = "(3/4*SafeZoneH)*0.277";
 			h = "SafeZoneH * 0.04";
 
-			text = "Give Player";
+			text = $STR_Menu_Funds_GivePlayer;
 			action = "['onGivePlayerPressed'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_TransferResourcesMenu.sqf'";
 		};
 		class CTI_Menu_Funds_Commander : RscStructuredText {
@@ -1135,23 +1137,23 @@ class CTI_RscTabletServiceMenu {
 			h = "SafeZoneH * 0.04";
 
 			colorText[] = {0.678431373, 0.815686275, 1};
-			text = "Unit";
+			text = $STR_Menu_Header_Unit;
 			sizeEx = "0.78 * 			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
 		};
 		class CTI_Menu_Header_Damage : CTI_Menu_Header_Unit {
 			x = "SafeZoneX + (SafeZoneW - (3/4*SafeZoneH))/2+ (3/4*SafeZoneH) *(0.191+0.01)+(3/4*SafeZoneH)*(0.615-0.02)*0.5";
 
-			text = "Damage";
+			text = $STR_Menu_Header_Damage;
 		};
 		class CTI_Menu_Header_Fuel : CTI_Menu_Header_Unit {
 			x = "SafeZoneX + (SafeZoneW - (3/4*SafeZoneH))/2+ (3/4*SafeZoneH) *(0.191+0.01)+(3/4*SafeZoneH)*(0.615-0.02)*0.65";
 
-			text = "Fuel";
+			text = $STR_Menu_Header_Fuel;
 		};
 		class CTI_Menu_Header_Health : CTI_Menu_Header_Unit {
 			x = "SafeZoneX + (SafeZoneW - (3/4*SafeZoneH))/2+ (3/4*SafeZoneH) *(0.191+0.01)+(3/4*SafeZoneH)*(0.615-0.02)*0.80";
 
-			text = "Health";
+			text = $STR_Menu_Header_Health;
 		};
 	};
 
@@ -1164,7 +1166,7 @@ class CTI_RscTabletServiceMenu {
 			w = "(3/4*SafeZoneH)*((0.615-0.02)*0.20)";
 
 
-			text = "Repair";
+			text = $STR_Icon_Rep;
 			action = "['onRepairPressed', lnbCurSelRow 230005] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_ServiceMenu.sqf'";
 		};
 		class CTI_Menu_Control_Rearm : CTI_Menu_Control_Repair {
@@ -1172,7 +1174,7 @@ class CTI_RscTabletServiceMenu {
 
 			y = "SafeZoneY + (SafeZoneH * 0.63)";
 
-			text = "Rearm";
+			text = $STR_Menu_Control_Rearm;
 			action = "['onRearmPressed', lnbCurSelRow 230005] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_ServiceMenu.sqf'";
 		};
 		class CTI_Menu_Control_Refuel : CTI_Menu_Control_Repair {
@@ -1180,7 +1182,7 @@ class CTI_RscTabletServiceMenu {
 
 			x = "SafeZoneX + (SafeZoneW - (3/4*SafeZoneH))/2+ (3/4*SafeZoneH) *(0.191+0.01)+(3/4*SafeZoneH)*((0.615-0.02)*0.20)+(3/4*SafeZoneH)*((0.615-0.02)*0.20)+(3/4*SafeZoneH)*((0.615-0.02)*0.10)";
 
-			text = "Refuel";
+			text = $STR_Menu_Control_Refuel;
 			action = "['onRefuelPressed', lnbCurSelRow 230005] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_ServiceMenu.sqf'";
 		};
 		class CTI_Menu_Control_Heal : CTI_Menu_Control_Refuel {
@@ -1188,7 +1190,7 @@ class CTI_RscTabletServiceMenu {
 
 			y = "SafeZoneY + (SafeZoneH * 0.63)";
 
-			text = "Heal";
+			text = $STR_Menu_Control_Heal;
 			action = "['onHealPressed', lnbCurSelRow 230005] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_ServiceMenu.sqf'";
 		};
 
@@ -1313,7 +1315,7 @@ class CTI_RscTabletPurchaseMenu {
 			w = "(3/4*SafeZoneH)*0.615*0.46*0.33";
 			h = "SafeZoneH * 0.035";
 
-			text = "Team :";
+			text = $STR_Menu_TeamComboLabel;
 			// colorText[] = {0.258823529, 0.713725490, 1, 1};
 
 			sizeEx = "0.9 * (			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
@@ -1322,7 +1324,7 @@ class CTI_RscTabletPurchaseMenu {
 		class CTI_Menu_FactoryComboLabel : CTI_Menu_TeamComboLabel {
 			y = "SafeZoneY+safezoneH*(0.280+0.04)";
 
-			text = "Factory :";
+			text = $STR_Menu_FactoryComboLabel;
 		};
 
 		class CTI_Menu_MapFrame : CTI_Menu_ComboFrame {
@@ -1542,7 +1544,7 @@ class CTI_RscTabletPurchaseMenu {
 
 			h = "SafeZoneH * 0.03";
 
-			text = "Purchase";
+			text = $STR_Menu_Control_Purchase;
 			action = "['onPurchase', lnbCurSelRow 111007] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PurchaseMenu.sqf'";
 		};
 		class CTI_Menu_Control_IndependentSalvager : CTI_Menu_Control_Purchase {
@@ -1550,7 +1552,7 @@ class CTI_RscTabletPurchaseMenu {
 
 			x = "SafeZoneX + (SafeZoneW - (3/4*SafeZoneH))/2+ (3/4*SafeZoneH) *0.191+(3/4*SafeZoneH)*0.615*0.52";
 
-			text = "Buy Independent Salvager";
+			text = $STR_Menu_Control_IndependentSalvager;
 			action = "['onIndependentSalvagerPressed'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PurchaseMenu.sqf'";
 		};
 		class CTI_Menu_Control_CancelQueu : CTI_Menu_Control_IndependentSalvager {
@@ -1559,7 +1561,7 @@ class CTI_RscTabletPurchaseMenu {
 
 			y = "SafeZoneY+safezoneH*(0.275+0.410)-SafeZoneH * 0.032 ";
 
-			text = "Cancel Queue";
+			text = $STR_Menu_Control_CancelQueu;
 			action = "['onQueueCancel', lbCurSel 110013] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_PurchaseMenu.sqf'";
 		};
 
@@ -1660,7 +1662,7 @@ class CTI_RscTabletUpgradeMenu {
 			w = "(3/4*SafeZoneH)*0.615*0.46";
 			h = "SafeZoneH * 0.03";
 
-			text = "Upgrade";
+			text = $STR_Control_Upgrade;
 			action = "['onUpgradePressed', lnbCurSelRow 250002] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_UpgradeMenu.sqf'";
 		};
 		class CTI_Menu_Control_UpgradeList : RscListNBox {
@@ -1835,7 +1837,7 @@ class CTI_RscTabletWorkersMenu {
 			w = "(3/4*SafeZoneH)*0.615*0.27";
 			h = "SafeZoneH * 0.04";
 
-			text = "Disband Worker";
+			text = $STR_Menu_Control_Disband_W;
 			action = "['onWorkerDisbandPressed', lnbCurSelRow 260002] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_WorkersMenu.sqf'";
 		};
 		class CTI_Menu_Control_Sell : CTI_Menu_Control_Disband {
@@ -1844,7 +1846,7 @@ class CTI_RscTabletWorkersMenu {
 			y = "SafeZoneY+safezoneH*(0.590+0.005+0.04)";
 
 
-			text = "Sell Structure";
+			text = $STR_Menu_Control_Sell;
 			action = "['onStructureSellPressed'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_WorkersMenu.sqf'";
 		};
 	};
@@ -1905,7 +1907,7 @@ class CTI_RscTabletDefenseMenu {
 			w = "(3/4*SafeZoneH)*0.615*0.46";
 			h = "SafeZoneH * 0.04";
 
-			text = "Undo Structure";
+			text = $STR_Menu_Control_Undo;
 			action = "['onUndoDefense'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_DefenseMenu.sqf'";
 		};
 		class CTI_Menu_Control_BuildStructure : CTI_Menu_Control_Undo {
@@ -1913,7 +1915,7 @@ class CTI_RscTabletDefenseMenu {
 
 			y = "SafeZoneY+safezoneH*(0.280+0.06+0.005*2+0.04)";
 
-			text = "Build Defense";
+			text = $STR_Menu_Control_BuildDefense;
 			action = "['onBuildDefense', lnbCurSelRow 200007] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_DefenseMenu.sqf'";
 		};
 		class CTI_Menu_Control_AutoAlign : CTI_Menu_Control_Undo {
@@ -2025,7 +2027,7 @@ class CTI_RscTabletRequestMenu {
 			w = "(3/4*SafeZoneH)*(0.297)";
 			h = "SafeZoneH * 0.04";
 
-			text = "Accept";
+			text = $STR_Menu_Control_Accept;
 			action = "['onRequestAccept', lnbCurSelRow 280005] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_RequestMenu.sqf'";
 		};
 		class CTI_Menu_Control_Deny : CTI_Menu_Control_Accept {
@@ -2033,7 +2035,7 @@ class CTI_RscTabletRequestMenu {
 
 			x = "SafeZoneX + (SafeZoneW - (3/4*SafeZoneH))/2+ (3/4*SafeZoneH) *0.503";
 
-			text = "Deny";
+			text = $STR_Menu_Control_Deny;
 			action = "['onRequestDeny', lnbCurSelRow 280005] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_RequestMenu.sqf'";
 		};
 		class CTI_Menu_Map : RscMapControl {
@@ -2136,7 +2138,7 @@ class CTI_RscTabletOnlineHelpMenu {
 			w = "(3/4*SafeZoneH)*0.615*0.36";
 			h = "SafeZoneH * 0.04";
 
-			text = "Close";
+			text = $STR_Control_Exit;
 			action = "closeDialog 0";
 		};
 		class CTI_Menu_Inter_text : RscText {
@@ -2145,7 +2147,7 @@ class CTI_RscTabletOnlineHelpMenu {
 			w = "(3/4*SafeZoneH)*0.615*0.36";
 			h = "SafeZoneH*0.03";
 			colorBackground[] = {1,0,0,0.4};
-			text="Inter. Key";
+			text=$STR_Menu_Inter_text;
 		};
 
 	};
@@ -2278,7 +2280,7 @@ class CTI_RscGearMenu {
 			w = "SafeZoneW * 0.5";
 			h = "SafeZoneH * 0.037";
 
-			text = "Gear Purchase Menu :";
+			text = $STR_Menu_Title;
 			colorText[] = {0.258823529, 0.713725490, 1, 1};
 
 			sizeEx = "(			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
@@ -2323,7 +2325,7 @@ class CTI_RscGearMenu {
 			w = "SafeZoneW * 0.1";
 			h = "SafeZoneH * 0.035";
 
-			text = "Target :";
+			text = $STR_Menu_ComboTarget_Label;
 
 			sizeEx = "0.9 * (			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
 		};
@@ -3019,8 +3021,8 @@ class CTI_RscGearMenu {
 			w = "SafeZoneW * 0.28";
 			h = "SafeZoneH * 0.04";
 
-			text = "Create Template";
-			tooltip = "Create a template of the current gear setup";
+			text = $STR_Gear_Control_CreateTemplate;
+			tooltip = $STR_Gear_Control_CreateTemplate_Tooltip;
 			action = "['onTemplateCreation'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_GearMenu.sqf'";
 		};
 		class CTI_Gear_Control_DeleteTemplate : CTI_Gear_Control_CreateTemplate {
@@ -3028,8 +3030,8 @@ class CTI_RscGearMenu {
 
 			y = "SafeZoneY + (SafezoneH * 0.806)";
 
-			text = "Delete Template";
-			tooltip = "Remove an existing template";
+			text = $STR_Gear_Control_DeleteTemplate;
+			tooltip = $STR_Gear_Control_DeleteTemplate_Tooltip;
 			action = "['onTemplateDeletion', lbCurSel 70108] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_GearMenu.sqf'";
 		};
 		class CTI_Gear_Control_Buy : CTI_Gear_Control_CreateTemplate {
@@ -3037,8 +3039,8 @@ class CTI_RscGearMenu {
 
 			y = "SafeZoneY + (SafezoneH * 0.903)";
 
-			text = "Buy";
-			tooltip = "Purchase the current gear setup";
+			text = $STR_Gear_Control_Buy;
+			tooltip = $STR_Gear_Control_Buy_Tooltip;
 			action = "['onPurchase'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_GearMenu.sqf'";
 		};
 		class CTI_Menu_Control_Info : RscStructuredText {
@@ -3057,16 +3059,16 @@ class CTI_RscGearMenu {
 			w = "SafeZoneW * 0.185";
 			h = "SafeZoneH * 0.04";
 
-			text = "Clear";
-			tooltip = "Clear the gear of the existing target";
+			text = $STR_Gear_Control_Clear;
+			tooltip = $STR_Gear_Control_Clear_Tooltip;
 			action = "['onInventoryClear'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_GearMenu.sqf'";
 		};
 		class CTI_Gear_Control_Reload : CTI_Gear_Control_Clear {
 			idc = 70030;
 			x = "SafeZoneX + (SafeZoneW * 0.205)";
 
-			text = "Reload";
-			tooltip = "Reload the last purchased gear for this target";
+			text = $STR_Gear_Control_Reload;
+			tooltip = $STR_Gear_Control_Reload_Tooltip;
 			action = "['onInventoryReload'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_GearMenu.sqf'";
 		};
 		class CTI_Control_Exit : RscButton {
@@ -3112,7 +3114,7 @@ class CTI_RscRespawnMenu {
 			w = "SafeZoneW * 0.68";
 			h = "SafeZoneH * 0.037";
 
-			text = "Respawn Menu";
+			text = $STR_Menu_Title_Respawn;
 			colorText[] = {0.258823529, 0.713725490, 1, 1};
 
 			sizeEx = "(			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
@@ -3153,7 +3155,7 @@ class CTI_RscRespawnMenu {
 			w = "SafeZoneW * 0.27";
 			h = "SafeZoneH * 0.04";
 
-			text = "Available locations";
+			text = $STR_Menu_ListInfo_Text;
 			sizeEx = "0.9 * (			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
 		};
 	};
@@ -3242,7 +3244,7 @@ class CTI_RscSatelitteCamera {
 			w = "SafeZoneW * 0.19";
 			h = "SafeZoneH * 0.03";
 
-			text = "Teams :";
+			text = $STR_Menu_Control_UnitsList_Label;
 			colorText[] = {0.231372549, 0.580392157, 0.929411765, 1};
 			sizeEx = "0.9 * (			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
 		};
@@ -3262,7 +3264,7 @@ class CTI_RscSatelitteCamera {
 			w = "SafeZoneW * 0.19";
 			h = "SafeZoneH * 0.03";
 
-			text = "AI Members :";
+			text = $STR_Menu_Control_UnitsAIList_Label;
 		};
 		class CTI_Menu_Control_UnitsAIList_Frame : CTI_Menu_Control_UnitsList_Frame { //--- Render out.
 			idc = 170006;
@@ -3328,7 +3330,7 @@ class CTI_RscSatelitteCamera {
 			h = "SafeZoneH * 0.04";
 			w = "SafeZoneW * 0.14";
 
-			text = "Exit";
+			text = $STR_Menu_Control_Exit;
 			action = "closeDialog 0";
 		};
 		class CTI_Menu_Control_Mode : CTI_Menu_Control_Exit {
@@ -3344,7 +3346,7 @@ class CTI_RscSatelitteCamera {
 
 			x = "SafeZoneX + (SafeZoneW * 0.31)";
 
-			text = "Unit Camera";
+			text = $STR_Menu_UnitCamJump;
 			action = "['onUnitCameraJump'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_SatelitteCamera.sqf'";
 		};
 		class CTI_Menu_Control_ToggleInfo : CTI_Menu_Control_ToggleGroups {
@@ -3451,7 +3453,7 @@ class CTI_RscUnitsCamera {
 			w = "SafeZoneW * 0.19";
 			h = "SafeZoneH * 0.03";
 
-			text = "Teams :";
+			text = $STR_Menu_Control_UnitsList_Label;
 			colorText[] = {0.231372549, 0.580392157, 0.929411765, 1};
 			sizeEx = "0.9 * (			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
 		};
@@ -3471,7 +3473,7 @@ class CTI_RscUnitsCamera {
 			w = "SafeZoneW * 0.19";
 			h = "SafeZoneH * 0.03";
 
-			text = "AI Members :";
+			text = $STR_Menu_Control_UnitsAIList_Label;
 		};
 		class CTI_Menu_Control_UnitsAIList_Frame : CTI_Menu_Control_UnitsList_Frame { //--- Render out.
 			idc = 180006;
@@ -3536,7 +3538,7 @@ class CTI_RscUnitsCamera {
 			h = "SafeZoneH * 0.04";
 			w = "SafeZoneW * 0.14";
 
-			text = "Exit";
+			text = $STR_Menu_Control_Exit;
 			action = "closeDialog 0";
 		};
 		class CTI_Menu_Control_Mode : CTI_Menu_Control_Exit {
@@ -3552,7 +3554,7 @@ class CTI_RscUnitsCamera {
 
 			x = "SafeZoneX + (SafeZoneW * 0.31)";
 
-			text = "Satellite Camera";
+			text = $STR_Menu_Options_SatCam;
 			action = "['onSatelliteCameraJump'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_UnitsCamera.sqf'";
 		};
 		class CTI_Menu_Control_ToggleInfo : CTI_Menu_Control_ToggleGroups {
@@ -3600,7 +3602,7 @@ class CTI_RscUnitsCamera {
 			h = "SafeZoneH * 0.04";
 			w = "SafeZoneW * 0.14";
 
-			text = "Iron Sight";
+			text = $STR_Menu_Control_IronSight;
 			action = "['onCamChange', 'ironsight'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_UnitsCamera.sqf'";
 		};
 		class CTI_Menu_Control_Internal : CTI_Menu_Control_IronSight {
@@ -3608,7 +3610,7 @@ class CTI_RscUnitsCamera {
 
 			y = "SafeZoneY + (SafeZoneH * 0.85)";
 
-			text = "Internal";
+			text = $STR_Menu_Control_Internal;
 			action = "['onCamChange', 'internal'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_UnitsCamera.sqf'";
 		};
 		class CTI_Menu_Control_External : CTI_Menu_Control_IronSight { //--- Render out.
@@ -3616,7 +3618,7 @@ class CTI_RscUnitsCamera {
 
 			y = "SafeZoneY + (SafeZoneH * 0.80)";
 
-			text = "External";
+			text = $STR_Menu_Control_External;
 			action = "['onCamChange', 'external'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_UnitsCamera.sqf'";
 		};
 		class CTI_Menu_Control_Unflip : CTI_Menu_Control_IronSight {
@@ -3624,7 +3626,7 @@ class CTI_RscUnitsCamera {
 
 			y = "SafeZoneY + (SafeZoneH * 0.75)";
 
-			text = "Unflip Unit";
+			text = $STR_Menu_Control_Unflip;
 			action = "['onUnitUnflip'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_UnitsCamera.sqf'";
 		};
 		class CTI_Menu_Control_Disband : CTI_Menu_Control_IronSight { //--- Render out.
@@ -3632,7 +3634,7 @@ class CTI_RscUnitsCamera {
 
 			y = "SafeZoneY + (SafeZoneH * 0.70)";
 
-			text = "Disband Unit";
+			text = $STR_Menu_Control_Disband_U;
 			action = "['onUnitDisband'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_UnitsCamera.sqf'";
 		};
 		/*class CTI_Menu_Control_Remote : CTI_Menu_Control_IronSight {
@@ -3700,7 +3702,7 @@ class CTI_RscTeamsMenu {
 			w = "SafeZoneW * 0.93";
 			h = "SafeZoneH * 0.037";
 
-			text = "Teams";
+			text = $STR_Control_Teams;
 			colorText[] = {0.258823529, 0.713725490, 1, 1};
 
 			sizeEx = "(			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
@@ -3738,33 +3740,33 @@ class CTI_RscTeamsMenu {
 			h = "SafeZoneH * 0.04";
 
 			colorText[] = {0.678431373, 0.815686275, 1};
-			text = "Team";
+			text = $STR_Menu_Header_Team;
 			sizeEx = "0.78 * 			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
 		};
 		class CTI_Menu_Header_Size : CTI_Menu_Header_Team {
 			x = "SafeZoneX + (SafeZoneW * 0.271)";
 
-			text = "Size";
+			text = $STR_Menu_Header_Size;
 		};
 		class CTI_Menu_Header_Funds : CTI_Menu_Header_Team {
 			x = "SafeZoneX + (SafeZoneW * 0.366)";
 
-			text = "Resources";
+			text = $STR_Menu_Header_Funds;
 		};
 		class CTI_Menu_Header_Independent : CTI_Menu_Header_Team {
 			x = "SafeZoneX + (SafeZoneW * 0.485)";
 
-			text = "Independent";
+			text = $STR_Menu_Header_Independent;
 		};
 		class CTI_Menu_Header_Role : CTI_Menu_Header_Team {
 			x = "SafeZoneX + (SafeZoneW * 0.597)";
 
-			text = "Role";
+			text = $STR_Menu_Action_Independent;
 		};
 		class CTI_Menu_Header_Order : CTI_Menu_Header_Team {
 			x = "SafeZoneX + (SafeZoneW * 0.782)";
 
-			text = "Order";
+			text = $STR_Menu_Header_Order;
 		};
 
 		class CTI_Menu_Action_Independent : RscText {
@@ -3773,23 +3775,23 @@ class CTI_RscTeamsMenu {
 			w = "SafeZoneW * 0.1";
 			h = "SafeZoneH * 0.04";
 
-			text = "Independent:";
+			text = $STR_Menu_Action_Independent;
 			sizeEx = "0.84 * 			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
 		};
 		class CTI_Menu_Action_Role : CTI_Menu_Action_Independent {
 			y = "SafeZoneY + (SafezoneH * 0.8)";
 
-			text = "Role:";
+			text = $STR_Menu_Action_Role;
 		};
 		class CTI_Menu_Action_Order : CTI_Menu_Action_Independent {
 			y = "SafeZoneY + (SafezoneH * 0.85)";
 
-			text = "Order:";
+			text = $STR_Menu_Action_Order;
 		};
 		class CTI_Menu_Action_Transfer : CTI_Menu_Action_Independent {
 			y = "SafeZoneY + (SafezoneH * 0.9)";
 
-			text = "Transfer:";
+			text = $STR_Menu_Action_Transfer;
 		};
 
 		class CTI_Control_Exit : RscButton {
@@ -3841,7 +3843,7 @@ class CTI_RscTeamsMenu {
 			w = "SafeZoneW * 0.2";
 			h = "SafeZoneH * 0.04";
 
-			text = "All AI Independent";
+			text = $STR_Control_Button_AIIndependent;
 			action = "['onAllAIIndependentPressed', 0] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_TeamsMenu.sqf'";
 		};
 		class CTI_Control_Button_AINotIndependent : CTI_Control_Button_AIIndependent {
@@ -3849,7 +3851,7 @@ class CTI_RscTeamsMenu {
 
 			y = "SafeZoneY + (SafezoneH * 0.79)";
 
-			text = "No AI Independent";
+			text = $STR_Control_Button_AINotIndependent;
 			action = "['onAllAIIndependentPressed', 1] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_TeamsMenu.sqf'";
 		};
 		class CTI_Menu_Control_Info : RscStructuredText {
@@ -3902,7 +3904,7 @@ class CTI_RscTeamsMenu {
 			w = "SafeZoneW * 0.21";//.12
 			h = "SafeZoneH * 0.04";
 
-			text = "Set";
+			text = $STR_Control_Button_SetIndependent;
 			action = "['onSetTeamIndependentPressed'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_TeamsMenu.sqf'";
 		};
 		class CTI_Control_Button_SetRole : CTI_Control_Button_SetIndependent {
@@ -3910,7 +3912,7 @@ class CTI_RscTeamsMenu {
 
 			y = "SafeZoneY + (SafezoneH * 0.8)";
 
-			text = "Set";
+			text = $STR_Control_Button_SetIndependent;
 			action = "['onSetRolePressed'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_TeamsMenu.sqf'";
 		};
 		class CTI_Control_Button_Order : CTI_Control_Button_SetIndependent {
@@ -3918,7 +3920,7 @@ class CTI_RscTeamsMenu {
 
 			y = "SafeZoneY + (SafezoneH * 0.85)";
 
-			text = "Order";
+			text = $STR_Menu_Header_Order;
 			action = "['onOrderPressed'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_TeamsMenu.sqf'";
 		};
 		class CTI_Control_Button_SendFunds : CTI_Control_Button_SetIndependent {
@@ -3926,7 +3928,7 @@ class CTI_RscTeamsMenu {
 
 			y = "SafeZoneY + (SafezoneH * 0.9)";
 
-			text = "Transfer";
+			text = $STR_Control_Button_SendFunds;
 			action = "['onTransferFundsPressed'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_TeamsMenu.sqf'";
 		};
 		class CTI_Control_Button_SetIndependentAll : CTI_Control_Button_SetIndependent {
@@ -3937,7 +3939,7 @@ class CTI_RscTeamsMenu {
 			w = "SafeZoneW * 0.205";
 			h = "SafeZoneH * 0.04";
 
-			text = "Set to All";
+			text = $STR_Control_Button_SetIndependentAll;
 			action = "['onSetAllTeamIndependentPressed'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_TeamsMenu.sqf'";
 		};
 		class CTI_Control_Button_SetRoleAll : CTI_Control_Button_SetIndependentAll {
@@ -3945,7 +3947,7 @@ class CTI_RscTeamsMenu {
 
 			y = "SafeZoneY + (SafezoneH * 0.8)";
 
-			text = "Set to All";
+			text = $STR_Control_Button_SetIndependentAll;
 			action = "['onSetAllRolePressed'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_TeamsMenu.sqf'";
 		};
 		class CTI_Control_Button_OrderAll : CTI_Control_Button_SetIndependentAll {
@@ -3953,7 +3955,7 @@ class CTI_RscTeamsMenu {
 
 			y = "SafeZoneY + (SafezoneH * 0.85)";
 
-			text = "Order to All";
+			text = $STR_Control_Button_OrderAll;
 			action = "['onOrderAllPressed'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_TeamsMenu.sqf'";
 		};
 		class CTI_Control_Button_TransferAll : CTI_Control_Button_SetIndependentAll {
@@ -3961,7 +3963,7 @@ class CTI_RscTeamsMenu {
 
 			y = "SafeZoneY + (SafezoneH * 0.9)";
 
-			text = "Transfer to All";
+			text = $STR_Control_Button_TransferAll;
 			action = "['onTransferAllPressed'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_TeamsMenu.sqf'";
 		};
 		class CTI_Control_Button_Disbands : RscButton_Lesser {
@@ -3971,7 +3973,7 @@ class CTI_RscTeamsMenu {
 			w = "SafeZoneW * 0.2";
 			h = "SafeZoneH * 0.04";
 
-			text = "Disband Team";
+			text = $STR_Control_Button_Disbands;
 			action = "['onTeamDisband', lnbCurSelRow 190001] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_TeamsMenu.sqf'";
 		};
 	};
@@ -4006,7 +4008,7 @@ class CTI_RscMapCommandMenu {
 			w = "SafeZoneW * 0.98";
 			h = "SafeZoneH * 0.037";
 
-			text = "Map Commanding";
+			text = $STR_Control_Map;
 			colorText[] = {0.258823529, 0.713725490, 1, 1};
 
 			sizeEx = "(			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
@@ -4056,7 +4058,7 @@ class CTI_RscMapCommandMenu {
 			w = "SafeZoneW * 0.19";
 			h = "SafeZoneH * 0.03";
 
-			text = "Teams :";
+			text = $STR_Menu_Control_UnitsList_Label;
 			colorText[] = {0.231372549, 0.580392157, 0.929411765, 1};
 			sizeEx = "0.9 * (			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
 		};
@@ -4066,7 +4068,7 @@ class CTI_RscMapCommandMenu {
 			y = "SafeZoneY + (SafezoneH * 0.405)";
 			h = "SafeZoneH * 0.03";
 
-			text = "Orders :";
+			text = $STR_Menu_Control_OrdersList_Label;
 		};
 		class CTI_Menu_OrdersListFrame : CTI_Menu_UnitsListFrame {
 			idc = 220705;
@@ -4086,7 +4088,7 @@ class CTI_RscMapCommandMenu {
 			y = "SafeZoneY + (SafezoneH * 0.61)";
 			h = "SafeZoneH * 0.03";
 
-			text = "Order Parameters :";
+			text = $STR_Menu_Control_OrdersParamList_Label;
 		};
 		class CTI_Menu_OrdersParamListFrame : CTI_Menu_UnitsListFrame {
 			idc = 220707;
@@ -4164,7 +4166,7 @@ class CTI_RscMapCommandMenu {
 
 			sizeEx = "0.85 * 			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
 
-			text = "Set Order";
+			text = $STR_Menu_Control_SetOrder;
 			action = "['onSetOrderPressed'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_MapCommandMenu.sqf'";
 		};
 		class CTI_Menu_Control_SetMapOrder : CTI_Menu_Control_SetOrder {
@@ -4172,7 +4174,7 @@ class CTI_RscMapCommandMenu {
 
 			y = "SafeZoneY + (SafeZoneH * 0.91)";
 
-			text = "Set Order (Map Click)";
+			text = $STR_Menu_Control_SetMapOrder;
 			action = "['onSetMapOrderPressed'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_MapCommandMenu.sqf'";
 		};
 		class CTI_Menu_Control_IntelText : RscStructuredText {
@@ -4238,7 +4240,7 @@ class CTI_RscHookMenu {
 			w = "SafeZoneW * 0.28";
 			h = "SafeZoneH * 0.037";
 
-			text = "Hook Menu";
+			text = $STR_Menu_Title_Hook;
 			colorText[] = {0.258823529, 0.713725490, 1, 1};
 
 			sizeEx = "(			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
@@ -4274,7 +4276,7 @@ class CTI_RscHookMenu {
 			w = "SafeZoneW * 0.28";
 			h = "SafeZoneH * 0.04";
 
-			text = "Hook";
+			text = $STR_Menu_Options_Hook;
 			action = "['onHookPressed', lbCurSel 240004] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_HookMenu.sqf'";
 		};
 		class CTI_Menu_Vehicle : RscText {
@@ -4315,7 +4317,7 @@ class CTI_RscHookMenu {
 
 			y = "SafeZoneY + (SafezoneH * 0.71)";
 
-			text = "Detach";
+			text = $STR_Menu_Options_Detach;
 			action = "['onHookDetach'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_HookMenu.sqf'";
 		};
 		class CTI_Control_Exit : RscButton {
@@ -4361,7 +4363,7 @@ class CTI_RscAIMicromanagementMenu {
 			w = "SafeZoneW * 0.98";
 			h = "SafeZoneH * 0.037";
 
-			text = "AI Micromanagement";
+			text = $STR_Menu_Title_AI;
 			colorText[] = {0.258823529, 0.713725490, 1, 1};
 
 			sizeEx = "(			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
@@ -4411,7 +4413,7 @@ class CTI_RscAIMicromanagementMenu {
 			w = "SafeZoneW * 0.19";
 			h = "SafeZoneH * 0.03";
 
-			text = "AI :";
+			text = $STR_Menu_Control_UnitsList_Label_AI;
 			colorText[] = {0.231372549, 0.580392157, 0.929411765, 1};
 			sizeEx = "0.9 * (			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
 		};
@@ -4421,7 +4423,7 @@ class CTI_RscAIMicromanagementMenu {
 			y = "SafeZoneY + (SafezoneH * 0.405)";
 			h = "SafeZoneH * 0.03";
 
-			text = "Orders :";
+			text = $STR_Menu_Control_OrdersList_Label;
 		};
 		class CTI_Menu_OrdersListFrame : CTI_Menu_UnitsListFrame {
 			idc = 270705;
@@ -4441,7 +4443,7 @@ class CTI_RscAIMicromanagementMenu {
 			y = "SafeZoneY + (SafezoneH * 0.61)";
 			h = "SafeZoneH * 0.03";
 
-			text = "Order Parameters :";
+			text = $STR_Menu_Control_OrdersParamList_Label;
 		};
 		class CTI_Menu_OrdersParamListFrame : CTI_Menu_UnitsListFrame {
 			idc = 270707;
@@ -4518,7 +4520,7 @@ class CTI_RscAIMicromanagementMenu {
 
 			sizeEx = "0.85 * 			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
 
-			text = "Set Order";
+			text = $STR_Menu_Control_SetOrder;
 			action = "['onSetOrderPressed', lbCurSel 270009] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_AIMicromanagementMenu.sqf'";
 		};
 		class CTI_Menu_Control_SetMapOrder : CTI_Menu_Control_SetOrder {
@@ -4526,7 +4528,7 @@ class CTI_RscAIMicromanagementMenu {
 
 			y = "SafeZoneY + (SafeZoneH * 0.91)";
 
-			text = "Set Order (Map Click)";
+			text = $STR_Menu_Control_SetMapOrder;
 			action = "['onSetMapOrderPressed'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_AIMicromanagementMenu.sqf'";
 		};
 		class CTI_Menu_Control_Disband : CTI_Menu_Control_SetOrder {
@@ -4534,7 +4536,7 @@ class CTI_RscAIMicromanagementMenu {
 
 			y = "SafeZoneY + (SafeZoneH * 0.355)";
 
-			text = "Disband";
+			text = $STR_Menu_Control_Disband;
 			action = "['onUnitDisbandPressed', lbSelection ((uiNamespace getVariable 'cti_dialog_ui_aimicromenu') displayCtrl 270002)] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_AIMicromanagementMenu.sqf'";
 		};
 		class CTI_Menu_Control_IntelText : RscStructuredText {
@@ -4555,7 +4557,7 @@ class CTI_RscAIMicromanagementMenu {
 			w = "SafeZoneW * 0.05";
 			h = "SafeZoneH * 0.0275";
 
-			text = "All";
+			text = $STR_Menu_Control_SelectAll;
 			action = "['onSelectAll'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_AIMicromanagementMenu.sqf'";
 		};
 
@@ -4609,7 +4611,7 @@ class CTI_RscArtilleryMenu {
 			w = "SafeZoneW * 0.98";
 			h = "SafeZoneH * 0.037";
 
-			text = "Artillery";
+			text = $STR_Menu_Title_A;
 			colorText[] = {0.258823529, 0.713725490, 1, 1};
 
 			sizeEx = "(			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
@@ -4659,7 +4661,7 @@ class CTI_RscArtilleryMenu {
 			w = "SafeZoneW * 0.19";
 			h = "SafeZoneH * 0.03";
 
-			text = "Fire Mission :";
+			text = $STR_Menu_FireMission_Label;
 			colorText[] = {0.231372549, 0.580392157, 0.929411765, 1};
 			sizeEx = "0.9 * (			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
 		};
@@ -4671,7 +4673,7 @@ class CTI_RscArtilleryMenu {
 			w = "SafeZoneW * 0.18";
 			h = "SafeZoneH * 0.03";
 
-			text = "Artillery Type :";
+			text = $STR_Menu_FireMission_Type_Label;
 			colorText[] = {0.537254902, 0.843137255, 1, 1};
 			sizeEx = "0.8 * (			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
 		};
@@ -4691,7 +4693,7 @@ class CTI_RscArtilleryMenu {
 
 			y = "SafeZoneY + (SafezoneH * 0.165)";
 
-			text = "Artillery Magazine :";
+			text = $STR_Menu_FireMission_Magazine_Label;
 		};
 		class CTI_Menu_FireMission_Magazine_Combo : CTI_Menu_FireMission_Type_Combo {
 			idc = 290009;
@@ -4704,7 +4706,7 @@ class CTI_RscArtilleryMenu {
 
 			y = "SafeZoneY + (SafezoneH * 0.235)";
 
-			text = "Artillery Burst :";
+			text = $STR_Menu_FireMission_Burst_Label;
 		};
 		class CTI_Menu_FireMission_Burst_Combo : CTI_Menu_FireMission_Type_Combo {
 			idc = 290011;
@@ -4754,7 +4756,7 @@ class CTI_RscArtilleryMenu {
 
 			sizeEx = "0.85 * 			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
 
-			text = "Call Fire Mission";
+			text = $STR_Menu_FireMission_Call;
 			action = "['onFireMissionCall'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_ArtilleryMenu.sqf'";
 		};
 		class CTI_Menu_FireMission_SelectAll : CTI_Menu_FireMission_Call {
@@ -4762,7 +4764,7 @@ class CTI_RscArtilleryMenu {
 
 			y = "SafeZoneY + (SafeZoneH * 0.64)";
 
-			text = "Select All";
+			text = $STR_Menu_FireMission_SelectAll;
 			action = "['onSelectAll'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_ArtilleryMenu.sqf'";
 		};
 		class CTI_Control_Exit : RscButton {
