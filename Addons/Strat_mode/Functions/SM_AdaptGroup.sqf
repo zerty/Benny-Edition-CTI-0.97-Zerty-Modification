@@ -6,7 +6,7 @@ while {! CTI_GameOver} do {
 	_next=0 max ceil(_b-(_a*_nbp));
 	if !(missionNamespace getVariable "CTI_PLAYERS_GROUPSIZE" == _next ) then {
 		missionNamespace setVariable ["CTI_PLAYERS_GROUPSIZE",_next] ;
-		HUD_NOTIFICATIONS pushBack [format ["Group size is now : %1 ",_next],time+10,"ffffff"];
+		HUD_NOTIFICATIONS pushBack [format [localize "STR_AdaptGroup",_next],time+10,"ffffff"];
 
 	};
 	sleep 60;

@@ -1,6 +1,6 @@
-STATICS_MG = ["I_HMG_01_high_F","I_GMG_01_high_F","O_HMG_01_high_F","O_GMG_01_high_F","B_HMG_01_high_F","B_GMG_01_high_F"];
-STATICS_LMG = ["I_HMG_01_F","I_GMG_01_F","O_HMG_01_F","O_GMG_01_F","B_HMG_01_F","B_GMG_01_F"];
-STATICS_L = ["I_static_AA_F","I_static_AT_F","O_static_AA_F","O_static_AT_F","B_static_AA_F","B_static_AT_F"];
+STATICS_MG = ["rhs_DSHKM_ins","rhs_KORD_high_MSV","RHS_M2StaticMG_D"];
+STATICS_LMG = ["rhs_DSHKM_Mini_TriPod_ins","RHS_AGS30_TriPod_INS","rhs_KORD_MSV","RHS_AGS30_TriPod_MSV","RHS_M2StaticMG_MiniTripod_D","RHS_MK19_TriPod_D"];
+STATICS_L = ["rhs_2b14_82mm_ins","rhs_2b14_82mm_msv","RHS_M252_D"];
 STATICS_M = ["ReammoBox_F"];
 STATICS_ALL=STATICS_MG + STATICS_LMG  + STATICS_L+STATICS_M;
 
@@ -54,7 +54,7 @@ with missionNamespace do {
   };
   CTI_PVF_Reply_load={
     if (_this select 2) then {
-      CTI_P_ChatID commandChat format ["ST LOAD :: Static Loaded : %1 in %2 ",typeof (_this select 1),_this select 0];
+      CTI_P_ChatID commandChat format [localize "STR_ST_Load",typeof (_this select 1),_this select 0];
       (_this select 1) setdir (_this select 3);
       (_this select 1)  addEventHandler ["GetOut", {(_this select 2) attachto [(_this select 0),[-3,-1,-0.65]]; detach (_this select 2);}];
       (_this select 0) lock false;
@@ -63,14 +63,14 @@ with missionNamespace do {
       (_this select 0) lockCargo [0,false];
       STATIC_TRY=false;
     } else {
-      CTI_P_ChatID commandChat format ["ST LOAD :: Static Unloaded : %1 off %2 ",typeof(_this select 1),_this select 0];
+      CTI_P_ChatID commandChat format [localize "STR_ST_Unload",typeof(_this select 1),_this select 0];
       (_this select 0) lockCargo false;
       STATIC_TRY=false;
     };
     if !(isNil {uiNamespace getVariable 'cti_dialog_ui_interractions'}) then { ['onLoad'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_Interact.sqf'};
   };
   CTI_PVF_Fail_load={
-    CTI_P_ChatID commandChat  "ST LOAD :: No Static/Crate found, it must be behind your offroad";
+    CTI_P_ChatID commandChat  localize "STR_ST_NotFound";
     STATIC_TRY=false;
   };
 };
