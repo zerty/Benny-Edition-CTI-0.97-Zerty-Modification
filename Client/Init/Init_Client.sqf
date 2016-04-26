@@ -86,11 +86,13 @@ HUD_NOTIFICATIONS=[];
 //--- Artillery Computer is only enabled on demand
 enableEngineArtillery true;
 if ((missionNamespace getVariable "CTI_ARTILLERY_SETUP") != -1) then {enableEngineArtillery false};
-12452 cutText ["Setting up...", "BLACK FADED", 50000];
+
+
+12452 cutText [localize "STR_Begin_Tut", "BLACK FADED", 50000];
 if (isMultiplayer) then {
-	12452 cutText ["Waiting for server to approve connexion...", "BLACK FADED", 50000];
+	12452 cutText [localize "STR_Begin_Tut_1", "BLACK FADED", 50000];
 	waitUntil {!isnil {player getVariable "CTI_SERVER_ANWSER"}};
-	12452 cutText ["Got anwser from the server.", "BLACK FADED", 50000];
+	12452 cutText [localize "STR_Begin_Tut_2", "BLACK FADED", 50000];
 	(player getVariable "CTI_SERVER_ANWSER") call CTI_CL_FNC_JoinRequestAnswer;
 	if (CTI_P_Jailed) then {
 		hintSilent "The ride never ends!";
@@ -291,7 +293,7 @@ if ((missionNamespace getVariable "CTI_UNITS_FATIGUE") == 0) then {player enable
 CTI_Init_Client = true;
 
 
-12452 cutText ["Sending to tutorial area.", "BLACK IN", 7];
+12452 cutText [localize "STR_Begin_Tutorial", "BLACK IN", 7];
 
 
 0 call TUTORIAL_RUN;
