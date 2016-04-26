@@ -26,7 +26,7 @@ switch (_action) do {
 			while { round(CTI_DeathTimer - time) > 0 } do {
 				if (_seed != (uiNamespace getVariable "cti_dialog_ui_respawnmenu_seed")) exitWith { _proc_respawn = false }; //--- The menu was opened again.
 
-				((uiNamespace getVariable "cti_dialog_ui_respawnmenu") displayCtrl 120003) ctrlSetStructuredText parseText format ["Respawning at <t color='#BAFF81'>%1</t> in <t color='#EBC451'>%2</t> seconds",(uiNamespace getVariable "cti_dialog_ui_respawnmenu_respawnat") call CTI_UI_Respawn_GetRespawnLabel, round(CTI_DeathTimer - time)];
+				((uiNamespace getVariable "cti_dialog_ui_respawnmenu") displayCtrl 120003) ctrlSetStructuredText parseText format [localize "STR_UI_RespawnMenu",(uiNamespace getVariable "cti_dialog_ui_respawnmenu_respawnat") call CTI_UI_Respawn_GetRespawnLabel, round(CTI_DeathTimer - time)];
 
 				sleep .05;
 			};
