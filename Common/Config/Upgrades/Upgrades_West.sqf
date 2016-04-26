@@ -10,7 +10,7 @@ _t=[];
 _l=[];
 
 //barrack
-_l=_l+			[["Factory: Barracks", "Unlock better infantry units"]];
+_l=_l+			[[localize "STR_Up_Barracks", localize "STR_Up_Barracks_Descr"]];
 _a=_a	+			[true];
 _c=_c +			[[1000,2000,3000]];
 _lev=_lev+	[3];
@@ -18,7 +18,7 @@ _lin=_lin+	[[[CTI_UPGRADE_GEAR,1],[CTI_UPGRADE_GEAR,2],[CTI_UPGRADE_GEAR,3]]];
 _t=_t+			[[10*CTI_UPGRADE_RATIO,20*CTI_UPGRADE_RATIO,30*CTI_UPGRADE_RATIO]];
 
 
-_l=_l+			[["Factory: Light Factory", "Unlock better motorized units"]];
+_l=_l+			[[localize "STR_Up_Light_Factory", localize "STR_Up_Light_Factory_Descr"]];
 _a=_a	+			[true];
 _c=_c +			[[5000]];
 _lev=_lev+	[1];
@@ -26,21 +26,21 @@ _lin=_lin+	[[[]]];
 _t=_t+			[[90*CTI_UPGRADE_RATIO]];
 
 
-_l=_l+			[["Factory: Heavy Factory", "Unlock better armored units"]];
+_l=_l+			[[localize "STR_Up_Heavy_Factory", localize "STR_Up_Heavy_Factory_Descr"]];
 _a=_a	+			[true];
 _c=_c +			[[10000,50000]];
 _lev=_lev+	[2];
 _lin=_lin+	[[[CTI_UPGRADE_LIGHT,1],[]]];
 _t=_t+			[[180*CTI_UPGRADE_RATIO,240*CTI_UPGRADE_RATIO]];
 
-_l=_l+			[["Factory: Aircraft Factory", "Unlock better aircraft units"]];
+_l=_l+			[[localize "STR_Up_Aircraft_Factory", localize "STR_Up_Aircraft_Factory_Descr"]];
 _a=_a	+			[true];
 _c=_c +			[[25000]];
 _lev=_lev+	[1];
 _lin=_lin+	[[[]]];
 _t=_t+			[[90*CTI_UPGRADE_RATIO]];
 
-_l=_l+			[["Factory: AAF technologies", "Unlock AAF units (1::MRAPS, 2::APC , 3::TRACKED, 4::CHOPPERS, 5::PLANES)"]];
+_l=_l+			[[localize "STR_Up_AAF_technologies", localize "STR_Up_AAF_technologies_Descr"]];
 _a=_a	+			[true];
 _c=_c +			[[1500,2500,4000,6000,8000]];
 _lev=_lev+	[5];
@@ -48,7 +48,7 @@ _lin=_lin+	[[[CTI_UPGRADE_LIGHT,1],[],[CTI_UPGRADE_HEAVY,1],[CTI_UPGRADE_AIR,1],
 _t=_t+			[[20*CTI_UPGRADE_RATIO,20*CTI_UPGRADE_RATIO,50*CTI_UPGRADE_RATIO,60*CTI_UPGRADE_RATIO,70*CTI_UPGRADE_RATIO]];
 
 
-_l=_l+			[["Air: Aircraft FFAR", "Unlocks the FFAR Rockets for Aircrafts"]];
+_l=_l+			[[localize "STR_Up_Aircraft_FFAR", localize "STR_Up_Aircraft_FFAR_Descr"]];
 _a=_a	+			[true];
 _c=_c +			[[10000]];
 _lev=_lev+	[1];
@@ -56,21 +56,21 @@ _lin=_lin+	[[[CTI_UPGRADE_AIR, 1]]];
 _t=_t+			[[90*CTI_UPGRADE_RATIO]];
 
 
-_l=_l+			[["Air: Aircraft AT", "Unlocks the Anti Tank Missiles for Aircrafts"]];
+_l=_l+			[[localize "STR_Up_Aircraft_AT", localize "STR_Up_Aircraft_AT_Descr"]];
 _a=_a	+			[true];
 _c=_c +			[[50000]];
 _lev=_lev+	[1];
 _lin=_lin+	[[[CTI_UPGRADE_AIR, 1]]];
 _t=_t+			[[90*CTI_UPGRADE_RATIO]];
 
-_l=_l+			[["Air: Aircraft AA", "Unlocks the Anti Air Missiles for Aircrafts"]];
+_l=_l+			[[localize "STR_Up_Aircraft_AA", localize "STR_Up_Aircraft_AA_Descr"]];
 _a=_a	+			[true];
 _c=_c +			[[50000]];
 _lev=_lev+	[1];
 _lin=_lin+	[[[CTI_UPGRADE_AIR, 1]]];
 _t=_t+			[[90*CTI_UPGRADE_RATIO]];
 
-_l=_l+			[["Air: Aircraft Countermeasures", "Allows Aircraft to deploy countermeasures"]];
+_l=_l+			[[localize "STR_Up_Air_Countermeasures", localize "STR_Up_Air_Countermeasures_Descr"]];
 _a=_a	+			[true];
 _c=_c +			[[8000]];
 _lev=_lev+	[1];
@@ -79,56 +79,56 @@ _t=_t+			[[60*CTI_UPGRADE_RATIO]];
 
 
 
-_l=_l+			[["Equipment: Gear", "Allows the use of better equipment in the Gear Menu"]];
+_l=_l+			[[localize "STR_Up_Gear", localize "STR_Up_Gear_Descr"]];
 _a=_a	+			[true];
 _c=_c +			[[2000, 4000, 7500]];
 _lev=_lev+	[3];
 _lin=_lin+	[[[],[],[]]];
 _t=_t+			[[20*CTI_UPGRADE_RATIO, 40*CTI_UPGRADE_RATIO, 60*CTI_UPGRADE_RATIO]];
 
-_l=_l+			[["Equipment: Tactical Hud", "Enable Tactical HUD for every unit equiped with tactical sunglasses"]];
+_l=_l+			[[localize "STR_Up_Tactical_Hud", localize "STR_Up_Tactical_Hud_Descr"]];
 _a=_a	+			[True];
 _c=_c +			[[9000]];
 _lev=_lev+	[1];
 _lin=_lin+	[[[CTI_UPGRADE_GEAR,3]]];
 _t=_t+			[[120*CTI_UPGRADE_RATIO]];
 
-_l=_l+			[["Other: Towns Occupation", "Allows the spawning of occupation forces which will defend friendly towns against any attackers.<br />It will also improve the income generation in non-occupied towns"]];
+_l=_l+			[[localize "STR_Up_Towns_Occupation", localize "STR_Up_Towns_Occupation_Descr"]];
 _a=_a	+			[true];
 _c=_c +			[[5000, 20000, 40000]];
 _lev=_lev+	[3];
 _lin=_lin+	[[[CTI_UPGRADE_BARRACKS,1],[CTI_UPGRADE_LIGHT,1],[CTI_UPGRADE_HEAVY,1]]];
 _t=_t+			[[60*CTI_UPGRADE_RATIO, 70*CTI_UPGRADE_RATIO, 80*CTI_UPGRADE_RATIO]];
 
-_l=_l+			[["Other: Satellite", "Allows the use of the satellite camera"]];
+_l=_l+			[[localize "STR_Up_Satellite", localize "STR_Up_Satellite_Descr"]];
 _a=_a	+			[true];
 _c=_c +			[[100000]];
 _lev=_lev+	[1];
 _lin=_lin+	[[[CTI_UPGRADE_AIR, 1]]];
 _t=_t+			[[120*CTI_UPGRADE_RATIO]];
 
-_l=_l+			[["Other: Halo Jump", "Enable HALO Jumping from the Air factory"]];
+_l=_l+			[[localize "STR_Up_Halo_Jump", localize "STR_Up_Halo_Jump_Descr"]];
 _a=_a	+			[True];
 _c=_c +			[[4000]];
 _lev=_lev+	[1];
 _lin=_lin+	[[[]]];
 _t=_t+			[[20*CTI_UPGRADE_RATIO]];
 
-_l=_l+			[["Radar: Air Radar", "Enable Air Radars"]];
+_l=_l+			[[localize "STR_Up_Air_Radar", localize "STR_Up_Air_Radar_Descr"]];
 _a=_a	+			[True];
 _c=_c +			[[6000]];
 _lev=_lev+	[1];
 _lin=_lin+	[[[]]];
 _t=_t+			[[30*CTI_UPGRADE_RATIO]];
 
-_l=_l+			[["Radar: Artillery Radar", "Enable Artillery radar on Air Radars"]];
+_l=_l+			[[localize "STR_Up_Artillery_Radar", localize "STR_Up_Artillery_Radar_Descr"]];
 _a=_a	+			[true];
 _c=_c +			[[6000]];
 _lev=_lev+	[1];
 _lin=_lin+	[[[]]];
 _t=_t+			[[30*CTI_UPGRADE_RATIO]];
 
-_l=_l+			[["Network: Range", "Improve Mesh Network range (Inf: 250+Lvl*250 V: 1000+Lvl*1000)"]];
+_l=_l+			[[localize "STR_Up_Range", localize "STR_Up_Range_Descr"]];
 _a=_a	+			[True];
 _c=_c +			[[2000,6000,12000]];
 _lev=_lev+	[3];
@@ -136,7 +136,7 @@ _lin=_lin+	[[[],[],[]]];
 _t=_t+			[[10*CTI_UPGRADE_RATIO,30*CTI_UPGRADE_RATIO,60*CTI_UPGRADE_RATIO]];
 
 
-_l=_l+			[["Network: Exploit : Intrusion","Allow players to connect to the enemy network if inside a stolen connected vehicle"]];
+_l=_l+			[[localize "STR_Up_Intrusion", localize "STR_Up_Intrusion_Descr"]];
 _a=_a	+			[true];
 _c=_c +			[[2000,6000,12000]];
 _lev=_lev+	[3];
@@ -144,21 +144,21 @@ _lin=_lin+	[[[CTI_UPGRADE_NETR, 1],[CTI_UPGRADE_NETR, 2],[CTI_UPGRADE_NETR, 3]]]
 _t=_t+			[[10*CTI_UPGRADE_RATIO,30*CTI_UPGRADE_RATIO,60*CTI_UPGRADE_RATIO]];
 
 
-_l=_l+			[["Trophy: Cooldown and effectiveness", "Reduced minimum time between Trophy activations and more chances for sucessfull protection"]];
+_l=_l+			[[localize "STR_Up_Trophy", localize "STR_Up_Trophy_Descr"]];
 _a=_a	+			[True];
 _c=_c +			[[6000,12000]];
 _lev=_lev+	[2];
 _lin=_lin+	[[[CTI_UPGRADE_TRA, 1],[]]];
 _t=_t+			[[20*CTI_UPGRADE_RATIO,40*CTI_UPGRADE_RATIO]];
 
-_l=_l+			[["Trophy: Max Ammos", "Augment maximum ammunition for the trophy system"]];
+_l=_l+			[[localize "STR_Up_Max_Ammos", localize "STR_Up_Max_Ammos_Descr"]];
 _a=_a	+			[True];
 _c=_c +			[[6000,12000]];
 _lev=_lev+	[2];
 _lin=_lin+	[[[CTI_UPGRADE_HEAVY, 1],[]]];
 _t=_t+			[[20*CTI_UPGRADE_RATIO,40*CTI_UPGRADE_RATIO]];
 
-_l=_l+				[["Respawn Truck/Pod: Range", "Increase the max range of the respawn truck. 500m + lvl x 500m "]];
+_l=_l+				[[localize "STR_Up_Respawn_Truck", localize "STR_Up_Respawn_Truck_Descr"]];
 _a=_a	+			[True];
 _c=_c +				[[1000,2000,4000,8000,16000]];
 _lev=_lev+			[5];
