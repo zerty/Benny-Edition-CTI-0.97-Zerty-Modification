@@ -141,7 +141,7 @@ class Params {
 		title = "UNITS: Fatigue";
 		values[] = {0,1};
 		texts[] = {"Disabled","Enabled"};
-		default = 1;
+		default = 0;
 	};
 	class CTI_FATIGUE_RATIO {
 		title = "UNITS: Fatigue reduction ratio for players";
