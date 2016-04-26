@@ -77,7 +77,7 @@ class FSM
        "			if (markerAlpha _town_capture == 0) then { _town_capture setMarkerAlphaLocal CTI_MARKERS_OPACITY };" \n
        "			if (markerAlpha _marker_area == 0) then { _marker_area setMarkerAlphaLocal CTI_MARKERS_OPACITY };" \n
        "			if (markerAlpha _town_marker == 0) then { _town_marker setMarkerAlphaLocal 1 };" \n
-       "			_town_marker setMarkerTextLocal format[""%1 :: %2 :: Is active "",_town_name, _town_value ];" \n
+       "			_town_marker setMarkerTextLocal format[localize ""STR_MarkerActive"",_town_name, _town_value ];" \n
        "			_town_marker setMarkerSizeLocal [1, 1];" \n
        "			" \n
        "			if (CTI_RESISTANCE_ID == _sideID) then  {" \n
