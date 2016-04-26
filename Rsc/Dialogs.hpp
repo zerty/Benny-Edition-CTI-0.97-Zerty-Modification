@@ -557,6 +557,7 @@ class CTI_RscTablet_main {
 			colorBackgroundActive[] = {1, 0.7686274509803922,0.6470588235294118, 1};
 			colorFocused[] = {0.6470588235294118, 0.7686274509803922, 1, 1};
 			text = $STR_Control_Eject;
+			tooltip = $STR_Control_Eject_Tooltip;
 			action = "['onVotePressed'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_TabletMain.sqf'";
 		};
 		class CTI_Control_Log : CTI_Control_Eject {
@@ -574,6 +575,7 @@ class CTI_RscTablet_main {
 			idc = 210019;
 			y = "SafeZoneY+safezoneH*(0.28+0.035*3+5)";
 			text = $STR_Control_Zeus;
+			tooltip = $STR_Control_Zeus_Tooltip;
 
 			action = "['SERVER', 'Server_Assign_Zeus', player] call CTI_CO_FNC_NetSend;";
 		};
