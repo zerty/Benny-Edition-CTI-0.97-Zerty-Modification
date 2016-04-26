@@ -1,6 +1,6 @@
-STATICS_MG = ["rhs_DSHKM_ins","rhs_KORD_high_MSV","RHS_M2StaticMG_D"];
-STATICS_LMG = ["rhs_DSHKM_Mini_TriPod_ins","RHS_AGS30_TriPod_INS","rhs_KORD_MSV","RHS_AGS30_TriPod_MSV","RHS_M2StaticMG_MiniTripod_D","RHS_MK19_TriPod_D"];
-STATICS_L = ["rhs_2b14_82mm_ins","rhs_2b14_82mm_msv","RHS_M252_D"];
+STATICS_MG = ["I_HMG_01_high_F","I_GMG_01_high_F","O_HMG_01_high_F","O_GMG_01_high_F","B_HMG_01_high_F","B_GMG_01_high_F"];
+STATICS_LMG = ["I_HMG_01_F","I_GMG_01_F","O_HMG_01_F","O_GMG_01_F","B_HMG_01_F","B_GMG_01_F"];
+STATICS_L = ["I_static_AA_F","I_static_AT_F","O_static_AA_F","O_static_AT_F","B_static_AA_F","B_static_AT_F"];
 STATICS_M = ["ReammoBox_F"];
 STATICS_ALL=STATICS_MG + STATICS_LMG  + STATICS_L+STATICS_M;
 
