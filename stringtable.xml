@@ -1363,8 +1363,60 @@
 			</Key>
 	</Package>
 </Project>
-<Project name="TabletVideoSettingsMenu">
-	<Package name="Main">
+<Project name="StratMode_Tablet">
+	<Package name="Events_UI_Interact">
+			<Key ID="STR_Tooltip_HALO_Jump">
+				<Original>HALO Jump (%1 min.)</Original>
+				<Russian>HALO Прыжок (%1 мин.)</Russian>
+			</Key>
+			<Key ID="STR_Tooltip_HALO_Jump_NA">
+				<Original>HALO Jump (Not Available)</Original>
+				<Russian>HALO Прыжок (Недоступен)</Russian>
+			</Key>
+			<Key ID="STR_Network_Lock">
+				<Original>Network (Locked)</Original>
+				<Russian>Сеть (Заблокирована)</Russian>
+			</Key>
+			<Key ID="STR_Repair_No_Toolkit">
+				<Original>Repair (No Toolkit)</Original>
+				<Russian>Починить (Нет Набора Инструментов)</Russian>
+			</Key>
+			<Key ID="STR_Force_Lock_No_ToolKit">
+				<Original>Force Lock (No ToolKit)</Original>
+				<Russian>Взломать (Нет Набора Инструментов)</Russian>
+			</Key>
+			<Key ID="STR_MGA_sec">
+				<Original>Mobile Gear Access (%1 s.)</Original>
+				<Russian>Доступ к мобильному снаряжению (%1 сек.)</Russian>
+			</Key>
+			<Key ID="STR_ST_Load_Info">
+				<Original>ST LOAD :: Trying to load a static, please wait</Original>
+				<Russian>ST LOAD :: Пытаемся загрузить обьект, ждите</Russian>
+			</Key>
+	</Package>
+	<Package name="Events_UI_TabletMain">
+			<Key ID="STR_Eject_Com_UI">
+				<Original>Eject Com. (%1/%2)</Original>
+				<Russian>Изгнать Ком. (%1/%2)</Russian>
+			</Key>
+			<Key ID="STR_Leave_Com_UI">
+				<Original>Leave Com.</Original>
+				<Russian>Покинуть</Russian>
+			</Key>
+			<Key ID="STR_Leave_Com_UI_Tooltip">
+				<Original>Leave Commander Post</Original>
+				<Russian>Покинуть пост Командира</Russian>
+			</Key>
+			<Key ID="STR_Net_Disc">
+				<Original>Net-Discon.</Original>
+				<Russian>Сеть-Откл.</Russian>
+			</Key>
+			<Key ID="STR_Net_Rec">
+				<Original>Net-Recon.</Original>
+				<Russian>Сеть-Подкл.</Russian>
+			</Key>
+	</Package>
+	<Package name="Events_UI_TabletVideoSettingsMenu">
 			<Key ID="STR_View_Distance_VSM">
 				<Original>View Distance: %1</Original>
 				<Russian>Видимость общее: %1</Russian>
@@ -1412,6 +1464,28 @@
 			<Key ID="STR_TacHUD_Off_VSM">
 				<Original>Tactical hud: Off</Original>
 				<Russian>Тактический HUD: Выкл</Russian>
+			</Key>
+	</Package>
+	<Package name="GUI_TabletMain">
+			<Key ID="STR_MAX_MISSION_TIME">
+				<Original>Mission Time: &lt;t color='#d4ceff'&gt;%1D %2:%3:%4&lt;/t&gt;,&lt;br/&gt;Max. Mission time: &lt;t color='#d4ceff'&gt;%5 h&lt;/t&gt;&lt;br /&gt;</Original>
+				<Russian>Время Миссии: &lt;t color='#d4ceff'&gt;%1Д %2:%3:%4&lt;/t&gt;,&lt;br/&gt;Макс. Время Миссии: &lt;t color='#d4ceff'&gt;%5 ч&lt;/t&gt;&lt;br /&gt;</Russian>
+			</Key>
+			<Key ID="STR_Coloration_Money">
+				<Original>&lt;t&gt;Resources: &lt;t color='%1'&gt;$%2&lt;/t&gt;&lt;/t&gt;&lt;br /&gt;</Original>
+				<Russian>&lt;t&gt;Ресурсы: &lt;t color='%1'&gt;$%2&lt;/t&gt;&lt;/t&gt;&lt;br /&gt;</Russian>
+			</Key>
+			<Key ID="STR_Coloration_Pools">
+				<Original>&lt;t&gt;Pools (Players/Award): %1%3 / %2%3&lt;/t&gt;&lt;br /&gt;</Original>
+				<Russian>&lt;t&gt;Пай (Игрока/Наградной): %1%3/%2%3&lt;/t&gt;&lt;br /&gt;</Russian>
+			</Key>
+			<Key ID="STR_Coloration_Income">
+				<Original>&lt;t&gt;Income (Me/Side): &lt;t color='%1'&gt;$%2&lt;/t&gt;/&lt;t color='%1'&gt;$%3&lt;/t&gt; each %4 s.&lt;/t&gt;&lt;br /&gt;</Original>
+				<Russian>&lt;t&gt;Доход (Мой/Стороны): &lt;t color='%1'&gt;$%2&lt;/t&gt;/&lt;t color='%1'&gt;$%3&lt;/t&gt; каждые %4 сек.&lt;/t&gt;&lt;br /&gt;</Russian>
+			</Key>
+			<Key ID="STR_Coloration_Towns">
+				<Original>&lt;t&gt;Towns Held Value: &lt;t color='#66baff'&gt;%1$&lt;/t&gt;/ %2$&lt;/t&gt;&lt;br /&gt;Victory : &lt;t color='#ff9900'&gt;%3$&lt;/t&gt;&lt;br /&gt;</Original>
+				<Russian>&lt;t&gt;Значение Удержанных Городов: &lt;t color='#66baff'&gt;%1$&lt;/t&gt;/ %2$&lt;/t&gt;&lt;br /&gt;Победа : &lt;t color='#ff9900'&gt;%3$&lt;/t&gt;&lt;br /&gt;</Russian>
 			</Key>
 	</Package>
 </Project>
@@ -1610,214 +1684,6 @@
 				<Russian>&lt;t size='1.3' color='#2394ef'&gt;Информация&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Ремонтная машина далеко находится от КШМ.</Russian>
 			</Key>
 	</Package>
-	<Package name="Client_OnPlayerKilled">
-			<Key ID="STR_Begin_Tutorial">
-				<Original>Sending to tutorial area.</Original>
-				<Russian>Отправка в зону обучения</Russian>
-			</Key>
-	</Package>
-	<Package name="Client_OnPlayerFired">
-			<Key ID="STR_Missile_Range">
-				<Original>&lt;t size='1.3' color='#2394ef'&gt;BE AWARE&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Missile range is&lt;br /&gt; &lt;t color='#ccffaf'&gt; %1 Meters &lt;/t&gt;</Original>
-				<Russian>&lt;t size='1.3' color='#2394ef'&gt;ПРЕДУПРЕЖДЕНИЕ&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Дальность полёта у ракет&lt;br /&gt; &lt;t color='#ccffaf'&gt; %1 Метров &lt;/t&gt;</Russian>
-			</Key>
-	</Package>
-	<Package name="Client_OnPurchaseOrderReceived">
-			<Key ID="STR_Buy_Notify">
-				<Original>&lt;t size='1.3' color='#2394ef'&gt;Information&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;%4&lt;t&gt;Your &lt;t color='#ccffaf'&gt;%1&lt;/t&gt; has arrived from the &lt;t color='#fcffaf'&gt;%2&lt;/t&gt; at grid &lt;t color='#beafff'&gt;%3&lt;/t&gt;&lt;/t&gt;</Original>
-				<Russian>&lt;t size='1.3' color='#2394ef'&gt;Информация&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;%4&lt;t&gt;Ваш &lt;t color='#ccffaf'&gt;%1&lt;/t&gt; прибыл с &lt;t color='#fcffaf'&gt;%2&lt;/t&gt; в коорд. &lt;t color='#beafff'&gt;%3&lt;/t&gt;&lt;/t&gt;</Russian>
-			</Key>
-	</Package>
-	<Package name="Client_OnStructureConstructed">
-			<Key ID="STR_Structure_Constructed">
-				<Original>%1 now available (%2).</Original>
-				<Russian>%1 доступны в коорд. - (%2).</Russian>
-			</Key>
-	</Package>
-	<Package name="Client_OnFriendlyStructureDestroyed">
-			<Key ID="STR_Structure_Destroyed">
-				<Original>%1 Destroyed (%2)!</Original>
-				<Russian>%1 уничтожен в коорд. - (%2)!</Russian>
-			</Key>
-			<Key ID="STR_Structure_Sold">
-				<Original>%1 Sold (%2)!</Original>
-				<Russian>%1 в коорд. - (%2) продан!</Russian>
-			</Key>
-	</Package>
-	<Package name="Client_Init_Client">
-			<Key ID="STR_Begin_Tut">
-				<Original>Setting up...</Original>
-				<Russian>Настройка...</Russian>
-			</Key>
-			<Key ID="STR_Begin_Tut_1">
-				<Original>Waiting for server to approve connexion...</Original>
-				<Russian>Ожидание сервера для разрешения подключения...</Russian>
-			</Key>
-			<Key ID="STR_Begin_Tut_2">
-				<Original>Got answer from the server.</Original>
-				<Russian>Получаем ответ от сервера.</Russian>
-			</Key>
-	</Package>
-	<Package name="Strat_mode_Init">
-			<Key ID="STR_Strat">
-				<Original>Strat: %1 </Original>
-				<Russian>Доклад: %1 </Russian>
-			</Key>
-	</Package>
-	<Package name="SM_AdaptGroup">
-			<Key ID="STR_AdaptGroup">
-				<Original>Group size is now : %1 </Original>
-				<Russian>Текущий размер группы : %1 </Russian>
-			</Key>
-	</Package>
-	<Package name="SM_TownPriority">
-			<Key ID="STR_TownPriority">
-				<Original>&lt;t size='1.3' color='#2394ef'&gt;Priority Target&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Click near the town you want to activate next. &lt;br /&gt; It wont be activated until it is available for capture.&lt;br /&gt; Once disactivated, the priority target will be removed. &lt;br /&gt;Current priority target :&lt;t  color='#2394ef'&gt; %1 &lt;/t&gt;</Original>
-				<Russian>&lt;t size='1.3' color='#2394ef'&gt;Приоритетная цель&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Кликните на нужном городе для его активации. &lt;br /&gt; Он будет активирован и доступен для захвата.&lt;br /&gt; После деактивации, приоритетная цель будет удалена. &lt;br /&gt;Текущая приоритетная цель : :&lt;t  color='#2394ef'&gt; %1 &lt;/t&gt;</Russian>
-			</Key>
-			<Key ID="STR_NextPriorityTown">
-				<Original>Next Priority Town is &lt;t  color='#001EFF'&gt;%1&lt;/t&gt;</Original>
-				<Russian>Следующий Приоритетный Город: &lt;t  color='#001EFF'&gt;%1&lt;/t&gt;</Russian>
-			</Key>
-			<Key ID="STR_NextPriorityTown_1">
-				<Original>Next Priority Town is &lt;t  color='#001EFF'&gt;%1&lt;/t&gt;</Original>
-				<Russian>Следующий Приоритетный Город: &lt;t  color='#001EFF'&gt;%1&lt;/t&gt;</Russian>
-			</Key>
-			<Key ID="STR_Disactivate_Town">
-				<Original>&lt;t size='1.3' color='#2394ef'&gt;Force Disactivation&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Click near the town you want to disactivate. &lt;br /&gt; This will activate your priority target.&lt;br /&gt; Note that it will despawn the AI.</Original>
-				<Russian>&lt;t size='1.3' color='#2394ef'&gt;Дезактивация Войск	&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Кликните на нужном городе для его дезактивации.&lt;br /&gt; Это активирует вашу приоритетную цель.&lt;br /&gt; Обратите внимание, что ИИ пропадут.</Russian>
-			</Key>
-			<Key ID="STR_DisactivateTown">
-				<Original>Commander is disactivating %1</Original>
-				<Russian>Командир Дезактивировал %1</Russian>
-			</Key>
-	</Package>
-	<Package name="SM_Allow_Capture">
-			<Key ID="STR_TownInactive">
-				<Original>Town %1 is now Inactive</Original>
-				<Russian>&lt;t  color='#33FF00'&gt;Город %1 теперь Неактивный&lt;/t&gt;</Russian>
-			</Key>
-	</Package>
-	<Package name="town_markers">
-			<Key ID="STR_MarkerActive">
-				<Original>%1 :: %2 :: Is active</Original>
-				<Russian>%1 :: %2 :: Активный</Russian>
-			</Key>
-	</Package>
-	<Package name="town_resistance">
-			<Key ID="STR_TownActive">
-				<Original>Town %1 is now Active</Original>
-				<Russian>&lt;t  color='#FF0000'&gt;Город %1 Активный&lt;/t&gt;</Russian>
-			</Key>
-	</Package>
-	<Package name="StratMode_init">
-			<Key ID="STR_MortarTeam">
-				<Original>Mortar Team - %1</Original>
-				<Russian>Миномёты - %1</Russian>
-			</Key>
-	</Package>
-	<Package name="DYNG_waitforgroup">
-			<Key ID="STR_WaitForGroup">
-				<Original>Please either join or create a group</Original>
-				<Russian>Пожалуйста присоединитесь к группе или создайте новую</Russian>
-			</Key>
-	</Package>
-	<Package name="Units_East">
-			<Key ID="STR_Mobile_Gear_Access_Crate">
-				<Original>Mobile Gear access Crate</Original>
-				<Russian>Ящик с мобильным снаряжением</Russian>
-			</Key>
-	</Package>
-	<Package name="SM_RepairVehicule">
-			<Key ID="STR_StartingRepairsVehicle">
-				<Original>Starting Repairs</Original>
-				<Russian>Начинаем ремонт</Russian>
-			</Key>
-			<Key ID="STR_RepairingVehicle">
-				<Original>Repairing</Original>
-				<Russian>Ремонт</Russian>
-			</Key>
-			<Key ID="STR_SM_RepairVehicule_Failed">
-				<Original>Failed</Original>
-				<Russian>Действие отменено</Russian>
-			</Key>
-			<Key ID="STR_RepairVehicle">
-				<Original>&lt;t size='1.3' color='#2394ef'&gt;You need a ToolKit to perform this action&lt;/t&gt;</Original>
-				<Russian>&lt;t size='1.3' color='#2394ef'&gt;Вам нужен Набор Инструментов для этого&lt;/t&gt;</Russian>
-			</Key>
-			<Key ID="STR_ForcedVehicle">
-				<Original>This vehicle has already been forced</Original>
-				<Russian>Данная техника уже была взломана</Russian>
-			</Key>
-			<Key ID="STR_ForcedVehicleLock">
-				<Original>Forcing vehicle lock</Original>
-				<Russian>Вскрываем технику</Russian>
-			</Key>
-			<Key ID="STR_Action_Unlock">
-				<Original>&lt;t color='#86F078'&gt;Unlock&lt;/t&gt;</Original>
-				<Russian>&lt;t color='#86F078'&gt;Разблокировать&lt;/t&gt;</Russian>
-			</Key>
-			<Key ID="STR_Action_Lock">
-				<Original>&lt;t color='#86F078'&gt;Lock&lt;/t&gt;</Original>
-				<Russian>&lt;t color='#86F078'&gt;Блокировать&lt;/t&gt;</Russian>
-			</Key>
-	</Package>
-	<Package name="SA_Action_Pack">
-			<Key ID="STR_UnpackingVehicle">
-				<Original>Unpacking</Original>
-				<Russian>Распаковка</Russian>
-			</Key>
-			<Key ID="STR_PackingVehicle">
-				<Original>Packing vehicle for transport</Original>
-				<Russian>Пакуем технику для транспортировки</Russian>
-			</Key>
-			<Key ID="STR_ErrorPackVehicle">
-				<Original>Error: The vehicle needs to be empty,unlocked and not moving to perform that action</Original>
-				<Russian>Ошибка: Техника должна быть пустой, открытой и не двигаться для выполнения данной операции</Russian>
-			</Key>
-	</Package>
-	<Package name="SM_Action_Build">
-			<Key ID="STR_Action_Build">
-				<Original>Building</Original>
-				<Russian>Строим</Russian>
-			</Key>
-	</Package>
-	<Package name="UAV_Range">
-			<Key ID="STR_UAV_Range">
-				<Original>&lt;t size='1.3' color='#2394ef'&gt;Information&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;You have lost connection to your UAV. Maximum range is &lt;t color='#ccffaf'&gt;%1 meters.&lt;/t&gt;</Original>
-				<Russian>&lt;t size='1.3' color='#2394ef'&gt;Информация&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Вы потеряли связь с вашим маленьким БПЛА. Макс.дальность - &lt;t color='#ccffaf'&gt;%1 метров.&lt;/t&gt;</Russian>
-			</Key>
-	</Package>
-	<Package name="SM_COM_UnSet_Client">
-			<Key ID="STR_LeftCommand">
-				<Original>&lt;t size='1.3' color='#2394ef'&gt;You have been relieved of command.&lt;/t&gt;</Original>
-				<Russian>&lt;t size='1.3' color='#2394ef'&gt;Вы покинули пост командира!&lt;/t&gt;</Russian>
-			</Key>
-	</Package>
-	<Package name="SM_AttachStatics">
-			<Key ID="STR_ST_Load">
-				<Original>ST LOAD :: Static Loaded : %1 in %2 </Original>
-				<Russian>ST LOAD :: Обьект Загружен : %1 в %2 </Russian>
-			</Key>
-			<Key ID="STR_ST_Unload">
-				<Original>ST LOAD :: Static Unloaded : %1 off %2 </Original>
-				<Russian>ST LOAD :: Обьект Выгружен : %1 из %2 </Russian>
-			</Key>
-			<Key ID="STR_ST_NotFound">
-				<Original>ST LOAD :: No Static/Crate found, it must be behind your offroad</Original>
-				<Russian>ST LOAD :: Нет обьектов, позади вашей машины, которые можно загрузить </Russian>
-			</Key>
-	</Package>
-	<Package name="TUTORIAL_run">
-			<Key ID="STR_End_Tutorial">
-				<Original>Tutorial exited, sending to group creation ...</Original>
-				<Russian>Обучение закончено, переходим к созданию группы ...</Russian>
-			</Key>
-			<Key ID="STR_Wait_GroupCreate">
-				<Original>Waiting for group creation...</Original>
-				<Russian>Ожидание создания группы...</Russian>
-			</Key>
-	</Package>
 	<Package name="Client_DisplayMessage">
 			<Key ID="STR_Award_Bounty">
 				<Original>Kill reward  %2: $%1</Original>
@@ -1920,26 +1786,210 @@
 				<Russian>Игрок %1 проголосовал против Командира</Russian>
 			</Key>
 	</Package>
-	<Package name="GUI_TabletMain">
-			<Key ID="STR_MAX_MISSION_TIME">
-				<Original>Mission Time: &lt;t color='#d4ceff'&gt;%1D %2:%3:%4&lt;/t&gt;,&lt;br/&gt;Max. Mission time: &lt;t color='#d4ceff'&gt;%5 h&lt;/t&gt;&lt;br /&gt;</Original>
-				<Russian>Время Миссии: &lt;t color='#d4ceff'&gt;%1Д %2:%3:%4&lt;/t&gt;,&lt;br/&gt;Макс. Время Миссии: &lt;t color='#d4ceff'&gt;%5 ч&lt;/t&gt;&lt;br /&gt;</Russian>
+	<Package name="Client_OnPlayerKilled">
+			<Key ID="STR_Begin_Tutorial">
+				<Original>Sending to tutorial area.</Original>
+				<Russian>Отправка в зону обучения</Russian>
 			</Key>
-			<Key ID="STR_Coloration_Money">
-				<Original>&lt;t&gt;Resources: &lt;t color='%1'&gt;$%2&lt;/t&gt;&lt;/t&gt;&lt;br /&gt;</Original>
-				<Russian>&lt;t&gt;Ресурсы: &lt;t color='%1'&gt;$%2&lt;/t&gt;&lt;/t&gt;&lt;br /&gt;</Russian>
+	</Package>
+	<Package name="Client_OnPlayerFired">
+			<Key ID="STR_Missile_Range">
+				<Original>&lt;t size='1.3' color='#2394ef'&gt;BE AWARE&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Missile range is&lt;br /&gt; &lt;t color='#ccffaf'&gt; %1 Meters &lt;/t&gt;</Original>
+				<Russian>&lt;t size='1.3' color='#2394ef'&gt;ПРЕДУПРЕЖДЕНИЕ&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Дальность полёта у ракет&lt;br /&gt; &lt;t color='#ccffaf'&gt; %1 Метров &lt;/t&gt;</Russian>
 			</Key>
-			<Key ID="STR_Coloration_Pools">
-				<Original>&lt;t&gt;Pools (Players/Award): %1%3 / %2%3&lt;/t&gt;&lt;br /&gt;</Original>
-				<Russian>&lt;t&gt;Пай (Игрока/Наградной): %1%3/%2%3&lt;/t&gt;&lt;br /&gt;</Russian>
+	</Package>
+	<Package name="Client_OnPurchaseOrderReceived">
+			<Key ID="STR_Buy_Notify">
+				<Original>&lt;t size='1.3' color='#2394ef'&gt;Information&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;%4&lt;t&gt;Your &lt;t color='#ccffaf'&gt;%1&lt;/t&gt; has arrived from the &lt;t color='#fcffaf'&gt;%2&lt;/t&gt; at grid &lt;t color='#beafff'&gt;%3&lt;/t&gt;&lt;/t&gt;</Original>
+				<Russian>&lt;t size='1.3' color='#2394ef'&gt;Информация&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;%4&lt;t&gt;Ваш &lt;t color='#ccffaf'&gt;%1&lt;/t&gt; прибыл с &lt;t color='#fcffaf'&gt;%2&lt;/t&gt; в коорд. &lt;t color='#beafff'&gt;%3&lt;/t&gt;&lt;/t&gt;</Russian>
 			</Key>
-			<Key ID="STR_Coloration_Income">
-				<Original>&lt;t&gt;Income (Me/Side): &lt;t color='%1'&gt;$%2&lt;/t&gt;/&lt;t color='%1'&gt;$%3&lt;/t&gt; each %4 s.&lt;/t&gt;&lt;br /&gt;</Original>
-				<Russian>&lt;t&gt;Доход (Мой/Стороны): &lt;t color='%1'&gt;$%2&lt;/t&gt;/&lt;t color='%1'&gt;$%3&lt;/t&gt; каждые %4 сек.&lt;/t&gt;&lt;br /&gt;</Russian>
+	</Package>
+	<Package name="Client_OnStructureConstructed">
+			<Key ID="STR_Structure_Constructed">
+				<Original>%1 now available (%2).</Original>
+				<Russian>%1 доступны в коорд. - (%2).</Russian>
 			</Key>
-			<Key ID="STR_Coloration_Towns">
-				<Original>&lt;t&gt;Towns Held Value: &lt;t color='#66baff'&gt;%1$&lt;/t&gt;/ %2$&lt;/t&gt;&lt;br /&gt;Victory : &lt;t color='#ff9900'&gt;%3$&lt;/t&gt;&lt;br /&gt;</Original>
-				<Russian>&lt;t&gt;Значение Удержанных Городов: &lt;t color='#66baff'&gt;%1$&lt;/t&gt;/ %2$&lt;/t&gt;&lt;br /&gt;Победа : &lt;t color='#ff9900'&gt;%3$&lt;/t&gt;&lt;br /&gt;</Russian>
+	</Package>
+	<Package name="Client_OnFriendlyStructureDestroyed">
+			<Key ID="STR_Structure_Destroyed">
+				<Original>%1 Destroyed (%2)!</Original>
+				<Russian>%1 уничтожен в коорд. - (%2)!</Russian>
+			</Key>
+			<Key ID="STR_Structure_Sold">
+				<Original>%1 Sold (%2)!</Original>
+				<Russian>%1 в коорд. - (%2) продан!</Russian>
+			</Key>
+	</Package>
+	<Package name="Client_Init_Client">
+			<Key ID="STR_Begin_Tut">
+				<Original>Setting up...</Original>
+				<Russian>Настройка...</Russian>
+			</Key>
+			<Key ID="STR_Begin_Tut_1">
+				<Original>Waiting for server to approve connexion...</Original>
+				<Russian>Ожидание сервера для разрешения подключения...</Russian>
+			</Key>
+			<Key ID="STR_Begin_Tut_2">
+				<Original>Got answer from the server.</Original>
+				<Russian>Получаем ответ от сервера.</Russian>
+			</Key>
+	</Package>
+	<Package name="Strat_mode_Init">
+			<Key ID="STR_Strat">
+				<Original>Strat: %1 </Original>
+				<Russian>Доклад: %1 </Russian>
+			</Key>
+			<Key ID="STR_MortarTeam">
+				<Original>Mortar Team - %1</Original>
+				<Russian>Миномёты - %1</Russian>
+			</Key>
+	</Package>
+	<Package name="SM_AdaptGroup">
+			<Key ID="STR_AdaptGroup">
+				<Original>Group size is now : %1 </Original>
+				<Russian>Текущий размер группы : %1 </Russian>
+			</Key>
+	</Package>
+	<Package name="SM_TownPriority">
+			<Key ID="STR_TownPriority">
+				<Original>&lt;t size='1.3' color='#2394ef'&gt;Priority Target&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Click near the town you want to activate next. &lt;br /&gt; It wont be activated until it is available for capture.&lt;br /&gt; Once disactivated, the priority target will be removed. &lt;br /&gt;Current priority target :&lt;t  color='#2394ef'&gt; %1 &lt;/t&gt;</Original>
+				<Russian>&lt;t size='1.3' color='#2394ef'&gt;Приоритетная цель&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Кликните на нужном городе для его активации. &lt;br /&gt; Он будет активирован и доступен для захвата.&lt;br /&gt; После деактивации, приоритетная цель будет удалена. &lt;br /&gt;Текущая приоритетная цель : :&lt;t  color='#2394ef'&gt; %1 &lt;/t&gt;</Russian>
+			</Key>
+			<Key ID="STR_NextPriorityTown">
+				<Original>Next Priority Town is &lt;t  color='#001EFF'&gt;%1&lt;/t&gt;</Original>
+				<Russian>Следующий Приоритетный Город: &lt;t  color='#001EFF'&gt;%1&lt;/t&gt;</Russian>
+			</Key>
+			<Key ID="STR_NextPriorityTown_1">
+				<Original>Next Priority Town is &lt;t  color='#001EFF'&gt;%1&lt;/t&gt;</Original>
+				<Russian>Следующий Приоритетный Город: &lt;t  color='#001EFF'&gt;%1&lt;/t&gt;</Russian>
+			</Key>
+			<Key ID="STR_Disactivate_Town">
+				<Original>&lt;t size='1.3' color='#2394ef'&gt;Force Disactivation&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Click near the town you want to disactivate. &lt;br /&gt; This will activate your priority target.&lt;br /&gt; Note that it will despawn the AI.</Original>
+				<Russian>&lt;t size='1.3' color='#2394ef'&gt;Дезактивация Войск	&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Кликните на нужном городе для его дезактивации.&lt;br /&gt; Это активирует вашу приоритетную цель.&lt;br /&gt; Обратите внимание, что ИИ пропадут.</Russian>
+			</Key>
+			<Key ID="STR_DisactivateTown">
+				<Original>Commander is disactivating %1</Original>
+				<Russian>Командир Дезактивировал %1</Russian>
+			</Key>
+	</Package>
+	<Package name="SM_Allow_Capture">
+			<Key ID="STR_TownInactive">
+				<Original>Town %1 is now Inactive</Original>
+				<Russian>&lt;t  color='#33FF00'&gt;Город %1 теперь Неактивный&lt;/t&gt;</Russian>
+			</Key>
+	</Package>
+	<Package name="SM_RepairVehicule">
+			<Key ID="STR_StartingRepairsVehicle">
+				<Original>Starting Repairs</Original>
+				<Russian>Начинаем ремонт</Russian>
+			</Key>
+			<Key ID="STR_RepairingVehicle">
+				<Original>Repairing</Original>
+				<Russian>Ремонт</Russian>
+			</Key>
+			<Key ID="STR_SM_RepairVehicule_Failed">
+				<Original>Failed</Original>
+				<Russian>Действие отменено</Russian>
+			</Key>
+			<Key ID="STR_RepairVehicle">
+				<Original>&lt;t size='1.3' color='#2394ef'&gt;You need a ToolKit to perform this action&lt;/t&gt;</Original>
+				<Russian>&lt;t size='1.3' color='#2394ef'&gt;Вам нужен Набор Инструментов для этого&lt;/t&gt;</Russian>
+			</Key>
+			<Key ID="STR_ForcedVehicle">
+				<Original>This vehicle has already been forced</Original>
+				<Russian>Данная техника уже была взломана</Russian>
+			</Key>
+			<Key ID="STR_ForcedVehicleLock">
+				<Original>Forcing vehicle lock</Original>
+				<Russian>Вскрываем технику</Russian>
+			</Key>
+			<Key ID="STR_Action_Unlock">
+				<Original>&lt;t color='#86F078'&gt;Unlock&lt;/t&gt;</Original>
+				<Russian>&lt;t color='#86F078'&gt;Разблокировать&lt;/t&gt;</Russian>
+			</Key>
+			<Key ID="STR_Action_Lock">
+				<Original>&lt;t color='#86F078'&gt;Lock&lt;/t&gt;</Original>
+				<Russian>&lt;t color='#86F078'&gt;Блокировать&lt;/t&gt;</Russian>
+			</Key>
+	</Package>
+	<Package name="SM_Action_Build">
+			<Key ID="STR_Action_Build">
+				<Original>Building</Original>
+				<Russian>Строим</Russian>
+			</Key>
+	</Package>
+	<Package name="SM_AttachStatics">
+			<Key ID="STR_ST_Load">
+				<Original>ST LOAD :: Static Loaded : %1 in %2 </Original>
+				<Russian>ST LOAD :: Обьект Загружен : %1 в %2 </Russian>
+			</Key>
+			<Key ID="STR_ST_Unload">
+				<Original>ST LOAD :: Static Unloaded : %1 off %2 </Original>
+				<Russian>ST LOAD :: Обьект Выгружен : %1 из %2 </Russian>
+			</Key>
+			<Key ID="STR_ST_NotFound">
+				<Original>ST LOAD :: No Static/Crate found, it must be behind your offroad</Original>
+				<Russian>ST LOAD :: Нет обьектов, позади вашей машины, которые можно загрузить </Russian>
+			</Key>
+	</Package>
+	<Package name="town_markers">
+			<Key ID="STR_MarkerActive">
+				<Original>%1 :: %2 :: Is active</Original>
+				<Russian>%1 :: %2 :: Активный</Russian>
+			</Key>
+	</Package>
+	<Package name="town_resistance">
+			<Key ID="STR_TownActive">
+				<Original>Town %1 is now Active</Original>
+				<Russian>&lt;t  color='#FF0000'&gt;Город %1 Активный&lt;/t&gt;</Russian>
+			</Key>
+	</Package>
+	<Package name="DYNG_waitforgroup">
+			<Key ID="STR_WaitForGroup">
+				<Original>Please either join or create a group</Original>
+				<Russian>Пожалуйста присоединитесь к группе или создайте новую</Russian>
+			</Key>
+	</Package>
+	<Package name="Units_East">
+			<Key ID="STR_Mobile_Gear_Access_Crate">
+				<Original>Mobile Gear access Crate</Original>
+				<Russian>Ящик с мобильным снаряжением</Russian>
+			</Key>
+	</Package>
+	<Package name="SA_Action_Pack">
+			<Key ID="STR_UnpackingVehicle">
+				<Original>Unpacking</Original>
+				<Russian>Распаковка</Russian>
+			</Key>
+			<Key ID="STR_PackingVehicle">
+				<Original>Packing vehicle for transport</Original>
+				<Russian>Пакуем технику для транспортировки</Russian>
+			</Key>
+			<Key ID="STR_ErrorPackVehicle">
+				<Original>Error: The vehicle needs to be empty,unlocked and not moving to perform that action</Original>
+				<Russian>Ошибка: Техника должна быть пустой, открытой и не двигаться для выполнения данной операции</Russian>
+			</Key>
+	</Package>
+	<Package name="UAV_Range">
+			<Key ID="STR_UAV_Range">
+				<Original>&lt;t size='1.3' color='#2394ef'&gt;Information&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;You have lost connection to your UAV. Maximum range is &lt;t color='#ccffaf'&gt;%1 meters.&lt;/t&gt;</Original>
+				<Russian>&lt;t size='1.3' color='#2394ef'&gt;Информация&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Вы потеряли связь с вашим маленьким БПЛА. Макс.дальность - &lt;t color='#ccffaf'&gt;%1 метров.&lt;/t&gt;</Russian>
+			</Key>
+	</Package>
+	<Package name="SM_COM_UnSet_Client">
+			<Key ID="STR_LeftCommand">
+				<Original>&lt;t size='1.3' color='#2394ef'&gt;You have been relieved of command.&lt;/t&gt;</Original>
+				<Russian>&lt;t size='1.3' color='#2394ef'&gt;Вы покинули пост командира!&lt;/t&gt;</Russian>
+			</Key>
+	</Package>
+	<Package name="TUTORIAL_run">
+			<Key ID="STR_End_Tutorial">
+				<Original>Tutorial exited, sending to group creation ...</Original>
+				<Russian>Обучение закончено, переходим к созданию группы ...</Russian>
+			</Key>
+			<Key ID="STR_Wait_GroupCreate">
+				<Original>Waiting for group creation...</Original>
+				<Russian>Ожидание создания группы...</Russian>
 			</Key>
 	</Package>
 	<Package name="GUI_UpgradeMenu">
@@ -1960,12 +2010,6 @@
 				<Russian>&lt;t align='right'&gt;Размер Группы: &lt;t color='#66baff'&gt;%1&lt;/t&gt;/%2&lt;/t&gt;</Russian>
 			</Key>
 	</Package>
-	<Package name="Common_CreateUnit">
-			<Key ID="STR_Common_CreateUnit_Remote_Control">
-				<Original>&lt;t color='#ff9900'&gt;Remote Control&lt;/t&gt;</Original>
-				<Russian>&lt;t color='#ff9900'&gt;Удаленное Управление&lt;/t&gt;</Russian>
-			</Key>
-	</Package>
 	<Package name="GUI_TransferResourcesMenu">
 			<Key ID="STR_Сmd_Pool">
 				<Original>&lt;t align='left'&gt;Commander Pool:&lt;/t&gt; &lt;t align='right' color='%1'&gt;$%2&lt;/t&gt;</Original>
@@ -1982,6 +2026,12 @@
 			<Key ID="STR_Player_Rsc">
 				<Original>&lt;t align='left'&gt;Player Resources:&lt;/t&gt; &lt;t align='right' color='%1'&gt;$%2&lt;/t&gt;</Original>
 				<Russian>&lt;t align='left'&gt;Ресурсы Игрока:&lt;/t&gt; &lt;t align='right' color='%1'&gt;$%2&lt;/t&gt;</Russian>
+			</Key>
+	</Package>
+	<Package name="Common_CreateUnit">
+			<Key ID="STR_Common_CreateUnit_Remote_Control">
+				<Original>&lt;t color='#ff9900'&gt;Remote Control&lt;/t&gt;</Original>
+				<Russian>&lt;t color='#ff9900'&gt;Удаленное Управление&lt;/t&gt;</Russian>
 			</Key>
 	</Package>
 	<Package name="Functions_UI_UpgradeMenu">
@@ -2004,58 +2054,6 @@
 			<Key ID="STR_UI_Max_Level">
 				<Original>&lt;t color='#76F563' shadow='1'&gt;The maximum upgrade level has been reached.&lt;/t&gt;</Original>
 				<Russian>&lt;t color='#76F563' shadow='1'&gt;Достигнут макс. уровень улучшения&lt;/t&gt;</Russian>
-			</Key>
-	</Package>
-	<Package name="Events_UI_Interact">
-			<Key ID="STR_Tooltip_HALO_Jump">
-				<Original>HALO Jump (%1 min.)</Original>
-				<Russian>HALO Прыжок (%1 мин.)</Russian>
-			</Key>
-			<Key ID="STR_Tooltip_HALO_Jump_NA">
-				<Original>HALO Jump (Not Available)</Original>
-				<Russian>HALO Прыжок (Недоступен)</Russian>
-			</Key>
-			<Key ID="STR_Network_Lock">
-				<Original>Network (Locked)</Original>
-				<Russian>Сеть (Заблокирована)</Russian>
-			</Key>
-			<Key ID="STR_Repair_No_Toolkit">
-				<Original>Repair (No Toolkit)</Original>
-				<Russian>Починить (Нет Набора Инструментов)</Russian>
-			</Key>
-			<Key ID="STR_Force_Lock_No_ToolKit">
-				<Original>Force Lock (No ToolKit)</Original>
-				<Russian>Взломать (Нет Набора Инструментов)</Russian>
-			</Key>
-			<Key ID="STR_MGA_sec">
-				<Original>Mobile Gear Access (%1 s.)</Original>
-				<Russian>Доступ к мобильному снаряжению (%1 сек.)</Russian>
-			</Key>
-			<Key ID="STR_ST_Load_Info">
-				<Original>ST LOAD :: Trying to load a static, please wait</Original>
-				<Russian>ST LOAD :: Пытаемся загрузить обьект, ждите</Russian>
-			</Key>
-	</Package>
-	<Package name="Events_UI_TabletMain">
-			<Key ID="STR_Eject_Com_UI">
-				<Original>Eject Com. (%1/%2)</Original>
-				<Russian>Изгнать Ком. (%1/%2)</Russian>
-			</Key>
-			<Key ID="STR_Leave_Com_UI">
-				<Original>Leave Com.</Original>
-				<Russian>Покинуть</Russian>
-			</Key>
-			<Key ID="STR_Leave_Com_UI_Tooltip">
-				<Original>Leave Commander Post</Original>
-				<Russian>Покинуть пост Командира</Russian>
-			</Key>
-			<Key ID="STR_Net_Disc">
-				<Original>Net-Discon.</Original>
-				<Russian>Сеть-Откл.</Russian>
-			</Key>
-			<Key ID="STR_Net_Rec">
-				<Original>Net-Recon.</Original>
-				<Russian>Сеть-Подкл.</Russian>
 			</Key>
 	</Package>
 	<Package name="HUD_UpdateInfo">
@@ -2091,7 +2089,7 @@
 			</Key>
 	</Package>
 </Project>
-<Project name="Upgrades">
+<Project name="Upgrades_East_West">
 	<Package name="Main">
 			<Key ID="STR_Up_Barracks">
 				<Original>Barracks</Original>
@@ -2263,7 +2261,7 @@
 			</Key>
 	</Package>
 </Project>
-<Project name="Base_East">
+<Project name="Base_East_West">
 	<Package name="Main">
 			<Key ID="STR_Light_Vehicle_Factory">
 				<Original>Light Vehicle Factory</Original>
