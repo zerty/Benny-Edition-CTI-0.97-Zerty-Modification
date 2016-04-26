@@ -751,7 +751,7 @@ _s = _s + [""];
 
 _c = _c + ["B_supplyCrate_F"];
 _p = _p + [''];
-_n = _n + ['Mobile Gear access Crate'];
+_n = _n + [localize 'STR_Mobile_Gear_Access_Crate'];
 _o = _o + [3000];
 _t = _t + [15];
 _u = _u + [1];
