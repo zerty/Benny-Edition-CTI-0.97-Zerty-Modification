@@ -10,7 +10,7 @@ if (_hq distance _vehicle <= CTI_BASE_HQ_REPAIR_RANGE) then {
 	
 	if (_funds >= CTI_BASE_HQ_REPAIR_PRICE) then {
 		_delay = CTI_BASE_HQ_REPAIR_TIME;
-		hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br />Attempting to repair the HQ...";
+		hint parseText localize "STR_RepairHQ";
 		while {_delay > 0} do {
 			_hq = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideHQ;
 			if (alive _hq || _hq distance _vehicle > CTI_BASE_HQ_REPAIR_RANGE || !alive _vehicle) exitWith {};
@@ -23,14 +23,20 @@ if (_hq distance _vehicle <= CTI_BASE_HQ_REPAIR_RANGE) then {
 				-CTI_BASE_HQ_REPAIR_PRICE call CTI_CL_FNC_ChangePlayerFunds;
 				["SERVER", "Request_HQRepair", CTI_P_SideJoined] call CTI_CO_FNC_NetSend;
 			} else {
-				hint parseText format["<t size='1.3' color='#2394ef'>Information</t><br /><br /><t color='%1'>$%2</t> is needed to repair the HQ", CTI_P_Coloration_Money, CTI_BASE_HQ_REPAIR_PRICE];
+				hint parseText format[localize "STR_Needed_RepairHQ", CTI_P_Coloration_Money, CTI_BASE_HQ_REPAIR_PRICE];
 			};
 		} else {
-			if (alive _hq) exitWith {hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br />The HQ is already repaired."};
-			if !(alive _vehicle) exitWith {hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br />The repair vehicle has been destroyed."};
-			if (_hq distance _vehicle > CTI_BASE_HQ_REPAIR_RANGE) exitWith {hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br />The repair vehicle has moved too far from the HQ."};
+			if (alive _hq) exitWith {
+				hint parseText localize "STR_Already_RepairHQ"
+			};
+			if !(alive _vehicle) exitWith {
+				hint parseText localize "STR_Destroyed_RepairHQ"
+			};
+			if (_hq distance _vehicle > CTI_BASE_HQ_REPAIR_RANGE) exitWith {
+				hint parseText localize "STR_Moved_RepairHQ"
+			};
 		};
 	} else {
-		hint parseText format["<t size='1.3' color='#2394ef'>Information</t><br /><br /><t color='%1'>$%2</t> is needed to repair the HQ", CTI_P_Coloration_Money, CTI_BASE_HQ_REPAIR_PRICE];
+		hint parseText format[localize "STR_Needed_RepairHQ", CTI_P_Coloration_Money, CTI_BASE_HQ_REPAIR_PRICE];
 	};
 };
