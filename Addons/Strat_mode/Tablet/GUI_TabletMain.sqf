@@ -17,7 +17,7 @@ while { true } do {
 
 	if (time - _last_infocheck > 1) then {
 		_uptime = call CTI_CL_FNC_GetMissionTime;
-		_t=format["Mission Time: <t color='#d4ceff'>%1D %2:%3:%4</t>,<br/>Max. Mission time: <t color='#d4ceff'>%5h</t><br />", _uptime select 0,_uptime select 1,_uptime select 2, _uptime select 3,missionNamespace getVariable "CTI_MAX_MISSION_TIME"];
+		_t=format[localize "STR_MAX_MISSION_TIME", _uptime select 0,_uptime select 1,_uptime select 2, _uptime select 3,missionNamespace getVariable "CTI_MAX_MISSION_TIME"];
 		if !(side group player == resistance) then {
 				_funds = call CTI_CL_FNC_GetPlayerFunds;
 				_held=0;
@@ -26,7 +26,7 @@ while { true } do {
 				_resources_pool = CTI_P_SideLogic getVariable "cti_pool_resources";
 				_income = call CTI_CL_FNC_GetPlayerIncome;
 				_side_income = (CTI_P_SideJoined) call CTI_CO_FNC_GetTownsResources;
-				_t=_t+(format["<t>Resources: <t color='%1'>$%2</t></t><br />", CTI_P_Coloration_Money, _funds]) + (format["<t>Pools (Players/Award): %1%3 / %2%3</t><br />", round(_resources_pool*100), round(_award_pool*100), "%"]) +  (format["<t>Income (Me/Side): <t color='%1'>$%2</t>/<t color='%1'>$%3</t> each %4s.</t><br />", CTI_P_Coloration_Money, _income, round (_side_income), missionNamespace getVariable "CTI_ECONOMY_INCOME_CYCLE" ])+(format["<t>Towns Held Value: <t color='#66baff'>%1$</t>/ %2$</t><br />Victory : <t color='#ff9900'>%3$</t><br />", _held, _town_count,floor (_town_count * 0.75)]);
+				_t=_t+(format[localize "STR_Coloration_Money", CTI_P_Coloration_Money, _funds]) + (format[localize "STR_Coloration_Pools", round(_resources_pool*100), round(_award_pool*100), "%"]) +  (format[localize "STR_Coloration_Income", CTI_P_Coloration_Money, _income, round (_side_income), missionNamespace getVariable "CTI_ECONOMY_INCOME_CYCLE" ])+(format[localize "STR_Coloration_Towns", _held, _town_count,floor (_town_count * 0.75)]);
 		};
 		((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 130001) ctrlSetStructuredText parsetext _t;
 	};

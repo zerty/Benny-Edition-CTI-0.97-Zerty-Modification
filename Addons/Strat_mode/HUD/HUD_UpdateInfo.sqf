@@ -29,10 +29,10 @@ _t="<t size='0.75' align='right'>";
 if (missionNamespace getVariable "CTI_EW_ANET" == 1 && ! isNil {( player) getVariable "CTI_Net"} && ! isNil {( player) getVariable "AN_iNet"}) then {
 		_co="";
 		if (((player) getVariable "AN_iNet") == (player) getVariable "CTI_Net") then {_co=format ["<t color='#00ff00'>%1</t>",(((player) getVariable "CTI_Net") call CTI_CO_FNC_GetSideFromID)]} else {_co=format ["<t color='#ffff00'>%1</t>",(((player) getVariable "CTI_Net") call CTI_CO_FNC_GetSideFromID)]};
-		if ((( player) getVariable "CTI_Net"< 0) ) then {_co="<t color='#ff0000'>Forced Dis.</t>"};
+		if ((( player) getVariable "CTI_Net"< 0) ) then {_co = localize "STR_CTI_Net"};
 	_t=_t+format ["<t size='1'><img image='\a3\Ui_f\data\GUI\Cfg\CommunicationMenu\call_ca.paa'/></t> %1 || ",_co];
 	};
-_t= _t+format	["%1 <t color='#00ff00'>$$</t> || ",[group player, CTI_P_SideJoined] call CTI_CO_FNC_GetFunds] ;
+_t= _t+format	["%1 <t color='#00ff00'>$</t> || ",[group player, CTI_P_SideJoined] call CTI_CO_FNC_GetFunds] ;
 _t=_t+format	["%1 <t color='#ff0000'><img image='A3\ui_f\data\IGUI\Cfg\Actions\heal_ca.paa'/></t> || ",ceil( (1- getDammage	player)*100)] ;
 _t=_t+format	["%1 <t color='#0000ff'><img image='\A3\Ui_f\data\IGUI\RscIngameUI\RscUnitInfo\SI_stand_ca.paa'/></t><br />",ceil( (1- getfatigue	player)*100)] ;
 _com_name="";
@@ -45,14 +45,14 @@ if (isNull (CTI_P_SideLogic getVariable ["cti_commander",grpnull])) then {
 };
 
 if (_com_name == "") then {_com_name = "NONE"};
-_t=_t+ (format ["<t color='#F5D363'>Current Com :</t> %1<br />",_com_name ]);
+_t=_t+ (format [localize "STR_Current_Com",_com_name ]);
 
 
 
 _running = CTI_P_SideLogic getVariable "cti_upgrade";
-_ttext = "No Upgrade Running";
+_ttext = localize "STR_No_Upgrade_Running";
 	if (_running > -1) then {
-		_ttext = format ["%1 :: %2 s left.", ((missionNamespace getVariable format["CTI_%1_UPGRADES_LABELS", CTI_P_SideJoined]) select _running) select 0,CTI_P_SideLogic getVariable "cti_upgrade_lt"];
+		_ttext = format [localize "STR_Upgrade_Left", ((missionNamespace getVariable format["CTI_%1_UPGRADES_LABELS", CTI_P_SideJoined]) select _running) select 0,CTI_P_SideLogic getVariable "cti_upgrade_lt"];
 	};
 _t=_t+ (format ["<t color='#F5D363'>%1 </t><br />",_ttext ]);
 _sl=CTI_P_SideJoined call  CTI_CO_FNC_GetSideLogic;

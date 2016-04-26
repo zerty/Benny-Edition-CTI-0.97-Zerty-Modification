@@ -27,7 +27,7 @@ while { true } do {
 	_group = uiNamespace getVariable "cti_dialog_ui_purchasemenu_team";
 	_size = (count units _group) - ({isplayer _x } count (units _group )) ;
 	if (_size != _last_size) then {
-		((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 110902) ctrlSetStructuredText (parseText format["<t align='right'>Group Size: <t color='#66baff'>%1</t>/%2</t>", _size, if (isPlayer leader _group) then {CTI_PLAYERS_GROUPSIZE} else {CTI_AI_TEAMS_GROUPSIZE}]);
+		((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 110902) ctrlSetStructuredText (parseText format[localize "STR_GUI_Group_Size", _size, if (isPlayer leader _group) then {CTI_PLAYERS_GROUPSIZE} else {CTI_AI_TEAMS_GROUPSIZE}]);
 	};
 
 	//--- Remove old content.
