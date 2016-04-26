@@ -194,7 +194,7 @@ if (_script != "" && alive _vehicle) then {
 
 //--- Notify the current client
 
-hint parseText format ["<t size='1.3' color='#2394ef'>Information</t><br /><br />%4<t>Your <t color='#ccffaf'>%1</t> has arrived from the <t color='#fcffaf'>%2</t> at grid <t color='#beafff'>%3</t></t>", _var_classname select CTI_UNIT_LABEL, (_var select 0) select 1, mapGridPosition _position, _picture];
+hint parseText format [localize "STR_Buy_Notify", _var_classname select CTI_UNIT_LABEL, (_var select 0) select 1, mapGridPosition _position, _picture];
 
 //--- send a notice to the server that our order is now complete
 ["SERVER", "Answer_Purchase", [_req_seed, _req_classname, _req_buyer, _factory]] call CTI_CO_FNC_NetSend;

@@ -46,7 +46,7 @@ _irLock = getNumber(configFile >> "CfgAmmo" >> _ammo >> "irLock"); //--- Get the
 if (_irLock == 1 ) then {
 	_limit = missionNamespace getVariable "CTI_GAMEPLAY_MISSILES_RANGE";
 	if (_limit != 0) then {
-		hint parseText (format ["<t size='1.3' color='#2394ef'>BE AWARE</t><br /><br />Missile range is<br /> <t color='#ccffaf'> %1 Meters </t>", _limit]);
+		hint parseText (format [localize "STR_Missile_Range", _limit]);
 	};
 
 };

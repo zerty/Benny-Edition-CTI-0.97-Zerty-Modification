@@ -34,9 +34,9 @@ _var = missionNamespace getVariable _variable;
 
 //todo move to displaymessage
 if !(_sell) then {
-	HUD_NOTIFICATIONS pushBack [format ["%1 Destroyed (%2)!", (_var select 0) select 1, mapGridPosition _position],time+18000,"ffff00"];
+	HUD_NOTIFICATIONS pushBack [format [localize "STR_Structure_Destroyed", (_var select 0) select 1, mapGridPosition _position],time+18000,"ffff00"];
 } else {
-	HUD_NOTIFICATIONS pushBack [ format ["%1 Sold (%2)!", (_var select 0) select 1, mapGridPosition _position],time+10,"ffffff"];
+	HUD_NOTIFICATIONS pushBack [ format [localize "STR_Structure_Sold", (_var select 0) select 1, mapGridPosition _position],time+10,"ffffff"];
 };
 
 {

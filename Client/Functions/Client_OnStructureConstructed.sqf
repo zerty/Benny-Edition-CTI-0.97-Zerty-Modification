@@ -33,7 +33,7 @@ _variable = _this select 1;
 _var = missionNamespace getVariable _variable;
 
 //todo move to displaymessage
-HUD_NOTIFICATIONS pushBack [format ["%1 now available (%2).", (_var select 0) select 1, mapGridPosition getPos _structure],time +180 ,"ffffff"];
+HUD_NOTIFICATIONS pushBack [format [localize "STR_Structure_Constructed", (_var select 0) select 1, mapGridPosition getPos _structure],time +180 ,"ffffff"];
 
 //--- Add score for the commander
 if (isNull (CTI_P_SideLogic getVariable "cti_commander")) then {
