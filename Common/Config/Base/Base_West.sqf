@@ -122,63 +122,63 @@ _times =  _times 			+[120];
 _placements =_placements 	+  [[180, 30]];
 _specials = _specials		+ [[["DMG_Reduce", 1.5]]];*/
 
-_headers = _headers 		+ [[CTI_BARRACKS, "Barracks", "Barracks"]];
+_headers = _headers 		+ [[CTI_BARRACKS, localize "STR_Up_Barracks", localize "STR_Up_Barracks"]];
 _classes = _classes 		+ [["Land_Cargo_House_V1_F", "Land_Cargo_House_V1_ruins_F"]];
 _prices = _prices 			+ [1000];
 _times = _times 			+ [60];
 _placements = _placements 	+ [[180, 15]];
 _specials = _specials		+ [[["DMG_Reduce", 2]]];
 
-_headers = _headers 		+ [[CTI_LIGHT, "Light Vehicle Factory", "Light"]];
+_headers = _headers 		+ [[CTI_LIGHT, localize "STR_Light_Vehicle_Factory", localize "STR_Light_Vehicle_Factory_1"]];
 _classes = _classes 		+ [["Land_i_Garage_V1_F", "Land_Garage_V1_ruins_F"]];
 _prices = _prices 			+ [2000];
 _times = _times 			+ [80];
 _placements = _placements 	+ [[90, 20]];
 _specials = _specials		+ [[["DMG_Alternative"],["DMG_Reduce", 0.7]]];
 
-_headers = _headers 		+ [[CTI_CONTROLCENTER, "Control Center", "CC"]];
+_headers = _headers 		+ [[CTI_CONTROLCENTER, localize "STR_Control_Center", localize "STR_Control_Center_1"]];
 _classes = _classes 		+ [["Land_i_House_Small_03_V1_F", "Land_House_Small_03_V1_ruins_F", ["Land_i_House_Small_03_V1_dam_F"]]];
 _prices = _prices 			+ [3000];
 _times = _times 			+ [90];
 _placements = _placements 	+ [[180, 20]];
 _specials = _specials		+ [[["Connected"],["DMG_Alternative"],["DMG_Reduce", 0.4]]];
 
-_headers = _headers 		+ [[CTI_HEAVY, "Heavy Vehicle Factory", "Heavy"]];
+_headers = _headers 		+ [[CTI_HEAVY, localize "STR_Heavy_Vehicle_Factory", localize "STR_Heavy_Vehicle_Factory_1"]];
 _classes = _classes 		+ [["Land_Cargo_HQ_V1_F", "Land_Cargo_HQ_V1_ruins_F"]];
 _prices = _prices 			+ [3500];
 _times = _times 			+ [120];
 _placements = _placements 	+ [[90, 20]];
 _specials = _specials		+ [[]];
 
-_headers = _headers 		+ [[CTI_AIR, "Aircraft Factory", "Air"]];
+_headers = _headers 		+ [[CTI_AIR, localize "STR_Aircraft_Factory", localize "STR_Aircraft_Factory_1"]];
 _classes = _classes 		+ [["Land_Radar_Small_F", "Land_Radar_Small_ruins_F"]];
 _prices = _prices 			+ [8000];
 _times = _times 			+ [140];
 _placements = _placements 	+ [[90, 35]];
 _specials = _specials		+ [[]];
 
-_headers = _headers 		+ [[CTI_AMMO, "Ammo Depot", "Ammo"]];
+_headers = _headers 		+ [[CTI_AMMO, localize "STR_Ammo_Depot", localize "STR_Ammo_Depot_1"]];
 _classes = _classes 		+ [["Land_TBox_F", "Land_TBox_ruins_F"]];
 _prices = _prices 			+ [500];
 _times = _times 			+ [40];
 _placements = _placements 	+ [[0, 20]];
 _specials = _specials		+ [[]];
 
-_headers = _headers 		+ [[CTI_REPAIR, "Repair Depot", "Repair"]];
+_headers = _headers 		+ [[CTI_REPAIR, localize "STR_Repair_Depot", localize "STR_Repair_Depot_1"]];
 _classes = _classes 		+ [["Land_FuelStation_Build_F", "Land_FuelStation_Build_ruins_F"]];
 _prices = _prices 			+ [600];
 _times = _times 			+ [35];
 _placements = _placements 	+ [[180, 20]];
 _specials = _specials		+ [[]];
 
-_headers = _headers 		+ [[CTI_NAVAL, "Naval Yard", "Naval"]];
+_headers = _headers 		+ [[CTI_NAVAL, localize "STR_Naval_Yard", localize "STR_Naval_Yard_1"]];
 _classes = _classes 		+ [["Land_Lighthouse_small_F", "Land_Lighthouse_small_ruins_F"]];
 _prices = _prices 			+ [1500];
 _times = _times 			+ [35];
 _placements = _placements 	+ [[180, 25]];
 _specials = _specials		+ [[]];
 
-_headers = _headers 		+[[CTI_RADAR, "Air Radar", "Air Radar"]];
+_headers = _headers 		+[[CTI_RADAR, localize "STR_Air_Radar", localize "STR_Air_Radar_1"]];
 _classes =  _classes 		+[["Land_TTowerBig_1_F", "Land_TTowerBig_1_ruins_F"]];
 _prices =  _prices 			+[8000];
 _times =  _times 			+[120];
