@@ -33,6 +33,7 @@ switch (_action) do {
 		} else {
 			((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210020) ctrlEnable true;
 			((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210020) ctrlsettext localize "STR_Leave_Com_UI";
+			((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210020) ctrlSetTooltip localize "STR_Leave_Com_UI_Tooltip";
 		};
 
 		if ((missionNamespace getVariable "CTI_ARTILLERY_SETUP") < 0) then {((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210009) ctrlEnable false};

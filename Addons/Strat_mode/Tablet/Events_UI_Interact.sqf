@@ -537,7 +537,7 @@ switch (_action) do {
 		['onLoad'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_Interact.sqf';
 	};
 	case "OnLoad": {
-		CTI_P_ChatID commandChat  'ST LOAD :: Trying to load a static, please wait' ;
+		CTI_P_ChatID commandChat  localize "STR_ST_Load_Info" ;
 		STATIC_TRY=true;
 		['SERVER','Request_load',[_target,player]]call CTI_CO_FNC_NetSend;
 		['onLoad'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_Interact.sqf';
