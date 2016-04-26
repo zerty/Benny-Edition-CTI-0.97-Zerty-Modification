@@ -59,22 +59,22 @@ switch (_action) do {
 								CTI_P_SideLogic setVariable ["cti_upgrade", _selected,true];
 								
 								_label = ((missionNamespace getVariable format["CTI_%1_UPGRADES_LABELS", CTI_P_SideJoined]) select _selected) select 0;
-								hint parseText format["<t size='1.3' color='#2394ef'>Information</t><br /><br /><t color='#F5D363'>%1</t> upgrade has started.", _label];
+								hint parseText format[localize "STR_Upgrade_Start", _label];
 							} else {
-								hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br />Not all dependencies are met to start this upgrade.";
+								hint parseText localize "STR_Upgrade_Not_To_Start";
 							};
 						} else {
-							hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br />You do not have enough funds to perform this operation.";
+							hint parseText localize "STR_Upgrade_Not_Funds";
 						};
 					} else {
-						hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br />The maximum upgrade level has been reached for this upgrade.";
+						hint parseText localize "STR_Upgrade_Max";
 					};
 				} else {
-					hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br />You may not upgrade something else while an upgrade is already running.";
+					hint parseText localize "STR_Upgrade_Running";
 				};
 			};
 		} else {
-			hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br />Only the Commander may perform upgrades.";
+			hint parseText localize "STR_Upgrade_Only_Cmnd";
 		};
 	};
 };

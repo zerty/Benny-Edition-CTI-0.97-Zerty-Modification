@@ -14,7 +14,15 @@ switch (_action) do {
 			_squad = missionNamespace getVariable format ["CTI_SQUAD_%1_%2", CTI_P_SideJoined, _x getVariable "cti_role"];
 			_squad = if !(isNil '_squad') then { _squad select 0 } else { _x getVariable "cti_role" };
 			_order = (_x getVariable "cti_order") call CTI_CL_FNC_GetOrderLabel;
-			((uiNamespace getVariable "cti_dialog_ui_teamsmenu") displayCtrl 190001) lnbAddRow [format ["%1 (%2)", _x getVariable ["cti_alias",CTI_PLAYER_DEFAULT_ALIAS], if (isPlayer leader _x) then {name leader _x} else {"AI"}], str({alive _x} count units _x), format["$%1", [_x, CTI_P_SideJoined] call CTI_CO_FNC_GetFunds], if (_x getVariable "cti_independent") then {"On"} else {"Off"}, _squad, _order];
+			((uiNamespace getVariable "cti_dialog_ui_teamsmenu") displayCtrl 190001) lnbAddRow [format ["%1 (%2)", _x getVariable ["cti_alias",CTI_PLAYER_DEFAULT_ALIAS], if (isPlayer leader _x) then {
+				name leader _x
+			} else {
+				"AI"
+			}], str({alive _x} count units _x), format["$%1", [_x, CTI_P_SideJoined] call CTI_CO_FNC_GetFunds], if (_x getVariable "cti_independent") then {
+				"On"
+			} else {
+				"Off"
+			}, _squad, _order];
 			((uiNamespace getVariable "cti_dialog_ui_teamsmenu") displayCtrl 190001) lnbSetValue [[_forEachIndex, 1], {alive _x} count units _x];
 			((uiNamespace getVariable "cti_dialog_ui_teamsmenu") displayCtrl 190001) lnbSetValue [[_forEachIndex, 5], _x getVariable "cti_order"];
 		} forEach _groups;
@@ -100,7 +108,7 @@ switch (_action) do {
 			if (_funds >= _amount && _who != group player) then {
 				[_who, CTI_P_SideJoined, _amount] call CTI_CO_FNC_ChangeFunds;
 				-(_amount) call CTI_CL_FNC_ChangePlayerFunds;
-				hint parseText format ["<t size='1.3' color='#2394ef'>Information</t><br /><br />Transfered <t color='%1'>$%2</t> to group <t color='#55bcfc'>%3</t>.", CTI_P_Coloration_Money, _amount, _who getVariable ["cti_alias",CTI_PLAYER_DEFAULT_ALIAS]];
+				hint parseText format [localize "STR_UI_Teams_Transfered", CTI_P_Coloration_Money, _amount, _who getVariable ["cti_alias",CTI_PLAYER_DEFAULT_ALIAS]];
 			};
 		};
 	};
@@ -146,9 +154,9 @@ switch (_action) do {
 			if (_funds >= (_amount * count(uiNamespace getVariable "cti_dialog_ui_teamsmenu_groups"))) then {
 				{[_x, CTI_P_SideJoined, _amount] call CTI_CO_FNC_ChangeFunds} forEach (uiNamespace getVariable "cti_dialog_ui_teamsmenu_groups");
 				-(_amount * count(uiNamespace getVariable "cti_dialog_ui_teamsmenu_groups")) call CTI_CL_FNC_ChangePlayerFunds;
-				hint parseText format ["<t size='1.3' color='#2394ef'>Information</t><br /><br />Transfered <t color='%1'>$%2</t> to everyone.", CTI_P_Coloration_Money, _amount];
+				hint parseText format [localize "STR_UI_Teams_Transfered_Everyone", CTI_P_Coloration_Money, _amount];
 			} else {
-				hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br />You do not have enough resources to perform this operation.";
+				hint parseText localize "STR_UI_Teams_Not_Resources";
 			};
 		};
 	};

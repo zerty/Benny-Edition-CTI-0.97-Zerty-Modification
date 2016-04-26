@@ -27,7 +27,11 @@ switch (_action) do {
 
 		_groups = [group player];
 		if (call CTI_CL_FNC_IsPlayerCommander) then {
-			_groups = if ((missionNamespace getVariable "CTI_AI_TEAMS_ENABLED") == 3 || CTI_P_SideJoined == west && (missionNamespace getVariable "CTI_AI_TEAMS_ENABLED") == 1 || CTI_P_SideJoined == east && (missionNamespace getVariable "CTI_AI_TEAMS_ENABLED") == 2 ) then {(CTI_P_SideJoined) call CTI_CO_FNC_GetSideGroups} else {(CTI_P_SideJoined) call CTI_CO_FNC_GetSidePlayerGroups};
+			_groups = if ((missionNamespace getVariable "CTI_AI_TEAMS_ENABLED") == 3 || CTI_P_SideJoined == west && (missionNamespace getVariable "CTI_AI_TEAMS_ENABLED") == 1 || CTI_P_SideJoined == east && (missionNamespace getVariable "CTI_AI_TEAMS_ENABLED") == 2 ) then {
+				(CTI_P_SideJoined) call CTI_CO_FNC_GetSideGroups
+			} else {
+				(CTI_P_SideJoined) call CTI_CO_FNC_GetSidePlayerGroups
+			};
 			{
 				_header_ai = if (isPlayer leader _x) then {""} else {"[AI] "};
 				((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 110018) lbAdd format ["%1%2 (%3)", _header_ai, _x getVariable ["cti_alias", CTI_PLAYER_DEFAULT_ALIAS], name leader _x];
@@ -78,7 +82,11 @@ switch (_action) do {
 		if (_available select _factory_index) then {
 			(_factory_index) call CTI_UI_Purchase_SetIcons;
 			(_factory_type) call CTI_UI_Purchase_FillUnitsList;
-			if (_factory_type == CTI_REPAIR && (call CTI_CL_FNC_IsPlayerCommander)) then {((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 100016) ctrlenable true} else {((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 100016) ctrlenable false};
+			if (_factory_type == CTI_REPAIR && (call CTI_CL_FNC_IsPlayerCommander)) then {
+				((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 100016) ctrlenable true
+			} else {
+				((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 100016) ctrlenable false
+			};
 			call CTI_UI_Purchase_OnUnitListLoad;
 
 			(_factory_type) call CTI_UI_Purchase_LoadFactories;
@@ -125,23 +133,32 @@ switch (_action) do {
 				if (_ai_enabled >0 || ((isPlayer leader _selected_group || (missionNamespace getVariable "CTI_BUY_RESTRICT_LEADER" == 0 ))&& _ai_enabled == 0)) then {
 					if ((count units _selected_group) <= (CTI_PLAYERS_GROUPSIZE + ({isplayer _x } count ( units _selected_group ))) || _isEmpty) then { //todo ai != player limit
 						_proc_purchase = true;
-						if (_isEmpty && _selected_group != group player) then { _proc_purchase = false; hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br />Empty vehicles may not be purchased for other groups."; };
-						if ! (_classname in ( missionNamespace getVariable format ["CTI_%1_%2Units", CTI_P_SideJoined,(uiNamespace getVariable "cti_dialog_ui_purchasemenu_factory_type")])) then { _proc_purchase = false; hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br />This vehicles may not be purchased in that factory."; };
+						if (_isEmpty && _selected_group != group player) then {
+							_proc_purchase = false;
+							hint parseText localize "STR_Purchase_Empty";
+						};
+						if ! (_classname in ( missionNamespace getVariable format ["CTI_%1_%2Units", CTI_P_SideJoined,(uiNamespace getVariable "cti_dialog_ui_purchasemenu_factory_type")])) then { 
+							_proc_purchase = false;
+							hint parseText localize "STR_Purchase_Factory";
+						};
 						if (_proc_purchase) then {
 							_get = missionNamespace getVariable _classname;
-							_picture = if ((_get select CTI_UNIT_PICTURE) != "") then {format["<img image='%1' size='2.5'/><br /><br />", _get select CTI_UNIT_PICTURE]} else {""};
-							hint parseText format ["<t size='1.3' color='#2394ef'>Information</t><br /><br />%2<t>A <t color='#ccffaf'>%1</t> is being built</t>", _get select CTI_UNIT_LABEL, _picture];
+							_picture = if ((_get select CTI_UNIT_PICTURE) != "") then {
+								format["<img image='%1' size='2.5'/><br /><br />", _get select CTI_UNIT_PICTURE]
+							}
+							else {""};
+							hint parseText format [localize "STR_Purchase_Build", _get select CTI_UNIT_LABEL, _picture];
 							[_classname, uiNamespace getVariable "cti_dialog_ui_purchasemenu_factory", _selected_group, _veh_info] call CTI_CL_FNC_PurchaseUnit;
 						};
 					} else {
-						hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br />Your unit limit has been reached.";
+						hint parseText localize "STR_Purchase_Limit";
 					};
 				} else {
-					hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br />Units may not be purchased to AI groups while the AI Teams are disabled in the parameters.";
+					hint parseText localize "STR_Purchase_AI_Unit";
 				};
 			};
 		} else {
-			hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br />You do not have enough funds to perform this operations.";
+			hint parseText localize "STR_Upgrade_Not_Funds";
 		};
 	};
 	case "onIndependentSalvagerPressed": {
@@ -157,16 +174,16 @@ switch (_action) do {
 						CTI_P_LastIndepSalvagerPurchased = time;
 						["SERVER", "Request_Purchase", [CTI_P_SideJoined, group player, CTI_P_SideJoined, format["CTI_Salvager_Independent_%1", CTI_P_SideJoined], uiNamespace getVariable "cti_dialog_ui_purchasemenu_factory", [], (time + random 10000 - random 500 + diag_frameno)]] call CTI_CO_FNC_NetSend;
 					} else {
-						hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br />Please wait a few seconds before performing this operation again.";
+						hint parseText localize "STR_Purchase_Wait";
 					};
 				} else {
-					hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br />The Independent salvager limit has been reached.";
+					hint parseText localize "STR_Purchase_Limit_Salvager";
 				};
 			} else {
-				hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br />You do not have enough funds to perform this operations.";
+				hint parseText localize "STR_Upgrade_Not_Funds";
 			};
 		} else {
-			hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br />The factory shouldn't be in use in order to buy an independent salvager.";
+			hint parseText localize "STR_Purchase_Salvager";
 		};
 	};
 	case "onQueueCancel": {

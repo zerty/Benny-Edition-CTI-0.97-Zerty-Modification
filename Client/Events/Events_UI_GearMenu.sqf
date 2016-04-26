@@ -407,11 +407,11 @@ switch (_action) do {
 		} forEach (_gear call CTI_CO_FNC_ConvertGearToFlat);
 
 		if (_upgrade > _upgrade_gear) exitWith {
-			hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br /><t align='left'>The template could not be created since some items does not meet the current <t color='#F5D363'>Gear</t> upgrade level</t>";
+			hint parseText localize "STR_UI_GearMenu";
 		};
 
 		if (_dontbelong) exitWith {
-			hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br /><t align='left'>The template could not be created since some items do not belong to the side's equipment</t>";
+			hint parseText localize "STR_UI_GearMenu_2";
 		};
 		//todo: items belong to side gear?
 
@@ -438,7 +438,7 @@ switch (_action) do {
 			(CTI_GEAR_TAB_TEMPLATES) call CTI_UI_Gear_DisplayShoppingItems;
 		};
 
-		hint parseText format ["<t size='1.3' color='#2394ef'>Information</t><br /><br /><t align='left'>A new template has been created with the name <t color='#bcff70'>%1</t>.<br /><br />You may find it in the <t color='#eaff96'>Template</t> tab</t><br /><br /><img image='Rsc\Pictures\icon_wf_building_barracks.paa' size='2.5'/>", _label];
+		hint parseText format [localize "STR_UI_GearMenu_3", _label];
 	};
 
 	case "onTemplateDeletion": {
@@ -470,7 +470,7 @@ switch (_action) do {
 				};
 			};
 		} else {
-			hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br /><t align='left'>Templates may only be removed from the <t color='#eaff96'>Template</t> tab</t><br /><br /><img image='Rsc\Pictures\icon_wf_building_barracks.paa' size='2.5'/>";
+			hint parseText localize "STR_UI_GearMenu_4";
 		};
 	};
 
