@@ -141,19 +141,19 @@ class Params {
 		title = $STR_CTI_UNITS_FATIGUE;
 		values[] = {0,1};
 		texts[] = {$STR_CTI_DISABLED,$STR_CTI_ENABLED};
-		default = 1;
+		default = 0;
 	};
 	class CTI_FATIGUE_RATIO {
 		title = $STR_CTI_FATIGUE_RATIO;
 		values[] = {0,20,40,60,80,100};
 		texts[] = {$STR_STR_CTI_FATIGUE_RATIO_FULL,"20%","40%","60%","80%",$STR_STR_CTI_FATIGUE_RATIO_NOPE};
-		default = 60;
+		default = 100;
 	};
 	class CTI_VEHICLES_EMPTY_TIMEOUT {
 		title = $STR_CTI_VEHICLES_EMPTY_TIMEOUT;
 		values[] = {60,120,180,240,300,600,1200,1800,2400,3000,3600};
 		texts[] = {"1 Minute","2 Minutes","3 Minutes","4 Minutes","5 Minutes","10 Minutes","20 Minutes","30 Minutes","40 Minutes","50 Minutes","1 Hour"};
-		default = 3600;
+		default = 1800;
 	};
 	class CTI_GRAPHICS_TG_MAX {
 		title = $STR_CTI_GRAPHICS_TG_MAX;
@@ -218,14 +218,14 @@ class Params {
 		title = $STR_CTI_AI_SKILL;
 		values[] = {1,2,3,4,5};
 		texts[] = {$STR_CTI_AI_SKILL_0,$STR_CTI_AI_SKILL_1,$STR_CTI_AI_SKILL_2,$STR_CTI_AI_SKILL_3,$STR_CTI_AI_SKILL_4};
-		default = 3;
+		default = 4;
 	};
 
 	class CTI_MAX_MISSION_TIME {
 		title = $STR_CTI_MAX_MISSION_TIME;
 		values[] = {0,2,4,6,8,12,24};
 		texts[] = {$STR_CTI_MAX_MISSION_TIME_NEVER,"2h","4h","6h","8h","12h","24h"};
-		default = 0;
+		default = 8;
 	};
 	class MIN_TOWNS {
 		title = $STR_CTI_MIN_TOWNS;
@@ -277,7 +277,7 @@ class Params {
 		title = $STR_CTI_PLAYERS_GROUPSIZE;
 		values[] = {0,1,2,3,4,5,8,10,12,14,16};
 		texts[] = {$STR_CTI_PLAYERS_GROUPSIZE_AUTO,"1","2","3","4","5","8","10","12","14","16"};
-		default = 0;
+		default = 8;
 	};
 	class CTI_GAMEPLAY_MISSILES_RANGE {
 		title = $STR_CTI_GAMEPLAY_MISSILES_RANGE;
@@ -313,7 +313,7 @@ class Params {
 		title = $STR_CTI_GAMEPLAY_DARTER;
 		values[] = {0,500,800,1200,1500,2000};
 		texts[] = {"None","Connection range 500m","Connection range 800m","Connection range 1200m","Connection range 1500m","Connection range 2000m"};
-		default = 1200;
+		default = 2000;
 	};
 	class CTI_GAMEPLAY_DARTER_FUEL {
 		title = $STR_CTI_GAMEPLAY_DARTER_FUEL;
@@ -331,13 +331,13 @@ class Params {
 		title = $STR_CTI_ECONOMY_BASE_PLAYER_INCOME;
 		values[] = {0,10,25,50,100,150,200,250};
 		texts[] = {"0$","10$","25$","50$","100$","150$","200$","250$"};
-		default = 10;
+		default = 50;
 	};
 	class CTI_VEHICLES_BOUNTY {
 		title = $STR_CTI_VEHICLES_BOUNTY;
 		values[] = {0,25,50,75,100};
 		texts[] = {$STR_CTI_VEHICLES_BOUNTY_NO,$STR_CTI_VEHICLES_BOUNTY_LOW,$STR_CTI_VEHICLES_BOUNTY_MED,$STR_CTI_VEHICLES_BOUNTY_HIGH,$STR_CTI_VEHICLES_BOUNTY_FULL};
-		default = 50;
+		default = 75;
 	};
 	class CTI_PLAYER_REEQUIP {
 		title = $STR_CTI_PLAYER_REEQUIP;
@@ -385,14 +385,14 @@ class Params {
 		title = $STR_CTI_TOWNS_SHOPS;
 		values[] = {1,2,3,5,10,100};
 		texts[] = {"1","2","3","5","10","100"};
-		default = 1;
+		default = 2;
 	};
 
 	class CTI_WEATHER_INITIAL {
 		title = $STR_CTI_WEATHER_INITIAL;
 		values[] = {0,1,2,3,10};
 		texts[] = {$STR_CTI_WEATHER_INITIAL_M,$STR_CTI_WEATHER_INITIAL_N,$STR_CTI_WEATHER_INITIAL_E,$STR_CTI_WEATHER_INITIAL_Mid,$STR_CTI_WEATHER_INITIAL_R};
-		default = 10;
+		default = 0; //Zerty 10
 	};
 	class CTI_WEATHER_ALLOWRAIN {
 		title = $STR_CTI_WEATHER_ALLOWRAIN;
@@ -430,7 +430,7 @@ class Params {
 		title = $STR_CTI_SM_PATROLS;
 		values[] = {0,1};
 		texts[] = {$STR_CTI_DISABLED,$STR_CTI_ENABLED};
-		default = 1;
+		default = 0;
 	};
 	/*class CTI_SM_PATROLS_NUMBER {
 		title = "Zerty: Strategic: Patrols number";
@@ -449,7 +449,7 @@ class Params {
 		title = $STR_CTI_SM_STRATEGIC;
 		values[] = {0,1};
 		texts[] = {$STR_CTI_DISABLED,$STR_CTI_ENABLED};
-		default = 0;
+		default = 1;
 	};
 	class CTI_SM_STRATEGIC_NB {
 		title = $STR_CTI_SM_STRATEGIC_NB;
@@ -480,7 +480,7 @@ class Params {
 	class CTI_EW_HUD_S {
 		title = $STR_CTI_EW_HUD_S;
 		values[] = {1,2,3,4,5};
-		texts[] = {$STR_CTI_EW_HUD_S_HIGH,$STR_CTI_EW_HUD_S_MH,$STR_CTI_EW_HUD_S_ML,$STR_CTI_EW_HUD_S_L,$STR_CTI_EW_HUD_S_DIS};
+		texts[] = {$STR_CTI_EW_HUD_S_HIGH, $STR_CTI_EW_HUD_S_MEDHIGH, $STR_CTI_EW_HUD_S_MEDLOW, $STR_CTI_EW_HUD_S_LOW, $STR_CTI_EW_HUD_S_DIS};
 		default = 2;
 	};
 	class CTI_EW_HUD_I {
