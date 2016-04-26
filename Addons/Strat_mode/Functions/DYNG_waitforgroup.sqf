@@ -5,7 +5,7 @@
 	WAIT_GROUP=true;
 	[player] joinsilent grpNull;
 	["InitializePlayer",[player] ] call BIS_fnc_dynamicGroups;
-	12453 cutText ["Please either join or create a group","BLACK OUT",0];
+	12453 cutText [localize "STR_WaitForGroup","BLACK OUT",0];
 	waitUntil {(["PlayerHasGroup",[player] ] call BIS_fnc_dynamicGroups)};
 	12453 cutText ["","BLACK IN"];
 	WAIT_GROUP=nil;
