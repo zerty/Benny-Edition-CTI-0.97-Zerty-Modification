@@ -9,7 +9,7 @@ _target=_this select 1;
 
 _started=time;
 _finished=time + packing_time;
-_string =if (typeof _target in packs) then {"Unpacking"} else {"Packing vehicle for transport"};
+_string =if (typeof _target in packs) then {localize "STR_UnpackingVehicle"} else {localize "STR_PackingVehicle"};
 
 CTI_P_Repairing = true ;
 _caller switchMove animation;
@@ -22,7 +22,7 @@ if !(alive _caller && alive _target && animationstate _caller == animation && co
 	_caller switchMove "";
 	CTI_P_Repairing = false ;
 	0 call HUD_PBar_stop;
-	hintsilent "Error: The vehicle needs to be empty,unlocked and not moving to perform that action";
+	hintsilent localize "STR_ErrorPackVehicle";
 	sleep 3;
 	hintsilent "";
 };

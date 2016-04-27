@@ -112,7 +112,7 @@ if (missionNamespace getVariable "CTI_SM_RADAR" == 1) then {
 //cache
  //["SERVER", "Request_Cache", _unit] call CTI_CO_FNC_NetSend;
 
-_unit addAction ["<t color='#ff9900'>Remote Control</t>","
+_unit addAction [localize "STR_Common_CreateUnit_Remote_Control","
 	player connectTerminalToUAV ( vehicle(_this select 0));
 	(_this select 0) spawn {
 		waitUntil {   uavControl ( vehicle(_this)) select 1 == 'GUNNER' || ! (driver (vehicle _this)==_this) || (vehicle _this ==_this) || ! alive _this || ! alive player};

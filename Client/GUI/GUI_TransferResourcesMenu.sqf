@@ -25,7 +25,11 @@ while { true } do {
 		if (_income_commander != _last_income_commander || _income_players != _last_income_players) then {
 			((uiNamespace getVariable "cti_dialog_ui_transferresourcesmenu") displayCtrl 140010) ctrlSetStructuredText (parseText format[localize "STR_Сmd_Pool", CTI_P_Coloration_Money, _income_commander]);
 			((uiNamespace getVariable "cti_dialog_ui_transferresourcesmenu") displayCtrl 140011) ctrlSetStructuredText (parseText format[localize "STR_Player_Pool", CTI_P_Coloration_Money, _income_players]);
+<<<<<<< HEAD
 
+=======
+			
+>>>>>>> 5a803ed42686c9ba5b9885b35b96de79328c7f98
 			_last_income_commander = _income_commander;
 			_last_income_players = _income_players;
 		};
@@ -33,7 +37,11 @@ while { true } do {
 
 	_funds = call CTI_CL_FNC_GetPlayerFunds;
 	if (_funds != _last_funds) then {
+<<<<<<< HEAD
 		((uiNamespace getVariable "cti_dialog_ui_transferresourcesmenu") displayCtrl 140008) sliderSetRange [0, _funds-(missionNamespace getVariable format ["CTI_ECONOMY_STARTUP_FUNDS_%1", side group player])];
+=======
+		((uiNamespace getVariable "cti_dialog_ui_transferresourcesmenu") displayCtrl 140008) sliderSetRange [0, _funds];
+>>>>>>> 5a803ed42686c9ba5b9885b35b96de79328c7f98
 		((uiNamespace getVariable "cti_dialog_ui_transferresourcesmenu") displayCtrl 140002) ctrlSetStructuredText (parseText format[localize "STR_Your_Rsc", CTI_P_Coloration_Money, _funds]);
 		_last_funds = _funds;
 	};

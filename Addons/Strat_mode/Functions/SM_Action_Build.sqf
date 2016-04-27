@@ -8,7 +8,7 @@ private ["_caller"];
 
 CTI_P_Repairing = true ;
 _caller switchMove animation;
-["Building",0,100,0] call HUD_PBar_start;
+[localize "STR_Action_Build",0,100,0] call HUD_PBar_start;
 (_target getVariable "cti_completion") call HUD_PBar_update;
 while {alive _caller  && animationstate _caller == animation && _target in (CTI_P_SideLogic getVariable ["cti_structures_wip",[]]) &&(_target getVariable ["cti_completion",0] <100) } do {
 			_target setVariable ["cti_completion", (_target getVariable "cti_completion") + ((CTI_BASE_WORKERS_BUILD_COEFFICIENT*player_ratio/(_target getVariable "cti_structures_iteration")) * (_target getVariable "cti_completion_ratio")),true];

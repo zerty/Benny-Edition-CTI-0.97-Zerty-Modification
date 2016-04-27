@@ -31,7 +31,7 @@ while  {!CTI_GameOver} do {
 
 		if !(!_prevent && _neigh && (_forces || _priority && ! _ours)) then {
 			if (_pr_s == _t) then {_pr_s=objNull;_sl setVariable ["CTI_PRIORITY",objNull,true];};
-			[["CLIENT",_side],"SM_message",format ["Town %1 is now Inactive",(_t getVariable "cti_town_name")]] call CTI_CO_FNC_NetSend ;
+			[["CLIENT",_side],"SM_message",format [localize "STR_TownInactive",(_t getVariable "cti_town_name")]] call CTI_CO_FNC_NetSend ;
 			_n_ac_s = _n_ac_s - [_t];
 		};
 			true

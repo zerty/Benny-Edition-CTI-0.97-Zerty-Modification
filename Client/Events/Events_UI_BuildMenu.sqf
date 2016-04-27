@@ -4,12 +4,12 @@ _action = _this select 0;
 switch (_action) do {
 	case "onLoad": {
 		execVM "Client\GUI\GUI_BuildMenu.sqf";
-		if (CTI_P_WallsAutoAlign) then { ctrlSetText [100003, "Auto-Align Walls: On"] } else { ctrlSetText [100003, "Auto-Align Walls: Off"] };
+		if (CTI_P_WallsAutoAlign) then { ctrlSetText [100003, localize "STR_Walls_On"] } else { ctrlSetText [100003, localize "STR_Walls_Off"] };
 		_def_count=count (units ((CTI_P_SideLogic getVariable ["cti_defensive_team",grpNull])));
 
-		if (CTI_P_DefensesAutoManning) then { ctrlSetText [100011, format ["Defenses Auto-Manning: On (%2/ %3)",ctrlText ((uiNamespace getVariable "cti_dialog_ui_buildmenu") displayCtrl 100011),_def_count,CTI_BASE_DEFENSES_AUTO_LIMIT ]] } else { ctrlSetText [100011,ctrlSetText [100011, format ["Defenses Auto-Manning: Off (%2/ %3)",ctrlText ((uiNamespace getVariable "cti_dialog_ui_buildmenu") displayCtrl 100011),_def_count,CTI_BASE_DEFENSES_AUTO_LIMIT ]] ] };
+		if (CTI_P_DefensesAutoManning) then { ctrlSetText [100011, format [localize "STR_Defenses_On",ctrlText ((uiNamespace getVariable "cti_dialog_ui_buildmenu") displayCtrl 100011),_def_count,CTI_BASE_DEFENSES_AUTO_LIMIT ]] } else { ctrlSetText [100011,ctrlSetText [100011, format [localize "STR_Defenses_Off",ctrlText ((uiNamespace getVariable "cti_dialog_ui_buildmenu") displayCtrl 100011),_def_count,CTI_BASE_DEFENSES_AUTO_LIMIT ]] ] };
 		if ((missionnamespace getVariable "CTI_BASEBUILDING") < 1) then {
-			((uiNamespace getVariable "cti_dialog_ui_buildmenu") displayCtrl 100005) ctrlSetText format ["Add Worker ($%1)", CTI_BASE_WORKERS_PRICE];
+			((uiNamespace getVariable "cti_dialog_ui_buildmenu") displayCtrl 100005) ctrlSetText format [localize "STR_Add_Worker", CTI_BASE_WORKERS_PRICE];
 			((uiNamespace getVariable "cti_dialog_ui_buildmenu") displayCtrl 100009) ctrlshow true;
 			((uiNamespace getVariable "cti_dialog_ui_buildmenu") displayCtrl 100005) ctrlshow true;
 		} else {
@@ -58,7 +58,7 @@ switch (_action) do {
 				[_selected, CTI_P_SideJoined call CTI_CO_FNC_GetSideHQ, CTI_BASE_CONSTRUCTION_RANGE] spawn CTI_CL_FNC_PlacingBuilding;
 				closeDialog 0;
 			} else {
-				hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br />You do not have enough funds to place that defense.";
+				hint parseText localize "STR_BuildMenu_Info";
 			};
 		};
 	};
@@ -77,25 +77,25 @@ switch (_action) do {
 				CTI_VAR_StructurePlaced = false;
 				{player removeAction _x;true}count CTI_P_RapidDefence_Actions;
 				[_selected, CTI_P_SideJoined call CTI_CO_FNC_GetSideHQ, CTI_BASE_CONSTRUCTION_RANGE] spawn CTI_CL_FNC_PlacingDefense;
-				_rdb= player addAction [format ["<t color='#ff9900'>Build %1<t>",_var select 0],"['onBuildDefense', (_this select 3)] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_BuildMenu.sqf'",CTI_P_RapidDefence,10001,false,false,"","_target == player && !CTI_P_PreBuilding && CTI_Base_HQInRange && _this == player"];
+				_rdb= player addAction [format [localize "STR_Build",_var select 0],"['onBuildDefense', (_this select 3)] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_BuildMenu.sqf'",CTI_P_RapidDefence,10001,false,false,"","_target == player && !CTI_P_PreBuilding && CTI_Base_HQInRange && _this == player"];
 				CTI_P_RapidDefence_Actions set [count CTI_P_RapidDefence_Actions,_rdb];
-				_rdc= player addAction ["<t color='#ff9900'>Cancel Fast building<t>","{player removeAction _x;true}count CTI_P_RapidDefence_Actions;",CTI_P_RapidDefence,10000,false,false,"","_target == player && !CTI_P_PreBuilding && CTI_Base_HQInRange && _this == player"];
+				_rdc= player addAction [localize "STR_Cancel_Build","{player removeAction _x;true}count CTI_P_RapidDefence_Actions;",CTI_P_RapidDefence,10000,false,false,"","_target == player && !CTI_P_PreBuilding && CTI_Base_HQInRange && _this == player"];
 				CTI_P_RapidDefence_Actions set [count CTI_P_RapidDefence_Actions,_rdc];
 				closeDialog 0;
 			} else {
-				hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br />You do not have enough funds to place that defense.";
+				hint parseText localize "STR_BuildMenu_Info";
 			};
 		//};
 	};
 	case "onAutoAlign": {
 		// CTI_P_WallsAutoAlign = if (CTI_P_WallsAutoAlign) then {false} else {true};
 		CTI_P_WallsAutoAlign = !CTI_P_WallsAutoAlign;
-		if (CTI_P_WallsAutoAlign) then { ctrlSetText [100003, "Auto-Align Walls: On"] } else { ctrlSetText [100003, "Auto-Align Walls: Off"] };
+		if (CTI_P_WallsAutoAlign) then { ctrlSetText [100003, localize "STR_Walls_On"] } else { ctrlSetText [100003, localize "STR_Walls_Off"] };
 	};
 	case "onAutoManning": {
 		CTI_P_DefensesAutoManning = !CTI_P_DefensesAutoManning;
 		_def_count=count (units ((CTI_P_SideLogic getVariable ["cti_defensive_team",grpNull])));
-		if (CTI_P_DefensesAutoManning) then { ctrlSetText [100011, format ["Defenses Auto-Manning: On (%2/ %3)",ctrlText ((uiNamespace getVariable "cti_dialog_ui_buildmenu") displayCtrl 100011),_def_count,CTI_BASE_DEFENSES_AUTO_LIMIT ]] } else { ctrlSetText [100011,ctrlSetText [100011, format ["Defenses Auto-Manning: Off (%2/ %3)",ctrlText ((uiNamespace getVariable "cti_dialog_ui_buildmenu") displayCtrl 100011),_def_count,CTI_BASE_DEFENSES_AUTO_LIMIT ]] ] };
+		if (CTI_P_DefensesAutoManning) then { ctrlSetText [100011, format [localize "STR_Defenses_On",ctrlText ((uiNamespace getVariable "cti_dialog_ui_buildmenu") displayCtrl 100011),_def_count,CTI_BASE_DEFENSES_AUTO_LIMIT ]] } else { ctrlSetText [100011,ctrlSetText [100011, format [localize "STR_Defenses_Off",ctrlText ((uiNamespace getVariable "cti_dialog_ui_buildmenu") displayCtrl 100011),_def_count,CTI_BASE_DEFENSES_AUTO_LIMIT ]] ] };
 	};
 	case "onAddWorker": {
 		//--- Check the worker limit

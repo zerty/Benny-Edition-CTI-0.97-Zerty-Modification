@@ -75,7 +75,7 @@ if (! (isPlayer (leader(group player))) && !(CTI_P_SideJoined == resistance)) th
 
 if !( missionNamespace getVariable ["TUTO_COMPLETE",false]) then {
 	titleCut["","BLACK IN",1];
-	12452 cutText ["Sending to tutorial area.", "BLACK IN", 5];
+	12452 cutText [localize "STR_Begin_Tutorial", "BLACK IN", 5];
 	0 call TUTORIAL_RUN;
 } else {
 	createDialog "CTI_RscRespawnMenu";
