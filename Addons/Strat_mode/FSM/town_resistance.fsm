@@ -397,11 +397,11 @@ class FSM
        "" \n
        "" \n
        "if ( _town in (CTI_WEST getvariable ""CTI_ACTIVE"")) then {" \n
-       "    [[""CLIENT"",west],""SM_message"",format [""Town  %1 is now Active"",(_town getVariable ""cti_town_name"")]] call CTI_CO_FNC_NetSend ;" \n
+       "    [[""CLIENT"",west],""SM_message"",format [localize ""STR_TownActive"",(_town getVariable ""cti_town_name"")]] call CTI_CO_FNC_NetSend ;" \n
        "};" \n
        "" \n
        "if ( _town in (CTI_EAST getvariable ""CTI_ACTIVE"")) then {" \n
-       "    [[""CLIENT"",east],""SM_message"",format [""Town  %1 is now Active"",(_town getVariable ""cti_town_name"")]] call CTI_CO_FNC_NetSend ;" \n
+       "    [[""CLIENT"",east],""SM_message"",format [localize ""STR_TownActive"",(_town getVariable ""cti_town_name"")]] call CTI_CO_FNC_NetSend ;" \n
        "};" \n
        ""/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;

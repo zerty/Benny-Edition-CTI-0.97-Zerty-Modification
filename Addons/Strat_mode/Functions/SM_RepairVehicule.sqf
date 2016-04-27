@@ -15,28 +15,28 @@ SM_repair_vehicle={
 		CTI_P_Repairing = true ;
 		_pos = getPos _caller;
 		_caller switchMove "AinvPknlMstpSnonWrflDnon_medic4";
-		["Starting Repairs",0,7,1] call HUD_PBar_start;
+		[localize "STR_StartingRepairsVehicle",0,7,1] call HUD_PBar_start;
 		_stime=time+7;
 		while {alive _caller && alive _target  && (getdammage _target) > 0 && (_caller distance _target) <5 && (_caller distance _pos)<=1 && (vehicle _caller) ==_caller && time < _stime } do {
 			(_stime - time) call HUD_PBar_update;
 			sleep 1;
 		};
-		if ((_caller distance _target) >5 || (_caller distance _pos)>1 || !((vehicle _caller) ==_caller)) exitWith {_caller switchMove ""; hint "Failed";CTI_P_Repairing = false ;0 call HUD_PBar_stop;};
+		if ((_caller distance _target) >5 || (_caller distance _pos)>1 || !((vehicle _caller) ==_caller)) exitWith {_caller switchMove ""; hint localize "STR_SM_RepairVehicule_Failed";CTI_P_Repairing = false ;0 call HUD_PBar_stop;};
 		_target setDammage (_d/_count);
-		["Repairing",0,1,0] call HUD_PBar_start;
+		[localize "STR_RepairingVehicle",0,1,0] call HUD_PBar_start;
 		while {alive _caller && alive _target  && (getDammage _target) > 0 && (_caller distance _target) <5 && (_caller distance _pos)<=1 && (vehicle _caller) ==_caller} do {
 			sleep 1;
 
 			(1-(getDammage _target)) call HUD_PBar_update;
 			_target setDammage (getDammage _target) - 0.005;
 		};
-		if ((_caller distance _target) >5 || (_caller distance _pos)>1 || !((vehicle _caller) ==_caller)) exitWith {_caller switchMove ""; hint "Failed";CTI_P_Repairing = false ;0 call HUD_PBar_stop;};
+		if ((_caller distance _target) >5 || (_caller distance _pos)>1 || !((vehicle _caller) ==_caller)) exitWith {_caller switchMove ""; hint localize "STR_SM_RepairVehicule_Failed";CTI_P_Repairing = false ;0 call HUD_PBar_stop;};
 		_caller switchMove "";
 		//if (_d <= 0 && getDammage _target > 0.001) then {_target setDammage (0) };
 		CTI_P_Repairing = false ;
 		0 call HUD_PBar_stop;
 	} else {
-		hint parseText "<t size='1.3' color='#2394ef'>You need a ToolKit to perform this action</t>";
+		hint parseText localize "STR_RepairVehicle";
 		sleep 5;
 		hintsilent "";
 	};
@@ -47,13 +47,13 @@ SM_Force_entry={
 	_caller = _this select 1;
 	_rk=1;
 	_rk = ({_x == "Toolkit"} count (backpackItems _caller)) +({_x == "Toolkit"} count (vestItems _caller));
-	if ((_target getVariable ["forced",false]) ) exitWith { hintSilent "This vehicle has already been forced";};
+	if ((_target getVariable ["forced",false]) ) exitWith { hintSilent localize "STR_ForcedVehicle";};
 	_pos = getPos _caller;
 	if (_rk > 0 ) then {
 		_lock=1;
 		CTI_P_Repairing = true ;
 		_caller switchMove "AinvPknlMstpSnonWrflDnon_medic4";
-		["Forcing vehicle lock",0,1,1] call HUD_PBar_start;
+		[localize "STR_ForcedVehicleLock",0,1,1] call HUD_PBar_start;
 		while {_lock >0  && (_caller distance _target) <5 && (_caller distance _pos)<0.5 && alive _caller && (vehicle _caller) ==_caller && !(_target getVariable ["forced",false])} do
 		{
 				_lock=_lock-0.02;
@@ -62,7 +62,12 @@ SM_Force_entry={
 		    //hint parseText format ["<t size='1.3' color='#2394ef'>Forcing Lock : %1 percent</t>",ceil (_percent)];
 		    sleep 1;
 		};
-		if ((_caller distance _target) >5 || (_caller distance _pos)>0.5 || !((vehicle _caller) ==_caller) || (_target getVariable ["forced",false] || ! alive _caller)) exitWith { _caller switchMove ""; hint "Failed";CTI_P_Repairing = false ;0 call HUD_PBar_stop;};
+		if ((_caller distance _target) >5 || (_caller distance _pos)>0.5 || !((vehicle _caller) ==_caller) || (_target getVariable ["forced",false] || ! alive _caller)) exitWith {
+			_caller switchMove "";
+			hint localize "STR_SM_RepairVehicule_Failed";
+			CTI_P_Repairing = false ;
+			0 call HUD_PBar_stop;
+		};
 
 
 		["SERVER", "Request_Locality", [_target,player]] call CTI_CO_FNC_NetSend;
@@ -75,8 +80,8 @@ SM_Force_entry={
 			_x action [ "eject", _target];
 		} forEach crew _target;
 
-		_target addAction ["<t color='#86F078'>Unlock</t>","Client\Actions\Action_ToggleLock.sqf", [], 99, false, true, '', '_this != player && alive _target && locked _target == 2'];
-		_target addAction ["<t color='#86F078'>Lock</t>","Client\Actions\Action_ToggleLock.sqf", [], 99, false, true, '', '_this != player && alive _target && locked _target == 0'];
+		_target addAction [localize "STR_Action_Unlock","Client\Actions\Action_ToggleLock.sqf", [], 99, false, true, '', '_this != player && alive _target && locked _target == 2'];
+		_target addAction [localize "STR_Action_Lock","Client\Actions\Action_ToggleLock.sqf", [], 99, false, true, '', '_this != player && alive _target && locked _target == 0'];
 		_target setVariable ["v_keys",[getPlayerUID player,group player],true];
 		_target setVariable ["forced",true,true];
 
@@ -84,7 +89,7 @@ SM_Force_entry={
 		CTI_P_Repairing = false ;
 
 	} else {
-		hint parseText "<t size='1.3' color='#2394ef'>You need a ToolKit to perform this action</t>";
+		hint parseText localize "STR_RepairVehicle";
 		sleep 5;
 		hintsilent "";
 	};
