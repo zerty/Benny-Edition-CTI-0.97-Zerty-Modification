@@ -142,7 +142,6 @@ class Params {
 		values[] = {0,1};
 		texts[] = {$STR_CTI_DISABLED,$STR_CTI_ENABLED};
 		default = 0;
-
 	};
 	class CTI_FATIGUE_RATIO {
 		title = $STR_CTI_FATIGUE_RATIO;
@@ -154,7 +153,7 @@ class Params {
 		title = $STR_CTI_VEHICLES_EMPTY_TIMEOUT;
 		values[] = {60,120,180,240,300,600,1200,1800,2400,3000,3600};
 		texts[] = {"1 Minute","2 Minutes","3 Minutes","4 Minutes","5 Minutes","10 Minutes","20 Minutes","30 Minutes","40 Minutes","50 Minutes","1 Hour"};
-		default = 3600;
+		default = 1800;
 	};
 	class CTI_GRAPHICS_TG_MAX {
 		title = $STR_CTI_GRAPHICS_TG_MAX;
@@ -481,7 +480,7 @@ class Params {
 	class CTI_EW_HUD_S {
 		title = $STR_CTI_EW_HUD_S;
 		values[] = {1,2,3,4,5};
-		texts[] = {$STR_CTI_EW_HUD_S_HIGH,$STR_CTI_EW_HUD_S_MH,$STR_CTI_EW_HUD_S_ML,$STR_CTI_EW_HUD_S_L,$STR_CTI_EW_HUD_S_DIS};
+		texts[] = {$STR_CTI_EW_HUD_S_HIGH, $STR_CTI_EW_HUD_S_MEDHIGH, $STR_CTI_EW_HUD_S_MEDLOW, $STR_CTI_EW_HUD_S_LOW, $STR_CTI_EW_HUD_S_DIS};
 		default = 2;
 	};
 	class CTI_EW_HUD_I {

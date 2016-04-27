@@ -27,7 +27,7 @@
 			</Key>
 			<Key ID="STR_Player_Eco">
 				<Original>Player Economy</Original>
-				<Russian>Player Economy</Russian>
+				<Russian>Экономика Игрока</Russian>
 			</Key>
 			<Key ID="STR_Base_Struct">
 				<Original>Base Structures</Original>
@@ -67,19 +67,19 @@
 			</Key>
 			<Key ID="STR_Interaction_Menu">
 				<Original>&lt;t size='1.4' color='#2394ef'&gt;Interaction Menu&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;The Interaction menu is the interface replacing the old action menu.&lt;br /&gt;&lt;br /&gt;It can be opened facing most objects and by pressing the &lt;t color='#2394ef'&gt;%1 key&lt;/t&gt;, this key can be configured with the combo box on top of the online help menu (the current one).&lt;br /&gt;&lt;br /&gt;An&lt;t color='#e8bd12'&gt; additional key&lt;/t&gt; can be configured through the user action in the Arma 3 configuration as &lt;t color='#e8bd12'&gt;User action 5&lt;/t&gt;.&lt;br /&gt;&lt;br /&gt;This menu will differ if you are inside a vehicle or outside and also on what kind of object you are looking at.</Original>
-				<Russian>&lt;t size='1.4' color='#2394ef'&gt;Меню взаимодействия&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Меню взаимодействия это интерфейс, заменяющий старое меню взаимодействий.&lt;br /&gt;&lt;br /&gt;Он может быть открыт у большинства объектов нажатием клавиши &lt;t color='#2394ef'&gt;%1&lt;/t&gt;, эта клавиша может быть изменена в поле со списком в верхней части меню интерактивной справки.&lt;br /&gt;&lt;br /&gt;An&lt;t color='#e8bd12'&gt; дополнительную клавишу&lt;/t&gt; можно настроить с помощью действий пользователя в конфигурации Arma 3 как&lt;t color='#e8bd12'&gt;Исп.действие 5&lt;/t&gt;.&lt;br /&gt;&lt;br /&gt;Это меню будет отличаться, если вы находитесь внутри автомобиля или снаружи, а также от того, на какой объект вы смотрите.</Russian>
+				<Russian>&lt;t size='1.4' color='#2394ef'&gt;Меню взаимодействия&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Меню взаимодействия это интерфейс, заменяющий старое меню взаимодействий.&lt;br /&gt;&lt;br /&gt;Он может быть открыт у большинства объектов нажатием клавиши &lt;t color='#2394ef'&gt;%1&lt;/t&gt;, эта клавиша может быть изменена в поле со списком в верхней части меню интерактивной справки.&lt;br /&gt;&lt;br /&gt;Также дополнительную клавишу можно назначить в настройках &lt;t color='#e8bd12'&gt;Управление - Свои настройки: Исп.действие 5&lt;/t&gt;.&lt;br /&gt;&lt;br /&gt;Меню будет отличаться, если вы находитесь внутри автомобиля или снаружи, а также от того, на какой объект вы смотрите.</Russian>
 			</Key>
 			<Key ID="STR_The_Basics">
 				<Original>&lt;t size='1.4' color='#2394ef'&gt;The Basics&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Each side's teams are led by a &lt;t color='#e8bd12'&gt;Team Leader&lt;/t&gt; which will respawn after it's death (you are a Team Leader). Your character's location can be seen on the map if you are connected to the network. You position will be shown with one of the icons below, along with your group name and player name.&lt;br /&gt;&lt;br /&gt;&lt;t align='center'&gt;&lt;img image='\A3\ui_f\data\map\Markers\NATO\b_inf.paa' size='2'/&gt; &lt;img image='\A3\ui_f\data\map\Markers\NATO\o_inf.paa' size='2'/&gt;&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Each player team has it's own &lt;t color='#e8bd12'&gt;Income&lt;/t&gt;, the income can be viewed by accessing the &lt;t color='#eaff96'&gt;Options Menu&lt;/t&gt;. The income can be increased by controlling &lt;t color='#e8bd12'&gt;Towns&lt;/t&gt; and by earning non-combat points.&lt;br /&gt;&lt;br /&gt;&lt;t color='#e8bd12'&gt;Towns&lt;/t&gt; will generate a different income value depending on their size. The bigger the town the bigger the bounty (and the difficulty!). Note that an &lt;t color='#e8bd12'&gt;Occupied Towns&lt;/t&gt; will generate more income.&lt;br /&gt;&lt;br /&gt;&lt;t color='#e8bd12'&gt;Towns&lt;/t&gt; are also defended by resistance at the start of the game so as you try to capture them, they will try to defend and recapture it!&lt;br /&gt;</Original>
-				<Russian>&lt;t size='1.4' color='#2394ef'&gt;Основы&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Группа подчиняется&lt;t color='#e8bd12'&gt;Командиру отряда&lt;/t&gt;, который возрождается после смерти. Местоположение вашего персонажа можно увидеть на карте, если вы подключены к сети. Ваша позиция будет показана с одной из иконок, указанных ниже, названием группы и именем игрока.&lt;br /&gt;&lt;br /&gt;&lt;t align='center'&gt;&lt;img image='\A3\ui_f\data\map\Markers\NATO\b_inf.paa' size='2'/&gt; &lt;img image='\A3\ui_f\data\map\Markers\NATO\o_inf.paa' size='2'/&gt;&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Каждый игрок команды имеет свой собственный &lt;t color='#e8bd12'&gt;Доход&lt;/t&gt;, можно увидеть в &lt;t color='#eaff96'&gt;Планшете&lt;/t&gt;. Доход может быть увеличен путем контроля &lt;t color='#e8bd12'&gt;Городов&lt;/t&gt; и зарабатывая небоевые очки.&lt;br /&gt;&lt;br /&gt;&lt;t color='#e8bd12'&gt;Города&lt;/t&gt; имеют различные значения дохода в зависимости от их размера. Чем больше город, тем больше даров (и трудностей!). Обратите внимание, что&lt;t color='#e8bd12'&gt;Оккупированные Города&lt;/t&gt; будут генерировать больший доход.&lt;br /&gt;&lt;br /&gt;&lt;t color='#e8bd12'&gt;Города&lt;/t&gt; защищают Сопротивление в начале игры. Так как вы пытаетесь захватить их, они будут пытаться защитить и вернуть их!&lt;br /&gt;</Russian>
+				<Russian>&lt;t size='1.4' color='#2394ef'&gt;Основы&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Группа подчиняется &lt;t color='#e8bd12'&gt;Командиру отряда&lt;/t&gt;, который возрождается после смерти. Местоположение вашего персонажа можно увидеть на карте, если вы подключены к сети. Ваша позиция будет показана с одной из иконок, указанных ниже, названием группы и именем игрока.&lt;br /&gt;&lt;br /&gt;&lt;t align='center'&gt;&lt;img image='\A3\ui_f\data\map\Markers\NATO\b_inf.paa' size='2'/&gt; &lt;img image='\A3\ui_f\data\map\Markers\NATO\o_inf.paa' size='2'/&gt;&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Каждый игрок команды имеет свой собственный &lt;t color='#e8bd12'&gt;Доход&lt;/t&gt;, можно увидеть в &lt;t color='#eaff96'&gt;Планшете&lt;/t&gt;. Доход может быть увеличен путем контроля &lt;t color='#e8bd12'&gt;Городов&lt;/t&gt; и зарабатыванием небоевых очков.&lt;br /&gt;&lt;br /&gt;&lt;t color='#e8bd12'&gt;Города&lt;/t&gt; имеют различные значения дохода в зависимости от их размера. Чем больше город, тем больше награда (и трудностей!). Обратите внимание, что &lt;t color='#e8bd12'&gt;Оккупированные Города&lt;/t&gt; будут генерировать больший доход.&lt;br /&gt;&lt;br /&gt;В начале игры &lt;t color='#e8bd12'&gt;Города&lt;/t&gt; защищает Сопротивление. Так как вы пытаетесь захватить их, они будут пытаться защитить и вернуть их!&lt;br /&gt;</Russian>
 			</Key>
 			<Key ID="STR_The_Map">
-				<Original>&lt;t size='1.4' color='#2394ef'&gt;The Map&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;The &lt;t color='#e8bd12'&gt;Map&lt;/t&gt; contains all of the information that you need. First of all, you need to be aware of the colors&lt;br /&gt;&lt;br /&gt;- &lt;t color='#e8bd12'&gt;West&lt;/t&gt; is identified by the &lt;t color='#eaff96'&gt;Blue&lt;/t&gt; color.&lt;br /&gt;- &lt;t color='#e8bd12'&gt;East&lt;/t&gt; is identified by the &lt;t color='#eaff96'&gt;Red&lt;/t&gt; color.&lt;br /&gt;- &lt;t color='#e8bd12'&gt;Resistance&lt;/t&gt; (or unknowns) is identified by the &lt;t color='#eaff96'&gt;Green&lt;/t&gt; color.&lt;br /&gt;&lt;br /&gt;The &lt;t color='#e8bd12'&gt;Towns&lt;/t&gt; are identified by a Flag marker as follow (a circle may appear around it which signify that the town is occupied):&lt;br /&gt;&lt;br /&gt;&lt;t align='center'&gt;&lt;img image='\A3\ui_f\data\map\Markers\Military\flag_ca.paa' size='2'/&gt;&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;While the &lt;t color='#e8bd12'&gt;MHQ&lt;/t&gt; is identified by a specific marker labeled 'HQ' the &lt;t color='#e8bd12'&gt;Base Structures&lt;/t&gt; are identified by an installation marker as follow:&lt;br /&gt;&lt;br /&gt;&lt;t align='center'&gt;&lt;img image='\A3\ui_f\data\map\Markers\NATO\b_installation.paa' size='2'/&gt; &lt;img image='\A3\ui_f\data\map\Markers\NATO\o_installation.paa' size='2'/&gt;&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Additionally, vehicles and infantry may appear with a different icon on the map depending on their nature (&lt;t color='#eaff96'&gt;Infantry&lt;/t&gt;, &lt;t color='#eaff96'&gt;Mechanized&lt;/t&gt;, &lt;t color='#eaff96'&gt;Armored&lt;/t&gt;, &lt;t color='#eaff96'&gt;Air&lt;/t&gt;...). Smaller yellow markers may appear on the map, to represent the subordinate infantry of your side (your own AI will appear orange along with their squad number).</Original>
-				<Russian>&lt;t size='1.4' color='#2394ef'&gt;Карта&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;&lt;t color='#e8bd12'&gt;Карта&lt;/t&gt; содержит всю информацию, что тебе нужна. Прежде всего, вы должны быть осведомлены о цветах&lt;br /&gt;&lt;br /&gt;- &lt;t color='#e8bd12'&gt;Запад&lt;/t&gt; отображается &lt;t color='#eaff96'&gt;Голубым&lt;/t&gt; цветом.&lt;br /&gt;- &lt;t color='#e8bd12'&gt;Восток&lt;/t&gt; &lt;t color='#eaff96'&gt;Красным&lt;/t&gt;&lt;br /&gt;- &lt;t color='#e8bd12'&gt;Сопротивление&lt;/t&gt; &lt;t color='#eaff96'&gt;Зелёным&lt;/t&gt; цветом&lt;br /&gt;&lt;br /&gt;&lt;t color='#e8bd12'&gt;Города&lt;/t&gt; можно опознать по флагу над ним(круг появляющийся вокруг него означает, что город оккупирован):&lt;br /&gt;&lt;br /&gt;&lt;t align='center'&gt;&lt;img image='\A3\ui_f\data\map\Markers\Military\flag_ca.paa' size='2'/&gt;&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;До тех пор пока &lt;t color='#e8bd12'&gt;КШМ&lt;/t&gt; отображется специальным маркером с меткой 'HQ' &lt;t color='#e8bd12'&gt;Строения Базы&lt;/t&gt; отображаются как маркер установки:&lt;br /&gt;&lt;br /&gt;&lt;t align='center'&gt;&lt;img image='\A3\ui_f\data\map\Markers\NATO\b_installation.paa' size='2'/&gt; &lt;img image='\A3\ui_f\data\map\Markers\NATO\o_installation.paa' size='2'/&gt;&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Кроме того, транспортные средства и пехота может появиться с другим значком на карте в зависимости от их характера (&lt;t color='#eaff96'&gt;Пехота&lt;/t&gt;, &lt;t color='#eaff96'&gt;Моторизованная&lt;/t&gt;, &lt;t color='#eaff96'&gt;Бронетехника&lt;/t&gt;, &lt;t color='#eaff96'&gt;Воздух&lt;/t&gt;...). Небольшие желтые маркеры могут отображаться на карте, показывая пехоту вашей стороны (собственные боты отображаются оранжевым цветом вместе с их номером группы).</Russian>
+				<Original>&lt;t size='1.4' color='#2394ef'&gt;The Map&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;The &lt;t color='#e8bd12'&gt;Map&lt;/t&gt; contains all of the information that you need. First of all, you need to be aware of the colors&lt;br /&gt;&lt;br /&gt;- &lt;t color='#e8bd12'&gt;West&lt;/t&gt; is identified by the &lt;t color='#2600FF'&gt;Blue&lt;/t&gt; color.&lt;br /&gt;- &lt;t color='#e8bd12'&gt;East&lt;/t&gt; is identified by the &lt;t color='#FF0000'&gt;Red&lt;/t&gt; color.&lt;br /&gt;- &lt;t color='#00FF00'&gt;Resistance&lt;/t&gt; (or unknowns) is identified by the &lt;t color='#eaff96'&gt;Green&lt;/t&gt; color.&lt;br /&gt;&lt;br /&gt;The &lt;t color='#e8bd12'&gt;Towns&lt;/t&gt; are identified by a Flag marker as follow (a circle may appear around it which signify that the town is occupied):&lt;br /&gt;&lt;br /&gt;&lt;t align='center'&gt;&lt;img image='\A3\ui_f\data\map\Markers\Military\flag_ca.paa' size='2'/&gt;&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;While the &lt;t color='#e8bd12'&gt;MHQ&lt;/t&gt; is identified by a specific marker labeled 'HQ' the &lt;t color='#e8bd12'&gt;Base Structures&lt;/t&gt; are identified by an installation marker as follow:&lt;br /&gt;&lt;br /&gt;&lt;t align='center'&gt;&lt;img image='\A3\ui_f\data\map\Markers\NATO\b_installation.paa' size='2'/&gt; &lt;img image='\A3\ui_f\data\map\Markers\NATO\o_installation.paa' size='2'/&gt;&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Additionally, vehicles and infantry may appear with a different icon on the map depending on their nature (&lt;t color='#eaff96'&gt;Infantry&lt;/t&gt;, &lt;t color='#eaff96'&gt;Mechanized&lt;/t&gt;, &lt;t color='#eaff96'&gt;Armored&lt;/t&gt;, &lt;t color='#eaff96'&gt;Air&lt;/t&gt;...). Smaller yellow markers may appear on the map, to represent the subordinate infantry of your side (your own AI will appear orange along with their squad number).</Original>
+				<Russian>&lt;t size='1.4' color='#2394ef'&gt;Карта&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;&lt;t color='#e8bd12'&gt;Карта&lt;/t&gt; содержит всю информацию, что тебе нужна. Прежде всего, вы должны быть осведомлены о цветах&lt;br /&gt;&lt;br /&gt;- &lt;t color='#e8bd12'&gt;Запад&lt;/t&gt; отображается &lt;t color='#2600FF'&gt;Синим&lt;/t&gt; цветом.&lt;br /&gt;- &lt;t color='#e8bd12'&gt;Восток&lt;/t&gt; - &lt;t color='#FF0000'&gt;Красным&lt;/t&gt;&lt;br /&gt;- &lt;t color='#e8bd12'&gt;Сопротивление&lt;/t&gt; - &lt;t color='#00FF00'&gt;Зелёным&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;&lt;t color='#e8bd12'&gt;Города&lt;/t&gt; можно опознать по флагу над ним(круг появляющийся вокруг него означает, что город оккупирован):&lt;br /&gt;&lt;br /&gt;&lt;t align='center'&gt;&lt;img image='\A3\ui_f\data\map\Markers\Military\flag_ca.paa' size='2'/&gt;&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;До тех пор пока &lt;t color='#e8bd12'&gt;КШМ&lt;/t&gt; отображется специальным маркером с меткой 'HQ' &lt;t color='#e8bd12'&gt;Строения Базы&lt;/t&gt; отображаются как маркер установки:&lt;br /&gt;&lt;br /&gt;&lt;t align='center'&gt;&lt;img image='\A3\ui_f\data\map\Markers\NATO\b_installation.paa' size='2'/&gt; &lt;img image='\A3\ui_f\data\map\Markers\NATO\o_installation.paa' size='2'/&gt;&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Кроме того, транспортные средства и пехота может появиться с другим значком на карте в зависимости от их характера (&lt;t color='#eaff96'&gt;Пехота&lt;/t&gt;, &lt;t color='#eaff96'&gt;Моторизованная&lt;/t&gt;, &lt;t color='#eaff96'&gt;Бронетехника&lt;/t&gt;, &lt;t color='#eaff96'&gt;Воздух&lt;/t&gt;...). Небольшие желтые маркеры могут отображаться на карте, показывая пехоту вашей стороны (собственные боты отображаются оранжевым цветом вместе с их номером группы).</Russian>
 			</Key>
 			<Key ID="STR_The_Strategic_Mode">
 				<Original>&lt;t size='1.4' color='#2394ef'&gt;The Strategic Mode&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;The &lt;t color='#e8bd12'&gt;strategic mode&lt;/t&gt; is a dynamic behavior that regulate both the localisation of the action and the number of AI present in the mission.&lt;br /&gt;It is represented as the &lt;t color='#e8bd12'&gt;black lines between towns.&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;The behavior follows those&lt;t color='#e8bd12'&gt;rules:&lt;/t&gt; &lt;br /&gt;  -  You can capture any town as your first town.&lt;br /&gt;  -  A town can be captured only if active.&lt;br /&gt;  -  You can only have %1 town actives at a time.&lt;br /&gt;  -  A town can be activated if available.&lt;br /&gt;  -  A town is available if you have no town or if you own one town connected to it.&lt;br /&gt;  -  No towns are available if you already have %1 towns actives.&lt;br /&gt;</Original>
-				<Russian>&lt;t size='1.4' color='#2394ef'&gt;Стратегический Режим&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;&lt;t color='#e8bd12'&gt;Стратегический режим&lt;/t&gt; это динамическое поведение, которые регулируют как локальность действия и количество ИИ придставленных в миссии.&lt;br /&gt;Он представлен как &lt;t color='#e8bd12'&gt;чёрные линии между городами.&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;&lt;t color='#e8bd12'&gt;Соблюдайте правила:&lt;/t&gt; &lt;br /&gt;  -  Вы можете захватить любой город в качестве первого города.&lt;br /&gt;  -  Город, может быть захвачен только если активен.&lt;br /&gt;  -  Вы можете иметь только %1 город(а\ов) активный(х).&lt;br /&gt;  -  Если доступно, то город может быть активирован.&lt;br /&gt;  -  Город, доступен, если у вас нет города или у вас один город подключенный к вашему.&lt;br /&gt;  -  Города недоступны, если у вас уже %1 активны.&lt;br /&gt;</Russian>
+				<Russian>&lt;t size='1.4' color='#2394ef'&gt;Стратегический Режим&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Режим, при котором продвижение войск идёт линейно, город за городом.&lt;br /&gt;Представлен &lt;t color='#e8bd12'&gt;чёрными линиями между городами.&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;&lt;t color='#e8bd12'&gt;Соблюдайте правила:&lt;/t&gt; &lt;br /&gt;  -  Вы можете захватить любой город в качестве первого города.&lt;br /&gt;  -  Город, может быть захвачен только если активен.&lt;br /&gt;  -  Вы можете иметь только %1 город(а\ов) активный(х).&lt;br /&gt;  -  Если доступно, то город может быть активирован.&lt;br /&gt;  -  Город, доступен, если у вас нет города или у вас один город подключенный к вашему.&lt;br /&gt;  -  Города недоступны, если у вас уже %1 активны.&lt;br /&gt;</Russian>
 			</Key>
 			<Key ID="STR_Base_Protection">
 				<Original>&lt;t size='1.4' color='#2394ef'&gt;Base Protection&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;The base protection system is &lt;t color='#e8bd12'&gt;the system preventing destruction of factories&lt;/t&gt; inside the base.&lt;br /&gt;&lt;br /&gt;If active, the base area is linked to the three closest towns (links will be shown).&lt;br /&gt;&lt;br /&gt;&lt;t color='#e8bd12'&gt;The base is protected if and only if all of the three towns are owned by the side of the base.&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;The enemies base areas and their links to the towns will be shown to your side if a friendly unit was once inside the corresponding area.</Original>
@@ -87,39 +87,39 @@
 			</Key>
 			<Key ID="STR_Player_Economy">
 				<Original>&lt;t size='1.4' color='#2394ef'&gt;Player Economy&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Aside from the Commander, there are multiple &lt;t color='#e8bd12'&gt;Teams&lt;/t&gt; (labeled as &lt;t color='#eaff96'&gt;Alpha&lt;/t&gt;, &lt;t color='#eaff96'&gt;Bravo&lt;/t&gt;, &lt;t color='#eaff96'&gt;Charlie&lt;/t&gt;...) which may be controlled by either the AI (if enabled) or a player. Without an order from the Commander, those units will run toward the closest hostile town.&lt;br /&gt;&lt;br /&gt;A Team Leader receives a percentage of the total resource income earned. Assuming the value is set on &lt;t color='#f455aa'&gt;30 percent&lt;/t&gt; for the &lt;t color='#e8bd12'&gt;Player Pool&lt;/t&gt; and that there are &lt;t color='#f455aa'&gt;3 Team Leaders&lt;/t&gt; on your side (excluding the Commander) then each of those units will receive &lt;t color='#f455aa'&gt;10 percent&lt;/t&gt; of the pool resources (30 / 3).&lt;br /&gt;&lt;br /&gt;Team Leaders may also earn resource from the &lt;t color='#e8bd12'&gt;Award Pool&lt;/t&gt;. This pool awards the Team Leaders based on their combative and non combative score. Assuming that the Award Pool is set on &lt;t color='#f455aa'&gt;10 percent&lt;/t&gt; and that there is &lt;t color='#f455aa'&gt;2 Team Leaders&lt;/t&gt; with a score of &lt;t color='#f455aa'&gt;75&lt;/t&gt; and &lt;t color='#f455aa'&gt;25&lt;/t&gt; then the first one will receive &lt;t color='#f455aa'&gt;75 percent&lt;/t&gt; of the pool resources.&lt;br /&gt;&lt;br /&gt;The &lt;t color='#e8bd12'&gt;Player Pool&lt;/t&gt; and the &lt;t color='#e8bd12'&gt;Award Pool&lt;/t&gt; percentage may be viewed from the &lt;t color='#eaff96'&gt;Options Menu&lt;/t&gt;. The &lt;t color='#e8bd12'&gt;Commander&lt;/t&gt; may raise or lower them from within the &lt;t color='#eaff96'&gt;Transfer Resources Menu&lt;/t&gt;.</Original>
-				<Russian>&lt;t size='1.4' color='#2394ef'&gt;Player Economy&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Aside from the Commander, there are multiple &lt;t color='#e8bd12'&gt;Teams&lt;/t&gt; (labeled as &lt;t color='#eaff96'&gt;Alpha&lt;/t&gt;, &lt;t color='#eaff96'&gt;Bravo&lt;/t&gt;, &lt;t color='#eaff96'&gt;Charlie&lt;/t&gt;...) which may be controlled by either the AI (if enabled) or a player. Without an order from the Commander, those units will run toward the closest hostile town.&lt;br /&gt;&lt;br /&gt;A Team Leader receives a percentage of the total resource income earned. Assuming the value is set on &lt;t color='#f455aa'&gt;30 percent&lt;/t&gt; for the &lt;t color='#e8bd12'&gt;Player Pool&lt;/t&gt; and that there are &lt;t color='#f455aa'&gt;3 Team Leaders&lt;/t&gt; on your side (excluding the Commander) then each of those units will receive &lt;t color='#f455aa'&gt;10 percent&lt;/t&gt; of the pool resources (30 / 3).&lt;br /&gt;&lt;br /&gt;Team Leaders may also earn resource from the &lt;t color='#e8bd12'&gt;Award Pool&lt;/t&gt;. This pool awards the Team Leaders based on their combative and non combative score. Assuming that the Award Pool is set on &lt;t color='#f455aa'&gt;10 percent&lt;/t&gt; and that there is &lt;t color='#f455aa'&gt;2 Team Leaders&lt;/t&gt; with a score of &lt;t color='#f455aa'&gt;75&lt;/t&gt; and &lt;t color='#f455aa'&gt;25&lt;/t&gt; then the first one will receive &lt;t color='#f455aa'&gt;75 percent&lt;/t&gt; of the pool resources.&lt;br /&gt;&lt;br /&gt;The &lt;t color='#e8bd12'&gt;Player Pool&lt;/t&gt; and the &lt;t color='#e8bd12'&gt;Award Pool&lt;/t&gt; percentage may be viewed from the &lt;t color='#eaff96'&gt;Options Menu&lt;/t&gt;. The &lt;t color='#e8bd12'&gt;Commander&lt;/t&gt; may raise or lower them from within the &lt;t color='#eaff96'&gt;Transfer Resources Menu&lt;/t&gt;.</Russian>
+				<Russian>&lt;t size='1.4' color='#2394ef'&gt;Экономика Игрока&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Командиры групп получают процент от заработанных ресурсов на захваченных городах. Если предположить, что значение устанавливается на &lt;t color='#f455aa'&gt;30 процентов&lt;/t&gt; для &lt;t color='#e8bd12'&gt;Пая Игрока&lt;/t&gt; и что есть &lt;t color='#f455aa'&gt;3 Командира Группы&lt;/t&gt; на вашей стороне (за исключением командира), то каждый из них будет получать &lt;t color='#f455aa'&gt;10 процентов&lt;/t&gt; из общего бюджета, т.к. (30 / 3) = 10.&lt;br /&gt;&lt;br /&gt;Командиры Групп могут также заработать &lt;t color='#e8bd12'&gt;Наградной Пай&lt;/t&gt;. Данный пай основан на их игровом счёте. Предполагая, что Наградной Пай устанавливается на &lt;t color='#f455aa'&gt;10 процентов&lt;/t&gt; и что есть &lt;t color='#f455aa'&gt;2 Командира Группы&lt;/t&gt; с очками &lt;t color='#f455aa'&gt;75&lt;/t&gt; и &lt;t color='#f455aa'&gt;25&lt;/t&gt;, то первый получит &lt;t color='#f455aa'&gt;75 процентов&lt;/t&gt; бюджета.&lt;br /&gt;&lt;br /&gt;Процент &lt;t color='#e8bd12'&gt;Пая Игрока&lt;/t&gt; и &lt;t color='#e8bd12'&gt;Наградного&lt;/t&gt; можно увидеть в планшете. &lt;t color='#e8bd12'&gt;Командир&lt;/t&gt; может увеличивать/уменьшать их в &lt;t color='#eaff96'&gt;Меню передачи ресурсов&lt;/t&gt;.</Russian>
 			</Key>
 			<Key ID="STR_Base_Structures">
 				<Original>&lt;t size='1.4' color='#2394ef'&gt;Base Structures&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;The &lt;t color='#e8bd12'&gt;Base Structures&lt;/t&gt; can be used for different purposes. As soon as the player is in range of a structure he may decide to purchase additional units or vehicles from them. You may choose to buy a vehicle manned or empty (you may also buy a vehicle without a driver, gunner, commander or turrets).&lt;br /&gt;&lt;br /&gt;A &lt;t color='#eaff96'&gt;Control Center&lt;/t&gt; will increase the purchase range of the different factories and add new commanding features to the Commander.&lt;br /&gt;&lt;br /&gt;You may also choose to change or reload your gear at the nearest &lt;t color='#eaff96'&gt;Barracks&lt;/t&gt;.</Original>
-				<Russian>&lt;t size='1.4' color='#2394ef'&gt;Строения Базы&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;The &lt;t color='#e8bd12'&gt;Base Structures&lt;/t&gt; can be used for different purposes. As soon as the player is in range of a structure he may decide to purchase additional units or vehicles from them. You may choose to buy a vehicle manned or empty (you may also buy a vehicle without a driver, gunner, commander or turrets).&lt;br /&gt;&lt;br /&gt;A &lt;t color='#eaff96'&gt;Control Center&lt;/t&gt; will increase the purchase range of the different factories and add new commanding features to the Commander.&lt;br /&gt;&lt;br /&gt;You may also choose to change or reload your gear at the nearest &lt;t color='#eaff96'&gt;Barracks&lt;/t&gt;.</Russian>
+				<Russian>&lt;t size='1.4' color='#2394ef'&gt;Строения Базы&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Могут быть использованы для различных целей. Если игрок находится в сети, то он может покупать технику со строений на базе. Вы можете выбрать, покупать технику пустую, либо с экипажем внутри.&lt;br /&gt;&lt;br /&gt;&lt;t color='#e8bd12'&gt;Центр Управления&lt;/t&gt; распространяет сеть и требуется для доступа командира к улучшениям.&lt;br /&gt;&lt;br /&gt;Купить или поменять снаряжение вы можете в &lt;t color='#e8bd12'&gt;Казармах&lt;/t&gt;.</Russian>
 			</Key>
 			<Key ID="STR_Special_Vehicles">
 				<Original>&lt;t size='1.4' color='#2394ef'&gt;Special Vehicles&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;- Players may log on the &lt;t color='#e8bd12'&gt;MHQ&lt;/t&gt; Satellite link to use the &lt;t color='#eaff96'&gt;Team Camera&lt;/t&gt;. This mode allows you to overwatch the current Team Leaders or your side.&lt;br /&gt;&lt;br /&gt;- &lt;t color='#e8bd12'&gt;Ammo Trucks&lt;/t&gt; are used to resupply the ammunition of the nearby vehicles. They may also rearm nearby stationary weapons if needed.&lt;br /&gt;&lt;br /&gt;- &lt;t color='#e8bd12'&gt;Repair Trucks&lt;/t&gt; can be used to repair the nearby damaged &lt;t color='#eaff96'&gt;Vehicles&lt;/t&gt; or &lt;t color='#eaff96'&gt;Base Structures&lt;/t&gt;. Players may also construct &lt;t color='#eaff96'&gt;Defensive Structures&lt;/t&gt; from them. A driver is needed to repair &lt;t color='#eaff96'&gt;Base Structures&lt;/t&gt;.&lt;br /&gt;&lt;br /&gt;- &lt;t color='#e8bd12'&gt;Salvagers&lt;/t&gt; are used to salvage destroyed vehicles thus reclaiming a certain part of the original wreck's value. If a player is the driver during the salvaging of a wreck then he will receive &lt;t color='#f455aa'&gt;50 percent&lt;/t&gt; of it's value and earn some points while the rest is divided among the side's teams. &lt;t color='#e8bd12'&gt;Independent AI Salvagers&lt;/t&gt; may be purchased by the Commander from the &lt;t color='#eaff96'&gt;Repair Depot&lt;/t&gt;.&lt;br /&gt;&lt;br /&gt;</Original>
-				<Russian>&lt;t size='1.4' color='#2394ef'&gt;Специальные машины&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;- Игроки могут использовать &lt;t color='#e8bd12'&gt;КШМ&lt;/t&gt; &lt;t color='#eaff96'&gt;Камера Юнита&lt;/t&gt;. Этот режим позволяет наблюдать за юнитами стороны или вашими.&lt;br /&gt;&lt;br /&gt;- &lt;t color='#e8bd12'&gt;Грузовики с боеприпасами&lt;/t&gt; используются для пополнения боеприпасов ближайшего транспорта. Они так же могут пополнять стационарные установки.&lt;br /&gt;&lt;br /&gt;- &lt;t color='#e8bd12'&gt;Ремотные Грузовики&lt;/t&gt; используются для ремонта ближайших поврежденных &lt;t color='#eaff96'&gt;Машин&lt;/t&gt; or &lt;t color='#eaff96'&gt;Строений на Базе&lt;/t&gt;. Игроки могут строить &lt;t color='#eaff96'&gt;Оборонные постройки&lt;/t&gt; из грузовика. &lt;br /&gt;&lt;br /&gt;- &lt;t color='#e8bd12'&gt;Утилизаторщики&lt;/t&gt; используются для спасения разрушенных машин. Водитель утилизаторщика во время спасения получает &lt;t color='#f455aa'&gt;50 процентов&lt;/t&gt; от его стоимости, остальные очки делятся между остальными игроками стороны. &lt;t color='#e8bd12'&gt;Независимый ИИ Утилизаторщика&lt;/t&gt; может быть куплен Командиром в &lt;t color='#eaff96'&gt;Ремонтном Депо&lt;/t&gt;.&lt;br /&gt;&lt;br /&gt;</Russian>
+				<Russian>&lt;t size='1.4' color='#2394ef'&gt;Специальные машины&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;- Игроки могут использовать планшет для доступа к &lt;t color='#eaff96'&gt;Камере Юнитов&lt;/t&gt;. Этот режим позволяет наблюдать за юнитами стороны или вашими.&lt;br /&gt;&lt;br /&gt;- &lt;t color='#e8bd12'&gt;Грузовики с боеприпасами&lt;/t&gt; используются для пополнения боеприпасов ближайшего транспорта. Они так же могут пополнять стационарные установки.&lt;br /&gt;&lt;br /&gt;- &lt;t color='#e8bd12'&gt;Ремонтые Грузовики&lt;/t&gt; используются для ремонта ближайших поврежденных &lt;t color='#eaff96'&gt;Машин&lt;/t&gt; или &lt;t color='#eaff96'&gt;Строений на Базе&lt;/t&gt;. Игроки могут строить &lt;t color='#eaff96'&gt;Оборонные постройки&lt;/t&gt; от грузовика. &lt;br /&gt;&lt;br /&gt;- &lt;t color='#e8bd12'&gt;Утилизаторщики&lt;/t&gt; используются для спасения разрушенных машин. Водитель утилизаторщика во время спасения получает &lt;t color='#f455aa'&gt;50 процентов&lt;/t&gt; от его стоимости, остальные очки делятся между остальными игроками стороны. &lt;t color='#e8bd12'&gt;Утилизаторщик, управляемый Независимым ИИ &lt;/t&gt; может быть куплен Командиром в &lt;t color='#eaff96'&gt;Ремонтном Депо&lt;/t&gt;.&lt;br /&gt;&lt;br /&gt;</Russian>
 			</Key>
 			<Key ID="STR_Commander">
 				<Original>&lt;t size='1.4' color='#2394ef'&gt;Commander&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;First step for player to begin duty as a Commander is to go to MHQ and in it's menu use option 'Take Command'. Then if most of players vote for new commander, player will be granted commander role. &lt;br /&gt;&lt;br /&gt;The &lt;t color='#e8bd12'&gt;Commander&lt;/t&gt; is responsible for &lt;t color='#eaff96'&gt;Constructing Bases&lt;/t&gt; and &lt;t color='#eaff96'&gt;Managing&lt;/t&gt; the side's teams. He may also diminish or increase the &lt;t color='#eaff96'&gt;Player Pool&lt;/t&gt; and the &lt;t color='#eaff96'&gt;Award Pool&lt;/t&gt;.&lt;br /&gt;&lt;br /&gt;The responsibilities that falls on the Commander are heavier than a regular player. It is recommended to practice this role in SinglePlayer if you're not used to it (your team may be very angry at you otherwise).&lt;br /&gt;&lt;br /&gt;Your very first duty as Commander is to find a suitable &lt;t color='#eaff96'&gt;Base Location&lt;/t&gt;, the perfect area should be flat, easily defensible and not too far away from the battlefield.&lt;br /&gt;&lt;br /&gt;Your second duty as Commander is to &lt;t color='#eaff96'&gt;Construct the Base&lt;/t&gt;. &lt;t color='#eaff96'&gt;Barracks&lt;/t&gt; and &lt;t color='#eaff96'&gt;Control Center&lt;/t&gt; are a good choice for a start. Once you've decided on the location, you can open the &lt;t color='#eaff96'&gt;Build Menu&lt;/t&gt; and place the desired structures. Those structures will appear as 'ruins' at first as they must be built up. Don't forget to hire &lt;t color='#eaff96'&gt;Workers&lt;/t&gt; to construct the structures (Keep in mind that you're on a low budget at first!). You can also build structures on Your own using menu option 'Build' for ruins, while beeing close to ruins.&lt;br /&gt;&lt;br /&gt;From now on, the strategy is entirely up to you. You may create a &lt;t color='#eaff96'&gt;Light Vehicle Factory&lt;/t&gt; for your side so that they may move faster to the battlefield or save up for a &lt;t color='#eaff96'&gt;Heavy Vehicle Factory&lt;/t&gt; in order to perform an heavy attack. &lt;t color='#eaff96'&gt;Defenses&lt;/t&gt; are very important in your base as enemy players may close in at any time!&lt;br /&gt;&lt;br /&gt;Commander can also set orders to Team Leaders, ie. to capture selected town, or go to some spot on map. This is true for both AI units and Player owned. It can be done in 'Map Commanding' part of Laptop Menu.Don't forget that a good Commander shall balance the needs of the base and the needs of his team.</Original>
-				<Russian>&lt;t size='1.4' color='#2394ef'&gt;Командир&lt;/t&gt;&lt;br /&gt;&lt;br /&gt; Первый шаг игрока как командира это взять командование в меню КШМ. Тогда, если большинство проголосует за нового командира, то игрок им станет. &lt;br /&gt;&lt;br /&gt;&lt;t color='#e8bd12'&gt;Командир&lt;/t&gt; отвечает за &lt;t color='#eaff96'&gt;Создание Базы&lt;/t&gt; и &lt;t color='#eaff96'&gt;Управление&lt;/t&gt; отрядами стороны. Он может также уменьшить или увеличить &lt;t color='#eaff96'&gt;Размер пайа игроков&lt;/t&gt; и &lt;t color='#eaff96'&gt;Наград&lt;/t&gt;.&lt;br /&gt;&lt;br /&gt;Ответственность, которая возлагается на командира выше чем у обычного игрока. Рекомендуется попрактиковаться в одиночной игре, иначе команда может быть недовольна вами.&lt;br /&gt;&lt;br /&gt;Ваш самый первый долг как командира - это найти подходящее &lt;t color='#eaff96'&gt;Место для Базы&lt;/t&gt;, идеальный район должен быть на равнине, легкий в обороне и не слишком далёк от поля боя.&lt;br /&gt;&lt;br /&gt;Ваша вторая обязанность как Командира &lt;t color='#eaff96'&gt;Создать Базу&lt;/t&gt;. &lt;t color='#eaff96'&gt;Казармы&lt;/t&gt; и &lt;t color='#eaff96'&gt;Центр Управления&lt;/t&gt; хороший выбор в начале. После того как вы определились с местом, вы можете открыть &lt;t color='#eaff96'&gt;Меню Строительства&lt;/t&gt; и поместить нужные строения. Эти строения появятся как «руины», так как они должны быть построены. Не забудьте взять на прокат &lt;t color='#eaff96'&gt;Рабочих&lt;/t&gt; чтобы построить структуры (Имейте в виду, что у вас низкий бюджет на первых шагах!). Вы также можете строить вручную, используя действие 'Создать' на руинах.&lt;br /&gt;&lt;br /&gt;С этого момента, стратегия полностью зависит от вас. Вы можете создать &lt;t color='#eaff96'&gt;Фабрику Легкой Техники&lt;/t&gt; для вашей стороны, чтобы они могли двигаться быстрее на поле боя или накопить на &lt;t color='#eaff96'&gt;Фабрику Тяжёлой Техники&lt;/t&gt; для того, чтобы нанести тяжелый удар. &lt;t color='#eaff96'&gt;Оборона&lt;/t&gt; очень важна для вашей базы, так как вражеские игроки могут заявиться в любой момент!&lt;br /&gt;&lt;br /&gt;Командующий приказывает командирам групп, захватить выбранный город, или выдвинуться в какое-то место на карте. Это также возможно для ИИ юнитов и принадлежащих игроку. Это может быть сделано в разделе 'Командование на карте'. Не забывайте, что хороший командир должен балансировать между потребностями базы и потребностями своей команды.</Russian>
+				<Russian>&lt;t size='1.4' color='#2394ef'&gt;Командир&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Первый шаг игрока как командира это взять командование в меню КШМ. Тогда, если большинство проголосует за нового командира, то игрок им станет. &lt;br /&gt;&lt;br /&gt;&lt;t color='#e8bd12'&gt;Командир&lt;/t&gt; отвечает за &lt;t color='#eaff96'&gt;Создание Базы&lt;/t&gt; и &lt;t color='#eaff96'&gt;Управление&lt;/t&gt; отрядами стороны. Он может также уменьшить или увеличить &lt;t color='#eaff96'&gt;Размер пая игроков&lt;/t&gt; и &lt;t color='#eaff96'&gt;Наград&lt;/t&gt;.&lt;br /&gt;&lt;br /&gt;Ответственность, которая возлагается на командира выше чем у обычного игрока. Рекомендуется попрактиковаться в одиночной игре, иначе команда может быть недовольна вами.&lt;br /&gt;&lt;br /&gt;Ваш самый первый долг как командира - это найти подходящее &lt;t color='#eaff96'&gt;Место для Базы&lt;/t&gt;, идеальный район должен быть на равнине, легкий в обороне и не слишком далёк от поля боя.&lt;br /&gt;&lt;br /&gt;Ваша вторая обязанность как Командира &lt;t color='#eaff96'&gt;Создать Базу&lt;/t&gt;. &lt;t color='#eaff96'&gt;Казармы&lt;/t&gt; и &lt;t color='#eaff96'&gt;Центр Управления&lt;/t&gt; хороший выбор в начале. После того как вы определились с местом, вы можете открыть &lt;t color='#eaff96'&gt;Меню Строительства&lt;/t&gt; и поместить нужные строения. Эти строения появятся как «руины», так как они должны быть построены. Не забудьте взять на прокат &lt;t color='#eaff96'&gt;Рабочих&lt;/t&gt; чтобы построить структуры (Имейте в виду, что у вас низкий бюджет на первых шагах!). Вы также можете строить вручную, используя действие 'Создать' на руинах.&lt;br /&gt;&lt;br /&gt;С этого момента, стратегия полностью зависит от вас. Вы можете создать &lt;t color='#eaff96'&gt;Завод Легкой Техники&lt;/t&gt; для вашей стороны, чтобы они могли двигаться быстрее на поле боя или накопить на &lt;t color='#eaff96'&gt;Завод Тяжёлой Техники&lt;/t&gt; для того, чтобы нанести тяжелый удар. &lt;t color='#eaff96'&gt;Оборона&lt;/t&gt; очень важна для вашей базы, так как вражеские игроки могут заявиться в любой момент!&lt;br /&gt;&lt;br /&gt;Командующий приказывает командирам групп, захватить выбранный город, или выдвинуться в какое-то место на карте. Это также возможно для ИИ юнитов и принадлежащих игроку. Это может быть сделано в разделе 'Командование на карте'. Не забывайте, что хороший командир должен балансировать между потребностями базы и потребностями своей команды.</Russian>
 			</Key>
 			<Key ID="STR_Advance_Network">
 				<Original>&lt;t size='1.4' color='#2394ef'&gt;Advance Network&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;The &lt;t color='#e8bd12'&gt;network&lt;/t&gt; is the way for you to communicate with the rest of your team &lt;br /&gt;Being connected to the network allows: &lt;br /&gt; - To get the positions of friendly units on the map &lt;br /&gt; - To be able to purchase units from the factories &lt;br /&gt; - To see what upgrades are available or running&lt;br /&gt; - To be able to see friendly Connected units on the hud.&lt;br /&gt; - To be able to share target to other units using Tac Hud.&lt;br /&gt; - To be able to receive target from the network. &lt;br /&gt;&lt;br /&gt;&lt;t color='#e8bd12'&gt;Be aware that your network can be hacked by the opposing forces.&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;The network is a tree meshing network (look on wikipedia).The reconfiguration process tries to lower network units power consumption by connecting to the closest connected unit.The &lt;t color='#e8bd12'&gt;backbone&lt;/t&gt; of the network is constituted of &lt;t color='#e8bd12'&gt;the HQ, CCs, Towns And Vehicles&lt;/t&gt;.As infantry you are able to connect to either of those elements &lt;br /&gt;The following are the effective &lt;t color='#e8bd12'&gt;ranges&lt;/t&gt; of connection depending on types &lt;br /&gt;  - Infantry:  100m + 200m * (Upgrade Level)&lt;br /&gt;  - Vehicle: 1000m + 1000m * (Upgrade Level) &lt;br /&gt;  - Town : 5 km&lt;br /&gt;  - CCs : Unlimited&lt;br /&gt;  - HQ : Unlimited&lt;br /&gt;&lt;br /&gt;</Original>
-				<Russian>&lt;t size='1.4' color='#2394ef'&gt;Продвинутая сеть&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;&lt;t color='#e8bd12'&gt;Сеть&lt;/t&gt; это путь для вас, чтобы общаться с остальной частью вашей команды &lt;br /&gt;Подключение к сети позволяет: &lt;br /&gt; - Получить позиции дружественных юнитов на карте &lt;br /&gt; - Купить юнитов на фабриках &lt;br /&gt; - Увидеть какие модернизации доступны или начаты&lt;br /&gt; - Увидеть дружественных юнитов в HUD.&lt;br /&gt; - Поделится целями с помощью Такт. HUD.&lt;br /&gt; - Получить цель от сети. &lt;br /&gt;&lt;br /&gt;&lt;t color='#e8bd12'&gt;Имейте в виду, что ваша сеть может быть взломана силами противника.&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Сеть представляет собой дерево.&lt;t color='#e8bd12'&gt;Основа&lt;/t&gt; сети состоит из &lt;t color='#e8bd12'&gt;КШМ, Центров Управления, Городов и Техники&lt;/t&gt;. Как солдат вы можете подключиться к любому из этих элементов &lt;br /&gt;Ниже приведены эффективные &lt;t color='#e8bd12'&gt;расстояния&lt;/t&gt; для соединений в зависимости от типа &lt;br /&gt;  - Пехота:  100м + 200м * (Уровень Модернизации)&lt;br /&gt;  - Техника: 1000м + 1000м * (Уровень Модернизации) &lt;br /&gt;  - Город : 5 км&lt;br /&gt;  - Центры Управления : Бесконечные&lt;br /&gt;  - КШМ : Бесконечные&lt;br /&gt;&lt;br /&gt;</Russian>
+				<Russian>&lt;t size='1.4' color='#2394ef'&gt;Продвинутая сеть&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;&lt;t color='#e8bd12'&gt;Сеть&lt;/t&gt; это путь для вас, чтобы общаться с остальной частью вашей команды &lt;br /&gt;Подключение к сети позволяет: &lt;br /&gt; - Получить позиции дружественных юнитов на карте &lt;br /&gt; - Купить юнитов на заводах &lt;br /&gt; - Увидеть какие модернизации доступны или начаты&lt;br /&gt; - Увидеть дружественных юнитов в HUD.&lt;br /&gt; - Поделится целями с помощью Такт. HUD.&lt;br /&gt; - Получить цель от сети. &lt;br /&gt;&lt;br /&gt;&lt;t color='#FF0000'&gt;Имейте в виду, что ваша сеть может быть взломана силами противника!&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Сеть представляет собой дерево. &lt;t color='#e8bd12'&gt;Основа&lt;/t&gt; сети состоит из &lt;t color='#e8bd12'&gt;КШМ, Центров Управления, Городов и Техники&lt;/t&gt;. Как солдат вы можете подключиться к любому из этих элементов &lt;br /&gt;Ниже приведены эффективные &lt;t color='#e8bd12'&gt;расстояния&lt;/t&gt; для соединений в зависимости от типа &lt;br /&gt;  - Пехота:  100м + 200м * (Уровень Модернизации)&lt;br /&gt;  - Техника: 1000м + 1000м * (Уровень Модернизации) &lt;br /&gt;  - Город : 5 км&lt;br /&gt;  - Центры Управления : Бесконечные&lt;br /&gt;  - КШМ : Бесконечные&lt;br /&gt;&lt;br /&gt;</Russian>
 			</Key>
 			<Key ID="STR_Tactical_HUD">
 				<Original>&lt;t size='1.4' color='#2394ef'&gt;Tactical HUD&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Tactical Hud is available if you are equiped with tactical glasses and if the upgrade is done by your side. &lt;br /&gt; &lt;br /&gt;This HUD functionnalities are: &lt;br /&gt; - Target highligths &lt;br /&gt; - Automatic Target Sharing between player groups &lt;br /&gt;  Shared Targets are marked with a dot above it  &lt;br /&gt;  (If connected to field mesh network) &lt;br /&gt; - Town highligths with status &lt;br /&gt; - Friendly units highligth (if connected)&lt;br /&gt;  &lt;br /&gt;The target are first local to the player, then as soon as the player is connected to the advance network, the target is registered across all network, alowing everyone to see it on the hud and on map.</Original>
-				<Russian>&lt;t size='1.4' color='#2394ef'&gt;Тактический HUD&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Тактический Hud доступен, если вы оснащены тактическими очками и эта модернизация закончена для вашей стороны.&lt;br /&gt; &lt;br /&gt;Функционал HUD: &lt;br /&gt; - Подсветка целей &lt;br /&gt; - Автоматчески делится целями с дружественными группами &lt;br /&gt;  Общие цели отмечены точкой над ними &lt;br /&gt;(При подключении к ячеистой сети поля) &lt;br /&gt; - Подсветка городов и их статуса &lt;br /&gt; - Подсветка дружественных юнитов (если подключены к сети)&lt;br /&gt;  &lt;br /&gt; В начале цель локальна для игрока, как только игрок подключится к расширенной сети, то цель будет показана всем на карте и в HUD.</Russian>
+				<Russian>&lt;t size='1.4' color='#2394ef'&gt;Тактический HUD&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Доступен, если вы оснащены тактическими очками и эта модернизация завершена для вашей стороны.&lt;br /&gt; &lt;br /&gt;&lt;t color='#e8bd12'&gt;Функционал HUD:&lt;/t&gt;&lt;br /&gt; - Подсветка целей &lt;br /&gt; - Подсветка целей остальной команде. Общие цели отмечены точкой над ними &lt;br /&gt;(При подключении к ячеистой сети поля) &lt;br /&gt; - Подсветка городов и их статуса &lt;br /&gt; - Подсветка дружественных юнитов (если подключены к сети)&lt;br /&gt;  &lt;br /&gt; В начале цель локальна для игрока, как только игрок подключится к расширенной сети, то цель будет показана всем на карте и в HUD.</Russian>
 			</Key>
 			<Key ID="STR_Trophy_system">
 				<Original>&lt;t size='1.4' color='#2394ef'&gt;Trophy system&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;The Trophy system is a real world &lt;t color='#e8bd12'&gt;Active Protection System (APS) &lt;/t&gt; made by Rafael. It protect your heavy vehicle of soft targets (missiles and rockets).&lt;br /&gt;&lt;br /&gt;&lt;t color='#e8bd12'&gt;Without upgrades&lt;/t&gt;, all MBTs and APCs starts with two ammos (one of each side), a 60 seconds cooldown and a 50% effectiveness. &lt;br /&gt;&lt;br /&gt;&lt;t color='#e8bd12'&gt;Two blind spots are present:&lt;/t&gt; one on the front between -20° and 20° and another on the back between 160 and 200 °.&lt;br /&gt;&lt;br /&gt;With the &lt;t color='#e8bd12'&gt;ammunition upgrade&lt;/t&gt;, all side vehicles are getting two more ammunition each level (1 on each side).&lt;br /&gt;&lt;br /&gt;The &lt;t color='#e8bd12'&gt;Cooldown and effectiveness upgrade&lt;/t&gt; increases working probability by 15% each level and reduces the cooldown time (60s /(1+level))&lt;br /&gt;&lt;br /&gt;You can find the current &lt;t color='#e8bd12'&gt;status&lt;/t&gt; of your trophy system in the &lt;t color='#e8bd12'&gt;vehicle hud.&lt;/t&gt;</Original>
-				<Russian>&lt;t size='1.4' color='#2394ef'&gt;Система Trophy&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Система Trophy основана на &lt;t color='#e8bd12'&gt;Активной Защите&lt;/t&gt; от Rafael. Защищает вашу тяжёлую технику от ракет.&lt;br /&gt;&lt;br /&gt;&lt;t color='#e8bd12'&gt;Без модернизации&lt;/t&gt;, все Танки, БМП, БТР начинают с двумя типами боеприпасов, 60 секундной задержкой и 50% эффективностью. &lt;br /&gt;&lt;br /&gt;&lt;t color='#e8bd12'&gt;Two blind spots are present:&lt;/t&gt; one on the front between -20° and 20° and another on the back between 160 and 200 °.&lt;br /&gt;&lt;br /&gt;With the &lt;t color='#e8bd12'&gt;ammunition upgrade&lt;/t&gt;, all side vehicles are getting two more ammunition each level (1 on each side).&lt;br /&gt;&lt;br /&gt;The &lt;t color='#e8bd12'&gt;Cooldown and effectiveness upgrade&lt;/t&gt; increases working probability by 15% each level and reduces the cooldown time (60s /(1+level))&lt;br /&gt;&lt;br /&gt;You can find the current &lt;t color='#e8bd12'&gt;status&lt;/t&gt; of your trophy system in the &lt;t color='#e8bd12'&gt;vehicle hud.&lt;/t&gt;</Russian>
+				<Russian>&lt;t size='1.4' color='#2394ef'&gt;Система Trophy&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Основана на &lt;t color='#e8bd12'&gt;Активной Защите&lt;/t&gt; от Rafael. Защищает вашу тяжёлую технику от ракет.&lt;br /&gt;&lt;br /&gt;&lt;t color='#e8bd12'&gt;Без модернизации&lt;/t&gt; - все Танки, БМП, БТР начинают с двумя зарядами, 60 секундной задержкой и 50% эффективностью. &lt;br /&gt;&lt;br /&gt;&lt;t color='#e8bd12'&gt;Слепые зоны:&lt;/t&gt; одна спереди от -20° до 20° и одна позади между 160° и 200°.&lt;br /&gt;&lt;br /&gt;С &lt;t color='#e8bd12'&gt;Улучшением Макс.боезапас&lt;/t&gt; вся техника получает по два заряда каждый уровень (1 заряд с каждой стороны).&lt;br /&gt;&lt;br /&gt;&lt;t color='#e8bd12'&gt;Улучшение Восстановление и эффективность&lt;/t&gt; увеличивается вероятность срабатывания на 15% каждый уровень и сокращает время перезарядки - 60 сек/(1 + ур.улучшения)&lt;br /&gt;&lt;br /&gt;&lt;t color='#e8bd12'&gt;Текущий статус системы&lt;/t&gt; показан на &lt;t color='#e8bd12'&gt;интерфейсе техники&lt;/t&gt;, чуть выше правого нижнего угла экрана.</Russian>
 			</Key>
 			<Key ID="STR_Remote_Control">
 				<Original>&lt;t size='1.4' color='#2394ef'&gt;Remote Control&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Since the AI in ArmA III can be realy frustrating while driving, the ability of &lt;t color='#e8bd12'&gt;remote controling the drivers and pilots&lt;/t&gt; have been introduced.&lt;br/&gt;You can initiate the remote controling using the &lt;t color='#e8bd12'&gt;action menu of the unit&lt;/t&gt;. (F1-10 Keys and then the 6 key). &lt;br /&gt;In order to be able to remote control, the following conditions must be all met &lt;br /&gt;- The unit and player must be alive&lt;br /&gt;- No gunner must be present in the vehicle&lt;br /&gt;- The unit must be driver/ pilot of the vehicle&lt;br /&gt;- The vehicle must be unlocked (BIS related)&lt;br /&gt;- The player cannot be in the same vehicle&lt;br /&gt;&lt;br /&gt;Be aware that it migth disconnect you from your current uav.</Original>
-				<Russian>&lt;t size='1.4' color='#2394ef'&gt;Удаленное управление&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Since the AI in ArmA III can be realy frustrating while driving, the ability of &lt;t color='#e8bd12'&gt;remote controling the drivers and pilots&lt;/t&gt; have been introduced.&lt;br/&gt;You can initiate the remote controling using the &lt;t color='#e8bd12'&gt;action menu of the unit&lt;/t&gt;. (F1-10 Keys and then the 6 key). &lt;br /&gt;In order to be able to remote control, the following conditions must be all met &lt;br /&gt;- The unit and player must be alive&lt;br /&gt;- No gunner must be present in the vehicle&lt;br /&gt;- The unit must be driver/ pilot of the vehicle&lt;br /&gt;- The vehicle must be unlocked (BIS related)&lt;br /&gt;- The player cannot be in the same vehicle&lt;br /&gt;&lt;br /&gt;Be aware that it migth disconnect you from your current uav.</Russian>
+				<Russian>&lt;t size='1.4' color='#2394ef'&gt;Удаленное Управление&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Так как искусственный интеллект в ArmA III во время вождения расстраивает Вас, была введена возможность &lt;t color='#e8bd12'&gt;удаленного управления водителями и пилотами&lt;/t&gt;.&lt;br/&gt;Вы можете начать управлять удаленно выбрав бота (клавиши F1-10), нажав клавишу 6 и выбрав действие &lt;t color='#ff9900'&gt;Удаленное Управление&lt;/t&gt;. Для выхода из этого режима, выберите действие - Бросить управление БПА.&lt;br /&gt;Для того, чтобы иметь возможность удаленного управления, следующие условия должны быть выполнены:&lt;br /&gt;- Игрок и выбранный бот должны быть живы&lt;br /&gt;- В технике должен быть только один выбранный бот, без игрока и других ботов&lt;br /&gt;- Выбранный бот должен быть водителем/пилотом&lt;br /&gt;- Техника должна быть открыта&lt;br /&gt;&lt;br /&gt;Имейте в виду, что Вас отключит от вашего текущего БПЛА.&lt;br /&gt;&lt;t color='#FF0000'&gt;Если вы убьёте бота в удал.управлении, то сразу же станете предателем и покините свою группу!&lt;/t&gt;</Russian>
 			</Key>
 			<Key ID="STR_Current_Credits">
 				<Original>&lt;t size='1.4' color='#2394ef'&gt;Current Credits&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;- &lt;t color='#e8bd12'&gt;Benny&lt;/t&gt; for the mission&lt;br /&gt;- &lt;t color='#e8bd12'&gt;Bl1p, Fluit&lt;/t&gt; for random AI skill&lt;br /&gt;- &lt;t color='#e8bd12'&gt;=ATM=Pokertour&lt;/t&gt; for ATM airdrop&lt;br /&gt;- &lt;t color='#e8bd12'&gt;Prodavec&lt;/t&gt; for Map Markers titling&lt;br /&gt;- &lt;t color='#e8bd12'&gt;^HS^&lt;/t&gt; for writting the diary help &lt;br /&gt;- &lt;t color='#e8bd12'&gt;Farooq&lt;/t&gt; for his original idea of a revive script &lt;br /&gt;- &lt;t color='#e8bd12'&gt;Sari&lt;/t&gt; for updating the sanitize scripts &lt;br /&gt;- &lt;t color='#e8bd12'&gt;John681611&lt;/t&gt; for his original idea of offroad aug.&lt;br /&gt;- &lt;t color='#e8bd12'&gt;Henroth&lt;/t&gt; for his Aircraft loadout customisation framework.&lt;br /&gt;&lt;br /&gt;&lt;t color='#e8bd12'&gt;And of course, everyone who gave feedback and bug reports.&lt;/t&gt;&lt;br /&gt;</Original>
-				<Russian>&lt;t size='1.4' color='#2394ef'&gt;Благодарности&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;- &lt;t color='#e8bd12'&gt;Benny&lt;/t&gt; создатель миссии&lt;br /&gt;- &lt;t color='#e8bd12'&gt;Bl1p, Fluit&lt;/t&gt; for random AI skill&lt;br /&gt;- &lt;t color='#e8bd12'&gt;=ATM=Pokertour&lt;/t&gt; for ATM airdrop&lt;br /&gt;- &lt;t color='#e8bd12'&gt;Prodavec&lt;/t&gt; за обозначение маркеров на карте&lt;br /&gt;- &lt;t color='#e8bd12'&gt;^HS^&lt;/t&gt; for writting the diary help &lt;br /&gt;- &lt;t color='#e8bd12'&gt;Farooq&lt;/t&gt; for his original idea of a revive script &lt;br /&gt;- &lt;t color='#e8bd12'&gt;Sari&lt;/t&gt; for updating the sanitize scripts &lt;br /&gt;- &lt;t color='#e8bd12'&gt;John681611&lt;/t&gt; for his original idea of offroad aug.&lt;br /&gt;- &lt;t color='#e8bd12'&gt;Henroth&lt;/t&gt; for his Aircraft loadout customisation framework.&lt;br /&gt;&lt;br /&gt;&lt;t color='#e8bd12'&gt;И конечно же, каждый кто оставил отзыв и сообщение об ошибке.&lt;/t&gt;&lt;br /&gt;</Russian>
+				<Russian>&lt;t size='1.4' color='#2394ef'&gt;Благодарности&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;- &lt;t color='#e8bd12'&gt;Benny&lt;/t&gt; создатель миссии&lt;br /&gt;- &lt;t color='#e8bd12'&gt;Bl1p, Fluit&lt;/t&gt; for random AI skill&lt;br /&gt;- &lt;t color='#e8bd12'&gt;=ATM=Pokertour&lt;/t&gt; for ATM airdrop&lt;br /&gt;- &lt;t color='#e8bd12'&gt;Prodavec&lt;/t&gt; за обозначение маркеров на карте&lt;br /&gt;- &lt;t color='#e8bd12'&gt;^HS^&lt;/t&gt; for writting the diary help &lt;br /&gt;- &lt;t color='#e8bd12'&gt;Farooq&lt;/t&gt; for his original idea of a revive script &lt;br /&gt;- &lt;t color='#e8bd12'&gt;Sari&lt;/t&gt; for updating the sanitize scripts &lt;br /&gt;- &lt;t color='#e8bd12'&gt;John681611&lt;/t&gt; for his original idea of offroad aug.&lt;br /&gt;- &lt;t color='#e8bd12'&gt;Henroth&lt;/t&gt; for his Aircraft loadout customisation framework.&lt;br /&gt;- &lt;t color='#e8bd12'&gt;SteelRat&lt;/t&gt; за подсказки в скриптах и немного кода.&lt;br /&gt;&lt;br /&gt;&lt;t color='#e8bd12'&gt;И конечно же, каждый кто оставил отзыв и сообщение об ошибке.&lt;/t&gt;&lt;br /&gt;</Russian>
 			</Key>
 	</Package>
 </Project>
@@ -195,7 +195,7 @@
 			</Key>
 			<Key ID="STR_CTI_BASE_STARTUP_PLACEMENT">
 				<Original>BASE: Startup Placement</Original>
-				<Russian>Начальное удаление баз команд друг от друга</Russian>
+				<Russian>Начальное удаление баз противоборствующих команд друг от друга</Russian>
 			</Key>
 			<Key ID="STR_CTI_ECONOMY_INCOME_CYCLE">
 				<Original>INCOME: Delay</Original>
@@ -311,11 +311,11 @@
 			</Key>
 			<Key ID="STR_CTI_SEPARATOR">
 				<Original>========================== PERSISTENCY ============================</Original>
-				<Russian>========================== PERSISTENCY ============================</Russian>
+				<Russian>========================== Стабильность ============================</Russian>
 			</Key>
 			<Key ID="STR_CTI_PERSISTANT">
 				<Original>Zerty: PERSISTANCY</Original>
-				<Russian>Zerty: PERSISTANCY</Russian>
+				<Russian>Zerty: Стабильность (Сохраняет структуры базы, на случай падения сервера)</Russian>
 			</Key>
 			<Key ID="STR_CTI_SEPARATOR0">
 				<Original>===================== Gameplay and Mission =======================</Original>
@@ -451,7 +451,7 @@
 			</Key>
 			<Key ID="STR_CTI_GAMEPLAY_REARM_MED">
 				<Original>Zerty: GAMEPLAY: Gear On MED Trucks</Original>
-				<Russian>Возможность покупать снаряжение на Мед.Машинах и контейнерах</Russian>
+				<Russian>Возможность покупать снаряжение на Мед.Машинах и Мед.Контейнерах</Russian>
 			</Key>
 			<Key ID="STR_CTI_GAMEPLAY_REARM_MED_AL">
 				<Original>Always</Original>
@@ -655,7 +655,7 @@
 			</Key>
 			<Key ID="STR_CTI_SM_TCAS">
 				<Original>Zerty: Strategic: Town CAS if value above</Original>
-				<Russian>Разрешить поддержку с воздуха если стоимость города</Russian>
+				<Russian>Разрешить поддержку с воздуха если стоимость города больше</Russian>
 			</Key>
 			<Key ID="STR_CTI_SEPARATOR3">
 				<Original>===================== Electronic Warfare =======================</Original>
@@ -673,15 +673,15 @@
 				<Original>High</Original>
 				<Russian>Высокая</Russian>
 			</Key>
-			<Key ID="STR_CTI_EW_HUD_S_MH">
+			<Key ID="STR_CTI_EW_HUD_S_MEDHIGH">
 				<Original>Medium High</Original>
 				<Russian>Выше среднего</Russian>
 			</Key>
-			<Key ID="STR_CTI_EW_HUD_S_ML">
+			<Key ID="STR_CTI_EW_HUD_S_MEDLOW">
 				<Original>Medium Low</Original>
 				<Russian>Средняя</Russian>
-			</Key
-			<Key ID="STR_CTI_EW_HUD_S_L">
+			</Key>
+			<Key ID="STR_CTI_EW_HUD_S_LOW">
 				<Original>Low</Original>
 				<Russian>Низкая</Russian>
 			</Key>
@@ -719,7 +719,7 @@
 			</Key>
 			<Key ID="STR_CTI_TROPHY_APS">
 				<Original>Zerty: Trophy: Enabled</Original>
-				<Russian>Trophy</Russian>
+				<Russian>Система Trophy</Russian>
 			</Key>
 			<Key ID="STR_CTI_AC_ENABLED">
 				<Original>Henroth: Aircraft Loadout Customisation : Enabled</Original>
@@ -1005,6 +1005,10 @@
 				<Original>Eject Com.</Original>
 				<Russian>Снять Ком.</Russian>
 			</Key>
+			<Key ID="STR_Control_Eject_Tooltip">
+				<Original>Eject Commmander</Original>
+				<Russian>Снять Командира с должности</Russian>
+			</Key>
 			<Key ID="STR_Control_Request">
 				<Original>Make request</Original>
 				<Russian>Сделать Запрос</Russian>
@@ -1012,6 +1016,10 @@
 			<Key ID="STR_Control_Zeus">
 				<Original>Zeus Con.</Original>
 				<Russian>Зевс подкл.</Russian>
+			</Key>
+			<Key ID="STR_Control_Zeus_Tooltip">
+				<Original>Zeus Con.</Original>
+				<Russian>Подключится в режиме Зевса</Russian>
 			</Key>
 			<Key ID="STR_Menu_Control_Undo">
 				<Original>Undo Structure</Original>
@@ -1031,11 +1039,11 @@
 			</Key>
 			<Key ID="STR_Menu_PlayerPoolLabel">
 				<Original>Player Resources %</Original>
-				<Russian>Ресурсы игрока %</Russian>
+				<Russian>Пай Игрока %</Russian>
 			</Key>
 			<Key ID="STR_Menu_AwardPoolLabel">
 				<Original>Award Pool %</Original>
-				<Russian>Размер Пая %</Russian>
+				<Russian>Пай Наградной %</Russian>
 			</Key>
 			<Key ID="STR_Menu_Funds_GivePlayer">
 				<Original>Give Player</Original>
@@ -1355,8 +1363,60 @@
 			</Key>
 	</Package>
 </Project>
-<Project name="TabletVideoSettingsMenu">
-	<Package name="Main">
+<Project name="StratMode_Tablet">
+	<Package name="Events_UI_Interact">
+			<Key ID="STR_Tooltip_HALO_Jump">
+				<Original>HALO Jump (%1 min.)</Original>
+				<Russian>HALO Прыжок (%1 мин.)</Russian>
+			</Key>
+			<Key ID="STR_Tooltip_HALO_Jump_NA">
+				<Original>HALO Jump (Not Available)</Original>
+				<Russian>HALO Прыжок (Недоступен)</Russian>
+			</Key>
+			<Key ID="STR_Network_Lock">
+				<Original>Network (Locked)</Original>
+				<Russian>Сеть (Заблокирована)</Russian>
+			</Key>
+			<Key ID="STR_Repair_No_Toolkit">
+				<Original>Repair (No Toolkit)</Original>
+				<Russian>Починить (Нет Набора Инструментов)</Russian>
+			</Key>
+			<Key ID="STR_Force_Lock_No_ToolKit">
+				<Original>Force Lock (No ToolKit)</Original>
+				<Russian>Взломать (Нет Набора Инструментов)</Russian>
+			</Key>
+			<Key ID="STR_MGA_sec">
+				<Original>Mobile Gear Access (%1 s.)</Original>
+				<Russian>Доступ к мобильному снаряжению (%1 сек.)</Russian>
+			</Key>
+			<Key ID="STR_ST_Load_Info">
+				<Original>ST LOAD :: Trying to load a static, please wait</Original>
+				<Russian>ST LOAD :: Пытаемся загрузить обьект, ждите</Russian>
+			</Key>
+	</Package>
+	<Package name="Events_UI_TabletMain">
+			<Key ID="STR_Eject_Com_UI">
+				<Original>Eject Com. (%1/%2)</Original>
+				<Russian>Изгнать Ком. (%1/%2)</Russian>
+			</Key>
+			<Key ID="STR_Leave_Com_UI">
+				<Original>Leave Com.</Original>
+				<Russian>Покинуть</Russian>
+			</Key>
+			<Key ID="STR_Leave_Com_UI_Tooltip">
+				<Original>Leave Commander Post</Original>
+				<Russian>Покинуть пост Командира</Russian>
+			</Key>
+			<Key ID="STR_Net_Disc">
+				<Original>Net-Discon.</Original>
+				<Russian>Сеть-Откл.</Russian>
+			</Key>
+			<Key ID="STR_Net_Rec">
+				<Original>Net-Recon.</Original>
+				<Russian>Сеть-Подкл.</Russian>
+			</Key>
+	</Package>
+	<Package name="Events_UI_TabletVideoSettingsMenu">
 			<Key ID="STR_View_Distance_VSM">
 				<Original>View Distance: %1</Original>
 				<Russian>Видимость общее: %1</Russian>
@@ -1406,22 +1466,222 @@
 				<Russian>Тактический HUD: Выкл</Russian>
 			</Key>
 	</Package>
-</Project>
-<Project name="Others Strings">
-	<Package name="Client_OnPlayerKilled">
-			<Key ID="STR_Begin_Tutorial">
-				<Original>Sending to tutorial area.</Original>
-				<Russian>Отправка в зону обучения</Russian>
+	<Package name="GUI_TabletMain">
+			<Key ID="STR_MAX_MISSION_TIME">
+				<Original>Mission Time: &lt;t color='#d4ceff'&gt;%1D %2:%3:%4&lt;/t&gt;,&lt;br/&gt;Max. Mission time: &lt;t color='#d4ceff'&gt;%5 h&lt;/t&gt;&lt;br /&gt;</Original>
+				<Russian>Время Миссии: &lt;t color='#d4ceff'&gt;%1Д %2:%3:%4&lt;/t&gt;,&lt;br/&gt;Макс. Время Миссии: &lt;t color='#d4ceff'&gt;%5 ч&lt;/t&gt;&lt;br /&gt;</Russian>
+			</Key>
+			<Key ID="STR_Coloration_Money">
+				<Original>&lt;t&gt;Resources: &lt;t color='%1'&gt;$%2&lt;/t&gt;&lt;/t&gt;&lt;br /&gt;</Original>
+				<Russian>&lt;t&gt;Ресурсы: &lt;t color='%1'&gt;$%2&lt;/t&gt;&lt;/t&gt;&lt;br /&gt;</Russian>
+			</Key>
+			<Key ID="STR_Coloration_Pools">
+				<Original>&lt;t&gt;Pools (Players/Award): %1%3 / %2%3&lt;/t&gt;&lt;br /&gt;</Original>
+				<Russian>&lt;t&gt;Пай (Игрока/Наградной): %1%3/%2%3&lt;/t&gt;&lt;br /&gt;</Russian>
+			</Key>
+			<Key ID="STR_Coloration_Income">
+				<Original>&lt;t&gt;Income (Me/Side): &lt;t color='%1'&gt;$%2&lt;/t&gt;/&lt;t color='%1'&gt;$%3&lt;/t&gt; each %4 s.&lt;/t&gt;&lt;br /&gt;</Original>
+				<Russian>&lt;t&gt;Доход (Мой/Стороны): &lt;t color='%1'&gt;$%2&lt;/t&gt;/&lt;t color='%1'&gt;$%3&lt;/t&gt; каждые %4 сек.&lt;/t&gt;&lt;br /&gt;</Russian>
+			</Key>
+			<Key ID="STR_Coloration_Towns">
+				<Original>&lt;t&gt;Towns Held Value: &lt;t color='#66baff'&gt;%1$&lt;/t&gt;/ %2$&lt;/t&gt;&lt;br /&gt;Victory : &lt;t color='#ff9900'&gt;%3$&lt;/t&gt;&lt;br /&gt;</Original>
+				<Russian>&lt;t&gt;Значение Удержанных Городов: &lt;t color='#66baff'&gt;%1$&lt;/t&gt;/ %2$&lt;/t&gt;&lt;br /&gt;Победа : &lt;t color='#ff9900'&gt;%3$&lt;/t&gt;&lt;br /&gt;</Russian>
 			</Key>
 	</Package>
-	<Package name="TUTORIAL_run">
-			<Key ID="STR_End_Tutorial">
-				<Original>Tutorial exited, sending to group creation ...</Original>
-				<Russian>Обучение закончено, переходим к созданию группы ...</Russian>
+</Project>
+<Project name="Others Strings">
+	<Package name="NameOfTowns">
+			<Key ID="STR_Map_Theater_Ruins">
+				<Original>Theater Ruins</Original>
+				<Russian>Руины Театра</Russian>
 			</Key>
-			<Key ID="STR_Wait_GroupCreate">
-				<Original>Waiting for group creation...</Original>
-				<Russian>Ожидание создания группы...</Russian>
+			<Key ID="STR_Map_Military_Outpost">
+				<Original>Military Outpost</Original>
+				<Russian>Военный Блокпост</Russian>
+			</Key>
+			<Key ID="STR_Map_North_Airfield">
+				<Original>North Airfield</Original>
+				<Russian>Северный Аэродром</Russian>
+			</Key>
+			<Key ID="STR_Map_Hotel_Complex">
+				<Original>Hotel Complex</Original>
+				<Russian>Отель Призрак</Russian>
+			</Key>
+	</Package>
+	<Package name="Events_UI_BuildMenu">
+			<Key ID="STR_Walls_On">
+				<Original>Auto-Align Walls: On</Original>
+				<Russian>Авто-Выравнивание Стен: Вкл</Russian>
+			</Key>
+			<Key ID="STR_Walls_Off">
+				<Original>Auto-Align Walls: Off</Original>
+				<Russian>Авто-Выравнивание Стен: Выкл</Russian>
+			</Key>
+			<Key ID="STR_Defenses_On">
+				<Original>Defenses Auto-Manning: On (%2/ %3)</Original>
+				<Russian>Укомплектование обороны: Вкл (%2/ %3)</Russian>
+			</Key>
+			<Key ID="STR_Defenses_Off">
+				<Original>Defenses Auto-Manning: Off (%2/ %3)</Original>
+				<Russian>Укомплектование обороны: Выкл (%2/ %3)</Russian>
+			</Key>
+			<Key ID="STR_Add_Worker">
+				<Original>Add Worker ($%1)</Original>
+				<Russian>Добавить Рабочего ($%1)</Russian>
+			</Key>
+			<Key ID="STR_BuildMenu_Info">
+				<Original>&lt;t size='1.3' color='#2394ef'&gt;Information&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;You do not have enough funds to place that defense.</Original>
+				<Russian>&lt;t size='1.3' color='#2394ef'&gt;Информация&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;У вас не хватает средств, чтобы построить это.</Russian>
+			</Key>
+			<Key ID="STR_Build">
+				<Original>&lt;t color='#ff9900'&gt;Build %1&lt;t&gt;</Original>
+				<Russian>&lt;t color='#ff9900'&gt;Построить %1&lt;t&gt;</Russian>
+			</Key>
+			<Key ID="STR_Cancel_Build">
+				<Original>&lt;t color='#ff9900'&gt;Cancel Fast building&lt;t&gt;</Original>
+				<Russian>&lt;t color='#ff9900'&gt;Отменить строительство&lt;t&gt;</Russian>
+			</Key>
+	</Package>
+	<Package name="Events_UI_RespawnMenu">
+			<Key ID="STR_UI_RespawnMenu">
+				<Original>Respawning at &lt;t color='#BAFF81'&gt;%1&lt;/t&gt; in &lt;t color='#EBC451'&gt;%2&lt;/t&gt; seconds</Original>
+				<Russian>Возрождение на &lt;t color='#BAFF81'&gt;%1&lt;/t&gt; через &lt;t color='#EBC451'&gt;%2&lt;/t&gt; секунд</Russian>
+			</Key>
+	</Package>
+	<Package name="Events_UI_GearMenu">
+			<Key ID="STR_UI_GearMenu">
+				<Original>&lt;t size='1.3' color='#2394ef'&gt;Information&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;&lt;t align='left'&gt;The template could not be created since some items does not meet the current &lt;t color='#F5D363'&gt;Gear&lt;/t&gt; upgrade level&lt;/t&gt;</Original>
+				<Russian>&lt;t size='1.3' color='#2394ef'&gt;Информация&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;&lt;t align='left'&gt;Шаблон не может быть создан, так как некоторые элементы не соответствует текущему уровню улучшения &lt;t color='#F5D363'&gt;Снаряжения&lt;/t&gt;&lt;/t&gt;</Russian>
+			</Key>
+			<Key ID="STR_UI_GearMenu_2">
+				<Original>&lt;t size='1.3' color='#2394ef'&gt;Information&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;&lt;t align='left'&gt;The template could not be created since some items do not belong to the side's equipment&lt;/t&gt;</Original>
+				<Russian>&lt;t size='1.3' color='#2394ef'&gt;Информация&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;&lt;t align='left'&gt;Шаблон не может быть создан, так как некоторые элементы снаряжение не соответсвуют вашей стороне&lt;/t&gt;</Russian>
+			</Key>
+			<Key ID="STR_UI_GearMenu_3">
+				<Original>&lt;t size='1.3' color='#2394ef'&gt;Information&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;&lt;t align='left'&gt;A new template has been created with the name &lt;t color='#bcff70'&gt;%1&lt;/t&gt;.&lt;br /&gt;&lt;br /&gt;You may find it in the &lt;t color='#eaff96'&gt;Template&lt;/t&gt; tab&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;&lt;img image='Rsc\Pictures\icon_wf_building_barracks.paa' size='2.5'/&gt;</Original>
+				<Russian>&lt;t size='1.3' color='#2394ef'&gt;Информация&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;&lt;t align='left'&gt;Новый шаблон был создан с именем &lt;t color='#bcff70'&gt;%1&lt;/t&gt;.&lt;br /&gt;&lt;br /&gt;Вы можете найти его в разделе &lt;t color='#eaff96'&gt;Шаблоны&lt;/t&gt;&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;&lt;img image='Rsc\Pictures\icon_wf_building_barracks.paa' size='2.5'/&gt;</Russian>
+			</Key>
+			<Key ID="STR_UI_GearMenu_4">
+				<Original>&lt;t size='1.3' color='#2394ef'&gt;Information&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;&lt;t align='left'&gt;Templates may only be removed from the &lt;t color='#eaff96'&gt;Template&lt;/t&gt; tab&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;&lt;img image='Rsc\Pictures\icon_wf_building_barracks.paa' size='2.5'/&gt;</Original>
+				<Russian>&lt;t size='1.3' color='#2394ef'&gt;Информация&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;&lt;t align='left'&gt;Шаблоны могут быть удалены только из раздела &lt;t color='#eaff96'&gt;Шаблоны&lt;/t&gt;&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;&lt;img image='Rsc\Pictures\icon_wf_building_barracks.paa' size='2.5'/&gt;</Russian>
+			</Key>
+	</Package>
+	<Package name="Events_UI_UpgradeMenu">
+			<Key ID="STR_Upgrade_Start">
+				<Original>&lt;t size='1.3' color='#2394ef'&gt;Information&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;&lt;t color='#F5D363'&gt;%1&lt;/t&gt; upgrade has started.</Original>
+				<Russian>&lt;t size='1.3' color='#2394ef'&gt;Информация&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Улучшение &lt;t color='#F5D363'&gt;%1&lt;/t&gt; начато.</Russian>
+			</Key>
+			<Key ID="STR_Upgrade_Not_To_Start">
+				<Original>&lt;t size='1.3' color='#2394ef'&gt;Information&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Not all dependencies are met to start this upgrade.</Original>
+				<Russian>&lt;t size='1.3' color='#2394ef'&gt;Информация&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Не все зависимости выполнены, чтобы начать это обновление.</Russian>
+			</Key>
+			<Key ID="STR_Upgrade_Not_Funds">
+				<Original>&lt;t size='1.3' color='#2394ef'&gt;Information&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;You do not have enough funds to perform this operation.</Original>
+				<Russian>&lt;t size='1.3' color='#2394ef'&gt;Информация&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;У вас недостаточно средств для этого.</Russian>
+			</Key>
+			<Key ID="STR_Upgrade_Max">
+				<Original>&lt;t size='1.3' color='#2394ef'&gt;Information&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;The maximum upgrade level has been reached for this upgrade.</Original>
+				<Russian>&lt;t size='1.3' color='#2394ef'&gt;Информация&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Достигнут максимальный уровень этого улучшения.</Russian>
+			</Key>
+			<Key ID="STR_Upgrade_Running">
+				<Original>&lt;t size='1.3' color='#2394ef'&gt;Information&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;You may not upgrade something else while an upgrade is already running.</Original>
+				<Russian>&lt;t size='1.3' color='#2394ef'&gt;Информация&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Вы не можете начать улучшение, пока предыдущее не завершено.</Russian>
+			</Key>
+			<Key ID="STR_Upgrade_Only_Cmnd">
+				<Original>&lt;t size='1.3' color='#2394ef'&gt;Information&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Only the Commander may perform upgrades.</Original>
+				<Russian>&lt;t size='1.3' color='#2394ef'&gt;Информация&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Только Командир может начинать улучшения.</Russian>
+			</Key>
+	</Package>
+	<Package name="Events_UI_PurchaseMenu">
+			<Key ID="STR_Purchase_Empty">
+				<Original>&lt;t size='1.3' color='#2394ef'&gt;Information&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Empty vehicles may not be purchased for other groups.</Original>
+				<Russian>&lt;t size='1.3' color='#2394ef'&gt;Информация&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Пустая техника не может быть куплена для других групп.</Russian>
+			</Key>
+			<Key ID="STR_Purchase_Factory">
+				<Original>&lt;t size='1.3' color='#2394ef'&gt;Information&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;This vehicles may not be purchased in that factory.</Original>
+				<Russian>&lt;t size='1.3' color='#2394ef'&gt;Информация&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Данная техника не может быть куплена на этом заводе.</Russian>
+			</Key>
+			<Key ID="STR_Purchase_Build">
+				<Original>&lt;t size='1.3' color='#2394ef'&gt;Information&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;%2&lt;t&gt;A &lt;t color='#ccffaf'&gt;%1&lt;/t&gt; is being built&lt;/t&gt;</Original>
+				<Russian>&lt;t size='1.3' color='#2394ef'&gt;Информация&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;%2&lt;t&gt;&lt;t color='#ccffaf'&gt;%1&lt;/t&gt; создаётся&lt;/t&gt;</Russian>
+			</Key>
+			<Key ID="STR_Purchase_Limit">
+				<Original>&lt;t size='1.3' color='#2394ef'&gt;Information&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Your unit limit has been reached.</Original>
+				<Russian>&lt;t size='1.3' color='#2394ef'&gt;Информация&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Достигнут лимит группы.</Russian>
+			</Key>
+			<Key ID="STR_Purchase_AI_Unit">
+				<Original>&lt;t size='1.3' color='#2394ef'&gt;Information&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Units may not be purchased to AI groups while the AI Teams are disabled in the parameters.</Original>
+				<Russian>&lt;t size='1.3' color='#2394ef'&gt;Информация&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Юниты не могут быть приобретены для групп AI в то время как AI команды отключены в параметрах.</Russian>
+			</Key>
+			<Key ID="STR_Purchase_Wait">
+				<Original>&lt;t size='1.3' color='#2394ef'&gt;Information&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Please wait a few seconds before performing this operation again.</Original>
+				<Russian>&lt;t size='1.3' color='#2394ef'&gt;Информация&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Пожалуйста подождите пару секунд, прежде чем повторить операцию.</Russian>
+			</Key>
+			<Key ID="STR_Purchase_Limit_Salvager">
+				<Original>&lt;t size='1.3' color='#2394ef'&gt;Information&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;The Independent salvager limit has been reached.</Original>
+				<Russian>&lt;t size='1.3' color='#2394ef'&gt;Информация&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Достигнут лимит Независимого Утилизаторщика.</Russian>
+			</Key>
+			<Key ID="STR_Purchase_Salvager">
+				<Original>&lt;t size='1.3' color='#2394ef'&gt;Information&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;The factory shouldn't be in use in order to buy an independent salvager.</Original>
+				<Russian>&lt;t size='1.3' color='#2394ef'&gt;Информация&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Завод не используется для покупки Независимого Утилизаторщика.</Russian>
+			</Key>
+	</Package>
+	<Package name="Events_UI_TeamsMenu">
+			<Key ID="STR_UI_Teams_Transfered">
+				<Original>&lt;t size='1.3' color='#2394ef'&gt;Information&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Transfered &lt;t color='%1'&gt;$%2&lt;/t&gt; to group &lt;t color='#55bcfc'&gt;%3&lt;/t&gt;.</Original>
+				<Russian>&lt;t size='1.3' color='#2394ef'&gt;Информация&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Отправлено &lt;t color='%1'&gt;$%2&lt;/t&gt; группе &lt;t color='#55bcfc'&gt;%3&lt;/t&gt;.</Russian>
+			</Key>
+			<Key ID="STR_UI_Teams_Transfered_Everyone">
+				<Original>&lt;t size='1.3' color='#2394ef'&gt;Information&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Transfered &lt;t color='%1'&gt;$%2&lt;/t&gt; to everyone.</Original>
+				<Russian>&lt;t size='1.3' color='#2394ef'&gt;Информация&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Отправлено &lt;t color='%1'&gt;$%2&lt;/t&gt; всем.</Russian>
+			</Key>
+			<Key ID="STR_UI_Teams_Not_Resources">
+				<Original>&lt;t size='1.3' color='#2394ef'&gt;Information&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;You do not have enough resources to perform this operation.</Original>
+				<Russian>&lt;t size='1.3' color='#2394ef'&gt;Информация&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;У вас не хватает средств для этого.</Russian>
+			</Key>
+	</Package>
+	<Package name="Events_UI_TransferResourcesMenu">
+			<Key ID="STR_Group_Resources">
+				<Original>Group Resources: &lt;t color='%1'&gt;$%2&lt;/t&gt;</Original>
+				<Russian>Ресурсы Группы: &lt;t color='%1'&gt;$%2&lt;/t&gt;</Russian>
+			</Key>
+			<Key ID="STR_Transfered_To_Group">
+				<Original>&lt;t size='1.3' color='#2394ef'&gt;Information&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Transfered &lt;t color='%1'&gt;$%2&lt;/t&gt; to group &lt;t color='#55bcfc'&gt;%3&lt;/t&gt;.</Original>
+				<Russian>&lt;t size='1.3' color='#2394ef'&gt;Информация&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Отправлено &lt;t color='%1'&gt;$%2&lt;/t&gt; группе &lt;t color='#55bcfc'&gt;%3&lt;/t&gt;.</Russian>
+			</Key>
+			<Key ID="STR_Transfered_To_Yourself">
+				<Original>&lt;t size='1.3' color='#2394ef'&gt;Information&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;You cannot transfer funds to yourself.</Original>
+				<Russian>&lt;t size='1.3' color='#2394ef'&gt;Информация&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Вы не можете отправить средства себе.</Russian>
+			</Key>
+			<Key ID="STR_Not_Leader">
+				<Original>&lt;t size='1.3' color='#2394ef'&gt;Information&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;You are not the leader of your group.</Original>
+				<Russian>&lt;t size='1.3' color='#2394ef'&gt;Информация&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Вы не лидер вашей группы.</Russian>
+			</Key>
+			<Key ID="STR_Invalid_Operation">
+				<Original>&lt;t size='1.3' color='#2394ef'&gt;Information&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Invalid operation.</Original>
+				<Russian>&lt;t size='1.3' color='#2394ef'&gt;Информация&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Неверная операция.</Russian>
+			</Key>
+	</Package>
+	<Package name="Action_RepairHQ">
+			<Key ID="STR_RepairHQ">
+				<Original>&lt;t size='1.3' color='#2394ef'&gt;Information&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Attempting to repair the HQ...</Original>
+				<Russian>&lt;t size='1.3' color='#2394ef'&gt;Информация&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Пробуем отремонтировать КШМ...</Russian>
+			</Key>
+			<Key ID="STR_Needed_RepairHQ">
+				<Original>&lt;t size='1.3' color='#2394ef'&gt;Information&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;&lt;t color='%1'&gt;$%2&lt;/t&gt; is needed to repair the HQ</Original>
+				<Russian>&lt;t size='1.3' color='#2394ef'&gt;Информация&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;&lt;t color='%1'&gt;$%2&lt;/t&gt; необходимо отремонтировать КШМ</Russian>
+			</Key>
+			<Key ID="STR_Already_RepairHQ">
+				<Original>&lt;t size='1.3' color='#2394ef'&gt;Information&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;The HQ is already repaired.</Original>
+				<Russian>&lt;t size='1.3' color='#2394ef'&gt;Информация&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;КШМ отремонтирована.</Russian>
+			</Key>
+			<Key ID="STR_Destroyed_RepairHQ">
+				<Original>&lt;t size='1.3' color='#2394ef'&gt;Information&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;The repair vehicle has been destroyed.</Original>
+				<Russian>&lt;t size='1.3' color='#2394ef'&gt;Информация&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Ремонтная машина была уничтожена.</Russian>
+			</Key>
+			<Key ID="STR_Moved_RepairHQ">
+				<Original>&lt;t size='1.3' color='#2394ef'&gt;Information&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;The repair vehicle has moved too far from the HQ.</Original>
+				<Russian>&lt;t size='1.3' color='#2394ef'&gt;Информация&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Ремонтная машина далеко находится от КШМ.</Russian>
 			</Key>
 	</Package>
 	<Package name="Client_DisplayMessage">
@@ -1435,11 +1695,11 @@
 			</Key>
 			<Key ID="STR_HQ_Destroyed">
 				<Original>The HQ has been destroyed!</Original>
-				<Russian>КШМ был Уничтожен!</Russian>
+				<Russian>Наш КШМ был Уничтожен!</Russian>
 			</Key>
 			<Key ID="STR_HQ_Repair">
 				<Original>The HQ has been repaired</Original>
-				<Russian>КШМ был восстановлен</Russian>
+				<Russian>Наш КШМ был Восстановлен!</Russian>
 			</Key>
 			<Key ID="STR_Funds_Transfer">
 				<Original>Got Tranfer from %2:  $%1</Original>
@@ -1447,7 +1707,7 @@
 			</Key>
 			<Key ID="STR_Penalty">
 				<Original>TK %4 :: %2(%3) killed a %1</Original>
-				<Russian>ТК %4 :: %2(%3) убит игроком %1</Russian>
+				<Russian>ТК %4 :: %2(%3) убил %1</Russian>
 			</Key>
 			<Key ID="STR_Repair_by">
 				<Original>Repairing %1... %2%3</Original>
@@ -1467,7 +1727,7 @@
 			</Key>
 			<Key ID="STR_Structure_Preplaced">
 				<Original>%1 ready for construction (%2).</Original>
-				<Russian>%1 готов для строительства (%2).</Russian>
+				<Russian>%1 готов для строительства в коорд. - (%2).</Russian>
 			</Key>
 			<Key ID="STR_Structure_Attacked">
 				<Original>%1  under attack (%2)!</Original>
@@ -1499,7 +1759,7 @@
 			</Key>
 			<Key ID="STR_Upgrade_Started">
 				<Original>Up. %1 started to lvl %2</Original>
-				<Russian>Улучшение %1 начато до уровня %2</Russian>
+				<Russian>Начато Улучшение %1 до уровня %2</Russian>
 			</Key>
 			<Key ID="STR_Jailed">
 				<Original>Player %1 Jailed for %2 minutes! </Original>
@@ -1526,32 +1786,216 @@
 				<Russian>Игрок %1 проголосовал против Командира</Russian>
 			</Key>
 	</Package>
-	<Package name="GUI_TabletMain">
-			<Key ID="STR_MAX_MISSION_TIME">
-				<Original>Mission Time: &lt;t color='#d4ceff'&gt;%1D %2:%3:%4&lt;/t&gt;,&lt;br/&gt;Max. Mission time: &lt;t color='#d4ceff'&gt;%5 h&lt;/t&gt;&lt;br /&gt;</Original>
-				<Russian>Время Миссии: &lt;t color='#d4ceff'&gt;%1Д %2:%3:%4&lt;/t&gt;,&lt;br/&gt;Макс. Время Миссии: &lt;t color='#d4ceff'&gt;%5 ч&lt;/t&gt;&lt;br /&gt;</Russian>
+	<Package name="Client_OnPlayerKilled">
+			<Key ID="STR_Begin_Tutorial">
+				<Original>Sending to tutorial area.</Original>
+				<Russian>Отправка в зону обучения</Russian>
 			</Key>
-			<Key ID="STR_Coloration_Money">
-				<Original>&lt;t&gt;Resources: &lt;t color='%1'&gt;$%2&lt;/t&gt;&lt;/t&gt;&lt;br /&gt;</Original>
-				<Russian>&lt;t&gt;Ресурсы: &lt;t color='%1'&gt;$%2&lt;/t&gt;&lt;/t&gt;&lt;br /&gt;</Russian>
+	</Package>
+	<Package name="Client_OnPlayerFired">
+			<Key ID="STR_Missile_Range">
+				<Original>&lt;t size='1.3' color='#2394ef'&gt;BE AWARE&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Missile range is&lt;br /&gt; &lt;t color='#ccffaf'&gt; %1 Meters &lt;/t&gt;</Original>
+				<Russian>&lt;t size='1.3' color='#2394ef'&gt;ПРЕДУПРЕЖДЕНИЕ&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Дальность полёта у ракет&lt;br /&gt; &lt;t color='#ccffaf'&gt; %1 Метров &lt;/t&gt;</Russian>
 			</Key>
-			<Key ID="STR_Coloration_Pools">
-				<Original>&lt;t&gt;Pools (Players/Award): %1%3 / %2%3&lt;/t&gt;&lt;br /&gt;</Original>
-				<Russian>&lt;t&gt;Доли (Игроков/Премия): %1%3 / %2%3&lt;/t&gt;&lt;br /&gt;</Russian>
+	</Package>
+	<Package name="Client_OnPurchaseOrderReceived">
+			<Key ID="STR_Buy_Notify">
+				<Original>&lt;t size='1.3' color='#2394ef'&gt;Information&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;%4&lt;t&gt;Your &lt;t color='#ccffaf'&gt;%1&lt;/t&gt; has arrived from the &lt;t color='#fcffaf'&gt;%2&lt;/t&gt; at grid &lt;t color='#beafff'&gt;%3&lt;/t&gt;&lt;/t&gt;</Original>
+				<Russian>&lt;t size='1.3' color='#2394ef'&gt;Информация&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;%4&lt;t&gt;Ваш &lt;t color='#ccffaf'&gt;%1&lt;/t&gt; прибыл с &lt;t color='#fcffaf'&gt;%2&lt;/t&gt; в коорд. &lt;t color='#beafff'&gt;%3&lt;/t&gt;&lt;/t&gt;</Russian>
 			</Key>
-			<Key ID="STR_Coloration_Income">
-				<Original>&lt;t&gt;Income (Me/Side): &lt;t color='%1'&gt;$%2&lt;/t&gt;/&lt;t color='%1'&gt;$%3&lt;/t&gt; each %4 s.&lt;/t&gt;&lt;br /&gt;</Original>
-				<Russian>&lt;t&gt;Доход (Мой/Стороны): &lt;t color='%1'&gt;$%2&lt;/t&gt;/&lt;t color='%1'&gt;$%3&lt;/t&gt; каждые %4 сек.&lt;/t&gt;&lt;br /&gt;</Russian>
+	</Package>
+	<Package name="Client_OnStructureConstructed">
+			<Key ID="STR_Structure_Constructed">
+				<Original>%1 now available (%2).</Original>
+				<Russian>%1 доступны в коорд. - (%2).</Russian>
 			</Key>
-			<Key ID="STR_Coloration_Towns">
-				<Original>&lt;t&gt;Towns Held Value: &lt;t color='#66baff'&gt;%1$&lt;/t&gt;/ %2$&lt;/t&gt;&lt;br /&gt;Victory : &lt;t color='#ff9900'&gt;%3$&lt;/t&gt;&lt;br /&gt;</Original>
-				<Russian>&lt;t&gt;Значение Удержанных Городов: &lt;t color='#66baff'&gt;%1$&lt;/t&gt;/ %2$&lt;/t&gt;&lt;br /&gt;Победа : &lt;t color='#ff9900'&gt;%3$&lt;/t&gt;&lt;br /&gt;</Russian>
+	</Package>
+	<Package name="Client_OnFriendlyStructureDestroyed">
+			<Key ID="STR_Structure_Destroyed">
+				<Original>%1 Destroyed (%2)!</Original>
+				<Russian>%1 уничтожен в коорд. - (%2)!</Russian>
+			</Key>
+			<Key ID="STR_Structure_Sold">
+				<Original>%1 Sold (%2)!</Original>
+				<Russian>%1 в коорд. - (%2) продан!</Russian>
+			</Key>
+	</Package>
+	<Package name="Client_Init_Client">
+			<Key ID="STR_Begin_Tut">
+				<Original>Setting up...</Original>
+				<Russian>Настройка...</Russian>
+			</Key>
+			<Key ID="STR_Begin_Tut_1">
+				<Original>Waiting for server to approve connexion...</Original>
+				<Russian>Ожидание сервера для разрешения подключения...</Russian>
+			</Key>
+			<Key ID="STR_Begin_Tut_2">
+				<Original>Got answer from the server.</Original>
+				<Russian>Получаем ответ от сервера.</Russian>
+			</Key>
+	</Package>
+	<Package name="Strat_mode_Init">
+			<Key ID="STR_Strat">
+				<Original>Strat: %1 </Original>
+				<Russian>Доклад: %1 </Russian>
+			</Key>
+			<Key ID="STR_MortarTeam">
+				<Original>Mortar Team - %1</Original>
+				<Russian>Миномёты - %1</Russian>
+			</Key>
+	</Package>
+	<Package name="SM_AdaptGroup">
+			<Key ID="STR_AdaptGroup">
+				<Original>Group size is now : %1 </Original>
+				<Russian>Текущий размер группы : %1 </Russian>
+			</Key>
+	</Package>
+	<Package name="SM_TownPriority">
+			<Key ID="STR_TownPriority">
+				<Original>&lt;t size='1.3' color='#2394ef'&gt;Priority Target&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Click near the town you want to activate next. &lt;br /&gt; It wont be activated until it is available for capture.&lt;br /&gt; Once disactivated, the priority target will be removed. &lt;br /&gt;Current priority target :&lt;t  color='#2394ef'&gt; %1 &lt;/t&gt;</Original>
+				<Russian>&lt;t size='1.3' color='#2394ef'&gt;Приоритетная цель&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Кликните на нужном городе для его активации. &lt;br /&gt; Он будет активирован и доступен для захвата.&lt;br /&gt; После деактивации, приоритетная цель будет удалена. &lt;br /&gt;Текущая приоритетная цель : :&lt;t  color='#2394ef'&gt; %1 &lt;/t&gt;</Russian>
+			</Key>
+			<Key ID="STR_NextPriorityTown">
+				<Original>Next Priority Town is &lt;t  color='#001EFF'&gt;%1&lt;/t&gt;</Original>
+				<Russian>Следующий Приоритетный Город: &lt;t  color='#001EFF'&gt;%1&lt;/t&gt;</Russian>
+			</Key>
+			<Key ID="STR_NextPriorityTown_1">
+				<Original>Next Priority Town is &lt;t  color='#001EFF'&gt;%1&lt;/t&gt;</Original>
+				<Russian>Следующий Приоритетный Город: &lt;t  color='#001EFF'&gt;%1&lt;/t&gt;</Russian>
+			</Key>
+			<Key ID="STR_Disactivate_Town">
+				<Original>&lt;t size='1.3' color='#2394ef'&gt;Force Disactivation&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Click near the town you want to disactivate. &lt;br /&gt; This will activate your priority target.&lt;br /&gt; Note that it will despawn the AI.</Original>
+				<Russian>&lt;t size='1.3' color='#2394ef'&gt;Дезактивация Войск	&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Кликните на нужном городе для его дезактивации.&lt;br /&gt; Это активирует вашу приоритетную цель.&lt;br /&gt; Обратите внимание, что ИИ пропадут.</Russian>
+			</Key>
+			<Key ID="STR_DisactivateTown">
+				<Original>Commander is disactivating %1</Original>
+				<Russian>Командир Дезактивировал %1</Russian>
+			</Key>
+	</Package>
+	<Package name="SM_Allow_Capture">
+			<Key ID="STR_TownInactive">
+				<Original>Town %1 is now Inactive</Original>
+				<Russian>&lt;t  color='#33FF00'&gt;Город %1 теперь Неактивный&lt;/t&gt;</Russian>
+			</Key>
+	</Package>
+	<Package name="SM_RepairVehicule">
+			<Key ID="STR_StartingRepairsVehicle">
+				<Original>Starting Repairs</Original>
+				<Russian>Начинаем ремонт</Russian>
+			</Key>
+			<Key ID="STR_RepairingVehicle">
+				<Original>Repairing</Original>
+				<Russian>Ремонт</Russian>
+			</Key>
+			<Key ID="STR_SM_RepairVehicule_Failed">
+				<Original>Failed</Original>
+				<Russian>Действие отменено</Russian>
+			</Key>
+			<Key ID="STR_RepairVehicle">
+				<Original>&lt;t size='1.3' color='#2394ef'&gt;You need a ToolKit to perform this action&lt;/t&gt;</Original>
+				<Russian>&lt;t size='1.3' color='#2394ef'&gt;Вам нужен Набор Инструментов для этого&lt;/t&gt;</Russian>
+			</Key>
+			<Key ID="STR_ForcedVehicle">
+				<Original>This vehicle has already been forced</Original>
+				<Russian>Данная техника уже была взломана</Russian>
+			</Key>
+			<Key ID="STR_ForcedVehicleLock">
+				<Original>Forcing vehicle lock</Original>
+				<Russian>Вскрываем технику</Russian>
+			</Key>
+			<Key ID="STR_Action_Unlock">
+				<Original>&lt;t color='#86F078'&gt;Unlock&lt;/t&gt;</Original>
+				<Russian>&lt;t color='#86F078'&gt;Разблокировать&lt;/t&gt;</Russian>
+			</Key>
+			<Key ID="STR_Action_Lock">
+				<Original>&lt;t color='#86F078'&gt;Lock&lt;/t&gt;</Original>
+				<Russian>&lt;t color='#86F078'&gt;Блокировать&lt;/t&gt;</Russian>
+			</Key>
+	</Package>
+	<Package name="SM_Action_Build">
+			<Key ID="STR_Action_Build">
+				<Original>Building</Original>
+				<Russian>Строим</Russian>
+			</Key>
+	</Package>
+	<Package name="SM_AttachStatics">
+			<Key ID="STR_ST_Load">
+				<Original>ST LOAD :: Static Loaded : %1 in %2 </Original>
+				<Russian>ST LOAD :: Обьект Загружен : %1 в %2 </Russian>
+			</Key>
+			<Key ID="STR_ST_Unload">
+				<Original>ST LOAD :: Static Unloaded : %1 off %2 </Original>
+				<Russian>ST LOAD :: Обьект Выгружен : %1 из %2 </Russian>
+			</Key>
+			<Key ID="STR_ST_NotFound">
+				<Original>ST LOAD :: No Static/Crate found, it must be behind your offroad</Original>
+				<Russian>ST LOAD :: Нет обьектов, позади вашей машины, которые можно загрузить </Russian>
+			</Key>
+	</Package>
+	<Package name="town_markers">
+			<Key ID="STR_MarkerActive">
+				<Original>%1 :: %2 :: Is active</Original>
+				<Russian>%1 :: %2 :: Активный</Russian>
+			</Key>
+	</Package>
+	<Package name="town_resistance">
+			<Key ID="STR_TownActive">
+				<Original>Town %1 is now Active</Original>
+				<Russian>&lt;t  color='#FF0000'&gt;Город %1 Активный&lt;/t&gt;</Russian>
+			</Key>
+	</Package>
+	<Package name="DYNG_waitforgroup">
+			<Key ID="STR_WaitForGroup">
+				<Original>Please either join or create a group</Original>
+				<Russian>Пожалуйста присоединитесь к группе или создайте новую</Russian>
+			</Key>
+	</Package>
+	<Package name="Units_East">
+			<Key ID="STR_Mobile_Gear_Access_Crate">
+				<Original>Mobile Gear access Crate</Original>
+				<Russian>Ящик с мобильным снаряжением</Russian>
+			</Key>
+	</Package>
+	<Package name="SA_Action_Pack">
+			<Key ID="STR_UnpackingVehicle">
+				<Original>Unpacking</Original>
+				<Russian>Распаковка</Russian>
+			</Key>
+			<Key ID="STR_PackingVehicle">
+				<Original>Packing vehicle for transport</Original>
+				<Russian>Пакуем технику для транспортировки</Russian>
+			</Key>
+			<Key ID="STR_ErrorPackVehicle">
+				<Original>Error: The vehicle needs to be empty,unlocked and not moving to perform that action</Original>
+				<Russian>Ошибка: Техника должна быть пустой, открытой и не двигаться для выполнения данной операции</Russian>
+			</Key>
+	</Package>
+	<Package name="UAV_Range">
+			<Key ID="STR_UAV_Range">
+				<Original>&lt;t size='1.3' color='#2394ef'&gt;Information&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;You have lost connection to your UAV. Maximum range is &lt;t color='#ccffaf'&gt;%1 meters.&lt;/t&gt;</Original>
+				<Russian>&lt;t size='1.3' color='#2394ef'&gt;Информация&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Вы потеряли связь с вашим маленьким БПЛА. Макс.дальность - &lt;t color='#ccffaf'&gt;%1 метров.&lt;/t&gt;</Russian>
+			</Key>
+	</Package>
+	<Package name="SM_COM_UnSet_Client">
+			<Key ID="STR_LeftCommand">
+				<Original>&lt;t size='1.3' color='#2394ef'&gt;You have been relieved of command.&lt;/t&gt;</Original>
+				<Russian>&lt;t size='1.3' color='#2394ef'&gt;Вы покинули пост командира!&lt;/t&gt;</Russian>
+			</Key>
+	</Package>
+	<Package name="TUTORIAL_run">
+			<Key ID="STR_End_Tutorial">
+				<Original>Tutorial exited, sending to group creation ...</Original>
+				<Russian>Обучение закончено, переходим к созданию группы ...</Russian>
+			</Key>
+			<Key ID="STR_Wait_GroupCreate">
+				<Original>Waiting for group creation...</Original>
+				<Russian>Ожидание создания группы...</Russian>
 			</Key>
 	</Package>
 	<Package name="GUI_UpgradeMenu">
 			<Key ID="STR_GUI_UPGRADES_LABELS">
 				<Original>Running: &lt;t color='#F5D363'&gt;%1 :: %2 s left.&lt;/t&gt;</Original>
-				<Russian>Запущено: &lt;t color='#F5D363'&gt;%1 :: %2 сек осталось.&lt;/t&gt;</Russian>
+				<Russian>Запущено: &lt;t color='#F5D363'&gt;%1 Осталось:: %2 сек.&lt;/t&gt;</Russian>
 			</Key>
 	</Package>
 	<Package name="GUI_TeamsMenu">
@@ -1584,48 +2028,32 @@
 				<Russian>&lt;t align='left'&gt;Ресурсы Игрока:&lt;/t&gt; &lt;t align='right' color='%1'&gt;$%2&lt;/t&gt;</Russian>
 			</Key>
 	</Package>
-	<Package name="Events_UI_Interact">
-			<Key ID="STR_Tooltip_HALO_Jump">
-				<Original>HALO Jump (%1 min.)</Original>
-				<Russian>HALO Прыжок (%1 мин.)</Russian>
-			</Key>
-			<Key ID="STR_Tooltip_HALO_Jump_NA">
-				<Original>HALO Jump (Not Available)</Original>
-				<Russian>HALO Прыжок (Недоступен)</Russian>
-			</Key>
-			<Key ID="STR_Network_Lock">
-				<Original>Network (Locked)</Original>
-				<Russian>Сеть (Заблокирована)</Russian>
-			</Key>
-			<Key ID="STR_Repair_No_Toolkit">
-				<Original>Repair (No Toolkit)</Original>
-				<Russian>Починить (Нет Набора Инструментов)</Russian>
-			</Key>
-			<Key ID="STR_Force_Lock_No_ToolKit">
-				<Original>Force Lock (No ToolKit)</Original>
-				<Russian>Взломать (Нет Набора Инструментов)</Russian>
-			</Key>
-			<Key ID="STR_MGA_sec">
-				<Original>Mobile Gear Access (%1 s.)</Original>
-				<Russian>Доступ к мобильному снаряжению (%1 сек.)</Russian>
+	<Package name="Common_CreateUnit">
+			<Key ID="STR_Common_CreateUnit_Remote_Control">
+				<Original>&lt;t color='#ff9900'&gt;Remote Control&lt;/t&gt;</Original>
+				<Russian>&lt;t color='#ff9900'&gt;Удаленное Управление&lt;/t&gt;</Russian>
 			</Key>
 	</Package>
-	<Package name="Events_UI_TabletMain">
-			<Key ID="STR_Eject_Com_UI">
-				<Original>Eject Com. (%1/%2)</Original>
-				<Russian>Изгнать Ком. (%1/%2)</Russian>
+	<Package name="Functions_UI_UpgradeMenu">
+			<Key ID="STR_UI_Dependencies">
+				<Original>Dependencies:</Original>
+				<Russian>Зависимости:</Russian>
 			</Key>
-			<Key ID="STR_Leave_Com_UI">
-				<Original>Leave Com.</Original>
-				<Russian>Комнд Покинуть.</Russian>
+			<Key ID="STR_UI_Description">
+				<Original>Description:</Original>
+				<Russian>Описание</Russian>
 			</Key>
-			<Key ID="STR_Net_Disc">
-				<Original>Net-Discon.</Original>
-				<Russian>Сеть-Откл.</Russian>
+			<Key ID="STR_UI_Others">
+				<Original>&lt;t color='#bae8ff' shadow='1'&gt;Upgrade Level :&lt;/t&gt;&lt;t shadow='1' align='right'&gt;&lt;t color='#F5D363'&gt;%1&lt;/t&gt;/&lt;t color='#F5D363'&gt;%2&lt;/t&gt;&lt;/t&gt;&lt;br /&gt;&lt;t color='#bae8ff' shadow='1'&gt;Needed Funds :&lt;/t&gt;&lt;t shadow='1' align='right'&gt;&lt;t color='#F5D363'&gt;%3&lt;/t&gt;/&lt;t color='%4'&gt;%5&lt;/t&gt; $&lt;/t&gt;&lt;br /&gt;&lt;t color='#bae8ff' shadow='1'&gt;Needed Time :&lt;/t&gt;&lt;t shadow='1' align='right'&gt;&lt;t color='#F5D363'&gt;%6&lt;/t&gt; Seconds&lt;/t&gt;</Original>
+				<Russian>&lt;t color='#bae8ff' shadow='1'&gt;Уровень Улучшения :&lt;/t&gt;&lt;t shadow='1' align='right'&gt;&lt;t color='#F5D363'&gt;%1&lt;/t&gt;/&lt;t color='#F5D363'&gt;%2&lt;/t&gt;&lt;/t&gt;&lt;br /&gt;&lt;t color='#bae8ff' shadow='1'&gt;Необходимые Средства :&lt;/t&gt;&lt;t shadow='1' align='right'&gt;&lt;t color='#F5D363'&gt;%3&lt;/t&gt;/&lt;t color='%4'&gt;%5&lt;/t&gt; $&lt;/t&gt;&lt;br /&gt;&lt;t color='#bae8ff' shadow='1'&gt;Необходимое время :&lt;/t&gt;&lt;t shadow='1' align='right'&gt;&lt;t color='#F5D363'&gt;%6&lt;/t&gt; Сек.&lt;/t&gt;</Russian>
 			</Key>
-			<Key ID="STR_Net_Rec">
-				<Original>Net-Recon.</Original>
-				<Russian>Сеть-Подкл.</Russian>
+			<Key ID="STR_UI_All_Dependencies">
+				<Original>&lt;t color='#76F563' shadow='1'&gt;All dependencies are met&lt;/t&gt;</Original>
+				<Russian>&lt;t color='#76F563' shadow='1'&gt;Все зависимости выполнены&lt;/t&gt;</Russian>
+			</Key>
+			<Key ID="STR_UI_Max_Level">
+				<Original>&lt;t color='#76F563' shadow='1'&gt;The maximum upgrade level has been reached.&lt;/t&gt;</Original>
+				<Russian>&lt;t color='#76F563' shadow='1'&gt;Достигнут макс. уровень улучшения&lt;/t&gt;</Russian>
 			</Key>
 	</Package>
 	<Package name="HUD_UpdateInfo">
@@ -1635,7 +2063,7 @@
 			</Key>
 			<Key ID="STR_Current_Com">
 				<Original>&lt;t color='#F5D363'&gt;Current Com :&lt;/t&gt; %1&lt;br /&gt;</Original>
-				<Russian>&lt;t color='#F5D363'&gt;Текущий Командир :&lt;/t&gt; %1&lt;br /&gt;</Russian>
+				<Russian>&lt;t color='#F5D363'&gt;Командир Стороны :&lt;/t&gt; %1&lt;br /&gt;</Russian>
 			</Key>
 			<Key ID="STR_No_Upgrade_Running">
 				<Original>No Upgrade Running</Original>
@@ -1643,7 +2071,7 @@
 			</Key>
 			<Key ID="STR_Upgrade_Left">
 				<Original>%1 :: %2 s left.</Original>
-				<Russian>%1 :: %2 сек осталось.</Russian>
+				<Russian>%1 :: осталось %2 сек.</Russian>
 			</Key>
 	</Package>
 	<Package name="HUD_UpdateVehicle">
@@ -1660,4 +2088,245 @@
 				<Russian>Сеть: %1 &lt;br /&gt;---------&lt;br /&gt;</Russian>
 			</Key>
 	</Package>
+</Project>
+<Project name="Upgrades_East_West">
+	<Package name="Main">
+			<Key ID="STR_Up_Barracks">
+				<Original>Barracks</Original>
+				<Russian>Казармы</Russian>
+			</Key>
+			<Key ID="STR_Up_Barracks_Descr">
+				<Original>Unlock better infantry units</Original>
+				<Russian>Улучшение открывает новые виды солдат</Russian>
+			</Key>
+			<Key ID="STR_Up_Light_Factory">
+				<Original>Factory: Light Factory</Original>
+				<Russian>Завод Легкой Техники</Russian>
+			</Key>
+			<Key ID="STR_Up_Light_Factory_Descr">
+				<Original>Unlock better motorized units</Original>
+				<Russian>Разблокировать новую легкобронированную технику</Russian>
+			</Key>
+			<Key ID="STR_Up_Heavy_Factory">
+				<Original>Factory: Heavy Factory</Original>
+				<Russian>Завод Тяжелой Техники</Russian>
+			</Key>
+			<Key ID="STR_Up_Heavy_Factory_Descr">
+				<Original>Unlock better armored units</Original>
+				<Russian>Разблокировать новую бронированную технику</Russian>
+			</Key>
+			<Key ID="STR_Up_Aircraft_Factory">
+				<Original>Factory: Aircraft Factory</Original>
+				<Russian>Завод Авиа Техники</Russian>
+			</Key>
+			<Key ID="STR_Up_Aircraft_Factory_Descr">
+				<Original>Unlock better aircraft units</Original>
+				<Russian>Разблокировать новую авиа технику</Russian>
+			</Key>
+			<Key ID="STR_Up_AAF_technologies">
+				<Original>Factory: AAF technologies</Original>
+				<Russian>Технологии AAF</Russian>
+			</Key>
+			<Key ID="STR_Up_AAF_technologies_Descr">
+				<Original>Unlock AAF units (1::MRAPS, 2::APC , 3::TRACKED, 4::CHOPPERS, 5::PLANES)</Original>
+				<Russian>Разблокировать технику AAF (1::Легкая Техника 2::БТР 3::БМП, Танки 4::Вертолёты 5::Самолёты)</Russian>
+			</Key>
+			<Key ID="STR_Up_Aircraft_FFAR">
+				<Original>Air: Aircraft FFAR</Original>
+				<Russian>Неуправляемые ракеты</Russian>
+			</Key>
+			<Key ID="STR_Up_Aircraft_FFAR_Descr">
+				<Original>Unlocks the FFAR Rockets for Aircrafts</Original>
+				<Russian>Разблокировать Неуправляемые ракеты для Авиации</Russian>
+			</Key>
+			<Key ID="STR_Up_Aircraft_AT">
+				<Original>Air: Aircraft AT</Original>
+				<Russian>Ракеты Воздух-Земля</Russian>
+			</Key>
+			<Key ID="STR_Up_Aircraft_AT_Descr">
+				<Original>Unlocks the Anti Tank Missiles for Aircrafts</Original>
+				<Russian>Разблокировать ракеты класса Воздух-Земля для Авиации</Russian>
+			</Key>
+			<Key ID="STR_Up_Aircraft_AA">
+				<Original>Air: Aircraft AA</Original>
+				<Russian>Ракеты Воздух-Воздух</Russian>
+			</Key>
+			<Key ID="STR_Up_Aircraft_AA_Descr">
+				<Original>Unlocks the Anti Air Missiles for Aircrafts</Original>
+				<Russian>Разблокировать ракеты класса Воздух-Воздух для Авиации</Russian>
+			</Key>
+			<Key ID="STR_Up_Air_Countermeasures">
+				<Original>Air: Aircraft Countermeasures</Original>
+				<Russian>Ложные Тепловые Цели</Russian>
+			</Key>
+			<Key ID="STR_Up_Air_Countermeasures_Descr">
+				<Original>Allows Aircraft to deploy countermeasures</Original>
+				<Russian>Разблокировать Ложные Тепловые Цели(ЛТЦ) для авиации</Russian>
+			</Key>
+			<Key ID="STR_Up_Gear">
+				<Original>Equipment: Gear</Original>
+				<Russian>Снаряжение</Russian>
+			</Key>
+			<Key ID="STR_Up_Gear_Descr">
+				<Original>Allows the use of better equipment in the Gear Menu</Original>
+				<Russian>Разблокировать улучшенную экипировку</Russian>
+			</Key>
+			<Key ID="STR_Up_Tactical_Hud">
+				<Original>Equipment: Tactical Hud</Original>
+				<Russian>Тактический HUD</Russian>
+			</Key>
+			<Key ID="STR_Up_Tactical_Hud_Descr">
+				<Original>Enable Tactical HUD for every unit equiped with tactical sunglasses</Original>
+				<Russian>Включить Тактический HUD для всех, кто оснащён Тактическими очками</Russian>
+			</Key>
+			<Key ID="STR_Up_Towns_Occupation">
+				<Original>Other: Towns Occupation</Original>
+				<Russian>Оккупация городов</Russian>
+			</Key>
+			<Key ID="STR_Up_Towns_Occupation_Descr">
+				<Original>Allows the spawning of occupation forces which will defend friendly towns against any attackers.&lt;br/&gt;It will also improve the income generation in non-occupied towns</Original>
+				<Russian>Позволяет создать войска для защиты захваченных городов от нападающих.&lt;br/&gt;Также повышает доход в ещё незахваченных городах</Russian>
+			</Key>
+			<Key ID="STR_Up_Satellite">
+				<Original>Other: Satellite</Original>
+				<Russian>Вид со спутника</Russian>
+			</Key>
+			<Key ID="STR_Up_Satellite_Descr">
+				<Original>Allows the use of the satellite camera</Original>
+				<Russian>Разблокирует возможность вида со спутника</Russian>
+			</Key>
+			<Key ID="STR_Up_Halo_Jump">
+				<Original>Other: Halo Jump</Original>
+				<Russian>HALO Прыжок</Russian>
+			</Key>
+			<Key ID="STR_Up_Halo_Jump_Descr">
+				<Original>Enable HALO Jumping from the Air factory</Original>
+				<Russian>Активировать HALO Прыжок с помощью Авиа Завода</Russian>
+			</Key>
+			<Key ID="STR_Up_Air_Radar">
+				<Original>Radar: Air Radar</Original>
+				<Russian>Радар: Воздушный</Russian>
+			</Key>
+			<Key ID="STR_Up_Air_Radar_Descr">
+				<Original>Enable Air Radars</Original>
+				<Russian>Показывает вражескую возд.технику на карте</Russian>
+			</Key>
+			<Key ID="STR_Up_Artillery_Radar">
+				<Original>Radar: Artillery Radar</Original>
+				<Russian>Радар: Артиллерийский</Russian>
+			</Key>
+			<Key ID="STR_Up_Artillery_Radar_Descr">
+				<Original>Enable Artillery radar on Air Radars</Original>
+				<Russian>Показывает траекторию арт.снарядов на карте с помощью Радара</Russian>
+			</Key>
+			<Key ID="STR_Up_Range">
+				<Original>Network: Range</Original>
+				<Russian>Сеть: Дальность</Russian>
+			</Key>
+			<Key ID="STR_Up_Range_Descr">
+				<Original>Improve Mesh Network range (Inf: 100+Lvl*200 V: 1000+Lvl*1000)</Original>
+				<Russian>Увеличить дальность действия сети (Для пехоты: 100+Ур.Улучш*200 Для техники: 1000+Ур.Улучш*1000)</Russian>
+			</Key>
+			<Key ID="STR_Up_Intrusion">
+				<Original>Network: Exploit : Intrusion</Original>
+				<Russian>Сеть: Взлом</Russian>
+			</Key>
+			<Key ID="STR_Up_Intrusion_Descr">
+				<Original>Allow players to connect to the enemy network if inside a stolen connected vehicle</Original>
+				<Russian>Разрешить игрокам подключаться к вражеской сети, если они внутри украденной и подключенной к сети технике</Russian>
+			</Key>
+			<Key ID="STR_Up_Trophy">
+				<Original>Trophy: Cooldown and effectiveness</Original>
+				<Russian>Восстановление и эффективность</Russian>
+			</Key>
+			<Key ID="STR_Up_Trophy_Descr">
+				<Original>Reduced minimum time between Trophy activations and more chances for successfull protection</Original>
+				<Russian>Снижает минимальное время между активацией системы Trophy и повышает шансы на успешную защиту</Russian>
+			</Key>
+			<Key ID="STR_Up_Max_Ammos">
+				<Original>Trophy: Max Ammos</Original>
+				<Russian>Макс.боезапас</Russian>
+			</Key>
+			<Key ID="STR_Up_Max_Ammos_Descr">
+				<Original>Augment maximum ammunition for the trophy system</Original>
+				<Russian>Увеличивает максимальный боезапас системы Trophy</Russian>
+			</Key>
+			<Key ID="STR_Up_Respawn_Truck">
+				<Original>Respawn Truck/Pod: Range</Original>
+				<Russian>Дальность возрождения</Russian>
+			</Key>
+			<Key ID="STR_Up_Respawn_Truck_Descr">
+				<Original>Increase the max range of the respawn truck. 500m + lvl x 500m </Original>
+				<Russian>Увеличивает макс. дальность появления на Мед.Грузовиках и контейнерах: 500м + Ур.Улучш x 500м</Russian>
+			</Key>
+	</Package>
+</Project>
+<Project name="Base_East_West">
+	<Package name="Main">
+			<Key ID="STR_Light_Vehicle_Factory">
+				<Original>Light Vehicle Factory</Original>
+				<Russian>Завод Легкой Техники</Russian>
+			</Key>
+			<Key ID="STR_Light_Vehicle_Factory_1">
+				<Original>Light</Original>
+				<Russian>Завод Легкой Техники</Russian>
+			</Key>
+			<Key ID="STR_Control_Center">
+				<Original>Control Center</Original>
+				<Russian>Центр Управления</Russian>
+			</Key>
+			<Key ID="STR_Control_Center_1">
+				<Original>CC</Original>
+				<Russian>Центр Управления</Russian>
+			</Key>
+			<Key ID="STR_Heavy_Vehicle_Factory">
+				<Original>Heavy Vehicle Factory</Original>
+				<Russian>Завод Тяжёлой Техники</Russian>
+			</Key>
+			<Key ID="STR_Heavy_Vehicle_Factory_1">
+				<Original>Heavy</Original>
+				<Russian>Завод Тяжёлой Техники</Russian>
+			</Key>
+			<Key ID="STR_Aircraft_Factory">
+				<Original>Aircraft Factory</Original>
+				<Russian>Завод Авиа Техники</Russian>
+			</Key>
+			<Key ID="STR_Aircraft_Factory_1">
+				<Original>Air</Original>
+				<Russian>Завод Авиа Техники</Russian>
+			</Key>
+			<Key ID="STR_Ammo_Depot">
+				<Original>Ammo Depot</Original>
+				<Russian>Склад Боеприпасов</Russian>
+			</Key>
+			<Key ID="STR_Ammo_Depot_1">
+				<Original>Ammo</Original>
+				<Russian>Склад Боеприпасов</Russian>
+			</Key>
+			<Key ID="STR_Repair_Depot">
+				<Original>Repair Depot</Original>
+				<Russian>Склад Запчастей</Russian>
+			</Key>
+			<Key ID="STR_Repair_Depot_1">
+				<Original>Repair</Original>
+				<Russian>Склад Запчастей</Russian>
+			</Key>
+			<Key ID="STR_Naval_Yard">
+				<Original>Naval Yard</Original>
+				<Russian>Морской Порт</Russian>
+			</Key>
+			<Key ID="STR_Naval_Yard_1">
+				<Original>Naval</Original>
+				<Russian>Морской Порт</Russian>
+			</Key>
+			<Key ID="STR_Air_Radar">
+				<Original>Air Radar</Original>
+				<Russian>Воздушный Радар</Russian>
+			</Key>
+			<Key ID="STR_Air_Radar_1">
+				<Original>Air Radar</Original>
+				<Russian>Воздушный Радар</Russian>
+			</Key>
+	</Package>
+
 </Project>
