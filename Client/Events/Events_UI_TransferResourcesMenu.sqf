@@ -34,7 +34,7 @@ switch (_action) do {
 		};
 
 		_funds = call CTI_CL_FNC_GetPlayerFunds;
-		((uiNamespace getVariable "cti_dialog_ui_transferresourcesmenu") displayCtrl 140008) sliderSetRange [0, _funds];
+		((uiNamespace getVariable "cti_dialog_ui_transferresourcesmenu") displayCtrl 140008) sliderSetRange [0, _funds-(missionNamespace getVariable format ["CTI_ECONOMY_STARTUP_FUNDS_%1", side group player]) ];
 		((uiNamespace getVariable "cti_dialog_ui_transferresourcesmenu") displayCtrl 140008) sliderSetPosition 0;
 
 		uiNamespace setVariable ["cti_dialog_ui_transferresourcesmenu_forceupdate", false];
@@ -59,17 +59,22 @@ switch (_action) do {
 	case "onGivePlayerPressed": {
 		_amount = floor parseNumber(ctrlText ((uiNamespace getVariable "cti_dialog_ui_transferresourcesmenu") displayCtrl 140009));
 
-		if (_amount > 0 && _amount <= call CTI_CL_FNC_GetPlayerFunds) then {
+		if (_amount > 0 && _amount <= (call CTI_CL_FNC_GetPlayerFunds - (missionNamespace getVariable format ["CTI_ECONOMY_STARTUP_FUNDS_%1", side group player])) && ["PlayerHasGroup",[player]] call BIS_fnc_dynamicGroups) then {
 			if (player == (leader group player)) then {
 				_group = (uiNamespace getVariable "cti_dialog_ui_transferresourcesmenu_groups") select (lnbCurSelRow 140001);
 				if (_group != group player) then {
+					/*_get = missionNamespace getVariable format["CTI_SERVER_CLIENT_%1", _uid];
 					[_group, CTI_P_SideJoined, _amount] call CTI_CO_FNC_ChangeFunds;
 					-(_amount) call CTI_CL_FNC_ChangePlayerFunds;
+
 					[["CLIENT", leader _group], "Client_OnMessageReceived", ["funds-transfer", [_amount ,(group player)]]] call CTI_CO_FNC_NetSend;
 					hint parseText format ["<t size='1.3' color='#2394ef'>Information</t><br /><br />Transfered <t color='%1'>$%2</t> to group <t color='#55bcfc'>%3</t>.", CTI_P_Coloration_Money, _amount, _group getVariable ["cti_alias",CTI_PLAYER_DEFAULT_ALIAS]];
 					uiNamespace setVariable ["cti_dialog_ui_transferresourcesmenu_forceupdate", true];
 
-					_funds = call CTI_CL_FNC_GetPlayerFunds;
+					_funds = call CTI_CL_FNC_GetPlayerFunds;*/
+					["SERVER", "Server_Transfer_funds",[group player,((group player) getvariable "cti_funds"),  _group,_amount]] call CTI_CO_FNC_NetSend;
+					hint parseText format["<t size='1.3' color='#2394ef'>Information</t><br /><br />Request of transfer of <t color='%1'>$%2</t> to %3 sent to server", CTI_P_Coloration_Money, _amount,name leader _group];
+					0 spawn {sleep 5; hintSilent ""};
 					if (_amount > _funds) then {
 						((uiNamespace getVariable "cti_dialog_ui_transferresourcesmenu") displayCtrl 140009) ctrlSetText str round _funds;
 					};

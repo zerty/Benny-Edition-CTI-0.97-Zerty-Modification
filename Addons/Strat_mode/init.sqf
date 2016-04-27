@@ -97,7 +97,26 @@ if (CTI_IsServer) then {
 	0 execFSM "Addons\Strat_mode\FSM\TEAMSTACK_count.fsm";
 	//PVF
 	with missionNamespace do {
-
+		CTI_PVF_Server_Transfer_funds ={
+			_group_from= _this select 0;
+			_fund_from= _this select 1;
+			_group_to= _this select 2;
+			_value= _this select 3;
+			if ((_group_from getvariable "cti_funds") - (missionNamespace getVariable format ["CTI_ECONOMY_STARTUP_FUNDS_%1", side _group_from]) < _value) exitWith {};
+			[_group_to, side _group_to, _value] call CTI_CO_FNC_ChangeFunds;
+			[_group_from, side _group_from, - _value] call CTI_CO_FNC_ChangeFunds;
+			if (isPlayer leader _group_from) then {
+				_uid=getPlayerUID (leader _group_from );
+				if !(isNil "_get") then {
+					_get = missionNamespace getVariable format["CTI_SERVER_CLIENT_%1", _uid];
+					_get set [2,floor (_group_from getVariable "cti_funds")];
+					missionNamespace setVariable [format["CTI_SERVER_CLIENT_%1", _x],_get];
+				};
+			};
+			if (isPlayer leader _group_to) then {
+				[["CLIENT", leader _group_to], "Client_OnMessageReceived", ["funds-transfer", [_value ,(_group_from)]]] call CTI_CO_FNC_NetSend;
+			};
+		};
 
 		CTI_PVF_Server_Mortars_Towns = {
 			_req_p=_this;

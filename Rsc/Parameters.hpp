@@ -140,13 +140,9 @@ class Params {
 	class CTI_UNITS_FATIGUE {
 		title = $STR_CTI_UNITS_FATIGUE;
 		values[] = {0,1};
-<<<<<<< HEAD
-		texts[] = {"Disabled","Enabled"};
-		default = 0;
-=======
 		texts[] = {$STR_CTI_DISABLED,$STR_CTI_ENABLED};
-		default = 1;
->>>>>>> origin/master
+		default = 0;
+
 	};
 	class CTI_FATIGUE_RATIO {
 		title = $STR_CTI_FATIGUE_RATIO;
