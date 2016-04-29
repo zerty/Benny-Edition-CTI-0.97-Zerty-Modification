@@ -931,7 +931,7 @@ class Mission
 			leader=1;
 			skill=0.60000002;
 			text="Town0";
-			init="nullReturn = [this, ""Selakano"", resistance, 500,""Town33""] execVM ""Common\Init\Init_Location.sqf""";
+			init="nullReturn = [this, localize ""str_a3_selakano0"", resistance, 500,""Town33""] execVM ""Common\Init\Init_Location.sqf""";
 		};
 		class Item1
 		{
@@ -942,7 +942,7 @@ class Mission
 			leader=1;
 			skill=0.60000002;
 			text="Town1";
-			init="nullReturn = [this, ""Pyrgos"", resistance, 250] execVM ""Common\Init\Init_Location.sqf""";
+			init="nullReturn = [this, localize ""str_a3_pyrgos0"", resistance, 250] execVM ""Common\Init\Init_Location.sqf""";
 		};
 		class Item2
 		{
@@ -953,7 +953,7 @@ class Mission
 			leader=1;
 			skill=0.60000002;
 			text="Town2";
-			init="nullReturn = [this, ""Dorida"", resistance, 150] execVM ""Common\Init\Init_Location.sqf""";
+			init="nullReturn = [this, localize ""str_a3_dorida0"", resistance, 150] execVM ""Common\Init\Init_Location.sqf""";
 		};
 		class Item3
 		{
@@ -964,7 +964,7 @@ class Mission
 			leader=1;
 			skill=0.60000002;
 			text="Town3";
-			init="nullReturn = [this, ""Charkia"", resistance, 200] execVM ""Common\Init\Init_Location.sqf""";
+			init="nullReturn = [this, localize ""str_a3_charkia0"", resistance, 200] execVM ""Common\Init\Init_Location.sqf""";
 		};
 		class Item4
 		{
@@ -975,7 +975,7 @@ class Mission
 			leader=1;
 			skill=0.60000002;
 			text="Town6";
-			init="nullReturn = [this, ""Kalochori"", resistance, 150] execVM ""Common\Init\Init_Location.sqf""";
+			init="nullReturn = [this, localize ""str_a3_kalochori0"", resistance, 150] execVM ""Common\Init\Init_Location.sqf""";
 		};
 		class Item5
 		{
@@ -986,7 +986,7 @@ class Mission
 			leader=1;
 			skill=0.60000002;
 			text="Town4";
-			init="nullReturn = [this, ""Rodopoli"", resistance, 250] execVM ""Common\Init\Init_Location.sqf""";
+			init="nullReturn = [this, localize ""str_a3_rodopoli0"", resistance, 250] execVM ""Common\Init\Init_Location.sqf""";
 		};
 		class Item6
 		{
@@ -997,7 +997,7 @@ class Mission
 			leader=1;
 			skill=0.60000002;
 			text="Town5";
-			init="nullReturn = [this, ""Paros"", resistance, 350,""Town39""] execVM ""Common\Init\Init_Location.sqf""";
+			init="nullReturn = [this, localize ""str_a3_paros0"", resistance, 350,""Town39""] execVM ""Common\Init\Init_Location.sqf""";
 		};
 		class Item7
 		{
@@ -1008,7 +1008,7 @@ class Mission
 			leader=1;
 			skill=0.60000002;
 			text="Town7";
-			init="nullReturn = [this, ""Molos"", resistance, 145,""Town47""] execVM ""Common\Init\Init_Location.sqf""";
+			init="nullReturn = [this, localize ""str_a3_molos0"", resistance, 145,""Town47""] execVM ""Common\Init\Init_Location.sqf""";
 		};
 		class Item8
 		{
@@ -1019,7 +1019,7 @@ class Mission
 			leader=1;
 			skill=0.60000002;
 			text="Town8";
-			init="nullReturn = [this, ""Anthrakia"", resistance, 125] execVM ""Common\Init\Init_Location.sqf""";
+			init="nullReturn = [this, localize ""str_a3_anthrakia0"", resistance, 125] execVM ""Common\Init\Init_Location.sqf""";
 		};
 		class Item9
 		{
@@ -1030,7 +1030,7 @@ class Mission
 			leader=1;
 			skill=0.60000002;
 			text="Town9";
-			init="nullReturn = [this, ""Telos"", resistance, 200] execVM ""Common\Init\Init_Location.sqf""";
+			init="nullReturn = [this, localize ""str_a3_telos0"", resistance, 200] execVM ""Common\Init\Init_Location.sqf""";
 		};
 		class Item10
 		{
@@ -1041,7 +1041,7 @@ class Mission
 			leader=1;
 			skill=0.60000002;
 			text="Town12";
-			init="nullReturn = [this, ""Athira"", resistance, 300] execVM ""Common\Init\Init_Location.sqf""";
+			init="nullReturn = [this, localize ""str_a3_athira0"", resistance, 300] execVM ""Common\Init\Init_Location.sqf""";
 		};
 		class Item11
 		{
@@ -1052,7 +1052,7 @@ class Mission
 			leader=1;
 			skill=0.60000002;
 			text="Town13";
-			init="nullReturn = [this, ""Koroni"", resistance, 125] execVM ""Common\Init\Init_Location.sqf""";
+			init="nullReturn = [this, localize ""str_a3_koroni0"", resistance, 125] execVM ""Common\Init\Init_Location.sqf""";
 		};
 		class Item12
 		{
@@ -1063,7 +1063,7 @@ class Mission
 			leader=1;
 			skill=0.60000002;
 			text="Town16";
-			init="nullReturn = [this, ""Galati"", resistance, 125] execVM ""Common\Init\Init_Location.sqf""";
+			init="nullReturn = [this, localize ""str_a3_galati0"", resistance, 125] execVM ""Common\Init\Init_Location.sqf""";
 		};
 		class Item13
 		{
@@ -1074,7 +1074,7 @@ class Mission
 			leader=1;
 			skill=0.60000002;
 			text="Town21";
-			init="nullReturn = [this, ""Oreokastro"", resistance, 500,""Town38""] execVM ""Common\Init\Init_Location.sqf""";
+			init="nullReturn = [this, localize ""str_a3_oreokastro0"", resistance, 500,""Town38""] execVM ""Common\Init\Init_Location.sqf""";
 		};
 		class Item14
 		{
@@ -1085,7 +1085,7 @@ class Mission
 			leader=1;
 			skill=0.60000002;
 			text="Town17";
-			init="nullReturn = [this, ""Syrta"", resistance, 200] execVM ""Common\Init\Init_Location.sqf""";
+			init="nullReturn = [this, localize ""str_a3_syrta0"", resistance, 200] execVM ""Common\Init\Init_Location.sqf""";
 		};
 		class Item15
 		{
@@ -1096,7 +1096,7 @@ class Mission
 			leader=1;
 			skill=0.60000002;
 			text="Town18";
-			init="nullReturn = [this, ""Agios Dionysios"", resistance, 200] execVM ""Common\Init\Init_Location.sqf""";
+			init="nullReturn = [this, localize ""str_a3_agiosdionysios0"", resistance, 200] execVM ""Common\Init\Init_Location.sqf""";
 		};
 		class Item16
 		{
@@ -1107,7 +1107,7 @@ class Mission
 			leader=1;
 			skill=0.60000002;
 			text="Town14";
-			init="nullReturn = [this, ""Lakka"", resistance, 200] execVM ""Common\Init\Init_Location.sqf""";
+			init="nullReturn = [this, localize ""str_a3_lakka0"", resistance, 200] execVM ""Common\Init\Init_Location.sqf""";
 		};
 		class Item17
 		{
@@ -1118,7 +1118,7 @@ class Mission
 			leader=1;
 			skill=0.60000002;
 			text="Town15";
-			init="nullReturn = [this, ""Neochori"", resistance, 350] execVM ""Common\Init\Init_Location.sqf""";
+			init="nullReturn = [this, localize ""str_a3_neochori0"", resistance, 350] execVM ""Common\Init\Init_Location.sqf""";
 		};
 		class Item18
 		{
@@ -1129,7 +1129,7 @@ class Mission
 			leader=1;
 			skill=0.60000002;
 			text="Town19";
-			init="nullReturn = [this, ""Zaros"", resistance, 250] execVM ""Common\Init\Init_Location.sqf""";
+			init="nullReturn = [this, localize ""str_a3_zaros0"", resistance, 250] execVM ""Common\Init\Init_Location.sqf""";
 		};
 		class Item19
 		{
@@ -1140,7 +1140,7 @@ class Mission
 			leader=1;
 			skill=0.60000002;
 			text="Town20";
-			init="nullReturn = [this, ""Kavala"", resistance, 500,""Town46""] execVM ""Common\Init\Init_Location.sqf""";
+			init="nullReturn = [this, localize ""str_a3_kavala0"", resistance, 500,""Town46""] execVM ""Common\Init\Init_Location.sqf""";
 		};
 		class Item20
 		{
@@ -1151,7 +1151,7 @@ class Mission
 			leader=1;
 			skill=0.60000002;
 			text="Town11";
-			init="nullReturn = [this, ""Airbase"", resistance, 300] execVM ""Common\Init\Init_Location.sqf""";
+			init="nullReturn = [this, localize ""str_a3_airbase010"", resistance, 300] execVM ""Common\Init\Init_Location.sqf""";
 		};
 		class Item21
 		{
@@ -1162,7 +1162,7 @@ class Mission
 			leader=1;
 			skill=0.60000002;
 			text="Town10";
-			init="nullReturn = [this, ""Military"", resistance, 300] execVM ""Common\Init\Init_Location.sqf""";
+			init="nullReturn = [this, localize ""str_a3_military010"", resistance, 300] execVM ""Common\Init\Init_Location.sqf""";
 		};
 		class Item22
 		{
@@ -1173,7 +1173,7 @@ class Mission
 			leader=1;
 			skill=0.60000002;
 			text="Town22";
-			init="nullReturn = [this, ""Chalkeia"", resistance, 250] execVM ""Common\Init\Init_Location.sqf""";
+			init="nullReturn = [this, localize ""str_a3_chalkeia0"", resistance, 250] execVM ""Common\Init\Init_Location.sqf""";
 		};
 		class Item23
 		{
@@ -1184,7 +1184,7 @@ class Mission
 			leader=1;
 			skill=0.60000002;
 			text="Town23";
-			init="nullReturn = [this, ""Ifestiona"", resistance, 150] execVM ""Common\Init\Init_Location.sqf""";
+			init="nullReturn = [this, localize ""str_a3_ifestiona0"", resistance, 150] execVM ""Common\Init\Init_Location.sqf""";
 		};
 		class Item24
 		{
@@ -1195,7 +1195,7 @@ class Mission
 			leader=1;
 			skill=0.60000002;
 			text="Town24";
-			init="nullReturn = [this, ""Negades"", resistance, 200] execVM ""Common\Init\Init_Location.sqf""";
+			init="nullReturn = [this, localize ""str_a3_negades0"", resistance, 200] execVM ""Common\Init\Init_Location.sqf""";
 		};
 		class Item25
 		{
@@ -1206,7 +1206,7 @@ class Mission
 			leader=1;
 			skill=0.60000002;
 			text="Town25";
-			init="nullReturn = [this, ""Sofia"", resistance, 250] execVM ""Common\Init\Init_Location.sqf""";
+			init="nullReturn = [this, localize ""str_a3_sofia0"", resistance, 250] execVM ""Common\Init\Init_Location.sqf""";
 		};
 		class Item26
 		{
@@ -1217,7 +1217,7 @@ class Mission
 			leader=1;
 			skill=0.60000002;
 			text="Town26";
-			init="nullReturn = [this, ""Panagia"", resistance, 250] execVM ""Common\Init\Init_Location.sqf""";
+			init="nullReturn = [this, localize ""str_a3_panagia0"", resistance, 250] execVM ""Common\Init\Init_Location.sqf""";
 		};
 		class Item27
 		{
@@ -1228,7 +1228,7 @@ class Mission
 			leader=1;
 			skill=0.60000002;
 			text="Town27";
-			init="nullReturn = [this, ""Kore"", resistance, 300] execVM ""Common\Init\Init_Location.sqf""";
+			init="nullReturn = [this, localize ""str_a3_kore0"", resistance, 300] execVM ""Common\Init\Init_Location.sqf""";
 		};
 		class Item28
 		{
@@ -1239,7 +1239,7 @@ class Mission
 			leader=1;
 			skill=0.60000002;
 			text="Town28";
-			init="nullReturn = [this, ""Sand Airfield"", resistance, 500] execVM ""Common\Init\Init_Location.sqf""";
+			init="nullReturn = [this, localize ""str_a3_almyra0"", resistance, 500] execVM ""Common\Init\Init_Location.sqf""";
 		};
 		class Item29
 		{
@@ -1250,7 +1250,7 @@ class Mission
 			leader=1;
 			skill=0.60000002;
 			text="Town29";
-			init="nullReturn = [this, ""Makrynisi"", resistance, 25] execVM ""Common\Init\Init_Location.sqf""";
+			init="nullReturn = [this, localize ""str_a3_makrynisiisland0"", resistance, 25] execVM ""Common\Init\Init_Location.sqf""";
 		};
 		class Item30
 		{
@@ -1261,7 +1261,7 @@ class Mission
 			leader=1;
 			skill=0.60000002;
 			text="Town30";
-			init="nullReturn = [this, ""Faronaki"", resistance, 150] execVM ""Common\Init\Init_Location.sqf""";
+			init="nullReturn = [this, localize ""str_a3_faronaki0"", resistance, 150] execVM ""Common\Init\Init_Location.sqf""";
 		};
 		class Item31
 		{
@@ -1272,7 +1272,7 @@ class Mission
 			leader=1;
 			skill=0.60000002;
 			text="Town32";
-			init="nullReturn = [this, ""Kalithea"", resistance, 125] execVM ""Common\Init\Init_Location.sqf""";
+			init="nullReturn = [this, localize ""str_a3_kalithea0"", resistance, 125] execVM ""Common\Init\Init_Location.sqf""";
 		};
 		class Item32
 		{
@@ -1283,7 +1283,7 @@ class Mission
 			leader=1;
 			skill=0.60000002;
 			text="Town33";
-			init="nullReturn = [this, ""Vikos"", resistance, 145,""Town42""] execVM ""Common\Init\Init_Location.sqf""";
+			init="nullReturn = [this, localize ""str_a3_vikos0"", resistance, 145,""Town42""] execVM ""Common\Init\Init_Location.sqf""";
 		};
 		class Item33
 		{
@@ -1294,7 +1294,7 @@ class Mission
 			leader=1;
 			skill=0.60000002;
 			text="Town31";
-			init="nullReturn = [this, ""Ekali"", resistance, 200,""Town33""] execVM ""Common\Init\Init_Location.sqf""";
+			init="nullReturn = [this, localize ""str_a3_ekali0"", resistance, 200,""Town33""] execVM ""Common\Init\Init_Location.sqf""";
 		};
 		class Item34
 		{
@@ -1305,7 +1305,7 @@ class Mission
 			leader=1;
 			skill=0.60000002;
 			text="Town34";
-			init="nullReturn = [this, ""Frini"", resistance, 175] execVM ""Common\Init\Init_Location.sqf""";
+			init="nullReturn = [this, localize ""str_a3_frini0"", resistance, 175] execVM ""Common\Init\Init_Location.sqf""";
 		};
 		class Item35
 		{
@@ -1316,7 +1316,7 @@ class Mission
 			leader=1;
 			skill=0.60000002;
 			text="Town35";
-			init="nullReturn = [this, ""Nychi"", resistance, 150] execVM ""Common\Init\Init_Location.sqf""";
+			init="nullReturn = [this, localize ""str_a3_nychi0"", resistance, 150] execVM ""Common\Init\Init_Location.sqf""";
 		};
 		class Item36
 		{
@@ -1327,7 +1327,7 @@ class Mission
 			leader=1;
 			skill=0.60000002;
 			text="Town36";
-			init="nullReturn = [this, ""Theater Ruins"", resistance, 150] execVM ""Common\Init\Init_Location.sqf""";
+			init="nullReturn = [this, localize ""STR_Map_Theater_Ruins"", resistance, 150] execVM ""Common\Init\Init_Location.sqf""";
 		};
 		class Item37
 		{
@@ -1338,7 +1338,7 @@ class Mission
 			leader=1;
 			skill=0.60000002;
 			text="Town37";
-			init="nullReturn = [this, ""Military Outpost"", resistance, 250] execVM ""Common\Init\Init_Location.sqf""";
+			init="nullReturn = [this, localize ""STR_Map_Military_Outpost"", resistance, 250] execVM ""Common\Init\Init_Location.sqf""";
 		};
 		class Item38
 		{
@@ -1349,7 +1349,7 @@ class Mission
 			leader=1;
 			skill=0.60000002;
 			text="Town38";
-			init="nullReturn = [this, ""North Airfield"", resistance, 500,""Town41""] execVM ""Common\Init\Init_Location.sqf""";
+			init="nullReturn = [this, localize ""STR_Map_North_Airfield"", resistance, 500,""Town41""] execVM ""Common\Init\Init_Location.sqf""";
 		};
 		class Item39
 		{
@@ -1360,7 +1360,7 @@ class Mission
 			leader=1;
 			skill=0.60000002;
 			text="Town39";
-			init="nullReturn = [this, ""Loannina"", resistance, 200] execVM ""Common\Init\Init_Location.sqf""";
+			init="nullReturn = [this, localize ""str_a3_ioannina0"", resistance, 200] execVM ""Common\Init\Init_Location.sqf""";
 		};
 		class Item40
 		{
@@ -1371,7 +1371,7 @@ class Mission
 			leader=1;
 			skill=0.60000002;
 			text="Town40";
-			init="nullReturn = [this, ""AAC Airfield"", resistance, 500] execVM ""Common\Init\Init_Location.sqf""";
+			init="nullReturn = [this, localize ""str_a3_aacairfield0"", resistance, 500] execVM ""Common\Init\Init_Location.sqf""";
 		};
 		class Item41
 		{
@@ -1382,7 +1382,7 @@ class Mission
 			leader=1;
 			skill=0.60000002;
 			text="Town41";
-			init="nullReturn = [this, ""Molos Airfield"", resistance, 500] execVM ""Common\Init\Init_Location.sqf""";
+			init="nullReturn = [this, localize ""str_a3_molosairfield0"", resistance, 500] execVM ""Common\Init\Init_Location.sqf""";
 		};
 		class Item42
 		{
@@ -1393,7 +1393,7 @@ class Mission
 			leader=1;
 			skill=0.60000002;
 			text="Town42";
-			init="nullReturn = [this, ""Panochori"", resistance, 200] execVM ""Common\Init\Init_Location.sqf""";
+			init="nullReturn = [this, localize ""str_a3_panochori0"", resistance, 200] execVM ""Common\Init\Init_Location.sqf""";
 		};
 		class Item43
 		{
@@ -1404,7 +1404,7 @@ class Mission
 			leader=1;
 			skill=0.60000002;
 			text="Town43";
-			init="nullReturn = [this, ""Hotel Complex"", resistance, 200] execVM ""Common\Init\Init_Location.sqf""";
+			init="nullReturn = [this, localize ""STR_Map_Hotel_Complex"", resistance, 200] execVM ""Common\Init\Init_Location.sqf""";
 		};
 		class Item44
 		{
@@ -1415,7 +1415,7 @@ class Mission
 			leader=1;
 			skill=0.60000002;
 			text="Town44";
-			init="nullReturn = [this, ""Stadium"", resistance, 140] execVM ""Common\Init\Init_Location.sqf""";
+			init="nullReturn = [this, localize ""str_a3_stadium0"", resistance, 140] execVM ""Common\Init\Init_Location.sqf""";
 		};
 		class Item45
 		{
@@ -1426,7 +1426,7 @@ class Mission
 			leader=1;
 			skill=0.60000002;
 			text="Town45";
-			init="nullReturn = [this, ""Limni"", resistance, 140] execVM ""Common\Init\Init_Location.sqf""";
+			init="nullReturn = [this, localize ""str_a3_limni0"", resistance, 140] execVM ""Common\Init\Init_Location.sqf""";
 		};
 		class Item46
 		{
@@ -1437,7 +1437,7 @@ class Mission
 			leader=1;
 			skill=0.60000002;
 			text="Town46";
-			init="nullReturn = [this, ""Agios Konstantinos"", resistance, 140,""Town21""] execVM ""Common\Init\Init_Location.sqf""";
+			init="nullReturn = [this, localize ""str_a3_agioskonstantinos0"", resistance, 140,""Town21""] execVM ""Common\Init\Init_Location.sqf""";
 		};
 		class Item47
 		{
@@ -1448,7 +1448,7 @@ class Mission
 			leader=1;
 			skill=0.60000002;
 			text="Town47";
-			init="nullReturn = [this, ""Feres"", resistance, 140] execVM ""Common\Init\Init_Location.sqf""";
+			init="nullReturn = [this, localize ""str_a3_feres0"", resistance, 140] execVM ""Common\Init\Init_Location.sqf""";
 		};
 		class Item48
 		{
@@ -1459,7 +1459,7 @@ class Mission
 			leader=1;
 			skill=0.60000002;
 			text="Town48";
-			init="nullReturn = [this, ""The dump"", resistance, 175,""Town17""] execVM ""Common\Init\Init_Location.sqf""";
+			init="nullReturn = [this, localize ""str_a3_dump0"", resistance, 175,""Town17""] execVM ""Common\Init\Init_Location.sqf""";
 		};
 		class Item49
 		{
@@ -1470,7 +1470,7 @@ class Mission
 			leader=1;
 			skill=0.60000002;
 			text="Town49";
-			init="nullReturn = [this, ""Nidasos"", resistance, 145] execVM ""Common\Init\Init_Location.sqf""";
+			init="nullReturn = [this, localize ""str_a3_nidasos0"", resistance, 145] execVM ""Common\Init\Init_Location.sqf""";
 		};
 	};
 	class Markers
