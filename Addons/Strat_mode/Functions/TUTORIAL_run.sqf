@@ -31,9 +31,8 @@ if (!(CTI_P_Jailed)) then {
 	while {isNull _spawn_at} do {
 		_hq = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideHQ;
 		_structures = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideStructures;
-
 		_spawn_at = _hq;
-		if (count _structures > 0) then { _spawn_at = [_hq, _structures] call CTI_CO_FNC_GetClosestEntity };
+		if (count _structures > 0) then {  _spawn_at = [_hq, _structures] call CTI_CO_FNC_GetClosestEntity; if (isnull _spawn_at) then { _spawn_at=_hq;} };
 		sleep 1;
 	};
 	_spawn_at = [_spawn_at, 8, 30] call CTI_CO_FNC_GetRandomPosition;
