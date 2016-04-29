@@ -1519,11 +1519,15 @@
 			</Key>
 			<Key ID="STR_Defenses_On">
 				<Original>Defenses Auto-Manning: On (%2/ %3)</Original>
-				<Russian>Укомплектование обороны: Вкл (%2/ %3)</Russian>
+				<Russian>Комплектование ботами:Вкл(%2/%3)</Russian>
 			</Key>
 			<Key ID="STR_Defenses_Off">
 				<Original>Defenses Auto-Manning: Off (%2/ %3)</Original>
-				<Russian>Укомплектование обороны: Выкл (%2/ %3)</Russian>
+				<Russian>Комплектование ботами:Выкл(%2/%3)</Russian>
+			</Key>
+			<Key ID="STR_Defenses_Tooltip">
+				<Original>Adds bots from the Barracks to static defense</Original>
+				<Russian>Добавляет ботов из Казарм на стац.установки</Russian>
 			</Key>
 			<Key ID="STR_Add_Worker">
 				<Original>Add Worker ($%1)</Original>
@@ -2328,5 +2332,4 @@
 				<Russian>Воздушный Радар</Russian>
 			</Key>
 	</Package>
-
 </Project>
