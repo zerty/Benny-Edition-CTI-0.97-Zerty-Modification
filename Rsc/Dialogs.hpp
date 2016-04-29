@@ -671,6 +671,7 @@ class CTI_RscBuildMenu_Tablet {
 			h = "SafeZoneH * 0.03";
 
 			text = "";
+			tooltip = $STR_Defenses_Tooltip;
 			action = "['onAutoManning'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_BuildMenu.sqf'";
 		};
 		class CTI_Menu_Control_BuildDefense : CTI_Menu_Control_AutoAlign {
