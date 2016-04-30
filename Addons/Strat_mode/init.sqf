@@ -102,9 +102,18 @@ if (CTI_IsServer) then {
 			_fund_from= _this select 1;
 			_group_to= _this select 2;
 			_value= _this select 3;
-			if ((_group_from getvariable "cti_funds") - (missionNamespace getVariable format ["CTI_ECONOMY_STARTUP_FUNDS_%1", side _group_from]) < _value) exitWith {};
-			[_group_to, side _group_to, _value] call CTI_CO_FNC_ChangeFunds;
-			[_group_from, side _group_from, - _value] call CTI_CO_FNC_ChangeFunds;
+			_com= (side _group_from) call CTI_CO_FNC_GetSideCommander;
+			if (((_group_from getvariable "cti_funds") - (missionNamespace getVariable format ["CTI_ECONOMY_STARTUP_FUNDS_%1", side _group_from]) < _value && _group_from != _com )|| (_group_from == _com && ((side _group_from) call CTI_CO_FNC_GetFundsCommander) < _value )  ) exitWith {};
+			if (_group_to != _com) then {[_group_to, side _group_to, _value] call CTI_CO_FNC_ChangeFunds;
+			} else {
+				[(side _group_to), _value] call CTI_CO_FNC_ChangeFundsCommander;
+			};
+			if (_group_from != _com) then {[_group_from, side _group_from,  - _value] call CTI_CO_FNC_ChangeFunds;
+			} else {
+				[(side _group_from), - _value] call CTI_CO_FNC_ChangeFundsCommander;
+			};
+
+
 			if (isPlayer leader _group_from) then {
 				_uid=getPlayerUID (leader _group_from );
 				if !(isNil "_get") then {
