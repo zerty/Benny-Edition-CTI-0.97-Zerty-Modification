@@ -579,7 +579,7 @@
 			</Key>
 			<Key ID="STR_CTI_TOWNS_RESISTANCE_INACTIVE_MAX">
 				<Original>Zerty: TOWNS : Resistance despawn Timer</Original>
-				<Russian>Дизактивация захваченного города</Russian>
+				<Russian>Дезактивация захваченного города</Russian>
 			</Key>
 			<Key ID="STR_CTI_TOWNS_SHOPS">
 				<Original>Zerty: TOWNS : Shop price ratio</Original>
@@ -983,7 +983,7 @@
 			</Key>
 			<Key ID="STR_Control_Disactivate">
 				<Original>Force disactivation</Original>
-				<Russian>Дезактивация войск</Russian>
+				<Russian>Дезактивация города</Russian>
 			</Key>
 			<Key ID="STR_Control_Fact">
 				<Original>Units</Original>
