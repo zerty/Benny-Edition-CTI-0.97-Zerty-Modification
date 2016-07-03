@@ -1519,11 +1519,11 @@
 			</Key>
 			<Key ID="STR_Defenses_On">
 				<Original>Defenses Auto-Manning: On (%2/ %3)</Original>
-				<Russian>Комплектование:Вкл (%2/%3)</Russian>
+				<Russian>Автооборона:Вкл (%2/%3)</Russian>
 			</Key>
 			<Key ID="STR_Defenses_Off">
 				<Original>Defenses Auto-Manning: Off (%2/ %3)</Original>
-				<Russian>Комплектование:Выкл (%2/%3)</Russian>
+				<Russian>Автооборона:Выкл (%2/%3)</Russian>
 			</Key>
 			<Key ID="STR_Defenses_Tooltip">
 				<Original>Adds bots from the Barracks to static defense</Original>
@@ -1794,6 +1794,12 @@
 			<Key ID="STR_Begin_Tutorial">
 				<Original>Sending to tutorial area.</Original>
 				<Russian>Отправка в зону обучения</Russian>
+			</Key>
+	</Package>
+	<Package name="REV_obj_init">
+			<Key ID="STR_Action_Suicide">
+				<Original>&lt;t color='#C90000'&gt;Suicide&lt;/t&gt;</Original>
+				<Russian>&lt;t color='#C90000'&gt;Суицид&lt;/t&gt;</Russian>
 			</Key>
 	</Package>
 	<Package name="Client_OnPlayerFired">
@@ -2098,6 +2104,28 @@
 			<Key ID="STR_Net_UpVeh">
 				<Original>Net: %1 &lt;br /&gt;---------&lt;br /&gt;</Original>
 				<Russian>Сеть: %1 &lt;br /&gt;---------&lt;br /&gt;</Russian>
+			</Key>
+	</Package>	
+	<Package name="atm_airdrop">
+			<Key ID="STR_HALO_No_Funds">
+				<Original>Not enough funds</Original>
+				<Russian>Недостаточно средств для этого!</Russian>
+			</Key>
+			<Key ID="STR_HALO_Info">
+				<Original>&lt;t size='1.3' color='#2394ef'&gt;HALO JUMP&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Select your destination ! &lt;br /&gt; &lt;t color='#ccffaf'&gt; You can only jump in the yellow circle around owned towns.&lt;/t&gt;</Original>
+				<Russian>&lt;t size='1.3' color='#2394ef'&gt;HALO ПРЫЖОК&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Выберите место назначения!&lt;br/&gt; &lt;t color='#ccffaf'&gt; Вы можете прыгнуть только в желтую зону у ваших городов.&lt;/t&gt;</Russian>
+			</Key>
+			<Key ID="STR_HALO_Cancel">
+				<Original>Halo jump canceled.</Original>
+				<Russian>HALO Прыжок отменён</Russian>
+			</Key>
+			<Key ID="STR_HALO_Load">
+				<Original>&lt;t size='1.3' color='#2394ef'&gt;HALO JUMP&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Loading your gear back &lt;br /&gt;</Original>
+				<Russian>&lt;t size='1.3' color='#2394ef'&gt;HALO ПРЫЖОК&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Загружаем снаряжение до прыжка&lt;br /&gt;</Russian>
+			</Key>
+			<Key ID="STR_HALO_Gear_Load">
+				<Original>&lt;t size='1.3' color='#2394ef'&gt;HALO JUMP&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;GEAR LOADED &lt;br /&gt;</Original>
+				<Russian>&lt;t size='1.3' color='#2394ef'&gt;HALO ПРЫЖОК&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;СНАРЯЖЕНИЕ ЗАГРУЖЕНО&lt;br /&gt;</Russian>
 			</Key>
 	</Package>
 </Project>
