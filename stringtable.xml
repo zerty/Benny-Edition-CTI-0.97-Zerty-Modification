@@ -579,7 +579,7 @@
 			</Key>
 			<Key ID="STR_CTI_TOWNS_RESISTANCE_INACTIVE_MAX">
 				<Original>Zerty: TOWNS : Resistance despawn Timer</Original>
-				<Russian>Дизактивация захваченного города</Russian>
+				<Russian>Дезактивация захваченного города</Russian>
 			</Key>
 			<Key ID="STR_CTI_TOWNS_SHOPS">
 				<Original>Zerty: TOWNS : Shop price ratio</Original>
@@ -911,7 +911,7 @@
 			</Key>
 			<Key ID="STR_Icon_DisDef">
 				<Original>Dismount Defense</Original>
-				<Russian>Демнотировать Оборону</Russian>
+				<Russian>Демонтировать Оборону</Russian>
 			</Key>
 			<Key ID="STR_Menu_Options_OnlineHelp">
 				<Original>Online Help</Original>
@@ -983,7 +983,7 @@
 			</Key>
 			<Key ID="STR_Control_Disactivate">
 				<Original>Force disactivation</Original>
-				<Russian>Дезактивация войск</Russian>
+				<Russian>Дезактивация города</Russian>
 			</Key>
 			<Key ID="STR_Control_Fact">
 				<Original>Units</Original>
@@ -1519,15 +1519,15 @@
 			</Key>
 			<Key ID="STR_Defenses_On">
 				<Original>Defenses Auto-Manning: On (%2/ %3)</Original>
-				<Russian>Комплектование ботами:Вкл(%2/%3)</Russian>
+				<Russian>Автооборона:Вкл (%2/%3)</Russian>
 			</Key>
 			<Key ID="STR_Defenses_Off">
 				<Original>Defenses Auto-Manning: Off (%2/ %3)</Original>
-				<Russian>Комплектование ботами:Выкл(%2/%3)</Russian>
+				<Russian>Автооборона:Выкл (%2/%3)</Russian>
 			</Key>
 			<Key ID="STR_Defenses_Tooltip">
 				<Original>Adds bots from the Barracks to static defense</Original>
-				<Russian>Добавляет ботов из Казарм на стац.установки</Russian>
+				<Russian>Добавляет ботов из Казарм на стац.установки для обороны базы</Russian>
 			</Key>
 			<Key ID="STR_Add_Worker">
 				<Original>Add Worker ($%1)</Original>
@@ -1665,6 +1665,10 @@
 				<Original>&lt;t size='1.3' color='#2394ef'&gt;Information&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Invalid operation.</Original>
 				<Russian>&lt;t size='1.3' color='#2394ef'&gt;Информация&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Неверная операция.</Russian>
 			</Key>
+			<Key ID="STR_Request_Of_Transfer">
+				<Original>&lt;t size='1.3' color='#2394ef'&gt;Information&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Request of transfer of &lt;t color='%1'&gt;$%2&lt;/t&gt; to %3 sent to server</Original>
+				<Russian>&lt;t size='1.3' color='#2394ef'&gt;Информация&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Запрос о передаче &lt;t color='%1'&gt;$%2&lt;/t&gt; %3 отправлен серверу</Russian>
+			</Key>
 	</Package>
 	<Package name="Action_RepairHQ">
 			<Key ID="STR_RepairHQ">
@@ -1739,7 +1743,7 @@
 			</Key>
 			<Key ID="STR_Structure_Teamkill_Attempt">
 				<Original>Player %1 from group %2 tried to place an explosive near a friendly %3! (the explosive was removed)</Original>
-				<Russian>Игрок %1 из группы %2 пытался заложить вызрывчатку рядом с %3! (взрывчатка была обезврежена)</Russian>
+				<Russian>Игрок %1 из группы %2 пытался заложить взрывчатку рядом с %3! (взрывчатка была обезврежена)</Russian>
 			</Key>
 			<Key ID="STR_Teamkill">
 				<Original>Watch your fire! you're shooting on friendly!</Original>
@@ -1796,6 +1800,12 @@
 				<Russian>Отправка в зону обучения</Russian>
 			</Key>
 	</Package>
+	<Package name="REV_obj_init">
+			<Key ID="STR_Action_Suicide">
+				<Original>&lt;t color='#C90000'&gt;Suicide&lt;/t&gt;</Original>
+				<Russian>&lt;t color='#C90000'&gt;Суицид&lt;/t&gt;</Russian>
+			</Key>
+	</Package>
 	<Package name="Client_OnPlayerFired">
 			<Key ID="STR_Missile_Range">
 				<Original>&lt;t size='1.3' color='#2394ef'&gt;BE AWARE&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Missile range is&lt;br /&gt; &lt;t color='#ccffaf'&gt; %1 Meters &lt;/t&gt;</Original>
@@ -1806,6 +1816,14 @@
 			<Key ID="STR_Buy_Notify">
 				<Original>&lt;t size='1.3' color='#2394ef'&gt;Information&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;%4&lt;t&gt;Your &lt;t color='#ccffaf'&gt;%1&lt;/t&gt; has arrived from the &lt;t color='#fcffaf'&gt;%2&lt;/t&gt; at grid &lt;t color='#beafff'&gt;%3&lt;/t&gt;&lt;/t&gt;</Original>
 				<Russian>&lt;t size='1.3' color='#2394ef'&gt;Информация&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;%4&lt;t&gt;Ваш &lt;t color='#ccffaf'&gt;%1&lt;/t&gt; прибыл с &lt;t color='#fcffaf'&gt;%2&lt;/t&gt; в коорд. &lt;t color='#beafff'&gt;%3&lt;/t&gt;&lt;/t&gt;</Russian>
+			</Key>
+			<Key ID="STR_OnPurchase_NotFunds">
+				<Original>&lt;t size='1.3' color='#BB0000'&gt;Information&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;%2&lt;t&gt;Your &lt;t color='#ccffaf'&gt;%1&lt;/t&gt; order has been &lt;t color='#fcffaf'&gt;Denied&lt;/t&gt;, not enougth funds.</Original>
+				<Russian>&lt;t size='1.3' color='#BB0000'&gt;Информация&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;%2&lt;t&gt;Ваш заказ &lt;t color='#ccffaf'&gt;%1&lt;/t&gt; &lt;t color='#fcffaf'&gt;Отклонён&lt;/t&gt;, недостаточно средств.</Russian>
+			</Key>
+			<Key ID="STR_OnPurchase_TooMuchUnits">
+				<Original>&lt;t size='1.3' color='#BB0000'&gt;Information&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;%2&lt;t&gt;Your &lt;t color='#ccffaf'&gt;%1&lt;/t&gt; order has been &lt;t color='#fcffaf'&gt;Denied&lt;/t&gt;, too much units in group.</Original>
+				<Russian>&lt;t size='1.3' color='#BB0000'&gt;Информация&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;%2&lt;t&gt;Ваш заказ &lt;t color='#ccffaf'&gt;%1&lt;/t&gt; &lt;t color='#fcffaf'&gt;Отклонён&lt;/t&gt;, слишко много юнитов в группе.</Russian>
 			</Key>
 	</Package>
 	<Package name="Client_OnStructureConstructed">
@@ -2090,6 +2108,28 @@
 			<Key ID="STR_Net_UpVeh">
 				<Original>Net: %1 &lt;br /&gt;---------&lt;br /&gt;</Original>
 				<Russian>Сеть: %1 &lt;br /&gt;---------&lt;br /&gt;</Russian>
+			</Key>
+	</Package>	
+	<Package name="atm_airdrop">
+			<Key ID="STR_HALO_No_Funds">
+				<Original>Not enough funds</Original>
+				<Russian>Недостаточно средств для этого!</Russian>
+			</Key>
+			<Key ID="STR_HALO_Info">
+				<Original>&lt;t size='1.3' color='#2394ef'&gt;HALO JUMP&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Select your destination ! &lt;br /&gt; &lt;t color='#ccffaf'&gt; You can only jump in the yellow circle around owned towns.&lt;/t&gt;</Original>
+				<Russian>&lt;t size='1.3' color='#2394ef'&gt;HALO ПРЫЖОК&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Выберите место назначения!&lt;br/&gt; &lt;t color='#ccffaf'&gt; Вы можете прыгнуть только в желтую зону у ваших городов.&lt;/t&gt;</Russian>
+			</Key>
+			<Key ID="STR_HALO_Cancel">
+				<Original>Halo jump canceled.</Original>
+				<Russian>HALO Прыжок отменён</Russian>
+			</Key>
+			<Key ID="STR_HALO_Load">
+				<Original>&lt;t size='1.3' color='#2394ef'&gt;HALO JUMP&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Loading your gear back &lt;br /&gt;</Original>
+				<Russian>&lt;t size='1.3' color='#2394ef'&gt;HALO ПРЫЖОК&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Загружаем снаряжение до прыжка&lt;br /&gt;</Russian>
+			</Key>
+			<Key ID="STR_HALO_Gear_Load">
+				<Original>&lt;t size='1.3' color='#2394ef'&gt;HALO JUMP&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;GEAR LOADED &lt;br /&gt;</Original>
+				<Russian>&lt;t size='1.3' color='#2394ef'&gt;HALO ПРЫЖОК&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;СНАРЯЖЕНИЕ ЗАГРУЖЕНО&lt;br /&gt;</Russian>
 			</Key>
 	</Package>
 </Project>

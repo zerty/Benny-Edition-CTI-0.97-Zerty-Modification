@@ -849,6 +849,13 @@ class RscMapControl {
 		color[] = {0.3,0.1,0.9,1};
 		size = 50;
 	};
+	class LineMarker {
+        lineDistanceMin = 3e-005;
+        lineLengthMin = 5;
+        lineWidthThick = 0.014;
+        lineWidthThin = 0.008;
+        textureComboBoxColor = "#(argb,8,8,3)color(1,1,1,1)";
+    };
 };
 class RscTablet   {
 	type = CT_STATIC;

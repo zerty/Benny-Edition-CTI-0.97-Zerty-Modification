@@ -73,7 +73,7 @@ switch (_action) do {
 
 					_funds = call CTI_CL_FNC_GetPlayerFunds;*/
 					["SERVER", "Server_Transfer_funds",[group player,((group player) getvariable "cti_funds"),  _group,_amount]] call CTI_CO_FNC_NetSend;
-					hint parseText format["<t size='1.3' color='#2394ef'>Information</t><br /><br />Request of transfer of <t color='%1'>$%2</t> to %3 sent to server", CTI_P_Coloration_Money, _amount,name leader _group];
+					hint parseText format[localize "STR_Request_Of_Transfer", CTI_P_Coloration_Money, _amount,name leader _group];
 					0 spawn {sleep 5; hintSilent ""};
 					/*if (_amount > _funds) then {
 						((uiNamespace getVariable "cti_dialog_ui_transferresourcesmenu") displayCtrl 140009) ctrlSetText str round _funds;

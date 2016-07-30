@@ -91,7 +91,10 @@ if !(_model isKindOf "Man") then { //--- Add the vehicle crew cost if applicable
 _funds = [group (_req_buyer), CTI_P_SideJoined] call CTI_CO_FNC_GetFunds;
 
 
-if (_funds < _cost) exitWith { ["SERVER", "Answer_Purchase", [_req_seed, _req_classname, _req_buyer, _factory]] call CTI_CO_FNC_NetSend; hint parseText format ["<t size='1.3' color='#BB0000'>Information</t><br /><br />%2<t>Your <t color='#ccffaf'>%1</t> order has been <t color='#fcffaf'>Denied</t>, not enougth funds.", _var_classname select CTI_UNIT_LABEL, _picture]; };
+if (_funds < _cost) exitWith {
+	["SERVER", "Answer_Purchase", [_req_seed, _req_classname, _req_buyer, _factory]] call CTI_CO_FNC_NetSend;
+	hint parseText format [localize "STR_OnPurchase_NotFunds", _var_classname select CTI_UNIT_LABEL, _picture];
+};
 // [_req_buyer, CTI_P_SideJoined, -_cost] call CTI_CO_FNC_ChangeFunds; //--- Change the buyer's funds
 
 while { time <= _req_time_out && alive _factory } do { sleep .25 };
@@ -111,12 +114,18 @@ if !(_req_classname isKindOf "Man") then {
 
 //--- Soft limit (skip for empty vehicles)
 if !(_process) then { if (((count units (group player))- ({isplayer _x} count units (group player))) <= CTI_PLAYERS_GROUPSIZE) then { _process = true }};
-if !(_process) exitWith { ["SERVER", "Answer_Purchase", [_req_seed, _req_classname, _req_buyer, _factory]] call CTI_CO_FNC_NetSend ; hint parseText format ["<t size='1.3' color='#BB0000'>Information</t><br /><br />%2<t>Your <t color='#ccffaf'>%1</t> order has been <t color='#fcffaf'>Denied</t>, too much units in group.", _var_classname select CTI_UNIT_LABEL, _picture];}; //--- Can't do it but we answer to the server.
+if !(_process) exitWith {
+	["SERVER", "Answer_Purchase", [_req_seed, _req_classname, _req_buyer, _factory]] call CTI_CO_FNC_NetSend ;
+	hint parseText format [localize "STR_OnPurchase_TooMuchUnits", _var_classname select CTI_UNIT_LABEL, _picture]; //--- Can't do it but we answer to the server.
+};
 
 //--- Check funds
 
 _funds = [group(_req_buyer), CTI_P_SideJoined] call CTI_CO_FNC_GetFunds;
-if (_funds < _cost) exitWith { ["SERVER", "Answer_Purchase", [_req_seed, _req_classname, _req_buyer, _factory]] call CTI_CO_FNC_NetSend; hint parseText format ["<t size='1.3' color='#BB0000'>Information</t><br /><br />%2<t>Your <t color='#ccffaf'>%1</t> order has been <t color='#fcffaf'>Denied</t>, not enougth funds.", _var_classname select CTI_UNIT_LABEL, _picture]; };
+if (_funds < _cost) exitWith {
+	["SERVER", "Answer_Purchase", [_req_seed, _req_classname, _req_buyer, _factory]] call CTI_CO_FNC_NetSend;
+	hint parseText format [localize "STR_OnPurchase_NotFunds", _var_classname select CTI_UNIT_LABEL, _picture];
+};
 [group(_req_buyer), CTI_P_SideJoined, -_cost] call CTI_CO_FNC_ChangeFunds; //--- Change the buyer's funds
 
 if (CTI_Log_Level >= CTI_Log_Information) then { ["INFORMATION", "FILE: Client\Functions\Client_OnPurchaseOrderReceived.sqf", format["Purchase order concerning classname [%1] with seed [%2] from [%3] on factory [%4, (%5)] is done. Processing the creation...", _req_classname, _req_seed, _req_buyer, _factory, _factory getVariable "cti_structure_type"]] call CTI_CO_FNC_Log };
