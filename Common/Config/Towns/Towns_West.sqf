@@ -12,7 +12,7 @@ with missionNamespace do {
 	WEST_SOLDIER_MEDIC = ["B_medic_F", 1];
 	// WEST_SOLDIER_MG = "soldiermg";
 	WEST_SOLDIER_PILOT = ["B_helipilot_F", 1];
-	WEST_SOLDIER_SQUADLEADER = ["B_Soldier_SL_F", 1];
+	WEST_SOLDIER_SQUADLEADER = ["B_Soldier_TL_F", 1];
 	WEST_SOLDIER_SNIPER = ["B_Soldier_M_F", 1];
 	WEST_SOLDIER_TEAMLEADER = ["B_Soldier_TL_F", 1];
 	
