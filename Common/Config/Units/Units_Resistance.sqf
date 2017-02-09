@@ -11,10 +11,28 @@ _f = []; //--- Built from Factory.
 _s = []; //--- Script
 
 //--- Infantry
+_c = _c + ['I_Soldier_F'];
+_p = _p + [''];
+_n = _n + [''];
+_o = _o + [70];
+_t = _t + [5];
+_u = _u + [0];
+_f = _f + [CTI_FACTORY_BARRACKS];
+_s = _s + [""];
+
+_c = _c + ['I_crew_F'];
+_p = _p + [''];
+_n = _n + [''];
+_o = _o + [70];
+_t = _t + [5];
+_u = _u + [0];
+_f = _f + [CTI_FACTORY_BARRACKS];
+_s = _s + [""];
+
 _c = _c + ['I_Soldier_A_F'];
 _p = _p + [''];
 _n = _n + [''];
-_o = _o + [75];
+_o = _o + [80];
 _t = _t + [5];
 _u = _u + [0];
 _f = _f + [CTI_FACTORY_BARRACKS];
@@ -77,7 +95,7 @@ _s = _s + [""];
 _c = _c + ['I_soldier_M_F'];
 _p = _p + [''];
 _n = _n + [''];
-_o = _o + [125];
+_o = _o + [300];
 _t = _t + [5];
 _u = _u + [0];
 _f = _f + [CTI_FACTORY_BARRACKS];
@@ -101,15 +119,6 @@ _u = _u + [0];
 _f = _f + [CTI_FACTORY_BARRACKS];
 _s = _s + [""];
 
-_c = _c + ['I_Soldier_F'];
-_p = _p + [''];
-_n = _n + [''];
-_o = _o + [75];
-_t = _t + [5];
-_u = _u + [0];
-_f = _f + [CTI_FACTORY_BARRACKS];
-_s = _s + [""];
-
 _c = _c + ['I_soldier_repair_F'];
 _p = _p + [''];
 _n = _n + [''];
@@ -128,6 +137,24 @@ _u = _u + [0];
 _f = _f + [CTI_FACTORY_BARRACKS];
 _s = _s + [""];
 
+_c = _c + ['I_helipilot_F'];
+_p = _p + [''];
+_n = _n + [''];
+_o = _o + [150];
+_t = _t + [5];
+_u = _u + [0];
+_f = _f + [CTI_FACTORY_BARRACKS];
+_s = _s + [""];
+
+_c = _c + ['I_pilot_F'];
+_p = _p + [''];
+_n = _n + [''];
+_o = _o + [200];
+_t = _t + [5];
+_u = _u + [0];
+_f = _f + [CTI_FACTORY_BARRACKS];
+_s = _s + [""];
+
 
 _c = _c + ['I_G_Offroad_01_armed_F'];
 _p = _p + [''];
@@ -137,74 +164,6 @@ _t = _t + [20];
 _u = _u + [0];
 _f = _f + [CTI_FACTORY_LIGHT];
 _s = _s + [""];
-
-/*
-_c = _c + ['I_MRAP_03_hmg_F'];
-_p = _p + [''];
-_n = _n + [''];
-_o = _o + [550];
-_t = _t + [20];
-_u = _u + [0];
-_f = _f + [CTI_FACTORY_LIGHT];
-_s = _s + [""];
-
-_c = _c + ['I_MRAP_03_gmg_F'];
-_p = _p + [''];
-_n = _n + [''];
-_o = _o + [700];
-_t = _t + [20];
-_u = _u + [1];
-_f = _f + [CTI_FACTORY_LIGHT];
-_s = _s + [""];
-
-
-_c = _c + ['I_MBT_03_cannon_F'];
-_p = _p + [''];
-_n = _n + [''];
-_o = _o + [6000];
-_t = _t + [30];
-_u = _u + [1];
-_f = _f + [CTI_FACTORY_HEAVY];
-_s = _s + [""];
-
-
-_c = _c + ['I_APC_Wheeled_03_cannon_F'];
-_p = _p + [''];
-_n = _n + [''];
-_o = _o + [1500];
-_t = _t + [30];
-_u = _u + [0];
-_f = _f + [CTI_FACTORY_HEAVY];
-_s = _s + [""];
-
-_c = _c + ['I_Heli_light_03_F'];
-_p = _p + [''];
-_n = _n + [''];
-_o = _o + [12000];
-_t = _t + [30];
-_u = _u + [0];
-_f = _f + [CTI_FACTORY_AIR];
-_s = _s + [""];
-
-_c = _c + ['I_Plane_Fighter_03_CAS_F'];
-_p = _p + [''];
-_n = _n + [''];
-_o = _o + [40000];
-_t = _t + [30];
-_u = _u + [0];
-_f = _f + [CTI_FACTORY_AIR];
-_s = _s + [""];
-
-_c = _c + ['I_Plane_Fighter_03_AA_F'];
-_p = _p + [''];
-_n = _n + [''];
-_o = _o + [40000];
-_t = _t + [30];
-_u = _u + [0];
-_f = _f + [CTI_FACTORY_AIR];
-_s = _s + [""];
-
-*/
 
 
 [_side, _faction, _c, _p, _n, _o, _t, _u, _f, _s] call compile preprocessFileLineNumbers "Common\Config\Units\Set_Units.sqf";
