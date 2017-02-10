@@ -1507,6 +1507,10 @@
 				<Original>Hotel Complex</Original>
 				<Russian>Отель Призрак</Russian>
 			</Key>
+			<Key ID="STR_Map_Military_Base">
+				<Original>Military Base</Original>
+				<Russian>База Военных</Russian>
+			</Key>
 	</Package>
 	<Package name="Events_UI_BuildMenu">
 			<Key ID="STR_Walls_On">
