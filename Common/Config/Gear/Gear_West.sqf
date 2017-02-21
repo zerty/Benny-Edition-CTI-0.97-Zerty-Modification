@@ -1364,13 +1364,25 @@ _i = _i		+ ["optic_SOS_khk_F"];
 _u = _u		+ [2];
 _p = _p		+ [50];
 
-_i = _i		+ ["optic_LRPS"];
+_i = _i		+ ["optic_AMS"];
 _u = _u		+ [3];
 _p = _p		+ [50];
 
-_i = _i		+ ["optic_LRPS_tna_F"];
+_i = _i		+ ["optic_AMS_khk"];
 _u = _u		+ [3];
 _p = _p		+ [50];
+
+_i = _i		+ ["optic_AMS_snd"];
+_u = _u		+ [3];
+_p = _p		+ [50];
+
+_i = _i		+ ["optic_LRPS"];
+_u = _u		+ [3];
+_p = _p		+ [75];
+
+_i = _i		+ ["optic_LRPS_tna_F"];
+_u = _u		+ [3];
+_p = _p		+ [75];
 
 _i = _i		+ ["optic_tws"];
 _u = _u		+ [3];
