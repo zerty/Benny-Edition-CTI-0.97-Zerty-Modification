@@ -129,7 +129,6 @@ _u = _u		+ ['I_Heli_Transport_02_F'];
 _u = _u		+ ['I_Plane_Fighter_03_CAS_F'];
 _u = _u		+ ['I_Plane_Fighter_03_AA_F'];
 _u = _u		+ ['B_Slingload_01_Medevac_F'];
-_u = _u		+ ['Land_Device_slingloadable_F'];
 //_u = _u		+ ["I_Plane_Fighter_03_CAS_F"];
 missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_AIR], _u];
 

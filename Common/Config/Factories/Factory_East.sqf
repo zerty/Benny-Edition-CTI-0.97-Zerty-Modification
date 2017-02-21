@@ -148,7 +148,6 @@ _u = _u		+ ['I_Plane_Fighter_03_AA_F'];
 _u = _u		+ ['Land_Pod_Heli_Transport_04_medevac_F'];
 _u = _u		+ ['Land_Pod_Heli_Transport_04_covered_F'];
 _u = _u		+ ['Land_Pod_Heli_Transport_04_bench_F'];
-_u = _u		+ ['Land_Device_slingloadable_F'];
 missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_AIR], _u];
 
 _u 			= ["O_Truck_02_box_F"];
