@@ -144,7 +144,7 @@ _lin=_lin+	[[[CTI_UPGRADE_NETR, 1],[CTI_UPGRADE_NETR, 2],[CTI_UPGRADE_NETR, 3]]]
 _t=_t+			[[10*CTI_UPGRADE_RATIO,30*CTI_UPGRADE_RATIO,60*CTI_UPGRADE_RATIO]];
 
 
-_l=_l+			[[localize "STR_Up_Trophy", localize "STR_Up_Trophy_Descr"]];
+/*_l=_l+			[[localize "STR_Up_Trophy", localize "STR_Up_Trophy_Descr"]];
 _a=_a	+			[True];
 _c=_c +			[[6000,12000]];
 _lev=_lev+	[2];
@@ -156,7 +156,7 @@ _a=_a	+			[True];
 _c=_c +			[[6000,12000]];
 _lev=_lev+	[2];
 _lin=_lin+	[[[CTI_UPGRADE_HEAVY, 1],[]]];
-_t=_t+			[[20*CTI_UPGRADE_RATIO,40*CTI_UPGRADE_RATIO]];
+_t=_t+			[[20*CTI_UPGRADE_RATIO,40*CTI_UPGRADE_RATIO]];*/
 
 _l=_l+				[[localize "STR_Up_Respawn_Truck", localize "STR_Up_Respawn_Truck_Descr"]];
 _a=_a	+			[True];
