@@ -235,9 +235,10 @@ CTI_UPGRADE_AIRR = 			14;
 CTI_UPGRADE_ARTR = 			15;
 CTI_UPGRADE_NETR = 			16;
 CTI_UPGRADE_EXPI = 			17;
-CTI_UPGRADE_TRT = 			18;
+/*CTI_UPGRADE_TRT = 			18;
 CTI_UPGRADE_TRA = 			19;
-CTI_UPGRADE_REST = 			20;
+CTI_UPGRADE_REST = 			20;*/
+CTI_UPGRADE_REST = 			18;
 //-----------------------------------------------------------------------------------------------------------------------//
 
 
@@ -623,7 +624,7 @@ with missionNamespace do {
 
 	if (isNil "CTI_SM_BASEP_M") then {CTI_SM_BASEP_M=0};
 	if (isNil "CTI_SM_REPAIR") then {CTI_SM_REPAIR=1};
-	if (isNil "CTI_SM_MORTARS") then {CTI_SM_MORTARS=1};
+	if (isNil "CTI_SM_MORTARS") then {CTI_SM_MORTARS=0};
 	if (isNil "CTI_SM_STRATEGIC") then {CTI_SM_STRATEGIC=0};
 	if (isNil "CTI_SM_STRATEGIC_NB") then {CTI_SM_STRATEGIC_NB=3};
 	if (isNil "CTI_SM_HALO") then {CTI_SM_HALO=1};
@@ -633,7 +634,7 @@ with missionNamespace do {
 	if (isnil "CTI_SM_PATROLS") then {CTI_SM_PATROLS = 0};
 	if (isnil "CTI_SM_PATROLS_NUMBER") then {CTI_SM_PATROLS_NUMBER = 1};
 	if (isnil "CTI_SM_TCAS") then {CTI_SM_TCAS = 200};
-	if (isnil "CTI_TROPHY_APS") then {CTI_TROPHY_APS = 1};
+	if (isnil "CTI_TROPHY_APS") then {CTI_TROPHY_APS = 0};
 
 
 	if (isnil "CTI_EW_HUD") then {CTI_EW_HUD = 1};
@@ -642,7 +643,7 @@ with missionNamespace do {
 	if (isnil "CTI_EW_ANET") then {CTI_EW_ANET = 1};
 
 
-	if (isnil "CTI_AC_ENABLED") then {CTI_AC_ENABLED = 1};
+	if (isnil "CTI_AC_ENABLED") then {CTI_AC_ENABLED = 0};
 
 	if (isnil "HC_MODE") then {HC_MODE = 1};
 	if (isnil "MIN_TOWNS") then {MIN_TOWNS = 0};
