@@ -910,18 +910,6 @@ _f = _f + [CTI_FACTORY_NAVAL];
 _s = _s + ["service-repairtruck"];
 
 
-
-_c = _c + ["Land_Device_slingloadable_F"];
-_p = _p + [''];
-_n = _n + [localize 'STR_CTI_NUKE_DEVICE_NAME'];
-_o = _o + [CTI_NUKE_COST_DEVICE];
-_t = _t + [60];
-_u = _u + [1];
-_f = _f + [20];
-_s = _s + [""];
-
-
-
 _c = _c + ['I_MRAP_03_F'];
 _p = _p + [''];
 _n = _n + [''];
