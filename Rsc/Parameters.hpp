@@ -45,7 +45,7 @@ class Params {
 		title = $STR_CTI_ECONOMY_INCOME_CYCLE;
 		values[] = {15,30,45,60,90,120,160,190};
 		texts[] = {"00:15 Minute","00:30 Minute","00:45 Minute","01:00 Minute","01:30 Minutes","02:00 Minutes","02:30 Minutes","03:00 Minutes"};
-		default = 60;
+		default = 45;
 	};
 	class CTI_ECONOMY_STARTUP_FUNDS_EAST_COMMANDER {
 		title = $STR_CTI_ECONOMY_STARTUP_FUNDS_EAST_COMMANDER;
@@ -331,7 +331,7 @@ class Params {
 		title = $STR_CTI_ECONOMY_BASE_PLAYER_INCOME;
 		values[] = {0,10,25,50,100,150,200,250};
 		texts[] = {"0$","10$","25$","50$","100$","150$","200$","250$"};
-		default = 100;
+		default = 10;
 	};
 	class CTI_VEHICLES_BOUNTY {
 		title = $STR_CTI_VEHICLES_BOUNTY;
@@ -426,12 +426,12 @@ class Params {
 		default = 10;
 	};
 
-	/*class CTI_SM_PATROLS {
+	class CTI_SM_PATROLS {
 		title = $STR_CTI_SM_PATROLS;
 		values[] = {0,1};
 		texts[] = {$STR_CTI_DISABLED,$STR_CTI_ENABLED};
 		default = 1;
-	};*/
+	};
 	/*class CTI_SM_PATROLS_NUMBER {
 		title = "Zerty: Strategic: Patrols number";
 		values[] = {2,5,8,10,15,20};
@@ -439,12 +439,12 @@ class Params {
 		default = 8;
 	};*/
 
-	/*class CTI_SM_MORTARS {
+	class CTI_SM_MORTARS {
 		title = $STR_CTI_SM_MORTARS;
 		values[] = {0,1};
 		texts[] = {$STR_CTI_DISABLED,$STR_CTI_ENABLED};
-		default = 0;
-	};*/
+		default = 1;
+	};
 	class CTI_SM_STRATEGIC {
 		title = $STR_CTI_SM_STRATEGIC;
 		values[] = {0,1};
@@ -525,16 +525,16 @@ class Params {
 		texts[] = {$STR_CTI_DISABLED,$STR_CTI_ENABLED};
 		default = 1;
 	};
-	/*class CTI_TROPHY_APS {
+	class CTI_TROPHY_APS {
 		title = $STR_CTI_TROPHY_APS;
 		values[] = {0,1};
 		texts[] = {$STR_CTI_WEATHER_ALLOWRAIN_F,$STR_CTI_WEATHER_ALLOWRAIN_T};
 		default = 1;
-	};*/
-	/*class CTI_AC_ENABLED {
+	};
+	class CTI_AC_ENABLED {
 		title = $STR_CTI_AC_ENABLED;
 		values[] = {0,1};
 		texts[] = {$STR_CTI_DISABLED,$STR_CTI_ENABLED};
 		default = 1;
-	};*/
+	};
 };
