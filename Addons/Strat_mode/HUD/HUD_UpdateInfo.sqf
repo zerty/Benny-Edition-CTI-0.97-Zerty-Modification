@@ -34,7 +34,6 @@ if (missionNamespace getVariable "CTI_EW_ANET" == 1 && ! isNil {( player) getVar
 	};
 _t= _t+format	["%1 <t color='#00ff00'>$</t> || ",[group player, CTI_P_SideJoined] call CTI_CO_FNC_GetFunds] ;
 _t=_t+format	["%1 <t color='#ff0000'><img image='A3\ui_f\data\IGUI\Cfg\Actions\heal_ca.paa'/></t> || ",ceil( (1- getDammage	player)*100)] ;
-_t=_t+format	["%1 <t color='#0000ff'><img image='\A3\Ui_f\data\IGUI\RscIngameUI\RscUnitInfo\SI_stand_ca.paa'/></t><br />",ceil( (1- getfatigue	player)*100)] ;
 _com_name="";
 if (isNull (CTI_P_SideLogic getVariable ["cti_commander",grpnull])) then {
 	if (!isnil {CTI_P_SideLogic getVariable ["cti_ai_commander_group", grpNull]}) then {
@@ -68,18 +67,6 @@ _sl=CTI_P_SideJoined call  CTI_CO_FNC_GetSideLogic;
 	};
 	_t = _t + format ["%2 %1 ",(_x getVariable "cti_town_name"),_icon	]
 } count (_sl getVariable ["CTI_ACTIVE",[]]);
-_t=_t+"<br />";
-if ( (missionNamespace getVariable 'CTI_SM_RADAR')==1 && (count ([CTI_RADAR, ((CTI_P_SideJoined) call CTI_CO_FNC_GetSideStructures)] call CTI_CO_FNC_GetSideStructuresByType) > 0 )) then {
-	//_t=_t+"<t underline='true'> Radars:</t><br />";
-	_air_c="color='#ffff00'";
-	_art_c="color='#ffff00'";
-	if (([CTI_P_SideJoined, CTI_UPGRADE_AIRR, 1] call CTI_CO_FNC_HasUpgrade)) then {_air_c="color='#00ff00'";};
-	if (([CTI_P_SideJoined, CTI_UPGRADE_ARTR, 1] call CTI_CO_FNC_HasUpgrade)) then {_art_c="color='#00ff00'";};
-	if ( SM_Radar_Detected ) then {_air_c="color='#ff0000'";};
-	if (count ARTR_MARKERS >0) then {_art_c="color='#ff0000'";};
-	_t=_t+"<t size='1.2'><t "+_air_c+"><img image='a3\air_f_gamma\Plane_Fighter_03\Data\UI\map_plane_fighter_03_ca.paa'/></t><t "+_art_c+"><img image='\a3\ui_f\data\gui\cfg\CommunicationMenu\artillery_ca.paa'/></t></t><br />";
-	//_t=_t+"<t size='1.75'><t "+_air_c+"><img image='a3\air_f_gamma\Plane_Fighter_03\Data\UI\map_plane_fighter_03_ca.paa'/></t></t><br />";
-};
 _t=_t+"</t>";
 if !(HUD_Normal) then {_t=""};
 _basic ctrlSetStructuredText	parseText	 _t;
