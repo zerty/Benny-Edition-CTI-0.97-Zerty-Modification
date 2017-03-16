@@ -6,7 +6,7 @@ _hud=_this;
 disableSerialization;
 _basic=(_hud displayCtrl(HUD_IDC+1));
 _pro=(_hud displayCtrl(HUD_IDC+3));
-if (!(profileNamespace getVariable ["HUD_Normal",true]) ||visiblemap) exitWith {_basic ctrlShow false;};
+if (!(profileNamespace getVariable ["HUD_Normal",true]) || visiblemap) exitWith {_basic ctrlShow false;};
 _basic ctrlShow true;
 // capture
 _town=((player) call CTI_CO_FNC_GetClosestTown);
@@ -25,15 +25,19 @@ if ( player distance _town < CTI_MARKERS_TOWN_AREA_RANGE) then {
 };
 //-------INFO -------
 if (CTI_P_SideJoined == resistance) exitWith {};
-_t="<t size='0.75' align='right'>";
+_t = "<t size='0.75' align='right'>";
 if (missionNamespace getVariable "CTI_EW_ANET" == 1 && ! isNil {( player) getVariable "CTI_Net"} && ! isNil {( player) getVariable "AN_iNet"}) then {
 		_co="";
-		if (((player) getVariable "AN_iNet") == (player) getVariable "CTI_Net") then {_co=format ["<t color='#00ff00'>%1</t>",(((player) getVariable "CTI_Net") call CTI_CO_FNC_GetSideFromID)]} else {_co=format ["<t color='#ffff00'>%1</t>",(((player) getVariable "CTI_Net") call CTI_CO_FNC_GetSideFromID)]};
+		if (((player) getVariable "AN_iNet") == (player) getVariable "CTI_Net") then {
+			_co=format ["<t color='#00ff00'>%1</t>",(((player) getVariable "CTI_Net") call CTI_CO_FNC_GetSideFromID)]
+		} else {
+			_co=format ["<t color='#ffff00'>%1</t>",(((player) getVariable "CTI_Net") call CTI_CO_FNC_GetSideFromID)]
+		};
 		if ((( player) getVariable "CTI_Net"< 0) ) then {_co = localize "STR_CTI_Net"};
-	_t=_t+format ["<t size='1'><img image='\a3\Ui_f\data\GUI\Cfg\CommunicationMenu\call_ca.paa'/></t> %1 || ",_co];
+	_t = _t + format["<t size='1'><img image='\a3\Ui_f\data\GUI\Cfg\CommunicationMenu\call_ca.paa'/></t> %1 || ",_co];
 	};
-_t= _t+format	["%1 <t color='#00ff00'>$</t> || ",[group player, CTI_P_SideJoined] call CTI_CO_FNC_GetFunds] ;
-_t=_t+format	["%1 <t color='#ff0000'><img image='A3\ui_f\data\IGUI\Cfg\Actions\heal_ca.paa'/></t> || ",ceil( (1- getDammage	player)*100)] ;
+_t = _t + format["%1 <t color='#00ff00'>$</t> || ",[group player, CTI_P_SideJoined] call CTI_CO_FNC_GetFunds] ;
+_t = _t + format["%1 <t color='#ff0000'><img image='A3\ui_f\data\IGUI\Cfg\Actions\heal_ca.paa'/></t><br/>",ceil( (1- getDammage	player)*100)] ;
 _com_name="";
 if (isNull (CTI_P_SideLogic getVariable ["cti_commander",grpnull])) then {
 	if (!isnil {CTI_P_SideLogic getVariable ["cti_ai_commander_group", grpNull]}) then {
@@ -44,7 +48,7 @@ if (isNull (CTI_P_SideLogic getVariable ["cti_commander",grpnull])) then {
 };
 
 if (_com_name == "") then {_com_name = "NONE"};
-_t=_t+ (format [localize "STR_Current_Com",_com_name ]);
+_t = _t+ (format [localize "STR_Current_Com", _com_name]);
 
 
 
@@ -53,7 +57,7 @@ _ttext = localize "STR_No_Upgrade_Running";
 	if (_running > -1) then {
 		_ttext = format [localize "STR_Upgrade_Left", ((missionNamespace getVariable format["CTI_%1_UPGRADES_LABELS", CTI_P_SideJoined]) select _running) select 0,CTI_P_SideLogic getVariable "cti_upgrade_lt"];
 	};
-_t=_t+ (format ["<t color='#F5D363'>%1 </t><br />",_ttext ]);
+_t = _t + (format ["<t color='#F5D363'>%1 </t><br />",_ttext ]);
 _sl=CTI_P_SideJoined call  CTI_CO_FNC_GetSideLogic;
 {
 	_marker = format ["cti_town_marker_%1", _x];
@@ -67,6 +71,6 @@ _sl=CTI_P_SideJoined call  CTI_CO_FNC_GetSideLogic;
 	};
 	_t = _t + format ["%2 %1 ",(_x getVariable "cti_town_name"),_icon	]
 } count (_sl getVariable ["CTI_ACTIVE",[]]);
-_t=_t+"</t>";
-if !(HUD_Normal) then {_t=""};
-_basic ctrlSetStructuredText	parseText	 _t;
+_t = _t + "</t>";
+if !(HUD_Normal) then {_t = ""};
+_basic ctrlSetStructuredText parseText _t;
