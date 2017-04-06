@@ -1,3 +1,4 @@
+//Edited by PR9INICHEK 16-03-2017
 private ["_groups", "_positions", "_side", "_teams", "_town"];
 
 _town = _this select 0;
@@ -25,6 +26,8 @@ for '_i' from 0 to count(_groups)-1 do {
 
 	//--- Our units are strong!
 	_group allowFleeing 0;
+	_formation = ["STAG COLUMN", "COLUMN", "FILE", "DIAMOND"] call BIS_fnc_selectRandom;
+	_group setFormation _formation;
 
 	_created_vehicles = _created_vehicles + _vehicles;
 };
