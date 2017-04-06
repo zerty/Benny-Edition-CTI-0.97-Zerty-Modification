@@ -1428,42 +1428,82 @@ CTI_LOADOUT_I_UAV_02_F_MNT_OPTIONS =
 
 CTI_LOADOUT_I_UAV_02_CAS_F_MNT_OPTIONS =
 [
-	"Anti-Tank",
+	"Anti Tank - Configurations" ,
 	[
 		[
-			"missiles_SCALPEL", [["2Rnd_LG_scalpel", "5000"]]
-		],
-		[
-			"Laserdesignator_mounted", [["Laserbatteries", "500"]]
-		],
-		[
-			"CMFlareLauncher", [["240Rnd_CMFlare_Chaff_Magazine", "2000", [-1]]]
+			"missiles_SCALPEL" ,
+			[
+				[ "2Rnd_LG_scalpel" , "5000" ]
+			]
+		] ,
+		[ "Laserdesignator_mounted" ,
+			[
+				[ "Laserbatteries" , "500" ]
+			]
+		] ,
+		[ "CMFlareLauncher" ,
+			[
+				[ "240Rnd_CMFlare_Chaff_Magazine" , "2000" , [-1] ] ,
+				[ "120Rnd_CMFlare_Chaff_Magazine" , "500" , [-1] ] ,
+				[ "168Rnd_CMFlare_Chaff_Magazine" , "1000" , [-1] ] ,
+				[ "192Rnd_CMFlare_Chaff_Magazine" , "1500" , [-1] ]
+			]
 		]
-	],
-	"Anti-Air",
+	] ,
+	"Anti Air - Configurations" ,
 	[
 		[
-			"Missile_AA_04_Plane_CAS_01_F", [["2Rnd_Missile_AA_04_F", "4000"]],
-			"Missile_AA_03_Plane_CAS_02_F", [["2Rnd_Missile_AA_03_F", "4000"]],
-			"missiles_ASRAAM", [["2Rnd_AAA_missiles", "4000"]]
-		],
-		[
-			"Laserdesignator_mounted", [["Laserbatteries", "500"]]
-		],
-		[
-			"CMFlareLauncher", [["240Rnd_CMFlare_Chaff_Magazine", "2000", [-1]]]
+			"Missile_AA_04_Plane_CAS_01_F" ,
+			[
+				[ "2Rnd_Missile_AA_04_F" , "4000" ]
+			] ,
+			"Missile_AA_03_Plane_CAS_02_F" ,
+			[
+				[ "2Rnd_Missile_AA_03_F" , "4000" ]
+			] ,
+			"missiles_ASRAAM" ,
+			[
+				[ "2Rnd_AAA_missiles" , "4000" ]
+			]
+		] ,
+		[ "Laserdesignator_mounted" ,
+			[
+				[ "Laserbatteries" , "500" ]
+			]
+		] ,
+		[ "CMFlareLauncher" ,
+			[
+				[ "240Rnd_CMFlare_Chaff_Magazine" , "2000" , [-1] ] ,
+				[ "120Rnd_CMFlare_Chaff_Magazine" , "500" , [-1] ] ,
+				[ "168Rnd_CMFlare_Chaff_Magazine" , "1000" , [-1] ] ,
+				[ "192Rnd_CMFlare_Chaff_Magazine" , "1500" , [-1] ]
+			]
 		]
-	],
-	"Bomb",
+	] ,
+	"Anti Ground - Configurations" ,
 	[
 		[
-			"GBU12BombLauncher", [["2Rnd_GBU12_LGB", "4000"]]
-		],
-		[
-			"Laserdesignator_mounted", [["Laserbatteries", "500"]]
-		],
-		[
-			"CMFlareLauncher", [["240Rnd_CMFlare_Chaff_Magazine", "2000", [-1]]]
+			"Mk82BombLauncher" ,
+			[
+				[ "2Rnd_Mk82" , "3000" ]
+			] ,
+			"GBU12BombLauncher" ,
+			[
+				[ "2Rnd_GBU12_LGB" , "4000" ]
+			]
+		] ,
+		[ "Laserdesignator_mounted" ,
+			[
+				[ "Laserbatteries" , "500" ]
+			]
+		] ,
+		[ "CMFlareLauncher" ,
+			[
+				[ "240Rnd_CMFlare_Chaff_Magazine" , "2000" , [-1] ] ,
+				[ "120Rnd_CMFlare_Chaff_Magazine" , "500" , [-1] ] ,
+				[ "168Rnd_CMFlare_Chaff_Magazine" , "1000" , [-1] ] ,
+				[ "192Rnd_CMFlare_Chaff_Magazine" , "1500" , [-1] ]
+			]
 		]
 	]
 ];

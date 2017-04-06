@@ -9,7 +9,7 @@
 	Author: 		Benny
 	Creation Date:	23-09-2013
 	Revision Date:	10-10-2013
-	Edited by PR9INICHEK 16-03-2017
+	Edited by PR9INICHEK 23-11-2016
 
   # PARAMETERS #
     0	[Object]: The town
@@ -44,18 +44,14 @@ private ["_groups", "_occupation_size", "_pool", "_pool_group_size", "_pool_unit
 _town = _this select 0;
 _side = _this select 1;
 _sideID = (_side) call CTI_CO_FNC_GetSideID;
-//_upgrade = (_side call CTI_CO_FNC_GetSideUpgrades) select CTI_UPGRADE_TOWNS;
-_upgrade = 10;
+_upgrade = (_side call CTI_CO_FNC_GetSideUpgrades) select CTI_UPGRADE_TOWNS;
+//_upgrade = 10;
 _value = _town getVariable "cti_town_value";
 
 _occupation_size = round(_value * _value * CTI_TOWNS_OCCUPATION_GROUPS_RATIO / 1000);
 _totalGroups = round(_occupation_size / 2000);
-_totalvehicles = 2;
-if (_totalGroups < 1) then {_totalGroups= _totalGroups + 1};
-if (_totalGroups > 2) then {
-	_totalGroups = 4;
-	_totalvehicles = _totalvehicles + 1;
-};
+if (_totalGroups<2) then {_totalGroups=_totalGroups+1};
+if (_totalGroups>6) then {_totalGroups=5};
 
 
 // switch value...
@@ -65,51 +61,51 @@ _pool_group_size = missionNamespace getVariable "CTI_AI_TEAMS_GROUPSIZE";
 //--- Pool data: [<UNIT TYPE>, <PRESENCE>, {<PROBABILITY>}]
 switch (true) do {
 	case (_value <= 30) : {
-		_pool_units = [[["SOLDIER", 4], ["SOLDIER_GL", 2], ["SOLDIERS_AT_LIGHT", 1], ["SOLDIER_MEDIC", 2], ["SOLDIERS_MG", 2]]];
+		_pool_units = [[["SOLDIER", 4], ["SOLDIER_GL", 2], ["SOLDIERS_AT_LIGHT", 1], ["SOLDIER_MEDIC", 2], ["SOLDIERS_MG", 2]],[]];
 	};
 	case (_value > 30 && _value <= 50) : {
-		_pool_units = [[["SOLDIER", 3], ["SOLDIER_GL", 2], ["SOLDIERS_AT_LIGHT", 2], ["SOLDIER_MEDIC", 2], ["SOLDIERS_MG", 2]],
-		[["VEHICLES_LIGHT", 1, 25]]];
+		_pool_units = [[["SOLDIER", 3], ["SOLDIER_GL", 2], ["SOLDIERS_AT_LIGHT", 2], ["SOLDIER_MEDIC", 2], ["SOLDIERS_MG", 2], ["VEHICLE_MOTORIZED", 1, 30]],
+		[["VEHICLE_MECHANIZED", 1, 25]]];
 	};
 	case (_value > 50 && _value <= 75) : {
 		_pool_units = [[["SOLDIER", 3], ["SOLDIER_GL", 2], ["SOLDIERS_AT_LIGHT", 2], ["SOLDIER_AA", 1, 65], ["SOLDIER_MEDIC", 2], ["SOLDIER_MG", 2], ["SOLDIER_AR", 2], ["SOLDIERS_ENGINEER", 1, 75], ["SOLDIERS_SNIPERS", 1, 55]],
-		[["VEHICLES_LIGHT", 2, 30], ["VEHICLES_MEDIUM", 1, 30]]];
+		[["VEHICLES_LIGHT", 2, 30], ["VEHICLE_APC", 1, 30], ["VEHICLES_AA_LIGHT", 1, 20]]];
 	};
 	case (_value > 75 && _value <= 100) : {
 		_pool_units = [[["SOLDIER", 3], ["SOLDIER_GL", 2], ["SOLDIERS_AT_LIGHT", 2], ["SOLDIERS_AT_MEDIUM", 1, 75], ["SOLDIER_AA", 1], ["SOLDIER_MEDIC", 2], ["SOLDIERS_MG", 2], ["SOLDIERS_ENGINEER", 1, 70], ["SOLDIERS_SNIPERS", 1, 70]],
-		[["VEHICLES_LIGHT", 2, 33], ["VEHICLES_MEDIUM", 1, 30]]];
+		[["VEHICLES_LIGHT", 2, 33], ["VEHICLES_MEDIUM", 1, 30],["VEHICLES_HEAVY", 1, 0],["VEHICLES_AA_LIGHT", 1, 20]]];
 	};
 	case (_value > 100 && _value <= 150) : {
-		_pool_units = [[["SOLDIER", 3], ["SOLDIER_GL", 1], ["SOLDIERS_AT_LIGHT", 2, 80], ["SOLDIERS_AT_HEAVY", 2, 50], ["SOLDIER_AA", 1], ["SOLDIER_MEDIC", 2], ["SOLDIERS_MG", 2], ["SOLDIERS_ENGINEER", 1, 70], ["SOLDIERS_SNIPERS", 1, 75], ["SOLDIERS_SPECOPS", 1]],
-		[["VEHICLES_LIGHT", 1, 35], ["VEHICLES_MEDIUM", 1, 33]]];
+		_pool_units = [[["SOLDIER", 3], ["SOLDIER_GL", 1], ["SOLDIERS_AT_LIGHT", 2, 80], ["SOLDIERS_AT_HEAVY", 2, 50], ["SOLDIER_AA", 1], ["SOLDIER_MEDIC", 2], ["SOLDIERS_MG", 2], ["SOLDIERS_ENGINEER", 1, 70], ["SOLDIERS_SPECOPS", 1]],
+		[["VEHICLES_LIGHT", 1, 35],["SOLDIERS_SNIPERS", 1, 75],["VEHICLES_MEDIUM", 1, 33],["VEHICLES_HEAVY", 1, 0],["VEHICLES_AA_LIGHT", 1, 22]]];
 	};
 	case (_value > 150 && _value <= 200) : {
 		_pool_units = [[["SOLDIER", 3], ["SOLDIER_GL", 1], ["SOLDIERS_AT_LIGHT", 2, 70], ["SOLDIERS_AT_MEDIUM", 2, 65], ["SOLDIERS_AT_HEAVY", 2, 60], ["SOLDIER_AA", 1], ["SOLDIER_MEDIC", 2], ["SOLDIERS_MG", 2], ["SOLDIERS_ENGINEER", 1, 75], ["SOLDIERS_SPECOPS", 1], ["SOLDIERS_SNIPERS", 1, 80]],
-		[["VEHICLES_LIGHT", 1, 40], ["VEHICLES_MEDIUM", 1, 33]]];
+		[["VEHICLES_LIGHT", 1, 40],["VEHICLES_MEDIUM", 1, 33],["VEHICLES_HEAVY", 1, 0],["VEHICLES_AA_LIGHT", 1, 25]]];
 	};
 	case (_value > 200 && _value <= 250) : {
 		_pool_units = [[["SOLDIER", 3], ["SOLDIER_GL", 1], ["SOLDIERS_AT_LIGHT", 2, 55], ["SOLDIERS_AT_MEDIUM", 2, 65], ["SOLDIERS_AT_HEAVY", 2, 65], ["SOLDIER_AA", 1], ["SOLDIER_MEDIC", 2], ["SOLDIERS_MG", 2], ["SOLDIERS_ENGINEER", 1, 75], ["SOLDIERS_SPECOPS", 1], ["SOLDIERS_SNIPERS", 1, 85]],
-		[["VEHICLES_LIGHT", 1, 50], ["VEHICLES_MEDIUM", 1, 35], ["VEHICLES_AA_LIGHT", 1, 5]]];
+		[["VEHICLES_LIGHT", 1, 37],["VEHICLES_MEDIUM", 1, 35], ["VEHICLES_HEAVY", 1, 0], ["VEHICLES_AA_LIGHT", 1, 27]]];
 	};
 	case (_value > 250 && _value <= 300) : {
 		_pool_units = [[["SOLDIER", 3], ["SOLDIER_GL", 1], ["SOLDIERS_AT_LIGHT", 2, 50],["SOLDIERS_AT_MEDIUM", 2, 70], ["SOLDIERS_AT_HEAVY", 2, 70], ["SOLDIER_AA", 1], ["SOLDIER_MEDIC", 2], ["SOLDIERS_MG", 2], ["SOLDIERS_ENGINEER", 1, 75], ["SOLDIERS_SPECOPS", 1], ["SOLDIERS_SNIPERS", 1, 90]],
-		[["VEHICLES_LIGHT", 1, 50], ["VEHICLES_MEDIUM", 1, 40], ["VEHICLES_HEAVY", 1, 5], ["VEHICLES_AA_LIGHT", 1, 7]]];
+		[["VEHICLES_LIGHT", 1, 35],["VEHICLES_MEDIUM", 1, 37],["VEHICLES_HEAVY", 1, 10],["VEHICLES_AA_LIGHT", 1, 15]]];
 	};
 	case (_value > 300 && _value <= 350) : {
 		_pool_units = [[["SOLDIER", 3], ["SOLDIER_GL", 1], ["SOLDIERS_AT_LIGHT", 2, 45],["SOLDIERS_AT_MEDIUM", 2, 75], ["SOLDIERS_AT_HEAVY", 2, 75], ["SOLDIER_AA", 1], ["SOLDIER_MEDIC", 2], ["SOLDIERS_MG", 2], ["SOLDIERS_ENGINEER", 1, 75], ["SOLDIERS_SPECOPS", 1], ["SOLDIERS_SNIPERS", 1, 95]],
-		[["VEHICLES_LIGHT", 1, 40], ["VEHICLES_MEDIUM", 1, 45], ["VEHICLES_HEAVY", 1, 10], ["VEHICLES_AA_LIGHT", 1, 10]]];
+		[["VEHICLES_LIGHT", 1, 33],["VEHICLES_MEDIUM", 1, 40],["VEHICLES_HEAVY", 1, 15],["VEHICLES_AA_LIGHT", 1, 20]]];
 	};
 	case (_value > 350 && _value <= 400) : {
 		_pool_units = [[["SOLDIER", 3], ["SOLDIER_GL", 1], ["SOLDIERS_AT_LIGHT", 2, 40], ["SOLDIERS_AT_MEDIUM", 1, 80], ["SOLDIERS_AT_HEAVY", 2, 75], ["SOLDIER_AA", 1], ["SOLDIER_MEDIC", 2], ["SOLDIERS_MG", 2], ["SOLDIERS_ENGINEER", 1, 75], ["SOLDIERS_SPECOPS", 1], ["SOLDIERS_SNIPERS", 1]],
-		[["VEHICLES_LIGHT", 1, 30], ["VEHICLES_MEDIUM", 1, 40], ["VEHICLES_HEAVY", 1, 15], ["VEHICLES_AA_LIGHT", 1, 15]]];
+		[["VEHICLES_LIGHT", 1, 33], ["VEHICLES_MEDIUM", 1, 35], ["VEHICLES_HEAVY", 1, 20], ["VEHICLES_AA_LIGHT", 1, 25]]];
 	};
 	case (_value > 400 && _value <= 450) : {
 		_pool_units = [[["SOLDIER", 3], ["SOLDIER_GL", 1], ["SOLDIERS_AT_LIGHT", 2, 37], ["SOLDIERS_AT_MEDIUM", 1, 82], ["SOLDIERS_AT_HEAVY", 2, 75], ["SOLDIER_AA", 1], ["SOLDIER_MEDIC", 2], ["SOLDIERS_MG", 2], ["SOLDIERS_ENGINEER", 1, 75], ["SOLDIERS_SPECOPS", 1], ["SOLDIERS_SNIPERS", 1]],
-		[["VEHICLES_LIGHT", 1, 20], ["VEHICLES_MEDIUM", 1, 35], ["VEHICLES_HEAVY", 1, 20], ["VEHICLES_AA_LIGHT", 1, 17]]];
+		[["VEHICLES_LIGHT", 1, 30], ["VEHICLES_MEDIUM", 1, 30], ["VEHICLES_HEAVY", 1, 25], ["VEHICLES_AA_LIGHT", 1, 30]]];
 	};
 	case (_value > 450) : {
 		_pool_units = [[["SOLDIER", 3], ["SOLDIER_GL", 1], ["SOLDIERS_AT_LIGHT", 2, 35], ["SOLDIERS_AT_MEDIUM", 1, 84], ["SOLDIERS_AT_HEAVY", 2, 75], ["SOLDIER_AA", 1], ["SOLDIER_MEDIC", 2], ["SOLDIERS_MG", 2], ["SOLDIERS_ENGINEER", 1, 75], ["SOLDIERS_SPECOPS", 1], ["SOLDIERS_SNIPERS", 1]],
-		[["VEHICLES_LIGHT", 1, 15], ["VEHICLES_MEDIUM", 1, 30], ["VEHICLES_HEAVY", 1, 25], ["VEHICLES_AA_LIGHT", 1, 20]]];
+		[["VEHICLES_LIGHT", 1, 27], ["VEHICLES_MEDIUM", 1, 20], ["VEHICLES_HEAVY", 1, 30], ["VEHICLES_AA_LIGHT", 1, 30]]];
 	};
 };
 
@@ -157,35 +153,6 @@ _pool_u = [];
 } forEach (_pool_units select 0);
 _pool_u = _pool_u call CTI_CO_FNC_ArrayShuffle;
 
-//--- Compose the pools.
-_teams_u = [];
-for '_i' from 1 to _totalGroups do {
-	_leader = [(missionNamespace getVariable format["%1_SOLDIER_SQUADLEADER", _side]) select 0, (missionNamespace getVariable format["%1_SOLDIER_TEAMLEADER", _side]) select 0] call BIS_fnc_selectRandom;
-	_units = [_leader];
-	
-	_pool_group_size_current = _pool_group_size-1;
-	_ci=0;
-	while {_pool_group_size_current > 0} do {
-		_picked = _pool_u select _ci;
-		_unit = _picked select 0;
-		_probability = _picked select 1;
-		_can_use = true;
-		if (_probability != 100) then {
-			if (random 100 > _probability) then { _can_use = false };
-		};
-
-		if (_can_use) then {
-			if (typeName _unit == "ARRAY") then { _unit = _unit select floor(random count _unit) };
-			_units pushBack _unit;
-
-			_pool_group_size_current = _pool_group_size_current - 1;
-		};
-		_ci=_ci+1;
-	};
-
-	_teams_u pushBack _units;
-};
-
 _pool_v = [];
 {
 	_unit = _x select 0;
@@ -227,34 +194,45 @@ _pool_v = [];
 		};
 	};
 } forEach (_pool_units select 1);
-_pool_v = _pool_v call CTI_CO_FNC_ArrayShuffle;
-//if (count _pool < 1) exitWith {[[],[],[]]};
 
-_teams_v = [];
-for '_i' from 1 to _totalvehicles do {
-	_units = [];
-	_pool_group_size_current = 1;
+_pool_v = _pool_v call CTI_CO_FNC_ArrayShuffle;
+
+_pool=_pool_v+_pool_u;
+
+if (count _pool < 1) exitWith {[[],[],[]]};
+
+
+
+//--- Compose the pools.
+_teams = [];
+for '_i' from 1 to _totalGroups do {
+	_units = [(missionNamespace getVariable format["%1_SOLDIER_SQUADLEADER", _side]) select 0];
+
+	// _pool_group_size_current = _pool_group_size;
+	_pool_group_size_current = _pool_group_size-1;
+	_ci=0;
 	while {_pool_group_size_current > 0} do {
-		_picked = _pool_v select floor(random count _pool_v);
+		_picked = _pool select _ci;
+
 		_unit = _picked select 0;
 		_probability = _picked select 1;
 
 		_can_use = true;
 		if (_probability != 100) then {
-			if (random 100 > (_probability)) then { _can_use = false };
+			if (random 100 > _probability) then { _can_use = false };
 		};
-		//diag_log [_unit,_probability,_can_use];
+
 		if (_can_use) then {
 			if (typeName _unit == "ARRAY") then { _unit = _unit select floor(random count _unit) };
 			_units pushBack _unit;
+
 			_pool_group_size_current = _pool_group_size_current - 1;
 		};
+		_ci=_ci+1;
 	};
 
-	_teams_v pushBack _units;
+	_teams pushBack _units;
 };
-
-_teams = _teams_u + _teams_v;
 
 diag_log format ["OCCUPATION POOL Composer for %1 (value %2)", _town getVariable "cti_town_name", _value];
 
@@ -264,15 +242,19 @@ _positions = [];
 {
 	//diag_log _x;
 
-	_position = [getPos _town, 25, CTI_TOWNS_OCCUPATION_SPAWN_RANGE] call CTI_CO_FNC_GetRandomPosition;
+	_maxSpawnRange = CTI_TOWNS_OCCUPATION_SPAWN_RANGE;
+	if (name _town == "Town29") then {_maxSpawnRange = 25};	//--- Makrynisi
+	if (name _town == "Town9") then {_maxSpawnRange = 125};	//--- Telos
+	_position = [getPos _town, 25, _maxSpawnRange] call CTI_CO_FNC_GetRandomPosition;
 
+//	_position = [getPos _town, 25, CTI_TOWNS_OCCUPATION_SPAWN_RANGE] call CTI_CO_FNC_GetRandomPosition;
 	_position = [_position, 50] call CTI_CO_FNC_GetEmptyPosition;
 	_road_pos=(_position nearRoads 100);
 	if (count _road_pos > 0) then {_position = _road_pos select floor random (count _road_pos);};
 	_positions pushBack _position;
 
 	_group = createGroup _side;
-	
+	_group setVariable ["cti_server_group", str _side];
 	_groups pushBack _group;
 
 	/*

@@ -143,9 +143,9 @@ class FSM
        "_wp setwaypointtype ""CYCLE"";" \n
        "_team setCurrentWaypoint _wp0;" \n
        "_last_action = ""patrol"";" \n
-       "_team setCombatMode ""YELLOW"";" \n
-       "_team setBehaviour ""CARELESS"";" \n
-       "_team setSpeedMode ""NORMAL"";"/*%FSM</STATEINIT""">*/;
+       "_team setCombatMode ""RED"";" \n
+       "_team setBehaviour ""AWARE"";" \n
+       "_team setSpeedMode ""LIMITED"";"/*%FSM</STATEINIT""">*/;
       precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
       class Links
       {
