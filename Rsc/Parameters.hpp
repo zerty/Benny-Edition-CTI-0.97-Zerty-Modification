@@ -270,7 +270,7 @@ class Params {
 		title = $STR_CTI_AI_TEAMS_GROUPSIZE;
 		values[] = {0,4,6,8,10,12,14,16};
 		texts[] = {"0","4","6","8","10","12","14","16"};
-		default = 6;
+		default = 8;
 	};
 
 	class CTI_PLAYERS_GROUPSIZE {
