@@ -1,0 +1,196 @@
+/*%FSM<COMPILE "scriptedFSM.cfg, update_client_ai.fsm">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"Start_FSM",0,250,-100.000000,-400.000000,0.000000,-350.000000,0.000000,"Start FSM"};
+item1[] = {"Cycle",4,218,-100.000000,-300.000000,0.000000,-250.000000,0.000000,"Cycle"};
+item2[] = {"Phase_I_AI_Alive",2,250,-100.000000,-200.000000,0.000000,-150.000000,0.000000,"Phase I" \n "AI Alive"};
+item3[] = {"End_FSM",1,250,-100.000000,0.000000,0.000000,50.000000,0.000000,"End FSM"};
+item4[] = {"Dead",8,218,-100.000000,-100.000000,0.000000,-50.000000,0.000000,"Dead"};
+item5[] = {"Alive_1",4,4314,50.000000,-200.000000,150.000000,-150.000000,1.000000,"Alive"};
+item6[] = {"Phase_II_Duty",2,250,50.000000,-300.000000,150.000000,-250.000000,0.000000,"Phase II" \n "Duty"};
+item7[] = {"Alive",4,218,50.000000,-125.000000,150.000000,-75.000000,1.000000,"Alive"};
+item8[] = {"Standby",2,250,200.000000,-175.000000,300.000000,-125.000000,0.000000,"Standby"};
+link0[] = {0,1};
+link1[] = {1,2};
+link2[] = {2,4};
+link3[] = {2,5};
+link4[] = {2,7};
+link5[] = {4,3};
+link6[] = {5,6};
+link7[] = {6,1};
+link8[] = {7,8};
+link9[] = {8,5};
+link10[] = {8,7};
+globals[] = {25.000000,1,0,0,0,640,480,1,274,6316128,1,-489.064819,425.210815,396.643402,-572.168213,855,881,1};
+window[] = {2,-1,-1,-1,-1,981,200,1455,200,3,873};
+*//*%FSM</HEAD>*/
+class FSM
+{
+  fsmName = "update_client_ai.fsm";
+  class States
+  {
+    /*%FSM<STATE "Start_FSM">*/
+    class Start_FSM
+    {
+      name = "Start_FSM";
+      init = /*%FSM<STATEINIT""">*/"_ai = _this;" \n
+       "" \n
+       "_order_last = -1;" \n
+       "_order_pos_last = _ai getVariable ""cti_ai_order_pos"";" \n
+       "" \n
+       "_ncycle = 0;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Cycle">*/
+        class Cycle
+        {
+          priority = 0.000000;
+          to="Phase_I_AI_Alive";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"time > _ncycle"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Phase_I_AI_Alive">*/
+    class Phase_I_AI_Alive
+    {
+      name = "Phase_I_AI_Alive";
+      init = /*%FSM<STATEINIT""">*/"_ncycle = time + 2;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Alive">*/
+        class Alive
+        {
+          priority = 1.000000;
+          to="Phase_II_Duty";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"time > _ncycle && alive _ai && !CTI_GameOver && ! (isnil { _ai getVariable ""cti_ai_order""})"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Alive_1">*/
+        class Alive_1
+        {
+          priority = 1.000000;
+          to="Standby";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"time > _ncycle && alive _ai && !CTI_GameOver&& isnil { _ai getVariable ""cti_ai_order""}"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Dead">*/
+        class Dead
+        {
+          priority = 0.000000;
+          to="End_FSM";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "End_FSM">*/
+    class End_FSM
+    {
+      name = "End_FSM";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Phase_II_Duty">*/
+    class Phase_II_Duty
+    {
+      name = "Phase_II_Duty";
+      init = /*%FSM<STATEINIT""">*/"_order = _ai getVariable ""cti_ai_order"";" \n
+       "if (isNil ""_order"") then {_order=""CTI_ORDER_CLIENT_TAKETOWNS""};" \n
+       "_order_pos = _ai getVariable ""cti_ai_order_pos"";" \n
+       "" \n
+       "" \n
+       "//--- The order or it's position changed since last time?" \n
+       "if ([_ai, _order_last, _order_pos_last] call CTI_CL_FNC_HasAIOrderChanged || !(isNil {_ai getVariable ""cti_ai_reload""})) then {" \n
+       "	//--- Remove the explicit reload request" \n
+       "	_reload = false;" \n
+       "	if !(isNil {_ai getVariable ""cti_ai_reload""}) then {_reload = true; _ai setVariable [""cti_ai_reload"", nil]};" \n
+       "	" \n
+       "	//--- Generate a new seed" \n
+       "	_seed = time + random 10000 - random 500 + diag_frameno;" \n
+       "	_ai setVariable [""cti_ai_order_seed"", _seed];" \n
+       "	" \n
+       "	//--- Apply a new order thread." \n
+       "	switch (true) do {" \n
+       "		case (_order in [CTI_ORDER_CLIENT_TAKETOWNS, CTI_ORDER_CLIENT_TAKEHOLDTOWNS]): {[_ai, _order, _reload] spawn CTI_FSM_UpdateClientAI_Order_TakeTowns};" \n
+       "		case (_order in [CTI_ORDER_CLIENT_TAKETOWN, CTI_ORDER_CLIENT_TAKETOWN_AUTO, CTI_ORDER_CLIENT_TAKEHOLDTOWN, CTI_ORDER_CLIENT_TAKEHOLDTOWN_AUTO]): {[_ai, _order_pos, _seed, _reload, _order] spawn CTI_FSM_UpdateClientAI_Order_TakeTown};" \n
+       "		case (_order == CTI_ORDER_CLIENT_HOLDTOWNSBASES): {[_ai, _order, _reload] spawn CTI_FSM_UpdateClientAI_Order_HoldTownsBases};" \n
+       "		case (_order == CTI_ORDER_CLIENT_HOLDTOWNSBASE): {[_ai, _order_pos, _seed, _reload, _order] spawn CTI_FSM_UpdateClientAI_Order_HoldTownsBase};" \n
+       "		case (_order == CTI_ORDER_CLIENT_MOVE): {[_ai, _order_pos, _seed] spawn CTI_FSM_UpdateClientAI_Order_Move};" \n
+       "		case (_order == CTI_ORDER_CLIENT_PATROL): {[_ai, _order_pos, _seed] spawn CTI_FSM_UpdateClientAI_Order_Patrol};" \n
+       "	};" \n
+       "};" \n
+       "" \n
+       "_order_last = _order;" \n
+       "_order_pos_last = _order_pos;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Cycle">*/
+        class Cycle
+        {
+          priority = 0.000000;
+          to="Phase_I_AI_Alive";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"time > _ncycle"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Standby">*/
+    class Standby
+    {
+      name = "Standby";
+      init = /*%FSM<STATEINIT""">*/"_ncycle = time + 10;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Alive">*/
+        class Alive
+        {
+          priority = 1.000000;
+          to="Standby";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"time > _ncycle && alive _ai && !CTI_GameOver&& isnil { _ai getVariable ""cti_ai_order""}"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Alive_1">*/
+        class Alive_1
+        {
+          priority = 1.000000;
+          to="Phase_II_Duty";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"time > _ncycle && alive _ai && !CTI_GameOver && ! (isnil { _ai getVariable ""cti_ai_order""})"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+  };
+  initState="Start_FSM";
+  finalStates[] =
+  {
+    "End_FSM"
+  };
+};
+/*%FSM</COMPILE>*/

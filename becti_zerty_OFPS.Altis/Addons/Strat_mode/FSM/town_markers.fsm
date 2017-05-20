@@ -1,0 +1,174 @@
+/*%FSM<COMPILE "scriptedFSM.cfg, town_markers.fsm">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"Start_FSM",0,250,-275.000000,-100.000000,-175.000000,-50.000000,0.000000,"Start FSM"};
+item1[] = {"Cycle",4,218,-100.000000,-100.000000,0.000000,-50.000000,1.000000,"Cycle"};
+item2[] = {"Update_Markers",2,4346,-100.000000,-225.000000,0.000000,-175.000000,0.000000,"Update" \n "Markers"};
+item3[] = {"End_FSM",1,250,50.000000,-325.000000,150.000000,-275.000000,0.000000,"End FSM"};
+item4[] = {"Terminate",4,218,50.000000,-225.000000,150.000000,-175.000000,0.000000,"Terminate"};
+link0[] = {0,1};
+link1[] = {1,2};
+link2[] = {2,1};
+link3[] = {2,4};
+link4[] = {4,3};
+globals[] = {25.000000,1,0,0,0,640,480,1,133,6316128,1,-422.283691,326.652069,345.310455,-698.696411,632,881,1};
+window[] = {2,-1,-1,-1,-1,712,100,1136,100,3,650};
+*//*%FSM</HEAD>*/
+class FSM
+{
+  fsmName = "town_markers.fsm";
+  class States
+  {
+    /*%FSM<STATE "Start_FSM">*/
+    class Start_FSM
+    {
+      name = "Start_FSM";
+      init = /*%FSM<STATEINIT""">*/"_ncycle = time + 5.5;" \n
+       "_sl=CTI_P_SideJoined call  CTI_CO_FNC_GetSideLogic;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Cycle">*/
+        class Cycle
+        {
+          priority = 1.000000;
+          to="Update_Markers";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!CTI_GameOver && time > _ncycle "/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Update_Markers">*/
+    class Update_Markers
+    {
+      name = "Update_Markers";
+      init = /*%FSM<STATEINIT""">*/"_ncycle = time + 5.5;" \n
+       "" \n
+       "{" \n
+       "	_town = _x;" \n
+       "	_sideID = if (isNil {_x getVariable ""cti_town_sideID""}) then {-1} else {_x getVariable ""cti_town_sideID""};" \n
+       "	_town_value = _town getVariable ""cti_town_value"";" \n
+       "	_town_marker =format [""cti_town_marker_%1"", _town];" \n
+       "	_town_capture = format [""cti_town_capareaMarker_%1"",_town];" \n
+       "	_town_name =_town getVariable ""cti_town_name"";" \n
+       "	_marker_area = Format [""cti_town_areaMarker_%1"", _x];" \n
+       "	_mortar_zone = Format [""cti_town_mortar_zone_%1"", _x];" \n
+       "	_mortar= Format [""cti_town_mortar_%1"", _x];" \n
+       "	_marker_area_halo = Format [""cti_town_HALLOMarker_%1"", _x];" \n
+       "	_active=if (_x in (_sl getvariable ""CTI_ACTIVE"")) then {true} else {false};" \n
+       "      _availlable=if (_x in (_sl getvariable ""CTI_AVAILLABLE"")) then {true} else {false};" \n
+       "      _priority=if (_x == (_sl getvariable ""CTI_PRIORITY"")) then {true} else {false};	" \n
+       "" \n
+       "	if (_availlable || CTI_P_SideJoined == resistance) then {" \n
+       "			if (markerAlpha _marker_area == 0) then { _marker_area setMarkerAlphaLocal CTI_MARKERS_OPACITY };" \n
+       "			if (markerAlpha _town_marker == 0) then { _town_marker setMarkerAlphaLocal 1 };" \n
+       "			_marker_area setMarkerColorLocal  ""ColorWhite"";" \n
+       "" \n
+       "	}else {" \n
+       "			if (markerAlpha _marker_area != 0) then { _marker_area setMarkerAlphaLocal 0 };" \n
+       "			if (markerAlpha _town_marker != 0) then { _town_marker setMarkerAlphaLocal 0 };" \n
+       "	};" \n
+       "" \n
+       "" \n
+       "	if (_active) then {" \n
+       "			if (markerAlpha _town_capture == 0) then { _town_capture setMarkerAlphaLocal CTI_MARKERS_OPACITY };" \n
+       "			if (markerAlpha _marker_area == 0) then { _marker_area setMarkerAlphaLocal CTI_MARKERS_OPACITY };" \n
+       "			if (markerAlpha _town_marker == 0) then { _town_marker setMarkerAlphaLocal 1 };" \n
+       "			_town_marker setMarkerTextLocal format[""%1 :: %2 :: Is active "",_town_name, _town_value ];" \n
+       "			_town_marker setMarkerSizeLocal [1, 1];" \n
+       "			" \n
+       "			if (CTI_RESISTANCE_ID == _sideID) then  {" \n
+       "				_marker_area setMarkerColorLocal  ""ColorGreen"";" \n
+       "				if (markerAlpha _mortar == 0) then { _mortar setMarkerAlphaLocal 1 };" \n
+       "				if (markerAlpha _mortar_zone == 0) then { _mortar_zone setMarkerAlphaLocal 1 };" \n
+       "			} else {	" \n
+       "				if (markerAlpha _mortar != 0) then { _mortar setMarkerAlphaLocal 0 };" \n
+       "				if (markerAlpha _mortar_zone != 0) then { _mortar_zone setMarkerAlphaLocal 0 };" \n
+       "			};" \n
+       "			" \n
+       "	} else {" \n
+       "			if (markerAlpha _town_capture != 0) then { _town_capture setMarkerAlphaLocal 0 };" \n
+       "			_town_marker setMarkerTextLocal  format[""%1 :: %2 "",_town_name, _town_value ];" \n
+       "			_town_marker setMarkerSizeLocal [0.5, 0.5];" \n
+       "				if (markerAlpha _mortar != 0) then { _mortar setMarkerAlphaLocal 0 };" \n
+       "				if (markerAlpha _mortar_zone != 0) then { _mortar_zone setMarkerAlphaLocal 0 };	" \n
+       "	};" \n
+       "	if (CTI_P_SideID == _sideID) then {" \n
+       "			if (markerColor _marker_area != CTI_P_SideColor) then { _marker_area setMarkerColorLocal CTI_P_SideColor };" \n
+       "			if  !(  CTI_P_SideJoined  == resistance) then {" \n
+       "				if (CTI_Base_HaloInRange ) then {" \n
+       "					 if (markerAlpha _marker_area_halo != 1) then { _marker_area_halo setMarkerAlphaLocal 1 };" \n
+       "				} else {" \n
+       "					if (markerAlpha _marker_area_halo != 0) then { _marker_area_halo setMarkerAlphaLocal 0 };" \n
+       "				};" \n
+       "			};	" \n
+       "			if (CTI_P_SideJoined countSide (_x nearEntities [""AllVehicles"", CTI_MARKERS_TOWN_AREA_RANGE]) > 0) then {" \n
+       "				if (markerAlpha _marker_area == 0) then { _marker_area setMarkerAlphaLocal CTI_MARKERS_OPACITY };" \n
+       "			} else {" \n
+       "				if (markerAlpha _marker_area != 0) then { _marker_area setMarkerAlphaLocal 0 };" \n
+       "			};" \n
+       "			if (markerAlpha _town_marker == 0) then { _town_marker setMarkerAlphaLocal 1 };" \n
+       "	} else {" \n
+       "			if (markerAlpha _marker_area_halo != 0) then { _marker_area_halo setMarkerAlphaLocal 0 };" \n
+       "	};" \n
+       "" \n
+       "" \n
+       "" \n
+       "} forEach CTI_Towns;" \n
+       "_ci=1;" \n
+       "" \n
+       "{" \n
+       "	_base= format [""cti_base_%1"",_ci];" \n
+       "	if (markerAlpha _base != 0.7) then { _base setMarkerAlphaLocal 0.7};" \n
+       "	 _base setMarkerPosLocal _x;" \n
+       "	_ci=_ci+1;" \n
+       "" \n
+       "} forEach (CTI_P_SideLogic getVariable ""cti_structures_areas"");"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Cycle">*/
+        class Cycle
+        {
+          priority = 1.000000;
+          to="Update_Markers";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!CTI_GameOver && time > _ncycle "/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Terminate">*/
+        class Terminate
+        {
+          priority = 0.000000;
+          to="End_FSM";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"CTI_GameOver"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "End_FSM">*/
+    class End_FSM
+    {
+      name = "End_FSM";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+  };
+  initState="Start_FSM";
+  finalStates[] =
+  {
+    "End_FSM"
+  };
+};
+/*%FSM</COMPILE>*/

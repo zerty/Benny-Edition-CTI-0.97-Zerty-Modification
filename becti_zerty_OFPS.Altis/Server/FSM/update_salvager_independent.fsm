@@ -1,0 +1,386 @@
+/*%FSM<COMPILE "E:\Bohemia Interactive\ArmA 2\FSM Editor Personal Edition\scriptedFSM.cfg, update_salvager_independent.fsm">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"Start_FSM",0,250,-100.000000,-400.000000,0.000000,-350.000000,0.000000,"Start FSM"};
+item1[] = {"Cycle",4,218,-100.000000,-300.000000,0.000000,-250.000000,1.000000,"Cycle"};
+item2[] = {"Phase_I_ETA",2,250,-100.000000,-200.000000,0.000000,-150.000000,0.000000,"Phase I" \n "ETA"};
+item3[] = {"Alive",4,218,-100.000000,-100.000000,0.000000,-50.000000,1.000000,"Alive"};
+item4[] = {"Phase_II_Job",2,250,-100.000000,0.000000,0.000000,50.000000,0.000000,"Phase II" \n "Job"};
+item5[] = {"Terminate",8,218,50.000000,-200.000000,150.000000,-150.000000,0.000000,"Terminate"};
+item6[] = {"Unassigned",8,218,-250.000000,0.000000,-150.000000,50.000000,0.000000,"Unassigned"};
+item7[] = {"End_FSM",1,4346,200.000000,-200.000000,300.000000,-150.000000,0.000000,"End FSM"};
+item8[] = {"Assigned",4,218,50.000000,0.000000,150.000000,50.000000,1.000000,"Assigned"};
+item9[] = {"Attempt_Assignme",2,250,-400.000000,0.000000,-300.000000,50.000000,0.000000,"Attempt" \n "Assignment"};
+item10[] = {"Phase_III_Nature",2,250,50.000000,100.000000,150.000000,150.000000,0.000000,"Phase III" \n "Nature"};
+item11[] = {"",7,210,-354.000000,-279.000000,-346.000000,-271.000000,0.000000,""};
+item12[] = {"Goto_Repair",4,218,-100.000000,200.000000,0.000000,250.000000,0.000000,"Goto" \n "Repair"};
+item13[] = {"Goto_Town",4,218,200.000000,200.000000,300.000000,250.000000,0.000000,"Goto" \n "Town"};
+item14[] = {"Update_Repair",2,250,-100.000000,300.000000,0.000000,350.000000,0.000000,"Update" \n "Repair"};
+item15[] = {"Update_Town",2,250,200.000000,300.000000,300.000000,350.000000,0.000000,"Update" \n "Town"};
+item16[] = {"",7,210,371.000000,471.000000,379.000000,479.000000,0.000000,""};
+item17[] = {"",7,210,371.000000,-279.000000,379.000000,-271.000000,0.000000,""};
+item18[] = {"",7,210,96.000000,471.000000,104.000000,479.000000,0.000000,""};
+item19[] = {"Goto_Target",4,218,50.000000,200.000000,150.000000,250.000000,0.000000,"Goto" \n "Target"};
+item20[] = {"Update_Target",2,250,50.000000,300.000000,150.000000,350.000000,0.000000,"Update" \n "Target"};
+link0[] = {0,1};
+link1[] = {1,2};
+link2[] = {2,3};
+link3[] = {2,5};
+link4[] = {3,4};
+link5[] = {4,6};
+link6[] = {4,8};
+link7[] = {5,7};
+link8[] = {6,9};
+link9[] = {8,10};
+link10[] = {9,11};
+link11[] = {10,12};
+link12[] = {10,13};
+link13[] = {10,19};
+link14[] = {11,1};
+link15[] = {12,14};
+link16[] = {13,15};
+link17[] = {14,18};
+link18[] = {15,18};
+link19[] = {16,17};
+link20[] = {17,1};
+link21[] = {18,16};
+link22[] = {19,20};
+link23[] = {20,18};
+globals[] = {25.000000,1,0,0,0,640,480,1,196,6316128,1,-555.809814,609.651367,630.043701,-455.164551,973,911,1};
+window[] = {2,-1,-1,-1,-1,831,50,1305,50,3,991};
+*//*%FSM</HEAD>*/
+class FSM
+{
+  fsmName = "update_salvager_independent.fsm";
+  class States
+  {
+    /*%FSM<STATE "Start_FSM">*/
+    class Start_FSM
+    {
+      name = "Start_FSM";
+      init = /*%FSM<STATEINIT""">*/"_side = _this select 0;" \n
+       "_salvager = _this select 1;" \n
+       "" \n
+       "_driver = driver _salvager;" \n
+       "_group = group _driver;" \n
+       "" \n
+       "_group setSpeedMode ""FULL"";" \n
+       "_group setBehaviour ""CARELESS"";" \n
+       "" \n
+       "_sideID = (_side) call CTI_CO_FNC_GetSideID;" \n
+       "_sideLogic = (_side) call CTI_CO_FNC_GetSideLogic;" \n
+       "" \n
+       "_last_targetcheck = time;" \n
+       "" \n
+       "_ncycle = 0;" \n
+       "_action = """";" \n
+       "_move_lasttime = 0;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Cycle">*/
+        class Cycle
+        {
+          priority = 1.000000;
+          to="Phase_I_ETA";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"time > _ncycle "/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Phase_I_ETA">*/
+    class Phase_I_ETA
+    {
+      name = "Phase_I_ETA";
+      init = /*%FSM<STATEINIT""">*/"_ncycle = time + 5;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Alive">*/
+        class Alive
+        {
+          priority = 1.000000;
+          to="Phase_II_Job";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!CTI_GameOver && canMove _salvager && alive _driver"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Terminate">*/
+        class Terminate
+        {
+          priority = 0.000000;
+          to="End_FSM";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Phase_II_Job">*/
+    class Phase_II_Job
+    {
+      name = "Phase_II_Job";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Assigned">*/
+        class Assigned
+        {
+          priority = 1.000000;
+          to="Phase_III_Nature";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_action != """""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Unassigned">*/
+        class Unassigned
+        {
+          priority = 0.000000;
+          to="Attempt_Assignme";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "End_FSM">*/
+    class End_FSM
+    {
+      name = "End_FSM";
+      init = /*%FSM<STATEINIT""">*/"_sideLogic setVariable [""cti_salvagers"", (_sideLogic getVariable ""cti_salvagers"") - [objNull, _salvager], true];" \n
+       "" \n
+       "if (alive _salvager) then { _salvager setDammage 1 };" \n
+       "{ if (alive _x) then {deleteVehicle _x}} forEach units _group;" \n
+       "" \n
+       "if (count units _group < 1) then {deleteGroup _group}; //--- Attempt to remove the group if possible, the GC will do it in any case."/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Attempt_Assignme">*/
+    class Attempt_Assignme
+    {
+      name = "Attempt_Assignme";
+      init = /*%FSM<STATEINIT""">*/"_goto = objNull;" \n
+       "_move_lasttime = 0;" \n
+       "_action = """";" \n
+       "_list = [];" \n
+       "{if (!alive _x && !(surfaceIsWater getPos _x) && _x distance _salvager < CTI_VEHICLES_SALVAGE_INDEPENDENT_EFFECTIVE_RANGE && isNil {_x getVariable ""cti_gc_noremove""}) then {[_list, _x] call CTI_CO_FNC_ArrayPush}} forEach vehicles;" \n
+       "" \n
+       "if (count _list > 0) then { _last_targetcheck = time; _goto = [_salvager, _list] call CTI_CO_FNC_GetClosestEntity; _action = ""goto-target""; _salvager commandMove (position _goto) };" \n
+       "" \n
+       "if (isNull _goto) then {" \n
+       "	_structures = (_side) call CTI_CO_FNC_GetSideStructures;" \n
+       "	_factory_repair = [CTI_REPAIR, _salvager, _structures] call CTI_CO_FNC_GetClosestStructure;" \n
+       "	" \n
+       "	if !(isNull _factory_repair) then {" \n
+       "		if (_salvager distance _factory_repair > 75) then {" \n
+       "			_action = ""goto-repair"";" \n
+       "			_goto = _factory_repair;" \n
+       "		};" \n
+       "	} else {" \n
+       "		_town = [_salvager, _sideID] call CTI_CO_FNC_GetClosestFriendlyTown;" \n
+       "		if !(isNull _town) then {" \n
+       "			if (_salvager distance _town > 75) then {" \n
+       "				_action = ""goto-town"";" \n
+       "				_goto = _town;" \n
+       "			};" \n
+       "		};" \n
+       "	};" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Cycle">*/
+        class Cycle
+        {
+          priority = 1.000000;
+          to="Phase_I_ETA";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"time > _ncycle "/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Phase_III_Nature">*/
+    class Phase_III_Nature
+    {
+      name = "Phase_III_Nature";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Goto_Town">*/
+        class Goto_Town
+        {
+          priority = 0.000000;
+          to="Update_Town";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_action == ""goto-town"""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Goto_Target">*/
+        class Goto_Target
+        {
+          priority = 0.000000;
+          to="Update_Target";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_action == ""goto-target"""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Goto_Repair">*/
+        class Goto_Repair
+        {
+          priority = 0.000000;
+          to="Update_Repair";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_action == ""goto-repair"""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Update_Repair">*/
+    class Update_Repair
+    {
+      name = "Update_Repair";
+      init = /*%FSM<STATEINIT""">*/"if (alive _goto) then {" \n
+       "	if (_salvager distance _goto > 75) then {" \n
+       "		if (time - _move_lasttime > 30) then {" \n
+       "			_salvager commandMove ([_goto, 8, 30] call CTI_CO_FNC_GetRandomPosition);" \n
+       "			_move_lasttime = time;" \n
+       "		};" \n
+       "	} else {" \n
+       "		_action = """";" \n
+       "	};" \n
+       "} else {" \n
+       "	_action = """";" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Cycle">*/
+        class Cycle
+        {
+          priority = 1.000000;
+          to="Phase_I_ETA";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"time > _ncycle "/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Update_Town">*/
+    class Update_Town
+    {
+      name = "Update_Town";
+      init = /*%FSM<STATEINIT""">*/"if (_goto getVariable ""sideID"" == _sideID) then {" \n
+       "	if (_salvager distance _goto > 75) then {" \n
+       "		if (time - _move_lasttime > 30) then {" \n
+       "			_salvager commandMove ([_goto, 8, 30] call CTI_CO_FNC_GetRandomPosition);" \n
+       "			_move_lasttime = time;" \n
+       "		};" \n
+       "	} else {" \n
+       "		_action = """";" \n
+       "	};" \n
+       "} else {" \n
+       "	_action = """";" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Cycle">*/
+        class Cycle
+        {
+          priority = 1.000000;
+          to="Phase_I_ETA";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"time > _ncycle "/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Update_Target">*/
+    class Update_Target
+    {
+      name = "Update_Target";
+      init = /*%FSM<STATEINIT""">*/"if !(isNull _goto) then {" \n
+       "	if (_salvager distance _goto <= 40 && unitReady _salvager) then {" \n
+       "		" \n
+       "		_var_name = if (isNil {_goto getVariable ""cti_customid""}) then {typeOf _goto} else {missionNamespace getVariable format[""CTI_CUSTOM_ENTITY_%1"", _goto getVariable ""cti_customid""]};" \n
+       "		_var_classname = missionNamespace getVariable _var_name;" \n
+       "		if !(isNil '_var_classname') then {" \n
+       "			_salvage_value = round((_var_classname select 2) * CTI_VEHICLES_SALVAGE_RATE);" \n
+       "			_return = [_side, _salvage_value] call CTI_CO_FNC_AddSideFunds;" \n
+       "			_player_get = _return select 1;	_commander_get = _return select 2;" \n
+       "			[[""CLIENT"", _side], ""Client_OnMessageReceived"", [""salvage"", [_var_name, _player_get, _commander_get]]] call CTI_CO_FNC_NetSend;" \n
+       "		};" \n
+       "		" \n
+       "		deleteVehicle _goto;" \n
+       "		_action = """";" \n
+       "	} else {" \n
+       "		if (time - _move_lasttime > 30) then {" \n
+       "			_salvager commandMove (getPos _goto);	" \n
+       "			_move_lasttime = time;" \n
+       "		};" \n
+       "	};" \n
+       "	" \n
+       "	//--- Is there a target closer to our salvager?" \n
+       "	if (time - _last_targetcheck > 25 && _action != """") then {" \n
+       "		_last_targetcheck = time;" \n
+       "		_list = [];" \n
+       "		{if (!alive _x && !(surfaceIsWater getPos _x) && _x distance _salvager < CTI_VEHICLES_SALVAGE_INDEPENDENT_EFFECTIVE_RANGE && isNil {_x getVariable ""cti_gc_noremove""}) then {[_list, _x] call CTI_CO_FNC_ArrayPush}} forEach vehicles;" \n
+       "" \n
+       "		if (count _list > 0) then { " \n
+       "			_closest = [_salvager, _list] call CTI_CO_FNC_GetClosestEntity;" \n
+       "			if (_goto != _closest) then { _action = """"; doStop _salvager };" \n
+       "		};" \n
+       "	};" \n
+       "} else {" \n
+       "	_action = """";" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Cycle">*/
+        class Cycle
+        {
+          priority = 1.000000;
+          to="Phase_I_ETA";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"time > _ncycle "/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+  };
+  initState="Start_FSM";
+  finalStates[] =
+  {
+    "End_FSM",
+  };
+};
+/*%FSM</COMPILE>*/

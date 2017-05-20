@@ -1,0 +1,149 @@
+/*%FSM<COMPILE "scriptedFSM.cfg, update_resources.fsm">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"Start_FSM",0,250,-250.000000,-300.000000,-150.000000,-250.000000,0.000000,"Start FSM"};
+item1[] = {"Cycle",4,218,-100.000000,-300.000000,0.000000,-250.000000,1.000000,"Cycle"};
+item2[] = {"Update_Resources",2,4346,-100.000000,-200.000000,0.000000,-150.000000,0.000000,"Update" \n "Resources"};
+item3[] = {"End_FSM",1,250,-250.000000,-100.000000,-150.000000,-50.000000,0.000000,"End FSM"};
+item4[] = {"Gameover",4,218,-250.000000,-200.000000,-150.000000,-150.000000,0.000000,"Gameover"};
+link0[] = {0,1};
+link1[] = {1,2};
+link2[] = {2,1};
+link3[] = {2,4};
+link4[] = {4,3};
+globals[] = {25.000000,1,0,0,0,640,480,1,162,6316128,1,-620.422607,163.824570,138.236649,-571.857727,973,881,1};
+window[] = {2,-1,-1,-1,-1,956,175,1430,175,3,991};
+*//*%FSM</HEAD>*/
+class FSM
+{
+  fsmName = "update_resources.fsm";
+  class States
+  {
+    /*%FSM<STATE "Start_FSM">*/
+    class Start_FSM
+    {
+      name = "Start_FSM";
+      init = /*%FSM<STATEINIT""">*/"//_delay = 10;" \n
+       "_delay = missionNamespace getVariable ""CTI_ECONOMY_INCOME_CYCLE"";" \n
+       "_ncycle = time + _delay;" \n
+       "" \n
+       "// --- zerty was here" \n
+       "_base_income = missionNamespace getVariable ""CTI_ECONOMY_BASE_PLAYER_INCOME"";"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Cycle">*/
+        class Cycle
+        {
+          priority = 1.000000;
+          to="Update_Resources";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!CTI_GameOver && time > _ncycle "/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Update_Resources">*/
+    class Update_Resources
+    {
+      name = "Update_Resources";
+      init = /*%FSM<STATEINIT""">*/"_ncycle = time + _delay;" \n
+       "" \n
+       "{" \n
+       "	_side = _x;" \n
+       "	_total_values = (_side) call CTI_CO_FNC_GetTownsResources;" \n
+       "	" \n
+       "	_logic = (_side) call CTI_CO_FNC_GetSideLogic;" \n
+       "	_commander = _logic getVariable ""cti_commander"";" \n
+       "	_side_units = (_side) call CTI_CO_FNC_GetSideGroups;" \n
+       "	_total_players = count (_side_units - [_commander]);" \n
+       "	" \n
+       "	//--- First we deal with the award pool" \n
+       "	_percent_award = _logic getVariable ""cti_pool_award"";" \n
+       "	_percent_resources = _logic getVariable ""cti_pool_resources"";" \n
+       "	_pool_award = _total_values * _percent_award; //--- The award pool" \n
+       "//_pool_award = 1750 * 0.1 = 175" \n
+       "" \n
+       "	_pool_income_total = _total_values - _pool_award; //--- The resources pool overall" \n
+       "//_pool_income_total = 1750 - 175 = 1575" \n
+       "	_pool_income_players = _pool_income_total * _percent_resources; //--- The resources pool for the players" \n
+       "//_pool_income_players = 1575 * 0.3 = 472.5" \n
+       "	_pool_income_commander = round(_base_income + _pool_income_total - _pool_income_players);" \n
+       "//_pool_income_commander = 1575 - 472.5 = 1102.5" \n
+       "	" \n
+       "	// _side_players = (_side) call CTI_CO_FNC_GetSidePlayerGroups;" \n
+       "	" \n
+       "	//--- Calculate the total score (minus the commander)" \n
+       "	//TODO: Current award to all, commander toggle button (award players / award all (ai))" \n
+       "	_total_score = (_side_units - [_commander]) call CTI_CO_FNC_GetUnitsScore;" \n
+       "	if (_total_score < 1) then {_total_score = count _side_units};" \n
+       "	" \n
+       "	//--- Calculate the income per player from the resources pool" \n
+       "	if (_total_players > 0) then {" \n
+       "		_pool_income_player = round(_pool_income_players / _total_players);" \n
+       "	//_pool_income_player = 472.5 / 4 = 118" \n
+       "		//--- Award units aside from commander" \n
+       "		{" \n
+       "			//--- This is the award pool" \n
+       "			_score = score leader _x;" \n
+       "			_value = round((_score / _total_score) * _pool_award);" \n
+       "			" \n
+       "			//--- This is the resources pool" \n
+       "			_value = _value + _pool_income_player;" \n
+       "			if (_value < 0) then { _value = 0 ;};" \n
+       "			_value= _value + _base_income ;" \n
+       "			if (_value > 0) then { [_x, _side, _value] call CTI_CO_FNC_ChangeFunds };" \n
+       "		} forEach (_side_units - [_commander]);" \n
+       "	} else {" \n
+       "		_pool_income_commander = _pool_income_commander + _pool_income_players;" \n
+       "	};" \n
+       "" \n
+       "	if (_pool_income_commander != 0) then {[_side, _pool_income_commander] call CTI_CO_FNC_ChangeFundsCommander};" \n
+       "} forEach [west, east];"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Cycle">*/
+        class Cycle
+        {
+          priority = 1.000000;
+          to="Update_Resources";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!CTI_GameOver && time > _ncycle "/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Gameover">*/
+        class Gameover
+        {
+          priority = 0.000000;
+          to="End_FSM";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"CTI_GameOver"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "End_FSM">*/
+    class End_FSM
+    {
+      name = "End_FSM";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+  };
+  initState="Start_FSM";
+  finalStates[] =
+  {
+    "End_FSM",
+  };
+};
+/*%FSM</COMPILE>*/

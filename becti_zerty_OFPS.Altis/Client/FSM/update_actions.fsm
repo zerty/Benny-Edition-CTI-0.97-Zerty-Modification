@@ -1,0 +1,140 @@
+/*%FSM<COMPILE "scriptedFSM.cfg, update_actions.fsm">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"Start_FSM",0,250,-275.000000,-100.000000,-175.000000,-50.000000,0.000000,"Start FSM"};
+item1[] = {"Cycle",4,218,-100.000000,-100.000000,0.000000,-50.000000,1.000000,"Cycle"};
+item2[] = {"Update_Actions",2,4346,-100.000000,-225.000000,0.000000,-175.000000,0.000000,"Update" \n "Actions"};
+item3[] = {"End_FSM",1,250,50.000000,-325.000000,150.000000,-275.000000,0.000000,"End FSM"};
+item4[] = {"Terminate",4,218,50.000000,-225.000000,150.000000,-175.000000,0.000000,"Terminate"};
+link0[] = {0,1};
+link1[] = {1,2};
+link2[] = {2,1};
+link3[] = {2,4};
+link4[] = {4,3};
+globals[] = {25.000000,1,0,0,0,640,480,1,133,6316128,1,-355.061859,258.323914,98.173157,-593.751160,781,881,1};
+window[] = {2,-1,-1,-1,-1,1006,225,1480,225,3,799};
+*//*%FSM</HEAD>*/
+class FSM
+{
+  fsmName = "update_actions.fsm";
+  class States
+  {
+    /*%FSM<STATE "Start_FSM">*/
+    class Start_FSM
+    {
+      name = "Start_FSM";
+      init = /*%FSM<STATEINIT""">*/"_ncycle = 0;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Cycle">*/
+        class Cycle
+        {
+          priority = 1.000000;
+          to="Update_Actions";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!CTI_GameOver && time > _ncycle "/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Update_Actions">*/
+    class Update_Actions
+    {
+      name = "Update_Actions";
+      init = /*%FSM<STATEINIT""">*/"_ncycle = time + 2.5;" \n
+       "" \n
+       "_structures = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideStructures;" \n
+       "_hq = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideHQ;" \n
+       "" \n
+       "if (missionNamespace getVariable ""CTI_EW_ANET"" == 1 ) then {" \n
+       "CTI_BASE_PURCHASE_UNITS_RANGE_CC= 300000;" \n
+       "CTI_BASE_PURCHASE_UNITS_RANGE_EFFECTIVE = 300000;" \n
+       "};" \n
+       "" \n
+       "CTI_Base_HQInRange = if (alive _hq && _hq distance player < CTI_BASE_CONSTRUCTION_RANGE) then {true} else {false};" \n
+       "CTI_Base_ControlCenterInRange = if !(isNull ([CTI_CONTROLCENTER, player, _structures, CTI_BASE_PURCHASE_UNITS_RANGE_CC] call CTI_CO_FNC_GetClosestStructure)) then {true} else {false};" \n
+       "" \n
+       "CTI_BASE_PURCHASE_UNITS_RANGE_EFFECTIVE = if (CTI_Base_ControlCenterInRange) then {CTI_BASE_PURCHASE_UNITS_RANGE_CC} else {CTI_BASE_PURCHASE_UNITS_RANGE};" \n
+       "" \n
+       "_barracks = [CTI_BARRACKS, player, _structures, CTI_BASE_PURCHASE_UNITS_RANGE_EFFECTIVE] call CTI_CO_FNC_GetClosestStructure;" \n
+       "CTI_Base_BarracksInRange = if !(isNull _barracks) then {true} else {false};" \n
+       "//CTI_Base_GearInRange = if (_barracks distance player < CTI_BASE_GEAR_RANGE) then {true} else {false};" \n
+       "//CTI_Base_GearInRange_Mobile = if (count([player, CTI_SPECIAL_AMMOTRUCK, CTI_SERVICE_AMMO_TRUCK_RANGE] call CTI_CO_FNC_GetNearestSpecialVehicles)  + count([player, CTI_SPECIAL_MEDICALVEHICLE, CTI_SERVICE_AMMO_TRUCK_RANGE] call CTI_CO_FNC_GetNearestSpecialVehicles)  > 0) then {true} else {false};" \n
+       "" \n
+       "CTI_Base_LightInRange = if !(isNull ([CTI_LIGHT, player, _structures, CTI_BASE_PURCHASE_UNITS_RANGE_EFFECTIVE] call CTI_CO_FNC_GetClosestStructure)) then {true} else {false};" \n
+       "CTI_Base_HeavyInRange = if !(isNull ([CTI_HEAVY, player, _structures, CTI_BASE_PURCHASE_UNITS_RANGE_EFFECTIVE] call CTI_CO_FNC_GetClosestStructure)) then {true} else {false};" \n
+       "CTI_Base_AirInRange = if !(isNull ([CTI_AIR, player, _structures, CTI_BASE_PURCHASE_UNITS_RANGE_EFFECTIVE] call CTI_CO_FNC_GetClosestStructure)) then {true} else {false};" \n
+       "CTI_Base_AmmoInRange = if !(isNull ([CTI_AMMO, player, _structures, CTI_BASE_PURCHASE_UNITS_RANGE_EFFECTIVE] call CTI_CO_FNC_GetClosestStructure)) then {true} else {false};" \n
+       "CTI_Base_RepairInRange = if !(isNull ([CTI_REPAIR, player, _structures, CTI_BASE_PURCHASE_UNITS_RANGE_EFFECTIVE] call CTI_CO_FNC_GetClosestStructure)) then {true} else {false};" \n
+       "CTI_Base_NavalInRange = if !(isNull ([CTI_NAVAL, player, _structures, CTI_BASE_PURCHASE_UNITS_RANGE_EFFECTIVE] call CTI_CO_FNC_GetClosestStructure)) then {true} else {false};" \n
+       "" \n
+       "/*_in_range = false;" \n
+       "if (CTI_BASE_FOB_MAX > 0) then {" \n
+       "	_nearest = [vehicle player, CTI_P_SideLogic getVariable [""cti_fobs"",[]]] call CTI_CO_FNC_GetClosestEntity;" \n
+       "	if (_nearest distance vehicle player <= CTI_BASE_GEAR_FOB_RANGE) then {_in_range = true};" \n
+       "};" \n
+       "CTI_Base_GearInRange_FOB = _in_range;" \n
+       "*/" \n
+       "// --- Zerty Was here" \n
+       "_ctown = [player , CTI_P_SideJoined] call CTI_CO_FNC_GetClosestFriendlyTown;" \n
+       "CTI_Town_InRange = if ((player distance _ctown) < CTI_BASE_PURCHASE_UNITS_RANGE_EFFECTIVE ) then {true} else {false};" \n
+       "CTI_Base_HaloInRange = if !(isNull ([CTI_AIR, player, _structures,300] call CTI_CO_FNC_GetClosestStructure)) then {true} else {false};" \n
+       "" \n
+       "CTI_Base_RealRepairInRange = if !(isNull ([CTI_REPAIR, player, _structures, 250] call CTI_CO_FNC_GetClosestStructure)) then {true} else {false};" \n
+       "" \n
+       "/*//debug" \n
+       "CTI_Base_BarracksInRange = true;" \n
+       "CTI_Base_LightInRange = true;" \n
+       "CTI_Base_HeavyInRange = true;" \n
+       "CTI_Base_AirInRange = true;" \n
+       "CTI_Base_AmmoInRange = true;" \n
+       "CTI_Base_RepairInRange = true;*/" \n
+       ""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Cycle">*/
+        class Cycle
+        {
+          priority = 1.000000;
+          to="Update_Actions";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!CTI_GameOver && time > _ncycle "/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Terminate">*/
+        class Terminate
+        {
+          priority = 0.000000;
+          to="End_FSM";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"CTI_GameOver"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "End_FSM">*/
+    class End_FSM
+    {
+      name = "End_FSM";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+  };
+  initState="Start_FSM";
+  finalStates[] =
+  {
+    "End_FSM"
+  };
+};
+/*%FSM</COMPILE>*/

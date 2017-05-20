@@ -1,0 +1,571 @@
+/*%FSM<COMPILE "scriptedFSM.cfg, update_ai.fsm">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"Start_FSM",0,250,-100.000000,-400.000000,0.000000,-350.000000,0.000000,"Start FSM"};
+item1[] = {"Cycle",4,218,-100.000000,-300.000000,0.000000,-250.000000,0.000000,"Cycle"};
+item2[] = {"Phase_I_AI_Contr",2,250,-100.000000,-200.000000,0.000000,-150.000000,0.000000,"Phase I" \n "AI Controlled"};
+item3[] = {"End_FSM",1,250,-400.000000,-200.000000,-300.000000,-150.000000,0.000000,"End FSM"};
+item4[] = {"Not_AI",8,218,-250.000000,-200.000000,-150.000000,-150.000000,0.000000,"Not AI"};
+item5[] = {"AI",4,218,-100.000000,-100.000000,0.000000,-50.000000,1.000000,"AI"};
+item6[] = {"Phase_VI_Duty",2,250,-100.000000,1000.000000,0.000000,1050.000000,0.000000,"Phase VI" \n "Duty"};
+item7[] = {"",7,210,246.000015,-278.999969,253.999985,-271.000000,0.000000,""};
+item8[] = {"Phase_III_Group",2,250,-100.000000,200.000000,0.000000,250.000000,0.000000,"Phase III" \n "Group Reinforce"};
+item9[] = {"In_Need",8,218,50.000000,200.000000,150.000000,250.000000,0.000000,"In Need"};
+item10[] = {"Attempt_Purchase",2,250,200.000000,200.000000,300.000000,250.000000,0.000000,"Attempt" \n "Purchases"};
+item11[] = {"No_Need",4,218,-100.000000,300.000000,0.000000,350.000000,1.000000,"No Need"};
+item12[] = {"Phase_II_Respawn",2,250,-100.000000,0.000000,0.000000,50.000000,0.000000,"Phase II" \n "Respawning"};
+item13[] = {"Ready",4,4314,-100.000000,100.000000,0.000000,150.000000,1.000000,"Ready"};
+item14[] = {"Respawning",8,218,-525.000000,0.000000,-425.000000,50.000000,0.000000,"Respawning"};
+item15[] = {"Skip",2,250,-525.000000,-300.000000,-425.000000,-250.000000,0.000000,"Skip"};
+item16[] = {"Phase_IV_Leader",2,250,-100.000000,400.000000,0.000000,450.000000,0.000000,"Phase IV" \n "Leader Update"};
+item17[] = {"Check",8,218,50.000000,400.000000,150.000000,450.000000,0.000000,"Check"};
+item18[] = {"Skip",4,218,-100.000000,500.000000,0.000000,550.000000,1.000000,"Skip"};
+item19[] = {"Update",2,250,200.000000,400.000000,300.000000,450.000000,0.000000,"Update"};
+item20[] = {"_",8,218,200.000000,600.000000,300.000000,650.000000,0.000000,""};
+item21[] = {"",7,210,-54.000000,621.000000,-46.000004,629.000000,0.000000,""};
+item22[] = {"",7,210,345.999969,1021.000000,354.000061,1029.000000,0.000000,""};
+item23[] = {"",7,210,346.000000,-279.000000,354.000000,-271.000000,0.000000,""};
+item24[] = {"Phase_V_Members",3,250,-100.000000,700.000000,0.000000,750.000000,0.000000,"Phase V" \n "Members/Group" \n "Update"};
+item25[] = {"Skip",4,218,-100.000000,800.000000,0.000000,850.000000,1.000000,"Skip"};
+item26[] = {"Check",8,218,50.000000,700.000000,150.000000,750.000000,0.000000,"Check"};
+item27[] = {"Update_1",2,250,200.000000,700.000000,300.000000,750.000000,0.000000,"Update"};
+item28[] = {"_",8,218,200.000000,900.000000,300.000000,950.000000,0.000000,""};
+item29[] = {"",7,210,-54.000000,921.000000,-46.000004,929.000000,0.000000,""};
+link0[] = {0,1};
+link1[] = {1,2};
+link2[] = {2,4};
+link3[] = {2,5};
+link4[] = {4,3};
+link5[] = {5,12};
+link6[] = {6,22};
+link7[] = {7,1};
+link8[] = {8,9};
+link9[] = {8,11};
+link10[] = {9,10};
+link11[] = {10,7};
+link12[] = {11,16};
+link13[] = {12,13};
+link14[] = {12,14};
+link15[] = {13,8};
+link16[] = {14,15};
+link17[] = {15,1};
+link18[] = {16,17};
+link19[] = {16,18};
+link20[] = {17,19};
+link21[] = {18,21};
+link22[] = {19,20};
+link23[] = {20,21};
+link24[] = {21,24};
+link25[] = {22,23};
+link26[] = {23,7};
+link27[] = {24,25};
+link28[] = {24,26};
+link29[] = {25,29};
+link30[] = {26,27};
+link31[] = {27,28};
+link32[] = {28,29};
+link33[] = {29,6};
+globals[] = {25.000000,1,0,0,0,640,480,1,273,6316128,1,-957.199219,904.695557,813.216370,-780.513245,854,881,1};
+window[] = {2,-1,-1,-1,-1,981,200,1455,200,3,872};
+*//*%FSM</HEAD>*/
+class FSM
+{
+  fsmName = "update_ai.fsm";
+  class States
+  {
+    /*%FSM<STATE "Start_FSM">*/
+    class Start_FSM
+    {
+      name = "Start_FSM";
+      init = /*%FSM<STATEINIT""">*/"_group = _this select 0;" \n
+       "_side = _this select 1;" \n
+       "_sideID = (_side) call CTI_CO_FNC_GetSideID;" \n
+       "_sidelogic=  (_side) call CTI_CO_FNC_GetSideLogic;" \n
+       "" \n
+       "if (CTI_Log_Level >= CTI_Log_Information) then {[""INFORMATION"", ""FILE: Server\FSM\update_ai.fsm"", format[""AI Leader FSM is starting for group [%1] on side [%2]"", _group, _side]] call CTI_CO_FNC_Log};" \n
+       "leader _group enableAI ""MOVE"";" \n
+       "" \n
+       "_ncycle = time + 5;" \n
+       "" \n
+       "_ai_order_last = _group getVariable ""cti_order"";" \n
+       "_group setVariable [""cti_aifsm_handled"", true];" \n
+       "" \n
+       "_assigned_target = objNull;" \n
+       "_assigned_mode = """";" \n
+       "_assigned_time = -1000;" \n
+       "" \n
+       "_factory_nearest = objNull;" \n
+       "_factory_lastmove = -1000;" \n
+       "_factory_lastpurchase = -1000;" \n
+       "" \n
+       "_defense_target = objNull;" \n
+       "_defense_target_lastvalue = -1;" \n
+       "_defense_mode = """";" \n
+       "_defense_mode_last = """";" \n
+       "" \n
+       "_move_to = [];" \n
+       "" \n
+       "_leader_lastcheck = time;" \n
+       "_members_lastcheck = time;" \n
+       "_members_lastposcheck = time;" \n
+       "" \n
+       "if (isMultiplayer) then {" \n
+       "	(leader _group) removeAllEventHandlers ""respawn"";" \n
+       "	(leader _group) addEventHandler [""respawn"", format[""[_this select 0, _this select 1, %1] spawn CTI_FSM_UpdateAI_RespawnLeader_MP"", _sideID]];" \n
+       "} else {" \n
+       "	(leader _group) addEventHandler [""killed"", format[""[_this select 0, %1] spawn CTI_FSM_UpdateAI_RespawnLeader_SP"", _sideID]];" \n
+       "};" \n
+       "" \n
+       "_order_last = -1;" \n
+       "_order_pos_last = _group getVariable ""cti_order_pos"";"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Cycle">*/
+        class Cycle
+        {
+          priority = 0.000000;
+          to="Phase_I_AI_Contr";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"time > _ncycle"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Phase_I_AI_Contr">*/
+    class Phase_I_AI_Contr
+    {
+      name = "Phase_I_AI_Contr";
+      init = /*%FSM<STATEINIT""">*/"_ok = false;" \n
+       "" \n
+       "if !(isNil '_group') then {" \n
+       "	if (!(isPlayer leader _group) && !(isNull leader _group)) then { _ok = true };" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "AI">*/
+        class AI
+        {
+          priority = 1.000000;
+          to="Phase_II_Respawn";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_ok && !CTI_GameOver"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Not_AI">*/
+        class Not_AI
+        {
+          priority = 0.000000;
+          to="End_FSM";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "End_FSM">*/
+    class End_FSM
+    {
+      name = "End_FSM";
+      init = /*%FSM<STATEINIT""">*/"(leader _group) removeAllEventHandlers ""respawn"";" \n
+       "_group setVariable [""cti_aifsm_handled"", nil];" \n
+       "" \n
+       "if (CTI_Log_Level >= CTI_Log_Information) then {[""INFORMATION"", ""FILE: Server\FSM\update_ai.fsm"", format[""AI Leader FSM has ended for group [%1] on side [%2]"", _group, _side]] call CTI_CO_FNC_Log};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Phase_VI_Duty">*/
+    class Phase_VI_Duty
+    {
+      name = "Phase_VI_Duty";
+      init = /*%FSM<STATEINIT""">*/"_order = _group getVariable ""cti_order"";" \n
+       "_order_pos = _group getVariable ""cti_order_pos"";" \n
+       "" \n
+       "//--- The order or it's position changed since last time?" \n
+       "if ([_group, _order_last, _order_pos_last] call CTI_CO_FNC_HasOrderedChanged || !(isNil {_group getVariable ""cti_team_reload""})) then {" \n
+       "	//--- Remove the explicit reload request" \n
+       "	_reload = false;" \n
+       "	if !(isNil {_group getVariable ""cti_team_reload""}) then {_reload = true; _group setVariable [""cti_team_reload"", nil]};" \n
+       "	" \n
+       "	//--- Generate a new seed" \n
+       "	_seed = time + random 10000 - random 500 + diag_frameno;" \n
+       "	_group setVariable [""cti_order_seed"", _seed];" \n
+       "	" \n
+       "	//--- Apply a new order thread." \n
+       "	switch (true) do {" \n
+       "		case (_order in [CTI_ORDER_TAKETOWNS, CTI_ORDER_TAKEHOLDTOWNS]): {[_group, _side, _order, _reload] spawn CTI_FSM_UpdateAI_Order_TakeTowns};" \n
+       "		case (_order in [CTI_ORDER_TAKETOWN, CTI_ORDER_TAKETOWN_AUTO, CTI_ORDER_TAKEHOLDTOWN, CTI_ORDER_TAKEHOLDTOWN_AUTO]): {[_group, _order_pos, _seed, _side, _reload, _order] spawn CTI_FSM_UpdateAI_Order_TakeTown};" \n
+       "		case (_order == CTI_ORDER_HOLDTOWNSBASES): {[_group, _side, _order, _reload] spawn CTI_FSM_UpdateAI_Order_HoldTownsBases};" \n
+       "		case (_order == CTI_ORDER_HOLDTOWNSBASE): {[_group, _order_pos, _seed, _side, _reload, _order] spawn CTI_FSM_UpdateAI_Order_HoldTownsBase};" \n
+       "		case (_order == CTI_ORDER_MOVE): {[_group, _side, _order_pos, _reload] spawn CTI_FSM_UpdateAI_Order_Move};" \n
+       "	};" \n
+       "};" \n
+       "" \n
+       "_order_last = _order;" \n
+       "_order_pos_last = _order_pos;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Cycle">*/
+        class Cycle
+        {
+          priority = 0.000000;
+          to="Phase_I_AI_Contr";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"time > _ncycle"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Phase_III_Group">*/
+    class Phase_III_Group
+    {
+      name = "Phase_III_Group";
+      init = /*%FSM<STATEINIT""">*/"_live_units = (_group) call CTI_CO_FNC_GetLiveUnits;" \n
+       "_structures = (_side) call CTI_CO_FNC_GetSideStructures;" \n
+       "_funds = [_group, _side] call CTI_CO_FNC_GetFunds;" \n
+       "_role = _group getVariable ""cti_role"";" \n
+       "" \n
+       "_var = missionNamespace getVariable format [""CTI_SQUAD_%1_%2"", _side, _role];" \n
+       "" \n
+       "_purchase = false;" \n
+       "_remoting = false;" \n
+       "if (!isNil '_var' && (_group getVariable ""cti_independent"")) then {//--- The role is set, it is independent, there is at least 1 structure, we have the min funds, the group is not buying or heading to a factory." \n
+       "	if (count _structures > 0 && _funds >= (_var select 1)) then {" \n
+       "		_factories = [_var select 3, _structures, leader _group] call CTI_CO_FNC_GetSideStructuresByType;" \n
+       "		_factory_nearest = objNull;" \n
+       "		" \n
+       "		if (count _factories > 0) then {" \n
+       "			_factory_nearest = _factories select 0;" \n
+       "			_factory_queu = _factory_nearest getVariable ""cti_queue_processing_count"";" \n
+       "			if (isNil '_queue') then { _factory_queu = 0 };" \n
+       "			" \n
+       "			//--- Purchase load balancing" \n
+       "			{" \n
+       "				_queue = _x getVariable ""cti_queue_processing_count"";" \n
+       "				if (isNil '_queue') then { _queue = 0 };" \n
+       "				" \n
+       "				if (round(_queue * .66) < _factory_queu && _x distance _factory_nearest < 1500) then { //--- Less units are being built there (at least ~33% of the queue has to be free) and the factory is not that far." \n
+       "					_factory_nearest = _x;" \n
+       "					_factory_queu = _queue;" \n
+       "				};" \n
+       "			} forEach (_factories - [_factory_nearest]);" \n
+       "		};" \n
+       "		" \n
+       "		if !(isNull _factory_nearest) then {" \n
+       "			//--- We have CC?" \n
+       "			if ([_side, CTI_CONTROLCENTER, getPos(leader _group), CTI_BASE_PURCHASE_UNITS_RANGE_CC] call CTI_CO_FNC_HasStructure) then {" \n
+       "				if (_factory_nearest distance (leader _group) < CTI_BASE_PURCHASE_UNITS_RANGE_CC) then {" \n
+       "					//--- Can do remoting?" \n
+       "					switch (true) do {" \n
+       "						case (_role in (missionNamespace getVariable format[""CTI_SQUADS_%1_KIND_INFANTRY"", _side]) && CTI_AI_TEAMS_PURCHASE_REMOTE_INFANTRY): {_remoting = true};" \n
+       "						case (_role in (missionNamespace getVariable format[""CTI_SQUADS_%1_KIND_LIGHT"", _side]) && CTI_AI_TEAMS_PURCHASE_REMOTE_LIGHT): {_remoting = true};" \n
+       "						case (_role in (missionNamespace getVariable format[""CTI_SQUADS_%1_KIND_HEAVY"", _side]) && CTI_AI_TEAMS_PURCHASE_REMOTE_HEAVY): {_remoting = true};" \n
+       "						case (_role in (missionNamespace getVariable format[""CTI_SQUADS_%1_KIND_AIR"", _side]) && CTI_AI_TEAMS_PURCHASE_REMOTE_AIR): {_remoting = true};" \n
+       "					};" \n
+       "				};" \n
+       "			};" \n
+       "			" \n
+       "			//--- Is our team independant enough? or close to a factory? commander will buy the rest!" \n
+       "			if (((count _live_units < CTI_AI_TEAMS_UNITS_MIN && alive _factory_nearest) || (leader _group distance _factory_nearest <= CTI_BASE_PURCHASE_UNITS_RANGE) || _remoting) && (count _live_units < CTI_AI_TEAMS_GROUPSIZE)) then {" \n
+       "				_purchase = true;" \n
+       "			};" \n
+       "		};" \n
+       "	};" \n
+       "};" \n
+       "//todo remote purchase for some kinds (air / mbt)"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "No_Need">*/
+        class No_Need
+        {
+          priority = 1.000000;
+          to="Phase_IV_Leader";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!_purchase"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "In_Need">*/
+        class In_Need
+        {
+          priority = 0.000000;
+          to="Attempt_Purchase";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Attempt_Purchase">*/
+    class Attempt_Purchase
+    {
+      name = "Attempt_Purchase";
+      init = /*%FSM<STATEINIT""">*/"//player sidechat format [""%1 can't buy yet..."", _group];" \n
+       "if (!alive _factory_nearest || !(alive leader _group)) exitWith {_purchase = false};" \n
+       "" \n
+       "if (leader _group distance _factory_nearest > CTI_BASE_PURCHASE_UNITS_RANGE && !_remoting) then {" \n
+       "	if (time - _factory_lastmove > 30) then {" \n
+       "		(leader _group) commandMove ([_factory_nearest, 10, 40] call CTI_CO_FNC_GetRandomPosition);" \n
+       "		_factory_lastmove = time;" \n
+       "	};" \n
+       "} else {" \n
+       "	if (time - _factory_lastpurchase > 240) then {" \n
+       "		_factory_lastpurchase = time;" \n
+       "		[_group, _side, _var select 2, _factory_nearest] call CTI_SE_FNC_AI_PurchaseSquad;" \n
+       "		_group setVariable [""cti_team_reload"", true]; //--- The group shall reload whatever it was doing" \n
+       "	};" \n
+       "};" \n
+       ""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Cycle">*/
+        class Cycle
+        {
+          priority = 0.000000;
+          to="Phase_I_AI_Contr";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"time > _ncycle"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Phase_II_Respawn">*/
+    class Phase_II_Respawn
+    {
+      name = "Phase_II_Respawn";
+      init = /*%FSM<STATEINIT""">*/"_ncycle = time + 5;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Ready">*/
+        class Ready
+        {
+          priority = 1.000000;
+          to="Phase_III_Group";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/" (_group getVariable [""cti_nextrespawn"",-1]) >0 && time > (_group getVariable [""cti_nextrespawn"",-1]) && !(_group == _sidelogic  getVariable [""cti_ai_commander_group"",grpNull])"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Respawning">*/
+        class Respawning
+        {
+          priority = 0.000000;
+          to="Skip";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Skip">*/
+    class Skip
+    {
+      name = "Skip";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Cycle">*/
+        class Cycle
+        {
+          priority = 0.000000;
+          to="Phase_I_AI_Contr";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"time > _ncycle"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Phase_IV_Leader">*/
+    class Phase_IV_Leader
+    {
+      name = "Phase_IV_Leader";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Skip">*/
+        class Skip
+        {
+          priority = 1.000000;
+          to="Phase_V_Members";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"time - _leader_lastcheck < 30"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Check">*/
+        class Check
+        {
+          priority = 0.000000;
+          to="Update";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Update">*/
+    class Update
+    {
+      name = "Update";
+      init = /*%FSM<STATEINIT""">*/"//--- Is our leader on foot? no assigned vehicle? we move it rather than watch him getting in, who knows what kind of black magic may get unleashed if the leader get killed during that moment..." \n
+       "if !(alive assignedVehicle leader _group) then {" \n
+       "	{" \n
+       "		if (effectiveCommander _x in units _group) exitWith { //--- Don't nick other's vehicles while in cargo!!" \n
+       "			_driver_ai = assignedDriver _x;" \n
+       "			if (alive _driver_ai) then { unassignVehicle _driver_ai; _driver_ai setPos (getPos leader _group); _driver_ai spawn { sleep 2; deleteVehicle _this}};" \n
+       "			" \n
+       "			leader _group assignAsDriver _x; [leader _group] orderGetIn true; leader _group moveInDriver _x;" \n
+       "		};" \n
+       "	} forEach ([_group, true, objNull, CTI_AI_TEAMS_FOOT_EMBARK_RANGE] call CTI_CO_FNC_GetTeamVehicles);" \n
+       "} else {" \n
+       "	if (vehicle leader _group == leader _group) then { //--- A vehicle is assigned to the group but the leader is on foot" \n
+       "		if (leader _group distance (assignedVehicle leader _group) > (CTI_AI_TEAMS_FOOT_EMBARK_RANGE+50)) then {unassignVehicle leader _group}; //--- Leader got KIA while boarding it's assigned vehicle and respawned? unassign to prevent the source from being stuck" \n
+       "	};" \n
+       "};" \n
+       "" \n
+       "[_side, _group] call CTI_SE_FNC_ObservateEnvironment;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="Phase_V_Members";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Phase_V_Members">*/
+    class Phase_V_Members
+    {
+      name = "Phase_V_Members";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Skip">*/
+        class Skip
+        {
+          priority = 1.000000;
+          to="Phase_VI_Duty";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"time - _members_lastcheck < 2"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Check">*/
+        class Check
+        {
+          priority = 0.000000;
+          to="Update_1";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Update_1">*/
+    class Update_1
+    {
+      name = "Update_1";
+      init = /*%FSM<STATEINIT""">*/"_members_lastcheck = time;" \n
+       "" \n
+       "_local_goto = _group getVariable ""cti_order_pos"";" \n
+       "_units = (units _group) call CTI_CO_FNC_GetLiveUnits;" \n
+       "" \n
+       "//todo parachute, detect nearby enemy.." \n
+       "{" \n
+       "	_roles = assignedVehicleRole _x;" \n
+       "	if (count _roles > 0) then {" \n
+       "		if (_roles select 0 == ""cargo"") then {" \n
+       "			_vehicle = assignedVehicle _x;" \n
+       "			_wp_aligns = true;" \n
+       "			if !(_vehicle in _units) then {" \n
+       "				if !(alive driver _vehicle) then {" \n
+       "					_wp_aligns = false;" \n
+       "				} else {" \n
+       "					if !(isNil {(group _vehicle) getVariable ""cti_order_pos""}) then {if (_local_goto distance ((group _vehicle) getVariable ""cti_order_pos"") > CTI_AI_TEAMS_CARGO_VEHICLES_MATCH_RANGE) then {_wp_aligns = false}};" \n
+       "				};" \n
+       "			};" \n
+       "			if (_x distance _local_goto < CTI_AI_TEAMS_CARGO_VEHICLES_DISEMBARK_RANGE || !_wp_aligns) then {unassignVehicle _x};" \n
+       "		};" \n
+       "	};" \n
+       "} forEach _units;" \n
+       "" \n
+       "//todo support callin/callout" \n
+       "" \n
+       "//--- Check for stuck units (rocks, tree, bushes...)" \n
+       "if (time - _members_lastposcheck > 220) then {" \n
+       "	_members_lastposcheck = time;" \n
+       "	{" \n
+       "		_last_pos = _x getVariable ""cti_ai_lastpos"";" \n
+       "		_vehicle = vehicle _x;" \n
+       "		if !(isNil ""_last_pos"") then {" \n
+       "			if (!(_vehicle isKindOf ""StaticWeapon"") && (getPos _vehicle select 2) < 10) then {" \n
+       "				if (_vehicle distance _last_pos < 25 && canMove _vehicle) then {" \n
+       "					[_vehicle, getPos _vehicle, 120] call CTI_CO_FNC_PlaceSafe;" \n
+       "					if (leader _group == _x) then {_group setVariable [""cti_team_reload"", true]};" \n
+       "				};" \n
+       "			};" \n
+       "		};" \n
+       "		_x setVariable [""cti_ai_lastpos"", getPos _vehicle];" \n
+       "	} forEach _units;" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="Phase_VI_Duty";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+  };
+  initState="Start_FSM";
+  finalStates[] =
+  {
+    "End_FSM"
+  };
+};
+/*%FSM</COMPILE>*/
