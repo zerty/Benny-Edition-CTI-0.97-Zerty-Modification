@@ -35,10 +35,8 @@ _type = typeOf _vehicle;
 //_vehicle setVehicleAmmoDef 1;
 
 // Fix for air vehicles ... uses sanatise script to clean up afterwards
-if ( _vehicle isKindOf "Air" && (missionNamespace getVariable "CTI_AC_ENABLED")>0) then
+if ( _vehicle isKindOf "Air") then
 {
-	_vehicle call CTI_AC_PURGE_ALL_WEAPONS;
-	_vehicle call CTI_AC_REFRESH_LOADOUT_ON_MOUNTED;
 	if (_vehicle isKindOf "Air") then {[_vehicle, _side] call CTI_CO_FNC_SanitizeAircraft};
 } else {
 

@@ -91,15 +91,6 @@ if (_type isKindOf 'Slingload_01_Base_F') then {_vehicle setmass [4000,0]};
 if (_type isKindOf "Pod_Heli_Transport_04_base_F") then {_vehicle setmass [2000,0]};
 
 
-// henroth air loadout
-if ( _type isKindOf "Air"  && (missionNamespace getVariable "CTI_AC_ENABLED")>0 && _side != CTI_RESISTANCE_ID) then
-{
-	_vanilla_loadout = _vehicle call CTI_AC_GET_STANDARD_VANILLA_LOADOUT;
-	_vehicle setVariable [ "CTI_AC_AIRCRAFT_LOADOUT_MOUNTED", (_vanilla_loadout) , true ];
-	_vehicle setVariable [ "CTI_AC_AIRCRAFT_LOADOUT_COST", ( _vehicle call CTI_AC_GET_VEHCICLE_LOADOUT_COST ) , true ];
-	_vehicle setVariable [ "CTI_AC_AIRCRAFT_LOADOUT_IS_BUSY_TIME" , 0 , true ]; // Last time locked
-	_vehicle setVariable [ "CTI_AC_AIRCRAFT_LOADOUT_IS_BUSY", false , true ]; // Semaphore
-};
 
 if ((missionNamespace getVariable [format ["%1", typeOf _vehicle],["","","","","","","",""]]) select 7 != "") then {
 	_side_logic=(_side call CTI_CO_FNC_GetSideFromID) call CTI_CO_FNC_GetSideLogic;

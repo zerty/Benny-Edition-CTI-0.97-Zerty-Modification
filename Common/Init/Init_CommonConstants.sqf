@@ -642,7 +642,6 @@ with missionNamespace do {
 	if (isnil "CTI_EW_ANET") then {CTI_EW_ANET = 1};
 
 
-	if (isnil "CTI_AC_ENABLED") then {CTI_AC_ENABLED = 1};
 
 	if (isnil "HC_MODE") then {HC_MODE = 1};
 	if (isnil "MIN_TOWNS") then {MIN_TOWNS = 0};

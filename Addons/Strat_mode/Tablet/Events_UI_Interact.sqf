@@ -359,24 +359,7 @@ switch (_action) do {
 			    		((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetPosition [_base_x+(_offset*_base_w),_base_y+5,_base_w,_base_h];
 			    	};
 			    };
-			    case 30: { // CTI_Icon_al
-			    	if (alive _target  && _target iskindof "Air" ) then  {
-			    		_structures = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideStructures;
-			    		_ammo_depots = [CTI_AMMO, _structures] call CTI_CO_FNC_GetSideStructuresByType;
-			    		_available_ammo_depots = [_target, _ammo_depots, CTI_SERVICE_AMMO_DEPOT_RANGE] call CTI_UI_Service_GetBaseDepots;
-			    		if (!(_target getVariable ["CTI_AC_AIRCRAFT_LOADOUT_IS_BUSY",true]) && count (_available_ammo_depots) >0 && local _target ) then {
-			    			((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTextColor [0,0,1,1];
-			    		} else {
-			    			((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTextColor [0.3,0.3,0.3,1];
-			    		};
-
-			    		((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetPosition [_base_x+(_offset*_base_w),_base_y+_h_offset*_base_h,_base_w,_base_h];
-			    		_offset=_offset+1;
-			    	} else {
-			    		((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetPosition [_base_x+(_offset*_base_w),_base_y+5,_base_w,_base_h];
-			    	};
-			    };
-				case 31: {// CTI_Icon_Com
+				case 30: {// CTI_Icon_Com
 			    	if (! isnull _target && alive _target && (_target == (CTI_P_SideJoined call CTI_CO_FNC_GetSideHQ) || _target in (CTI_P_SideJoined call CTI_CO_FNC_GetSideStructures)) ) then  {
 			    		if (isNull (CTI_P_SideJoined  call CTI_CO_FNC_GetSideCommander )&& !( (getplayeruid player) in (CTI_P_SideLogic getVariable ["CTI_COM_BLACKLIST",[] ]))) then {
 			    			((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTextColor [1,1,0,1];
@@ -390,7 +373,7 @@ switch (_action) do {
 			    		((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetPosition [_base_x+(_offset*_base_w),_base_y+5,_base_w,_base_h];
 			    	};
 			    };
-			    case 32: {// CTI_Icon_Pilot
+			    case 31: {// CTI_Icon_Pilot
 
 			    	if (! isnull _target && alive _target && vehicle player == player &&(_target isKindOf "B_Heli_Transport_03_base_F" || _target isKindOf "Heli_Transport_04_base_F" )) then  {
 			    		if (!((304400  in (getdlcs 1)) || (288520  in (getdlcs 1)))&& locked _target < 2 && isNull (driver _target))  then {
@@ -405,7 +388,7 @@ switch (_action) do {
 			    		((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetPosition [_base_x+(_offset*_base_w),_base_y+5,_base_w,_base_h];
 			    	};
 			    };
-			    case 33: {// CTI_Icon_Exit Tutorial
+			    case 32: {// CTI_Icon_Exit Tutorial
 
 			    	if (_target isKindOf "Land_Wreck_Heli_Attack_01_F") then {
 			    		((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTextColor [1,1,1,1];
@@ -415,7 +398,7 @@ switch (_action) do {
 			    		((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetPosition [_base_x+(_offset*_base_w),_base_y+5,_base_w,_base_h];
 			    	};
 			    };
-			   case 34: {// Mobile gear access
+			   case 33: {// Mobile gear access
 
 			    	if ( CTI_SPECIAL_AMMOTRUCK in (_target getVariable ["cti_spec",[]]) || CTI_SPECIAL_GEAR in (_target getVariable ["cti_spec",[]]) || (CTI_SPECIAL_MEDICALVEHICLE in (_target getVariable ["cti_spec",[]])&& ((CTI_P_SideJoined) call CTI_CO_FNC_GetSideUpgrades) select CTI_UPGRADE_REST >=CTI_GAMEPLAY_REARM_MED )) then {
 			    		if ((time-(_target getvariable ["CTI_last_purchase_time",-10000])) >= CTI_GEAR_MOBILE_COOLOFF || (_target getvariable ["CTI_last_purchase_time",-10000])<0 ) then{
@@ -432,7 +415,7 @@ switch (_action) do {
 			    		((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetPosition [_base_x+(_offset*_base_w),_base_y+5,_base_w,_base_h];
 			    	};
 			    };
-			   case 35: {// Dismount defense
+			   case 34: {// Dismount defense
 
 			    	if (vehicle player == player && (_target in (CTI_WEST getVariable ["cti_defences", []]) +(CTI_EAST getVariable ["cti_defences", []]))&& (missionNamespace getVariable "CTI_BASEBUILDING") > 0) then  {
 			    			((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTextColor [1,0,0,1];
@@ -608,17 +591,6 @@ switch (_action) do {
 	case "OnDisDef": {
 		closedialog 0;
 		[player,_target] spawn SM_ACTION_DISMANTLE;
-	};
-	case "OnAircraftCust": {
-		_structures = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideStructures;
-		_ammo_depots = [CTI_AMMO, _structures, player] call CTI_CO_FNC_GetSideStructuresByType;
-		_available_ammo_depots = [_target, _ammo_depots, CTI_SERVICE_AMMO_DEPOT_RANGE] call CTI_UI_Service_GetBaseDepots;
-		_available_ammo_trucks = [_target, CTI_SPECIAL_AMMOTRUCK, CTI_SERVICE_AMMO_TRUCK_RANGE] call CTI_CO_FNC_GetNearestSpecialVehicles;
-		if (!(_target getVariable ["CTI_AC_AIRCRAFT_LOADOUT_IS_BUSY",true]) && count (_available_ammo_depots + _available_ammo_trucks) >0 && local _target ) then {
-			uiNamespace setVariable ['HAL_TARG',_target];
-			closedialog 0;
-			createDialog "CTI_RscTabletAircraftLoadoutMenu";
-		};
 	};
 	case "OnCom": {
 		if (isNull (CTI_P_SideJoined  call CTI_CO_FNC_GetSideCommander )&& !( (getplayeruid player) in (CTI_P_SideLogic getVariable ["CTI_COM_BLACKLIST",[]] ))) then {

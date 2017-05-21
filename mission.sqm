@@ -906,7 +906,7 @@ class Mission
 			};
 			id=71;
 			type="FlagPole_F";
-			atlOffset=0.0032405853;
+			atlOffset=0.0032463074;
 		};
 		class Item72
 		{
@@ -1030,7 +1030,7 @@ class Mission
 			};
 			id=77;
 			type="FlagPole_F";
-			atlOffset=0.00065994263;
+			atlOffset=0.00066947937;
 		};
 		class Item78
 		{

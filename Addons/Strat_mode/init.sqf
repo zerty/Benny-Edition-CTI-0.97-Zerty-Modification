@@ -299,11 +299,6 @@ if (CTI_IsServer) then {
 		};
 
 
-		// henroth air loadout
-		if ((missionNamespace getVariable "CTI_AC_ENABLED")>0) then{
-			0 execVM "Addons\Henroth_AirLoadout\init.sqf"
-		};
-
 
 
 		// time compression
@@ -394,11 +389,6 @@ if (CTI_IsClient) then {
 	};
 
 
-
-	// henroth air loadout
-	if ((missionNamespace getVariable "CTI_AC_ENABLED")>0) then{
-		0 execVM "Addons\Henroth_AirLoadout\init.sqf"
-	};
 
 	// Strategic markers
 	0 spawn {

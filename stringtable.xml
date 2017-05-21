@@ -721,10 +721,6 @@
 				<Original>Zerty: Trophy: Enabled</Original>
 				<Russian>Система Trophy</Russian>
 			</Key>
-			<Key ID="STR_CTI_AC_ENABLED">
-				<Original>Henroth: Aircraft Loadout Customisation : Enabled</Original>
-				<Russian>Изменённая Загрузка Авиации</Russian>
-			</Key>
 	</Package>
 </Project>
 <Project name="Debriefing">
@@ -888,10 +884,6 @@
 			<Key ID="STR_Icon_Srep">
 				<Original>Repair Structure</Original>
 				<Russian>Починить Строение</Russian>
-			</Key>
-			<Key ID="STR_Icon_ALC">
-				<Original>Aircraft Loadout Customisation</Original>
-				<Russian>Изменённая загрузка Авиации</Russian>
 			</Key>
 			<Key ID="STR_Icon_TCom">
 				<Original>Take Command</Original>
@@ -2113,7 +2105,7 @@
 				<Original>Net: %1 &lt;br /&gt;---------&lt;br /&gt;</Original>
 				<Russian>Сеть: %1 &lt;br /&gt;---------&lt;br /&gt;</Russian>
 			</Key>
-	</Package>	
+	</Package>
 	<Package name="atm_airdrop">
 			<Key ID="STR_HALO_No_Funds">
 				<Original>Not enough funds</Original>
