@@ -107,7 +107,9 @@ CTI_AI_TEAMS_UNITS_MIN = 5; //--- Amount of units an AI leader need to have to b
 //--- AI Teams: Parameters
 with missionNamespace do {
 	//CTI_AI_TEAMS_GROUPSIZE = 12; //--- AI Teams may get up to x units
-	if (isNil 'CTI_AI_TEAMS_ENABLED') then { if !(isMultiplayer) then {CTI_AI_TEAMS_ENABLED = 3} else {CTI_AI_TEAMS_ENABLED = 0}}; //--- Determine whether AI Teams are enabled or not
+	//if (isNil 'CTI_AI_TEAMS_ENABLED') then { if !(isMultiplayer) then {CTI_AI_TEAMS_ENABLED = 3} else {CTI_AI_TEAMS_ENABLED = 0}}; //--- Determine whether AI Teams are enabled or not
+	if (isNil 'CTI_AI_TEAMS_ENABLED') then {CTI_AI_TEAMS_ENABLED = 0}; //--- Determine whether AI Teams are enabled or not
+
 	if (isNil 'CTI_AI_TEAMS_GROUPSIZE') then {CTI_AI_TEAMS_GROUPSIZE = 8};
 };
 //-----------------------------------------------------------------------------------------------------------------------//
