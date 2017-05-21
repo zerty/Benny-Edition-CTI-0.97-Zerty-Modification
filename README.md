@@ -17,4 +17,4 @@ This project is not affiliated or authorized by Bohemia Interactive a.s. Bohemia
 - *Farooq* for his original idea of a revive script
 - *Sari* for updating the sanitize scripts
 - *John681611* for his original idea of offroad aug.
-
+- *Grumpy Old Man* for his loadout customisation menu
