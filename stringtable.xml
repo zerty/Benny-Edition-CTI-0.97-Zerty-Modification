@@ -118,7 +118,7 @@
 				<Russian>&lt;t size='1.4' color='#2394ef'&gt;Удаленное Управление&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Так как искусственный интеллект в ArmA III во время вождения расстраивает Вас, была введена возможность &lt;t color='#e8bd12'&gt;удаленного управления водителями и пилотами&lt;/t&gt;.&lt;br/&gt;Вы можете начать управлять удаленно выбрав бота (клавиши F1-10), нажав клавишу 6 и выбрав действие &lt;t color='#ff9900'&gt;Удаленное Управление&lt;/t&gt;. Для выхода из этого режима, выберите действие - Бросить управление БПА.&lt;br /&gt;Для того, чтобы иметь возможность удаленного управления, следующие условия должны быть выполнены:&lt;br /&gt;- Игрок и выбранный бот должны быть живы&lt;br /&gt;- В технике должен быть только один выбранный бот, без игрока и других ботов&lt;br /&gt;- Выбранный бот должен быть водителем/пилотом&lt;br /&gt;- Техника должна быть открыта&lt;br /&gt;&lt;br /&gt;Имейте в виду, что Вас отключит от вашего текущего БПЛА.&lt;br /&gt;&lt;t color='#FF0000'&gt;Если вы убьёте бота в удал.управлении, то сразу же станете предателем и покините свою группу!&lt;/t&gt;</Russian>
 			</Key>
 			<Key ID="STR_Current_Credits">
-				<Original>&lt;t size='1.4' color='#2394ef'&gt;Current Credits&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;- &lt;t color='#e8bd12'&gt;Benny&lt;/t&gt; for the mission&lt;br /&gt;- &lt;t color='#e8bd12'&gt;Bl1p, Fluit&lt;/t&gt; for random AI skill&lt;br /&gt;- &lt;t color='#e8bd12'&gt;=ATM=Pokertour&lt;/t&gt; for ATM airdrop&lt;br /&gt;- &lt;t color='#e8bd12'&gt;Prodavec&lt;/t&gt; for Map Markers titling&lt;br /&gt;- &lt;t color='#e8bd12'&gt;^HS^&lt;/t&gt; for writting the diary help &lt;br /&gt;- &lt;t color='#e8bd12'&gt;Farooq&lt;/t&gt; for his original idea of a revive script &lt;br /&gt;- &lt;t color='#e8bd12'&gt;Sari&lt;/t&gt; for updating the sanitize scripts &lt;br /&gt;- &lt;t color='#e8bd12'&gt;John681611&lt;/t&gt; for his original idea of offroad aug.&lt;br /&gt;- &lt;t color='#e8bd12'&gt;Grumpy Old Man&lt;/t&gt; for his Aircraft loadout customisation framework.&lt;br /&gt;&lt;br /&gt;&lt;t color='#e8bd12'&gt;And of course, everyone who gave feedback and bug reports.&lt;/t&gt;&lt;br /&gt;</Original>
+				<Original>&lt;t size='1.4' color='#2394ef'&gt;Current Credits&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;- &lt;t color='#e8bd12'&gt;Benny&lt;/t&gt; for the mission&lt;br /&gt;- &lt;t color='#e8bd12'&gt;Bl1p, Fluit&lt;/t&gt; for random AI skill&lt;br /&gt;- &lt;t color='#e8bd12'&gt;=ATM=Pokertour&lt;/t&gt; for ATM airdrop&lt;br /&gt;- &lt;t color='#e8bd12'&gt;Prodavec&lt;/t&gt; for Map Markers titling&lt;br /&gt;- &lt;t color='#e8bd12'&gt;^HS^&lt;/t&gt; for writting the diary help &lt;br /&gt;- &lt;t color='#e8bd12'&gt;Farooq&lt;/t&gt; for his original idea of a revive script &lt;br /&gt;- &lt;t color='#e8bd12'&gt;Sari&lt;/t&gt; for updating the sanitize scripts &lt;br /&gt;- &lt;t color='#e8bd12'&gt;John681611&lt;/t&gt; for his original idea of offroad aug.&lt;br /&gt;- &lt;t color='#e8bd12'&gt;Henroth&lt;/t&gt; for his Aircraft loadout customisation framework.&lt;br /&gt;&lt;br /&gt;&lt;t color='#e8bd12'&gt;And of course, everyone who gave feedback and bug reports.&lt;/t&gt;&lt;br /&gt;</Original>
 				<Russian>&lt;t size='1.4' color='#2394ef'&gt;Благодарности&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;- &lt;t color='#e8bd12'&gt;Benny&lt;/t&gt; создатель миссии&lt;br /&gt;- &lt;t color='#e8bd12'&gt;Bl1p, Fluit&lt;/t&gt; for random AI skill&lt;br /&gt;- &lt;t color='#e8bd12'&gt;=ATM=Pokertour&lt;/t&gt; for ATM airdrop&lt;br /&gt;- &lt;t color='#e8bd12'&gt;Prodavec&lt;/t&gt; за обозначение маркеров на карте&lt;br /&gt;- &lt;t color='#e8bd12'&gt;^HS^&lt;/t&gt; for writting the diary help &lt;br /&gt;- &lt;t color='#e8bd12'&gt;Farooq&lt;/t&gt; for his original idea of a revive script &lt;br /&gt;- &lt;t color='#e8bd12'&gt;Sari&lt;/t&gt; for updating the sanitize scripts &lt;br /&gt;- &lt;t color='#e8bd12'&gt;John681611&lt;/t&gt; for his original idea of offroad aug.&lt;br /&gt;- &lt;t color='#e8bd12'&gt;Henroth&lt;/t&gt; for his Aircraft loadout customisation framework.&lt;br /&gt;- &lt;t color='#e8bd12'&gt;SteelRat&lt;/t&gt; за подсказки в скриптах и немного кода.&lt;br /&gt;&lt;br /&gt;&lt;t color='#e8bd12'&gt;И конечно же, каждый кто оставил отзыв и сообщение об ошибке.&lt;/t&gt;&lt;br /&gt;</Russian>
 			</Key>
 	</Package>
@@ -721,6 +721,10 @@
 				<Original>Zerty: Trophy: Enabled</Original>
 				<Russian>Система Trophy</Russian>
 			</Key>
+			<Key ID="STR_CTI_AC_ENABLED">
+				<Original>Henroth: Aircraft Loadout Customisation : Enabled</Original>
+				<Russian>Изменённая Загрузка Авиации</Russian>
+			</Key>
 	</Package>
 </Project>
 <Project name="Debriefing">
@@ -884,6 +888,10 @@
 			<Key ID="STR_Icon_Srep">
 				<Original>Repair Structure</Original>
 				<Russian>Починить Строение</Russian>
+			</Key>
+			<Key ID="STR_Icon_ALC">
+				<Original>Aircraft Loadout Customisation</Original>
+				<Russian>Изменённая загрузка Авиации</Russian>
 			</Key>
 			<Key ID="STR_Icon_TCom">
 				<Original>Take Command</Original>
@@ -2105,7 +2113,7 @@
 				<Original>Net: %1 &lt;br /&gt;---------&lt;br /&gt;</Original>
 				<Russian>Сеть: %1 &lt;br /&gt;---------&lt;br /&gt;</Russian>
 			</Key>
-	</Package>
+	</Package>	
 	<Package name="atm_airdrop">
 			<Key ID="STR_HALO_No_Funds">
 				<Original>Not enough funds</Original>

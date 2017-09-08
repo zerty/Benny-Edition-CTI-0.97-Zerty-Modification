@@ -531,4 +531,10 @@ class Params {
 		texts[] = {$STR_CTI_WEATHER_ALLOWRAIN_F,$STR_CTI_WEATHER_ALLOWRAIN_T};
 		default = 1;
 	};
+	class CTI_AC_ENABLED {
+		title = $STR_CTI_AC_ENABLED;
+		values[] = {0,1};
+		texts[] = {$STR_CTI_DISABLED,$STR_CTI_ENABLED};
+		default = 1;
+	};
 };

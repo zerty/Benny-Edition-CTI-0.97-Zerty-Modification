@@ -37,7 +37,7 @@ HUD_Revives=[];
 
 
 waitUntil {!(isNull player)};
-("CTI_HUD" call BIS_fnc_rscLayer) cutrsc["CTI_HUD_RSC","PLAIN",0,false];
+("CTI_HUD" call BIS_fnc_rscLayer) cutrsc["CTI_HUD_RSC","PLAIN",0,true];
 waitUntil {!isNil {uiNamespace getVariable 'HUD'}};
 
 0 execVM	 "Addons\Strat_mode\HUD\HUD_launch.sqf";
