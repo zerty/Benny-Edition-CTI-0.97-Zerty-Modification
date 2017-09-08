@@ -3,30 +3,34 @@
 #define	HUD_TARG_MAX	100
 #define	HUD_TOWN_MAX	10
 
-
-
-["ReviveFrame", "onEachFrame", "{
+hud_code_revive=compileFinal "{
 	 	disableSerialization;
 		_hud=uiNamespace getVariable 'HUD';
 		[_hud] call HUD_ShowRevives;
-}"] call BIS_fnc_addStackedEventHandler;
+}";
 
-
-
-["NotifFrame", "onEachFrame", "{
+hud_code_notif=compileFinal "{
 	 	disableSerialization;
 		_hud=uiNamespace getVariable 'HUD';
 		[_hud] call HUD_ShowNotifications;
-}"] call BIS_fnc_addStackedEventHandler;
+}";
 
-
-HUD_AddFrameHandler={
-	["hudFrame", "onEachFrame", "{
+hud_code_tact=compileFinal "{
 	 	disableSerialization;
 		_hud=uiNamespace getVariable 'HUD';
 		[_hud] call HUD_ShowTargets;
 		[_hud] call HUD_ShowTowns;
-	}"] call BIS_fnc_addStackedEventHandler;
+}";
+
+["ReviveFrame", "onEachFrame", hud_code_revive] call BIS_fnc_addStackedEventHandler;
+
+
+
+["NotifFrame", "onEachFrame", hud_code_notif] call BIS_fnc_addStackedEventHandler;
+
+
+HUD_AddFrameHandler={
+	["hudFrame", "onEachFrame", hud_code_tact] call BIS_fnc_addStackedEventHandler;
 };
 
 HUD_RemoveFrameHandler={
