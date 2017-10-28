@@ -493,6 +493,10 @@
 				<Original>Zerty: GAMEPLAY: Darter Range limitation</Original>
 				<Russian>Дальность связи с маленькими БПЛА</Russian>
 			</Key>
+			<Key ID="STR_CTI_GAMEPLAY_UAV_ALT">
+				<Original>[H] Tom: GAMEPLAY: MQ-4A and Ababil-3 flight altitude limitation</Original>
+				<Russian>Ограничение высоты полета MQ-4A и Ababil-3</Russian>
+			</Key>
 			<Key ID="STR_CTI_GAMEPLAY_DARTER_FUEL">
 				<Original>Zerty: GAMEPLAY: Darter Fuel limitation</Original>
 				<Russian>Ограничение маленьких БПЛА по топливу</Russian>
@@ -2000,6 +2004,12 @@
 			<Key ID="STR_UAV_Range">
 				<Original>&lt;t size='1.3' color='#2394ef'&gt;Information&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;You have lost connection to your UAV. Maximum range is &lt;t color='#ccffaf'&gt;%1 meters.&lt;/t&gt;</Original>
 				<Russian>&lt;t size='1.3' color='#2394ef'&gt;Информация&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Вы потеряли связь с вашим маленьким БПЛА. Макс.дальность - &lt;t color='#ccffaf'&gt;%1 метров.&lt;/t&gt;</Russian>
+			</Key>
+	</Package>
+	<Package name="UAV_ALT">
+			<Key ID="STR_UAV_ALT">
+				<Original>&lt;t size='1.3' color='#2394ef'&gt;Information&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;You have lost connection to your UAV. Maximum flight altitude is &lt;t color='#ccffaf'&gt;%1 meters.&lt;/t&gt;</Original>
+				<Russian>&lt;t size='1.3' color='#2394ef'&gt;Информация&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Вы потеряли соединение с вашим БПЛА. Максимальная высота полета - &lt;t color='#ccffaf'&gt;%1 метров.&lt;/t&gt;</Russian>
 			</Key>
 	</Package>
 	<Package name="SM_COM_UnSet_Client">
