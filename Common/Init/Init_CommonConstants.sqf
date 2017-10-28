@@ -648,6 +648,7 @@ with missionNamespace do {
 	if (isnil "MIN_TOWNS") then {MIN_TOWNS = 0};
 	if (isnil "CACHE_EMPTY") then {CACHE_EMPTY = 1};
 	if (isnil "CTI_GAMEPLAY_DARTER") then {CTI_GAMEPLAY_DARTER = 500};
+	if (isnil "CTI_GAMEPLAY_UAV_ALT") then {CTI_GAMEPLAY_UAV_ALT = 1000};
 	if (isnil "CTI_GAMEPLAY_DARTER_FUEL") then {CTI_GAMEPLAY_DARTER_FUEL = 1};
 	if (isnil "CTI_BUY_RESTRICT_LEADER") then {CTI_BUY_RESTRICT_LEADER = 0};
 	if (isnil "CTI_GROUP_AWARD_MULT") then {CTI_GROUP_AWARD_MULT = 0};
