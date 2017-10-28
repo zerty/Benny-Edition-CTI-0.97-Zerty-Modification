@@ -28,6 +28,9 @@ _vehicle = _this;
 _weapons = weapons _vehicle;
 _magazines = magazines _vehicle;
 
+_specialweapons = ["M_Zephyr"];
+_specialweapons2 = ["M_Air_AA"];
+
 //diag_log format ["Weapons %1", _weapons];
 
 _weapons_remove = [];
@@ -43,6 +46,12 @@ _magazines_remove = [];
 		if (_ammo != "") then {
 			//--- We check if the ammo is air-lock based and that in inherits from the missile class.
 			if (getNumber(configFile >> "CfgAmmo" >> _ammo >> "airLock") > 0 && configName(inheritsFrom(configFile >> "CfgAmmo" >> _ammo)) == "MissileBase" || (configName(inheritsFrom(configFile >> "CfgAmmo" >> _ammo)) == "Missile_AA_04_F")) then {_remove = true; _magazines_remove = _magazines_remove + [_x]};
+		};
+		if (_ammo != "") then {
+			if ((configName(inheritsFrom(configFile >> "CfgAmmo" >> _ammo)) == "RocketBase") || {_ammo iskindof _x} foreach _specialweapons) then {_remove = true; _magazines_remove = _magazines_remove + [_x]};
+		};
+		if (_ammo != "") then {
+			if ((configName(inheritsFrom(configFile >> "CfgAmmo" >> _ammo)) == "RocketBase") || {_ammo iskindof _x} foreach _specialweapons2) then {_remove = true; _magazines_remove = _magazines_remove + [_x]};
 		};
 	} forEach getArray(configFile >> "CfgWeapons" >> _x >> "magazines"); //--- We check the magazines array of the weapon.
 
