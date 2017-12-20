@@ -189,6 +189,25 @@ _prices = [];
 _placements = [];
 _categories = [];
 
+
+_headers = _headers 		+ [["Praetorian 1C - Only on BASE Areas", [["DMG_Reduce", 10]]]];
+_classes = _classes 		+ ["B_AAA_System_01_F"];
+_prices = _prices 			+ [40000];
+_placements = _placements 	+ [[180, 15]];
+_categories = _categories 	+ ["Defense"];
+
+_headers = _headers 		+ [["Mk49 Spartan - Only on BASE Areas", [["DMG_Reduce", 10]]]];
+_classes = _classes 		+ ["B_SAM_System_01_F"];
+_prices = _prices 			+ [80000];
+_placements = _placements 	+ [[180, 15]];
+_categories = _categories 	+ ["Defense"];
+
+_headers = _headers 		+ [["Mk21 Centurion - Only on BASE Areas", [["DMG_Reduce", 10]]]];
+_classes = _classes 		+ ["B_SAM_System_02_F"];
+_prices = _prices 			+ [100000];
+_placements = _placements 	+ [[180, 15]];
+_categories = _categories 	+ ["Defense"];
+
 _headers = _headers 		+ ["Lamp"];
 _classes = _classes 		+ ["Land_LampHalogen_F"];
 _prices = _prices 			+ [5];
@@ -293,8 +312,13 @@ _headers = _headers 		+ ["H-Barrier Tower"];
 _classes = _classes 		+ ["Land_HBarrierTower_F"];
 _prices = _prices 			+ [40];
 _placements = _placements 	+ [[0, 7]];
-
 _categories = _categories 	+ ["Fortification"];
+
+_headers = _headers 		+ ["Concrete Barrier (Roadblock)"];
+_classes = _classes 		+ ["Land_CncBarrier_stripes_F"];
+_prices = _prices 			+ [15];
+_placements = _placements 	+ [[0, 7]];
+_categories = _categories 	+ ["Structures"];
 
 if ((missionNamespace getVariable "CTI_RESPAWN_FOB_RANGE")> 0) then {
 	_headers = _headers 		+ [["FOB",[["RuinOnDestroyed", "Land_Medevac_house_V1_ruins_F"], ["FOB"],["Condition", {_cpt = if (isNil {CTI_P_SideLogic getVariable "cti_fobs"}) then {1000} else {count (CTI_P_SideLogic getVariable "cti_fobs")}; (_cpt < CTI_BASE_FOB_MAX) && (call CTI_CL_FNC_IsPlayerCommander || (!(call CTI_CL_FNC_IsPlayerCommander) && CTI_P_TeamsRequests_FOB > 0)|| ( missionNamespace getVariable 'CTI_BASE_FOB_PERMISSION' ) == 0 )}]]]];
@@ -521,13 +545,6 @@ _placements = _placements 	+ [[0, 10]];
 _categories = _categories 	+ ["Fortification"];
 
 
-_headers = _headers 		+ ["Lamp Stadium"];
-_classes = _classes 		+ ["Land_LampStadium_F"];
-_prices = _prices 			+ [5];
-_placements = _placements 	+ [[0, 10]];
-_categories = _categories 	+ ["Fortification"];
-
-
 _headers = _headers 		+ ["LampHarbour"];
 _classes = _classes 		+ ["Land_LampHarbour_F"];
 _prices = _prices 			+ [1];
@@ -555,6 +572,12 @@ _prices = _prices 			+ [1];
 _placements = _placements 	+ [[0, 10]];
 _categories = _categories 	+ ["Fortification"];
 
+
+_headers = _headers 		+ ["Campfire"];
+_classes = _classes 		+ ["Campfire_burning_F"];
+_prices = _prices 			+ [1];
+_placements = _placements 	+ [[0, 7]];
+_categories = _categories 	+ ["Fortification"];
 
 
 [_side, _headers, _classes, _prices, _placements, _categories] call compile preprocessFileLineNumbers "Common\Config\Base\Set_Defenses.sqf";

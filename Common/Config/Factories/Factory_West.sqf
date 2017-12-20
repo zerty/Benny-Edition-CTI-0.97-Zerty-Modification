@@ -23,13 +23,15 @@ missionNamespace setVariable [format["CTI_%1_Vehicles_Startup", _side], [
 		["optic_MRCO", 2],
 		["optic_Hamr", 1],
 		["Toolkit", 4],
-		["B_AssaultPack_rgr", 4]
+		["B_AssaultPack_rgr", 4],
+		["Binocular", 2]
 	]],
 	["B_MRAP_01_F", [
 		["firstaidkit", 10],
 		["30Rnd_556x45_Stanag", 15],
 		["launch_NLAW_F", 5],
-		["NLAW_F", 20]
+		["NLAW_F", 20],
+		["Binocular", 1]
 	]]
 	//,	["B_Heli_Transport_01_F", []]
 
@@ -41,8 +43,12 @@ _u = ["B_Soldier_lite_F"];
 _u = _u		+ ["B_crew_F"];
 _u = _u		+ ["B_Soldier_F"];
 _u = _u		+ ["B_Helipilot_F"];
+_u = _u		+ ["B_Pilot_F"];
+_u = _u		+ ["B_Fighter_Pilot_F"];
 _u = _u		+ ["B_diver_F"];
 _u = _u		+ ["B_soldier_UAV_F"];
+_u = _u		+ ["B_soldier_UAV_06_F"];
+_u = _u		+ ["B_soldier_UAV_06_medical_F"];
 _u = _u		+ ['B_recon_F'];
 _u = _u		+ ["B_soldier_AR_F"];
 _u = _u		+ ['B_HeavyGunner_F'];
@@ -58,6 +64,7 @@ _u = _u		+ ['B_recon_medic_F'];
 _u = _u		+ ["B_soldier_repair_F"];
 _u = _u		+ ["B_engineer_F"];
 _u = _u		+ ["B_soldier_exp_F"];
+_u = _u		+ ["B_soldier_mine_F"];
 _u = _u		+ ['B_recon_exp_F'];
 _u = _u		+ ["B_soldier_PG_F"];
 _u = _u		+ ["B_soldier_AA_F"];
@@ -123,11 +130,13 @@ _u = _u		+ ["B_UAV_02_CAS_F"];
 _u = _u		+ ["B_UAV_02_F"];
 _u = _u		+ ["B_T_UAV_03_F"];
 _u = _u		+ ["B_Plane_CAS_01_F"];
+_u = _u		+ ["B_Plane_Fighter_01_F"];
 _u = _u		+ ['I_Heli_light_03_unarmed_F'];
 _u = _u		+ ['I_Heli_light_03_F'];
 _u = _u		+ ['I_Heli_Transport_02_F'];
 _u = _u		+ ['I_Plane_Fighter_03_CAS_F'];
 _u = _u		+ ['I_Plane_Fighter_03_AA_F'];
+_u = _u		+ ['I_Plane_Fighter_04_F'];
 _u = _u		+ ['B_Slingload_01_Medevac_F'];
 _u = _u		+ ['Land_Device_slingloadable_F'];
 //_u = _u		+ ["I_Plane_Fighter_03_CAS_F"];

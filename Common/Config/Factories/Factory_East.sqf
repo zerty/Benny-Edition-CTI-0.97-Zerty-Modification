@@ -24,13 +24,15 @@ missionNamespace setVariable [format["CTI_%1_Vehicles_Startup", _side], [
 		["optic_MRCO", 2],
 		["optic_arco", 1],
 		["Toolkit", 4],
-		["B_FieldPack_ocamo", 4]
+		["B_FieldPack_ocamo", 4],
+		["Binocular", 2]
 	]],
 	["O_MRAP_02_F", [	
 		["firstaidkit", 10],
 		["30Rnd_556x45_Stanag", 15],
 		["launch_RPG32_F", 5], ["RPG32_F", 10],
-		["launch_RPG7_F", 2], ["RPG7_F", 6]
+		["launch_RPG7_F", 2], ["RPG7_F", 6],
+		["Binocular", 1]
 	]]
 	//,	["O_Heli_Light_02_unarmed_F", []]
 ]];
@@ -42,8 +44,12 @@ _u = _u		+ ['O_crew_F'];
 _u = _u		+ ['O_Soldier_F'];
 //_u = _u		+ ['O_soldierU_F']; Wait for newUI
 _u = _u		+ ['O_Helipilot_F'];
+_u = _u		+ ['O_Pilot_F'];
+_u = _u		+ ['O_Fighter_Pilot_F'];
 _u = _u		+ ['O_diver_F'];
 _u = _u		+ ['O_soldier_UAV_F'];
+_u = _u		+ ['O_soldier_UAV_06_F'];
+_u = _u		+ ['O_soldier_UAV_06_medical_F'];
 _u = _u		+ ['O_recon_F'];
 _u = _u		+ ['O_soldier_AR_F'];
 //_u = _u		+ ['O_soldierU_AR_F'];
@@ -69,6 +75,7 @@ _u = _u		+ ['O_engineer_F'];
 //_u = _u		+ ['O_engineer_U_F'];
 _u = _u		+ ['O_soldier_exp_F'];
 //_u = _u		+ ['O_soldierU_exp_F'];
+_u = _u		+ ['O_soldier_mine_F'];
 _u = _u		+ ['O_recon_exp_F'];
 _u = _u		+ ['O_soldier_PG_F'];
 _u = _u		+ ['O_soldier_AA_F'];
@@ -123,28 +130,25 @@ missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_HEAVY], _u];
 
 _u 			= ['O_Heli_Light_02_unarmed_F'];
 _u = _u		+ ['O_Heli_Transport_04_F'];
-
 _u = _u		+ ['C_Heli_Light_01_civil_F'];
 _u = _u		+ ['O_Heli_Transport_04_bench_F'];
 _u = _u		+ ['O_Heli_Transport_04_covered_F'];
-
 _u = _u		+ ['O_Heli_Light_02_F'];
-
 _u = _u		+ ['O_Heli_Attack_02_F'];
 _u = _u		+ ['O_Heli_Attack_02_black_F'];
-
 _u = _u		+ ['O_T_VTOL_02_infantry_F'];
 _u = _u		+ ['O_T_VTOL_02_vehicle_F'];
-
 _u = _u		+ ['O_UAV_02_CAS_F'];
 _u = _u		+ ['O_UAV_02_F'];
 _u = _u		+ ['O_T_UAV_04_CAS_F'];
 _u = _u		+ ['O_Plane_CAS_02_F'];
+_u = _u		+ ['O_Plane_Fighter_02_F'];
 _u = _u		+ ['I_Heli_light_03_unarmed_F'];
 _u = _u		+ ['I_Heli_light_03_F'];
 _u = _u		+ ['I_Heli_Transport_02_F'];
 _u = _u		+ ['I_Plane_Fighter_03_CAS_F'];
 _u = _u		+ ['I_Plane_Fighter_03_AA_F'];
+_u = _u		+ ['I_Plane_Fighter_04_F'];
 _u = _u		+ ['Land_Pod_Heli_Transport_04_medevac_F'];
 _u = _u		+ ['Land_Pod_Heli_Transport_04_covered_F'];
 _u = _u		+ ['Land_Pod_Heli_Transport_04_bench_F'];
