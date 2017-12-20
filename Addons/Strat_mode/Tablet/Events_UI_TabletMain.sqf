@@ -177,7 +177,11 @@ switch (_action) do {
 		if ( 0 call CTI_CL_FNC_IsPlayerCommander )then {
 			["SERVER", "Server_Com_Leave", CTI_P_SideJoined] call CTI_CO_FNC_NetSend;
 		} else {
+			if (([player,getMarkerPos "CTI_TUTORIAL"] call  BIS_fnc_distance2D) > 42.5) then {
 			["SERVER", "Server_Vote_Eject", [player,CTI_P_SideJoined]] call CTI_CO_FNC_NetSend;
+			} else {
+			hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br />No vote in Tutorial area!";
+			};
 		};
 	};
 

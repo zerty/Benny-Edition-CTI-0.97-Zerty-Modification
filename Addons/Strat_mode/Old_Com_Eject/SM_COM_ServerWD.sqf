@@ -7,7 +7,8 @@ while {!CTI_GameOver} do {
 	_pl_count = {isplayer leader _x} count ((_side) call CTI_CO_FNC_GetSideGroups);
 	_votes=count (_side_logic getvariable ["CTI_COM_VOTES",[]]);
 	_ratio= if !(_pl_count == 0) then {(_votes/_pl_count)} else {0};
-
+	if ((_pl_count == 1) && (_votes >= 1)) then {_ratio = 0};
+	
 	if (_ratio >= CTI_VOTE_RATIO  || (count units (_side_logic getvariable "cti_commander")) == 0) then {
 		_side_logic setvariable ["CTI_COM_VOTES",[],true];
 		_curent_com_gr=_side_logic getvariable  "cti_commander";
