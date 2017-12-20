@@ -39,7 +39,7 @@ class Params {
 		title = $STR_CTI_BASE_STARTUP_PLACEMENT;
 		values[] = {2000,3000,4000,5000,6000,7000,8000,9000,10000,12000,15000,20000};
 		texts[] = {"2 KM","3 KM","4 KM","5 KM","6 KM","7 KM","8 KM","9 KM","10 KM","12 KM","15 KM","20 KM"};
-		default = 12000;
+		default = 15000;
 	};
 	class CTI_ECONOMY_INCOME_CYCLE {
 		title = $STR_CTI_ECONOMY_INCOME_CYCLE;
@@ -218,7 +218,7 @@ class Params {
 		title = $STR_CTI_AI_SKILL;
 		values[] = {1,2,3,4,5};
 		texts[] = {$STR_CTI_AI_SKILL_0,$STR_CTI_AI_SKILL_1,$STR_CTI_AI_SKILL_2,$STR_CTI_AI_SKILL_3,$STR_CTI_AI_SKILL_4};
-		default = 3;
+		default = 4;
 	};
 
 	class CTI_MAX_MISSION_TIME {
@@ -314,6 +314,12 @@ class Params {
 		values[] = {0,500,800,1200,1500,2000};
 		texts[] = {"None","Connection range 500m","Connection range 800m","Connection range 1200m","Connection range 1500m","Connection range 2000m"};
 		default = 1200;
+	};
+	class CTI_GAMEPLAY_UAV_ALT {
+		title = $STR_CTI_GAMEPLAY_UAV_ALT;
+		values[] = {1000,1200,1500,1600,2000,3000,5000};
+		texts[] = {"UAV disconnection over 1000m","UAV disconnection over 1200m","UAV disconnection over 1500m","UAV disconnection over 1600m","UAV disconnection over 2000m","UAV disconnection over 3000m","UAV disconnection over 5000m"};
+		default = 1600;
 	};
 	class CTI_GAMEPLAY_DARTER_FUEL {
 		title = $STR_CTI_GAMEPLAY_DARTER_FUEL;
