@@ -4,7 +4,6 @@
 createCenter resistance;
 resistance setFriend [west, 0];
 resistance setFriend [east, 0];
-resistance setFriend [civilian, 0];
 
 CTI_SE_FNC_AddScore = compileFinal preprocessFileLineNumbers "Server\Functions\Server_AddScore.sqf";
 CTI_SE_FNC_AI_PurchaseSquad = compileFinal preprocessFileLineNumbers "Server\Functions\Server_AI_PurchaseSquad.sqf";
