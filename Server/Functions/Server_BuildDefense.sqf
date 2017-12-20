@@ -126,6 +126,20 @@ if (_defense isKindOf "B_supplyCrate_F") then {
 	clearMagazineCargoGlobal _defense;
 	clearWeaponCargoGlobal _defense;
 };
+
+if (_defense isKindOf "B_AAA_System_01_F" || _defense isKindOf "B_SAM_System_01_F" || _defense isKindOf "B_SAM_System_02_F") then {
+	_def_pos = getPos _defense;
+	_defense setPos [0,0,9000];
+	createVehicleCrew _defense;
+	_defense joinAsSilent [createGroup _side, 99];
+	(group _defense) setBehaviour "COMBAT";
+	(group _defense) setCombatMode "RED";
+	_defense setVehicleRadar 1;
+	_defense setVehicleLock "LOCKED";
+	sleep 30;
+	_defense setPos [_def_pos select 0,_def_pos select 1,(_def_pos select 2) +0.1];
+};
+
 if (missionNamespace getVariable "CTI_TROPHY_APS" == 1) then {
 	_defense addEventHandler["Fired","_this call TR_HANDLER;"];
 };
