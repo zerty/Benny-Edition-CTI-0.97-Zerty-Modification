@@ -10,7 +10,7 @@ SM_TCAS_MAINLOOP=compile '
 		_pos= _ppos select (floor random (4));
 	};
 	_dir=[_pos, _town] call CTI_CO_FNC_GetDirTo;
-	if (_fly == "FLY") then {_pos set [2,1000];};
+	if (_fly == "FLY") then {_pos set [2,1500];};
 	_dir=[_pos, _town] call CTI_CO_FNC_GetDirTo;
 	_v=[_type,_pos , _dir, resistance, false, true, true,_fly] call CTI_CO_FNC_CreateVehicle;
 
@@ -46,9 +46,13 @@ SM_TCAS_CREATE=compile '
 	_town=_this;
 	_rn= random (1);
 	_cas="";
-	if (_rn > 0.90) then {
+	if (_rn > 0.95 && _rn <= 1) then {
+		_cas = [_town, "I_Plane_Fighter_04_F","FLY"] call SM_TCAS_MAINLOOP;
+	};
+	if (_rn >= 0.90 && _rn <= 0.95) then {
 		_cas = [_town, "I_Plane_Fighter_03_CAS_F","FLY"] call SM_TCAS_MAINLOOP;
-	} else {
+	};
+	if (_rn < 0.90) then {
 		_cas = [_town, "I_Heli_light_03_F","FORM"] call SM_TCAS_MAINLOOP;
 	};
 	diag_log _cas;

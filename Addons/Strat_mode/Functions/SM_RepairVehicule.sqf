@@ -17,14 +17,16 @@ SM_repair_vehicle={
 		_caller switchMove "AinvPknlMstpSnonWrflDnon_medic4";
 		[localize "STR_StartingRepairsVehicle",0,7,1] call HUD_PBar_start;
 		_stime=time+7;
-		while {alive _caller && alive _target  && (getdammage _target) > 0 && (_caller distance _target) <5 && (_caller distance _pos)<=1 && (vehicle _caller) ==_caller && time < _stime } do {
+		_currentdamage = getdammage _target;
+		_currentcallerdamage = getdammage _caller;
+		while {alive _caller && alive _target  && (getdammage _target) > 0 && (_caller distance _target) <5 && (_caller distance _pos)<=1 && (vehicle _caller) ==_caller && time < _stime && _currentdamage > ((getdammage _target) - 0.01) && _currentcallerdamage > ((getdammage _caller) - 0.02)} do {
 			(_stime - time) call HUD_PBar_update;
 			sleep 1;
 		};
 		if ((_caller distance _target) >5 || (_caller distance _pos)>1 || !((vehicle _caller) ==_caller)) exitWith {_caller switchMove ""; hint localize "STR_SM_RepairVehicule_Failed";CTI_P_Repairing = false ;0 call HUD_PBar_stop;};
 		_target setDammage (_d/_count);
 		[localize "STR_RepairingVehicle",0,1,0] call HUD_PBar_start;
-		while {alive _caller && alive _target  && (getDammage _target) > 0 && (_caller distance _target) <5 && (_caller distance _pos)<=1 && (vehicle _caller) ==_caller} do {
+		while {alive _caller && alive _target  && (getDammage _target) > 0 && (_caller distance _target) <5 && (_caller distance _pos)<=1 && (vehicle _caller) ==_caller && _currentdamage > ((getdammage _target) - 0.01) && _currentcallerdamage > ((getdammage _caller) - 0.02)} do {
 			sleep 1;
 
 			(1-(getDammage _target)) call HUD_PBar_update;
