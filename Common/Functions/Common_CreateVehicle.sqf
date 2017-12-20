@@ -69,6 +69,111 @@ if (isNull _created) then {
 
 	if (_vehicle isKindOf "B_T_UAV_03_F") then {createVehicleCrew _vehicle};
 	
+	if (_vehicle isKindOf "O_Plane_Fighter_02_F") then {
+		_vehicle setAmmoOnPylon [1, 0];
+		_vehicle setAmmoOnPylon [2, 0];
+		_vehicle setAmmoOnPylon [3, 0];
+		_vehicle setAmmoOnPylon [4, 0];
+		_vehicle setAmmoOnPylon [5, 0];
+		_vehicle setAmmoOnPylon [6, 0];
+		_vehicle setAmmoOnPylon [7, 0];
+		_vehicle setAmmoOnPylon [8, 0];
+		_vehicle setAmmoOnPylon [9, 0];
+		_vehicle setAmmoOnPylon [10, 0];
+		_vehicle setAmmoOnPylon [11, 0];
+		_vehicle setAmmoOnPylon [12, 0];
+		_vehicle setAmmoOnPylon [13, 0];
+		_vehicle removeWeapon "weapon_R73Launcher";
+		_vehicle removeWeapon "weapon_R77Launcher";
+		_vehicle removeWeapon "weapon_KAB250Launcher";
+		_vehicle removeWeapon "CMFlareLauncher";
+		
+		_vehicle setPylonLoadOut [13, "PylonMissile_1Rnd_BombCluster_02_F", false, []];
+		_vehicle setAmmoOnPylon [13, 2];
+		
+		if ((((_t_side) call CTI_CO_FNC_GetSideUpgrades) select CTI_UPGRADE_AIR_AT) == 1) then {
+		_vehicle setPylonLoadOut [3, "PylonMissile_Missile_AGM_KH25_x1", false, []];
+		_vehicle setPylonLoadOut [4, "PylonMissile_Missile_AGM_KH25_x1", false, []];
+		_vehicle setPylonLoadOut [5, "PylonMissile_Missile_AGM_KH25_x1", false, []];
+		_vehicle setPylonLoadOut [6, "PylonMissile_Missile_AGM_KH25_x1", false, []];
+		};
+		if ((((_t_side) call CTI_CO_FNC_GetSideUpgrades) select CTI_UPGRADE_AIR_AA) == 1) then {
+		_vehicle setPylonLoadOut [1, "PylonMissile_Missile_AA_R77_x1", false, []];
+		_vehicle setPylonLoadOut [2, "PylonMissile_Missile_AA_R77_x1", false, []];
+		_vehicle setPylonLoadOut [7, "PylonMissile_Missile_AA_R73_x1", false, []];
+		_vehicle setPylonLoadOut [8, "PylonMissile_Missile_AA_R73_x1", false, []];
+		};
+		if ((((_t_side) call CTI_CO_FNC_GetSideUpgrades) select CTI_UPGRADE_AIR_CM) == 1) then {
+		_vehicle addWeapon "CMFlareLauncher";
+		};
+	};
+
+	if (_vehicle isKindOf "B_Plane_Fighter_01_F") then {
+		_vehicle setAmmoOnPylon [1, 0];
+		_vehicle setAmmoOnPylon [2, 0];
+		_vehicle setAmmoOnPylon [3, 0];
+		_vehicle setAmmoOnPylon [4, 0];
+		_vehicle setAmmoOnPylon [5, 0];
+		_vehicle setAmmoOnPylon [6, 0];
+		_vehicle setAmmoOnPylon [7, 0];
+		_vehicle setAmmoOnPylon [8, 0];
+		_vehicle setAmmoOnPylon [9, 0];
+		_vehicle setAmmoOnPylon [10, 0];
+		_vehicle setAmmoOnPylon [11, 0];
+		_vehicle setAmmoOnPylon [12, 0];
+		_vehicle removeWeapon "weapon_AMRAAMLauncher";
+		_vehicle removeWeapon "weapon_AGM_65Launcher";
+		_vehicle removeWeapon "weapon_BIM9xLauncher";
+		_vehicle removeWeapon "weapon_GBU12Launcher";
+		_vehicle removeWeapon "CMFlareLauncher_Singles";
+		
+		_vehicle setPylonLoadOut [11, "PylonMissile_1Rnd_BombCluster_03_F", false, []];
+		_vehicle setPylonLoadOut [12, "PylonMissile_1Rnd_BombCluster_03_F", false, []];
+		
+		if ((((_t_side) call CTI_CO_FNC_GetSideUpgrades) select CTI_UPGRADE_AIR_AT) == 1) then {
+		_vehicle setPylonLoadOut [1, "PylonRack_Missile_AGM_02_x1", false, []];
+		_vehicle setPylonLoadOut [2, "PylonRack_Missile_AGM_02_x1", false, []];
+		_vehicle setPylonLoadOut [3, "PylonRack_Missile_AGM_02_x1", false, []];
+		_vehicle setPylonLoadOut [4, "PylonRack_Missile_AGM_02_x1", false, []];
+		};
+		if ((((_t_side) call CTI_CO_FNC_GetSideUpgrades) select CTI_UPGRADE_AIR_AA) == 1) then {
+		_vehicle setPylonLoadOut [5, "PylonMissile_Missile_BIM9X_x1", false, []];
+		_vehicle setPylonLoadOut [6, "PylonMissile_Missile_BIM9X_x1", false, []];
+		_vehicle setPylonLoadOut [7, "PylonMissile_Missile_AMRAAM_D_INT_x1", false, []];
+		_vehicle setPylonLoadOut [8, "PylonMissile_Missile_AMRAAM_D_INT_x1", false, []];
+		};
+		if ((((_t_side) call CTI_CO_FNC_GetSideUpgrades) select CTI_UPGRADE_AIR_CM) == 1) then {
+		_vehicle addWeapon "CMFlareLauncher_Singles";
+		};
+	};
+	
+	if (_vehicle isKindOf "I_Plane_Fighter_04_F" && _side != CTI_RESISTANCE_ID) then {
+		_vehicle setAmmoOnPylon [1, 0];
+		_vehicle setAmmoOnPylon [2, 0];
+		_vehicle setAmmoOnPylon [3, 0];
+		_vehicle setAmmoOnPylon [4, 0];
+		_vehicle setAmmoOnPylon [5, 0];
+		_vehicle setAmmoOnPylon [6, 0];
+		_vehicle removeWeapon "weapon_AMRAAMLauncher";
+		_vehicle removeWeapon "weapon_AGM_65Launcher";
+		_vehicle removeWeapon "weapon_BIM9xLauncher";
+		_vehicle removeWeapon "CMFlareLauncher";
+		
+		if ((((_t_side) call CTI_CO_FNC_GetSideUpgrades) select CTI_UPGRADE_AIR_AT) == 1) then {
+		_vehicle setPylonLoadOut [3, "PylonRack_Missile_AGM_02_x1", false, []];
+		_vehicle setPylonLoadOut [4, "PylonRack_Missile_AGM_02_x1", false, []];
+		};
+		if ((((_t_side) call CTI_CO_FNC_GetSideUpgrades) select CTI_UPGRADE_AIR_AA) == 1) then {
+		_vehicle setPylonLoadOut [1, "PylonMissile_Missile_BIM9X_x1", false, []];
+		_vehicle setPylonLoadOut [2, "PylonMissile_Missile_BIM9X_x1", false, []];
+		_vehicle setPylonLoadOut [5, "PylonRack_Missile_AMRAAM_C_x1", false, []];
+		_vehicle setPylonLoadOut [6, "PylonRack_Missile_AMRAAM_C_x1", false, []];
+		};
+		if ((((_t_side) call CTI_CO_FNC_GetSideUpgrades) select CTI_UPGRADE_AIR_CM) == 1) then {
+		_vehicle addWeapon "CMFlareLauncher";
+		};
+	};
+	
 	if (_special == "FLY" && _vehicle isKindOf "Plane") then {
 		_vehicle setVelocity [75 * (sin _direction), 75 * (cos _direction), 0];
 	} else {
@@ -113,7 +218,7 @@ if ((missionNamespace getVariable [format ["%1", typeOf _vehicle],["","","","","
 
 
 
-if (_locked && !( _vehicle isKindOf "Thing") && !( _vehicle isKindOf "StaticWeapon") && !( _vehicle isKindOf "UAV") && !( _vehicle isKindOf "UGV_01_base_F")) then {_vehicle lock 2} else {_vehicle lock 0};
+if (_locked && !( _vehicle isKindOf "Thing") && !( _vehicle isKindOf "StaticWeapon") && !( _vehicle isKindOf "UAV") && !( _vehicle isKindOf "UGV_01_base_F") && !( _vehicle isKindOf "B_T_UAV_03_F")) then {_vehicle lock 2} else {_vehicle lock 0};
 if (_net) then {_vehicle setVariable ["cti_net", _side, true]};
 if (_handle) then {
 	_vehicle addEventHandler ["killed", format["[_this select 0, _this select 1, %1] spawn CTI_CO_FNC_OnUnitKilled", _side]]; //--- Called on destruction
