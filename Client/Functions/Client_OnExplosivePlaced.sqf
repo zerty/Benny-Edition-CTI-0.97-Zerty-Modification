@@ -46,4 +46,5 @@ if (_closest distance _unit < 30) then {
 	
 	[["CLIENT", CTI_P_SideJoined], "Client_OnMessageReceived", ["structure-teamkill-attempt", [name _unit, (group _unit) getVariable ["cti_alias",CTI_PLAYER_DEFAULT_ALIAS], _label]]] call CTI_CO_FNC_NetSend;
 	if (isPlayer _unit) then {["SERVER", "Request_NoobLogger", [_unit, 1]] call CTI_CO_FNC_NetSend};
+	hint parseText "<t size='1.3' color='#F86363'>Warning!</t><br /><br />Do not place explosives near friendly buildings or MHQ!";
 };
