@@ -1926,8 +1926,8 @@
 				<Russian>&lt;t size='1.3' color='#2394ef'&gt;Вам нужен Набор Инструментов для этого&lt;/t&gt;</Russian>
 			</Key>
 			<Key ID="STR_ForcedVehicle">
-				<Original>This vehicle has already been forced</Original>
-				<Russian>Данная техника уже была взломана</Russian>
+				<Original>This vehicle has already been forced or the lock is broken</Original>
+				<Russian>Данная техника уже была взломана или блокировка сломана</Russian>
 			</Key>
 			<Key ID="STR_ForcedVehicleLock">
 				<Original>Forcing vehicle lock</Original>
@@ -1958,8 +1958,8 @@
 				<Russian>ST LOAD :: Обьект Выгружен : %1 из %2 </Russian>
 			</Key>
 			<Key ID="STR_ST_NotFound">
-				<Original>ST LOAD :: No Static/Crate found, it must be behind your offroad</Original>
-				<Russian>ST LOAD :: Нет обьектов, позади вашей машины, которые можно загрузить </Russian>
+				<Original>ST LOAD :: No Static/Crate found, it must be behind your offroad/van</Original>
+				<Russian>ST LOAD :: Нет обьектов, позади вашей машины, которые можно загрузить</Russian>
 			</Key>
 	</Package>
 	<Package name="town_markers">
@@ -2170,8 +2170,8 @@
 				<Russian>Завод Тяжелой Техники</Russian>
 			</Key>
 			<Key ID="STR_Up_Heavy_Factory_Descr">
-				<Original>Unlock better armored units</Original>
-				<Russian>Разблокировать новую бронированную технику</Russian>
+				<Original>Unlock armored units (1::HEAVY TANKS, 2::ARTILLERY TANKS)</Original>
+				<Russian>Разблокировать бронированные устройства (1 :: ТЯЖЕЛЫЕ ТАНКИ, 2: АРТИЛЛЕРЕЯ)</Russian>
 			</Key>
 			<Key ID="STR_Up_Aircraft_Factory">
 				<Original>Factory: Aircraft Factory</Original>
@@ -2186,8 +2186,8 @@
 				<Russian>Технологии AAF</Russian>
 			</Key>
 			<Key ID="STR_Up_AAF_technologies_Descr">
-				<Original>Unlock AAF units (1::MRAPS, 2::APC , 3::TRACKED, 4::CHOPPERS, 5::PLANES)</Original>
-				<Russian>Разблокировать технику AAF (1::Легкая Техника 2::БТР 3::БМП, Танки 4::Вертолёты 5::Самолёты)</Russian>
+				<Original>Unlock AAF units (1::MRAPS and VANS, 2::APC, 3::TRACKED, 4::CHOPPERS, 5::PLANES)</Original>
+				<Russian>Разблокировать технику AAF (1::Легкая Техника и фургоны 2::БТР 3::БМП, Танки 4::Вертолёты 5::Самолёты)</Russian>
 			</Key>
 			<Key ID="STR_Up_Aircraft_FFAR">
 				<Original>Air: Aircraft FFAR</Original>
