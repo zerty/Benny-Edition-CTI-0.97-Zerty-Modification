@@ -88,7 +88,7 @@ _s = _s		+ [[]];
 
 _v = _v		+ ["Armored"];
 _t = _t		+ ["Armored - MBT"];
-_p = _p		+ [[["B_MBT_01_cannon_F", 1]]];
+_p = _p		+ [[["B_MBT_01_cannon_F", 1], ["B_MBT_01_TUSK_F", 1, 50]]];
 _f = _f		+ [CTI_HEAVY];
 _m = _m		+ [6500];
 _c = _c		+ ["Armored"];

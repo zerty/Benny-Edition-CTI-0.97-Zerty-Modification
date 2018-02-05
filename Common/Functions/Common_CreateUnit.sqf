@@ -77,6 +77,108 @@ _unit setSkill ["reloadspeed",_skill select 9];
 
 _unit enableFatigue false;
 
+if (_unit isKindOf "I_Soldier_M_F") then {
+_rnd = random (1);
+if (_rnd > 0.7) then {
+	comment "Exported from Arsenal by [H] Tom";
+
+	comment "Remove existing items";
+	removeAllWeapons _unit;
+	removeAllItems _unit;
+	removeAllAssignedItems _unit;
+	removeUniform _unit;
+	removeVest _unit;
+	removeBackpack _unit;
+	removeHeadgear _unit;
+	removeGoggles _unit;
+
+	comment "Add containers";
+	_unit forceAddUniform "U_I_CombatUniform";
+	for "_i" from 1 to 2 do {_unit addItemToUniform "FirstAidKit";};
+	_unit addItemToUniform "20Rnd_762x51_Mag";
+	_unit addVest "V_PlateCarrierIA2_dgtl";
+	for "_i" from 1 to 2 do {_unit addItemToVest "9Rnd_45ACP_Mag";};
+	for "_i" from 1 to 2 do {_unit addItemToVest "HandGrenade";};
+	for "_i" from 1 to 2 do {_unit addItemToVest "Chemlight_green";};
+	_unit addItemToVest "SmokeShell";
+	_unit addItemToVest "SmokeShellGreen";
+	for "_i" from 1 to 6 do {_unit addItemToVest "20Rnd_762x51_Mag";};
+	_unit addBackpack "B_AssaultPack_dgtl";
+	_unit addHeadgear "H_HelmetIA";
+	_unit addGoggles "G_Tactical_Clear";
+
+	comment "Add weapons";
+	_unit addWeapon "srifle_DMR_06_olive_F";
+	_unit addPrimaryWeaponItem "optic_Hamr";
+	_unit addWeapon "hgun_ACPC2_F";
+	_unit addHandgunItem "acc_flashlight_pistol";
+
+	comment "Add items";
+	_unit linkItem "ItemMap";
+	_unit linkItem "ItemCompass";
+	_unit linkItem "ItemWatch";
+	_unit linkItem "ItemRadio";
+	_unit linkItem "ItemGPS";
+	_unit linkItem "NVGoggles_INDEP";
+
+	comment "Set identity";
+	_unit setFace "WhiteHead_12";
+	_unit setSpeaker "male02gre";
+	[_unit,"AAF_3rdRegiment"] call bis_fnc_setUnitInsignia;
+	};
+};
+
+if (_unit isKindOf "I_soldier_F") then {
+_rnd = random (1);
+if (_rnd > 0.8) then {
+	comment "Exported from Arsenal by [H] Tom";
+
+	comment "Remove existing items";
+	removeAllWeapons _unit;
+	removeAllItems _unit;
+	removeAllAssignedItems _unit;
+	removeUniform _unit;
+	removeVest _unit;
+	removeBackpack _unit;
+	removeHeadgear _unit;
+	removeGoggles _unit;
+
+	comment "Add containers";
+	_unit forceAddUniform "U_I_CombatUniform";
+	for "_i" from 1 to 2 do {_unit addItemToUniform "FirstAidKit";};
+	_unit addItemToUniform "30Rnd_762x39_Mag_F";
+	_unit addItemToUniform "30Rnd_762x39_Mag_Green_F";
+	_unit addVest "V_PlateCarrierIA2_dgtl";
+	for "_i" from 1 to 2 do {_unit addItemToVest "9Rnd_45ACP_Mag";};
+	for "_i" from 1 to 6 do {_unit addItemToVest "30Rnd_762x39_Mag_Green_F";};
+	for "_i" from 1 to 2 do {_unit addItemToVest "HandGrenade";};
+	for "_i" from 1 to 2 do {_unit addItemToVest "Chemlight_green";};
+	_unit addItemToVest "SmokeShell";
+	_unit addItemToVest "SmokeShellGreen";
+	_unit addBackpack "B_AssaultPack_dgtl";
+	_unit addHeadgear "H_HelmetIA";
+	_unit addGoggles "G_Tactical_Clear";
+
+	comment "Add weapons";
+	_unit addWeapon "arifle_AKM_F";
+	_unit addWeapon "hgun_ACPC2_F";
+	_unit addHandgunItem "acc_flashlight_pistol";
+
+	comment "Add items";
+	_unit linkItem "ItemMap";
+	_unit linkItem "ItemCompass";
+	_unit linkItem "ItemWatch";
+	_unit linkItem "ItemRadio";
+	_unit linkItem "ItemGPS";
+	_unit linkItem "NVGoggles_INDEP";
+
+	comment "Set identity";
+	_unit setFace "WhiteHead_12";
+	_unit setSpeaker "male04gre";
+	[_unit,"AAF_3rdRegiment"] call bis_fnc_setUnitInsignia;
+	};
+};
+
 if (_net) then {_unit setVariable ["cti_net", _sideID, true]};
 
 //--- Add a Killed EH.
@@ -112,19 +214,19 @@ if (missionNamespace getVariable "CTI_SM_RADAR" == 1) then {
 //cache
  //["SERVER", "Request_Cache", _unit] call CTI_CO_FNC_NetSend;
 
-//_unit addAction [localize "STR_Common_CreateUnit_Remote_Control",
-//	player connectTerminalToUAV ( vehicle(_this select 0));
-//	(_this select 0) spawn {
-//		waitUntil {   uavControl ( vehicle(_this)) select 1 == 'GUNNER' || ! (driver (vehicle _this)==_this) || (vehicle _this ==_this) || ! alive _this || ! alive player};
-//		sleep 1;
-//		 player connectTerminalToUAV objNull;
-//		objNull remoteControl cameraon;
-//		vehicle (player) switchCamera 'Internal'
-//
-//		};
-//	player remoteControl (driver vehicle (_this select 0));
-//	( vehicle(_this select 0)) switchCamera 'Internal';
-//	,"",100, false, true, "", "(vehicle _this) == (vehicle _target) && ! (vehicle _this ==_this) && driver (vehicle _this)==_this  && isnull gunner (vehicle _this) && !((vehicle _this) == vehicle (player)) &&! (uavControl ( vehicle(_this)) select 0 == player)"];
+_unit addAction [localize "STR_Common_CreateUnit_Remote_Control","
+	player connectTerminalToUAV ( vehicle(_this select 0));
+	(_this select 0) spawn {
+		waitUntil {   uavControl ( vehicle(_this)) select 1 == 'GUNNER' || ! (driver (vehicle _this)==_this) || (vehicle _this ==_this) || ! alive _this || ! alive player};
+		sleep 1;
+		 player connectTerminalToUAV objNull;
+		objNull remoteControl cameraon;
+		vehicle (player) switchCamera 'Internal'
+
+		};
+	player remoteControl (driver vehicle (_this select 0));
+	( vehicle(_this select 0)) switchCamera 'Internal';
+	","",100, false, true, "", "(vehicle _this) == (vehicle _target) && ! (vehicle _this ==_this) && driver (vehicle _this)==_this  && isnull gunner (vehicle _this) && !((vehicle _this) == vehicle (player)) &&! (uavControl ( vehicle(_this)) select 0 == player)"];
 
 // returnvehicle objNull remoteControl cameraon;  player connectTerminalToUAV objNull; (player) switchCamera 'Internal';
 

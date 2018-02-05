@@ -5,10 +5,17 @@ SM_repair_vehicle={
 	_caller = _this select 1;
 	//[_target,_caller] call CTI_PVF_Request_Locality;
 
+	_primary_weapon = primaryWeapon player;
+	player selectWeapon _primary_weapon;
 	_d=0;
 	_count=count ("_d=_d+(_target getHitPointDamage (configName _x)); true" configClasses (configfile >> "CfgVehicles" >> (typeof _target) >> "HitPoints"));
 	if (! isNil {_target getHitPointDamage "HitGun"}) then {_d=_d+(_target getHitPointDamage "HitGun");_count=_count+1;};
 	if (! isNil {_target getHitPointDamage "HitTurret"}) then {_d=_d+(_target getHitPointDamage "HitTurret");_count=_count+1;};
+	
+	//For repairing continue... 3.75hp/part
+	_lostpart = (getAllHitPointsDamage _target) select 2;
+	_numlost = {_x == 1} count _lostpart;
+	_cntlostdamage = ((_numlost * 3.75) / 100);
 
 	_rk = ({_x == "Toolkit"} count (backpackItems _caller)) +({_x == "Toolkit"} count (vestItems _caller));
 	if (_rk > 0) then {
@@ -17,14 +24,17 @@ SM_repair_vehicle={
 		_caller switchMove "AinvPknlMstpSnonWrflDnon_medic4";
 		[localize "STR_StartingRepairsVehicle",0,7,1] call HUD_PBar_start;
 		_stime=time+7;
-		while {alive _caller && alive _target  && (getdammage _target) > 0 && (_caller distance _target) <5 && (_caller distance _pos)<=1 && (vehicle _caller) ==_caller && time < _stime } do {
+		_currentdamage = getdammage _target;
+		_currentcallerdamage = getdammage _caller;
+		while {alive _caller && alive _target  && (getdammage _target) > 0 && (_caller distance _target) <5 && (_caller distance _pos)<=1 && (vehicle _caller) ==_caller && time < _stime && _currentdamage > ((getdammage _target) - 0.01) && _currentcallerdamage > ((getdammage _caller) - 0.02)} do {
 			(_stime - time) call HUD_PBar_update;
 			sleep 1;
 		};
 		if ((_caller distance _target) >5 || (_caller distance _pos)>1 || !((vehicle _caller) ==_caller)) exitWith {_caller switchMove ""; hint localize "STR_SM_RepairVehicule_Failed";CTI_P_Repairing = false ;0 call HUD_PBar_stop;};
+		_currentdamage = (_currentdamage + _cntlostdamage);
 		_target setDammage (_d/_count);
 		[localize "STR_RepairingVehicle",0,1,0] call HUD_PBar_start;
-		while {alive _caller && alive _target  && (getDammage _target) > 0 && (_caller distance _target) <5 && (_caller distance _pos)<=1 && (vehicle _caller) ==_caller} do {
+		while {alive _caller && alive _target  && (getDammage _target) > 0 && (_caller distance _target) <5 && (_caller distance _pos)<=1 && (vehicle _caller) ==_caller && _currentdamage > ((getdammage _target) - 0.01) && _currentcallerdamage > ((getdammage _caller) - 0.02)} do {
 			sleep 1;
 
 			(1-(getDammage _target)) call HUD_PBar_update;
@@ -45,16 +55,41 @@ SM_repair_vehicle={
 SM_Force_entry={
 	_target = _this select 0;
 	_caller = _this select 1;
+	_primary_weapon = primaryWeapon player;
+	player selectWeapon _primary_weapon;
+	_currentcallerdamage = getdammage _caller;
 	_rk=1;
 	_rk = ({_x == "Toolkit"} count (backpackItems _caller)) +({_x == "Toolkit"} count (vestItems _caller));
-	if ((_target getVariable ["forced",false]) ) exitWith { hintSilent localize "STR_ForcedVehicle";};
+
+	_rn = random (1);
+	if (_target iskindOf "Tank" || _target iskindOf "Air") then {
+		if (_rn >= 0.75) then {_target setVariable ["forced",true,true];};
+		} else {
+			if (_target iskindOf "Car" || _target iskindOf "Ship") then {
+				if (_rn >= 0.85) then {_target setVariable ["forced",true,true];};
+				} else {
+					if (_rn >= 0.95) then {_target setVariable ["forced",true,true];};
+				};
+			};
+
+	if (_target getVariable ["forced",false]) exitWith {hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br />This vehicle has already been forced or the lock is broken.";};
 	_pos = getPos _caller;
-	if (_rk > 0 ) then {
+	
+	_rt=0;
+	_heavy=0;
+	_reptruck = [_target, CTI_SPECIAL_REPAIRTRUCK, 50] call CTI_CO_FNC_GetNearestSpecialVehicles;
+	if (count _reptruck > 0) then {_rt=1};
+	if (_target iskindOf "Tank" || _target iskindOf "Artillery") then {_heavy=1};
+	if (_heavy == 1 && (_rt == 0 || _rk == 0)) exitWith {
+			hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br />You need a <t color='#ccffaf'>ToolKit</t> and a <t color='#ccffaf'>Repair truck</t> (closer than <t color='#beafff'>50m</t>) to perform this action.";
+		};
+
+	if (_rk > 0) then {
 		_lock=1;
 		CTI_P_Repairing = true ;
 		_caller switchMove "AinvPknlMstpSnonWrflDnon_medic4";
 		[localize "STR_ForcedVehicleLock",0,1,1] call HUD_PBar_start;
-		while {_lock >0  && (_caller distance _target) <5 && (_caller distance _pos)<0.5 && alive _caller && (vehicle _caller) ==_caller && !(_target getVariable ["forced",false])} do
+		while {_lock >0  && (_caller distance _target) <5 && (_caller distance _pos)<0.5 && alive _caller && (vehicle _caller) ==_caller && !(_target getVariable ["forced",false]) && _currentcallerdamage > ((getdammage _caller) - 0.02)} do
 		{
 				_lock=_lock-0.02;
 				_percent=(1-_lock)*100;
@@ -62,7 +97,7 @@ SM_Force_entry={
 		    //hint parseText format ["<t size='1.3' color='#2394ef'>Forcing Lock : %1 percent</t>",ceil (_percent)];
 		    sleep 1;
 		};
-		if ((_caller distance _target) >5 || (_caller distance _pos)>0.5 || !((vehicle _caller) ==_caller) || (_target getVariable ["forced",false] || ! alive _caller)) exitWith {
+		if ((_caller distance _target) >5 || (_caller distance _pos)>0.5 || !((vehicle _caller) ==_caller) || (_target getVariable ["forced",false] || ! alive _caller) || _currentcallerdamage < ((getdammage _caller) - 0.02)) exitWith {
 			_caller switchMove "";
 			hint localize "STR_SM_RepairVehicule_Failed";
 			CTI_P_Repairing = false ;

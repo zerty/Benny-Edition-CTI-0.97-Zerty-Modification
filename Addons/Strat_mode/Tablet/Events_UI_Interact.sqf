@@ -239,7 +239,7 @@ switch (_action) do {
 			    	};
 			    };
 			    case 19: { // CTI_Icon_load //ok
-			    	if (vehicle player != player && driver vehicle player ==player && _target iskindof "I_G_Offroad_01_F" && speed _target <1 && speed _target >-1 && alive _target &&  ! STATIC_TRY) then  {
+			    	if (vehicle player != player && driver vehicle player ==player && (_target iskindof "I_G_Offroad_01_F" || _target iskindOf "B_G_Van_02_vehicle_F" || _target iskindOf "O_G_Van_02_vehicle_F") && speed _target <1 && speed _target >-1 && alive _target &&  ! STATIC_TRY) then  {
 			    		((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTextColor [0,0,1,1];
 			    		((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetPosition [_base_x+(_offset*_base_w),_base_y+_h_offset*_base_h,_base_w,_base_h];
 			    		_offset=_offset+1;
@@ -360,7 +360,7 @@ switch (_action) do {
 			    	};
 			    };
 			    case 30: { // CTI_Icon_al
-			    	if (alive _target  && _target iskindof "Air" ) then  {
+			    	if (alive _target  && _target iskindof "Air" && (!(_target iskindOf "B_Plane_Fighter_01_F" || _target iskindOf "O_Plane_Fighter_02_F" || _target iskindOf "I_Plane_Fighter_04_F"))) then {
 			    		_structures = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideStructures;
 			    		_ammo_depots = [CTI_AMMO, _structures] call CTI_CO_FNC_GetSideStructuresByType;
 			    		_available_ammo_depots = [_target, _ammo_depots, CTI_SERVICE_AMMO_DEPOT_RANGE] call CTI_UI_Service_GetBaseDepots;

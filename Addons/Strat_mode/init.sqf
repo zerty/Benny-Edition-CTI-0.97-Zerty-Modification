@@ -229,14 +229,14 @@ if (CTI_IsClient) then {
 	if ( (missionNamespace getVariable 'CTI_SM_MORTARS')==1) then {
 		{
 			_town=_x;
-			_marker = createMarkerLocal [format ["cti_town_mortar_%1", _town], getPos _town];
+			_marker = createMarkerLocal [format ["cti_town_mortar_%1", _town], [-99999,-99999,0]];
 			_marker setMarkerTypeLocal "mil_dot";
 			_marker setMarkerTextLocal format [localize "STR_MortarTeam",(_town getVariable "cti_town_name")];
 			_marker setMarkerColorLocal "ColorGreen";
 			_marker setMarkerSizeLocal [0.5,0.5];
 			_marker setMarkerAlphaLocal 0;
 
-			_marker = createMarkerLocal [format ["cti_town_mortar_zone_%1", _town], getPos _town];
+			_marker = createMarkerLocal [format ["cti_town_mortar_zone_%1", _town], [-99999,-99999,0]];
 			_marker setMarkerShapeLocal "ELLIPSE";
 			_marker setMarkerBrushLocal "Border";
 			_marker setMarkerSizeLocal [400,400];
@@ -288,6 +288,7 @@ if (CTI_IsServer) then {
 		0 execVM "Addons\Strat_mode\Functions\SM_CleanUp.sqf";
    		0 execVM "Addons\Strat_mode\Functions\SM_AttachStatics.sqf";
 		0 execVM "Addons\Strat_mode\Functions\SM_Town_CAS.sqf";
+		0 execVM "Addons\Strat_mode\Functions\SM_Town_Ship.sqf";
 
 		// Zeus admin for players
 		if !( isNil "ADMIN_ZEUS") then {

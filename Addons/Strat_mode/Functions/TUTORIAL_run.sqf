@@ -1,6 +1,7 @@
 private ["_pos","_spawn_at","_hq","_structures"];
 player allowDamage false;
 [player] joinsilent grpNull;
+_oh = player addAction ["<t color='#86F078'>Online Help</t>", {createDialog "CTI_RscTabletOnlineHelpMenu";}];
 _pos=getMarkerPos "CTI_TUTORIAL";
 _pos = [_pos,5,20] call CTI_CO_FNC_GetRandomPosition;
 player setPos _pos;
@@ -21,6 +22,7 @@ waitUntil {!isNil {CTI_P_SideLogic getVariable "cti_structures"} && !isNil {CTI_
 
 12452 cutText [localize "STR_End_Tutorial", "PLAIN", 0];
 sleep 1;
+player removeAction _oh;
 
 _spawn_at=objNull;
 

@@ -83,6 +83,15 @@ _u = _u + [0];
 _f = _f + [CTI_FACTORY_BARRACKS];
 _s = _s + [""];
 
+_c = _c + ['I_soldier_mine_F'];
+_p = _p + [''];
+_n = _n + [''];
+_o = _o + [150];
+_t = _t + [5];
+_u = _u + [1];
+_f = _f + [CTI_FACTORY_BARRACKS];
+_s = _s + [""];
+
 _c = _c + ['I_Soldier_GL_F'];
 _p = _p + [''];
 _n = _n + [''];
@@ -163,6 +172,33 @@ _o = _o + [300];
 _t = _t + [20];
 _u = _u + [0];
 _f = _f + [CTI_FACTORY_LIGHT];
+_s = _s + [""];
+
+_c = _c + ['I_Boat_Armed_01_minigun_F'];
+_p = _p + [''];
+_n = _n + [''];
+_o = _o + [750];
+_t = _t + [20];
+_u = _u + [0];
+_f = _f + [""];
+_s = _s + [""];
+
+_c = _c + ['I_Plane_Fighter_04_F'];
+_p = _p + [''];
+_n = _n + [''];
+_o = _o + [50000];
+_t = _t + [50];
+_u = _u + [5];
+_f = _f + [4];
+_s = _s + [""];
+
+_c = _c + ['I_Fighter_Pilot_F'];
+_p = _p + [''];
+_n = _n + [''];
+_o = _o + [220];
+_t = _t + [5];
+_u = _u + [2];
+_f = _f + [""];
 _s = _s + [""];
 
 

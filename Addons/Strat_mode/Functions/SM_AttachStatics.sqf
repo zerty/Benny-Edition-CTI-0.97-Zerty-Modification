@@ -1,8 +1,9 @@
 STATICS_MG = ["I_HMG_01_high_F","I_GMG_01_high_F","O_HMG_01_high_F","O_GMG_01_high_F","B_HMG_01_high_F","B_GMG_01_high_F"];
-STATICS_LMG = ["I_HMG_01_F","I_GMG_01_F","O_HMG_01_F","O_GMG_01_F","B_HMG_01_F","B_GMG_01_F"];
-STATICS_L = ["I_static_AA_F","I_static_AT_F","O_static_AA_F","O_static_AT_F","B_static_AA_F","B_static_AT_F"];
+STATICS_LMG = ["I_HMG_01_F","I_GMG_01_F","O_HMG_01_F","O_GMG_01_F","B_HMG_01_F","B_GMG_01_F","B_T_GMG_01_F","B_T_HMG_01_F"];
+STATICS_L = ["I_static_AA_F","I_static_AT_F","O_static_AA_F","O_static_AT_F","B_static_AA_F","B_static_AT_F","B_T_Static_AA_F","B_T_Static_AT_F"];
 STATICS_M = ["ReammoBox_F"];
-STATICS_ALL=STATICS_MG + STATICS_LMG  + STATICS_L+STATICS_M;
+STATICS_NOTSTATICS = ["B_Slingload_01_Cargo_F","B_Slingload_01_Medevac_F","B_Slingload_01_Fuel_F","B_Slingload_01_Repair_F","B_Slingload_01_Ammo_F"];
+STATICS_ALL=STATICS_MG + STATICS_LMG  + STATICS_L + STATICS_M;
 
 STATIC_TRY=false;
 
@@ -14,13 +15,21 @@ Attach_Static={
   _NO = nearestObjects [[(_veh modelToWorld [0,-3,0]) select 0,(_veh modelToWorld [0,-3,0]) select 1,0],STATICS_ALL,3];
   if (count _NO == 0) exitWith {_pl spawn {[["CLIENT",_this],"Fail_load",[]] call CTI_CO_FNC_NetSend}};
   if !(isNull attachedto (_NO select 0)) exitWith {_pl spawn {[["CLIENT",_this],"Fail_load",[]] call CTI_CO_FNC_NetSend}};
+  if (typeOf (_NO select 0) in STATICS_NOTSTATICS) exitWith {_pl spawn {[["CLIENT",_this],"Fail_load",[]] call CTI_CO_FNC_NetSend}};
   [(_NO select 0),_pl] call CTI_PVF_Request_Locality;
   waitUntil {(owner (_NO select 0)) == (owner _pl )};
   _turn=0;
+  if (_veh iskindOf "B_G_Van_02_vehicle_F" || _veh iskindOf "O_G_Van_02_vehicle_F") then {
+  if(typeOf (_NO select 0) in STATICS_L) then {_veh animateDoor ["Door_4_source", 1];(_NO select 0) attachto [_veh,[0,-1.5,0.07]];_turn=180;_veh animateDoor ["Door_4_source", 0];};
+  if(typeOf (_NO select 0) in STATICS_LMG) then {_veh animateDoor ["Door_4_source", 1];(_NO select 0) attachto [_veh,[0,-1.9,0.29]];_turn=180;_veh animateDoor ["Door_4_source", 0];};
+  if(typeOf (_NO select 0) in STATICS_MG) then {_veh animateDoor ["Door_4_source", 1];(_NO select 0) attachto [_veh,[0,-1.9,0.75]];_turn=180;_veh animateDoor ["Door_4_source", 0];};
+  if((_NO select 0) isKindOf (STATICS_M select 0)) then {_veh animateDoor ["Door_4_source", 1];(_NO select 0) attachto [_veh,[0,-1.5,-0.05]];_turn=90;_veh animateDoor ["Door_4_source", 0];};
+  } else {
   if(typeOf (_NO select 0) in STATICS_L) then {(_NO select 0) attachto [_veh,[0,-1.5,0.25]];_turn=180;};
   if(typeOf (_NO select 0) in STATICS_LMG) then {(_NO select 0) attachto [_veh,[-0.1,-2,0.5]];_turn=180;_veh animate ["HideDoor3", 1];};
-  if(typeOf (_NO select 0) in STATICS_MG ) then {(_NO select 0)attachto [_veh,[0.25,-2,1]];};
-  if((_NO select 0) isKindOf (STATICS_M select 0)) then {(_NO select 0) attachto [_veh,[0,-1.5,-0.5]];_turn=90;};
+  if(typeOf (_NO select 0) in STATICS_MG) then {(_NO select 0) attachto [_veh,[0.25,-2,1]];};
+  if((_NO select 0) isKindOf (STATICS_M select 0)) then {(_NO select 0) attachto [_veh,[0,-1.5,0.15]];_turn=90;};
+  };
   _veh setvariable ['attachment',(_NO select 0)];
   [["CLIENT",_pl],"Reply_load",[_veh,(_NO select 0),true,_turn]]call CTI_CO_FNC_NetSend;
 };

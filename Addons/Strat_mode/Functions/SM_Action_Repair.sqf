@@ -9,6 +9,8 @@ _target=_this select 1;
 
 private ["_caller","_virtual_damages","_addin"];
 
+_primary_weapon = primaryWeapon player;
+player selectWeapon _primary_weapon;
 CTI_P_Repairing = true ;
 _caller switchMove animation;
 ["Repairing",0,1,0] call HUD_PBar_start;

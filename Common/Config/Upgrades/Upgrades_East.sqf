@@ -161,7 +161,7 @@ _l=_l+				[[localize "STR_Up_Respawn_Truck", localize "STR_Up_Respawn_Truck_Desc
 _a=_a	+			[True];
 _c=_c +				[[1000,2000,4000,8000,16000]];
 _lev=_lev+			[5];
-_lin=_lin+			[[[],[]]];
+_lin=_lin+			[[[],[],[],[],[]]];
 _t=_t+				[[10*CTI_UPGRADE_RATIO,20*CTI_UPGRADE_RATIO,40*CTI_UPGRADE_RATIO,80*CTI_UPGRADE_RATIO,160*CTI_UPGRADE_RATIO]];
 /*
 _l=_l+			[["Network: Reconfiguration cycle", "Lower Mesh Network reconfiguration cycle time (600s - 60s*lvl)"]];

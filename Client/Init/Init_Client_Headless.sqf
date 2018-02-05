@@ -7,6 +7,7 @@ TR_HANDLER = compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Functions
 
 
 0 execVM "Addons\Strat_mode\Functions\SM_Town_CAS.sqf";
+0 execVM "Addons\Strat_mode\Functions\SM_Town_Ship.sqf";
 CENTER_POS=getMarkerPos "CENTER_POS";
 CENTER_RADIUS=(getMarkerSize "CENTER_POS")select 0;
 HELO_STARTUP=[];

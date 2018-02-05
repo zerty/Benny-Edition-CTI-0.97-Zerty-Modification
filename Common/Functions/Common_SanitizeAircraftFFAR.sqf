@@ -34,7 +34,7 @@ _specialweapons = ["Rocket_03_AP_F","Rocket_03_HE_F","Rocket_04_AP_F","Rocket_04
 _weapons_remove = [];
 _magazines_remove = [];
 
-//--- Find AT Lock weapons.
+//--- Find FFAR weapons.
 {
 	_remove = false;
 

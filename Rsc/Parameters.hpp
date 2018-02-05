@@ -39,7 +39,7 @@ class Params {
 		title = $STR_CTI_BASE_STARTUP_PLACEMENT;
 		values[] = {2000,3000,4000,5000,6000,7000,8000,9000,10000,12000,15000,20000};
 		texts[] = {"2 KM","3 KM","4 KM","5 KM","6 KM","7 KM","8 KM","9 KM","10 KM","12 KM","15 KM","20 KM"};
-		default = 12000;
+		default = 15000;
 	};
 	class CTI_ECONOMY_INCOME_CYCLE {
 		title = $STR_CTI_ECONOMY_INCOME_CYCLE;
@@ -218,7 +218,7 @@ class Params {
 		title = $STR_CTI_AI_SKILL;
 		values[] = {1,2,3,4,5};
 		texts[] = {$STR_CTI_AI_SKILL_0,$STR_CTI_AI_SKILL_1,$STR_CTI_AI_SKILL_2,$STR_CTI_AI_SKILL_3,$STR_CTI_AI_SKILL_4};
-		default = 3;
+		default = 4;
 	};
 
 	class CTI_MAX_MISSION_TIME {
