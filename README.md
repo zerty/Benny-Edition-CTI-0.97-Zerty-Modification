@@ -1,7 +1,4 @@
-#Combined-Warfare CTI
-
-##Goal
-The goal of this branch is a rework of the CTI. Removing unneeded crap, fixing errors, and the most important of them all: balancing the gameplay.
+# Benny-Edition-CTI-0.97-Zerty-Modification
 
 ##Monetization
 This mission (or code that I own inside) __cannot__ be used in a monetization process as defined by BiS at http://www.bistudio.com/monetization & http://www.bistudio.com/monetization/faq
@@ -13,7 +10,6 @@ This mission (or code that I own inside) __cannot__ be used in a monetization pr
 This project is not affiliated or authorized by Bohemia Interactive a.s. Bohemia Interactive, ARMA, DAYZ and all associated logos and designs are trademarks or registered trademarks of Bohemia Interactive a.s. 
 
 ##Credits:
-- *Zerty* for the edit and many scripts of the mission
 - *Benny* for the mission
 - *Bl1p, Fluit* for random AI skill
 - *=ATM=Pokertour* for ATM airdrop

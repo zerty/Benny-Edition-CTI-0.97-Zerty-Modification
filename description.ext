@@ -12,7 +12,7 @@
 #include "Rsc\Parameters.hpp"
 
 #include "Addons\Strat_mode\res.hpp"
-//#include "Addons\Henroth_AirLoadout\dialogs.hpp"
+#include "Addons\Henroth_AirLoadout\dialogs.hpp"
 
 loadScreen = "banner.jpg";
 // ^HS^ for Headless Client

@@ -1,6 +1,6 @@
 
-player createDiarySubject ["DS", "Discord"];
-player createDiaryRecord ["DS",["JMW","https://discord.gg/YhBUUSr"]];
+player createDiarySubject ["TS", "TeamSpeak"];
+player createDiaryRecord ["TS",["JMW","ts.jammywarfare.eu"]];
 
 player createDiarySubject ["Dev", "Mission Homepage"];
 player createDiaryRecord ["Dev",["Licencing","The mission is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.<br/><br/>
