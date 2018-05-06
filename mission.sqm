@@ -19,7 +19,7 @@ class EditorData
 		pos[]={14477.121,36.967987,5863.2715};
 		dir[]={0,-0.70710677,0.70710683};
 		up[]={0,0.70710677,0.70710671};
-		aside[]={0.99999994,0,-0};
+		aside[]={0.99999994,0,0};
 	};
 };
 binarizationWanted=0;
@@ -105,7 +105,7 @@ class Mission
 {
 	class Intel
 	{
-		briefingName="BECTI BE 0.97 - Zerty 1.3.2.6 - HTom";
+		briefingName="BECTI BE 0.97 - Zerty 1.3.2.8 - HTom";
 		overviewText="By Benny - Adapted from OFP era MFCTI (Mike Melvin)";
 		resistanceWest=0;
 		timeOfChanges=24720;
@@ -899,7 +899,7 @@ class Mission
 			};
 			id=71;
 			type="FlagPole_F";
-			atlOffset=0.0032405853;
+			atlOffset=0.0032463074;
 		};
 		class Item72
 		{
@@ -1019,7 +1019,7 @@ class Mission
 			};
 			id=77;
 			type="FlagPole_F";
-			atlOffset=0.00065994263;
+			atlOffset=0.00066947937;
 		};
 		class Item78
 		{
