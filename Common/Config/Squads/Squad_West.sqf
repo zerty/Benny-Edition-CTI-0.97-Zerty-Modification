@@ -32,7 +32,7 @@ _s = _s		+ [[]];
 
 _v = _v		+ ["InfantryAT"];
 _t = _t		+ ["Infantry - AT"];
-_p = _p		+ [[["B_soldier_AT_F", 5, 85], ["B_medic_F", 1], ["B_soldier_LAT_F", 3, 75]]];
+_p = _p		+ [[["B_soldier_AT_F", 5, 85], ["B_medic_F", 1], ["B_soldier_LAT_F", 3, 75], ["B_soldier_LAT2_F", 2, 70]]];
 _f = _f		+ [CTI_BARRACKS];
 _m = _m		+ [800];
 _c = _c		+ ["InfantryAT"];
@@ -88,7 +88,7 @@ _s = _s		+ [[]];
 
 _v = _v		+ ["Armored"];
 _t = _t		+ ["Armored - MBT"];
-_p = _p		+ [[["B_MBT_01_cannon_F", 1], ["B_MBT_01_TUSK_F", 1, 50]]];
+_p = _p		+ [[["B_MBT_01_cannon_F", 1], ["B_MBT_01_TUSK_F", 1, 50], ["B_AFV_Wheeled_01_up_cannon_F", 1, 40]]];
 _f = _f		+ [CTI_HEAVY];
 _m = _m		+ [6500];
 _c = _c		+ ["Armored"];

@@ -118,6 +118,7 @@ if (!isNil '_var' && _isplayable_killer) then {
 				//_mult=if ((missionNamespace getVariable "CTI_GROUP_AWARD_MULT") == 1) then {(count (_group_killer getVariable ["last_known_players",[""]]))} else {1};
 				//_bounty = round( _mult * _cost * CTI_VEHICLES_BOUNTY /100);
 				_bounty = round( _cost * CTI_VEHICLES_BOUNTY /100);
+				if (_killer isKindOf "Man") then {_bounty = round( _cost * CTI_VEHICLES_BOUNTY * 2 /100);};
 				if (count _award_groups > 1) then { _bounty = round(_bounty / (count _award_groups))};
 
 				//--- Award

@@ -38,5 +38,5 @@ switch (true) do {
 	case (_order == CTI_ORDER_CLIENT_SAD): {"Search and Destroy"};
 	case (_order == CTI_ORDER_CLIENT_MOVE): {"Move"}; 
 	case (_order == CTI_ORDER_CLIENT_PATROL): {"Patrol"}; 
-	default {"Unknown"}
-}
+	default {"Unknown"};
+};

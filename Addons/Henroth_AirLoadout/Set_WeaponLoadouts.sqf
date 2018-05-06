@@ -837,6 +837,11 @@ CTI_LOADOUT_B_Heli_Attack_01_F_MNT_OPTIONS =
 [
 	"Standard - configuration" ,
 	[
+		[ "Laserdesignator_mounted" ,
+			[
+				[ "Laserbatteries" , "500" ]
+			]
+		] ,
 		[ "gatling_20mm" ,
 			[
 				[ "1000Rnd_20mm_shells" , "1000" ]
@@ -853,6 +858,49 @@ CTI_LOADOUT_B_Heli_Attack_01_F_MNT_OPTIONS =
 				[ "2Rnd_AAA_missiles" , "4000" ]
 			]
 		] ,
+		[ "missiles_DAGR" ,
+			[
+				[ "24Rnd_PG_missiles" , "20000" ]
+			]
+		] ,
+		[ "CMFlareLauncher" ,
+			[
+				[ "240Rnd_CMFlare_Chaff_Magazine" , "2000" , [-1] ] ,
+				[ "120Rnd_CMFlare_Chaff_Magazine" , "500" , [-1] ] ,
+				[ "168Rnd_CMFlare_Chaff_Magazine" , "1000" , [-1] ] ,
+				[ "192Rnd_CMFlare_Chaff_Magazine" , "1500" , [-1] ]
+			]
+		]
+	],
+	"Anti Tank - Configurations" ,
+	[
+		[ "Laserdesignator_mounted" ,
+			[
+				[ "Laserbatteries" , "500" ]
+			]
+		] ,
+		[ "gatling_20mm" ,
+			[
+				[ "1000Rnd_20mm_shells" , "1000" ]
+			] ,
+		  "gatling_25mm" ,
+			[
+				[ "1000Rnd_25mm_shells" , "1500" ] ,
+				[ "300Rnd_25mm_shells" , "500" ]
+			]
+		] ,
+		[
+			"missiles_SCALPEL" ,
+			[
+				[ "PylonMissile_1Rnd_LG_scalpel" , "2500" ]
+			]
+		] ,
+		[
+			"missiles_SCALPEL" ,
+			[
+				[ "PylonMissile_1Rnd_LG_scalpel" , "2500" ]
+			]
+		] , 
 		[ "missiles_DAGR" ,
 			[
 				[ "24Rnd_PG_missiles" , "20000" ]

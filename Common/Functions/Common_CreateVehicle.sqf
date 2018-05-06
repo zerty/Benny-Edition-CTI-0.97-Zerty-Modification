@@ -63,6 +63,12 @@ if (typeName _side == "SIDE") then {_side = (_side) call CTI_CO_FNC_GetSideID};
 _vehicle = if ( isNull _created) then {createVehicle [_type, _position, [], 7, _special]} else {_created};
 if (isNull _created) then {
 	_vehicle setDir _direction;
+	
+	if (_vehicle isKindOf "CAR" || _vehicle isKindOf "TANK" || _vehicle isKindOf "SHIP") then {
+	_ep = (getPos _vehicle) findEmptyPosition [0,25,"O_T_VTOL_02_vehicle_F"];
+	_vehicle setPos _ep;
+	};
+	
 	if (_special == "FORM") then {_vehicle setPos [getPos _vehicle select 0, getPos _vehicle select 1, 1];}; //--- Make the vehicle spawn above the ground level to prevent any bisteries
 	// --- Zerty edit
 	if (_type isKindOf "UAV" || _type isKindOf "UGV_01_base_F") then {createVehicleCrew _vehicle};
@@ -179,6 +185,30 @@ if (isNull _created) then {
 	} else {
 		_vehicle setVelocity [0,0,1];
 	};
+	
+	//Spawn with components [H]Tom
+	if (_vehicle isKindOf "Wheeled_APC_F" || _vehicle isKindOf "Tank") then { 
+		if (_vehicle isKindOf "I_APC_Wheeled_03_cannon_F") then {[_vehicle, nil, ["showTools",1]] call BIS_fnc_initVehicle;};
+		if (_vehicle isKindOf "O_APC_Wheeled_02_rcws_F" || _vehicle isKindOf "O_APC_Wheeled_02_rcws_v2_F" || _vehicle isKindOf "O_T_APC_Wheeled_02_rcws_ghex_F" || _vehicle isKindOf "O_T_APC_Wheeled_02_rcws_v2_ghex_F") then {[_vehicle, nil, ["showTools",1]] call BIS_fnc_initVehicle;};
+		if (_vehicle isKindOf "O_MBT_02_arty_F" || _vehicle isKindOf "O_T_MBT_02_arty_ghex_F") then {[_vehicle, nil, ["showLog",1]] call BIS_fnc_initVehicle;};
+		if (_vehicle isKindOf "I_LT_01_AT_F" || _vehicle isKindOf "I_LT_01_AA_F" || _vehicle isKindOf "I_LT_01_scout_F" || _vehicle isKindOf "I_LT_01_cannon_F") then {[_vehicle, nil, ["showTools",1]] call BIS_fnc_initVehicle;};
+		if (_vehicle isKindOf "O_APC_Tracked_02_cannon_F" || _vehicle isKindOf "O_T_APC_Tracked_02_cannon_ghex_F") then {[_vehicle, nil, ["showTracks",1]] call BIS_fnc_initVehicle;};
+		if (_vehicle isKindOf "I_APC_tracked_03_cannon_F") then {[_vehicle, nil, ["showBags2",1,"showTools",1]] call BIS_fnc_initVehicle;};
+		if (_vehicle isKindOf "I_MBT_03_cannon_F") then {[_vehicle, nil, ["HideTurret",1,"HideHull",1]] call BIS_fnc_initVehicle;};
+		if (_vehicle isKindOf "O_MBT_02_cannon_F" || _vehicle isKindOf "O_T_MBT_02_cannon_ghex_F") then {[_vehicle, nil, ["showLog",1]] call BIS_fnc_initVehicle;};
+		if (_vehicle isKindOf "O_APC_Tracked_02_AA_F" || _vehicle isKindOf "O_T_APC_Tracked_02_AA_ghex_F") then {[_vehicle, nil, ["showTracks",1]] call BIS_fnc_initVehicle;};
+	};
+	if (_vehicle isKindOf "Car") then {
+		_offroads = ["I_G_Offroad_01_F", "I_G_Offroad_01_armed_F", "I_G_Offroad_01_AT_F", "B_G_Offroad_01_F", "B_G_Offroad_01_armed_F", "B_G_Offroad_01_AT_F", "O_G_Offroad_01_F", "O_G_Offroad_01_armed_F", "O_G_Offroad_01_AT_F"];
+		if ((typeOf _vehicle) in _offroads) then {
+		_offroadcolors = ["Guerilla_01", "Guerilla_02", "Guerilla_03", "Guerilla_04", "Guerilla_05", "Guerilla_06", "Guerilla_07", "Guerilla_08", "Guerilla_09", "Guerilla_10", "Guerilla_11", "Guerilla_12"];
+		[_vehicle, [(selectRandom _offroadcolors),1], nil] call BIS_fnc_initVehicle;};
+		_4wds = ["I_C_Offroad_02_unarmed_F", "I_C_Offroad_02_LMG_F", "I_C_Offroad_02_AT_F", "C_Offroad_02_unarmed_F"];
+		if ((typeOf _vehicle) in _4wds) then {
+		_4wdcolors = ["Green", "Olive", "Black", "Brown"];
+		[_vehicle, [(selectRandom _4wdcolors),1], nil] call BIS_fnc_initVehicle;};
+	};
+	
 };
 if (missionNamespace getVariable "CTI_TROPHY_APS" == 1) then {
 	if (_vehicle isKindOf "tank" || _vehicle isKindOf "Wheeled_APC_F") then {

@@ -196,6 +196,14 @@ _i = _i		+ ["RPG32_HE_F"];
 _u = _u		+ [1];
 _p = _p		+ [50];
 
+_i = _i		+ ["Vorona_HEAT"];
+_u = _u		+ [2];
+_p = _p		+ [170];
+
+_i = _i		+ ["Vorona_HE"];
+_u = _u		+ [2];
+_p = _p		+ [100];
+
 _i = _i		+ ["Titan_AA"];
 _u = _u		+ [2];
 _p = _p		+ [250];
@@ -501,6 +509,14 @@ _p = _p		+ [125];
 _i = _i		+ ["launch_O_Titan_ghex_F"];
 _u = _u		+ [2];
 _p = _p		+ [125];
+
+_i = _i		+ ["launch_O_Vorona_brown_F"];
+_u = _u		+ [2];
+_p = _p		+ [220];
+
+_i = _i		+ ["launch_O_Vorona_green_F"];
+_u = _u		+ [2];
+_p = _p		+ [220];
 
 _i = _i		+ ["launch_RPG32_F"];
 _u = _u		+ [1];
@@ -840,6 +856,10 @@ _p = _p		+ [50];
 _i = _i		+ ["H_HelmetSpecO_ocamo"];
 _u = _u		+ [2];
 _p = _p		+ [50];
+
+_i = _i		+ ["H_Tank_black_F"];
+_u = _u		+ [1];
+_p = _p		+ [20];
 
 _i = _i		+ ["H_HelmetCrew_O_ghex_F"];
 _u = _u		+ [1];

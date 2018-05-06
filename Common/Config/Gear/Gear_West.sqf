@@ -168,6 +168,14 @@ _i = _i		+ ["NLAW_F"];
 _u = _u		+ [1];
 _p = _p		+ [50];
 
+_i = _i		+ ["MRAWS_HEAT_F"];
+_u = _u		+ [2];
+_p = _p		+ [125];
+
+_i = _i		+ ["MRAWS_HE_F"];
+_u = _u		+ [2];
+_p = _p		+ [80];
+
 _i = _i		+ ["Titan_AA"];
 _u = _u		+ [2];
 _p = _p		+ [250];
@@ -572,6 +580,30 @@ _u = _u		+ [2];
 _p = _p		+ [125];
 
 _i = _i		+ ["launch_B_Titan_tna_F"];
+_u = _u		+ [2];
+_p = _p		+ [125];
+
+_i = _i		+ ["launch_MRAWS_sand_F"];
+_u = _u		+ [2];
+_p = _p		+ [150];
+
+_i = _i		+ ["launch_MRAWS_olive_F"];
+_u = _u		+ [2];
+_p = _p		+ [150];
+
+_i = _i		+ ["launch_MRAWS_green_F"];
+_u = _u		+ [2];
+_p = _p		+ [150];
+
+_i = _i		+ ["launch_MRAWS_sand_rail_F"];
+_u = _u		+ [2];
+_p = _p		+ [125];
+
+_i = _i		+ ["launch_MRAWS_olive_rail_F"];
+_u = _u		+ [2];
+_p = _p		+ [125];
+
+_i = _i		+ ["launch_MRAWS_green_rail_F"];
 _u = _u		+ [2];
 _p = _p		+ [125];
 

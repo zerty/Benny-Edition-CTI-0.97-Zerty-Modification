@@ -113,7 +113,7 @@ CTI_UI_Service_ProcessRearm = {
 			_times set [_forEachIndex,_x * CTI_AIR_REARM_RATIO];
 		} forEach _times;
 	};
-	if (_unit isKindOf "MBT_01_arty_base_F" || _unit isKindOf "B_MBT_01_mlrs_base_F" || _unit isKindOf  "O_MBT_02_arty_base_F" ) then {
+	if (_unit isKindOf "MBT_01_arty_base_F" || _unit isKindOf "B_MBT_01_mlrs_base_F" || _unit isKindOf "O_MBT_02_arty_base_F" || _unit isKindOf "Truck_02_MRL_base_F") then {
 		{
 			_times set [_forEachIndex,_x * CTI_ART_REARM_RATIO];
 		} forEach _times;

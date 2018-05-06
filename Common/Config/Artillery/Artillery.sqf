@@ -28,4 +28,9 @@ _m = _m + [["12Rnd_230mm_rockets"]];
 _b = _b + [[2, 3, 6]];
 _r = _r + [[[800,4500], [800,7500], [800,10500], [800,20500]]];
 
+_c = _c + ["I_Truck_02_MRL_F"];
+_m = _m + [["12Rnd_230mm_rockets"]];
+_b = _b + [[2, 3, 6]];
+_r = _r + [[[800,4500], [800,7500], [800,10500], [800,20500]]];
+
 [_c, _m, _b, _r] call compile preprocessFileLineNumbers "Common\Config\Artillery\Set_Artillery.sqf";

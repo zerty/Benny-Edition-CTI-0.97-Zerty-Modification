@@ -259,7 +259,9 @@ if (CTI_IsServer) then {
 		} else {
 			_it= _possible_it_off select floor random (count _possible_it_off);
 		};
-		skipTime _it;
+		//skipTime _it;
+		//[H]Tom - loading saved time
+		if (!(profileNamespace getvariable ["CTI_SAVE_ENABLED",false])) then {skipTime _it;};
 
 		// dynamic wheather
 		0 spawn WEATHER_HOOK;
@@ -317,14 +319,16 @@ if (CTI_IsServer) then {
 				if (daytime > 5 && daytime <19 ) then {
 					if (timeMultiplier != _day_ratio) then  {setTimeMultiplier _day_ratio;};
 				} else {
-					if (timeMultiplier !=  _nigth_ratio) then {setTimeMultiplier _nigth_ratio; }
+					if (timeMultiplier !=  _nigth_ratio) then {setTimeMultiplier _nigth_ratio;};
 				};
 				sleep 120;
 			};
 
 		};
 
-
+		if (profileNamespace getvariable ["CTI_SAVE_ENABLED",false]) then {
+			0 execVM "Addons\Strat_mode\Functions\PERS_Mark.sqf";
+		};
 
 };
 

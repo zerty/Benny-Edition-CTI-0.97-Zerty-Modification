@@ -290,6 +290,27 @@ class CTI_RscInteraction {
 			action = "['OnDisDef'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_Interact.sqf'";
 			toolTip=$STR_Icon_DisDef;
 		};
+		class CTI_Icon_EjectCargo : CTI_Icon_fpk {
+			idc = 511036;
+			x = "SafeZoneX + SafeZoneW*0.55";
+			text = "Rsc\Pictures\icon_load.paa";
+			action = "['EjectCargo'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_Interact.sqf'";
+			toolTip=$STR_Icon_EjectCargo;
+		};
+		class CTI_Icon_Camo : CTI_Icon_fpk {
+			idc = 511037;
+			x = "SafeZoneX + SafeZoneW*0.55";
+			text = "Rsc\Pictures\icon_camo.paa";
+			action = "['OnCamo'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_Interact.sqf'";
+			toolTip=$STR_Icon_Camo;
+		};
+		class CTI_Icon_SlatCage : CTI_Icon_fpk {
+			idc = 511038;
+			x = "SafeZoneX + SafeZoneW*0.55";
+			text = "Rsc\Pictures\icon_cage.paa";
+			action = "['OnSlatCage'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_Interact.sqf'";
+			toolTip=$STR_Icon_SlatCage;
+		};
 	};
 };
 

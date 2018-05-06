@@ -58,7 +58,7 @@ CTI_UI_Artillery_CanFire = {
 	_range_max = _this select 4;
 
 	//--- Make sure that the artillery can fire with the engine (min-max) and that it's within the allowed CTI defined range.
-	if (_target inRangeOfArtillery [[_artillery], _magazine] && _target distance _artillery >= _range_min && _target distance _artillery <= _range_max) then {true} else {false}
+	if (_target inRangeOfArtillery [[_artillery], _magazine] && _target distance _artillery >= _range_min && _target distance _artillery <= _range_max) then {true} else {false};
 };
 
 CTI_UI_Artillery_GetArtilleryRange = {

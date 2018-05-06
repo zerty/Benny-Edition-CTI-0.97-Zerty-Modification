@@ -1268,7 +1268,7 @@ CTI_AC_GET_MAGAZINE_DISPLAY_NAME =
              switch (typeName _this) do {
                  case "STRING" : {_this};
                  case "OBJECT" : {typeOf _this};
-                 default {nil}
+                 default {nil};
              }
          ) >> "turrets"
      );
