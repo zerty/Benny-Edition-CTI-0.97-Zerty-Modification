@@ -63,18 +63,18 @@ if (typeName _side == "SIDE") then {_side = (_side) call CTI_CO_FNC_GetSideID};
 _vehicle = if ( isNull _created) then {createVehicle [_type, _position, [], 7, _special]} else {_created};
 if (isNull _created) then {
 	_vehicle setDir _direction;
-	
-	if (_vehicle isKindOf "CAR" || _vehicle isKindOf "TANK" || _vehicle isKindOf "SHIP") then {
-	_ep = (getPos _vehicle) findEmptyPosition [0,25,"O_T_VTOL_02_vehicle_F"];
-	_vehicle setPos _ep;
+
+	if ((_vehicle isKindOf "CAR" || _vehicle isKindOf "TANK" || _vehicle isKindOf "SHIP")&& _special != "CAN_COLLIDE") then {
+		_ep = (getPos _vehicle) findEmptyPosition [0,25,"O_T_VTOL_02_vehicle_F"];
+		_vehicle setPos _ep;
 	};
-	
+
 	if (_special == "FORM") then {_vehicle setPos [getPos _vehicle select 0, getPos _vehicle select 1, 1];}; //--- Make the vehicle spawn above the ground level to prevent any bisteries
 	// --- Zerty edit
 	if (_type isKindOf "UAV" || _type isKindOf "UGV_01_base_F") then {createVehicleCrew _vehicle};
 
 	if (_vehicle isKindOf "B_T_UAV_03_F") then {createVehicleCrew _vehicle};
-	
+
 	if (_vehicle isKindOf "O_Plane_Fighter_02_F") then {
 		_vehicle setAmmoOnPylon [1, 0];
 		_vehicle setAmmoOnPylon [2, 0];
@@ -93,10 +93,10 @@ if (isNull _created) then {
 		_vehicle removeWeapon "weapon_R77Launcher";
 		_vehicle removeWeapon "weapon_KAB250Launcher";
 		_vehicle removeWeapon "CMFlareLauncher";
-		
+
 		_vehicle setPylonLoadOut [13, "PylonMissile_1Rnd_BombCluster_02_cap_F", false, []];
 		_vehicle setAmmoOnPylon [13, 2];
-		
+
 		if ((((_t_side) call CTI_CO_FNC_GetSideUpgrades) select CTI_UPGRADE_AIR_AT) == 1) then {
 		_vehicle setPylonLoadOut [3, "PylonMissile_Missile_AGM_KH25_x1", false, []];
 		_vehicle setPylonLoadOut [4, "PylonMissile_Missile_AGM_KH25_x1", false, []];
@@ -132,10 +132,10 @@ if (isNull _created) then {
 		_vehicle removeWeapon "weapon_BIM9xLauncher";
 		_vehicle removeWeapon "weapon_GBU12Launcher";
 		_vehicle removeWeapon "CMFlareLauncher_Singles";
-		
+
 		_vehicle setPylonLoadOut [11, "PylonMissile_1Rnd_BombCluster_03_F", false, []];
 		_vehicle setPylonLoadOut [12, "PylonMissile_1Rnd_BombCluster_03_F", false, []];
-		
+
 		if ((((_t_side) call CTI_CO_FNC_GetSideUpgrades) select CTI_UPGRADE_AIR_AT) == 1) then {
 		_vehicle setPylonLoadOut [1, "PylonRack_Missile_AGM_02_x1", false, []];
 		_vehicle setPylonLoadOut [2, "PylonRack_Missile_AGM_02_x1", false, []];
@@ -152,7 +152,7 @@ if (isNull _created) then {
 		_vehicle addWeapon "CMFlareLauncher_Singles";
 		};
 	};
-	
+
 	if (_vehicle isKindOf "I_Plane_Fighter_04_F" && _side != CTI_RESISTANCE_ID) then {
 		_vehicle setAmmoOnPylon [1, 0];
 		_vehicle setAmmoOnPylon [2, 0];
@@ -164,7 +164,7 @@ if (isNull _created) then {
 		_vehicle removeWeapon "weapon_AGM_65Launcher";
 		_vehicle removeWeapon "weapon_BIM9xLauncher";
 		_vehicle removeWeapon "CMFlareLauncher";
-		
+
 		if ((((_t_side) call CTI_CO_FNC_GetSideUpgrades) select CTI_UPGRADE_AIR_AT) == 1) then {
 		_vehicle setPylonLoadOut [3, "PylonRack_Missile_AGM_02_x1", false, []];
 		_vehicle setPylonLoadOut [4, "PylonRack_Missile_AGM_02_x1", false, []];
@@ -179,15 +179,15 @@ if (isNull _created) then {
 		_vehicle addWeapon "CMFlareLauncher";
 		};
 	};
-	
+
 	if (_special == "FLY" && _vehicle isKindOf "Plane") then {
 		_vehicle setVelocity [75 * (sin _direction), 75 * (cos _direction), 0];
 	} else {
 		_vehicle setVelocity [0,0,1];
 	};
-	
+
 	//Spawn with components [H]Tom
-	if (_vehicle isKindOf "Wheeled_APC_F" || _vehicle isKindOf "Tank") then { 
+	if (_vehicle isKindOf "Wheeled_APC_F" || _vehicle isKindOf "Tank") then {
 		if (_vehicle isKindOf "I_APC_Wheeled_03_cannon_F") then {[_vehicle, nil, ["showTools",1]] call BIS_fnc_initVehicle;};
 		if (_vehicle isKindOf "O_APC_Wheeled_02_rcws_F" || _vehicle isKindOf "O_APC_Wheeled_02_rcws_v2_F" || _vehicle isKindOf "O_T_APC_Wheeled_02_rcws_ghex_F" || _vehicle isKindOf "O_T_APC_Wheeled_02_rcws_v2_ghex_F") then {[_vehicle, nil, ["showTools",1]] call BIS_fnc_initVehicle;};
 		if (_vehicle isKindOf "O_MBT_02_arty_F" || _vehicle isKindOf "O_T_MBT_02_arty_ghex_F") then {[_vehicle, nil, ["showLog",1]] call BIS_fnc_initVehicle;};
@@ -208,7 +208,7 @@ if (isNull _created) then {
 		_4wdcolors = ["Green", "Olive", "Black", "Brown"];
 		[_vehicle, [(selectRandom _4wdcolors),1], nil] call BIS_fnc_initVehicle;};
 	};
-	
+
 };
 if (missionNamespace getVariable "CTI_TROPHY_APS" == 1) then {
 	if (_vehicle isKindOf "tank" || _vehicle isKindOf "Wheeled_APC_F") then {
