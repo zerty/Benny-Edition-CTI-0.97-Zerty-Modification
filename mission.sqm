@@ -3465,6 +3465,7 @@ class OutroLoose
 };
 class OutroWin
 {
+
 	class Intel
 	{
 		timeOfChanges=1800.0002;

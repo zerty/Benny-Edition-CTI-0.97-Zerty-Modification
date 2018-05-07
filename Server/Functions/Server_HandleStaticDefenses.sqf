@@ -67,6 +67,7 @@ while {alive _structure} do {
 			} else {
 				//--- The static is empty
 				if (!alive gunner _x && !alive assignedGunner _x && !_manned && time - _last_occupied > CTI_BASE_DEFENSES_AUTO_DELAY && count(_defense_team call CTI_CO_FNC_GetLiveUnits) < CTI_BASE_DEFENSES_AUTO_LIMIT && ! isNull _x  && alive _x && !(_x isKindOf "B_AAA_System_01_F" || _x isKindOf "B_SAM_System_01_F" || _x isKindOf "B_SAM_System_02_F")) then {
+
 					_manned = true;
 
 					//--- Create the unit
