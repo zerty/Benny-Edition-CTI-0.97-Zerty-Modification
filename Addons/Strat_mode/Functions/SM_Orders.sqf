@@ -84,7 +84,7 @@ CTI_FSM_UpdateOrders_TakeTown = {
 			};
 			if (count _c >0 ) then {_assigned_target = _c select 0};
 			if (isNull _assigned_target) then {_assigned_target=[player, CTI_P_SideJoined] call CTI_CO_FNC_GetClosestEnemyTown;};
-			if (_assigned_target != _town) then {_process = false}
+			if (_assigned_target != _town) then {_process = false};
 		};
 
 		sleep 5;

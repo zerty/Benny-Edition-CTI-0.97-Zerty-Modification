@@ -53,6 +53,38 @@ if (typeName _position == "OBJECT") then {_position = getPos _position};
 if (typeName _sideID == "SIDE") then {_sideID = (_sideID) call CTI_CO_FNC_GetSideID};
 _position=[_position select 0,_position select 1,0];
 _unit = _team createUnit [_classname, _position, [], 0, _special];
+
+if (_unit isKindOf "Man") then {
+	EXCEPTIONS = ["Land_Dome_Small_F","Land_Dome_Big_F","Land_Cargo_Tower_V4_F","Land_Cargo_Tower_V1_F","Land_Cargo_Patrol_V4_F","Land_Cargo_Patrol_V1_F","Land_FuelStation_Shed_F","Land_fs_roof_F","Land_FuelStation_01_roof_F","Land_FuelStation_02_roof_F","Land_FuelStation_01_roof_malevil_F","Land_SM_01_shelter_wide_F","Land_Shed_Big_F","Land_Shed_Small_F","Land_SM_01_shelter_narrow_F","Land_TentHangar_V1_F","Land_Airport_01_hangar_F","Land_Shed_06_F","Land_MetalShelter_01_F","Land_MetalShelter_02_F","Land_WarehouseShelter_01_F","Land_SCF_01_shed_F"];
+	KK_fnc_setPosAGLS = {
+		params ["_obj", "_pos", "_offset"];
+		_offset = _pos select 2;
+		if (isNil "_offset") then {_offset = 0};
+		_pos set [2, worldSize]; 
+		_obj setPosASL _pos;
+		_pos set [2, vectorMagnitude (_pos vectorDiff getPosVisual _obj) + _offset];
+		_obj setPosASL _pos;
+	};
+	
+	_nearesthouse = typeOf ((position _unit) nearestObject "House");
+	_nearesthousepos = getPos ((position _unit) nearestObject "House");
+	_nearesthouseradius = round (sizeOF _nearesthouse / 2);
+	if (_nearesthouse == "Land_Cargo_Tower_V4_F" || _nearesthouse == "Land_Cargo_Tower_V1_F") then {_nearesthouseradius = 8.5;};
+	if (_nearesthouse == "Land_Cargo_Patrol_V4_F" || _nearesthouse == "Land_Cargo_Patrol_V1_F") then {_nearesthouseradius = 6;};
+	if (_nearesthouse == "Land_Shed_Big_F" || _nearesthouse == "Land_SM_01_shelter_wide_F") then {_nearesthouseradius = 16;};
+	if ((_nearesthouse in EXCEPTIONS) && ((_unit distance2d _nearesthousepos) < (_nearesthouseradius))) then {
+	[_unit, _position] call KK_fnc_setPosAGLS;
+	_unit setPos [getPos _unit select 0, getPos _unit select 1, 0.25];
+	} else {
+	[_unit, _position] call KK_fnc_setPosAGLS;
+	};
+	
+	if (((_unit distance2d nearestbuilding _unit) < 10) && (!(typeOF nearestbuilding _unit in EXCEPTIONS))) then {
+	_buildingpos = nearestBuilding _unit buildingPos -1;
+	_unit setpos (selectrandom _buildingpos);
+	};
+};
+
 //_unit setSkill (0.3 + (random 0.5));//tbd tweak
 //--- bl1p and fluit rnd skills START
 
@@ -76,6 +108,108 @@ _unit setSkill ["reloadspeed",_skill select 9];
 //--- bl1p and fluit rnd skills END
 
 _unit enableFatigue false;
+
+if (_unit isKindOf "I_Soldier_M_F") then {
+_rnd = random (1);
+if (_rnd > 0.7) then {
+	comment "Exported from Arsenal by [H] Tom";
+
+	comment "Remove existing items";
+	removeAllWeapons _unit;
+	removeAllItems _unit;
+	removeAllAssignedItems _unit;
+	removeUniform _unit;
+	removeVest _unit;
+	removeBackpack _unit;
+	removeHeadgear _unit;
+	removeGoggles _unit;
+
+	comment "Add containers";
+	_unit forceAddUniform "U_I_CombatUniform";
+	for "_i" from 1 to 2 do {_unit addItemToUniform "FirstAidKit";};
+	_unit addItemToUniform "20Rnd_762x51_Mag";
+	_unit addVest "V_PlateCarrierIA2_dgtl";
+	for "_i" from 1 to 2 do {_unit addItemToVest "9Rnd_45ACP_Mag";};
+	for "_i" from 1 to 2 do {_unit addItemToVest "HandGrenade";};
+	for "_i" from 1 to 2 do {_unit addItemToVest "Chemlight_green";};
+	_unit addItemToVest "SmokeShell";
+	_unit addItemToVest "SmokeShellGreen";
+	for "_i" from 1 to 6 do {_unit addItemToVest "20Rnd_762x51_Mag";};
+	_unit addBackpack "B_AssaultPack_dgtl";
+	_unit addHeadgear "H_HelmetIA";
+	_unit addGoggles "G_Tactical_Clear";
+
+	comment "Add weapons";
+	_unit addWeapon "srifle_DMR_06_olive_F";
+	_unit addPrimaryWeaponItem "optic_Hamr";
+	_unit addWeapon "hgun_ACPC2_F";
+	_unit addHandgunItem "acc_flashlight_pistol";
+
+	comment "Add items";
+	_unit linkItem "ItemMap";
+	_unit linkItem "ItemCompass";
+	_unit linkItem "ItemWatch";
+	_unit linkItem "ItemRadio";
+	_unit linkItem "ItemGPS";
+	_unit linkItem "NVGoggles_INDEP";
+
+	comment "Set identity";
+	_unit setFace "WhiteHead_12";
+	_unit setSpeaker "male02gre";
+	[_unit,"AAF_3rdRegiment"] call bis_fnc_setUnitInsignia;
+	};
+};
+
+if (_unit isKindOf "I_soldier_F") then {
+_rnd = random (1);
+if (_rnd > 0.8) then {
+	comment "Exported from Arsenal by [H] Tom";
+
+	comment "Remove existing items";
+	removeAllWeapons _unit;
+	removeAllItems _unit;
+	removeAllAssignedItems _unit;
+	removeUniform _unit;
+	removeVest _unit;
+	removeBackpack _unit;
+	removeHeadgear _unit;
+	removeGoggles _unit;
+
+	comment "Add containers";
+	_unit forceAddUniform "U_I_CombatUniform";
+	for "_i" from 1 to 2 do {_unit addItemToUniform "FirstAidKit";};
+	_unit addItemToUniform "30Rnd_762x39_Mag_F";
+	_unit addItemToUniform "30Rnd_762x39_Mag_Green_F";
+	_unit addVest "V_PlateCarrierIA2_dgtl";
+	for "_i" from 1 to 2 do {_unit addItemToVest "9Rnd_45ACP_Mag";};
+	for "_i" from 1 to 6 do {_unit addItemToVest "30Rnd_762x39_Mag_Green_F";};
+	for "_i" from 1 to 2 do {_unit addItemToVest "HandGrenade";};
+	for "_i" from 1 to 2 do {_unit addItemToVest "Chemlight_green";};
+	_unit addItemToVest "SmokeShell";
+	_unit addItemToVest "SmokeShellGreen";
+	_unit addBackpack "B_AssaultPack_dgtl";
+	_unit addHeadgear "H_HelmetIA";
+	_unit addGoggles "G_Tactical_Clear";
+
+	comment "Add weapons";
+	_unit addWeapon "arifle_AKM_F";
+	_unit addWeapon "hgun_ACPC2_F";
+	_unit addHandgunItem "acc_flashlight_pistol";
+
+	comment "Add items";
+	_unit linkItem "ItemMap";
+	_unit linkItem "ItemCompass";
+	_unit linkItem "ItemWatch";
+	_unit linkItem "ItemRadio";
+	_unit linkItem "ItemGPS";
+	_unit linkItem "NVGoggles_INDEP";
+
+	comment "Set identity";
+	_unit setFace "WhiteHead_12";
+	_unit setSpeaker "male04gre";
+	[_unit,"AAF_3rdRegiment"] call bis_fnc_setUnitInsignia;
+	};
+};
 
 if (_net) then {_unit setVariable ["cti_net", _sideID, true]};
 

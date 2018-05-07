@@ -68,7 +68,7 @@ if (_isvehicle_killed) then {
 	if !(isNil "_last_side") then {_side_killed = _last_side};
 };
 
-if ((_killer isKindOf "UAV" || _killer isKindOf "UGV_01_base_F" ) && ! isNull((uavControl _killer) select 0)  ) then {_killer = ((uavControl _killer) select 0)};
+if ((_killer isKindOf "UAV" || _killer isKindOf "B_T_UAV_03_F" || _killer isKindOf "O_T_UAV_04_CAS_F" || _killer isKindOf "UGV_01_base_F" ) && ! isNull((uavControl _killer) select 0)  ) then {_killer = ((uavControl _killer) select 0)};
 
 _side_killer = side _killer;
 _group_killed = group _killed;
@@ -118,6 +118,7 @@ if (!isNil '_var' && _isplayable_killer) then {
 				//_mult=if ((missionNamespace getVariable "CTI_GROUP_AWARD_MULT") == 1) then {(count (_group_killer getVariable ["last_known_players",[""]]))} else {1};
 				//_bounty = round( _mult * _cost * CTI_VEHICLES_BOUNTY /100);
 				_bounty = round( _cost * CTI_VEHICLES_BOUNTY /100);
+				if (_killer isKindOf "Man") then {_bounty = round( _cost * CTI_VEHICLES_BOUNTY * 2 /100);};
 				if (count _award_groups > 1) then { _bounty = round(_bounty / (count _award_groups))};
 
 				//--- Award

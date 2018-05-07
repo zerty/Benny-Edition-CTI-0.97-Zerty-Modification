@@ -5,28 +5,28 @@
 
 
 
-["ReviveFrame", "onEachFrame", "{
+["ReviveFrame", "onEachFrame", {
 	 	disableSerialization;
 		_hud=uiNamespace getVariable 'HUD';
 		[_hud] call HUD_ShowRevives;
-}"] call BIS_fnc_addStackedEventHandler;
+}] call BIS_fnc_addStackedEventHandler;
 
 
 
-["NotifFrame", "onEachFrame", "{
+["NotifFrame", "onEachFrame", {
 	 	disableSerialization;
 		_hud=uiNamespace getVariable 'HUD';
 		[_hud] call HUD_ShowNotifications;
-}"] call BIS_fnc_addStackedEventHandler;
+}] call BIS_fnc_addStackedEventHandler;
 
 
 HUD_AddFrameHandler={
-	["hudFrame", "onEachFrame", "{
+	["hudFrame", "onEachFrame", {
 	 	disableSerialization;
 		_hud=uiNamespace getVariable 'HUD';
 		[_hud] call HUD_ShowTargets;
 		[_hud] call HUD_ShowTowns;
-	}"] call BIS_fnc_addStackedEventHandler;
+	}] call BIS_fnc_addStackedEventHandler;
 };
 
 HUD_RemoveFrameHandler={

@@ -40,6 +40,9 @@ _i = _i		+ ["ClaymoreDirectionalMine_Remote_Mag"];
 _u = _u		+ [2];
 _p = _p		+ [10];
 
+_i = _i		+ ["APERSMineDispenser_Mag"];
+_u = _u		+ [2];
+_p = _p		+ [20];
 
 _i = _i		+ ["Laserbatteries"];
 _u = _u		+ [2];
@@ -192,6 +195,14 @@ _p = _p		+ [100];
 _i = _i		+ ["RPG32_HE_F"];
 _u = _u		+ [1];
 _p = _p		+ [50];
+
+_i = _i		+ ["Vorona_HEAT"];
+_u = _u		+ [2];
+_p = _p		+ [170];
+
+_i = _i		+ ["Vorona_HE"];
+_u = _u		+ [2];
+_p = _p		+ [100];
 
 _i = _i		+ ["Titan_AA"];
 _u = _u		+ [2];
@@ -499,6 +510,14 @@ _i = _i		+ ["launch_O_Titan_ghex_F"];
 _u = _u		+ [2];
 _p = _p		+ [125];
 
+_i = _i		+ ["launch_O_Vorona_brown_F"];
+_u = _u		+ [2];
+_p = _p		+ [220];
+
+_i = _i		+ ["launch_O_Vorona_green_F"];
+_u = _u		+ [2];
+_p = _p		+ [220];
+
 _i = _i		+ ["launch_RPG32_F"];
 _u = _u		+ [1];
 _p = _p		+ [100];
@@ -652,6 +671,10 @@ _i = _i		+ ["V_RebreatherIR"];
 _u = _u		+ [2];
 _p = _p		+ [100];
 
+_i = _i		+ ["V_EOD_coyote_F"];
+_u = _u		+ [1];
+_p = _p		+ [100];
+
 
 //Backpacks
 _i = _i		+ ["B_Bergen_dgtl_F"];
@@ -689,6 +712,14 @@ _p = _p		+ [200];
 _i = _i		+ ["O_UAV_01_backpack_F"];
 _u = _u		+ [3];
 _p = _p		+ [2500];
+
+_i = _i		+ ["O_UAV_06_backpack_F"];
+_u = _u		+ [2];
+_p = _p		+ [300];
+
+_i = _i		+ ["O_UAV_06_medical_backpack_F"];
+_u = _u		+ [3];
+_p = _p		+ [450];
 
 _i = _i		+ ["B_ViperHarness_blk_F"];
 _u = _u		+ [2];
@@ -826,6 +857,10 @@ _i = _i		+ ["H_HelmetSpecO_ocamo"];
 _u = _u		+ [2];
 _p = _p		+ [50];
 
+_i = _i		+ ["H_Tank_black_F"];
+_u = _u		+ [1];
+_p = _p		+ [20];
+
 _i = _i		+ ["H_HelmetCrew_O_ghex_F"];
 _u = _u		+ [1];
 _p = _p		+ [30];
@@ -926,6 +961,14 @@ _p = _p		+ [20];
 //Glasses
 _i = _i		+ ["G_Tactical_Black"];
 _u = _u		+ [1];
+_p = _p		+ [100];
+
+_i = _i		+ ["G_Balaclava_TI_blk_F"];
+_u = _u		+ [2];
+_p = _p		+ [100];
+
+_i = _i		+ ["G_Balaclava_TI_G_blk_F"];
+_u = _u		+ [2];
 _p = _p		+ [100];
 
 _i = _i		+ ["G_Balaclava_blk"];
@@ -1054,6 +1097,10 @@ _p = _p		+ [5];
 _i = _i		+ ["acc_pointer_IR"];
 _u = _u		+ [0];
 _p = _p		+ [10];
+
+_i = _i		+ ["acc_flashlight_pistol"];
+_u = _u		+ [1];
+_p = _p		+ [15];
 
 _i = _i		+ ["acc_flashlight"];
 _u = _u		+ [1];

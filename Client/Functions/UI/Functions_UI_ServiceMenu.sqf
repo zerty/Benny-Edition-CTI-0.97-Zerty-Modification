@@ -113,10 +113,16 @@ CTI_UI_Service_ProcessRearm = {
 			_times set [_forEachIndex,_x * CTI_AIR_REARM_RATIO];
 		} forEach _times;
 	};
-	if (_unit isKindOf "MBT_01_arty_base_F" || _unit isKindOf "B_MBT_01_mlrs_base_F" || _unit isKindOf  "O_MBT_02_arty_base_F" ) then {
+	if (_unit isKindOf "MBT_01_arty_base_F" || _unit isKindOf "B_MBT_01_mlrs_base_F" || _unit isKindOf "O_MBT_02_arty_base_F" || _unit isKindOf "Truck_02_MRL_base_F") then {
 		{
 			_times set [_forEachIndex,_x * CTI_ART_REARM_RATIO];
 		} forEach _times;
+	};
+	if (_unit isKindOf "B_AAA_System_01_F" || _unit isKindOf "B_SAM_System_01_F" || _unit isKindOf "B_SAM_System_02_F") then {
+		{
+			_times set [_forEachIndex,_x * 3];
+		} forEach _times;
+		["SERVER", "Request_Locality", [_unit,player]] call CTI_CO_FNC_NetSend;
 	};
 	hint parseText format ["<t size='1.3' color='#2394ef'>Information</t><br /><br />Rearming a <t color='#ccffaf'>%1</t>... Please stand by ...", _label];
 	_unit setVehicleAmmo 0;

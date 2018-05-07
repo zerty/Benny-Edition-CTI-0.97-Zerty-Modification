@@ -79,7 +79,11 @@ _dir = 0;
 _pos = [];
 while {!CTI_VAR_StructurePlaced && !CTI_VAR_StructureCanceled} do {
 	_pos = player modelToWorld [0, _distance_structure + CTI_P_KeyDistance, 0];
-	CTI_P_PreBuilding_SafePlace = if (_pos distance (((CTI_P_SideJoined) call CTI_CO_FNC_GetSideLogic) getVariable "cti_hq") >15 && _pos distance ([_pos, CTI_P_SideJoined call CTI_CO_FNC_GetSideStructures] call CTI_CO_FNC_GetClosestEntity) >15 && _pos distance ( [_pos, ((CTI_P_SideJoined) call CTI_CO_FNC_GetSideLogic) getVariable "cti_structures_wip"] call CTI_CO_FNC_GetClosestEntity) >15 && _pos distance ( [_pos, ((CTI_P_SideJoined) call CTI_CO_FNC_GetSideLogic) getVariable "cti_fobs"] call CTI_CO_FNC_GetClosestEntity) >15 && !surfaceIsWater _pos && !(lineIntersects [ATLtoASL (player modelToWorld (player selectionPosition "pilot")),ATLtoASL (_local modelToWorld (_local selectionPosition "pilot")), player, _local])) then {true} else {false};
+	CTI_P_PreBuilding_SafePlace = if (_classname == "B_AAA_System_01_F" || _classname == "B_SAM_System_01_F" || _classname == "B_SAM_System_02_F") then {
+	if (_pos distance ([_pos, CTI_P_EnemySide call CTI_CO_FNC_GetSideStructures] call CTI_CO_FNC_GetClosestEntity) >40 && _pos distance (((CTI_P_SideJoined) call CTI_CO_FNC_GetSideLogic) getVariable "cti_hq") >20 && _pos distance ([_pos, CTI_P_SideJoined call CTI_CO_FNC_GetSideStructures] call CTI_CO_FNC_GetClosestEntity) >20 && _pos distance ([_pos, (CTI_P_SideJoined call CTI_CO_FNC_GetSideLogic) getVariable "cti_structures_areas"] call CTI_CO_FNC_GetClosestEntity) >0 && _pos distance ([_pos, (CTI_P_SideJoined call CTI_CO_FNC_GetSideLogic) getVariable "cti_structures_areas"] call CTI_CO_FNC_GetClosestEntity) <250 && _pos distance ( [_pos, ((CTI_P_SideJoined) call CTI_CO_FNC_GetSideLogic) getVariable "cti_structures_wip"] call CTI_CO_FNC_GetClosestEntity) >20 && _pos distance ( [_pos, ((CTI_P_SideJoined) call CTI_CO_FNC_GetSideLogic) getVariable "cti_fobs"] call CTI_CO_FNC_GetClosestEntity) >20 && !surfaceIsWater _pos && !(lineIntersects [ATLtoASL (player modelToWorld (player selectionPosition "pilot")),ATLtoASL (_local modelToWorld (_local selectionPosition "pilot")), player, _local])) then {true} else {false};	
+	} else {
+	if (_pos distance ([_pos, CTI_P_EnemySide call CTI_CO_FNC_GetSideStructures] call CTI_CO_FNC_GetClosestEntity) >40 && _pos distance (((CTI_P_SideJoined) call CTI_CO_FNC_GetSideLogic) getVariable "cti_hq") >15 && _pos distance ([_pos, CTI_P_SideJoined call CTI_CO_FNC_GetSideStructures] call CTI_CO_FNC_GetClosestEntity) >15 && _pos distance ( [_pos, ((CTI_P_SideJoined) call CTI_CO_FNC_GetSideLogic) getVariable "cti_structures_wip"] call CTI_CO_FNC_GetClosestEntity) >15 && _pos distance ( [_pos, ((CTI_P_SideJoined) call CTI_CO_FNC_GetSideLogic) getVariable "cti_fobs"] call CTI_CO_FNC_GetClosestEntity) >15 && !surfaceIsWater _pos && !(lineIntersects [ATLtoASL (player modelToWorld (player selectionPosition "pilot")),ATLtoASL (_local modelToWorld (_local selectionPosition "pilot")), player, _local])) then {true} else {false};
+	};
 
 	if (time - _last_collision_update > 1.5) then {_last_collision_update = time;{_local disableCollisionWith _x} forEach (player nearObjects 150)};
 	if (_center distance player > _center_distance || !alive _center) exitWith { CTI_VAR_StructureCanceled = true };
@@ -106,6 +110,7 @@ if !(CTI_VAR_StructureCanceled) then {
 		if (_funds >= (_var select 2)) then {
 			-(_var select 2) call CTI_CL_FNC_ChangePlayerFunds;
 			["SERVER", "Request_Defense", [_variable, CTI_P_SideJoined, [_pos select 0, _pos select 1], _dir, player, CTI_P_WallsAutoAlign, CTI_P_DefensesAutoManning]] call CTI_CO_FNC_NetSend;
+			if (_classname == "B_AAA_System_01_F" || _classname == "B_SAM_System_01_F" || _classname == "B_SAM_System_02_F") then {hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br />Preparing <t color='#ccffaf'>AA defense system</t> :: <t color='#fcffaf'>30s</t><br /><t color='#F86363'>Do not place another defense at this location!</t>";};
 		} else {
 			hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br />You do not have enough funds to place that defense.";
 		};

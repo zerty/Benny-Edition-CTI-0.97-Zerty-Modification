@@ -38,5 +38,5 @@ switch (true) do {
 	case (_order == CTI_ORDER_DISEMBARKCOMMANDVEH): {"Get Out"}; 
 	case (_order == CTI_ORDER_EMBARKCARGOVEH): {"Get In (Cargo)"}; 
 	case (_order == CTI_ORDER_DISEMBARKCARGOVEH): {"Get Out (Cargo)"}; 
-	default {"Unknown"}
-}
+	default {"Unknown"};
+};

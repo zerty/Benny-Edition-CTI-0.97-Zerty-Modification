@@ -33,108 +33,21 @@ Diag_log format ["HANDLE :: Starting empty vehicle loop for %1",_vehicle];
 _timeout = time;
 
 
-if (_vehicle iskindof "UGV_01_base_F"  ) then  {_delay=_delay/6};
+
+if (_vehicle iskindof "UGV_01_base_F") then {_delay=_delay/2};
+if (_vehicle iskindof "B_T_UAV_03_F" || _vehicle iskindof "O_T_UAV_04_CAS_F") then {_delay=_delay*1.5};
 while {alive _vehicle && time - _timeout <= _delay} do {
 	switch (CTI_VEHICLES_HANDLER_EMPTY) do { //--- Before
-		case 0: {if ({alive _x} count crew _vehicle > 0 && !((_vehicle iskindof "UGV_01_base_F" || _vehicle iskindof "UAV_02_base_F" || _vehicle iskindof "Static_Designator_01_base_F") && !(isUAVConnected _vehicle) )) then {_timeout = time}};
-		case 1: {if (({alive _x} count crew _vehicle > 0 || canMove _vehicle || canFire _vehicle)&& !((_vehicle iskindof "UGV_01_base_F" || _vehicle iskindof "UAV_02_base_F" || _vehicle iskindof "Static_Designator_01_base_F") && !(isUAVConnected _vehicle) ) ) then {_timeout = time}};
+		case 0: {if ({alive _x} count crew _vehicle > 0 && !((_vehicle iskindof "UGV_01_base_F" || _vehicle iskindof "UAV_02_base_F" || _vehicle iskindof "Static_Designator_01_base_F" || _vehicle iskindof "B_T_UAV_03_F" || _vehicle iskindof "O_T_UAV_04_CAS_F") && !(isUAVConnected _vehicle) )) then {_timeout = time}};
+		case 1: {if (({alive _x} count crew _vehicle > 0 || canMove _vehicle || canFire _vehicle)&& !((_vehicle iskindof "UGV_01_base_F" || _vehicle iskindof "UAV_02_base_F" || _vehicle iskindof "Static_Designator_01_base_F" || _vehicle iskindof "B_T_UAV_03_F" || _vehicle iskindof "O_T_UAV_04_CAS_F") && !(isUAVConnected _vehicle) ) ) then {_timeout = time}};
+
 	};
 
 	sleep CTI_VEHICLES_EMPTY_SCAN_PERIOD;
 
 	switch (CTI_VEHICLES_HANDLER_EMPTY) do { //--- After
-		case 0: {if ({alive _x} count crew _vehicle > 0 && !((_vehicle iskindof "UGV_01_base_F" || _vehicle iskindof "UAV_02_base_F" || _vehicle iskindof "Static_Designator_01_base_F") && !(isUAVConnected _vehicle) )) then {_timeout = time}};
-		case 1: {if (({alive _x} count crew _vehicle > 0 || canMove _vehicle || canFire _vehicle)&& !((_vehicle iskindof "UGV_01_base_F" || _vehicle iskindof "UAV_02_base_F" || _vehicle iskindof "Static_Designator_01_base_F") && !(isUAVConnected _vehicle) ) ) then {_timeout = time}};
-	};
-};
-
-if (_vehicle iskindof "B_T_UAV_03_F"  ) then  {_delay=_delay/6};
-while {alive _vehicle && time - _timeout <= _delay} do {
-	switch (CTI_VEHICLES_HANDLER_EMPTY) do { //--- Before
-		case 0: {if ({alive _x} count crew _vehicle > 0 && !((_vehicle iskindof "B_T_UAV_03_F" || _vehicle iskindof "UGV_01_base_F" || _vehicle iskindof "UAV_02_base_F" || _vehicle iskindof "Static_Designator_01_base_F") && !(isUAVConnected _vehicle) )) then {_timeout = time}};
-		case 1: {if (({alive _x} count crew _vehicle > 0 || canMove _vehicle || canFire _vehicle)&& !((_vehicle iskindof "B_T_UAV_03_F" || _vehicle iskindof "UGV_01_base_F" || _vehicle iskindof "UAV_02_base_F" || _vehicle iskindof "Static_Designator_01_base_F") && !(isUAVConnected _vehicle) ) ) then {_timeout = time}};
-	};
-
-	sleep CTI_VEHICLES_EMPTY_SCAN_PERIOD;
-
-	switch (CTI_VEHICLES_HANDLER_EMPTY) do { //--- After
-		case 0: {if ({alive _x} count crew _vehicle > 0 && !((_vehicle iskindof "B_T_UAV_03_F" || _vehicle iskindof "UGV_01_base_F" || _vehicle iskindof "UAV_02_base_F" || _vehicle iskindof "Static_Designator_01_base_F") && !(isUAVConnected _vehicle) )) then {_timeout = time}};
-		case 1: {if (({alive _x} count crew _vehicle > 0 || canMove _vehicle || canFire _vehicle)&& !((_vehicle iskindof "B_T_UAV_03_F" || _vehicle iskindof "UGV_01_base_F" || _vehicle iskindof "UAV_02_base_F" || _vehicle iskindof "Static_Designator_01_base_F") && !(isUAVConnected _vehicle) ) ) then {_timeout = time}};
-	};
-};
-
-if (_vehicle iskindof "O_T_UAV_04_CAS_F"  ) then  {_delay=_delay/6};
-while {alive _vehicle && time - _timeout <= _delay} do {
-	switch (CTI_VEHICLES_HANDLER_EMPTY) do { //--- Before
-		case 0: {if ({alive _x} count crew _vehicle > 0 && !((_vehicle iskindof "O_T_UAV_04_CAS_F" ||_vehicle iskindof "UGV_01_base_F" || _vehicle iskindof "UAV_02_base_F" || _vehicle iskindof "Static_Designator_01_base_F") && !(isUAVConnected _vehicle) )) then {_timeout = time}};
-		case 1: {if (({alive _x} count crew _vehicle > 0 || canMove _vehicle || canFire _vehicle)&& !((_vehicle iskindof "O_T_UAV_04_CAS_F" || _vehicle iskindof "UGV_01_base_F" || _vehicle iskindof "UAV_02_base_F" || _vehicle iskindof "Static_Designator_01_base_F") && !(isUAVConnected _vehicle) ) ) then {_timeout = time}};
-	};
-
-	sleep CTI_VEHICLES_EMPTY_SCAN_PERIOD;
-
-	switch (CTI_VEHICLES_HANDLER_EMPTY) do { //--- After
-		case 0: {if ({alive _x} count crew _vehicle > 0 && !((_vehicle iskindof "O_T_UAV_04_CAS_F" || _vehicle iskindof "UGV_01_base_F" || _vehicle iskindof "UAV_02_base_F" || _vehicle iskindof "Static_Designator_01_base_F") && !(isUAVConnected _vehicle) )) then {_timeout = time}};
-		case 1: {if (({alive _x} count crew _vehicle > 0 || canMove _vehicle || canFire _vehicle)&& !((_vehicle iskindof "O_T_UAV_04_CAS_F" || _vehicle iskindof "UGV_01_base_F" || _vehicle iskindof "UAV_02_base_F" || _vehicle iskindof "Static_Designator_01_base_F") && !(isUAVConnected _vehicle) ) ) then {_timeout = time}};
-	};
-};
-
-if (_vehicle iskindof "B_UGV_01_F"  ) then  {_delay=_delay/6};
-while {alive _vehicle && time - _timeout <= _delay} do {
-	switch (CTI_VEHICLES_HANDLER_EMPTY) do { //--- Before
-		case 0: {if ({alive _x} count crew _vehicle > 0 && !((_vehicle iskindof "B_UGV_01_F") && !(isUAVConnected _vehicle) )) then {_timeout = time}};
-		case 1: {if (({alive _x} count crew _vehicle > 0 || canMove _vehicle || canFire _vehicle)&& !((_vehicle iskindof "B_UGV_01_F") && !(isUAVConnected _vehicle) ) ) then {_timeout = time}};
-	};
-
-	sleep CTI_VEHICLES_EMPTY_SCAN_PERIOD;
-
-	switch (CTI_VEHICLES_HANDLER_EMPTY) do { //--- After
-		case 0: {if ({alive _x} count crew _vehicle > 0 && !((_vehicle iskindof "B_UGV_01_F") && !(isUAVConnected _vehicle) )) then {_timeout = time}};
-		case 1: {if (({alive _x} count crew _vehicle > 0 || canMove _vehicle || canFire _vehicle)&& !((_vehicle iskindof "B_UGV_01_F") && !(isUAVConnected _vehicle) ) ) then {_timeout = time}};
-	};
-};
-
-if (_vehicle iskindof "B_UGV_01_rcws_F"  ) then  {_delay=_delay/6};
-while {alive _vehicle && time - _timeout <= _delay} do {
-	switch (CTI_VEHICLES_HANDLER_EMPTY) do { //--- Before
-		case 0: {if ({alive _x} count crew _vehicle > 0 && !((_vehicle iskindof "B_UGV_01_rcws_F") && !(isUAVConnected _vehicle) )) then {_timeout = time}};
-		case 1: {if (({alive _x} count crew _vehicle > 0 || canMove _vehicle || canFire _vehicle)&& !((_vehicle iskindof "B_UGV_01_rcws_F") && !(isUAVConnected _vehicle) ) ) then {_timeout = time}};
-	};
-
-	sleep CTI_VEHICLES_EMPTY_SCAN_PERIOD;
-
-	switch (CTI_VEHICLES_HANDLER_EMPTY) do { //--- After
-		case 0: {if ({alive _x} count crew _vehicle > 0 && !((_vehicle iskindof "B_UGV_01_rcws_F") && !(isUAVConnected _vehicle) )) then {_timeout = time}};
-		case 1: {if (({alive _x} count crew _vehicle > 0 || canMove _vehicle || canFire _vehicle)&& !((_vehicle iskindof "B_UGV_01_rcws_F") && !(isUAVConnected _vehicle) ) ) then {_timeout = time}};
-	};
-};
-
-if (_vehicle iskindof "O_UGV_01_F"  ) then  {_delay=_delay/6};
-while {alive _vehicle && time - _timeout <= _delay} do {
-	switch (CTI_VEHICLES_HANDLER_EMPTY) do { //--- Before
-		case 0: {if ({alive _x} count crew _vehicle > 0 && !((_vehicle iskindof "O_UGV_01_F") && !(isUAVConnected _vehicle) )) then {_timeout = time}};
-		case 1: {if (({alive _x} count crew _vehicle > 0 || canMove _vehicle || canFire _vehicle)&& !((_vehicle iskindof "O_UGV_01_F") && !(isUAVConnected _vehicle) ) ) then {_timeout = time}};
-	};
-
-	sleep CTI_VEHICLES_EMPTY_SCAN_PERIOD;
-
-	switch (CTI_VEHICLES_HANDLER_EMPTY) do { //--- After
-		case 0: {if ({alive _x} count crew _vehicle > 0 && !((_vehicle iskindof "O_UGV_01_F") && !(isUAVConnected _vehicle) )) then {_timeout = time}};
-		case 1: {if (({alive _x} count crew _vehicle > 0 || canMove _vehicle || canFire _vehicle)&& !((_vehicle iskindof "O_UGV_01_F") && !(isUAVConnected _vehicle) ) ) then {_timeout = time}};
-	};
-};
-
-if (_vehicle iskindof "O_UGV_01_rcws_F"  ) then  {_delay=_delay/6};
-while {alive _vehicle && time - _timeout <= _delay} do {
-	switch (CTI_VEHICLES_HANDLER_EMPTY) do { //--- Before
-		case 0: {if ({alive _x} count crew _vehicle > 0 && !((_vehicle iskindof "O_UGV_01_rcws_F") && !(isUAVConnected _vehicle) )) then {_timeout = time}};
-		case 1: {if (({alive _x} count crew _vehicle > 0 || canMove _vehicle || canFire _vehicle)&& !((_vehicle iskindof "O_UGV_01_rcws_F") && !(isUAVConnected _vehicle) ) ) then {_timeout = time}};
-	};
-
-	sleep CTI_VEHICLES_EMPTY_SCAN_PERIOD;
-
-	switch (CTI_VEHICLES_HANDLER_EMPTY) do { //--- After
-		case 0: {if ({alive _x} count crew _vehicle > 0 && !((_vehicle iskindof "O_UGV_01_rcws_F") && !(isUAVConnected _vehicle) )) then {_timeout = time}};
-		case 1: {if (({alive _x} count crew _vehicle > 0 || canMove _vehicle || canFire _vehicle)&& !((_vehicle iskindof "O_UGV_01_rcws_F") && !(isUAVConnected _vehicle) ) ) then {_timeout = time}};
+		case 0: {if ({alive _x} count crew _vehicle > 0 && !((_vehicle iskindof "UGV_01_base_F" || _vehicle iskindof "UAV_02_base_F" || _vehicle iskindof "Static_Designator_01_base_F" || _vehicle iskindof "B_T_UAV_03_F" || _vehicle iskindof "O_T_UAV_04_CAS_F") && !(isUAVConnected _vehicle) )) then {_timeout = time}};
+		case 1: {if (({alive _x} count crew _vehicle > 0 || canMove _vehicle || canFire _vehicle)&& !((_vehicle iskindof "UGV_01_base_F" || _vehicle iskindof "UAV_02_base_F" || _vehicle iskindof "Static_Designator_01_base_F" || _vehicle iskindof "B_T_UAV_03_F" || _vehicle iskindof "O_T_UAV_04_CAS_F") && !(isUAVConnected _vehicle) ) ) then {_timeout = time}};
 	};
 };
 

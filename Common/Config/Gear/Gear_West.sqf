@@ -40,6 +40,9 @@ _i = _i		+ ["ClaymoreDirectionalMine_Remote_Mag"];
 _u = _u		+ [1];
 _p = _p		+ [10];
 
+_i = _i		+ ["APERSMineDispenser_Mag"];
+_u = _u		+ [2];
+_p = _p		+ [20];
 
 _i = _i		+ ["Laserbatteries"];
 _u = _u		+ [2];
@@ -164,6 +167,14 @@ _p = _p		+ [150];
 _i = _i		+ ["NLAW_F"];
 _u = _u		+ [1];
 _p = _p		+ [50];
+
+_i = _i		+ ["MRAWS_HEAT_F"];
+_u = _u		+ [2];
+_p = _p		+ [125];
+
+_i = _i		+ ["MRAWS_HE_F"];
+_u = _u		+ [2];
+_p = _p		+ [80];
 
 _i = _i		+ ["Titan_AA"];
 _u = _u		+ [2];
@@ -572,6 +583,30 @@ _i = _i		+ ["launch_B_Titan_tna_F"];
 _u = _u		+ [2];
 _p = _p		+ [125];
 
+_i = _i		+ ["launch_MRAWS_sand_F"];
+_u = _u		+ [2];
+_p = _p		+ [150];
+
+_i = _i		+ ["launch_MRAWS_olive_F"];
+_u = _u		+ [2];
+_p = _p		+ [150];
+
+_i = _i		+ ["launch_MRAWS_green_F"];
+_u = _u		+ [2];
+_p = _p		+ [150];
+
+_i = _i		+ ["launch_MRAWS_sand_rail_F"];
+_u = _u		+ [2];
+_p = _p		+ [125];
+
+_i = _i		+ ["launch_MRAWS_olive_rail_F"];
+_u = _u		+ [2];
+_p = _p		+ [125];
+
+_i = _i		+ ["launch_MRAWS_green_rail_F"];
+_u = _u		+ [2];
+_p = _p		+ [125];
+
 _i = _i		+ ["launch_NLAW_F"];
 _u = _u		+ [1];
 _p = _p		+ [100];
@@ -834,6 +869,10 @@ _i = _i		+ ["V_TacChestrig_oli_F"];
 _u = _u		+ [0];
 _p = _p		+ [100];
 
+_i = _i		+ ["V_EOD_olive_F"];
+_u = _u		+ [1];
+_p = _p		+ [100];
+
 
 //Backpacks
 _i = _i		+ ["B_Carryall_cbr"];
@@ -863,6 +902,14 @@ _p = _p		+ [1000];
 _i = _i		+ ["B_UAV_01_backpack_F"];
 _u = _u		+ [3];
 _p = _p		+ [2500];
+
+_i = _i		+ ["B_UAV_06_backpack_F"];
+_u = _u		+ [2];
+_p = _p		+ [300];
+
+_i = _i		+ ["B_UAV_06_medical_backpack_F"];
+_u = _u		+ [3];
+_p = _p		+ [450];
 
 _i = _i		+ ["B_Kitbag_cbr"];
 _u = _u		+ [2];
@@ -1366,23 +1413,23 @@ _p = _p		+ [50];
 
 _i = _i		+ ["optic_AMS"];
 _u = _u		+ [3];
-_p = _p		+ [50];
+_p = _p		+ [70];
 
 _i = _i		+ ["optic_AMS_khk"];
 _u = _u		+ [3];
-_p = _p		+ [50];
-
+_p = _p		+ [70];
+ 
 _i = _i		+ ["optic_AMS_snd"];
 _u = _u		+ [3];
-_p = _p		+ [50];
+_p = _p		+ [70];
 
 _i = _i		+ ["optic_LRPS"];
 _u = _u		+ [3];
-_p = _p		+ [75];
+_p = _p		+ [50];
 
 _i = _i		+ ["optic_LRPS_tna_F"];
 _u = _u		+ [3];
-_p = _p		+ [75];
+_p = _p		+ [50];
 
 _i = _i		+ ["optic_tws"];
 _u = _u		+ [3];
@@ -1405,6 +1452,10 @@ _p = _p		+ [5];
 _i = _i		+ ["acc_pointer_IR"];
 _u = _u		+ [0];
 _p = _p		+ [10];
+
+_i = _i		+ ["acc_flashlight_pistol"];
+_u = _u		+ [1];
+_p = _p		+ [15];
 
 _i = _i		+ ["acc_flashlight"];
 _u = _u		+ [1];

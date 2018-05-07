@@ -42,10 +42,10 @@ _t=_t+			[[90*CTI_UPGRADE_RATIO]];
 
 _l=_l+			[[localize "STR_Up_AAF_technologies", localize "STR_Up_AAF_technologies_Descr"]];
 _a=_a	+			[true];
-_c=_c +			[[1500,2500,4000,6000,8000]];
-_lev=_lev+	[5];
-_lin=_lin+	[[[CTI_UPGRADE_LIGHT,1],[],[CTI_UPGRADE_HEAVY,1],[CTI_UPGRADE_AIR,1],[]]];
-_t=_t+			[[20*CTI_UPGRADE_RATIO,20*CTI_UPGRADE_RATIO,50*CTI_UPGRADE_RATIO,60*CTI_UPGRADE_RATIO,70*CTI_UPGRADE_RATIO]];
+_c=_c +			[[1500,2500,4000,6000,8000,12000]];
+_lev=_lev+	[6];
+_lin=_lin+	[[[CTI_UPGRADE_LIGHT,1],[],[CTI_UPGRADE_HEAVY,1],[CTI_UPGRADE_AIR,1],[],[]]];
+_t=_t+			[[20*CTI_UPGRADE_RATIO,20*CTI_UPGRADE_RATIO,50*CTI_UPGRADE_RATIO,60*CTI_UPGRADE_RATIO,70*CTI_UPGRADE_RATIO,80*CTI_UPGRADE_RATIO]];
 
 
 _l=_l+			[[localize "STR_Up_Aircraft_FFAR", localize "STR_Up_Aircraft_FFAR_Descr"]];
@@ -162,7 +162,7 @@ _l=_l+				[[localize "STR_Up_Respawn_Truck", localize "STR_Up_Respawn_Truck_Desc
 _a=_a	+			[True];
 _c=_c +				[[1000,2000,4000,8000,16000]];
 _lev=_lev+			[5];
-_lin=_lin+			[[[],[]]];
+_lin=_lin+			[[[],[],[],[],[]]];
 _t=_t+				[[10*CTI_UPGRADE_RATIO,20*CTI_UPGRADE_RATIO,40*CTI_UPGRADE_RATIO,80*CTI_UPGRADE_RATIO,160*CTI_UPGRADE_RATIO]];
 /*
 _l=_l+			[["Network: Reconfiguration cycle", "Lower Mesh Network reconfiguration cycle time (600s - 60s*lvl)"]];

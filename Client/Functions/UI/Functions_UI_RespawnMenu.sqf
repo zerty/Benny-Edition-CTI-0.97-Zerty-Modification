@@ -228,6 +228,18 @@ CTI_UI_Respawn_UseSelector = {
 };
 
 CTI_UI_Respawn_OnRespawnReady = {
+
+	EXCEPTIONS = ["Land_Dome_Small_F","Land_Dome_Big_F","Land_Cargo_Tower_V4_F","Land_Cargo_Tower_V1_F","Land_Cargo_Patrol_V4_F","Land_Cargo_Patrol_V1_F","Land_FuelStation_Shed_F","Land_fs_roof_F","Land_FuelStation_01_roof_F","Land_FuelStation_02_roof_F","Land_FuelStation_01_roof_malevil_F","Land_SM_01_shelter_wide_F","Land_Shed_Big_F","Land_Shed_Small_F","Land_SM_01_shelter_narrow_F","Land_TentHangar_V1_F","Land_Airport_01_hangar_F","Land_Shed_06_F","Land_MetalShelter_01_F","Land_MetalShelter_02_F","Land_WarehouseShelter_01_F","Land_SCF_01_shed_F"];
+	KK_fnc_setPosAGLS = {
+		params ["_obj", "_pos", "_offset"];
+		_offset = _pos select 2;
+		if (isNil "_offset") then {_offset = 0};
+		_pos set [2, worldSize]; 
+		_obj setPosASL _pos;
+		_pos set [2, vectorMagnitude (_pos vectorDiff getPosVisual _obj) + _offset];
+		_obj setPosASL _pos;
+	};
+
 	_where = uiNamespace getVariable "cti_dialog_ui_respawnmenu_respawnat";
 
 	_respawn_ai = false;
@@ -237,14 +249,52 @@ CTI_UI_Respawn_OnRespawnReady = {
 			_pos = getPos _where; //--- Get the AI position (todo: copy the stance)
 			_respawn_ai_gear = (_where) call CTI_UI_Gear_GetUnitEquipment; //--- Get the AI current equipment using the Gear UI function
 			deleteVehicle _where; //--- Remove the AI
-			player setPos _pos; //--- Place the player where the AI was
+			
+			_nearesthouse = typeOf ((position player) nearestObject "House");
+			_nearesthousepos = getPos ((position player) nearestObject "House");
+			_nearesthouseradius = round (sizeOF _nearesthouse / 2);
+			if (_nearesthouse == "Land_Cargo_Tower_V4_F" || _nearesthouse == "Land_Cargo_Tower_V1_F") then {_nearesthouseradius = 8.5;};
+			if (_nearesthouse == "Land_Cargo_Patrol_V4_F" || _nearesthouse == "Land_Cargo_Patrol_V1_F") then {_nearesthouseradius = 6;};
+			if (_nearesthouse == "Land_Shed_Big_F" || _nearesthouse == "Land_SM_01_shelter_wide_F") then {_nearesthouseradius = 16;};
+			if ((_nearesthouse in EXCEPTIONS) && ((player distance2d _nearesthousepos) < (_nearesthouseradius))) then {
+			[player, _pos] call KK_fnc_setPosAGLS;
+			player setPos [getPos player select 0, getPos player select 1, 0.25];
+			} else {
+			[player, _pos] call KK_fnc_setPosAGLS;
+			};
+			
+			if (((player distance2d nearestbuilding player) < 10) && (!(typeOF nearestbuilding player in EXCEPTIONS))) then {
+			_buildingpos = nearestBuilding player buildingPos -1;
+			player setpos (selectrandom _buildingpos);
+			};
+			
+//			player setPos _pos; //--- Place the player where the AI was
 			_respawn_ai = true;
 		};
 	};
 	CTI_P_LastRespawnTime=time;
 	if !(_respawn_ai) then { //--- Stock respawn
 		_spawn_at = [_where, 8, 30] call CTI_CO_FNC_GetRandomPosition;
-		player setPos _spawn_at;
+
+		_nearesthouse = typeOf ((position player) nearestObject "House");
+		_nearesthousepos = getPos ((position player) nearestObject "House");
+		_nearesthouseradius = round (sizeOF _nearesthouse / 2);
+		if (_nearesthouse == "Land_Cargo_Tower_V4_F" || _nearesthouse == "Land_Cargo_Tower_V1_F") then {_nearesthouseradius = 8.5;};
+		if (_nearesthouse == "Land_Cargo_Patrol_V4_F" || _nearesthouse == "Land_Cargo_Patrol_V1_F") then {_nearesthouseradius = 6;};
+		if (_nearesthouse == "Land_Shed_Big_F" || _nearesthouse == "Land_SM_01_shelter_wide_F") then {_nearesthouseradius = 16;};
+		if ((_nearesthouse in EXCEPTIONS) && ((player distance2d _nearesthousepos) < (_nearesthouseradius))) then {
+		[player, _spawn_at] call KK_fnc_setPosAGLS;
+		player setPos [getPos player select 0, getPos player select 1, 0.25];
+		} else {
+		[player, _spawn_at] call KK_fnc_setPosAGLS;
+		};
+		
+		if (((player distance2d nearestbuilding player) < 10) && (!(typeOF nearestbuilding player in EXCEPTIONS))) then {
+		_buildingpos2 = nearestBuilding player buildingPos -1;
+		player setpos (selectrandom _buildingpos2);
+		};
+
+//		player setPos _spawn_at;
 	};
 
 	titleCut["","BLACK IN",1];
@@ -311,7 +361,7 @@ CTI_UI_Respawn_GetTime={
 		_time = (missionNamespace getVariable "CTI_RESPAWN_TIMER") max (_time - _time * (_time_factor + _distance_factor));
 	} else {
 		_time=(missionNamespace getVariable "CTI_RESPAWN_TIMER");
-		if (_target in ( CTI_P_SideLogic getVariable ["cti_structures",[]])) then {_time = (_time-10) max 20;}
+		if (_target in ( CTI_P_SideLogic getVariable ["cti_structures",[]])) then {_time = (_time-10) max 20;};
 	};
 	_time
 };

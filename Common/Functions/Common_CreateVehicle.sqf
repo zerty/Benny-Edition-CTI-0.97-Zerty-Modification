@@ -63,15 +63,152 @@ if (typeName _side == "SIDE") then {_side = (_side) call CTI_CO_FNC_GetSideID};
 _vehicle = if ( isNull _created) then {createVehicle [_type, _position, [], 7, _special]} else {_created};
 if (isNull _created) then {
 	_vehicle setDir _direction;
+	
+	if (_vehicle isKindOf "CAR" || _vehicle isKindOf "TANK" || _vehicle isKindOf "SHIP") then {
+	_ep = (getPos _vehicle) findEmptyPosition [0,25,"O_T_VTOL_02_vehicle_F"];
+	_vehicle setPos _ep;
+	};
+	
 	if (_special == "FORM") then {_vehicle setPos [getPos _vehicle select 0, getPos _vehicle select 1, 1];}; //--- Make the vehicle spawn above the ground level to prevent any bisteries
 	// --- Zerty edit
 	if (_type isKindOf "UAV" || _type isKindOf "UGV_01_base_F") then {createVehicleCrew _vehicle};
 
+	if (_vehicle isKindOf "B_T_UAV_03_F") then {createVehicleCrew _vehicle};
+	
+	if (_vehicle isKindOf "O_Plane_Fighter_02_F") then {
+		_vehicle setAmmoOnPylon [1, 0];
+		_vehicle setAmmoOnPylon [2, 0];
+		_vehicle setAmmoOnPylon [3, 0];
+		_vehicle setAmmoOnPylon [4, 0];
+		_vehicle setAmmoOnPylon [5, 0];
+		_vehicle setAmmoOnPylon [6, 0];
+		_vehicle setAmmoOnPylon [7, 0];
+		_vehicle setAmmoOnPylon [8, 0];
+		_vehicle setAmmoOnPylon [9, 0];
+		_vehicle setAmmoOnPylon [10, 0];
+		_vehicle setAmmoOnPylon [11, 0];
+		_vehicle setAmmoOnPylon [12, 0];
+		_vehicle setAmmoOnPylon [13, 0];
+		_vehicle removeWeapon "weapon_R73Launcher";
+		_vehicle removeWeapon "weapon_R77Launcher";
+		_vehicle removeWeapon "weapon_KAB250Launcher";
+		_vehicle removeWeapon "CMFlareLauncher";
+		
+		_vehicle setPylonLoadOut [13, "PylonMissile_1Rnd_BombCluster_02_cap_F", false, []];
+		_vehicle setAmmoOnPylon [13, 2];
+		
+		if ((((_t_side) call CTI_CO_FNC_GetSideUpgrades) select CTI_UPGRADE_AIR_AT) == 1) then {
+		_vehicle setPylonLoadOut [3, "PylonMissile_Missile_AGM_KH25_x1", false, []];
+		_vehicle setPylonLoadOut [4, "PylonMissile_Missile_AGM_KH25_x1", false, []];
+		_vehicle setPylonLoadOut [5, "PylonMissile_Missile_AGM_KH25_x1", false, []];
+		_vehicle setPylonLoadOut [6, "PylonMissile_Missile_AGM_KH25_x1", false, []];
+		};
+		if ((((_t_side) call CTI_CO_FNC_GetSideUpgrades) select CTI_UPGRADE_AIR_AA) == 1) then {
+		_vehicle setPylonLoadOut [1, "PylonMissile_Missile_AA_R77_x1", false, []];
+		_vehicle setPylonLoadOut [2, "PylonMissile_Missile_AA_R77_x1", false, []];
+		_vehicle setPylonLoadOut [7, "PylonMissile_Missile_AA_R73_x1", false, []];
+		_vehicle setPylonLoadOut [8, "PylonMissile_Missile_AA_R73_x1", false, []];
+		};
+		if ((((_t_side) call CTI_CO_FNC_GetSideUpgrades) select CTI_UPGRADE_AIR_CM) == 1) then {
+		_vehicle addWeapon "CMFlareLauncher";
+		};
+	};
+
+	if (_vehicle isKindOf "B_Plane_Fighter_01_F") then {
+		_vehicle setAmmoOnPylon [1, 0];
+		_vehicle setAmmoOnPylon [2, 0];
+		_vehicle setAmmoOnPylon [3, 0];
+		_vehicle setAmmoOnPylon [4, 0];
+		_vehicle setAmmoOnPylon [5, 0];
+		_vehicle setAmmoOnPylon [6, 0];
+		_vehicle setAmmoOnPylon [7, 0];
+		_vehicle setAmmoOnPylon [8, 0];
+		_vehicle setAmmoOnPylon [9, 0];
+		_vehicle setAmmoOnPylon [10, 0];
+		_vehicle setAmmoOnPylon [11, 0];
+		_vehicle setAmmoOnPylon [12, 0];
+		_vehicle removeWeapon "weapon_AMRAAMLauncher";
+		_vehicle removeWeapon "weapon_AGM_65Launcher";
+		_vehicle removeWeapon "weapon_BIM9xLauncher";
+		_vehicle removeWeapon "weapon_GBU12Launcher";
+		_vehicle removeWeapon "CMFlareLauncher_Singles";
+		
+		_vehicle setPylonLoadOut [11, "PylonMissile_1Rnd_BombCluster_03_F", false, []];
+		_vehicle setPylonLoadOut [12, "PylonMissile_1Rnd_BombCluster_03_F", false, []];
+		
+		if ((((_t_side) call CTI_CO_FNC_GetSideUpgrades) select CTI_UPGRADE_AIR_AT) == 1) then {
+		_vehicle setPylonLoadOut [1, "PylonRack_Missile_AGM_02_x1", false, []];
+		_vehicle setPylonLoadOut [2, "PylonRack_Missile_AGM_02_x1", false, []];
+		_vehicle setPylonLoadOut [3, "PylonRack_Missile_AGM_02_x1", false, []];
+		_vehicle setPylonLoadOut [4, "PylonRack_Missile_AGM_02_x1", false, []];
+		};
+		if ((((_t_side) call CTI_CO_FNC_GetSideUpgrades) select CTI_UPGRADE_AIR_AA) == 1) then {
+		_vehicle setPylonLoadOut [5, "PylonMissile_Missile_BIM9X_x1", false, []];
+		_vehicle setPylonLoadOut [6, "PylonMissile_Missile_BIM9X_x1", false, []];
+		_vehicle setPylonLoadOut [7, "PylonMissile_Missile_AMRAAM_D_INT_x1", false, []];
+		_vehicle setPylonLoadOut [8, "PylonMissile_Missile_AMRAAM_D_INT_x1", false, []];
+		};
+		if ((((_t_side) call CTI_CO_FNC_GetSideUpgrades) select CTI_UPGRADE_AIR_CM) == 1) then {
+		_vehicle addWeapon "CMFlareLauncher_Singles";
+		};
+	};
+	
+	if (_vehicle isKindOf "I_Plane_Fighter_04_F" && _side != CTI_RESISTANCE_ID) then {
+		_vehicle setAmmoOnPylon [1, 0];
+		_vehicle setAmmoOnPylon [2, 0];
+		_vehicle setAmmoOnPylon [3, 0];
+		_vehicle setAmmoOnPylon [4, 0];
+		_vehicle setAmmoOnPylon [5, 0];
+		_vehicle setAmmoOnPylon [6, 0];
+		_vehicle removeWeapon "weapon_AMRAAMLauncher";
+		_vehicle removeWeapon "weapon_AGM_65Launcher";
+		_vehicle removeWeapon "weapon_BIM9xLauncher";
+		_vehicle removeWeapon "CMFlareLauncher";
+		
+		if ((((_t_side) call CTI_CO_FNC_GetSideUpgrades) select CTI_UPGRADE_AIR_AT) == 1) then {
+		_vehicle setPylonLoadOut [3, "PylonRack_Missile_AGM_02_x1", false, []];
+		_vehicle setPylonLoadOut [4, "PylonRack_Missile_AGM_02_x1", false, []];
+		};
+		if ((((_t_side) call CTI_CO_FNC_GetSideUpgrades) select CTI_UPGRADE_AIR_AA) == 1) then {
+		_vehicle setPylonLoadOut [1, "PylonMissile_Missile_BIM9X_x1", false, []];
+		_vehicle setPylonLoadOut [2, "PylonMissile_Missile_BIM9X_x1", false, []];
+		_vehicle setPylonLoadOut [5, "PylonRack_Missile_AMRAAM_C_x1", false, []];
+		_vehicle setPylonLoadOut [6, "PylonRack_Missile_AMRAAM_C_x1", false, []];
+		};
+		if ((((_t_side) call CTI_CO_FNC_GetSideUpgrades) select CTI_UPGRADE_AIR_CM) == 1) then {
+		_vehicle addWeapon "CMFlareLauncher";
+		};
+	};
+	
 	if (_special == "FLY" && _vehicle isKindOf "Plane") then {
 		_vehicle setVelocity [75 * (sin _direction), 75 * (cos _direction), 0];
 	} else {
 		_vehicle setVelocity [0,0,1];
 	};
+	
+	//Spawn with components [H]Tom
+	if (_vehicle isKindOf "Wheeled_APC_F" || _vehicle isKindOf "Tank") then { 
+		if (_vehicle isKindOf "I_APC_Wheeled_03_cannon_F") then {[_vehicle, nil, ["showTools",1]] call BIS_fnc_initVehicle;};
+		if (_vehicle isKindOf "O_APC_Wheeled_02_rcws_F" || _vehicle isKindOf "O_APC_Wheeled_02_rcws_v2_F" || _vehicle isKindOf "O_T_APC_Wheeled_02_rcws_ghex_F" || _vehicle isKindOf "O_T_APC_Wheeled_02_rcws_v2_ghex_F") then {[_vehicle, nil, ["showTools",1]] call BIS_fnc_initVehicle;};
+		if (_vehicle isKindOf "O_MBT_02_arty_F" || _vehicle isKindOf "O_T_MBT_02_arty_ghex_F") then {[_vehicle, nil, ["showLog",1]] call BIS_fnc_initVehicle;};
+		if (_vehicle isKindOf "I_LT_01_AT_F" || _vehicle isKindOf "I_LT_01_AA_F" || _vehicle isKindOf "I_LT_01_scout_F" || _vehicle isKindOf "I_LT_01_cannon_F") then {[_vehicle, nil, ["showTools",1]] call BIS_fnc_initVehicle;};
+		if (_vehicle isKindOf "O_APC_Tracked_02_cannon_F" || _vehicle isKindOf "O_T_APC_Tracked_02_cannon_ghex_F") then {[_vehicle, nil, ["showTracks",1]] call BIS_fnc_initVehicle;};
+		if (_vehicle isKindOf "I_APC_tracked_03_cannon_F") then {[_vehicle, nil, ["showBags2",1,"showTools",1]] call BIS_fnc_initVehicle;};
+		if (_vehicle isKindOf "I_MBT_03_cannon_F") then {[_vehicle, nil, ["HideTurret",1,"HideHull",1]] call BIS_fnc_initVehicle;};
+		if (_vehicle isKindOf "O_MBT_02_cannon_F" || _vehicle isKindOf "O_T_MBT_02_cannon_ghex_F") then {[_vehicle, nil, ["showLog",1]] call BIS_fnc_initVehicle;};
+		if (_vehicle isKindOf "O_APC_Tracked_02_AA_F" || _vehicle isKindOf "O_T_APC_Tracked_02_AA_ghex_F") then {[_vehicle, nil, ["showTracks",1]] call BIS_fnc_initVehicle;};
+	};
+	if (_vehicle isKindOf "Car") then {
+		_offroads = ["I_G_Offroad_01_F", "I_G_Offroad_01_armed_F", "I_G_Offroad_01_AT_F", "B_G_Offroad_01_F", "B_G_Offroad_01_armed_F", "B_G_Offroad_01_AT_F", "O_G_Offroad_01_F", "O_G_Offroad_01_armed_F", "O_G_Offroad_01_AT_F"];
+		if ((typeOf _vehicle) in _offroads) then {
+		_offroadcolors = ["Guerilla_01", "Guerilla_02", "Guerilla_03", "Guerilla_04", "Guerilla_05", "Guerilla_06", "Guerilla_07", "Guerilla_08", "Guerilla_09", "Guerilla_10", "Guerilla_11", "Guerilla_12"];
+		[_vehicle, [(selectRandom _offroadcolors),1], nil] call BIS_fnc_initVehicle;};
+		_4wds = ["I_C_Offroad_02_unarmed_F", "I_C_Offroad_02_LMG_F", "I_C_Offroad_02_AT_F", "C_Offroad_02_unarmed_F"];
+		if ((typeOf _vehicle) in _4wds) then {
+		_4wdcolors = ["Green", "Olive", "Black", "Brown"];
+		[_vehicle, [(selectRandom _4wdcolors),1], nil] call BIS_fnc_initVehicle;};
+	};
+	
 };
 if (missionNamespace getVariable "CTI_TROPHY_APS" == 1) then {
 	if (_vehicle isKindOf "tank" || _vehicle isKindOf "Wheeled_APC_F") then {
@@ -91,6 +228,15 @@ if (_type isKindOf 'Slingload_01_Base_F') then {_vehicle setmass [4000,0]};
 if (_type isKindOf "Pod_Heli_Transport_04_base_F") then {_vehicle setmass [2000,0]};
 
 
+// henroth air loadout
+if ( _type isKindOf "Air"  && (missionNamespace getVariable "CTI_AC_ENABLED")>0 && _side != CTI_RESISTANCE_ID) then
+{
+	_vanilla_loadout = _vehicle call CTI_AC_GET_STANDARD_VANILLA_LOADOUT;
+	_vehicle setVariable [ "CTI_AC_AIRCRAFT_LOADOUT_MOUNTED", (_vanilla_loadout) , true ];
+	_vehicle setVariable [ "CTI_AC_AIRCRAFT_LOADOUT_COST", ( _vehicle call CTI_AC_GET_VEHCICLE_LOADOUT_COST ) , true ];
+	_vehicle setVariable [ "CTI_AC_AIRCRAFT_LOADOUT_IS_BUSY_TIME" , 0 , true ]; // Last time locked
+	_vehicle setVariable [ "CTI_AC_AIRCRAFT_LOADOUT_IS_BUSY", false , true ]; // Semaphore
+};
 
 if ((missionNamespace getVariable [format ["%1", typeOf _vehicle],["","","","","","","",""]]) select 7 != "") then {
 	_side_logic=(_side call CTI_CO_FNC_GetSideFromID) call CTI_CO_FNC_GetSideLogic;
@@ -102,7 +248,7 @@ if ((missionNamespace getVariable [format ["%1", typeOf _vehicle],["","","","","
 
 
 
-if (_locked && !( _vehicle isKindOf "Thing") && !( _vehicle isKindOf "StaticWeapon") && !( _vehicle isKindOf "UAV") && !( _vehicle isKindOf "UGV_01_base_F")) then {_vehicle lock 2} else {_vehicle lock 0};
+if (_locked && !( _vehicle isKindOf "Thing") && !( _vehicle isKindOf "StaticWeapon") && !( _vehicle isKindOf "UAV") && !( _vehicle isKindOf "UGV_01_base_F") && !( _vehicle isKindOf "B_T_UAV_03_F")) then {_vehicle lock 2} else {_vehicle lock 0};
 if (_net) then {_vehicle setVariable ["cti_net", _side, true]};
 if (_handle) then {
 	_vehicle addEventHandler ["killed", format["[_this select 0, _this select 1, %1] spawn CTI_CO_FNC_OnUnitKilled", _side]]; //--- Called on destruction

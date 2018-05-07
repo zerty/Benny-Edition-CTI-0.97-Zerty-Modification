@@ -519,7 +519,7 @@ CTI_UI_Gear_CanAddItemWithMass = {
 	_mass_items_container = ((_mass select 1) select _index) select 0;
 	_mass_capacity_container = ((_mass select 1) select _index) select 1;
 
-	if (_mass_item + _mass_items_container <= _mass_capacity_container || _mass_capacity_container == 0 && _mm >0) then {true} else {false}
+	if (_mass_item + _mass_items_container <= _mass_capacity_container || _mass_capacity_container == 0 && _mm >0) then {true} else {false};
 };
 
 //--- Check whether accessories shall be kept after changing a weapon or not
@@ -841,7 +841,7 @@ CTI_UI_Gear_GetItemBaseConfig = {
 		case (isClass (configFile >> 'CfgVehicles' >> _this)): {"CfgVehicles"};
 		case (isClass (configFile >> 'CfgGlasses' >> _this)): {"CfgGlasses"};
 		default {"nil"};
-	}
+	};
 };
 
 //--- Return the mass of an generic item

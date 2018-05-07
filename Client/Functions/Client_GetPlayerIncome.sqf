@@ -45,8 +45,10 @@ if (_commander == group player) exitWith { _pool_income_commander };
 
 _side_units = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideGroups;
 _total_players = count (_side_units - [_commander]);
+if (_total_players == 0) then {_total_players = 1};
 _total_score = (_side_units - [_commander]) call CTI_CO_FNC_GetUnitsScore;
 if (_total_score < 1) then {_total_score = count _side_units};
+if (_total_score == 0) then {_total_score = 1};
 
 _score = score player;
 _value = round((_score / _total_score) * _pool_award);

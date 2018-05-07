@@ -44,6 +44,7 @@ with missionNamespace do {
 	    SM_ACTION_REPAIR = compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Functions\SM_Action_Repair.sqf";
 	    SM_ACTION_DISMANTLE = compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Functions\SM_Action_Dismantle.sqf";
 	    SM_COM_Init = compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Old_Com_Eject\SM_COM_init.sqf";
+	   	HCGA_Init = compileFinal preprocessFileLineNumbers "Addons\Strat_mode\HC_GA\HCGA_Init.sqf";
 	   	UAV_FUEL = compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Functions\UAV_Fuel.sqf";
 	   	UAV_RANGE = compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Functions\UAV_Range.sqf";
 	   	DYNG_WAIT = compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Functions\DYNG_waitforgroup.sqf";
@@ -228,14 +229,14 @@ if (CTI_IsClient) then {
 	if ( (missionNamespace getVariable 'CTI_SM_MORTARS')==1) then {
 		{
 			_town=_x;
-			_marker = createMarkerLocal [format ["cti_town_mortar_%1", _town], getPos _town];
+			_marker = createMarkerLocal [format ["cti_town_mortar_%1", _town], [-99999,-99999,0]];
 			_marker setMarkerTypeLocal "mil_dot";
 			_marker setMarkerTextLocal format [localize "STR_MortarTeam",(_town getVariable "cti_town_name")];
 			_marker setMarkerColorLocal "ColorGreen";
 			_marker setMarkerSizeLocal [0.5,0.5];
 			_marker setMarkerAlphaLocal 0;
 
-			_marker = createMarkerLocal [format ["cti_town_mortar_zone_%1", _town], getPos _town];
+			_marker = createMarkerLocal [format ["cti_town_mortar_zone_%1", _town], [-99999,-99999,0]];
 			_marker setMarkerShapeLocal "ELLIPSE";
 			_marker setMarkerBrushLocal "Border";
 			_marker setMarkerSizeLocal [400,400];
@@ -258,7 +259,9 @@ if (CTI_IsServer) then {
 		} else {
 			_it= _possible_it_off select floor random (count _possible_it_off);
 		};
-		skipTime _it;
+		//skipTime _it;
+		//[H]Tom - loading saved time
+		if (!(profileNamespace getvariable ["CTI_SAVE_ENABLED",false])) then {skipTime _it;};
 
 		// dynamic wheather
 		0 spawn WEATHER_HOOK;
@@ -287,6 +290,7 @@ if (CTI_IsServer) then {
 		0 execVM "Addons\Strat_mode\Functions\SM_CleanUp.sqf";
    		0 execVM "Addons\Strat_mode\Functions\SM_AttachStatics.sqf";
 		0 execVM "Addons\Strat_mode\Functions\SM_Town_CAS.sqf";
+		0 execVM "Addons\Strat_mode\Functions\SM_Town_Ship.sqf";
 
 		// Zeus admin for players
 		if !( isNil "ADMIN_ZEUS") then {
@@ -299,6 +303,12 @@ if (CTI_IsServer) then {
 		};
 
 
+		// henroth air loadout
+		if ((missionNamespace getVariable "CTI_AC_ENABLED")>0) then{
+			0 execVM "Addons\Henroth_AirLoadout\init.sqf"
+		};
+		// hc balance
+		0 spawn HCGA_Init;
 
 
 		// time compression
@@ -309,14 +319,16 @@ if (CTI_IsServer) then {
 				if (daytime > 5 && daytime <19 ) then {
 					if (timeMultiplier != _day_ratio) then  {setTimeMultiplier _day_ratio;};
 				} else {
-					if (timeMultiplier !=  _nigth_ratio) then {setTimeMultiplier _nigth_ratio; }
+					if (timeMultiplier !=  _nigth_ratio) then {setTimeMultiplier _nigth_ratio;};
 				};
 				sleep 120;
 			};
 
 		};
 
-
+		if (profileNamespace getvariable ["CTI_SAVE_ENABLED",false]) then {
+			0 execVM "Addons\Strat_mode\Functions\PERS_Mark.sqf";
+		};
 
 };
 
@@ -389,6 +401,11 @@ if (CTI_IsClient) then {
 	};
 
 
+
+	// henroth air loadout
+	if ((missionNamespace getVariable "CTI_AC_ENABLED")>0) then{
+		0 execVM "Addons\Henroth_AirLoadout\init.sqf"
+	};
 
 	// Strategic markers
 	0 spawn {

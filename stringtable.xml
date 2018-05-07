@@ -493,6 +493,10 @@
 				<Original>Zerty: GAMEPLAY: Darter Range limitation</Original>
 				<Russian>Дальность связи с маленькими БПЛА</Russian>
 			</Key>
+			<Key ID="STR_CTI_GAMEPLAY_UAV_ALT">
+				<Original>[H] Tom: GAMEPLAY: MQ-4A and Ababil-3 flight altitude limitation</Original>
+				<Russian>Ограничение высоты полета MQ-4A и Ababil-3</Russian>
+			</Key>
 			<Key ID="STR_CTI_GAMEPLAY_DARTER_FUEL">
 				<Original>Zerty: GAMEPLAY: Darter Fuel limitation</Original>
 				<Russian>Ограничение маленьких БПЛА по топливу</Russian>
@@ -912,6 +916,18 @@
 			<Key ID="STR_Icon_DisDef">
 				<Original>Dismount Defense</Original>
 				<Russian>Демонтировать Оборону</Russian>
+			</Key>
+			<Key ID="STR_Icon_EjectCargo">
+				<Original>Eject Cargo</Original>
+				<Russian>выгружать груз</Russian>
+			</Key>
+			<Key ID="STR_Icon_Camo">
+				<Original>Camo Net $500</Original>
+				<Russian>камуфляжная сетка $500</Russian>
+			</Key>
+			<Key ID="STR_Icon_SlatCage">
+				<Original>Slat Cage $1500</Original>
+				<Russian>ламельная клетка $1500</Russian>
 			</Key>
 			<Key ID="STR_Menu_Options_OnlineHelp">
 				<Original>Online Help</Original>
@@ -1384,6 +1400,10 @@
 			<Key ID="STR_Force_Lock_No_ToolKit">
 				<Original>Force Lock (No ToolKit)</Original>
 				<Russian>Взломать (Нет Набора Инструментов)</Russian>
+			</Key>
+			<Key ID="STR_Force_Lock_No_ToolKit_No_RepTruck">
+				<Original>Force Lock (ToolKit and Repair Truck needed)</Original>
+				<Russian>Взломать (Набора Инструментов и ремонтный грузовик необходимо)</Russian>
 			</Key>
 			<Key ID="STR_MGA_sec">
 				<Original>Mobile Gear Access (%1 s.)</Original>
@@ -1922,8 +1942,8 @@
 				<Russian>&lt;t size='1.3' color='#2394ef'&gt;Вам нужен Набор Инструментов для этого&lt;/t&gt;</Russian>
 			</Key>
 			<Key ID="STR_ForcedVehicle">
-				<Original>This vehicle has already been forced</Original>
-				<Russian>Данная техника уже была взломана</Russian>
+				<Original>This vehicle has already been forced or the lock is broken</Original>
+				<Russian>Данная техника уже была взломана или блокировка сломана</Russian>
 			</Key>
 			<Key ID="STR_ForcedVehicleLock">
 				<Original>Forcing vehicle lock</Original>
@@ -1954,8 +1974,8 @@
 				<Russian>ST LOAD :: Обьект Выгружен : %1 из %2 </Russian>
 			</Key>
 			<Key ID="STR_ST_NotFound">
-				<Original>ST LOAD :: No Static/Crate found, it must be behind your offroad</Original>
-				<Russian>ST LOAD :: Нет обьектов, позади вашей машины, которые можно загрузить </Russian>
+				<Original>ST LOAD :: No Static/Crate found, it must be behind your offroad/van</Original>
+				<Russian>ST LOAD :: Нет обьектов, позади вашей машины, которые можно загрузить</Russian>
 			</Key>
 	</Package>
 	<Package name="town_markers">
@@ -2000,6 +2020,12 @@
 			<Key ID="STR_UAV_Range">
 				<Original>&lt;t size='1.3' color='#2394ef'&gt;Information&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;You have lost connection to your UAV. Maximum range is &lt;t color='#ccffaf'&gt;%1 meters.&lt;/t&gt;</Original>
 				<Russian>&lt;t size='1.3' color='#2394ef'&gt;Информация&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Вы потеряли связь с вашим маленьким БПЛА. Макс.дальность - &lt;t color='#ccffaf'&gt;%1 метров.&lt;/t&gt;</Russian>
+			</Key>
+	</Package>
+	<Package name="UAV_ALT">
+			<Key ID="STR_UAV_ALT">
+				<Original>&lt;t size='1.3' color='#2394ef'&gt;Information&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;You have lost connection to your UAV. Maximum flight altitude is &lt;t color='#ccffaf'&gt;%1 meters.&lt;/t&gt;</Original>
+				<Russian>&lt;t size='1.3' color='#2394ef'&gt;Информация&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Вы потеряли соединение с вашим БПЛА. Максимальная высота полета - &lt;t color='#ccffaf'&gt;%1 метров.&lt;/t&gt;</Russian>
 			</Key>
 	</Package>
 	<Package name="SM_COM_UnSet_Client">
@@ -2102,8 +2128,8 @@
 	</Package>
 	<Package name="HUD_UpdateVehicle">
 			<Key ID="STR_TROPHY_Ammo">
-				<Original> |  Trophy : &lt;t color='%3'&gt;%1&lt;/t&gt;|&lt;t color='%4'&gt;%2&lt;/t&gt;</Original>
-				<Russian> |  Trophy : &lt;t color='%3'&gt;%1&lt;/t&gt;|&lt;t color='%4'&gt;%2&lt;/t&gt;</Russian>
+				<Original> | Trophy: &lt;t color='%3'&gt;%1&lt;/t&gt;|&lt;t color='%4'&gt;%2&lt;/t&gt;</Original>
+				<Russian> | Trophy: &lt;t color='%3'&gt;%1&lt;/t&gt;|&lt;t color='%4'&gt;%2&lt;/t&gt;</Russian>
 			</Key>
 			<Key ID="STR_Hacked">
 				<Original> | Hacked (&lt;t color='#ff0000'&gt;%1&lt;/t&gt; s)</Original>
@@ -2160,8 +2186,8 @@
 				<Russian>Завод Тяжелой Техники</Russian>
 			</Key>
 			<Key ID="STR_Up_Heavy_Factory_Descr">
-				<Original>Unlock better armored units</Original>
-				<Russian>Разблокировать новую бронированную технику</Russian>
+				<Original>Unlock armored units (1::HEAVY TANKS, 2::ARTILLERY TANKS)</Original>
+				<Russian>Разблокировать бронированные устройства (1 :: ТЯЖЕЛЫЕ ТАНКИ, 2: АРТИЛЛЕРЕЯ)</Russian>
 			</Key>
 			<Key ID="STR_Up_Aircraft_Factory">
 				<Original>Factory: Aircraft Factory</Original>
@@ -2176,8 +2202,8 @@
 				<Russian>Технологии AAF</Russian>
 			</Key>
 			<Key ID="STR_Up_AAF_technologies_Descr">
-				<Original>Unlock AAF units (1::MRAPS, 2::APC , 3::TRACKED, 4::CHOPPERS, 5::PLANES)</Original>
-				<Russian>Разблокировать технику AAF (1::Легкая Техника 2::БТР 3::БМП, Танки 4::Вертолёты 5::Самолёты)</Russian>
+				<Original>Unlock AAF units (1::MRAPS and VANS, 2::APC, 3::TRACKED, 4::CHOPPERS, 5::PLANES, 6::ARTILLERY)</Original>
+				<Russian>Разблокировать технику AAF (1::Легкая Техника и фургоны, 2::БТР 3::БМП, Танки 4::Вертолёты, 5::Самолёты, 6::АРТИЛЛЕРИЯ)</Russian>
 			</Key>
 			<Key ID="STR_Up_Aircraft_FFAR">
 				<Original>Air: Aircraft FFAR</Original>

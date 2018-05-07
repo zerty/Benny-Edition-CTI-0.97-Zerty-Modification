@@ -34,7 +34,7 @@ _i = 0;
 _tpos=_position;
 while {_i < 1000} do {
 
-	if (count (_tpos isFlatEmpty [_gradius/2, 0, _gradient,_gradius/3, 0, false, objNull]) > 0) exitWith { _position = _tpos};
+	if (count (_tpos isFlatEmpty [_gradius/2, -1, _gradient,_gradius/3, 0, false, objNull]) > 0) exitWith { _position = _tpos};
 	_tpos = [(_object select 0)+(_radius - (random (_radius * 2))),(_object select 1)+(_radius - (random (_radius * 2))),0];
 	_i = _i + 1;
 

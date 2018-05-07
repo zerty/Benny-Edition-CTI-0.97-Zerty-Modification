@@ -149,8 +149,12 @@ switch (_action) do {
 		createDialog "CTI_RscTabletPurchaseMenu";
 	};
 	case "onHaloPressed": {
+		if (time - CTI_HALO_LASTTIME >= CTI_HALO_COOLDOWN) then {
 		closeDialog 0;
 		0 execvm "Addons\ATM_airdrop\atm_airdrop.sqf"
+		} else {
+		hintsilent parseText format ["<t size='1.3' color='#2394ef'>Information</t><br /><br />Next HALO Jump in:<br /><t color='#ccffaf'>%1 min.</t>", floor((CTI_HALO_COOLDOWN - (time - CTI_HALO_LASTTIME))/60)];
+		};
 	};
 	case "onPriorityPressed": {
 		closeDialog 0;
@@ -177,7 +181,11 @@ switch (_action) do {
 		if ( 0 call CTI_CL_FNC_IsPlayerCommander )then {
 			["SERVER", "Server_Com_Leave", CTI_P_SideJoined] call CTI_CO_FNC_NetSend;
 		} else {
+			if (([player,getMarkerPos "CTI_TUTORIAL"] call  BIS_fnc_distance2D) > 42.5) then {
 			["SERVER", "Server_Vote_Eject", [player,CTI_P_SideJoined]] call CTI_CO_FNC_NetSend;
+			} else {
+			hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br />No vote in Tutorial area!";
+			};
 		};
 	};
 

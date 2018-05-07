@@ -33,6 +33,28 @@ profileNamespace setVariable ["CTI_SAVE_TOWNS",_towns];
 	_save pushBack _save_structures;
 	//Current upgrade
 	_save pushBack [(_logic getVariable "cti_upgrade"),(_logic getVariable "cti_upgrade_level"),(_logic getVariable "cti_upgrade_lt")];
+	//save current time [H]Tom
+	_currenttime = round (daytime);
+	_save pushBack _currenttime;
+	//save team scores [H]Tom
+	_teamscore = scoreSide _side;
+	_save pushBack _teamscore;
+	//save found bases [H]Tom
+	_enemy = switch (_side) do {
+	   	 	case west: {east};
+	    	case east: {west};
+			};
+	_enemylogic = (_enemy) call CTI_CO_FNC_GetSideLogic;
+	_bases_found = (_logic getVariable "CTI_BASES_FOUND");
+	_enemy_bases = (_enemylogic getVariable "cti_structures_areas");
+	_enemybase0 = []; _enemybase1 = []; _enemybase2 = []; _enemybase3 = []; _enemybase4 = []; _enemybase5 = [];
+	if (0 in _bases_found) then {_enemybase0 = (_enemy_bases select 0);};
+	if (1 in _bases_found) then {_enemybase1 = (_enemy_bases select 1);};
+	if (2 in _bases_found) then {_enemybase2 = (_enemy_bases select 2);};
+	if (3 in _bases_found) then {_enemybase3 = (_enemy_bases select 3);};
+	if (4 in _bases_found) then {_enemybase4 = (_enemy_bases select 4);};
+	if (5 in _bases_found) then {_enemybase5 = (_enemy_bases select 5);};
+	_save pushBack [_enemybase0, _enemybase1, _enemybase2, _enemybase3, _enemybase4, _enemybase5];
 
 
 	profileNamespace setVariable [format ["CTI_SAVE_%1", _side],_save];

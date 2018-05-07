@@ -5,7 +5,6 @@ if (count _towns != count CTI_TOWNS) exitWith {diag_log " :: SAVE :: Loading fai
 diag_log " :: SAVE :: Loading";
 { _x setVariable ["cti_town_lastSideID", (_towns select _foreachindex) select 0, true];[_x, ((_towns select _foreachindex) select 1) call CTI_CO_FNC_GetSideFromID] call CTI_SE_FNC_OnTownCaptured;true }foreach (CTI_TOWNS);
 
-
 {
 	_side=_x;
 	_logic= (_side) call CTI_CO_FNC_GetSideLogic;
@@ -31,7 +30,14 @@ diag_log " :: SAVE :: Loading";
     _logic setVariable ["cti_structures_areas", (_load select 3 ), true];
 
     //structures
-    { diag_log format [" :: SAVE :: Loading %1",_x]; _build=[(_x select 0), _side,(_x select 1)  select 0 ,(_x select 1)  select 1 ] call CTI_SE_FNC_BuildStructure;_build setvariable ["cti_completion",100,true];true} count (_load select 4);
+    {diag_log format [" :: SAVE :: Loading %1",_x];
+	sleep 0.2;
+	_build=[(_x select 0), _side,(_x select 1)  select 0 ,(_x select 1)  select 1 ] call CTI_SE_FNC_BuildStructure;
+	sleep 0.2;
+	_build setvariable ["cti_completion",100,true];
+	sleep 0.2;
+	true
+	} count (_load select 4);
 
     //WIP structures
     {diag_log format [" :: SAVE :: Loading %1",_x]; _build=[(_x select 0), _side,(_x select 1)  select 0 ,(_x select 1)  select 1 ] call CTI_SE_FNC_BuildStructure;_build setvariable ["cti_completion",100,true];true} count (_load select 5);
@@ -46,6 +52,23 @@ diag_log " :: SAVE :: Loading";
 
 } forEach [east,west];
 
+sleep 0.2;
 
+_loadwest = profileNamespace getVariable format ["CTI_SAVE_%1", west];
+_loadeast = profileNamespace getVariable format ["CTI_SAVE_%1", east];
 
+//current time [H]Tom
+diag_log format [" :: SAVE :: Time",(_loadwest select 8)];
+_currenttime = round (daytime);
+if (_currenttime > (_loadwest select 8)) then {skipTime ((24 - _currenttime) + (_loadwest select 8));};
+if (_currenttime < (_loadwest select 8)) then {skipTime ((_loadwest select 8) - _currenttime);};
 
+sleep 0.2;
+
+//team score west [H]Tom
+diag_log format [" :: SAVE :: TeamScoreWest",(_loadwest select 9)];
+west addScoreSide (_loadwest select 9);
+
+//team score east [H]Tom
+diag_log format [" :: SAVE :: TeamScoreEast",(_loadeast select 9)];
+east addScoreSide (_loadeast select 9);

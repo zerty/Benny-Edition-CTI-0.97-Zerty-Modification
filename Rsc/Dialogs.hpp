@@ -248,40 +248,68 @@ class CTI_RscInteraction {
 			action = "['OnSRep'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_Interact.sqf'";
 			toolTip=$STR_Icon_Srep;
 		};
-		class CTI_Icon_Com : CTI_Icon_fpk {
+		class CTI_Icon_AC : CTI_Icon_fpk {
 			idc = 511030;
+			x = "SafeZoneX + SafeZoneW*0.60";
+			text = "Rsc\Pictures\icon_al.paa";
+			action = "['OnAircraftCust'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_Interact.sqf'";
+			toolTip=$STR_Icon_ALC;
+		};
+		class CTI_Icon_Com : CTI_Icon_fpk {
+			idc = 511031;
 			x = "SafeZoneX + SafeZoneW*0.55";
 			text = "Rsc\Pictures\icon_com.paa";
 			action = "['OnCom'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_Interact.sqf'";
 			toolTip=$STR_Icon_TCom;
 		};
 		class CTI_Icon_Pilot : CTI_Icon_fpk {
-			idc = 511031;
+			idc = 511032;
 			x = "SafeZoneX + SafeZoneW*0.55";
 			text = "Rsc\Pictures\i_driver.paa";
 			action = "['OnPilot'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_Interact.sqf'";
 			toolTip=$STR_Icon_Pilot;
 		};
 		class CTI_Icon_ExitT : CTI_Icon_fpk {
-			idc = 511032;
+			idc = 511033;
 			x = "SafeZoneX + SafeZoneW*0.55";
 			text = "Rsc\Pictures\icon_load.paa";
 			action = "['OnExitT'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_Interact.sqf'";
 			toolTip=$STR_Icon_ExitT;
 		};
 		class CTI_Icon_MobileG : CTI_Icon_fpk {
-			idc = 511033;
+			idc = 511034;
 			x = "SafeZoneX + SafeZoneW*0.55";
 			text = "Rsc\Pictures\icon_wf_gear_primary.paa";
 			action = "['OnGearM'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_Interact.sqf'";
 			toolTip=$STR_Icon_MobileG;
 		};
 		class CTI_Icon_DisDef : CTI_Icon_fpk {
-			idc = 511034;
+			idc = 511035;
 			x = "SafeZoneX + SafeZoneW*0.55";
 			text = "Rsc\Pictures\icon_build.paa";
 			action = "['OnDisDef'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_Interact.sqf'";
 			toolTip=$STR_Icon_DisDef;
+		};
+		class CTI_Icon_EjectCargo : CTI_Icon_fpk {
+			idc = 511036;
+			x = "SafeZoneX + SafeZoneW*0.55";
+			text = "Rsc\Pictures\icon_load.paa";
+			action = "['EjectCargo'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_Interact.sqf'";
+			toolTip=$STR_Icon_EjectCargo;
+		};
+		class CTI_Icon_Camo : CTI_Icon_fpk {
+			idc = 511037;
+			x = "SafeZoneX + SafeZoneW*0.55";
+			text = "Rsc\Pictures\icon_camo.paa";
+			action = "['OnCamo'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_Interact.sqf'";
+			toolTip=$STR_Icon_Camo;
+		};
+		class CTI_Icon_SlatCage : CTI_Icon_fpk {
+			idc = 511038;
+			x = "SafeZoneX + SafeZoneW*0.55";
+			text = "Rsc\Pictures\icon_cage.paa";
+			action = "['OnSlatCage'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_Interact.sqf'";
+			toolTip=$STR_Icon_SlatCage;
 		};
 	};
 };

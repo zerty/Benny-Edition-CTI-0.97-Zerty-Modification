@@ -1,9 +1,11 @@
+
 //todo: Kerberos Tracker -> perma track main infos with clients UID (teamkills, kills, hq killed (ff/no ff)).
 
 //--- Create a resistance center
 createCenter resistance;
 resistance setFriend [west, 0];
 resistance setFriend [east, 0];
+resistance setFriend [civilian, 0];
 
 CTI_SE_FNC_AddScore = compileFinal preprocessFileLineNumbers "Server\Functions\Server_AddScore.sqf";
 CTI_SE_FNC_AI_PurchaseSquad = compileFinal preprocessFileLineNumbers "Server\Functions\Server_AI_PurchaseSquad.sqf";
@@ -276,5 +278,4 @@ if (missionNamespace getvariable "CTI_PERSISTANT" == 1) then {
 };
 
 CTI_Init_Server=True;
-
 

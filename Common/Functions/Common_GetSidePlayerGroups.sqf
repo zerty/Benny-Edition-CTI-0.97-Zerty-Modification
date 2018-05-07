@@ -36,7 +36,7 @@ if !(isNull _logic) then {
 	{
 		if !(isNil '_x') then {
 			if (isPlayer leader _x) then { _teams pushBack _x };
-		}
+		};
 	} forEach (_logic getVariable "cti_teams");
 };
 

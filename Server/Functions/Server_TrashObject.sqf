@@ -58,7 +58,7 @@ if (_delay == -1) then {
 			case (_object isKindOf "Ship"): { CTI_GC_DELAY_SHIP };
 			case (_object isKindOf "StaticWeapon"): { CTI_GC_DELAY_STATIC };
 			case (_object isKindOf "Building"): { CTI_GC_DELAY_BUILDING };
-			default { CTI_GC_DELAY }
+			default { CTI_GC_DELAY };
 		};
 	};
 };
