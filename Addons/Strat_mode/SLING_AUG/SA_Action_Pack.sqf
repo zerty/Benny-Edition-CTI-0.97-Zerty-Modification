@@ -6,6 +6,8 @@ private ["_caller","_started","_finished"];
 _caller=_this select 0;
 _target=_this select 1;
 
+_primary_weapon = primaryWeapon _caller;
+_caller selectWeapon _primary_weapon;
 
 _started=time;
 _finished=time + packing_time;
