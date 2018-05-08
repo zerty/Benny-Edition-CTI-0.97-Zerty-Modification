@@ -140,6 +140,7 @@ if (_defense isKindOf "B_AAA_System_01_F" || _defense isKindOf "B_SAM_System_01_
 	_defense setPos [_def_pos select 0,_def_pos select 1,(_def_pos select 2) +0.1];
 };
 
+
 if (missionNamespace getVariable "CTI_TROPHY_APS" == 1) then {
 	_defense addEventHandler["Fired","_this call TR_HANDLER;"];
 };

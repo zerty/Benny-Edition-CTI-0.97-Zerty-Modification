@@ -1,3 +1,4 @@
+
 //todo: Kerberos Tracker -> perma track main infos with clients UID (teamkills, kills, hq killed (ff/no ff)).
 
 //--- Create a resistance center
@@ -277,5 +278,4 @@ if (missionNamespace getvariable "CTI_PERSISTANT" == 1) then {
 };
 
 CTI_Init_Server=True;
-
 
