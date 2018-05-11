@@ -24,8 +24,10 @@ _v_groups=[];
 		_created_units pushBack _unit;
 	} else {
 		_crew = switch (true) do {
+			case (_x isKindOf "Wheeled_APC_F"): { missionNamespace getVariable format["%1_SOLDIER_CREW", _side] };
 			case (_x isKindOf "Tank"): { missionNamespace getVariable format["%1_SOLDIER_CREW", _side] };
-			case (_x isKindOf "Air"): { missionNamespace getVariable format["%1_SOLDIER_PILOT", _side] };
+			case (_x isKindOf "Helicopter"): { missionNamespace getVariable format["%1_SOLDIER_PILOT", _side] };
+			case (_x isKindOf "Plane"): { missionNamespace getVariable format["%1_SOLDIER_JETPILOT", _side] };
 			default { missionNamespace getVariable format["%1_SOLDIER", _side] };
 		};
 		if (typeName _crew == "ARRAY") then {_crew = _crew select 0};
