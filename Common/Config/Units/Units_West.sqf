@@ -969,7 +969,7 @@ _u = _u + [4];
 _f = _f + [4];
 _s = _s + [""];
 
-_c = _c + ['I_Heli_light_03_F'];
+_c = _c + ['I_Heli_light_03_dynamicLoadout_F'];
 _p = _p + [''];
 _n = _n + [''];
 _o = _o + [8000];
@@ -978,7 +978,7 @@ _u = _u + [4];
 _f = _f + [4];
 _s = _s + [""];
 
-_c = _c + ['I_Plane_Fighter_03_CAS_F'];
+_c = _c + ['I_Plane_Fighter_03_dynamicLoadout_F'];
 _p = _p + [''];
 _n = _n + [''];
 _o = _o + [35000];

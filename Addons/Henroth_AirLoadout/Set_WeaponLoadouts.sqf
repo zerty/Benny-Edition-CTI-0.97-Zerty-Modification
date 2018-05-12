@@ -43,13 +43,16 @@ CTI_LOADOUT_<Vehicleclassname>_MNT_OPTIONS =
 				Magazine
 			
 			
-Get Ammo for pylon:
-	"O_Plane_Fighter_02_Stealth_F" getCompatiblePylonMagazines "PylonLeft1"
+
 Get Pylons:
 	configProperties [configFile >> "CfgVehicles" >> typeOf (vehicle player) >> "Components" >> "TransportPylonsComponent" >> "Pylons"]
 	
-	configProperties [configFile >> "CfgVehicles" >> "O_T_UAV_04_CAS_F" >> "Components" >> "TransportPylonsComponent" >> "Pylons"]
+	configProperties [configFile >> "CfgVehicles" >> "I_Plane_Fighter_03_dynamicLoadout_F" >> "Components" >> "TransportPylonsComponent" >> "Pylons"]
+Get Ammo for pylon:
+	"I_Plane_Fighter_03_dynamicLoadout_F" getCompatiblePylonMagazines "PylonLeft1"
 */
+
+
 CTI_LOADOUT_UNARMED_FLARES =
 [
 	[
@@ -693,7 +696,6 @@ CTI_LOADOUT_O_Heli_Attack_02_dynamicLoadout_black_F_MNT_OPTIONS = CTI_LOADOUT_O_
 // ***************************
 CTI_LOADOUT_O_Plane_CAS_02_dynamicLoadout_F_MNT_OPTIONS =
 [
-
 	[
 		"Pylon - configuration" ,
 		"pylon",
@@ -867,6 +869,248 @@ CTI_LOADOUT_O_Plane_CAS_02_dynamicLoadout_F_MNT_OPTIONS =
 			]
 		]
 	]
+];
+
+
+
+// ***************************
+// Resistance - Vehicle loadout options
+// ***************************
+
+// ***************************
+// Helicopter - Mohawk
+// ***************************
+CTI_LOADOUT_I_Heli_Transport_02_F_MNT_OPTIONS = CTI_LOADOUT_UNARMED_FLARES;
+
+// ***************************
+// Helicopter - Hellcat ( armed )
+// ***************************
+CTI_LOADOUT_I_Heli_light_03_dynamicLoadout_F_MNT_OPTIONS =
+[
+	[
+		"Pylon - configuration" ,
+		"pylon",
+		[
+			[
+				[ "M134_minigun" ,
+					[
+						[ "5000Rnd_762x51_Yellow_Belt" , "500" ]
+					]
+				]
+			],			
+			[
+				[ "Laserdesignator_mounted" ,
+					[
+						[ "Laserbatteries" , "500" , [0]]
+					]
+				]
+			],
+			[
+				["PylonLeft1" ,
+					[
+						[ "PylonRack_12Rnd_missiles" , "2000" ],
+						[ "PylonRack_1Rnd_AAA_missiles" , "4000" ],
+						[ "PylonMissile_1Rnd_LG_scalpel" , "5000" ],
+						[ "PylonRack_3Rnd_LG_scalpel" , "15000" ],
+						[ "PylonRack_4Rnd_LG_scalpel" , "20000"],
+						[ "PylonRack_7Rnd_Rocket_04_HE_F" , "1000" ],
+						[ "PylonRack_7Rnd_Rocket_04_AP_F" , "1000"],
+						[ "PylonRack_12Rnd_PG_missiles" , "8000"],
+						[ "PylonWeapon_300Rnd_20mm_shells" , "3000"]
+					]
+				]
+			] ,
+			[
+				["PylonRight1" ,
+					[
+						[ "PylonRack_12Rnd_missiles" , "2000"],
+						[ "PylonRack_1Rnd_AAA_missiles" , "4000"],
+						[ "PylonMissile_1Rnd_LG_scalpel" , "5000"],
+						[ "PylonRack_3Rnd_LG_scalpel" , "15000"],
+						[ "PylonRack_4Rnd_LG_scalpel" , "20000"],
+						[ "PylonRack_7Rnd_Rocket_04_HE_F" , "1000"],
+						[ "PylonRack_7Rnd_Rocket_04_AP_F" , "1000"],
+						[ "PylonRack_12Rnd_PG_missiles" , "8000"],
+						[ "PylonWeapon_300Rnd_20mm_shells" , "3000"]
+					]
+				]
+			] ,
+			[
+				[ "CMFlareLauncher" ,
+					[
+						[ "168Rnd_CMFlare_Chaff_Magazine" , "1000" , [-1] ] ,
+						[ "120Rnd_CMFlare_Chaff_Magazine" , "500" , [-1] ] ,
+						[ "192Rnd_CMFlare_Chaff_Magazine" , "1500" , [-1] ] ,
+						[ "240Rnd_CMFlare_Chaff_Magazine" , "2000" , [-1] ]
+					]
+				]
+			]
+		]
+	]
+];
+
+// ***************************
+// Helicopter - Hellcat ( unarmed )
+// ***************************
+CTI_LOADOUT_I_Heli_light_03_unarmed_F_MNT_OPTIONS = CTI_LOADOUT_UNARMED_FLARES;
+
+// ***************************
+// Plane - Buzzard (CAS) 
+// ***************************
+CTI_LOADOUT_I_Plane_Fighter_03_dynamicLoadout_F_MNT_OPTIONS =
+[
+	[
+		"Pylon - configuration" ,
+		"pylon",
+		[
+			[
+				[ "Cannon_30mm_Plane_CAS_02_F" ,
+					[
+						[ "500Rnd_Cannon_30mm_Plane_CAS_02_F" , "1000" ]
+					]
+				]
+			],
+			[
+				[ "Laserdesignator_pilotCamera" ,
+					[
+						[ "Laserbatteries" , "500" ]
+					]
+				]
+			],
+			[
+				[ "Pylons1" ,
+					[
+						[ "PylonRack_1Rnd_LG_scalpel" , "5000" ],
+						[ "PylonRack_1Rnd_Missile_AA_04_F" , "4000" ],
+						[ "PylonRack_1Rnd_AAA_missiles" , "4000" ],
+						[ "PylonRack_1Rnd_GAA_missiles" , "4000" ],
+						[ "PylonRack_7Rnd_Rocket_04_HE_F" , "1000" ],
+						[ "PylonRack_7Rnd_Rocket_04_AP_F" , "1000" ],
+						[ "PylonRack_12Rnd_PG_missiles" , "8000" ],
+						[ "PylonRack_12Rnd_missiles" , "2000" ]
+					]
+				]
+			],
+			[
+				[ "Pylons2" ,
+					[
+						[ "PylonRack_1Rnd_Missile_AA_04_F" , "4000" ],
+						[ "PylonRack_1Rnd_AAA_missiles" , "4000" ],
+						[ "PylonRack_1Rnd_GAA_missiles" , "4000" ],
+						[ "PylonRack_1Rnd_LG_scalpel" , "5000" ],
+						[ "PylonRack_3Rnd_LG_scalpel" , "15000" ],
+						[ "PylonRack_7Rnd_Rocket_04_HE_F" , "1000" ],
+						[ "PylonRack_7Rnd_Rocket_04_AP_F" , "1000" ],
+						[ "PylonRack_12Rnd_PG_missiles" , "8000" ],
+						[ "PylonRack_12Rnd_missiles" , "2000" ]
+					]
+				] 
+			],
+			[
+				[ "Pylons3" ,
+					[
+						[ "PylonMissile_1Rnd_Bomb_04_F" , "5000" ],
+						[ "PylonRack_1Rnd_LG_scalpel" , "5000" ],
+						[ "PylonRack_1Rnd_Missile_AA_04_F" , "4000" ],
+						[ "PylonRack_1Rnd_AAA_missiles" , "4000" ],
+						[ "PylonRack_1Rnd_GAA_missiles" , "4000" ],
+						[ "PylonRack_1Rnd_Missile_AGM_02_F" , "5000" ],
+						[ "PylonRack_3Rnd_LG_scalpel" , "15000" ],
+						[ "PylonRack_7Rnd_Rocket_04_HE_F" , "1000" ],
+						[ "PylonRack_7Rnd_Rocket_04_AP_F" , "1000" ],
+						[ "PylonRack_12Rnd_PG_missiles" , "8000" ],
+						[ "PylonRack_12Rnd_missiles" , "2000" ],
+						[ "PylonMissile_1Rnd_Mk82_F" , "1000" ],
+						[ "PylonMissile_1Rnd_BombCluster_01_F" , "1000" ],
+						[ "PylonMissile_1Rnd_BombCluster_03_F" , "1000" ]
+					]
+				]
+			],
+			[
+				[ "Pylons4" ,
+					[
+						[ "PylonWeapon_300Rnd_20mm_shells" , "1000" ]
+					]
+				]
+			],
+			[
+				[ "Pylons5" ,
+					[
+						[ "PylonMissile_1Rnd_Bomb_04_F" , "5000" ],
+						[ "PylonRack_1Rnd_LG_scalpel" , "5000" ],
+						[ "PylonRack_1Rnd_Missile_AA_04_F" , "4000" ],
+						[ "PylonRack_1Rnd_AAA_missiles" , "4000" ],
+						[ "PylonRack_1Rnd_GAA_missiles" , "4000" ],
+						[ "PylonRack_1Rnd_Missile_AGM_02_F" , "5000" ],
+						[ "PylonRack_3Rnd_LG_scalpel" , "15000" ],
+						[ "PylonRack_7Rnd_Rocket_04_HE_F" , "1000" ],
+						[ "PylonRack_7Rnd_Rocket_04_AP_F" , "1000" ],
+						[ "PylonRack_12Rnd_PG_missiles" , "8000" ],
+						[ "PylonRack_12Rnd_missiles" , "2000" ],
+						[ "PylonMissile_1Rnd_Mk82_F" , "1000" ],
+						[ "PylonMissile_1Rnd_BombCluster_01_F" , "1000" ],
+						[ "PylonMissile_1Rnd_BombCluster_03_F" , "1000" ]
+					]
+				]
+			],
+			[
+				[ "Pylons6" ,
+					[
+						[ "PylonRack_1Rnd_Missile_AA_04_F" , "4000" ],
+						[ "PylonRack_1Rnd_AAA_missiles" , "4000" ],
+						[ "PylonRack_1Rnd_GAA_missiles" , "4000" ],
+						[ "PylonRack_1Rnd_LG_scalpel" , "5000" ],
+						[ "PylonRack_3Rnd_LG_scalpel" , "15000" ],
+						[ "PylonRack_7Rnd_Rocket_04_HE_F" , "1000" ],
+						[ "PylonRack_7Rnd_Rocket_04_AP_F" , "1000" ],
+						[ "PylonRack_12Rnd_PG_missiles" , "8000" ],
+						[ "PylonRack_12Rnd_missiles" , "2000" ]
+					]
+				]
+			],			
+			[
+				[ "Pylons7" ,
+					[
+						[ "PylonRack_1Rnd_LG_scalpel" , "5000" ],
+						[ "PylonRack_1Rnd_Missile_AA_04_F" , "4000" ],
+						[ "PylonRack_1Rnd_AAA_missiles" , "4000" ],
+						[ "PylonRack_1Rnd_GAA_missiles" , "4000" ],
+						[ "PylonRack_7Rnd_Rocket_04_HE_F" , "1000" ],
+						[ "PylonRack_7Rnd_Rocket_04_AP_F" , "1000" ],
+						[ "PylonRack_12Rnd_PG_missiles" , "8000" ],
+						[ "PylonRack_12Rnd_missiles" , "2000" ]
+					]
+				]
+			],		
+			[
+				[ "CMFlareLauncher" ,
+					[
+						[ "120Rnd_CMFlare_Chaff_Magazine" , "500" , [-1]] ,
+						[ "168Rnd_CMFlare_Chaff_Magazine" , "3000" , [-1] ] ,
+						[ "192Rnd_CMFlare_Chaff_Magazine" , "4000" , [-1] ] ,
+						[ "240Rnd_CMFlare_Chaff_Magazine" , "5000" , [-1] ]
+					]
+				]
+			]
+		]
+	]
+];
+
+
+// ***************************
+// Plane - UAV (CAS) TODO
+// ***************************
+
+CTI_LOADOUT_I_UAV_02_F_MNT_OPTIONS =
+[
+	[
+		"todo - configuration" ,
+		"pylon",
+		[
+		]
+	
+	]
+	
 ];
 
 

@@ -60,10 +60,10 @@ SM_TCAS_CREATE=compile '
 		_cas = [_town, "I_Plane_Fighter_04_F","FLY"] call SM_TCAS_MAINLOOP;
 	};
 	if (_rn >= 0.90 && _rn <= 0.95) then {
-		_cas = [_town, "I_Plane_Fighter_03_CAS_F","FLY"] call SM_TCAS_MAINLOOP;
+		_cas = [_town, "I_Plane_Fighter_03_dynamicLoadout_F","FLY"] call SM_TCAS_MAINLOOP;
 	};
 	if (_rn < 0.90) then {
-		_cas = [_town, "I_Heli_light_03_F","FORM"] call SM_TCAS_MAINLOOP;
+		_cas = [_town, "I_Heli_light_03_dynamicLoadout_F","FORM"] call SM_TCAS_MAINLOOP;
 	};
 	diag_log _cas;
 	_cas';

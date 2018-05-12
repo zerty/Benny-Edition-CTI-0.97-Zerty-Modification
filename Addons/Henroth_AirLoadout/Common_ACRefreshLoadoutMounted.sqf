@@ -68,7 +68,7 @@ for [ {_mount_index = 0},{ _mount_index < ( count ( _all_mountpoint_options ))},
 		systemChat format [ "_magazine_options  %1" , _magazine_options ];
 		systemChat format [ "count ( _magazine_options )  %1" , (count ( _magazine_options )) ];
 	};
-	
+	diag_log format["_magazine_classname: %1" ,_magazine_classname];
 	if ( ( count ( _magazine_options ) ) > 2 ) then
 	{
 		if ( CTI_DEBUG ) then
@@ -76,17 +76,21 @@ for [ {_mount_index = 0},{ _mount_index < ( count ( _all_mountpoint_options ))},
 			systemChat format [ "Adding weapon %1 to position %2" , _weapon_classname , ( _magazine_options select 2 )  ];
 			systemChat format [ "Adding magazine %1 to position %2" , _magazine_classname , ( _magazine_options select 2 )  ];
 		};
-		diag_log format["_weapon_classname %1: ", _weapon_classname];
 		_turret_position = ( _magazine_options select 2 );
-		if(isNil "_turret_position") then {
-			_turret_position = [];
-		};
 		if ( _vehicle turretLocal _turret_position ) then
 		{
+				if(isNil "_turret_position") then {
+					_turret_position = [];
+				} else {
+					if ((_turret_position select 0) == -1) then {
+						_turret_position = [];
+					};
+				};
+			diag_log format["_weapon_classname1: %1" ,_weapon_classname];
 			//Mounts pylon, not weapon
 			if((_weapon_classname find "Pylon") >= 0) then {
 				_vehicle setPylonLoadOut [_weapon_classname, _magazine_classname,  true, _turret_position];
-				diag_log format["setPylonLoadOut: 1% 2% 3% 4%" ,_weapon_classname, _magazine_classname,  true, _turret_position];
+				diag_log format["setPylonLoadOut: %1 %2 %3 %4" ,_weapon_classname, _magazine_classname,  true, _turret_position];
 				if ( not _mount_loadout_enabled ) then {
 					// does not work correctly parseNumber((_weapon_classname splitString "Pylons") select 0);
 					_vehicle setPylonLoadOut [_weapon_classname, "",  true, _turret_position];
@@ -123,13 +127,18 @@ for [ {_mount_index = 0},{ _mount_index < ( count ( _all_mountpoint_options ))},
 			systemChat format [ "Adding weapon %1" , _weapon_classname ];
 		};
 		
-		
+		diag_log format["_weapon_classname2: %1" ,_weapon_classname];
 		if  ( local _vehicle ) then
 		{
 			_turret_position = ( _magazine_options select 2 );
 			if(isNil "_turret_position") then {
 				_turret_position = [];
+			} else {
+				if ((_turret_position select 0) == -1) then {
+					_turret_position = [];
+				};
 			};
+			
 			if((_weapon_classname find "Pylon") >= 0) then {
 			//(vehicle player) setPylonLoadOut ["PylonLeft1", "PylonRack_12Rnd_PG_missiles",  true, [-1]]
 				_vehicle setPylonLoadOut [_weapon_classname, _magazine_classname,  true, _turret_position];
