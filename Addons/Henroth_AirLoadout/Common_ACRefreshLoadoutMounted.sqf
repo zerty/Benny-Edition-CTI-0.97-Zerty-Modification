@@ -78,15 +78,18 @@ for [ {_mount_index = 0},{ _mount_index < ( count ( _all_mountpoint_options ))},
 		};
 		diag_log format["_weapon_classname %1: ", _weapon_classname];
 		_turret_position = ( _magazine_options select 2 );
-		
+		if(isNil "_turret_position") then {
+			_turret_position = [];
+		};
 		if ( _vehicle turretLocal _turret_position ) then
 		{
 			//Mounts pylon, not weapon
 			if((_weapon_classname find "Pylon") >= 0) then {
-				_vehicle setPylonLoadOut [_weapon_classname, _magazine_classname];
+				_vehicle setPylonLoadOut [_weapon_classname, _magazine_classname,  true, _turret_position];
+				diag_log format["setPylonLoadOut: 1% 2% 3% 4%" ,_weapon_classname, _magazine_classname,  true, _turret_position];
 				if ( not _mount_loadout_enabled ) then {
 					// does not work correctly parseNumber((_weapon_classname splitString "Pylons") select 0);
-					_vehicle setAmmoOnPylon [_pylon_index, 0];
+					_vehicle setPylonLoadOut [_weapon_classname, "",  true, _turret_position];
 				};				
 			} else {
 				_already_mounted =  ( _weapon_classname in ( _vehicle weaponsTurret ( _turret_position ) ) );
@@ -123,10 +126,16 @@ for [ {_mount_index = 0},{ _mount_index < ( count ( _all_mountpoint_options ))},
 		
 		if  ( local _vehicle ) then
 		{
+			_turret_position = ( _magazine_options select 2 );
+			if(isNil "_turret_position") then {
+				_turret_position = [];
+			};
 			if((_weapon_classname find "Pylon") >= 0) then {
-				_vehicle setPylonLoadOut [_weapon_classname, _magazine_classname]; 
+			//(vehicle player) setPylonLoadOut ["PylonLeft1", "PylonRack_12Rnd_PG_missiles",  true, [-1]]
+				_vehicle setPylonLoadOut [_weapon_classname, _magazine_classname,  true, _turret_position];
+				diag_log format["setPylonLoadOut: %1 %2 %3 %4" ,_weapon_classname, _magazine_classname,  true, _turret_position];
 				if ( not _mount_loadout_enabled ) then {	
-					_vehicle setAmmoOnPylon [_pylon_index, 0];
+					_vehicle setPylonLoadOut [_weapon_classname, "",  true, _turret_position];
 				};	
 			} else {
 				// Check if weapon is already mounted and this is another "instance"
