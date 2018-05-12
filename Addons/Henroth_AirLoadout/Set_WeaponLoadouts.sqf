@@ -221,9 +221,9 @@ CTI_LOADOUT_O_Plane_Fighter_02_Stealth_F_MNT_OPTIONS =
 			[
 				[ "pylonBayCenter3" ,
 					[
-						["PylonMissile_Missile_AA_R77_INT_x1" , "4000" ]
-						["PylonMissile_Missile_AGM_KH25_INT_x1" , "6000" ]
-						["PylonMissile_Bomb_KAB250_x1" , "6000" ]
+						["PylonMissile_Missile_AA_R77_INT_x1" , "4000" ],
+						["PylonMissile_Missile_AGM_KH25_INT_x1" , "6000" ],
+						["PylonMissile_Bomb_KAB250_x1" , "6000" ],
 						["PylonMissile_1Rnd_BombCluster_02_cap_F" , "1000" ]
 					]
 				]
