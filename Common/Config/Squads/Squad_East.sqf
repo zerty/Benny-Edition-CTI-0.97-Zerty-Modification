@@ -104,7 +104,7 @@ _s = _s		+ [[]];
 
 _v = _v		+ ["AirAttack"];
 _t = _t		+ ["Air - Attack"];
-_p = _p		+ [[["O_Heli_Attack_02_F", 1]]];
+_p = _p		+ [[["O_Heli_Attack_02_dynamicLoadout_F", 1]]];
 _f = _f		+ [CTI_AIR];
 _m = _m		+ [25000];
 _c = _c		+ ["Air"];

@@ -26,7 +26,7 @@ _gun_configs = missionNamespace getVariable ( format [ "CTI_LOADOUT_%1_MNT_OPTIO
 _loadout_index = _loadout_selections select 0;
 
 // Mountpoint options for chosen loadout
-_all_mountpoint_options = _gun_configs select _loadout_index;
+_all_mountpoint_options = (_gun_configs select _loadout_index) select 2;
 
 // Loop through each mount point
 for [ {_mount_index = 0},{ _mount_index < ( count ( _all_mountpoint_options ))},{ _mount_index = _mount_index + 1}] do 
@@ -42,14 +42,24 @@ for [ {_mount_index = 0},{ _mount_index < ( count ( _all_mountpoint_options ))},
 	{
 		systemChat format [ "_mount_loadout  %1" , _mount_loadout ];
 	};
-	
 	_mount_loadout_weapon_index = _mount_loadout select 0;
 	_mount_loadout_magazine_index = _mount_loadout select 1;
 	_mount_loadout_enabled  = _mount_loadout select 2;
 	
 	//Get chosen weapon and magazine classnames 
-	_weapon_classname = _a_mountpoint_options select _mount_loadout_weapon_index;
-	_magazine_options = ( _a_mountpoint_options select ( _mount_loadout_weapon_index + 1 ) ) select ( _mount_loadout_magazine_index );
+	_weapon_classname = (_a_mountpoint_options select _mount_loadout_weapon_index) select 0;
+	
+	//Plyon name to plyon index
+	_pylon_index = 0;
+	{
+		_pylon = configName(_x);
+		if(_pylon == _weapon_classname) then {
+			_pylon_index = _forEachIndex + 1;
+		};
+	} forEach (configProperties [configFile >> "CfgVehicles" >> _typeOfValue  >> "Components" >> "TransportPylonsComponent" >> "Pylons"]);
+
+	
+	_magazine_options = (( _a_mountpoint_options select ( _mount_loadout_weapon_index)) select 1) select ( _mount_loadout_magazine_index );
 	_magazine_classname = _magazine_options select 0;
 	_magazine_cost = _magazine_options select 1;
 		
@@ -66,25 +76,33 @@ for [ {_mount_index = 0},{ _mount_index < ( count ( _all_mountpoint_options ))},
 			systemChat format [ "Adding weapon %1 to position %2" , _weapon_classname , ( _magazine_options select 2 )  ];
 			systemChat format [ "Adding magazine %1 to position %2" , _magazine_classname , ( _magazine_options select 2 )  ];
 		};
-		
+		diag_log format["_weapon_classname %1: ", _weapon_classname];
 		_turret_position = ( _magazine_options select 2 );
 		
 		if ( _vehicle turretLocal _turret_position ) then
 		{
-		
-			_already_mounted =  ( _weapon_classname in ( _vehicle weaponsTurret ( _turret_position ) ) );
-			
-			if ( not _already_mounted ) then
-			{
-				_vehicle addWeaponTurret [ _weapon_classname , _turret_position ];
-			};
-			
-			_vehicle addMagazineTurret [ _magazine_classname , _turret_position ];
-			
-			if ( not _mount_loadout_enabled ) then
-			{
-				_vehicle setAmmo [ _weapon_classname , 0 ];
-				_vehicle removeWeaponTurret [ _weapon_classname , _turret_position ];
+			//Mounts pylon, not weapon
+			if((_weapon_classname find "Pylon") >= 0) then {
+				_vehicle setPylonLoadOut [_weapon_classname, _magazine_classname];
+				if ( not _mount_loadout_enabled ) then {
+					// does not work correctly parseNumber((_weapon_classname splitString "Pylons") select 0);
+					_vehicle setAmmoOnPylon [_pylon_index, 0];
+				};				
+			} else {
+				_already_mounted =  ( _weapon_classname in ( _vehicle weaponsTurret ( _turret_position ) ) );
+				
+				if ( not _already_mounted ) then
+				{
+					_vehicle addWeaponTurret [ _weapon_classname , _turret_position ];
+				};
+				
+				_vehicle addMagazineTurret [ _magazine_classname , _turret_position ];
+				
+				if ( not _mount_loadout_enabled ) then
+				{
+					_vehicle setAmmo [ _weapon_classname , 0 ];
+					_vehicle removeWeaponTurret [ _weapon_classname , _turret_position ];
+				};
 			};
 		}
 		else
@@ -105,28 +123,35 @@ for [ {_mount_index = 0},{ _mount_index < ( count ( _all_mountpoint_options ))},
 		
 		if  ( local _vehicle ) then
 		{
-			// Check if weapon is already mounted and this is another "instance"
-			_already_mounted =  ( _weapon_classname in ( weapons _vehicle ) );
-			if ( not _already_mounted ) then
-			{
-				_vehicle addWeaponGlobal _weapon_classname;
-			};
-			
-			
-			if ( not _mount_loadout_enabled ) then
-			{
-				// Add the place holder magazine
-				_vehicle addMagazine [ _magazine_classname , 0 ];
-				
-				// Remove weapon is not from a previous instance
+			if((_weapon_classname find "Pylon") >= 0) then {
+				_vehicle setPylonLoadOut [_weapon_classname, _magazine_classname]; 
+				if ( not _mount_loadout_enabled ) then {	
+					_vehicle setAmmoOnPylon [_pylon_index, 0];
+				};	
+			} else {
+				// Check if weapon is already mounted and this is another "instance"
+				_already_mounted =  ( _weapon_classname in ( weapons _vehicle ) );
 				if ( not _already_mounted ) then
 				{
-					_vehicle removeWeaponGlobal _weapon_classname;
+					_vehicle addWeaponGlobal _weapon_classname;
 				};
-			}
-			else
-			{
-				_vehicle addMagazineGlobal _magazine_classname;
+				
+				
+				if ( not _mount_loadout_enabled ) then
+				{
+					// Add the place holder magazine
+					_vehicle addMagazine [ _magazine_classname , 0 ];
+					
+					// Remove weapon is not from a previous instance
+					if ( not _already_mounted ) then
+					{
+						_vehicle removeWeaponGlobal _weapon_classname;
+					};
+				}
+				else
+				{
+					_vehicle addMagazineGlobal _magazine_classname;
+				};
 			};
 		};
 	};

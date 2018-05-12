@@ -36,7 +36,8 @@ _t_side = if (typeName _side == "SCALAR") then {(_side call CTI_CO_FNC_GetSideFr
 //_vehicle setVehicleAmmoDef 1;
 
 // Fix for air vehicles ... uses sanatise script to clean up afterwards
-if ( _vehicle isKindOf "Air" && (!(_vehicle isKindOf "O_Plane_Fighter_02_F")) && (!(_vehicle isKindOf "B_Plane_Fighter_01_F")) && (!(_vehicle isKindOf "I_Plane_Fighter_04_F")) && (missionNamespace getVariable "CTI_AC_ENABLED")>0) then
+//enable for && (!(_vehicle isKindOf "O_Plane_Fighter_02_F")) && (!(_vehicle isKindOf "B_Plane_Fighter_01_F")) && (!(_vehicle isKindOf "I_Plane_Fighter_04_F"))
+if ( _vehicle isKindOf "Air" && (missionNamespace getVariable "CTI_AC_ENABLED")>0) then
 {
 	_vehicle call CTI_AC_PURGE_ALL_WEAPONS;
 	_vehicle call CTI_AC_REFRESH_LOADOUT_ON_MOUNTED;
@@ -47,6 +48,16 @@ if ( _vehicle isKindOf "Air" && (!(_vehicle isKindOf "O_Plane_Fighter_02_F")) &&
 	{_vehicle removeMagazineTurret [_x, [-1]];} forEach (getArray(configFile >> "CfgVehicles" >> _type >> "magazines"));
 	{_vehicle addMagazineTurret [_x, [-1]]} forEach (getArray(configFile >> "CfgVehicles" >> _type >> "magazines"));
 	
+	/*
+	if ( _vehicle isKindOf "Air") then {
+		{
+			_vehicle setAmmoOnPylon [configName(_x), 0];
+			
+		} forEach (configProperties [configFile >> "CfgVehicles" >> _type >> "Components" >> "TransportPylonsComponent" >> "Pylons"]);
+		
+	}*/
+	
+	/*
 	if (_vehicle isKindOf "O_Plane_Fighter_02_F") then {
 	_vehicle setAmmoOnPylon [1, 0];
 	_vehicle setAmmoOnPylon [2, 0];
@@ -138,7 +149,7 @@ if ( _vehicle isKindOf "Air" && (!(_vehicle isKindOf "O_Plane_Fighter_02_F")) &&
 		_vehicle addWeapon "CMFlareLauncher";
 		};
 	};
-	
+	*/
 	//--- Turrets
 	if (!(_vehicle isKindOf "B_SAM_System_01_F" || _vehicle isKindOf "B_SAM_System_02_F" || _vehicle isKindOf "B_AAA_System_01_F")) then {
 	_config = configFile >> "CfgVehicles" >> _type >> "turrets";
@@ -156,7 +167,8 @@ if ( _vehicle isKindOf "Air" && (!(_vehicle isKindOf "O_Plane_Fighter_02_F")) &&
 	};
 
 	//--- Authorize the air loadout depending on the parameters set
-	if ((_vehicle isKindOf "Air") && (!(_vehicle isKindOf "O_Plane_Fighter_02_F")) && (!(_vehicle isKindOf "B_Plane_Fighter_01_F")) && (!(_vehicle isKindOf "I_Plane_Fighter_04_F"))) then {[_vehicle, _side] call CTI_CO_FNC_SanitizeAircraft};
+	//enabled pylons again: && (!(_vehicle isKindOf "O_Plane_Fighter_02_F")) && (!(_vehicle isKindOf "B_Plane_Fighter_01_F")) && (!(_vehicle isKindOf "I_Plane_Fighter_04_F"))
+	if ((_vehicle isKindOf "Air")) then {[_vehicle, _side] call CTI_CO_FNC_SanitizeAircraft};
 
 	//--- Sanitize the artillery loadout, mines may lag the server for instance
 	if (CTI_ARTILLERY_FILTER == 1) then {if (typeOf _vehicle in (missionNamespace getVariable ["CTI_ARTILLERY", []])) then {(_vehicle) call CTI_CO_FNC_SanitizeArtillery}};
