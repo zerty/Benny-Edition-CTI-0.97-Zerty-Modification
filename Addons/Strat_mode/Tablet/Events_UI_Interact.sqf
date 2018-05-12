@@ -378,7 +378,7 @@ switch (_action) do {
 			    	};
 			    };
 			    case 30: { // CTI_Icon_al
-			    	if (alive _target  && _target iskindof "Air" && (!(_target iskindOf "B_Plane_Fighter_01_F" || _target iskindOf "O_Plane_Fighter_02_F" || _target iskindOf "I_Plane_Fighter_04_F" || _target iskindOf "parachutebase"))) then {
+			    	if (alive _target  && _target iskindof "Air" && (!(_target iskindOf "parachutebase"))) then {
 			    		_structures = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideStructures;
 			    		_ammo_depots = [CTI_AMMO, _structures] call CTI_CO_FNC_GetSideStructuresByType;
 			    		_available_ammo_depots = [_target, _ammo_depots, CTI_SERVICE_AMMO_DEPOT_RANGE] call CTI_UI_Service_GetBaseDepots;
