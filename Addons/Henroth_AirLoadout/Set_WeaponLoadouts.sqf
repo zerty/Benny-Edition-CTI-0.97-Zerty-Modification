@@ -72,6 +72,92 @@ CTI_LOADOUT_UNARMED_FLARES =
 		]
 	]
 ];
+
+
+// ***************************
+// BLUFOR - Vehicle loadout options
+// ***************************
+
+
+// ***************************
+// Plane - Wipeout		TODO
+// ***************************
+CTI_LOADOUT_B_Plane_CAS_01_F_MNT_OPTIONS =
+[
+	[
+		"Standard - Configuration" ,
+		"default",
+		[
+		]
+	]
+];
+
+
+// ***************************
+// Plane - Black Wasp II TODO
+// ***************************
+CTI_LOADOUT_B_Plane_Fighter_01_F_MNT_OPTIONS =
+[
+	[
+		"Standard - Configuration" ,
+		"default",
+		[
+		]
+	]
+];
+// ***************************
+// Heli - AH-9 Pawnee TODO
+// ***************************
+CTI_LOADOUT_B_Heli_Light_01_dynamicLoadout_F_MNT_OPTIONS =
+[
+	[
+		"Standard - Configuration" ,
+		"default",
+		[
+		]
+	]
+];
+
+// ***************************
+// Heli - AH-99 Blackfoot TODO
+// ***************************
+CTI_LOADOUT_B_Heli_Attack_01_dynamicLoadout_F_MNT_OPTIONS =
+[
+	[
+		"Standard - Configuration" ,
+		"default",
+		[
+		]
+	]
+];
+
+// ***************************
+// UAV - MQ-4A Greyhawk TODO
+// ***************************
+CTI_LOADOUT_B_UAV_02_dynamicLoadout_F_MNT_OPTIONS =
+[
+	[
+		"Standard - Configuration" ,
+		"default",
+		[
+		]
+	]
+];
+
+// ***************************
+// UAV - MQ-12 Falcon TODO
+// ***************************
+CTI_LOADOUT_B_T_UAV_03_dynamicLoadout_F_MNT_OPTIONS =
+[
+	[
+		"Standard - Configuration" ,
+		"default",
+		[
+		]
+	]
+];
+
+
 // ***************************
 // OPFOR ( east ) - Vehicle loadout options
 // ***************************
