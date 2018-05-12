@@ -12,6 +12,16 @@ SM_TShip_MAINLOOP=compile '
 	if !( isNil "ADMIN_ZEUS") then { ADMIN_ZEUS addCuratorEditableObjects [([_v]),true];};
 	if !( isNil "ADMIN_ZEUS") then { ADMIN_ZEUS addCuratorEditableObjects [(units _group),true];};
 	_pos1=[[[_townpos, 500]],["ground"]] call BIS_fnc_randomPos;
+	_AISkill = missionNamespace getVariable "CTI_AI_SKILL";
+	_rnSkill = 0;
+	switch (_AISkill) do {
+	case 1: {_rnSkill = (0.05 + (random 20/100));};
+	case 2: {_rnSkill = (0.25 + (random 20/100));};
+	case 3: {_rnSkill = (0.45 + (random 20/100));};
+	case 4: {_rnSkill = (0.65 + (random 20/100));};
+	case 5: {_rnSkill = (0.85 + (random 15/100));};
+	};
+	{_x setSkill _rnSkill; true} count units _group;
 	_wp=_group addWaypoint [_pos1, 25];
 	_wp setWaypointType "MOVE";
 	_wp setWaypointBehaviour "CARELESS";
