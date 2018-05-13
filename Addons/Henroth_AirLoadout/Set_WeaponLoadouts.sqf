@@ -106,20 +106,53 @@ CTI_LOADOUT_B_Plane_Fighter_01_F_MNT_OPTIONS =
 	]
 ];
 // ***************************
-// Heli - AH-9 Pawnee TODO
+// Heli - AH-9 Pawnee
 // ***************************
 CTI_LOADOUT_B_Heli_Light_01_dynamicLoadout_F_MNT_OPTIONS =
 [
 	[
-		"Standard - Configuration" ,
-		"default",
+		"Pylon - Configuration" ,
+		"pylon",
 		[
+			[
+				["M134_minigun" , 
+					[
+						[ "5000Rnd_762x51_Belt" , "350"]
+					]
+				]
+			],			
+			[
+				["PylonRight1" , 
+					[
+						[ "PylonRack_12Rnd_missiles" , "2000"],
+						[ "PylonRack_1Rnd_AAA_missiles" , "4000"],
+						[ "PylonRack_1Rnd_LG_scalpel" , "5000"],
+						[ "PylonRack_7Rnd_Rocket_04_HE_F" , "1000"],
+						[ "PylonRack_7Rnd_Rocket_04_AP_F" , "1000"],
+						//[ "PylonRack_12Rnd_PG_missiles" , "8000"],
+						[ "PylonRack_12Rnd_missiles" , "2000"]
+					]
+				]
+			],	
+			[
+				["PylonLeft1" , 
+					[
+						[ "PylonRack_12Rnd_missiles" , "2000"],
+						[ "PylonRack_1Rnd_AAA_missiles" , "4000"],
+						[ "PylonRack_1Rnd_LG_scalpel" , "5000"],
+						[ "PylonRack_7Rnd_Rocket_04_HE_F" , "1000"],
+						[ "PylonRack_7Rnd_Rocket_04_AP_F" , "1000"],
+						//[ "PylonRack_12Rnd_PG_missiles" , "8000"],
+						[ "PylonRack_12Rnd_missiles" , "2000"]
+					]
+				]
+			]
 		]
 	]
 ];
 
 // ***************************
-// Heli - AH-99 Blackfoot TODO
+// Heli - AH-99 Blackfoot
 // ***************************
 CTI_LOADOUT_B_Heli_Attack_01_dynamicLoadout_F_MNT_OPTIONS =
 [
@@ -130,7 +163,7 @@ CTI_LOADOUT_B_Heli_Attack_01_dynamicLoadout_F_MNT_OPTIONS =
 			[
 				["FakeHorn" , //Dummy weapon
 					[
-						[ "FakeHorn" , "0", [-1]]
+						[ "WeaponSafty" , "0", [-1]]
 					]
 				]
 			],
@@ -223,16 +256,160 @@ CTI_LOADOUT_B_Heli_Attack_01_dynamicLoadout_F_MNT_OPTIONS =
 		] 
 	]
 ];
-
 // ***************************
-// UAV - MQ-4A Greyhawk TODO
+// UAV - MQ-4A Greyhawk AA Version
 // ***************************
-CTI_LOADOUT_B_UAV_02_dynamicLoadout_F_MNT_OPTIONS =
+CTI_LOADOUT_B_UAV_02_F_MNT_OPTIONS =
 [
 	[
-		"Standard - Configuration" ,
+		"AA - Configurations" ,
 		"default",
 		[
+			[
+				[ "Laserdesignator_mounted" ,
+					[
+						[ "Laserbatteries" , "500" , [0]]
+					]
+				]
+			],
+			[
+				["Missile_AA_04_Plane_CAS_01_F" ,
+					[
+						[ "2Rnd_Missile_AA_04_F" , "8000"]
+					]
+				],
+				["Missile_AA_03_Plane_CAS_02_F" ,
+					[
+						[ "2Rnd_Missile_AA_03_F" , "8000"]
+					] 
+				],				
+				["missiles_ASRAAM" ,
+					[
+						[ "2Rnd_AAA_missiles" , "8000"]
+					] 
+				]
+
+			],
+			[
+				["CMFlareLauncher" ,
+					[
+					[ "192Rnd_CMFlare_Chaff_Magazine" , "4000" , [-1]],
+					[ "120Rnd_CMFlare_Chaff_Magazine" , "500" , [-1]],
+					[ "168Rnd_CMFlare_Chaff_Magazine" , "3000" , [-1]],
+					[ "240Rnd_CMFlare_Chaff_Magazine" , "5000" , [-1]]
+					]
+				]
+			]
+		]
+	]
+];
+
+// ***************************
+// UAV - MQ-4A Greyhawk Bomb Version
+// ***************************
+CTI_LOADOUT_B_UAV_02_CAS_F_MNT_OPTIONS =
+[
+	[
+		"Bomb - Configurations" ,
+		"default",
+		[
+			[
+				[ "Laserdesignator_mounted" ,
+					[
+						[ "Laserbatteries" , "500" , [0]]
+					]
+				]
+			],
+			[
+				["GBU12BombLauncher" ,
+					[
+						[ "2Rnd_GBU12_LGB" , "4000" , [0]]
+					]
+				],
+				["Mk82BombLauncher" ,
+					[
+						[ "2Rnd_Mk82" , "3000" ,[0]]
+					] 
+				]
+
+			],
+			[
+				["CMFlareLauncher" ,
+					[
+					[ "192Rnd_CMFlare_Chaff_Magazine" , "4000" , [-1]],
+					[ "120Rnd_CMFlare_Chaff_Magazine" , "500" , [-1]],
+					[ "168Rnd_CMFlare_Chaff_Magazine" , "3000" , [-1]],
+					[ "240Rnd_CMFlare_Chaff_Magazine" , "5000" , [-1]]
+					]
+				]
+			]
+		]
+	]
+];
+
+
+// ***************************
+// UAV - MQ-4A Greyhawk AT version
+// ***************************
+CTI_LOADOUT_B_UAV_02_dynamicLoadout_F_MNT_OPTIONS =
+[	
+	[
+		"Pylon - configuration" ,
+		"pylon",
+		[	
+			[
+				[ "Laserdesignator_mounted" ,
+					[
+						[ "Laserbatteries" , "500" , [0]]
+					]
+				]
+			],
+			[ 	
+				["Pylons1",
+					[
+						[ "PylonRack_3Rnd_LG_scalpel" , "15000" , [0]],
+						[ "PylonRack_1Rnd_Missile_AA_04_F" , "4000" , [0]],
+						[ "PylonRack_1Rnd_AAA_missiles" , "4000" , [0]],
+						[ "PylonRack_1Rnd_LG_scalpel" , "5000" , [0]],
+						[ "PylonRack_7Rnd_Rocket_04_HE_F" , "1000" , [-1]],
+						[ "PylonRack_7Rnd_Rocket_04_AP_F" , "100" , [-1]],
+						[ "PylonRack_12Rnd_PG_missiles" , "8000" , [0]],
+						[ "PylonRack_12Rnd_missiles" , "2000" , [-1]],
+						[ "PylonMissile_1Rnd_Bomb_04_F" , "5000" , [0]],
+						[ "PylonMissile_1Rnd_Mk82_F" , "1000" , [0]],
+						[ "PylonMissile_1Rnd_BombCluster_01_F" , "1000" , [0]],
+						[ "PylonMissile_1Rnd_BombCluster_03_F" , "1000" , [0]]
+					]
+				]
+			],
+			[ 	
+				["Pylons2",
+					[
+						[ "PylonRack_3Rnd_LG_scalpel" , "15000" , [0]],
+						[ "PylonRack_1Rnd_Missile_AA_04_F" , "4000" , [0]],
+						[ "PylonRack_1Rnd_AAA_missiles" , "4000" , [0]],
+						[ "PylonRack_1Rnd_LG_scalpel" , "5000" , [0]],
+						[ "PylonRack_7Rnd_Rocket_04_HE_F" , "1000" , [-1]],
+						[ "PylonRack_7Rnd_Rocket_04_AP_F" , "100" , [-1]],
+						[ "PylonRack_12Rnd_PG_missiles" , "8000" , [0]],
+						[ "PylonRack_12Rnd_missiles" , "2000" , [-1]],
+						[ "PylonMissile_1Rnd_Bomb_04_F" , "5000" , [0]],
+						[ "PylonMissile_1Rnd_Mk82_F" , "1000" , [0]],
+						[ "PylonMissile_1Rnd_BombCluster_01_F" , "1000" , [0]],
+						[ "PylonMissile_1Rnd_BombCluster_03_F" , "1000" , [0]]
+					]
+				]
+			],
+			[
+				["CMFlareLauncher" ,
+					[
+					[ "192Rnd_CMFlare_Chaff_Magazine" , "4000" , [-1]],
+					[ "120Rnd_CMFlare_Chaff_Magazine" , "500" , [-1]],
+					[ "168Rnd_CMFlare_Chaff_Magazine" , "3000" , [-1]],
+					[ "240Rnd_CMFlare_Chaff_Magazine" , "5000" , [-1]]
+					]
+				]
+			]
 		]
 	]
 ];
@@ -1280,7 +1457,7 @@ CTI_LOADOUT_I_Plane_Fighter_03_dynamicLoadout_F_MNT_OPTIONS =
 // ***************************
 // Plane - UAV (CAS) TODO
 // ***************************
-
+/*
 CTI_LOADOUT_I_UAV_02_F_MNT_OPTIONS =
 [
 	[
@@ -1292,7 +1469,7 @@ CTI_LOADOUT_I_UAV_02_F_MNT_OPTIONS =
 	]
 	
 ];
-
+*/
 
 // *******************************
 // Research mapping

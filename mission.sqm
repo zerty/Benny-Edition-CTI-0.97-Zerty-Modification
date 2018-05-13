@@ -8,7 +8,7 @@ class EditorData
 	toggles=1;
 	class ItemIDProvider
 	{
-		nextID=173;
+		nextID=177;
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={14477.121,36.967987,5863.2715};
-		dir[]={0,-0.70710677,0.70710683};
-		up[]={0,0.70710677,0.70710671};
-		aside[]={0.99999994,0,0};
+		pos[]={14471.748,22.428793,5882.1182};
+		dir[]={0.61544049,-0.7227841,-0.31441745};
+		up[]={0.64365697,0.69107366,-0.32883289};
+		aside[]={-0.45496121,6.7055225e-008,-0.89053971};
 	};
 };
 binarizationWanted=0;
@@ -1762,7 +1762,6 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="CAPTAIN";
-						isPlayer=1;
 						isPlayable=1;
 					};
 					id=116;
@@ -2246,8 +2245,8 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={2309.9258,11.750464,9278.6514};
-						angles[]={6.2578578,0,0.11942901};
+						position[]={2309.926,11.750492,9278.6514};
+						angles[]={6.2578607,0,0.11943288};
 					};
 					side="West";
 					flags=4;
@@ -2255,10 +2254,53 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="CAPTAIN";
+						isPlayer=1;
 						isPlayable=1;
 					};
 					id=142;
 					type="B_Soldier_SL_F";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="Male07ENG";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=0.99000001;
+								};
+							};
+						};
+						nAttributes=2;
+					};
 				};
 				class Item3
 				{
@@ -3465,7 +3507,6 @@ class OutroLoose
 };
 class OutroWin
 {
-
 	class Intel
 	{
 		timeOfChanges=1800.0002;
