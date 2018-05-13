@@ -551,6 +551,9 @@ CTI_AC_UPDATE_UI_WEAPON_OPTIONS =
 			if((_weapon_classname find "Pylon") == -1) then {
 				_weapon_name = getText ( configFile >> "CfgWeapons" >> _weapon_classname >> "displayName" );
 			};
+			if(_weapon_name == "FakeHorn") then {
+				_weapon_name = "Weapon Safty";
+			};
 			
 			// Add to weapon mount point combobox
 			((uiNamespace getVariable "cti_dialog_ui_aircraftloadoutmenu") displayCtrl ( CTI_AC_UI_WEAPON_COMBOBOX_START_IDC + _index_mount )) lbAdd _weapon_name;
