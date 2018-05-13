@@ -90,14 +90,17 @@ if (isNull _created) then {
 	if (_vehicle isKindOf "B_T_UAV_03_dynamicLoadout_F") then {createVehicleCrew _vehicle};
 
 
-	
 	//Ensures any air vehicle does not have a weapon that is not researched (SanitizeAircraft)
 	if (((_side == 1) || (_side == 0)) && !(isNil "CTI_ALM_AA_RESEARCHED_MAGAZINES") && _vehicle isKindOf "Air") then {
 		//Setting default loadout for given aircraft
-		if ( _vehicle isKindOf "Air" && (missionNamespace getVariable "CTI_AC_ENABLED")>0 && !isNil "_gun_config") then {
+		if ((missionNamespace getVariable "CTI_AC_ENABLED")>0 && !isNil "_gun_config") then {
+			diag_log format["ok31"];
 			_vehicle call CTI_AC_PURGE_ALL_WEAPONS;
-			_vehicle call CTI_AC_REFRESH_LOADOUT_ON_MOUNTED;
+			[_vehicle, _t_side] call CTI_AC_REFRESH_LOADOUT_ON_MOUNTED;
+			//[_vehicle, _t_side] call CTI_CO_FNC_SanitizeAircraft; //is no longer needed
 		} else {
+		//Testing for aircraft that do not have an loadout configured
+		
 			//For Pylon system: Test all pylons if not researched weapon is present - remove it	
 			{
 				_pylon = configName(_x); //needs to be number
@@ -109,17 +112,20 @@ if (isNull _created) then {
 				//No ATGM  if upgrade not present 
 				if (((((_t_side) call CTI_CO_FNC_GetSideUpgrades) select CTI_UPGRADE_AIR_AT) == 0) 
 				&& (_default_magazine in CTI_ALM_ATGM_RESEARCHED_MAGAZINES)) then {
-					_vehicle setAmmoOnPylon [_pylonIndex, 0];
+					_vehicle setPylonLoadOut [_pylonIndex, "", true];
+					_//vehicle setAmmoOnPylon [_pylonIndex, 0];
 				};
 				//No AA  if upgrade not present 
 				if (((((_t_side) call CTI_CO_FNC_GetSideUpgrades) select CTI_UPGRADE_AIR_AA) == 0) 
 				&& (_default_magazine in CTI_ALM_AA_RESEARCHED_MAGAZINES)) then {
-					_vehicle setAmmoOnPylon [_pylonIndex, 0];
+					_vehicle setPylonLoadOut [_pylonIndex, "", true];
+					//_vehicle setAmmoOnPylon [_pylonIndex, 0];
 				};
 				//No FFAR  if upgrade not present 
 				if (((((_t_side) call CTI_CO_FNC_GetSideUpgrades) select CTI_UPGRADE_AIR_FFAR) == 0) 
 				&& (_default_magazine in CTI_ALM_FFAR_RESEARCHED_MAGAZINES)) then {
-					_vehicle setAmmoOnPylon [_pylonIndex, 0];
+					_vehicle setPylonLoadOut [_pylonIndex, "", true];
+					//_vehicle setAmmoOnPylon [_pylonIndex, 0];
 				};
 			} forEach (configProperties [configFile >> "CfgVehicles" >> _type >> "Components" >> "TransportPylonsComponent" >> "Pylons"]);
 			

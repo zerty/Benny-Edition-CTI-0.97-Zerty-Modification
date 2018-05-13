@@ -11,7 +11,13 @@
 	 *
 */
 	
-_vehicle = _this;
+private ["_side", "_vehicle", "_upgrades"];
+
+_vehicle = _this select 0;
+_side = _this select 1;
+
+_upgrades = (_side) call CTI_CO_FNC_GetSideUpgrades;
+
 
 // Grab vehicle loadout choices
 _loadout_selections = _vehicle getVariable "CTI_AC_AIRCRAFT_LOADOUT_MOUNTED";
@@ -62,7 +68,32 @@ for [ {_mount_index = 0},{ _mount_index < ( count ( _all_mountpoint_options ))},
 	_magazine_options = (( _a_mountpoint_options select ( _mount_loadout_weapon_index)) select 1) select ( _mount_loadout_magazine_index );
 	_magazine_classname = _magazine_options select 0;
 	_magazine_cost = _magazine_options select 1;
-		
+	
+	
+	_not_resreached_magzine = false;
+	//No ATGM  if upgrade not present 
+	if (((_upgrades select CTI_UPGRADE_AIR_AT) == 0) 
+		&& (_magazine_classname in CTI_ALM_ATGM_RESEARCHED_MAGAZINES)) then {
+		_not_resreached_magzine = true;
+	};
+	//No AA  if upgrade not present 
+	if (((_upgrades select CTI_UPGRADE_AIR_AA) == 0) 
+		&& (_magazine_classname in CTI_ALM_AA_RESEARCHED_MAGAZINES)) then {
+		_not_resreached_magzine = true;
+	};
+	//No FFAR  if upgrade not present 
+	if (((_upgrades select CTI_UPGRADE_AIR_FFAR) == 0) 
+		&& (_magazine_classname in CTI_ALM_FFAR_RESEARCHED_MAGAZINES)) then {
+		_not_resreached_magzine = true;
+	};
+	//No CM  if upgrade not present 
+	if (((_upgrades select CTI_UPGRADE_AIR_CM) == 0) 
+		&& (_magazine_classname in CTI_ALM_CM_RESEARCHED_MAGAZINES)) then {
+		_not_resreached_magzine = true;
+	};
+
+	
+	
 	if ( CTI_DEBUG ) then
 	{
 		systemChat format [ "_magazine_options  %1" , _magazine_options ];
@@ -88,7 +119,7 @@ for [ {_mount_index = 0},{ _mount_index < ( count ( _all_mountpoint_options ))},
 			//Mounts pylon, not weapon
 			if((_weapon_classname find "Pylon") >= 0) then {
 				_vehicle setPylonLoadOut [_weapon_classname, _magazine_classname,  true, _turret_position];
-				if ( not _mount_loadout_enabled ) then {
+				if ( not _mount_loadout_enabled || _not_resreached_magzine) then {
 					// does not work correctly parseNumber((_weapon_classname splitString "Pylons") select 0);
 					_vehicle setPylonLoadOut [_weapon_classname, "",  true, _turret_position];
 				};				
@@ -138,7 +169,7 @@ for [ {_mount_index = 0},{ _mount_index < ( count ( _all_mountpoint_options ))},
 			if((_weapon_classname find "Pylon") >= 0) then {
 			//(vehicle player) setPylonLoadOut ["PylonLeft1", "PylonRack_12Rnd_PG_missiles",  true, [-1]]
 				_vehicle setPylonLoadOut [_weapon_classname, _magazine_classname,  true, _turret_position];
-				if ( not _mount_loadout_enabled ) then {	
+				if ( not _mount_loadout_enabled  || _not_resreached_magzine) then {	
 					_vehicle setPylonLoadOut [_weapon_classname, "",  true, _turret_position];
 				};	
 			} else {

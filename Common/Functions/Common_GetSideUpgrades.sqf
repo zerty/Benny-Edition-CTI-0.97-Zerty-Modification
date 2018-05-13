@@ -26,5 +26,7 @@ if (typeName _this != "SIDE") exitWith {[]};
 switch (_this) do {
 	case west: {CTI_WEST getVariable "cti_upgrades"};
 	case east: {CTI_EAST getVariable "cti_upgrades"};
+	case CTI_WEST_ID: {CTI_WEST getVariable "cti_upgrades"};
+	case CTI_EAST_ID: {CTI_EAST getVariable "cti_upgrades"};
 	default {[]};
 }
