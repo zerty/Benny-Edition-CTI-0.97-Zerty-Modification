@@ -124,10 +124,103 @@ CTI_LOADOUT_B_Heli_Light_01_dynamicLoadout_F_MNT_OPTIONS =
 CTI_LOADOUT_B_Heli_Attack_01_dynamicLoadout_F_MNT_OPTIONS =
 [
 	[
-		"Standard - Configuration" ,
-		"default",
+		"Pylon - Configuration" ,
+		"pylon",
 		[
-		]
+			[
+				["FakeHorn" , //Dummy weapon
+					[
+						[ "FakeHorn" , "0", [-1]]
+					]
+				]
+			],
+			[
+				[ "Laserdesignator_mounted" ,
+					[
+						[ "Laserbatteries" , "500", [0]]
+					]
+				]
+			],
+			[
+				["gatling_20mm" ,
+					[
+						[ "1000Rnd_20mm_shells" , "1000", [0]]
+					]
+				],
+				["gatling_25mm" ,
+					[
+						[ "1000Rnd_25mm_shells" , "1500", [0]] ,
+						[ "300Rnd_25mm_shells" , "500", [0]]
+					]
+				]
+			],
+			[
+				["PylonLeft1" ,
+					[
+						[ "PylonMissile_1Rnd_AAA_missiles" , "4000"],
+						[ "PylonMissile_1Rnd_LG_scalpel" , "5000", [0]],
+						[ "PylonRack_12Rnd_PG_missiles" , "8000", [0]],
+						[ "PylonRack_12Rnd_missiles" , "2000"]
+					]
+				]
+			],
+			[
+				["PylonLeft2" ,
+					[
+						[ "PylonMissile_1Rnd_AAA_missiles" , "4000"],
+						[ "PylonMissile_1Rnd_LG_scalpel" , "5000", [0]]
+					]
+				]
+			],
+			[
+				["PylonLeft3" ,
+					[
+						[ "PylonRack_12Rnd_PG_missiles" , "8000", [0]],
+						[ "PylonMissile_1Rnd_AAA_missiles" , "4000"],
+						[ "PylonMissile_1Rnd_LG_scalpel" , "5000", [0]],
+						[ "PylonRack_12Rnd_missiles" , "2000"]
+					]
+				]
+			],
+			[
+				["PylonRight3" ,
+					[
+						[ "PylonRack_12Rnd_PG_missiles" , "8000", [0]],
+						[ "PylonMissile_1Rnd_AAA_missiles" , "4000"],
+						[ "PylonMissile_1Rnd_LG_scalpel" , "5000", [0]],
+						[ "PylonRack_12Rnd_missiles" , "2000"]
+					]
+				]
+			],			
+			[
+				["PylonRight2" ,
+					[
+						[ "PylonMissile_1Rnd_AAA_missiles" , "4000"],
+						[ "PylonMissile_1Rnd_LG_scalpel" , "5000", [0]]
+					]
+				]
+			],			
+			[
+				["PylonRight1" ,
+					[
+						[ "PylonMissile_1Rnd_AAA_missiles" , "4000"],
+						[ "PylonMissile_1Rnd_LG_scalpel" , "5000", [0]],
+						[ "PylonRack_12Rnd_PG_missiles" , "8000", [0]],
+						[ "PylonRack_12Rnd_missiles" , "2000"]
+					]
+				]
+			],
+			[
+				["CMFlareLauncher" ,
+					[
+						[ "240Rnd_CMFlare_Chaff_Magazine" , "2000" , [-1] ],
+						[ "120Rnd_CMFlare_Chaff_Magazine" , "500" , [-1] ],
+						[ "168Rnd_CMFlare_Chaff_Magazine" , "1000" , [-1] ],
+						[ "192Rnd_CMFlare_Chaff_Magazine" , "1500" , [-1] ]
+					]
+				]
+			]
+		] 
 	]
 ];
 
@@ -170,7 +263,8 @@ CTI_LOADOUT_O_T_UAV_04_CAS_F_MNT_OPTIONS =
 	[
 		"Standard - Configuration" ,
 		"default",
-		[	[
+		[	
+			[
 				[ "Laserdesignator_mounted" ,
 					[
 						[ "Laserbatteries" , "500", [0]]

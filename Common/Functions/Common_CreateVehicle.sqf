@@ -94,7 +94,7 @@ if (isNull _created) then {
 	if (((_side == 1) || (_side == 0)) && !(isNil "CTI_ALM_AA_RESEARCHED_MAGAZINES") && _vehicle isKindOf "Air") then {
 		//Setting default loadout for given aircraft
 		if ((missionNamespace getVariable "CTI_AC_ENABLED")>0 && !isNil "_gun_config") then {
-			diag_log format["ok31"];
+			_vehicle setVehicleAmmo 0;
 			_vehicle call CTI_AC_PURGE_ALL_WEAPONS;
 			[_vehicle, _t_side] call CTI_AC_REFRESH_LOADOUT_ON_MOUNTED;
 			//[_vehicle, _t_side] call CTI_CO_FNC_SanitizeAircraft; //is no longer needed
@@ -105,8 +105,6 @@ if (isNull _created) then {
 			{
 				_pylon = configName(_x); //needs to be number
 				_pylonIndex = _forEachIndex +1; //needs to be number
-				diag_log format["_pylon: %1",_pylon];
-				diag_log format["_type: %1",_type];
 				_default_magazine = getText (configFile >> "CfgVehicles" >> _type >> "Components" >> "TransportPylonsComponent" >> "Pylons" >> _pylon >> "attachment");
 				
 				//No ATGM  if upgrade not present 
