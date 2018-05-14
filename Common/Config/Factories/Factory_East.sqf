@@ -159,6 +159,7 @@ _u = _u		+ ['I_Heli_light_03_dynamicLoadout_F'];
 _u = _u		+ ['I_Heli_Transport_02_F'];
 _u = _u		+ ['I_Plane_Fighter_03_dynamicLoadout_F'];
 _u = _u		+ ['I_Plane_Fighter_03_AA_F'];
+_u = _u		+ ['I_Plane_Fighter_03_CAS_F'];
 _u = _u		+ ['I_Plane_Fighter_04_F'];
 _u = _u		+ ['Land_Pod_Heli_Transport_04_medevac_F'];
 _u = _u		+ ['Land_Pod_Heli_Transport_04_covered_F'];

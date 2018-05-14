@@ -97,7 +97,7 @@ CTI_LOADOUT_B_Plane_CAS_01_dynamicLoadout_F_MNT_OPTIONS =
 		"pylon",
 		[	
 			[
-				[ "Laserdesignator_mounted" ,
+				[ "Laserdesignator_pilotCamera" ,
 					[
 						[ "Laserbatteries" , "500" , [0]]
 					]
@@ -320,7 +320,7 @@ CTI_LOADOUT_B_Plane_Fighter_01_F_MNT_OPTIONS =
 		"pylon",
 		[	
 			[
-				[ "Laserdesignator_mounted" ,
+				[ "Laserdesignator_pilotCamera" ,
 					[
 						[ "Laserbatteries" , "500" , [0]]
 					]
@@ -482,7 +482,7 @@ CTI_LOADOUT_B_Plane_Fighter_01_Stealth_F_MNT_OPTIONS =
 		"pylon",
 		[	
 			[
-				[ "Laserdesignator_mounted" ,
+				[ "Laserdesignator_pilotCamera" ,
 					[
 						[ "Laserbatteries" , "500" , [0]]
 					]
@@ -1156,7 +1156,7 @@ CTI_LOADOUT_O_Plane_Fighter_02_Stealth_F_MNT_OPTIONS =
 				]
 			],
 			[
-				[ "pylonBayRight1" ,
+				[ "PylonBayRight1" ,
 					[
 						[ "PylonMissile_Missile_AA_R73_x1" , "4000" ],
 						[ "PylonMissile_Missile_AA_R77_x1" , "4000" ],
@@ -1168,7 +1168,7 @@ CTI_LOADOUT_O_Plane_Fighter_02_Stealth_F_MNT_OPTIONS =
 				]
 			],
 			[
-				[ "pylonBayRight2" ,
+				[ "PylonBayRight2" ,
 					[
 						[ "PylonMissile_Missile_AA_R77_x1" , "5000" ],
 						[ "PylonMissile_Missile_AA_R73_x1" , "5000" ]
@@ -1177,7 +1177,7 @@ CTI_LOADOUT_O_Plane_Fighter_02_Stealth_F_MNT_OPTIONS =
 				] 
 			],
 			[
-				[ "pylonBayCenter1" ,
+				[ "PylonBayCenter1" ,
 					[
 						[ "PylonMissile_Missile_AA_R77_INT_x1" , "4000" ]
 
@@ -1185,7 +1185,7 @@ CTI_LOADOUT_O_Plane_Fighter_02_Stealth_F_MNT_OPTIONS =
 				]
 			],		
 			[
-				[ "pylonBayCenter3" ,
+				[ "PylonBayCenter3" ,
 					[
 						["PylonMissile_Missile_AA_R77_INT_x1" , "4000" ],
 						["PylonMissile_Missile_AGM_KH25_INT_x1" , "6000" ],
@@ -1195,14 +1195,14 @@ CTI_LOADOUT_O_Plane_Fighter_02_Stealth_F_MNT_OPTIONS =
 				]
 			],
 			[
-				[ "pylonBayCenter2" ,
+				[ "PylonBayCenter2" ,
 					[
 						[ "PylonMissile_Missile_AA_R77_INT_x1" , "4000" ]
 					]
 				]
 			],
 			[
-				[ "pylonBayLeft2" ,
+				[ "PylonBayLeft2" ,
 					[
 						[ "PylonMissile_Missile_AA_R77_x1" , "5000" ],
 						[ "PylonMissile_Missile_AA_R73_x1" , "5000" ]
@@ -1211,7 +1211,7 @@ CTI_LOADOUT_O_Plane_Fighter_02_Stealth_F_MNT_OPTIONS =
 				]
 			],	
 			[
-				[ "pylonBayLeft1" ,
+				[ "PylonBayLeft1" ,
 					[
 						[ "PylonMissile_Missile_AA_R73_x1" , "4000" ],
 						[ "PylonMissile_Missile_AA_R77_x1" , "4000" ],
@@ -1395,7 +1395,7 @@ CTI_LOADOUT_O_T_VTOL_02_infantry_dynamicLoadout_F_MNT_OPTIONS =
 		"pylon",
 		[
 			[
-				[ "Laserdesignator_pilotCamera" ,
+				[ "Laserdesignator_mounted" ,
 					[
 						[ "Laserbatteries" , "500" , [0]]
 					]
