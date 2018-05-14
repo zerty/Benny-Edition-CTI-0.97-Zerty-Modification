@@ -1587,6 +1587,97 @@ CTI_LOADOUT_O_T_VTOL_02_infantry_dynamicLoadout_F_MNT_OPTIONS =
 ];
 CTI_LOADOUT_O_T_VTOL_02_vehicle_dynamicLoadout_F_MNT_OPTIONS = CTI_LOADOUT_O_T_VTOL_02_infantry_dynamicLoadout_F_MNT_OPTIONS;
 
+
+// ***************************
+// UAV - MQ-4A Greyhawk AA Version
+// ***************************
+CTI_LOADOUT_O_UAV_02_F_MNT_OPTIONS =
+[
+	[
+		"AA - Configurations" ,
+		"default",
+		[
+			[
+				[ "Laserdesignator_mounted" ,
+					[
+						[ "Laserbatteries" , "500" , [0]]
+					]
+				]
+			],
+			[
+				["Missile_AA_04_Plane_CAS_01_F" ,
+					[
+						[ "2Rnd_Missile_AA_04_F" , "8000"]
+					]
+				],
+				["Missile_AA_03_Plane_CAS_02_F" ,
+					[
+						[ "2Rnd_Missile_AA_03_F" , "8000"]
+					] 
+				],				
+				["missiles_ASRAAM" ,
+					[
+						[ "2Rnd_AAA_missiles" , "8000"]
+					] 
+				]
+
+			],
+			[
+				["CMFlareLauncher" ,
+					[
+					[ "192Rnd_CMFlare_Chaff_Magazine" , "4000" , [-1]],
+					[ "120Rnd_CMFlare_Chaff_Magazine" , "500" , [-1]],
+					[ "168Rnd_CMFlare_Chaff_Magazine" , "3000" , [-1]],
+					[ "240Rnd_CMFlare_Chaff_Magazine" , "5000" , [-1]]
+					]
+				]
+			]
+		]
+	]
+];
+
+// ***************************
+// UAV - MQ-4A Greyhawk Bomb Version
+// ***************************
+CTI_LOADOUT_O_UAV_02_CAS_F_MNT_OPTIONS =
+[
+	[
+		"Bomb - Configurations" ,
+		"default",
+		[
+			[
+				[ "Laserdesignator_mounted" ,
+					[
+						[ "Laserbatteries" , "500" , [0]]
+					]
+				]
+			],
+			[
+				["GBU12BombLauncher" ,
+					[
+						[ "2Rnd_GBU12_LGB" , "4000" , [0]]
+					]
+				],
+				["Mk82BombLauncher" ,
+					[
+						[ "2Rnd_Mk82" , "3000" ,[0]]
+					] 
+				]
+
+			],
+			[
+				["CMFlareLauncher" ,
+					[
+					[ "192Rnd_CMFlare_Chaff_Magazine" , "4000" , [-1]],
+					[ "120Rnd_CMFlare_Chaff_Magazine" , "500" , [-1]],
+					[ "168Rnd_CMFlare_Chaff_Magazine" , "3000" , [-1]],
+					[ "240Rnd_CMFlare_Chaff_Magazine" , "5000" , [-1]]
+					]
+				]
+			]
+		]
+	]
+];
 // ***************************
 // Plane - UAV
 // ***************************

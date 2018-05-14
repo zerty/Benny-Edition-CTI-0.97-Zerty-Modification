@@ -149,6 +149,7 @@ _u = _u		+ ['O_Heli_Attack_02_dynamicLoadout_F'];
 _u = _u		+ ['O_Heli_Attack_02_dynamicLoadout_black_F'];
 _u = _u		+ ['O_T_VTOL_02_infantry_dynamicLoadout_F'];
 _u = _u		+ ['O_T_VTOL_02_vehicle_dynamicLoadout_F'];
+_u = _u		+ ['O_UAV_02_F'];
 _u = _u		+ ['O_UAV_02_CAS_F'];
 _u = _u		+ ['O_UAV_02_dynamicLoadout_F'];
 _u = _u		+ ['O_T_UAV_04_CAS_F'];

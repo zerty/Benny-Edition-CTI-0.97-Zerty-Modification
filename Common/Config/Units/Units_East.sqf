@@ -871,11 +871,28 @@ _u = _u + [0];
 _f = _f + [CTI_FACTORY_AMMO];
 _s = _s + ["service-ammotruck"];
 
+_c = _c + ['O_UAV_02_F'];
+_p = _p + [''];
+_n = _n + [''];
+_o = _o + [17000];
+_t = _t + [35];
+_u = _u + [1];
+_f = _f + [CTI_FACTORY_AIR];
+_s = _s + [""];
+
+_c = _c + ['O_UAV_02_CAS_F'];
+_p = _p + [''];
+_n = _n + [''];
+_o = _o + [25000];
+_t = _t + [35];
+_u = _u + [1];
+_f = _f + [CTI_FACTORY_AIR];
+_s = _s + [""];
 
 _c = _c + ['O_UAV_02_dynamicLoadout_F'];
 _p = _p + [''];
 _n = _n + [''];
-_o = _o + [25000];
+_o = _o + [35000];
 _t = _t + [35];
 _u = _u + [1];
 _f = _f + [CTI_FACTORY_AIR];
@@ -890,14 +907,6 @@ _u = _u + [1];
 _f = _f + [CTI_FACTORY_AIR];
 _s = _s + [""];
 
-_c = _c + ['O_UAV_02_CAS_F'];
-_p = _p + [''];
-_n = _n + [''];
-_o = _o + [17000];
-_t = _t + [35];
-_u = _u + [1];
-_f = _f + [CTI_FACTORY_AIR];
-_s = _s + [""];
 
 _c = _c + ['O_Heli_Light_02_unarmed_F'];
 _p = _p + [''];
