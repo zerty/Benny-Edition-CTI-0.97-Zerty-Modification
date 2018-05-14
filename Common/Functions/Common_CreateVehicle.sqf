@@ -66,7 +66,14 @@ _vehicle = if ( isNull _created) then {createVehicle [_type, _position, [], 7, _
 // henroth air loadout
 //Does a gun config exsist?
 _gun_config = missionNamespace getVariable ( format [ "CTI_LOADOUT_%1_MNT_OPTIONS" , typeOf _vehicle ] );
-if ( _type isKindOf "Air"  && (missionNamespace getVariable "CTI_AC_ENABLED")>0 && _side != CTI_RESISTANCE_ID && !isNil "_gun_config") then
+diag_log format["vehicle: %1", (typeOf _vehicle)];
+if ( 	
+( 	((typeOf _vehicle) == "O_APC_Tracked_02_AA_F") 
+	|| ((typeOf _vehicle) == "B_APC_Tracked_01_AA_F") 
+	|| _type isKindOf "Air")  
+&& (missionNamespace getVariable "CTI_AC_ENABLED")>0 
+&& _side != CTI_RESISTANCE_ID 
+&& !isNil "_gun_config") then
 {
 	_vanilla_loadout = _vehicle call CTI_AC_GET_STANDARD_VANILLA_LOADOUT;
 	_vehicle setVariable [ "CTI_AC_AIRCRAFT_LOADOUT_MOUNTED", (_vanilla_loadout) , true ];
@@ -91,7 +98,13 @@ if (isNull _created) then {
 
 
 	//Ensures any air vehicle does not have a weapon that is not researched (SanitizeAircraft)
-	if (((_side == 1) || (_side == 0)) && !(isNil "CTI_ALM_AA_RESEARCHED_MAGAZINES") && _vehicle isKindOf "Air") then {
+	if (
+	((_side == 1) || (_side == 0)) 
+	&& !(isNil "CTI_ALM_AA_RESEARCHED_MAGAZINES") //makes sure henroths loadouts are set
+	&& (_vehicle isKindOf "Air" 
+		|| (_vehicle isKindOf "O_APC_Tracked_02_AA_F") 
+		|| (_vehicle isKindOf "B_APC_Tracked_01_AA_F"))
+	) then {
 		//Setting default loadout for given aircraft
 		if ((missionNamespace getVariable "CTI_AC_ENABLED")>0 && !isNil "_gun_config") then {
 			_vehicle setVehicleAmmo 0;

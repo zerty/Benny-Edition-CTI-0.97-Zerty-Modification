@@ -34,6 +34,7 @@ _loadout_index = _loadout_selections select 0;
 // Mountpoint options for chosen loadout
 _all_mountpoint_options = (_gun_configs select _loadout_index) select 2;
 
+
 // Loop through each mount point
 for [ {_mount_index = 0},{ _mount_index < ( count ( _all_mountpoint_options ))},{ _mount_index = _mount_index + 1}] do 
 {
@@ -71,27 +72,28 @@ for [ {_mount_index = 0},{ _mount_index < ( count ( _all_mountpoint_options ))},
 	
 	
 	_not_resreached_magzine = false;
-	//No ATGM  if upgrade not present 
-	if (((_upgrades select CTI_UPGRADE_AIR_AT) == 0) 
-		&& (_magazine_classname in CTI_ALM_ATGM_RESEARCHED_MAGAZINES)) then {
-		_not_resreached_magzine = true;
+	if((_vehicle isKindof "Tank") == false) then {
+		//No ATGM  if upgrade not present 
+		if (((_upgrades select CTI_UPGRADE_AIR_AT) == 0) 
+			&& (_magazine_classname in CTI_ALM_ATGM_RESEARCHED_MAGAZINES)) then {
+			_not_resreached_magzine = true;
+		};
+		//No AA  if upgrade not present 
+		if (((_upgrades select CTI_UPGRADE_AIR_AA) == 0) 
+			&& (_magazine_classname in CTI_ALM_AA_RESEARCHED_MAGAZINES)) then {
+			_not_resreached_magzine = true;
+		};
+		//No FFAR  if upgrade not present 
+		if (((_upgrades select CTI_UPGRADE_AIR_FFAR) == 0) 
+			&& (_magazine_classname in CTI_ALM_FFAR_RESEARCHED_MAGAZINES)) then {
+			_not_resreached_magzine = true;
+		};
+		//No CM  if upgrade not present 
+		if (((_upgrades select CTI_UPGRADE_AIR_CM) == 0) 
+			&& (_magazine_classname in CTI_ALM_CM_RESEARCHED_MAGAZINES)) then {
+			_not_resreached_magzine = true;
+		};
 	};
-	//No AA  if upgrade not present 
-	if (((_upgrades select CTI_UPGRADE_AIR_AA) == 0) 
-		&& (_magazine_classname in CTI_ALM_AA_RESEARCHED_MAGAZINES)) then {
-		_not_resreached_magzine = true;
-	};
-	//No FFAR  if upgrade not present 
-	if (((_upgrades select CTI_UPGRADE_AIR_FFAR) == 0) 
-		&& (_magazine_classname in CTI_ALM_FFAR_RESEARCHED_MAGAZINES)) then {
-		_not_resreached_magzine = true;
-	};
-	//No CM  if upgrade not present 
-	if (((_upgrades select CTI_UPGRADE_AIR_CM) == 0) 
-		&& (_magazine_classname in CTI_ALM_CM_RESEARCHED_MAGAZINES)) then {
-		_not_resreached_magzine = true;
-	};
-
 	
 	
 	if ( CTI_DEBUG ) then
@@ -118,7 +120,7 @@ for [ {_mount_index = 0},{ _mount_index < ( count ( _all_mountpoint_options ))},
 					if(isNil "_turret_position") then {
 						_turret_position = [];
 					} else {
-						if (_weapon_classname != "CMFlareLauncher" && (_turret_position select 0) == -1) then {
+						if ((_weapon_classname != "CMFlareLauncher" || _weapon_classname != "SmokeLauncher") && (_turret_position select 0) == -1) then {
 							_turret_position = [];
 						};
 					};
@@ -167,7 +169,8 @@ for [ {_mount_index = 0},{ _mount_index < ( count ( _all_mountpoint_options ))},
 				if(isNil "_turret_position") then {
 					_turret_position = [];
 				} else {
-					if (_weapon_classname != "CMFlareLauncher" && (_turret_position select 0) == -1) then {
+					if ((_weapon_classname != "CMFlareLauncher" || _weapon_classname != "SmokeLauncher") 
+					&& (_turret_position select 0) == -1) then {
 						_turret_position = [];
 					};
 				};

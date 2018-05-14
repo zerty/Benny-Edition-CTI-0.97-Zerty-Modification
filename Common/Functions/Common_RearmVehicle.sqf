@@ -37,7 +37,10 @@ _t_side = if (typeName _side == "SCALAR") then {(_side call CTI_CO_FNC_GetSideFr
 
 // Fix for air vehicles ... uses sanatise script to clean up afterwards
 //enable for && (!(_vehicle isKindOf "O_Plane_Fighter_02_F")) && (!(_vehicle isKindOf "B_Plane_Fighter_01_F")) && (!(_vehicle isKindOf "I_Plane_Fighter_04_F"))
-if ( _vehicle isKindOf "Air" && (missionNamespace getVariable "CTI_AC_ENABLED")>0) then
+if (	(((typeOf _vehicle) == "O_APC_Tracked_02_AA_F") 
+		|| ((typeOf _vehicle) == "B_APC_Tracked_01_AA_F")
+		|| _vehicle isKindOf "Air") 
+		&& (missionNamespace getVariable "CTI_AC_ENABLED")>0) then
 {
 	_vehicle call CTI_AC_PURGE_ALL_WEAPONS;
 	[_vehicle, _t_side] call CTI_AC_REFRESH_LOADOUT_ON_MOUNTED;

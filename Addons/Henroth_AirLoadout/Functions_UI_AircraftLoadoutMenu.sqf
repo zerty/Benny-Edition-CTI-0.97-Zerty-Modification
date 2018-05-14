@@ -1020,114 +1020,109 @@ CTI_AC_PURGE_ALL_WEAPONS =
 
 	_vehicle = _this;
 
-	if ( _vehicle isKindof "Air" ) then
+	// Grab vehicle loadout choices
+	_loadout_selections = _vehicle getVariable "CTI_AC_AIRCRAFT_LOADOUT_MOUNTED";
+
+
+	// Determine vehicle type
+	_typeOfValue = typeOf _vehicle;
+
+	// Grab the weapon configurations available for this vehicle
+	_gun_configs = missionNamespace getVariable ( format [ "CTI_LOADOUT_%1_MNT_OPTIONS" , _typeOfValue ] );
+
+	//Loadout chosen index
+	_loadout_index = _loadout_selections select 0;
+
+	// Mountpoint options for chosen loadout
+	_all_mountpoint_options = (_gun_configs select _loadout_index) select 2;
+
+	_turret_skip_list = [];
+
+	// Loop through each mount point
+	for [ {_mount_index = 0},{ _mount_index < ( count ( _all_mountpoint_options ))},{ _mount_index = _mount_index + 1}] do
 	{
 
-		// Grab vehicle loadout choices
-		_loadout_selections = _vehicle getVariable "CTI_AC_AIRCRAFT_LOADOUT_MOUNTED";
+		//Get options for mountpoint
+		_a_mountpoint_options = _all_mountpoint_options select _mount_index;
 
+		// Extract chosen mountpoint options
+		_mount_loadout = _loadout_selections select ( _mount_index + 1 );
+		_mount_loadout_weapon_index = _mount_loadout select 0;
+		_mount_loadout_magazine_index = _mount_loadout select 1;
+		_mount_loadout_enabled  = _mount_loadout select 2;
+		
+		_magazine_options = (( _a_mountpoint_options select ( _mount_loadout_weapon_index)) select 1) select ( _mount_loadout_magazine_index );
+		_magazine_classname = _magazine_options select 0;
 
-		// Determine vehicle type
-		_typeOfValue = typeOf _vehicle;
+		//Get chosen weapon and magazine classnames
+		_weapon_classname = (_a_mountpoint_options select _mount_loadout_weapon_index) select 0;
+		//Mounts pylon, not weapon
+		if((_weapon_classname find "Pylon") >= 0) then {
+			_vehicle setPylonLoadOut [_weapon_classname, ""]; 
+		} else {
+			if ( count ( _magazine_options ) > 2 ) then
+			{
 
-		// Grab the weapon configurations available for this vehicle
-		_gun_configs = missionNamespace getVariable ( format [ "CTI_LOADOUT_%1_MNT_OPTIONS" , _typeOfValue ] );
+				_turret_position = ( _magazine_options select 2 );
 
-		//Loadout chosen index
-		_loadout_index = _loadout_selections select 0;
-
-		// Mountpoint options for chosen loadout
-		_all_mountpoint_options = (_gun_configs select _loadout_index) select 2;
-
-		_turret_skip_list = [];
-
-		// Loop through each mount point
-		for [ {_mount_index = 0},{ _mount_index < ( count ( _all_mountpoint_options ))},{ _mount_index = _mount_index + 1}] do
-		{
-
-			//Get options for mountpoint
-			_a_mountpoint_options = _all_mountpoint_options select _mount_index;
-
-			// Extract chosen mountpoint options
-			_mount_loadout = _loadout_selections select ( _mount_index + 1 );
-			_mount_loadout_weapon_index = _mount_loadout select 0;
-			_mount_loadout_magazine_index = _mount_loadout select 1;
-			_mount_loadout_enabled  = _mount_loadout select 2;
-			
-			_magazine_options = (( _a_mountpoint_options select ( _mount_loadout_weapon_index)) select 1) select ( _mount_loadout_magazine_index );
-			_magazine_classname = _magazine_options select 0;
-
-			//Get chosen weapon and magazine classnames
-			_weapon_classname = (_a_mountpoint_options select _mount_loadout_weapon_index) select 0;
-			//Mounts pylon, not weapon
-			if((_weapon_classname find "Pylon") >= 0) then {
-				_vehicle setPylonLoadOut [_weapon_classname, ""]; 
-			} else {
-				if ( count ( _magazine_options ) > 2 ) then
+				if ( local _vehicle ) then
 				{
-
-					_turret_position = ( _magazine_options select 2 );
-
-					if ( local _vehicle ) then
+					if ( ( not ( _vehicle turretLocal _turret_position ) ) && ( not ( _turret_position in _turret_skip_list ) ) ) then
 					{
-						if ( ( not ( _vehicle turretLocal _turret_position ) ) && ( not ( _turret_position in _turret_skip_list ) ) ) then
+						// If position held by other player's unit
+						_unit_in_turret = _vehicle turretUnit ( _turret_position );
+
+						_turret_skip_list = _turret_skip_list + _turret_position;
+
+						[["CLIENT", leader _unit_in_turret], "Client_PurgeWeaponsOnAVehicle", [_vehicle]] call CTI_CO_FNC_NetSend;
+
+					};
+				};
+
+				// No harm to always try to remove just in case
+				_vehicle removeMagazineTurret [ _magazine_classname , _turret_position ];
+				_vehicle removeWeaponTurret [ _weapon_classname , _turret_position ];
+
+			}
+			else
+			{
+				_default_turret_position = [0];
+
+				if ( local _vehicle ) then
+				{
+					_is_local_turret = _vehicle turretLocal _default_turret_position;
+
+					if ( _default_turret_position in ( allTurrets [ _vehicle , true ] ) ) then
+					{
+						if ( ( not ( _is_local_turret ) ) && ( not ( _default_turret_position in _turret_skip_list ) ) ) then
 						{
 							// If position held by other player's unit
-							_unit_in_turret = _vehicle turretUnit ( _turret_position );
+							_unit_in_turret = _vehicle turretUnit ( _default_turret_position );
 
-							_turret_skip_list = _turret_skip_list + _turret_position;
+							_turret_skip_list = _turret_skip_list + _default_turret_position;
 
 							[["CLIENT", leader _unit_in_turret], "Client_PurgeWeaponsOnAVehicle", [_vehicle]] call CTI_CO_FNC_NetSend;
 
 						};
 					};
-
-					// No harm to always try to remove just in case
-					_vehicle removeMagazineTurret [ _magazine_classname , _turret_position ];
-					_vehicle removeWeaponTurret [ _weapon_classname , _turret_position ];
-
-				}
-				else
-				{
-					_default_turret_position = [0];
-
-					if ( local _vehicle ) then
-					{
-						_is_local_turret = _vehicle turretLocal _default_turret_position;
-
-						if ( _default_turret_position in ( allTurrets [ _vehicle , true ] ) ) then
-						{
-							if ( ( not ( _is_local_turret ) ) && ( not ( _default_turret_position in _turret_skip_list ) ) ) then
-							{
-								// If position held by other player's unit
-								_unit_in_turret = _vehicle turretUnit ( _default_turret_position );
-
-								_turret_skip_list = _turret_skip_list + _default_turret_position;
-
-								[["CLIENT", leader _unit_in_turret], "Client_PurgeWeaponsOnAVehicle", [_vehicle]] call CTI_CO_FNC_NetSend;
-
-							};
-						};
-					};
-					_vehicle removeMagazineGlobal _magazine_classname;
-					_vehicle removeWeaponGlobal _weapon_classname;
 				};
+				_vehicle removeMagazineGlobal _magazine_classname;
+				_vehicle removeWeaponGlobal _weapon_classname;
 			};
-
 		};
 
-		// Remove all current weapons
-		{
-			_vehicle removeWeaponGlobal _x;
-		} foreach ( weapons _vehicle );
-
-		// Remove all current magazines
-		{
-			_vehicle removeMagazineGlobal _x;
-		} foreach ( magazines _vehicle );
-
-
 	};
+
+	// Remove all current weapons
+	{
+		_vehicle removeWeaponGlobal _x;
+	} foreach ( weapons _vehicle );
+
+	// Remove all current magazines
+	{
+		_vehicle removeMagazineGlobal _x;
+	} foreach ( magazines _vehicle );
+
 };
 
 CTI_AC_CALCULATE_CHOSEN_LOADOUT_COST =

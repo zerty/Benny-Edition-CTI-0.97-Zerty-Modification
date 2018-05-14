@@ -81,7 +81,99 @@ CTI_LOADOUT_UNARMED_FLARES =
 	]
 ];
 
-
+// ***************************
+// Experimental loadouts for AA tanks
+// ***************************
+//Bluefor
+CTI_LOADOUT_B_APC_Tracked_01_AA_F_MNT_OPTIONS =
+[	
+	[
+		"Standard - configuration" ,
+		"default",
+		[	
+			[ 	
+				["autocannon_35mm",
+					[
+						[ "680Rnd_35mm_AA_shells_Tracer_Green" , "2000"]
+					]
+				]
+			],	
+			[ 	
+				["autocannon_35mm",
+					[
+						[ "680Rnd_35mm_AA_shells_Tracer_Green" , "2000"]
+					]
+				]
+			],
+			[ 	
+				["missiles_Zephyr",
+					[
+						[ "4Rnd_GAA_missiles" , "4000"]
+					]
+				]
+			],	
+			[ 	
+				["missiles_Zephyr",
+					[
+						[ "4Rnd_GAA_missiles" , "4000"]
+					]
+				]
+			],			
+			[ 	
+				["SmokeLauncher",
+					[
+						[ "SmokeLauncherMag" , "1000", [0,0]]
+					]
+				]
+			]
+		]
+	]
+];
+//Opfor
+CTI_LOADOUT_O_APC_Tracked_02_AA_F_MNT_OPTIONS =
+[	
+	[
+		"Standard - configuration" ,
+		"default",
+		[	
+			[ 	
+				["autocannon_35mm",
+					[
+						[ "680Rnd_35mm_AA_shells_Tracer_Green" , "2000"]
+					]
+				]
+			],	
+			[ 	
+				["autocannon_35mm",
+					[
+						[ "680Rnd_35mm_AA_shells_Tracer_Green" , "2000"]
+					]
+				]
+			],
+			[ 	
+				["missiles_Zephyr",
+					[
+						[ "4Rnd_GAA_missiles" , "4000"]
+					]
+				]
+			],	
+			[ 	
+				["missiles_Zephyr",
+					[
+						[ "4Rnd_GAA_missiles" , "4000"]
+					]
+				]
+			],			
+			[ 	
+				["SmokeLauncher",
+					[
+						[ "SmokeLauncherMag" , "1000", [0,0]]
+					]
+				]
+			]
+		]
+	]
+];
 // ***************************
 // BLUFOR - Vehicle loadout options
 // ***************************
