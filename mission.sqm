@@ -76,7 +76,7 @@ class AddonsMetaData
 randomSeed=2773227;
 class ScenarioData
 {
-	author="Tom";
+	author="Yoshi_E";
 };
 class Intro
 {
