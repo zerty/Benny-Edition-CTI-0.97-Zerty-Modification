@@ -72,7 +72,7 @@ for [ {_mount_index = 0},{ _mount_index < ( count ( _all_mountpoint_options ))},
 	
 	
 	_not_resreached_magzine = false;
-	if((_vehicle isKindof "Tank") == false) then {
+	if(not (_vehicle isKindof "Tank")) then {
 		//No ATGM  if upgrade not present 
 		if (((_upgrades select CTI_UPGRADE_AIR_AT) == 0) 
 			&& (_magazine_classname in CTI_ALM_ATGM_RESEARCHED_MAGAZINES)) then {
