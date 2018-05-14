@@ -120,7 +120,11 @@ for [ {_mount_index = 0},{ _mount_index < ( count ( _all_mountpoint_options ))},
 					if(isNil "_turret_position") then {
 						_turret_position = [];
 					} else {
-						if ((_weapon_classname != "CMFlareLauncher" || _weapon_classname != "SmokeLauncher") && (_turret_position select 0) == -1) then {
+						diag_log format ["_turret_position01: %1", _turret_position];
+						if (
+						(_weapon_classname != "CMFlareLauncher" 
+						&& _weapon_classname != "SmokeLauncher") && (_turret_position select 0) == -1) then {
+					
 							_turret_position = [];
 						};
 					};
@@ -133,12 +137,11 @@ for [ {_mount_index = 0},{ _mount_index < ( count ( _all_mountpoint_options ))},
 					};				
 				} else {
 					_already_mounted =  ( _weapon_classname in ( _vehicle weaponsTurret ( _turret_position ) ) );
-					
 					if ( not _already_mounted ) then
 					{
 						_vehicle addWeaponTurret [ _weapon_classname , _turret_position ];
 					};
-					
+
 					_vehicle addMagazineTurret [ _magazine_classname , _turret_position ];
 					
 					if ( not _mount_loadout_enabled ) then
@@ -169,7 +172,7 @@ for [ {_mount_index = 0},{ _mount_index < ( count ( _all_mountpoint_options ))},
 				if(isNil "_turret_position") then {
 					_turret_position = [];
 				} else {
-					if ((_weapon_classname != "CMFlareLauncher" || _weapon_classname != "SmokeLauncher") 
+					if ((_weapon_classname != "CMFlareLauncher" && _weapon_classname != "SmokeLauncher") 
 					&& (_turret_position select 0) == -1) then {
 						_turret_position = [];
 					};

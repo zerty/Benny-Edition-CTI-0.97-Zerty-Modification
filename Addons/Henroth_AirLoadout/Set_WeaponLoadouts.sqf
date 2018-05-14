@@ -1761,12 +1761,12 @@ CTI_LOADOUT_O_Heli_Attack_02_dynamicLoadout_F_MNT_OPTIONS =
 			[
 				[ "PylonLeft1" ,
 					[
+						[ "PylonRack_19Rnd_Rocket_Skyfire" , "3000" , [-1]],
 						//[ "PylonRack_3Rnd_LG_scalpel" , "15000" , [0]],
 						[ "PylonMissile_1Rnd_LG_scalpel" , "5000" , [0]],
 						//[ "PylonRack_4Rnd_LG_scalpel" , "15000" , [0]],
 						[ "PylonRack_20Rnd_Rocket_03_HE_F" , "3000" , [-1]],
 						[ "PylonRack_20Rnd_Rocket_03_AP_F" , "3000" , [-1]],
-						[ "PylonRack_19Rnd_Rocket_Skyfire" , "3000" , [-1]],
 						[ "PylonRack_1Rnd_Missile_AA_03_F" , "4000" , [-1]],
 						[ "PylonRack_1Rnd_Missile_AGM_01_F" , "6000" , [0]],
 						[ "PylonMissile_1Rnd_Bomb_03_F" , "5000" , [-1]],
@@ -1809,12 +1809,12 @@ CTI_LOADOUT_O_Heli_Attack_02_dynamicLoadout_F_MNT_OPTIONS =
 			[
 				[ "PylonRight1" ,
 					[
+						[ "PylonRack_19Rnd_Rocket_Skyfire" , "3000" , [-1]],
 						//[ "PylonRack_3Rnd_LG_scalpel" , "15000" , [0]],
 						[ "PylonMissile_1Rnd_LG_scalpel" , "5000" , [0]],
 						//[ "PylonRack_4Rnd_LG_scalpel" , "15000" , [0]],
 						[ "PylonRack_20Rnd_Rocket_03_HE_F" , "3000" , [-1]],
 						[ "PylonRack_20Rnd_Rocket_03_AP_F" , "3000" , [-1]],
-						[ "PylonRack_19Rnd_Rocket_Skyfire" , "3000" , [-1]],
 						[ "PylonRack_1Rnd_Missile_AA_03_F" , "4000" , [-1]],
 						[ "PylonRack_1Rnd_Missile_AGM_01_F" , "6000" , [0]],
 						[ "PylonMissile_1Rnd_Bomb_03_F" , "5000" , [-1]],
@@ -1825,10 +1825,10 @@ CTI_LOADOUT_O_Heli_Attack_02_dynamicLoadout_F_MNT_OPTIONS =
 			[
 				[ "CMFlareLauncher" ,
 					[
+						[ "240Rnd_CMFlare_Chaff_Magazine" , "5000" , [-1]],
 						[ "120Rnd_CMFlare_Chaff_Magazine" , "500" , [-1]],
 						[ "168Rnd_CMFlare_Chaff_Magazine" , "3000" , [-1]],
-						[ "192Rnd_CMFlare_Chaff_Magazine" , "4000" , [-1]],
-						[ "240Rnd_CMFlare_Chaff_Magazine" , "5000" , [-1]]
+						[ "192Rnd_CMFlare_Chaff_Magazine" , "4000" , [-1]]	
 					]
 				]
 			]
@@ -2006,10 +2006,10 @@ CTI_LOADOUT_O_Plane_CAS_02_dynamicLoadout_F_MNT_OPTIONS =
 			[
 				[ "CMFlareLauncher" ,
 					[
+						[ "240Rnd_CMFlare_Chaff_Magazine" , "5000" , [-1] ],
 						[ "120Rnd_CMFlare_Chaff_Magazine" , "500" , [-1]] ,
 						[ "168Rnd_CMFlare_Chaff_Magazine" , "3000" , [-1] ] ,
-						[ "192Rnd_CMFlare_Chaff_Magazine" , "4000" , [-1] ] ,
-						[ "240Rnd_CMFlare_Chaff_Magazine" , "5000" , [-1] ]
+						[ "192Rnd_CMFlare_Chaff_Magazine" , "4000" , [-1] ] 
 					]
 				]
 			]

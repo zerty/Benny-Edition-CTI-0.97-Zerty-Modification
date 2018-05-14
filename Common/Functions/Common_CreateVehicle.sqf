@@ -101,7 +101,7 @@ if (isNull _created) then {
 	if (
 	((_side == 1) || (_side == 0)) 
 	&& !(isNil "CTI_ALM_AA_RESEARCHED_MAGAZINES") //makes sure henroths loadouts are set
-	&& (_vehicle isKindOf "Air" 
+	&& (_type isKindOf "Air" 
 		|| (_vehicle isKindOf "O_APC_Tracked_02_AA_F") 
 		|| (_vehicle isKindOf "B_APC_Tracked_01_AA_F"))
 	) then {
