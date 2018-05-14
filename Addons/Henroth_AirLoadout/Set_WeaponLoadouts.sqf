@@ -50,6 +50,14 @@ Get Pylons:
 	configProperties [configFile >> "CfgVehicles" >> "I_Plane_Fighter_03_dynamicLoadout_F" >> "Components" >> "TransportPylonsComponent" >> "Pylons"]
 Get Ammo for pylon:
 	"I_Plane_Fighter_03_dynamicLoadout_F" getCompatiblePylonMagazines "PylonLeft1"
+	
+As an empty weapon or Place Holder use:
+	["FakeHorn" , //Dummy weapon
+		[
+			[ "WeaponSafty" , "0", [-1]]
+		]
+	]	
+	
 */
 
 
@@ -80,7 +88,7 @@ CTI_LOADOUT_UNARMED_FLARES =
 
 
 // ***************************
-// Plane - Wipeout		TODO
+// Plane - Wipeout
 // ***************************
 CTI_LOADOUT_B_Plane_CAS_01_dynamicLoadout_F_MNT_OPTIONS =
 [	
@@ -319,7 +327,7 @@ CTI_LOADOUT_B_Plane_Fighter_01_F_MNT_OPTIONS =
 				]
 			],
 			[ 	
-				["Pylons1",
+				["Pylon1",
 					[
 						[ "PylonRack_Missile_AMRAAM_D_x1" , "4000"],
 						[ "PylonRack_Missile_AMRAAM_D_x2" , "4000"],
@@ -328,19 +336,11 @@ CTI_LOADOUT_B_Plane_Fighter_01_F_MNT_OPTIONS =
 						[ "PylonRack_Missile_AGM_02_x1" , "5000"],
 						[ "PylonMissile_Bomb_GBU12_x1" , "5000"],
 						[ "PylonMissile_1Rnd_BombCluster_03_F" , "1000"]
-						//The follwing are in config but not usable?
-						//[ "PylonRack_Missile_AGM_02_x2" , "5000"],
-						//[ "PylonRack_Bomb_GBU12_x2" , "5000"],
-						//[ "PylonMissile_1Rnd_BombCluster_01_F" , "1000"],
-						//[ "PylonRack_2Rnd_BombCluster_01_F" , "2000"],
-						//[ "PylonRack_2Rnd_BombCluster_03_F" , "2000"],
-						//[ "PylonMissile_Missile_BIM9X_x1" , "4000"],
-						//[ "PylonMissile_Missile_AMRAAM_D_INT_x1" , "4000"]
 					]
 				]
 			],
 			[ 	
-				["Pylons3",
+				["Pylons",
 					[
 						[ "PylonRack_Missile_AGM_02_x1" , "5000"],
 						[ "PylonRack_Missile_AMRAAM_D_x1" , "4000"],
@@ -424,7 +424,7 @@ CTI_LOADOUT_B_Plane_Fighter_01_F_MNT_OPTIONS =
 				]
 			],			
 			[ 	
-				["Pylons4",
+				["Pylon4",
 					[
 						[ "PylonRack_Missile_AGM_02_x1" , "5000"],
 						[ "PylonRack_Missile_AMRAAM_D_x1" , "4000"],
@@ -444,7 +444,7 @@ CTI_LOADOUT_B_Plane_Fighter_01_F_MNT_OPTIONS =
 				]
 			],			
 			[ 	
-				["Pylons2",
+				["Pylon2",
 					[
 						[ "PylonRack_Missile_AMRAAM_D_x1" , "4000"],
 						[ "PylonRack_Missile_AMRAAM_D_x2" , "4000"],
@@ -453,14 +453,6 @@ CTI_LOADOUT_B_Plane_Fighter_01_F_MNT_OPTIONS =
 						[ "PylonRack_Missile_AGM_02_x1" , "5000"],
 						[ "PylonMissile_Bomb_GBU12_x1" , "5000"],
 						[ "PylonMissile_1Rnd_BombCluster_03_F" , "1000"]
-						//The follwing are in config but not usable?
-						//[ "PylonRack_Missile_AGM_02_x2" , "5000"],
-						//[ "PylonRack_Bomb_GBU12_x2" , "5000"],
-						//[ "PylonMissile_1Rnd_BombCluster_01_F" , "1000"],
-						//[ "PylonRack_2Rnd_BombCluster_01_F" , "2000"],
-						//[ "PylonRack_2Rnd_BombCluster_03_F" , "2000"],
-						//[ "PylonMissile_Missile_BIM9X_x1" , "4000"],
-						//[ "PylonMissile_Missile_AMRAAM_D_INT_x1" , "4000"]
 					]
 				]
 			],
@@ -1851,10 +1843,31 @@ CTI_LOADOUT_O_Plane_CAS_02_dynamicLoadout_F_MNT_OPTIONS =
 // ***************************
 // Helicopter - Mohawk
 // ***************************
+
 CTI_LOADOUT_I_Heli_Transport_02_F_MNT_OPTIONS = CTI_LOADOUT_UNARMED_FLARES;
 
 // ***************************
-// Helicopter - Hellcat ( armed )
+// Helicopter - Hellcat ( unarmed )
+// ***************************
+
+CTI_LOADOUT_I_Heli_light_03_unarmed_F_MNT_OPTIONS = CTI_LOADOUT_UNARMED_FLARES;
+
+// ***************************
+// Helicopter - Hellcat (armed) TODO
+// ***************************
+/*
+I_Heli_light_03_F = 
+[
+	[
+		"Pylon - configuration" ,
+		"pylon",
+		[
+		]
+	]
+];
+*/
+// ***************************
+// Helicopter - Hellcat ( armed - dynmaic)
 // ***************************
 CTI_LOADOUT_I_Heli_light_03_dynamicLoadout_F_MNT_OPTIONS =
 [
@@ -1926,7 +1939,49 @@ CTI_LOADOUT_I_Heli_light_03_dynamicLoadout_F_MNT_OPTIONS =
 CTI_LOADOUT_I_Heli_light_03_unarmed_F_MNT_OPTIONS = CTI_LOADOUT_UNARMED_FLARES;
 
 // ***************************
-// Plane - Buzzard (CAS) 
+// Plane - Buzzard (CAS) TODO
+// ***************************
+/*
+CTI_LOADOUT_I_Plane_Fighter_03_CAS_F_MNT_OPTIONS =
+[
+	[
+		"Pylon - configuration" ,
+		"pylon",
+		[
+		]
+	]
+];
+*/
+// ***************************
+// Plane - Buzzard (AA) TODO
+// ***************************
+/*
+CTI_LOADOUT_I_Plane_Fighter_03_AA_F_MNT_OPTIONS =
+[
+	[
+		"Pylon - configuration" ,
+		"pylon",
+		[
+		]
+	]
+];
+*/
+// ***************************
+// Plane - Buzzard (Cluster) TODO
+// ***************************
+/*
+CTI_LOADOUT_I_Plane_Fighter_03_Cluster_F_MNT_OPTIONS =
+[
+	[
+		"Pylon - configuration" ,
+		"pylon",
+		[
+		]
+	]
+];
+*/
+// ***************************
+// Plane - Buzzard (Dynamic) 
 // ***************************
 CTI_LOADOUT_I_Plane_Fighter_03_dynamicLoadout_F_MNT_OPTIONS =
 [
@@ -2067,23 +2122,170 @@ CTI_LOADOUT_I_Plane_Fighter_03_dynamicLoadout_F_MNT_OPTIONS =
 	]
 ];
 
+// ***************************
+// Plane - A-149 Gryphon (Dynamic) 
+// ***************************
+CTI_LOADOUT_I_Plane_Fighter_04_F_MNT_OPTIONS =
+[
+	[
+		"Pylon - configuration" ,
+		"pylon",
+		[
+			[
+				[ "Cannon_30mm_Plane_CAS_02_F" ,
+					[
+						[ "500Rnd_Cannon_30mm_Plane_CAS_02_F" , "1000" ]
+					]
+				]
+			],
+			[
+				[ "Laserdesignator_pilotCamera" ,
+					[
+						[ "Laserbatteries" , "500" ]
+					]
+				]
+			],
+			[
+				[ "Pylon1" ,
+					[
+						[ "PylonMissile_Missile_BIM9X_x1" , "4000" ],
+						[ "PylonRack_Missile_AMRAAM_C_x1" , "4000" ]
+						
+					]
+				]
+			],
+			[
+				[ "Pylon2" ,
+					[
+						[ "PylonMissile_Missile_BIM9X_x1" , "4000" ],
+						[ "PylonRack_Missile_AMRAAM_C_x1" , "4000" ]
+					]
+				] 
+			],
+			[
+				[ "Pylon3" ,
+					[
+						[ "PylonRack_Missile_AGM_02_x1" , "5000" ],
+						[ "PylonRack_Missile_AMRAAM_C_x1" , "4000" ],
+						[ "PylonMissile_Missile_BIM9X_x1" , "4000" ]
+						
+
+
+					]
+				]
+			],
+			[
+				[ "Pylon4" ,
+					[
+						[ "PylonRack_Missile_AGM_02_x1" , "5000" ],
+						[ "PylonRack_Missile_AMRAAM_C_x1" , "4000" ],
+						[ "PylonMissile_Missile_BIM9X_x1" , "4000" ]
+					]
+				]
+			],
+			[
+				[ "Pylon5" ,
+					[
+						[ "PylonRack_Missile_AMRAAM_C_x1" , "4000" ],
+						[ "PylonRack_Missile_AMRAAM_C_x2" , "4000" ],
+						[ "PylonRack_Missile_BIM9X_x1" , "4000" ],
+						[ "PylonRack_Missile_BIM9X_x2" , "4000" ],
+						[ "PylonRack_Missile_AGM_02_x1" , "5000" ],
+						[ "PylonRack_Missile_AGM_02_x2" , "10000" ],
+						[ "PylonMissile_Bomb_GBU12_x1" , "5000" ],
+						[ "PylonMissile_1Rnd_BombCluster_01_F" , "1000" ],
+						[ "PylonMissile_1Rnd_BombCluster_03_F" , "1000" ]
+
+					]
+				]
+			],
+			[
+				[ "Pylon6" ,
+					[
+						[ "PylonRack_Missile_AMRAAM_C_x1" , "4000" ],
+						[ "PylonRack_Missile_AMRAAM_C_x2" , "4000" ],
+						[ "PylonRack_Missile_BIM9X_x1" , "4000" ],
+						[ "PylonRack_Missile_BIM9X_x2" , "4000" ],
+						[ "PylonRack_Missile_AGM_02_x1" , "5000" ],
+						[ "PylonRack_Missile_AGM_02_x2" , "10000" ],
+						[ "PylonMissile_Bomb_GBU12_x1" , "5000" ],
+						[ "PylonMissile_1Rnd_BombCluster_01_F" , "1000" ],
+						[ "PylonMissile_1Rnd_BombCluster_03_F" , "1000" ]
+					]
+				]
+			],				
+			[
+				[ "CMFlareLauncher" ,
+					[
+						[ "120Rnd_CMFlare_Chaff_Magazine" , "500" , [-1]] ,
+						[ "168Rnd_CMFlare_Chaff_Magazine" , "3000" , [-1] ] ,
+						[ "192Rnd_CMFlare_Chaff_Magazine" , "4000" , [-1] ] ,
+						[ "240Rnd_CMFlare_Chaff_Magazine" , "5000" , [-1] ]
+					]
+				]
+			]
+		]
+	]
+];
 
 // ***************************
-// Plane - UAV (CAS) TODO
+// Plane - A-149 Gryphon (Cluster) TODO
+// ***************************
+/*
+CTI_LOADOUT_I_Plane_Fighter_04_Cluster_F_MNT_OPTIONS =
+[
+	[
+		"Pylon - configuration" ,
+		"pylon",
+		[
+		]
+	]
+];
+*/
+
+// ***************************
+// Plane - UAV (AA) TODO 
 // ***************************
 /*
 CTI_LOADOUT_I_UAV_02_F_MNT_OPTIONS =
 [
 	[
-		"todo - configuration" ,
+		"Pylon - configuration" ,
 		"pylon",
 		[
 		]
-	
 	]
-	
 ];
 */
+// ***************************
+// Plane - UAV (Bomb) TODO
+// ***************************
+/*
+CTI_LOADOUT_I_UAV_02_CAS_F_MNT_OPTIONS =
+[
+	[
+		"Pylon - configuration" ,
+		"pylon",
+		[
+		]
+	]
+];
+*/
+// ***************************
+// Plane - UAV (AT) TODO
+// ***************************
+/*
+CTI_LOADOUT_I_UAV_02_dynamicLoadout_F_MNT_OPTIONS =
+[
+	[
+		"Pylon - configuration" ,
+		"pylon",
+		[
+		]
+	]
+];
+*/
+
 
 // *******************************
 // Research mapping
