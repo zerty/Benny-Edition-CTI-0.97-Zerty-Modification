@@ -325,7 +325,7 @@ class Params {
 		title = $STR_CTI_GAMEPLAY_DARTER_FUEL;
 		values[] = {0,1};
 		texts[] = {$STR_CTI_DISABLED,$STR_CTI_ENABLED};
-		default = 0;
+		default = 1;
 	};
 	class CTI_SM_NONV {
 		title = $STR_CTI_SM_NONV;
