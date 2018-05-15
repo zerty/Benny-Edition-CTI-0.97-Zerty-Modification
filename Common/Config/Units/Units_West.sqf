@@ -757,7 +757,7 @@ _u = _u + [1];
 _f = _f + [CTI_FACTORY_AIR];
 _s = _s + [""];
 
-_c = _c + ['B_Heli_Light_01_dynamicLoadout_F'];
+_c = _c + ['B_Heli_Light_01_F'];
 _p = _p + [''];
 _n = _n + [''];
 _o = _o + [3000];
@@ -802,12 +802,12 @@ _u = _u + [1];
 _f = _f + [CTI_FACTORY_AIR];
 _s = _s + [""];
 
-_c = _c + ['B_Heli_Light_01_armed_F'];
+_c = _c + ['B_Heli_Light_01_dynamicLoadout_F'];
 _p = _p + [''];
 _n = _n + [''];
 _o = _o + [6000];
 _t = _t + [30];
-_u = _u + [0];
+_u = _u + [1];
 _f = _f + [CTI_FACTORY_AIR];
 _s = _s + [""];
 
