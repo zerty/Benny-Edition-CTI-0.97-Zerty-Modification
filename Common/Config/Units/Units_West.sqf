@@ -723,8 +723,8 @@ _s = _s + ["service-ammotruck"];
 
 _c = _c + ['B_UAV_02_F'];
 _p = _p + [''];
-_n = _n + [''];
-_o = _o + [25000];
+_n = _n + ['MQ-4A Greyhawk AA'];
+_o = _o + [17000];
 _t = _t + [35];
 _u = _u + [1];
 _f = _f + [CTI_FACTORY_AIR];
@@ -732,7 +732,7 @@ _s = _s + [""];
 
 _c = _c + ['B_UAV_02_CAS_F'];
 _p = _p + [''];
-_n = _n + [''];
+_n = _n + ['MQ-4A Greyhawk Bombs'];
 _o = _o + [25000];
 _t = _t + [35];
 _u = _u + [1];
@@ -741,7 +741,7 @@ _s = _s + [""];
 
 _c = _c + ['B_UAV_02_dynamicLoadout_F'];
 _p = _p + [''];
-_n = _n + [''];
+_n = _n + ['MQ-4A Greyhawk Dynamic - AT'];
 _o = _o + [35000];
 _t = _t + [35];
 _u = _u + [1];

@@ -873,7 +873,7 @@ _s = _s + ["service-ammotruck"];
 
 _c = _c + ['O_UAV_02_F'];
 _p = _p + [''];
-_n = _n + [''];
+_n = _n + ['K40 Ababil-3 AA'];
 _o = _o + [17000];
 _t = _t + [35];
 _u = _u + [1];
@@ -882,7 +882,7 @@ _s = _s + [""];
 
 _c = _c + ['O_UAV_02_CAS_F'];
 _p = _p + [''];
-_n = _n + [''];
+_n = _n + ['K40 Ababil-3 Bombs'];
 _o = _o + [25000];
 _t = _t + [35];
 _u = _u + [1];
@@ -891,7 +891,7 @@ _s = _s + [""];
 
 _c = _c + ['O_UAV_02_dynamicLoadout_F'];
 _p = _p + [''];
-_n = _n + [''];
+_n = _n + ['K40 Ababil-3 Dynamic AT'];
 _o = _o + [35000];
 _t = _t + [35];
 _u = _u + [1];

@@ -426,6 +426,13 @@ CTI_LOADOUT_B_Plane_Fighter_01_F_MNT_OPTIONS =
 						[ "Laserbatteries" , "500" , [0]]
 					]
 				]
+			],			
+			[
+				[ "weapon_Fighter_Gun20mm_AA" ,
+					[
+						[ " magazine_Fighter01_Gun20mm_AA_x450" , "1000" , [0]]
+					]
+				]
 			],
 			[ 	
 				["Pylon1",
@@ -586,6 +593,13 @@ CTI_LOADOUT_B_Plane_Fighter_01_Stealth_F_MNT_OPTIONS =
 				[ "Laserdesignator_pilotCamera" ,
 					[
 						[ "Laserbatteries" , "500" , [0]]
+					]
+				]
+			],			
+			[
+				[ "weapon_Fighter_Gun20mm_AA" ,
+					[
+						[ " magazine_Fighter01_Gun20mm_AA_x450" , "1000" , [0]]
 					]
 				]
 			],
