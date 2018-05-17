@@ -40,11 +40,16 @@ _t_side = if (typeName _side == "SCALAR") then {(_side call CTI_CO_FNC_GetSideFr
 if (	(((typeOf _vehicle) == "O_APC_Tracked_02_AA_F") 
 		|| ((typeOf _vehicle) == "B_APC_Tracked_01_AA_F")
 		|| _vehicle isKindOf "Air") 
-		&& (missionNamespace getVariable "CTI_AC_ENABLED")>0) then
+		&& (missionNamespace getVariable "CTI_AC_ENABLED")>0
+		&& CTI_isCLient) then
 {
-	_vehicle call CTI_AC_PURGE_ALL_WEAPONS;
-	[_vehicle, _t_side] call CTI_AC_REFRESH_LOADOUT_ON_MOUNTED;
-	//Not needed if loadout_mounted if (_vehicle isKindOf "Air") then {[_vehicle, _side] call CTI_CO_FNC_SanitizeAircraft};
+	_loadout = _vehicle getVariable "CTI_AC_AIRCRAFT_LOADOUT_MOUNTED";
+	if(!isNil "_loadout") then {
+	
+		_vehicle call CTI_AC_PURGE_ALL_WEAPONS;
+		[_vehicle, _t_side] call CTI_AC_REFRESH_LOADOUT_ON_MOUNTED;
+		//Not needed if loadout_mounted if (_vehicle isKindOf "Air") then {[_vehicle, _side] call CTI_CO_FNC_SanitizeAircraft};
+	};
 } else {
 
 	//--- Driver

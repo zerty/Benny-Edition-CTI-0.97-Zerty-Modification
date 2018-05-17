@@ -72,7 +72,8 @@ if (
 	|| ((typeOf _vehicle) == "B_APC_Tracked_01_AA_F") 
 	|| _type isKindOf "Air")  
 && (missionNamespace getVariable "CTI_AC_ENABLED")>0 
-&& _side != CTI_RESISTANCE_ID 
+&& _side != CTI_RESISTANCE_ID
+&& CTI_isCLient 
 && !isNil "_gun_config") then
 {
 	_vanilla_loadout = _vehicle call CTI_AC_GET_STANDARD_VANILLA_LOADOUT;
@@ -99,7 +100,8 @@ if (isNull _created) then {
 
 	//Ensures any air vehicle does not have a weapon that is not researched (SanitizeAircraft)
 	if (
-	((_side == 1) || (_side == 0)) 
+	((_side == CTI_EAST_ID) || (_side == CTI_WEST_ID)) 
+	&& CTI_isCLient
 	&& !(isNil "CTI_ALM_AA_RESEARCHED_MAGAZINES") //makes sure henroths loadouts are set
 	&& (_type isKindOf "Air" 
 		|| (_vehicle isKindOf "O_APC_Tracked_02_AA_F") 

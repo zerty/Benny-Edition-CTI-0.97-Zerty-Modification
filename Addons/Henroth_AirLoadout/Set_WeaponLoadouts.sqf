@@ -85,7 +85,7 @@ CTI_LOADOUT_UNARMED_FLARES =
 // Experimental loadouts for AA tanks
 // ***************************
 //Bluefor
-/*
+
 CTI_LOADOUT_B_APC_Tracked_01_AA_F_MNT_OPTIONS =
 [	
 	[
@@ -175,7 +175,7 @@ CTI_LOADOUT_O_APC_Tracked_02_AA_F_MNT_OPTIONS =
 		]
 	]
 ];
-*/
+
 // ***************************
 // BLUFOR - Vehicle loadout options
 // ***************************
@@ -193,7 +193,14 @@ CTI_LOADOUT_B_Plane_CAS_01_dynamicLoadout_F_MNT_OPTIONS =
 			[
 				[ "Laserdesignator_pilotCamera" ,
 					[
-						[ "Laserbatteries" , "500" , [0]]
+						[ "Laserbatteries" , "500"]
+					]
+				]
+			],			
+			[
+				[ "Gatling_30mm_Plane_CAS_01_F" ,
+					[
+						[ "1000Rnd_Gatling_30mm_Plane_CAS_01_F" , "1000"]
 					]
 				]
 			],
@@ -1186,7 +1193,7 @@ CTI_LOADOUT_O_Heli_Light_02_dynamicLoadout_F_MNT_OPTIONS =
 						[ "PylonRack_12Rnd_missiles" , "2000" ],
 						[ "PylonRack_1Rnd_AAA_missiles" , "4000" ],
 						[ "PylonRack_1Rnd_LG_scalpel" , "3000" ],
-						[ "PylonWeapon_300Rnd_20mm_shells" , "5000" ],
+						[ "PylonWeapon_300Rnd_20mm_shells" , "1000" ],
 						[ "PylonRack_19Rnd_Rocket_Skyfire" , "3000" ]
 					]
 				]
@@ -1198,7 +1205,7 @@ CTI_LOADOUT_O_Heli_Light_02_dynamicLoadout_F_MNT_OPTIONS =
 						[ "PylonRack_12Rnd_missiles" , "2000" ],
 						[ "PylonRack_1Rnd_AAA_missiles" , "4000" ],
 						[ "PylonRack_1Rnd_LG_scalpel" , "3000" ],
-						[ "PylonWeapon_300Rnd_20mm_shells" , "5000" ],
+						[ "PylonWeapon_300Rnd_20mm_shells" , "1000" ],
 						[ "PylonWeapon_2000Rnd_65x39_belt" , "1000" ],
 						[ "PylonRack_19Rnd_Rocket_Skyfire" , "3000" ]
 					]
