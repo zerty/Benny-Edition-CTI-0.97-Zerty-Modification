@@ -159,7 +159,7 @@ class Params {
 		title = $STR_CTI_GRAPHICS_TG_MAX;
 		values[] = {10,20,30,50};
 		texts[] = {$STR_CTI_GRAPHICS_TG_FAR,$STR_CTI_GRAPHICS_TG_MED,$STR_CTI_GRAPHICS_TG_SHORT,$STR_CTI_GRAPHICS_TG_FREE};
-		default = 50;
+		default = 10;
 	};
 	class CTI_GRAPHICS_VD_MAX {
 		title = $STR_CTI_GRAPHICS_VD_MAX;
@@ -277,7 +277,7 @@ class Params {
 		title = $STR_CTI_PLAYERS_GROUPSIZE;
 		values[] = {0,1,2,3,4,5,8,10,12,14,16};
 		texts[] = {$STR_CTI_PLAYERS_GROUPSIZE_AUTO,"1","2","3","4","5","8","10","12","14","16"};
-		default = 0;
+		default = 4;
 	};
 	class CTI_GAMEPLAY_MISSILES_RANGE {
 		title = $STR_CTI_GAMEPLAY_MISSILES_RANGE;
@@ -319,7 +319,7 @@ class Params {
 		title = $STR_CTI_GAMEPLAY_UAV_ALT;
 		values[] = {1000,1200,1500,1600,2000,3000,5000};
 		texts[] = {"UAV disconnection over 1000m","UAV disconnection over 1200m","UAV disconnection over 1500m","UAV disconnection over 1600m","UAV disconnection over 2000m","UAV disconnection over 3000m","UAV disconnection over 5000m"};
-		default = 1600;
+		default = 5000;
 	};
 	class CTI_GAMEPLAY_DARTER_FUEL {
 		title = $STR_CTI_GAMEPLAY_DARTER_FUEL;
@@ -404,7 +404,7 @@ class Params {
 		title = $STR_CTI_WEATHER_ALLOWRAIN;
 		values[] = {0,1};
 		texts[] = {$STR_CTI_WEATHER_ALLOWRAIN_F,$STR_CTI_WEATHER_ALLOWRAIN_T};
-		default = 0;
+		default = 1;
 	};
   	class CTI_WEATHER_FAST {
 		title = $STR_CTI_WEATHER_FAST;
