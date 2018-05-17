@@ -277,7 +277,7 @@ class Params {
 		title = $STR_CTI_PLAYERS_GROUPSIZE;
 		values[] = {0,1,2,3,4,5,8,10,12,14,16};
 		texts[] = {$STR_CTI_PLAYERS_GROUPSIZE_AUTO,"1","2","3","4","5","8","10","12","14","16"};
-		default = 4;
+		default = 0;
 	};
 	class CTI_GAMEPLAY_MISSILES_RANGE {
 		title = $STR_CTI_GAMEPLAY_MISSILES_RANGE;
