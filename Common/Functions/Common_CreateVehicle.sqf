@@ -67,13 +67,13 @@ _vehicle = if ( isNull _created) then {createVehicle [_type, _position, [], 7, _
 //Does a gun config exsist?
 _gun_config = missionNamespace getVariable ( format [ "CTI_LOADOUT_%1_MNT_OPTIONS" , typeOf _vehicle ] );
 diag_log format["vehicle: %1", (typeOf _vehicle)];
-if ( 	
-( 	((typeOf _vehicle) == "O_APC_Tracked_02_AA_F") 
-	|| ((typeOf _vehicle) == "B_APC_Tracked_01_AA_F") 
-	|| _type isKindOf "Air")  
-&& (missionNamespace getVariable "CTI_AC_ENABLED")>0 
+if (
+( 	((typeOf _vehicle) == "O_APC_Tracked_02_AA_F")
+	|| ((typeOf _vehicle) == "B_APC_Tracked_01_AA_F")
+	|| _type isKindOf "Air")
+&& (missionNamespace getVariable "CTI_AC_ENABLED")>0
 && _side != CTI_RESISTANCE_ID
-&& CTI_isCLient 
+&& CTI_isCLient
 && !isNil "_gun_config") then
 {
 	_vanilla_loadout = _vehicle call CTI_AC_GET_STANDARD_VANILLA_LOADOUT;
@@ -85,13 +85,14 @@ if (
 
 if (isNull _created) then {
 	_vehicle setDir _direction;
-	
+
 	if (_vehicle isKindOf "CAR" || _vehicle isKindOf "TANK" || _vehicle isKindOf "SHIP") then {
-	_ep = (getPos _vehicle) findEmptyPosition [0,25,"O_T_VTOL_02_vehicle_dynamicLoadout_F"];
-	_vehicle setPos _ep;
+		_ep = (getPos _vehicle) findEmptyPosition [0,100,"O_T_VTOL_02_vehicle_dynamicLoadout_F"];
+		if (count _ep == 0) then {_ep = (getPos _vehicle) findEmptyPosition [0,250,"O_T_VTOL_02_vehicle_dynamicLoadout_F"];};
+		_vehicle setPos _ep;
 	};
-	
-	if (_special == "FORM") then {_vehicle setPos [getPos _vehicle select 0, getPos _vehicle select 1, 1];}; //--- Make the vehicle spawn above the ground level to prevent any bisteries
+
+	if (_special == "FORM") then {_vehicle setPos [(getPos _vehicle) select 0, (getPos _vehicle) select 1, 1];}; //--- Make the vehicle spawn above the ground level to prevent any bisteries
 	// --- Zerty edit
 	if (_type isKindOf "UAV" || _type isKindOf "UGV_01_base_F") then {createVehicleCrew _vehicle};
 
@@ -100,11 +101,11 @@ if (isNull _created) then {
 
 	//Ensures any air vehicle does not have a weapon that is not researched (SanitizeAircraft)
 	if (
-	((_side == CTI_EAST_ID) || (_side == CTI_WEST_ID)) 
+	((_side == CTI_EAST_ID) || (_side == CTI_WEST_ID))
 	&& CTI_isCLient
 	&& !(isNil "CTI_ALM_AA_RESEARCHED_MAGAZINES") //makes sure henroths loadouts are set
-	&& (_type isKindOf "Air" 
-		|| (_vehicle isKindOf "O_APC_Tracked_02_AA_F") 
+	&& (_type isKindOf "Air"
+		|| (_vehicle isKindOf "O_APC_Tracked_02_AA_F")
 		|| (_vehicle isKindOf "B_APC_Tracked_01_AA_F"))
 	) then {
 		//Setting default loadout for given aircraft
@@ -115,73 +116,73 @@ if (isNull _created) then {
 			//[_vehicle, _t_side] call CTI_CO_FNC_SanitizeAircraft; //is no longer needed
 		} else {
 		//Testing for aircraft that do not have an loadout configured
-		
-			//For Pylon system: Test all pylons if not researched weapon is present - remove it	
+
+			//For Pylon system: Test all pylons if not researched weapon is present - remove it
 			{
 				_pylon = configName(_x); //needs to be number
 				_pylonIndex = _forEachIndex +1; //needs to be number
 				_default_magazine = getText (configFile >> "CfgVehicles" >> _type >> "Components" >> "TransportPylonsComponent" >> "Pylons" >> _pylon >> "attachment");
-				
-				//No ATGM  if upgrade not present 
-				if (((((_t_side) call CTI_CO_FNC_GetSideUpgrades) select CTI_UPGRADE_AIR_AT) == 0) 
+
+				//No ATGM  if upgrade not present
+				if (((((_t_side) call CTI_CO_FNC_GetSideUpgrades) select CTI_UPGRADE_AIR_AT) == 0)
 				&& (_default_magazine in CTI_ALM_ATGM_RESEARCHED_MAGAZINES)) then {
 					_vehicle setPylonLoadOut [_pylonIndex, "", true];
 					_//vehicle setAmmoOnPylon [_pylonIndex, 0];
 				};
-				//No AA  if upgrade not present 
-				if (((((_t_side) call CTI_CO_FNC_GetSideUpgrades) select CTI_UPGRADE_AIR_AA) == 0) 
+				//No AA  if upgrade not present
+				if (((((_t_side) call CTI_CO_FNC_GetSideUpgrades) select CTI_UPGRADE_AIR_AA) == 0)
 				&& (_default_magazine in CTI_ALM_AA_RESEARCHED_MAGAZINES)) then {
 					_vehicle setPylonLoadOut [_pylonIndex, "", true];
 					//_vehicle setAmmoOnPylon [_pylonIndex, 0];
 				};
-				//No FFAR  if upgrade not present 
-				if (((((_t_side) call CTI_CO_FNC_GetSideUpgrades) select CTI_UPGRADE_AIR_FFAR) == 0) 
+				//No FFAR  if upgrade not present
+				if (((((_t_side) call CTI_CO_FNC_GetSideUpgrades) select CTI_UPGRADE_AIR_FFAR) == 0)
 				&& (_default_magazine in CTI_ALM_FFAR_RESEARCHED_MAGAZINES)) then {
 					_vehicle setPylonLoadOut [_pylonIndex, "", true];
 					//_vehicle setAmmoOnPylon [_pylonIndex, 0];
 				};
 			} forEach (configProperties [configFile >> "CfgVehicles" >> _type >> "Components" >> "TransportPylonsComponent" >> "Pylons"]);
-			
-			//For old system: Test all weapons if not researched weapon is present - remove it	
+
+			//For old system: Test all weapons if not researched weapon is present - remove it
 			{
 				_mag 			= _x select 0;
 				_turret_path 	= _x select 1;
 				_ammo_count 	= _x select 2;
 				_id 			= _x select 3;
 				_creator 		= _x select 4;
-				
-				//No ATGM  if upgrade not present 
-				if (((((_t_side) call CTI_CO_FNC_GetSideUpgrades) select CTI_UPGRADE_AIR_AT) == 0) 
+
+				//No ATGM  if upgrade not present
+				if (((((_t_side) call CTI_CO_FNC_GetSideUpgrades) select CTI_UPGRADE_AIR_AT) == 0)
 				&& _mag in CTI_ALM_ATGM_RESEARCHED_MAGAZINES) then {
 					_vehicle removeMagazineTurret [_mag,_turret_path];
 				};
-				//No AA  if upgrade not present 
-				if (((((_t_side) call CTI_CO_FNC_GetSideUpgrades) select CTI_UPGRADE_AIR_AA) == 0) 
+				//No AA  if upgrade not present
+				if (((((_t_side) call CTI_CO_FNC_GetSideUpgrades) select CTI_UPGRADE_AIR_AA) == 0)
 				&& _mag in CTI_ALM_AA_RESEARCHED_MAGAZINES) then {
 					_vehicle removeMagazineTurret [_mag,_turret_path];
 				};
-				//No FFAR  if upgrade not present 
-				if (((((_t_side) call CTI_CO_FNC_GetSideUpgrades) select CTI_UPGRADE_AIR_FFAR) == 0) 
+				//No FFAR  if upgrade not present
+				if (((((_t_side) call CTI_CO_FNC_GetSideUpgrades) select CTI_UPGRADE_AIR_FFAR) == 0)
 				&& _mag in CTI_ALM_FFAR_RESEARCHED_MAGAZINES)  then {
 					_vehicle removeMagazineTurret [_mag,_turret_path];
 				};
 			} forEach (magazinesAllTurrets _vehicle);
-			
-			//No CM  if upgrade not present 
+
+			//No CM  if upgrade not present
 			if ((((_t_side) call CTI_CO_FNC_GetSideUpgrades) select CTI_UPGRADE_AIR_CM) == 0) then {
 				_vehicle setAmmo ["CMFlareLauncher", 0];
 			};
 		};
 	};
-	
+
 	if (_special == "FLY" && _vehicle isKindOf "Plane") then {
 		_vehicle setVelocity [75 * (sin _direction), 75 * (cos _direction), 0];
 	} else {
 		_vehicle setVelocity [0,0,1];
 	};
-	
+
 	//Spawn with components [H]Tom
-	if (_vehicle isKindOf "Wheeled_APC_F" || _vehicle isKindOf "Tank") then { 
+	if (_vehicle isKindOf "Wheeled_APC_F" || _vehicle isKindOf "Tank") then {
 		if (_vehicle isKindOf "I_APC_Wheeled_03_cannon_F") then {[_vehicle, nil, ["showTools",1]] call BIS_fnc_initVehicle;};
 		if (_vehicle isKindOf "O_APC_Wheeled_02_rcws_F" || _vehicle isKindOf "O_APC_Wheeled_02_rcws_v2_F" || _vehicle isKindOf "O_T_APC_Wheeled_02_rcws_ghex_F" || _vehicle isKindOf "O_T_APC_Wheeled_02_rcws_v2_ghex_F") then {[_vehicle, nil, ["showTools",1]] call BIS_fnc_initVehicle;};
 		if (_vehicle isKindOf "O_MBT_02_arty_F" || _vehicle isKindOf "O_T_MBT_02_arty_ghex_F") then {[_vehicle, nil, ["showLog",1]] call BIS_fnc_initVehicle;};
@@ -202,7 +203,7 @@ if (isNull _created) then {
 		_4wdcolors = ["Green", "Olive", "Black", "Brown"];
 		[_vehicle, [(selectRandom _4wdcolors),1], nil] call BIS_fnc_initVehicle;};
 	};
-	
+
 };
 if (missionNamespace getVariable "CTI_TROPHY_APS" == 1) then {
 	if (_vehicle isKindOf "tank" || _vehicle isKindOf "Wheeled_APC_F") then {
