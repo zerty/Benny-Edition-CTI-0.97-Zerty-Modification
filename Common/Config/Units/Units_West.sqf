@@ -987,9 +987,18 @@ _u = _u + [4];
 _f = _f + [4];
 _s = _s + [""];
 
+_c = _c + ['I_Plane_Fighter_03_AA_F'];
+_p = _p + [''];
+_n = _n + ['A-143 Buzzard (AA)'];
+_o = _o + [30000];
+_t = _t + [40];
+_u = _u + [5];
+_f = _f + [4];
+_s = _s + [""];
+
 _c = _c + ['I_Plane_Fighter_03_dynamicLoadout_F'];
 _p = _p + [''];
-_n = _n + [''];
+_n = _n + ['A-143 Buzzard Dynamic (2-2-2)'];
 _o = _o + [35000];
 _t = _t + [40];
 _u = _u + [5];
