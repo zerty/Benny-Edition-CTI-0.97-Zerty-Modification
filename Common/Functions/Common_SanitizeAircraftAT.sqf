@@ -28,7 +28,7 @@ _vehicle = _this;
 _weapons = weapons _vehicle;
 _magazines = magazines _vehicle;
 
-_specialweapons = ["M_Jian_AT"];
+_specialweapons = ["M_Jian_AT","Missile_AGM_02_F"];
 
 _weapons_remove = [];
 _magazines_remove = [];

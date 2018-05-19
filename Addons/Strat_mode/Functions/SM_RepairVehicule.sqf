@@ -5,8 +5,8 @@ SM_repair_vehicle={
 	_caller = _this select 1;
 	["SERVER", "Request_Locality", [_target, _caller]] call CTI_CO_FNC_NetSend;
 
-	_primary_weapon = primaryWeapon player;
-	player selectWeapon _primary_weapon;
+	_primary_weapon = primaryWeapon _caller;
+	_caller selectWeapon _primary_weapon;
 
 	_rk = ({_x == "Toolkit"} count (backpackItems _caller)) + ({_x == "Toolkit"} count (vestItems _caller)) + ({_x == "Toolkit"} count (itemCargo _target));
 	if (_rk > 0) then {
@@ -73,8 +73,8 @@ SM_repair_vehicle={
 SM_Force_entry={
 	_target = _this select 0;
 	_caller = _this select 1;
-	_primary_weapon = primaryWeapon player;
-	player selectWeapon _primary_weapon;
+	_primary_weapon = primaryWeapon _caller;
+	_caller selectWeapon _primary_weapon;
 	_currentcallerdamage = getdammage _caller;
 	_rk=1;
 	_rk = ({_x == "Toolkit"} count (backpackItems _caller)) +({_x == "Toolkit"} count (vestItems _caller));

@@ -5,11 +5,11 @@ PAI_PATROL_AI=compile preprocessfilelinenumbers "Addons\Strat_mode\PATROL_AI\PAI
 
 SM_PATROLS_TO=300;
 
-PATROL_logic=CTI_GUER;
 
+waitUntil {!isnull CTI_GUER};
 
 if (CTI_isServer) then {
-	PATROL_logic setvariable ["patrols",[],true];
+	CTI_GUER setvariable ["patrols",[],true];
 	with missionNamespace do {
 		CTI_PVF_Server_Patrol_WD={ _this spawn PAI_WD;};
 	};
@@ -19,7 +19,7 @@ with missionNamespace do {
 		_patrol= 0 call PAI_CREATE_PATROL;
 		_patrol spawn PAI_PATROL_AI;
 		waitUntil {!isNull (_patrol select 0)};
-		PATROL_logic setvariable ["patrols",(PATROL_logic getVariable ["patrols",[]])+ [_patrol select 0]-[grpNull],true];
+		CTI_GUER setvariable ["patrols",(CTI_GUER getVariable ["patrols",[]])+ [_patrol select 0]-[grpNull],true];
 		if !(CTI_isServer) then {
 			["SERVER", "Server_Patrol_WD",_patrol] call CTI_CO_FNC_NetSend;
 		} else {

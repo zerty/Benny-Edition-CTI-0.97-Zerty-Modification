@@ -16,12 +16,12 @@
 
 
 // Explicit list of IDC values
-CTI_AC_UI_ALL_MAGAZINE_COMBOBOX_IDCS = [ 39040 , 39041 , 39042 , 39043 , 39044 , 39045 , 39046 ];
-CTI_AC_UI_ALL_MAGAZINE_COMBOBOX_FRAMES_IDCS = [ 39090 , 39091 , 39092 , 39093 , 39094 , 39095 , 39096 ];
-CTI_AC_UI_ALL_WEAPON_COMBOBOX_IDCS = [ 39030 , 39031 , 39032 , 39033 , 39034 , 39035 , 39036 ];
-CTI_AC_UI_ALL_WEAPON_COMBOBOX_FRAMES_IDCS = [ 39080 , 39081 , 39082 , 39083 , 39084 , 39085 , 39086 ];
-CTI_AC_UI_ALL_WEAPON_CHECKBOX_IDCS = [ 39050 , 39051 , 39052 , 39053 , 39054 , 39055 , 39056 ];
-CTI_AC_UI_ALL_COST_TEXTBOX_IDCS = [ 39060 , 39061 , 39062 , 39063 , 39064 , 39065 , 39066 ];
+CTI_AC_UI_ALL_MAGAZINE_COMBOBOX_IDCS = [ 710000 , 710001 , 710002 , 710003 , 710004 , 710005 , 710006, 710007, 710008, 710009, 710010, 710011, 710012, 710013, 710014, 710015];
+CTI_AC_UI_ALL_MAGAZINE_COMBOBOX_FRAMES_IDCS = [ 720000 , 720001 , 720002 , 720003 , 720004 , 720005 , 720006, 720007, 720008, 720009, 720010, 720011, 7200012, 720013, 720014, 720015];
+CTI_AC_UI_ALL_WEAPON_COMBOBOX_IDCS = [ 730000 , 730001 , 730002 , 730003 , 730004 , 730005 , 730006, 730007, 730008, 730009, 730010, 730011, 730012, 730013, 730014, 730015];
+CTI_AC_UI_ALL_WEAPON_COMBOBOX_FRAMES_IDCS = [ 740000, 740001 , 740002 , 740003 , 740004 , 740005 , 740006 , 740007, 740008, 740009, 740010, 740011, 740012, 740013, 740014, 740015];
+CTI_AC_UI_ALL_WEAPON_CHECKBOX_IDCS = [ 750000 , 750001 , 750002 , 750003 , 750004 , 750005 , 750006, 750007, 750008, 750009, 750010, 750011, 750012, 750013, 750014, 750015];
+CTI_AC_UI_ALL_COST_TEXTBOX_IDCS = [ 760000 , 760001 , 760002 , 760003 , 760004 , 760005 , 760006, 760007, 760008, 760009, 760010, 760011, 760012, 760013, 760014, 760015];
 
 // IDC starting reference points
 CTI_AC_UI_MAGAZINE_COMBOBOX_START_IDC = CTI_AC_UI_ALL_MAGAZINE_COMBOBOX_IDCS select 0;
@@ -32,17 +32,17 @@ CTI_AC_UI_WEAPON_CHECKBOX_FRAMES_START_IDC = CTI_AC_UI_ALL_WEAPON_COMBOBOX_FRAME
 CTI_AC_UI_WEAPON_COST_TEXTBOX_START_IDC = CTI_AC_UI_ALL_COST_TEXTBOX_IDCS select 0;
 
 
-CTI_AC_UI_VEHICLE_SELECT_LIST_IDC = 39010;
-CTI_AC_UI_LOADOUT_SELECT_LIST_IDC = 39021;
+CTI_AC_UI_VEHICLE_SELECT_LIST_IDC = 739010;
+CTI_AC_UI_LOADOUT_SELECT_LIST_IDC = 739021;
 
-CTI_AC_UI_WEAPON_COMBOBOX_START_IDC = 39030;
-CTI_AC_UI_MAGAZINE_COMBOBOX_START_IDC = 39040;
-CTI_AC_UI_WEAPON_CHECKBOX_START_IDC = 39050;
-CTI_AC_UI_COST_TEXT_START_IDC = 39060;
+CTI_AC_UI_WEAPON_COMBOBOX_START_IDC = 730000;
+CTI_AC_UI_MAGAZINE_COMBOBOX_START_IDC = 710000;
+CTI_AC_UI_WEAPON_CHECKBOX_START_IDC = 750000;
+CTI_AC_UI_COST_TEXT_START_IDC = 760000;
 
 
 
-CTI_AC_UI_IDC_LOADOUT_DISPLAY = 39303;
+CTI_AC_UI_IDC_LOADOUT_DISPLAY = 739303;
 
 CTI_AC_FORCE_UNLOCK_TIME = 180;
 
@@ -89,24 +89,24 @@ CTI_AC_UPDATE_UI_CURRENT_LOADOUT =
 		_text_to_display = "<br />";
 
 		// Extract the name of the loadout and append to message
-		_loadout_name = _loadout_options select ( _loadout_index_chosen - 1 );
+		_loadout_name = (_loadout_options select _loadout_index_chosen) select 0;
 		_text_to_display = format [ "%1<t size='0.9' color='#3399ff'>Loadout: %2</t><br />" , _text_to_display , _loadout_name ];
 
 		// Get specific loadout
 		_loadout_specifics = _loadout_options select _loadout_index_chosen;
-
 		// Loop through each mount point of the vehicle
 		for [ {_mount_index = 1},{ _mount_index < ( count ( _loadout_details ) )},{ _mount_index = _mount_index + 1}] do
 		{
 			// Extract possible mounting options for a particular mount point
+			//Format: [index_weapon, index_magazin, boolean_mounted]
 			_mount_details =_loadout_details select _mount_index;
-
 			// Loadout mount specific options
-			_mount_options = _loadout_specifics select ( _mount_index - 1 );
+			_mount_options = (_loadout_specifics select 2) select ( _mount_index - 1 );
 
 			// Extract chosen weapon details for the mount
-			_weapon_classname = _mount_options select ( _mount_details select 0 );
-			_magazine_chosen = ( ( ( _mount_options select ( ( _mount_details select 0 ) + 1 ) ) ) select ( _mount_details select 1 ) );
+			_weapon_classname = (_mount_options select ( _mount_details select 0 ) select 0);
+			
+			_magazine_chosen = ((_mount_options select ( _mount_details select 0 )) select 1) select ( _mount_details select 1);
 			_magazine_classname = _magazine_chosen select 0;
 			_magazine_cost = _magazine_chosen select 1;
 
@@ -138,7 +138,7 @@ CTI_AC_UPDATE_UI_CURRENT_LOADOUT =
 
 		// Get value of selected loadout
 		_selected_cost_total = call CTI_AC_CALCULATE_CHOSEN_LOADOUT_COST;
-
+		_selected_cost_total = _selected_cost_total + ([ _vehicle, CTI_SERVICE_PRICE_REAMMO, CTI_SERVICE_PRICE_REAMMO_COEF] call CTI_UI_Service_GetPrice);
 		_text_to_display = format [ "%1<t size='1' color='#CCFFFF'>Mounted    $: %2</t><br />" , _text_to_display , _current_value ];
 		_text_to_display = format [ "%1<t size='1' color='#CCFFFF'>Selected    $: %2</t><br />" , _text_to_display , _selected_cost_total ];
 		_text_to_display = format [ "%1<t size='1' color='#CCFFFF'>------------------------------</t><br />" , _text_to_display , _current_value ];
@@ -491,9 +491,9 @@ CTI_AC_UPDATE_UI_LOADOUT_OPTIONS =
 	lbClear ((uiNamespace getVariable "cti_dialog_ui_aircraftloadoutmenu") displayCtrl CTI_AC_UI_LOADOUT_SELECT_LIST_IDC );
 
 	_loudout_values = [];
-	for [ {_index_loadout = 0},{ _index_loadout < ( count ( _gun_configs ))},{ _index_loadout = _index_loadout + 2}] do
+	for [ {_index_loadout = 0},{ _index_loadout < ( count ( _gun_configs ))},{ _index_loadout = _index_loadout + 1}] do
 	{
-		_loadout_name = _gun_configs select _index_loadout;
+		_loadout_name = (_gun_configs select _index_loadout) select 0;
 
 		((uiNamespace getVariable "cti_dialog_ui_aircraftloadoutmenu") displayCtrl CTI_AC_UI_LOADOUT_SELECT_LIST_IDC ) lbAdd _loadout_name;
 
@@ -526,7 +526,7 @@ CTI_AC_UPDATE_UI_WEAPON_OPTIONS =
 	_gun_configs = missionNamespace getVariable ( format [ "CTI_LOADOUT_%1_MNT_OPTIONS" , _typeOfValue ] );
 
 	// Extract weapon options for chosen loadout
-	_selected_weapon_config =  _gun_configs select ( ( _changeto * 2 ) + 1 );
+	_selected_weapon_config =  (_gun_configs select _changeto) select 2;
 
 
 	// Loop through each mount point
@@ -545,9 +545,16 @@ CTI_AC_UPDATE_UI_WEAPON_OPTIONS =
 		for [ {_index_weapon = 0},{ _index_weapon < ( count ( _weapon_options ))},{ _index_weapon = _index_weapon + 2}] do
 		{
 			// Extract weapon name
-			_weapon_classname = _weapon_options select _index_weapon;
-			_weapon_name = getText ( configFile >> "CfgWeapons" >> _weapon_classname >> "displayName" );
-
+			_weapon_classname = (_weapon_options select _index_weapon) select 0;
+			
+			_weapon_name = _weapon_classname;
+			if((_weapon_classname find "Pylon") == -1) then {
+				_weapon_name = getText ( configFile >> "CfgWeapons" >> _weapon_classname >> "displayName" );
+			};
+			if(_weapon_name == "FakeHorn") then {
+				_weapon_name = "Weapon Safty";
+			};
+			
 			// Add to weapon mount point combobox
 			((uiNamespace getVariable "cti_dialog_ui_aircraftloadoutmenu") displayCtrl ( CTI_AC_UI_WEAPON_COMBOBOX_START_IDC + _index_mount )) lbAdd _weapon_name;
 		};
@@ -686,21 +693,23 @@ CTI_AC_UI_GET_SELECTED_MAGAZINE_NAME_ROW_N =
 	// Get the selected row from magazine combobox
 	_magazine_selected_row = ( _mount_row call CTI_AC_UI_GET_SELECTED_MAGAZINE_ROW_N );
 
-	if ( ( ( _loadout_selected_row * 2 ) + 1 ) < count ( _vehicle_loadout_options ) ) then
+	if (_loadout_selected_row < count ( _vehicle_loadout_options ) ) then
 	{
-		_chosen_loadout = _vehicle_loadout_options select ( ( _loadout_selected_row * 2 ) + 1 );
+		_chosen_loadout = (_vehicle_loadout_options select _loadout_selected_row ) select 2;
 
 		if ( _n < count ( _chosen_loadout ) ) then
 		{
-			_chosen_mount = _chosen_loadout select _n;
+			//Weapon + Magazine
+			_chosen_mount = _chosen_loadout select _n; 
 
-			if ( (  ( _weapon_selected_row * 2 ) + 1 ) < count ( _chosen_mount ) ) then
+			if (_weapon_selected_row < count ( _chosen_mount ) ) then
 			{
-				_chosen_weapon_magazine_options = _chosen_mount select ( ( _weapon_selected_row * 2 ) + 1 ) ;
 
-				_chosen_magazine_options = _chosen_weapon_magazine_options select _magazine_selected_row;
+				_chosen_weapon_magazine_options = (_chosen_mount select _weapon_selected_row) select 0;
 
+				_chosen_magazine_options = ((_chosen_mount select _weapon_selected_row) select 1) select _magazine_selected_row;
 				_chosen_magazine_classname = _chosen_magazine_options select 0;
+
 			};
 		};
 	};
@@ -875,19 +884,19 @@ CTI_AC_UI_UPDATE_TEXT_COST_ROW_N =
 	// Get the selected row from magazine combobox
 	_magazine_selected_row = ( _mount_row call CTI_AC_UI_GET_SELECTED_MAGAZINE_ROW_N );
 
-	_chosen_loadout_name = _vehicle_loadout_options select ( _loadout_selected_row * 2 );
+	_chosen_loadout_name = (_vehicle_loadout_options select _loadout_selected_row) select 0;
 
-	_chosen_loadout = _vehicle_loadout_options select ( ( _loadout_selected_row * 2 ) + 1 );
+	_chosen_loadout = (_vehicle_loadout_options select _loadout_selected_row) select 2;
 
 	_chosen_magazine_cost = 0;
-
+	//TODO: adjust array access
 	if ( _n < count ( _chosen_loadout ) ) then
 	{
 		_chosen_mount = _chosen_loadout select _n;
 
-		_chosen_weapon_classname = _chosen_mount select ( _weapon_selected_row * 2 ) ;
+		_chosen_weapon_classname = (_chosen_mount select _weapon_selected_row) select 0;
 
-		_chosen_weapon_magazine_options = _chosen_mount select ( ( _weapon_selected_row * 2 ) + 1 ) ;
+		_chosen_weapon_magazine_options = (_chosen_mount select _weapon_selected_row) select 1;
 
 		_chosen_magazine_options = _chosen_weapon_magazine_options select _magazine_selected_row;
 
@@ -916,7 +925,10 @@ CTI_AC_GET_WEAPON_DISPLAY_NAME =
 	*/
 
 	_weapon_classname = _this;
-	_weapon_name = getText ( configFile >> "CfgWeapons" >> _weapon_classname >> "displayName" );
+	_weapon_name = _weapon_classname;
+	if((_weapon_classname find "Pylons") == -1) then {
+		_weapon_name = getText ( configFile >> "CfgWeapons" >> _weapon_classname >> "displayName" );
+	};
 	_weapon_name
 };
 
@@ -963,7 +975,7 @@ CTI_AC_ACCEPT_VEHICLE_LOADOUT =
 	_loadout_details = [];
 
 	// Determine the chosen loadout index
-	_selected_loadout_index = (( lbCurSel CTI_AC_UI_LOADOUT_SELECT_LIST_IDC ) * 2 ) + 1;
+	_selected_loadout_index = ( lbCurSel CTI_AC_UI_LOADOUT_SELECT_LIST_IDC);
 
 	// Add the loadout index
 	_loadout_details = _loadout_details + [ _selected_loadout_index ];
@@ -978,7 +990,7 @@ CTI_AC_ACCEPT_VEHICLE_LOADOUT =
 
 			_index_position = (_weapon_combobox_idc - CTI_AC_UI_WEAPON_COMBOBOX_START_IDC );
 			_magazine_combobox_idc = _index_position + CTI_AC_UI_MAGAZINE_COMBOBOX_START_IDC;
-			_selected_weapon_index = ( lbCurSel _weapon_combobox_idc ) * 2;
+			_selected_weapon_index = lbCurSel _weapon_combobox_idc;
 			_selected_magazine_index = lbCurSel _magazine_combobox_idc;
 			_mount_set = _index_position call CTI_AC_UI_WEAPON_MOUNT_BUTTON_IS_SET;
 
@@ -1008,46 +1020,46 @@ CTI_AC_PURGE_ALL_WEAPONS =
 
 	_vehicle = _this;
 
-	if ( _vehicle isKindof "Air" ) then
+	// Grab vehicle loadout choices
+	_loadout_selections = _vehicle getVariable "CTI_AC_AIRCRAFT_LOADOUT_MOUNTED";
+
+
+	// Determine vehicle type
+	_typeOfValue = typeOf _vehicle;
+
+	// Grab the weapon configurations available for this vehicle
+	_gun_configs = missionNamespace getVariable ( format [ "CTI_LOADOUT_%1_MNT_OPTIONS" , _typeOfValue ] );
+
+	//Loadout chosen index
+	_loadout_index = _loadout_selections select 0;
+
+	// Mountpoint options for chosen loadout
+	_all_mountpoint_options = (_gun_configs select _loadout_index) select 2;
+
+	_turret_skip_list = [];
+
+	// Loop through each mount point
+	for [ {_mount_index = 0},{ _mount_index < ( count ( _all_mountpoint_options ))},{ _mount_index = _mount_index + 1}] do
 	{
 
-		// Grab vehicle loadout choices
-		_loadout_selections = _vehicle getVariable "CTI_AC_AIRCRAFT_LOADOUT_MOUNTED";
+		//Get options for mountpoint
+		_a_mountpoint_options = _all_mountpoint_options select _mount_index;
 
+		// Extract chosen mountpoint options
+		_mount_loadout = _loadout_selections select ( _mount_index + 1 );
+		_mount_loadout_weapon_index = _mount_loadout select 0;
+		_mount_loadout_magazine_index = _mount_loadout select 1;
+		_mount_loadout_enabled  = _mount_loadout select 2;
+		
+		_magazine_options = (( _a_mountpoint_options select ( _mount_loadout_weapon_index)) select 1) select ( _mount_loadout_magazine_index );
+		_magazine_classname = _magazine_options select 0;
 
-		// Determine vehicle type
-		_typeOfValue = typeOf _vehicle;
-
-		// Grab the weapon configurations available for this vehicle
-		_gun_configs = missionNamespace getVariable ( format [ "CTI_LOADOUT_%1_MNT_OPTIONS" , _typeOfValue ] );
-
-		//Loadout chosen index
-		_loadout_index = _loadout_selections select 0;
-
-		// Mountpoint options for chosen loadout
-		_all_mountpoint_options = _gun_configs select _loadout_index;
-
-		_turret_skip_list = [];
-
-		// Loop through each mount point
-		for [ {_mount_index = 0},{ _mount_index < ( count ( _all_mountpoint_options ))},{ _mount_index = _mount_index + 1}] do
-		{
-
-			//Get options for mountpoint
-			_a_mountpoint_options = _all_mountpoint_options select _mount_index;
-
-			// Extract chosen mountpoint options
-			_mount_loadout = _loadout_selections select ( _mount_index + 1 );
-			_mount_loadout_weapon_index = _mount_loadout select 0;
-			_mount_loadout_magazine_index = _mount_loadout select 1;
-			_mount_loadout_enabled  = _mount_loadout select 2;
-
-			_magazine_options = ( _a_mountpoint_options select ( _mount_loadout_weapon_index + 1 ) ) select ( _mount_loadout_magazine_index );
-			_magazine_classname = _magazine_options select 0;
-
-			//Get chosen weapon and magazine classnames
-			_weapon_classname = _a_mountpoint_options select _mount_loadout_weapon_index;
-
+		//Get chosen weapon and magazine classnames
+		_weapon_classname = (_a_mountpoint_options select _mount_loadout_weapon_index) select 0;
+		//Mounts pylon, not weapon
+		if((_weapon_classname find "Pylon") >= 0) then {
+			_vehicle setPylonLoadOut [_weapon_classname, ""]; 
+		} else {
 			if ( count ( _magazine_options ) > 2 ) then
 			{
 
@@ -1094,25 +1106,23 @@ CTI_AC_PURGE_ALL_WEAPONS =
 						};
 					};
 				};
-
 				_vehicle removeMagazineGlobal _magazine_classname;
 				_vehicle removeWeaponGlobal _weapon_classname;
 			};
-
 		};
 
-		// Remove all current weapons
-		{
-			_vehicle removeWeaponGlobal _x;
-		} foreach ( weapons _vehicle );
-
-		// Remove all current magazines
-		{
-			_vehicle removeMagazineGlobal _x;
-		} foreach ( magazines _vehicle );
-
-
 	};
+
+	// Remove all current weapons
+	{
+		_vehicle removeWeaponGlobal _x;
+	} foreach ( weapons _vehicle );
+
+	// Remove all current magazines
+	{
+		_vehicle removeMagazineGlobal _x;
+	} foreach ( magazines _vehicle );
+
 };
 
 CTI_AC_CALCULATE_CHOSEN_LOADOUT_COST =
@@ -1234,44 +1244,47 @@ CTI_AC_GET_MAGAZINE_DISPLAY_NAME =
  funcGetTurretsWeapons = {
      private ["_result", "_getAnyMagazines", "_findRecurse", "_class"];
      _result = [];
-     _getAnyMagazines = {
-         private ["_weapon", "_mags"];
-         _weapon = configFile >> "CfgWeapons" >> _this;
-         _mags = [];
-         {
-             _mags = _mags + getArray (
-                 (if (_x == "this") then { _weapon } else { _weapon >> _x }) >> "magazines"
-             )
-         } foreach getArray (_weapon >> "muzzles");
-         _mags
-     };
-     _findRecurse = {
-         private ["_root", "_class", "_path", "_currentPath"];
-         _root = (_this select 0);
-         _path = +(_this select 1);
-         for "_i" from 0 to count _root -1 do {
-             _class = _root select _i;
-             if (isClass _class) then {
-                 _currentPath = _path + [_i];
-                 {
-                     _result set [count _result, [_x, _x call _getAnyMagazines, _currentPath, str _class]];
-                 } foreach getArray (_class >> "weapons");
-                 _class = _class >> "turrets";
-                 if (isClass _class) then {
-                     [_class, _currentPath] call _findRecurse;
-                 };
-             };
-         };
-     };
-     _class = (
-         configFile >> "CfgVehicles" >> (
-             switch (typeName _this) do {
-                 case "STRING" : {_this};
-                 case "OBJECT" : {typeOf _this};
-                 default {nil};
-             }
-         ) >> "turrets"
-     );
-     [_class, []] call _findRecurse;
+	 if((_this find "Pylon") == -1) then {
+		 _getAnyMagazines = {
+			 private ["_weapon", "_mags"];
+			 _weapon = configFile >> "CfgWeapons" >> _this;
+			 _mags = [];
+			 {
+				 _mags = _mags + getArray (
+					 (if (_x == "this") then { _weapon } else { _weapon >> _x }) >> "magazines"
+				 )
+			 } foreach getArray (_weapon >> "muzzles");
+			 _mags
+		 };
+		 _findRecurse = {
+			 private ["_root", "_class", "_path", "_currentPath"];
+			 _root = (_this select 0);
+			 _path = +(_this select 1);
+			 for "_i" from 0 to count _root -1 do {
+				 _class = _root select _i;
+				 if (isClass _class) then {
+					 _currentPath = _path + [_i];
+					 {
+						 _result set [count _result, [_x, _x call _getAnyMagazines, _currentPath, str _class]];
+					 } foreach getArray (_class >> "weapons");
+					 _class = _class >> "turrets";
+					 if (isClass _class) then {
+						 [_class, _currentPath] call _findRecurse;
+					 };
+				 };
+			 };
+		 };
+		 _class = (
+			 configFile >> "CfgVehicles" >> (
+				 switch (typeName _this) do {
+					 case "STRING" : {_this};
+					 case "OBJECT" : {typeOf _this};
+					 default {nil};
+				 }
+			 ) >> "turrets"
+		 );
+		 [_class, []] call _findRecurse;
+	 };
      _result;
+	 
  };

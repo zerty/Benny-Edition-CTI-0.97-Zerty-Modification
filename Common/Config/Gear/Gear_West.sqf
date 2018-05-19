@@ -929,7 +929,7 @@ _p = _p		+ [100];
 
 _i = _i		+ ["B_Static_Designator_01_weapon_F"];
 _u = _u		+ [2];
-_p = _p		+ [500];
+_p = _p		+ [5000];
 
 if !(MADE_FOR_STRATIS) then {
 _i = _i		+ ["B_Mortar_01_support_F"];

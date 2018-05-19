@@ -12,6 +12,7 @@ with missionNamespace do {
 	GUER_SOLDIER_MEDIC = "I_medic_F";
 	// GUER_SOLDIER_MG = "soldiermg";
 	GUER_SOLDIER_PILOT = "I_helipilot_F";
+	GUER_SOLDIER_JETPILOT = "I_Fighter_Pilot_F";
 	GUER_SOLDIER_SQUADLEADER = "I_Soldier_SL_F";
 	GUER_SOLDIER_MARKSMAN = "I_Soldier_M_F";
 	GUER_SOLDIER_TEAMLEADER = "I_Soldier_TL_F";

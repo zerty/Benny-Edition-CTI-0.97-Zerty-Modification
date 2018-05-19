@@ -320,7 +320,7 @@ switch (_action) do {
 			    	_hqs=[];
 					//{_hqs set [count _hqs, _x call CTI_CO_FNC_GetSideHQ];true} count [east,west];
 			    	if (vehicle player == player && (_target iskindof "Tank" || _target iskindof "Wheeled_APC_F" || _target iskindof "Truck_F" || (typeof _target) in ["Land_Pod_Heli_Transport_04_box_F","B_Slingload_01_Cargo_F"])&& alive _target && !(_target in _hqs)) then  {
-			    		if ((count (crew _target) == 0) && abs (speed _target) <1 && locked _target <2 ) then {
+			    		if (({alive _x} count (crew _target) == 0) && abs (speed _target) <1 && locked _target <2 ) then {
 			    			((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTextColor [0,0,1,1];
 			    		} else {
 			    			((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTextColor [0.3,0.3,0.3,1];
@@ -378,7 +378,7 @@ switch (_action) do {
 			    	};
 			    };
 			    case 30: { // CTI_Icon_al
-			    	if (alive _target  && _target iskindof "Air" && (!(_target iskindOf "B_Plane_Fighter_01_F" || _target iskindOf "O_Plane_Fighter_02_F" || _target iskindOf "I_Plane_Fighter_04_F" || _target iskindOf "parachutebase"))) then {
+			    	if (alive _target  && _target iskindof "Air" && (!(_target iskindOf "parachutebase"))) then {
 			    		_structures = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideStructures;
 			    		_ammo_depots = [CTI_AMMO, _structures] call CTI_CO_FNC_GetSideStructuresByType;
 			    		_available_ammo_depots = [_target, _ammo_depots, CTI_SERVICE_AMMO_DEPOT_RANGE] call CTI_UI_Service_GetBaseDepots;
@@ -474,7 +474,7 @@ switch (_action) do {
 							((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetPosition [_base_x+(_offset*_base_w),_base_y+_h_offset*_base_h,_base_w,_base_h];
 							_offset=_offset+1;
 						} else {
-							((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetPosition [_base_x+(_offset*_base_w),_base_y+5,_base_w,_base_h];	
+							((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetPosition [_base_x+(_offset*_base_w),_base_y+5,_base_w,_base_h];
 						};
 					};
 				};
@@ -534,7 +534,7 @@ switch (_action) do {
 			    		((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetPosition [_base_x+(_offset*_base_w),_base_y+5,_base_w,_base_h];
 			    	};
 			    };
-				
+
 			};
 		};
 		//if (_offset == 0) exitwith {false};
@@ -785,7 +785,7 @@ switch (_action) do {
 		_available_rep_depots = [_target, _rep_depots, CTI_SERVICE_REPAIR_DEPOT_RANGE] call CTI_UI_Service_GetBaseDepots;
 		_available_rep_trucks = [_target, CTI_SPECIAL_REPAIRTRUCK, CTI_SERVICE_REPAIR_TRUCK_RANGE] call CTI_CO_FNC_GetNearestSpecialVehicles;
 		if (count (_available_rep_depots + _available_rep_trucks) > 0 && local _target) then {
-			
+
 			_orig = [_target] call bis_fnc_getVehicleCustomization select 1;
 			_camohull = "showCamonetHull";
 			_camoturret = "showCamonetTurret";
@@ -802,7 +802,7 @@ switch (_action) do {
 				_vct = _orig select _vposct;
 				if (_vct == 0) then {_orig set [_vposct, 1];} else {_orig set [_vposct, 0];};
 			};
-			
+
 			if (_target isKindOf "O_APC_Wheeled_02_rcws_F" || _target isKindOf "O_T_APC_Wheeled_02_rcws_ghex_F") then {
 				_orig = ["showCamonetHull",1];
 			}; //marid temporary fix
@@ -827,7 +827,7 @@ switch (_action) do {
 			_slatt = "showSLATTurret";
 			_hideh = "HideHull";
 			_hidet = "HideTurret";
-			
+
 			if (_slath in _orig) then {
 				_slathpos = _orig find _slath;
 				_shvpos = _slathpos +1;
@@ -852,7 +852,7 @@ switch (_action) do {
 				_vht = _orig select _htvpos;
 				if (_vht == 1) then {_orig set [_htvpos, 0];} else {_orig set [_htvpos, 1];};
 			};
-			
+
 			if (_target isKindOf "O_APC_Wheeled_02_rcws_F" || _target isKindOf "O_T_APC_Wheeled_02_rcws_ghex_F") then {
 				_orig = ["showSLATHull",1];
 			}; // marid temporary fix

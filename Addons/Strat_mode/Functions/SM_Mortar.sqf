@@ -32,7 +32,7 @@ _maingrouploop={
 			if (count _t >4) then {_target = (_t select floor random count _t)};
 		};
 		if (count _target >0 ) then {
-			//if (count _cas == 0) then {_cas = [_town,_t, "I_Heli_light_03_F"] call _create_cas	};
+			//if (count _cas == 0) then {_cas = [_town,_t, "I_Heli_light_03_dynamicLoadout_F"] call _create_cas	};
 			diag_log format [ "MORTAR ::  %1 Firing to %2", _group,_target select 0];
 			{
 				_x commandArtilleryFire [([ _target select 0, 25, 100] call CTI_CO_FNC_GetRandomPosition), "8Rnd_82mm_Mo_shells", 1];

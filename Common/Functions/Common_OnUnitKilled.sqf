@@ -68,7 +68,7 @@ if (_isvehicle_killed) then {
 	if !(isNil "_last_side") then {_side_killed = _last_side};
 };
 
-if ((_killer isKindOf "UAV" || _killer isKindOf "B_T_UAV_03_F" || _killer isKindOf "O_T_UAV_04_CAS_F" || _killer isKindOf "UGV_01_base_F" ) && ! isNull((uavControl _killer) select 0)  ) then {_killer = ((uavControl _killer) select 0)};
+if ((_killer isKindOf "UAV" || _killer isKindOf "B_T_UAV_03_dynamicLoadout_F" || _killer isKindOf "O_T_UAV_04_CAS_F" || _killer isKindOf "UGV_01_base_F" ) && ! isNull((uavControl _killer) select 0)  ) then {_killer = ((uavControl _killer) select 0)};
 
 _side_killer = side _killer;
 _group_killed = group _killed;

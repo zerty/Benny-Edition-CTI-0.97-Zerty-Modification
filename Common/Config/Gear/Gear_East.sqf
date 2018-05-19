@@ -817,7 +817,7 @@ _p = _p		+ [100];
 
 _i = _i		+ ["O_Static_Designator_02_weapon_F"];
 _u = _u		+ [2];
-_p = _p		+ [500];
+_p = _p		+ [5000];
 
 
 //Helms

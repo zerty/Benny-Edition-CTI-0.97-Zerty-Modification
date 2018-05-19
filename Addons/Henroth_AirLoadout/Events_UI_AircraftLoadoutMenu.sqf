@@ -44,12 +44,12 @@ switch (_action) do {
 	//Select a weapon loadout options
 	case "onAmmoListLBSelChanged":
 	{
-		if ( CTI_DEBUG ) then
-		{
-			systemChat format [ "Triggering onAmmoListLBSelChanged()" ];
-		};
 		// Get relative mount row
 		_mount_row = _this select 2;
+		if ( CTI_DEBUG ) then
+		{
+			systemChat format [ "Triggering onAmmoListLBSelChanged(%1)", _mount_row ];
+		};
 
 		// Disable if not researched
 		_mount_row call CTI_AC_UI_LOCK_IF_NOT_RESEARCHED_MOUNT_N;
@@ -117,7 +117,7 @@ switch (_action) do {
 		_gun_configs = missionNamespace getVariable ( format [ "CTI_LOADOUT_%1_MNT_OPTIONS" , _typeOfValue ] );
 
 		//Loadout chosen index
-		_loadout_index = ( ( ( call CTI_AC_UI_GET_SELECTED_LOADOUT_INDEX ) *2 ) + 1 );
+		_loadout_index = ( call CTI_AC_UI_GET_SELECTED_LOADOUT_INDEX );
 
 		if ( DEBUG_onWeaponListLBSelChanged ) then
 		{
@@ -125,8 +125,7 @@ switch (_action) do {
 		};
 
 		// Mountpoint options for chosen loadout
-		_all_mountpoint_options = _gun_configs select _loadout_index;
-
+		_all_mountpoint_options = (_gun_configs select _loadout_index) select 2;
 		//Get options for mountpoint
 		if ( _relative_idc < ( count ( _all_mountpoint_options ) ) ) then
 		{
@@ -153,9 +152,8 @@ switch (_action) do {
 			//Get chosen weapon and magazine classnames
 			// _weapon_classname = _a_mountpoint_options select _mount_loadout_weapon_index;
 			// _selected_magazine_config = ( _a_mountpoint_options select ( _mount_loadout_weapon_index + 1 ) );
-
-			_weapon_classname = _a_mountpoint_options select ( _changeto * 2 );
-			_selected_magazine_config = ( _a_mountpoint_options select ( ( _changeto * 2 ) + 1 ) );
+			_weapon_classname = (_a_mountpoint_options select _changeto) select 0;
+			_selected_magazine_config = (_a_mountpoint_options select _changeto) select 1;
 
 			if ( DEBUG_onWeaponListLBSelChanged ) then
 			{
@@ -163,7 +161,7 @@ switch (_action) do {
 			};
 
 			// Clear out configuration details for the magazine related to this mount point
-			lbClear ((uiNamespace getVariable "cti_dialog_ui_aircraftloadoutmenu") displayCtrl ( 39040 + ( _relative_idc ) ) );
+			lbClear ((uiNamespace getVariable "cti_dialog_ui_aircraftloadoutmenu") displayCtrl ( 710000 + ( _relative_idc ) ) );
 
 			// Loop through each of the magazine options for this weapon
 			for [ {_index_magazine = 0},{ _index_magazine < ( count ( _selected_magazine_config ))},{ _index_magazine = _index_magazine + 1}] do
@@ -181,13 +179,12 @@ switch (_action) do {
 
 				// Determine count to display
 				_magazine_count = getNumber  ( configFile >> "CfgMagazines" >> _magazine_classname >> "count" );
-
 				// Update magazine list of options
-				((uiNamespace getVariable "cti_dialog_ui_aircraftloadoutmenu") displayCtrl ( 39040 + _relative_idc )) lbAdd ( format[ "%1 X %2" , _magazine_count , _magazine_name ] );
+				((uiNamespace getVariable "cti_dialog_ui_aircraftloadoutmenu") displayCtrl ( 710000 + _relative_idc )) lbAdd ( format[ "%1 X %2" , _magazine_count , _magazine_name ] );
 			};
 
 			// Default select first element
-			((uiNamespace getVariable "cti_dialog_ui_aircraftloadoutmenu") displayCtrl ( 39040 + _relative_idc )) lbSetCurSel 0;
+			((uiNamespace getVariable "cti_dialog_ui_aircraftloadoutmenu") displayCtrl ( 710000 + _relative_idc )) lbSetCurSel 0;
 		}
 		else
 		{

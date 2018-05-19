@@ -1,4 +1,4 @@
-#define FUEL_FACTOR 5
+#define FUEL_FACTOR 15
 
 
 private ["_uav","_last_fuel","_newfuel"];
