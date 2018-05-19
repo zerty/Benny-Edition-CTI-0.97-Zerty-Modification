@@ -2192,7 +2192,7 @@ CTI_LOADOUT_I_Plane_Fighter_03_AA_F_MNT_OPTIONS =
 			[
 				[ "missiles_ASRAAM" ,
 					[
-						[ "2Rnd_AAA_missiles_MI06" , "8000" ],
+						[ "2Rnd_AAA_missiles_MI06" , "8000" ]
 					]
 				] 
 			],
@@ -2245,14 +2245,14 @@ CTI_LOADOUT_I_Plane_Fighter_03_CAS_F_MNT_OPTIONS =
 			[
 				[ "missiles_ASRAAM" ,
 					[
-						[ "2Rnd_AAA_missiles_MI06" , "8000" ],
+						[ "2Rnd_AAA_missiles_MI06" , "8000" ]
 					]
 				] 
 			],	
 			[
 				[ "GBU12BombLauncher_Plane_Fighter_03_F" ,
 					[
-						[ "2Rnd_GBU12_LGB_MI10" , "10000" ],
+						[ "2Rnd_GBU12_LGB_MI10" , "10000" ]
 					]
 				] 
 			],
@@ -2508,10 +2508,10 @@ CTI_LOADOUT_I_Plane_Fighter_04_F_MNT_OPTIONS =
 			[
 				[ "CMFlareLauncher" ,
 					[
+						[ "240Rnd_CMFlare_Chaff_Magazine" , "5000" , [-1] ],
 						[ "120Rnd_CMFlare_Chaff_Magazine" , "500" , [-1]] ,
 						[ "168Rnd_CMFlare_Chaff_Magazine" , "3000" , [-1] ] ,
-						[ "192Rnd_CMFlare_Chaff_Magazine" , "4000" , [-1] ] ,
-						[ "240Rnd_CMFlare_Chaff_Magazine" , "5000" , [-1] ]
+						[ "192Rnd_CMFlare_Chaff_Magazine" , "4000" , [-1] ]
 					]
 				]
 			]
@@ -2537,19 +2537,19 @@ CTI_LOADOUT_I_Plane_Fighter_04_Cluster_F_MNT_OPTIONS =
 // ***************************
 // Plane - UAV (AA) (Copyies opfor loadout)
 // ***************************
-CTI_LOADOUT_I_UAV_02_F_MNT_OPTIONS = CTI_LOADOUT_O_UAV_02_F_MNT_OPTIONS
+CTI_LOADOUT_I_UAV_02_F_MNT_OPTIONS = CTI_LOADOUT_O_UAV_02_F_MNT_OPTIONS;
 
 // ***************************
 // Plane - UAV (Bomb) TODO
 // ***************************
 
-CTI_LOADOUT_I_UAV_02_CAS_F_MNT_OPTIONS = CTI_LOADOUT_O_UAV_02_CAS_F_MNT_OPTIONS
+CTI_LOADOUT_I_UAV_02_CAS_F_MNT_OPTIONS = CTI_LOADOUT_O_UAV_02_CAS_F_MNT_OPTIONS;
 
 // ***************************
 // Plane - UAV (AT) TODO
 // ***************************
 
-CTI_LOADOUT_I_UAV_02_dynamicLoadout_F_MNT_OPTIONS = CTI_LOADOUT_O_UAV_02_dynamicLoadout_F_MNT_OPTIONS
+CTI_LOADOUT_I_UAV_02_dynamicLoadout_F_MNT_OPTIONS = CTI_LOADOUT_O_UAV_02_dynamicLoadout_F_MNT_OPTIONS;
 
 
 

@@ -159,7 +159,7 @@ class Params {
 		title = $STR_CTI_GRAPHICS_TG_MAX;
 		values[] = {10,20,30,50};
 		texts[] = {$STR_CTI_GRAPHICS_TG_FAR,$STR_CTI_GRAPHICS_TG_MED,$STR_CTI_GRAPHICS_TG_SHORT,$STR_CTI_GRAPHICS_TG_FREE};
-		default = 10;
+		default = 50;
 	};
 	class CTI_GRAPHICS_VD_MAX {
 		title = $STR_CTI_GRAPHICS_VD_MAX;
