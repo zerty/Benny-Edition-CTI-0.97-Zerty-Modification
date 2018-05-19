@@ -46,6 +46,7 @@ _direction = getDir _hq_wreck;
 //_position =[_position, 50] call CTI_CO_FNC_GetEmptyPosition;
 _ep = _position findEmptyPosition [0,100,"O_T_VTOL_02_vehicle_dynamicLoadout_F"];
 if (count _ep == 0) then {_ep = _position findEmptyPosition [0,250,"O_T_VTOL_02_vehicle_dynamicLoadout_F"];};
+_position = _ep;
 
 //_position = _position findEmptyPosition [0,50,typeOf ((_side) call CTI_CO_FNC_GetSideHQ)];
 //_position set [2,1];
