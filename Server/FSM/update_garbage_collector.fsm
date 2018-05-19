@@ -62,7 +62,7 @@ class FSM
                          "_groups_empty=[];" \n
                          "" \n
                          "{" \n
-                         "	if ((count units  _x) == 0) then {_groups_empty pushback _x};" \n
+                         "	if ((count units  _x) == 0) then {_groups_empty pushback _x;};" \n
                          "}forEach AllGroups;" \n
                          "" \n
                          "{" \n
