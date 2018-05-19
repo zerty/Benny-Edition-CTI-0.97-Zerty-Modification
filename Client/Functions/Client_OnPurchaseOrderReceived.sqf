@@ -7,7 +7,7 @@
 					the "Client_OnPurchaseOrderReceived" PVF
 	Author: 		Benny
 	Creation Date:	19-09-2013
-	Revision Date:	19-09-2013
+	Revision Date:	19-05-2018
 
   # PARAMETERS #
     0	[Number]: The purchase seed
@@ -144,6 +144,20 @@ if (_model isKindOf "Man") then {
 	_units pushBack _vehicle;
 } else {
 	_vehicle = [_model, _position, _direction + getDir _factory, CTI_P_SideID, (_veh_infos select 4), true, true] call CTI_CO_FNC_CreateVehicle;
+	
+	[_vehicle, _req_buyer, _cost, _var_classname] spawn {
+		_veh = _this select 0;
+		_req_buyer = _this select 1;
+		_cost = _this select 2;
+		_var_classname = _this select 3;
+		sleep(15);
+		if(!alive _veh) then {
+			//delete wreck & refound cash
+			deleteVehicle _veh;
+			[group(_req_buyer), CTI_P_SideJoined, _cost] call CTI_CO_FNC_ChangeFunds;
+			hint parseText format [localize "STR_OnPurchase_RefundUnit", _var_classname select CTI_UNIT_LABEL];
+		};
+	};
 
 	if (_veh_infos select 0 || _veh_infos select 1 || _veh_infos select 2 || _veh_infos select 3) then { //--- Not empty.
 		_crew = switch (true) do { case (_model isKindOf "Tank"): {"Crew"}; case (_model isKindOf "Air"): {"Pilot"}; default {"Soldier"}};
