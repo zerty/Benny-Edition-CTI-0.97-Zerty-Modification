@@ -15,8 +15,8 @@ link3[] = {2,4};
 link4[] = {4,5};
 link5[] = {5,6};
 link6[] = {6,3};
-globals[] = {0.000000,0,0,0,0,640,480,1,164,6316128,1,-620.422607,163.824570,138.236649,-571.857727,973,885,1};
-window[] = {2,-1,-1,-32000,-32000,1031,250,1505,250,3,991};
+globals[] = {0.000000,0,0,0,0,640,480,1,164,6316128,1,-620.422607,163.824570,138.236649,-571.857727,973,884,1};
+window[] = {2,-1,-1,-1,-1,859,78,1333,78,3,991};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -66,6 +66,9 @@ class FSM
                         name = "Update_Victory";
                         itemno = 2;
                         init = /*%FSM<STATEINIT""">*/"_ncycle = time + 5;" \n
+                         "" \n
+                         "_max_time = missionNamespace getVariable ""CTI_MAX_MISSION_TIME"";" \n
+                         "_max_time=_max_time*60*60; // cycle for loadgame - time limit [H]Tom" \n
                          "" \n
                          "{" \n
                          "	_side = _x;" \n
