@@ -46,8 +46,7 @@ if (isNull (CTI_P_SideLogic getVariable ["cti_commander",grpnull])) then {
 
 if (_com_name == "") then {_com_name = "NONE"};
 _maxareas = CTI_BASE_AREA_MAX;
-_logic = (side player) call CTI_CO_FNC_GetSideLogic;
-_areas = _logic getvariable "cti_structures_areas";
+_areas = CTI_P_SideLogic getvariable "cti_structures_areas";
 _current = count _areas;
 
 _t = _t + (format [localize "STR_Current_Com", _com_name ]) + (format [" || "]) + (format ["<t color='#F5D363'>Base Areas:</t><t> %1/%2</t><br />", _current, _maxareas]);
