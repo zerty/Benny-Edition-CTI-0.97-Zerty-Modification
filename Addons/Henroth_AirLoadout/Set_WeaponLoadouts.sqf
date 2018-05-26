@@ -1944,7 +1944,7 @@ CTI_LOADOUT_O_Plane_CAS_02_dynamicLoadout_F_MNT_OPTIONS =
 					[
 						[ "PylonMissile_1Rnd_Bomb_03_F" , "5000" ],
 						[ "PylonMissile_1Rnd_LG_scalpel" , "5000" ],
-						[ "PylonRack_3Rnd_LG_scalpel" , "1500" ],
+						[ "PylonRack_3Rnd_LG_scalpel" , "15000" ],
 						[ "PylonRack_4Rnd_LG_scalpel" , "20000" ],
 						[ "PylonRack_20Rnd_Rocket_03_HE_F" , "3000" ],
 						[ "PylonRack_20Rnd_Rocket_03_AP_F" , "3000" ],
