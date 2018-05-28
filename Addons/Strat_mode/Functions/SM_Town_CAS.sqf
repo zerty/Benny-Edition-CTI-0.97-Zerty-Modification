@@ -64,6 +64,7 @@ SM_TCAS_CREATE=compile '
 	};
 	if (_rn < 0.90) then {
 		_cas = [_town, "I_Heli_light_03_dynamicLoadout_F","FORM"] call SM_TCAS_MAINLOOP;
+
 	};
 	diag_log _cas;
 	_cas';
