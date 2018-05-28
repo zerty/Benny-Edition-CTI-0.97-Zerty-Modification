@@ -6,7 +6,7 @@
 private ["_initial_pos","_initial_dir","_side","_pack","_packobject"];
 _target=_this;
 
-if (count (crew _target) != 0) exitwith {hintsilent "The vehicle needs to be empty to perform that action";sleep 3;hintsilent "";};
+if ({alive _x} count (crew _target) > 0) exitwith {hintsilent "The vehicle needs to be empty to perform that action";sleep 3;hintsilent "";};
 _initial_pos=getposatl _target;
 _initial_dir=getdir _target;
 _side =CTI_P_sideJoined;

@@ -62,8 +62,8 @@ link30[] = {24,25};
 link31[] = {25,1};
 link32[] = {25,26};
 link33[] = {26,25};
-globals[] = {0.000000,0,0,0,0,640,480,1,173,6316128,1,-574.395325,539.341492,392.100830,-994.579956,710,884,1};
-window[] = {2,-1,-1,-1,-1,690,78,1114,78,3,728};
+globals[] = {0.000000,0,0,0,0,640,480,1,173,6316128,1,-1091.492065,1056.436035,832.636719,-1191.768555,939,885,1};
+window[] = {2,-1,-1,-1,-1,762,150,1186,150,3,957};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -82,7 +82,7 @@ class FSM
                          "_town setVariable [""cti_town_resistance_activeTime"", -1000,true];" \n
                          "_town setVariable [""cti_town_mortars"",[0,0,0],true];" \n
                          "_town setVariable [""cti_town_disactivate"",true,true];" \n
-                         "};" \n
+                         "_town setVariable [""cti_town_timeofspawn"", -1000,true];};" \n
                          "_ncycle = time + 20;"/*%FSM</STATEINIT""">*/;
                         precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
                         class Links
@@ -295,7 +295,7 @@ class FSM
                          "" \n
                          "{" \n
                          "" \n
-                         "	if (alive _x && ({(side _x) == resistance} count (crew _x)>0) ) then {" \n
+                         "	if ((alive _x && ({(side _x) == resistance} count (crew _x)>0)) || time < ((_town getVariable ""cti_town_timeofspawn"")+240) ) then {" \n
                          "		deleteVehicle _x;" \n
                          "	};" \n
                          "} forEach (_town getVariable ""cti_town_resistance_active_vehicles"");" \n
@@ -428,7 +428,8 @@ class FSM
                          "if ( _town in (CTI_EAST getvariable ""CTI_ACTIVE"")) then {" \n
                          "    [[""CLIENT"",east],""SM_message"",format [localize ""STR_TownActive"",(_town getVariable ""cti_town_name"")]] call CTI_CO_FNC_NetSend ;" \n
                          "};" \n
-                         ""/*%FSM</STATEINIT""">*/;
+                         "" \n
+                         "_town setVariable [""cti_town_timeofspawn"", time,true];"/*%FSM</STATEINIT""">*/;
                         precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
                         class Links
                         {

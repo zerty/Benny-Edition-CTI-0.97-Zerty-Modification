@@ -45,9 +45,18 @@ if (isNull (CTI_P_SideLogic getVariable ["cti_commander",grpnull])) then {
 };
 
 if (_com_name == "") then {_com_name = "NONE"};
-_t=_t+ (format [localize "STR_Current_Com",_com_name ]);
+_maxareas = CTI_BASE_AREA_MAX;
+_areas = CTI_P_SideLogic getvariable "cti_structures_areas";
+_current = count _areas;
 
+_t = _t + (format [localize "STR_Current_Com", _com_name ]) + (format [" || "]) + (format ["<t color='#F5D363'>Base Areas:</t><t> %1/%2</t><br />", _current, _maxareas]);
 
+_limit = (missionNamespace getVariable "CTI_MAX_MISSION_TIME");
+if (_limit > 0) then {
+_time = round (time/60);
+_left = ((_limit * 60) - _time);
+_t = _t + (format ["<t color='#F5D363'>Time Left:</t><t> %1</t> min.<br />", _left]);
+};
 
 _running = CTI_P_SideLogic getVariable "cti_upgrade";
 _ttext = localize "STR_No_Upgrade_Running";

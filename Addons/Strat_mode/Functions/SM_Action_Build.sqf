@@ -1,3 +1,4 @@
+
 #define animation "ainvpknlmstpsnonwrfldnon_medic0s"
 #define player_ratio 4
 #define reward 25
@@ -21,4 +22,3 @@ while {alive _caller  && animationstate _caller == animation && _target in (CTI_
 _caller switchMove "";
 CTI_P_Repairing = false ;
 0 call HUD_PBar_stop;
-
