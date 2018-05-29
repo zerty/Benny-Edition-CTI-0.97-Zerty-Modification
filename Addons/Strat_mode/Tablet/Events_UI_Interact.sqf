@@ -557,7 +557,7 @@ switch (_action) do {
 		['onLoad'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_Interact.sqf'
 	};
 	case "OnNet": {
-		if (locked _target >0) exitwith {false};
+		//if (locked _target >0) exitwith {false}; migth fix the hellcat problem
 		if ((_target getVariable ['CTI_Net',-1])!= -1) Then {
 			_target setVariable ['CTI_Net',-1,true];
 			_target setVariable ['AN_iNet',CTI_P_SideID,true];
