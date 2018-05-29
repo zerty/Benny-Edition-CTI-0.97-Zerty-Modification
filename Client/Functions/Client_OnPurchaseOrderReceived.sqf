@@ -36,7 +36,7 @@
 	[_seed, _classname, group player, _veh_infos, _factory] spawn CTI_CL_FNC_OnPurchaseOrderReceived
 */
 
-private ["_cost", "_factory", "_funds", "_index", "_model", "_net", "_req_buyer", "_req_classname", "_req_seed", "_req_time", "_req_time_out", "_script", "_var", "_var_classname", "_vehicle", "_veh_infos"];
+private ["_cost", "_factory", "_funds", "_index", "_model", "_net", "_req_buyer", "_req_classname", "_req_seed", "_req_time", "_req_time_out", "_script", "_var", "_var_classname", "_vehicle", "_veh_infos","_group"];
 
 _req_seed = _this select 0;
 _req_classname = _this select 1;
@@ -44,6 +44,8 @@ _req_buyer = _this select 2;
 _factory = _this select 3;
 _veh_infos = _this select 4;
 
+
+_group= group (_req_buyer);
 _model = _req_classname;
 _var_classname = missionNamespace getVariable _req_classname;
 _picture = if ((_var_classname select CTI_UNIT_PICTURE) != "") then {format["<img image='%1' size='2.5'/><br /><br />", _var_classname select CTI_UNIT_PICTURE]} else {""};
@@ -88,7 +90,7 @@ if !(_model isKindOf "Man") then { //--- Add the vehicle crew cost if applicable
 	};
 };
 
-_funds = [group (_req_buyer), CTI_P_SideJoined] call CTI_CO_FNC_GetFunds;
+_funds = [_group, CTI_P_SideJoined] call CTI_CO_FNC_GetFunds;
 
 
 if (_funds < _cost) exitWith {
@@ -144,7 +146,7 @@ if (_model isKindOf "Man") then {
 	_units pushBack _vehicle;
 } else {
 	_vehicle = [_model, _position, _direction + getDir _factory, CTI_P_SideID, (_veh_infos select 4), true, true] call CTI_CO_FNC_CreateVehicle;
-	
+
 	[_vehicle, _req_buyer, _cost, _var_classname] spawn {
 		_veh = _this select 0;
 		_req_buyer = _this select 1;
