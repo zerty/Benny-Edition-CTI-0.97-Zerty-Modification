@@ -5,7 +5,7 @@ CTI_UI_Respawn_GetAvailableLocations = {
 
 	_hq = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideHQ;
 	_structures = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideStructures;
-	if (alive _hq) then {_list pushBack _hq };
+	if (alive _hq && ((getPosATL _hq) select 2 ) < 4) then {_list pushBack _hq };
 	_list = _list + _structures;
 	if (count _list < 1) then { _list = [_hq] };
 	_list=_list - [objNull];
@@ -234,7 +234,7 @@ CTI_UI_Respawn_OnRespawnReady = {
 		params ["_obj", "_pos", "_offset"];
 		_offset = _pos select 2;
 		if (isNil "_offset") then {_offset = 0};
-		_pos set [2, worldSize]; 
+		_pos set [2, worldSize];
 		_obj setPosASL _pos;
 		_pos set [2, vectorMagnitude (_pos vectorDiff getPosVisual _obj) + _offset];
 		_obj setPosASL _pos;
@@ -249,7 +249,7 @@ CTI_UI_Respawn_OnRespawnReady = {
 			_pos = getPos _where; //--- Get the AI position (todo: copy the stance)
 			_respawn_ai_gear = (_where) call CTI_UI_Gear_GetUnitEquipment; //--- Get the AI current equipment using the Gear UI function
 			deleteVehicle _where; //--- Remove the AI
-			
+
 			_nearesthouse = typeOf ((position player) nearestObject "House");
 			_nearesthousepos = getPos ((position player) nearestObject "House");
 			_nearesthouseradius = round (sizeOF _nearesthouse / 2);
@@ -262,12 +262,12 @@ CTI_UI_Respawn_OnRespawnReady = {
 			} else {
 			[player, _pos] call KK_fnc_setPosAGLS;
 			};
-			
+
 			if (((player distance2d nearestbuilding player) < 10) && (!(typeOF nearestbuilding player in EXCEPTIONS))) then {
 			_buildingpos = nearestBuilding player buildingPos -1;
 			player setpos (selectrandom _buildingpos);
 			};
-			
+
 //			player setPos _pos; //--- Place the player where the AI was
 			_respawn_ai = true;
 		};
@@ -288,7 +288,7 @@ CTI_UI_Respawn_OnRespawnReady = {
 		} else {
 		[player, _spawn_at] call KK_fnc_setPosAGLS;
 		};
-		
+
 		if (((player distance2d nearestbuilding player) < 10) && (!(typeOF nearestbuilding player in EXCEPTIONS))) then {
 		_buildingpos2 = nearestBuilding player buildingPos -1;
 		player setpos (selectrandom _buildingpos2);
