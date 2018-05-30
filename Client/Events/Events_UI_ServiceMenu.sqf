@@ -10,7 +10,7 @@ switch (_action) do {
 		_repair_depots = [CTI_REPAIR, _structures, player] call CTI_CO_FNC_GetSideStructuresByType;
 		_ammo_depots = [CTI_AMMO, _structures, player] call CTI_CO_FNC_GetSideStructuresByType;
 
-		_list = [group player, false] Call CTI_CO_FNC_GetTeamVehicles;
+		_list = [group player, false,objNull,150,false,true] Call CTI_CO_FNC_GetTeamVehicles;
 		{if (vehicle _x == _x) then {_list pushBack _x}} forEach units player;
 
 		_player_support_repair = (CTI_SPECIAL_REPAIRTRUCK) call CTI_UI_Service_GetGroupMobileSupports;
