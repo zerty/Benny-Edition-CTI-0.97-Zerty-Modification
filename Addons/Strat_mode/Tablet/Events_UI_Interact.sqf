@@ -731,7 +731,7 @@ switch (_action) do {
 	};
 
 	case "OnBFact": {
-		if !((CTI_P_SideLogic getVariable "cti_commander") == group player&& (leader group player) == player  && !CTI_P_PreBuilding && CTI_Base_HQInRange) exitwith {false};
+		if !(vehicle player == player &&(CTI_P_SideLogic getVariable "cti_commander") == group player&& (leader group player) == player  && !CTI_P_PreBuilding && CTI_Base_HQInRange) exitwith {false};
 		closedialog 0;
 		createDialog "CTI_RscBuildMenu_Tablet";
 	};
