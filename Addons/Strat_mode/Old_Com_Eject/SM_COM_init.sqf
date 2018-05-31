@@ -30,7 +30,6 @@ if (CTI_IsServer) then {
 			[["CLIENT", _side], "Client_OnMessageReceived", ["vote_casted", [name _client]]] call CTI_CO_FNC_NetSend;
 		};
 		CTI_PVF_Server_Com_Leave={
-			diag_log "recieved leave";
 			_side=_this;
 			[_side,false] call CTI_COM_UNSET_SERVER;
 			_side_logic=(_side) call CTI_CO_FNC_GetSideLogic;
