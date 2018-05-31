@@ -654,11 +654,11 @@ switch (_action) do {
 		[_target,player] execVM "Client\Actions\Action_RepairHQ.sqf";
 		['onLoad'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_Interact.sqf';
 	};
-	case "OnFact": {
+	/*case "OnFact": {
 		closedialog 0;
 		//uiNamespace setVariable ['cti_dialog_ui_purchasemenu',objnull];
 		[_target] execVM "Client\Actions\Action_UseNearestFactory.sqf";
-	};
+	};*/
 	case "OnUnits": {
 		closedialog 0;
 		//uiNamespace setVariable ['cti_dialog_ui_purchasemenu',objnull];
