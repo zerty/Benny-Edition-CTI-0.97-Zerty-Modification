@@ -704,7 +704,7 @@ _u = _u		+ [1];
 _p = _p		+ [15];
 
 _i = _i		+ ["U_B_CombatUniform_mcam"];
-_u = _u		+ [1];
+_u = _u		+ [0];
 _p = _p		+ [20];
 
 _i = _i		+ ["U_B_CombatUniform_mcam_vest"];
@@ -958,35 +958,35 @@ _u = _u		+ [1];
 _p = _p		+ [100];
 
 _i = _i		+ ["B_AssaultPack_blk"];
-_u = _u		+ [1];
+_u = _u		+ [0];
 _p = _p		+ [50];
 
 _i = _i		+ ["B_AssaultPack_cbr"];
-_u = _u		+ [1];
+_u = _u		+ [0];
 _p = _p		+ [50];
 
 _i = _i		+ ["B_AssaultPack_rgr"];
-_u = _u		+ [1];
+_u = _u		+ [0];
 _p = _p		+ [50];
 
 _i = _i		+ ["B_AssaultPack_khk"];
-_u = _u		+ [1];
+_u = _u		+ [0];
 _p = _p		+ [50];
 
 _i = _i		+ ["B_AssaultPack_mcamo"];
-_u = _u		+ [1];
+_u = _u		+ [0];
 _p = _p		+ [50];
 
 _i = _i		+ ["B_AssaultPack_sgg"];
-_u = _u		+ [1];
+_u = _u		+ [0];
 _p = _p		+ [50];
 
 _i = _i		+ ["B_AssaultPack_tna_F"];
-_u = _u		+ [1];
+_u = _u		+ [0];
 _p = _p		+ [50];
 
 _i = _i		+ ["B_AssaultPack_Kerry"];
-_u = _u		+ [1];
+_u = _u		+ [0];
 _p = _p		+ [50];
 
 _i = _i		+ ["B_Parachute"];
@@ -1418,7 +1418,7 @@ _p = _p		+ [70];
 _i = _i		+ ["optic_AMS_khk"];
 _u = _u		+ [3];
 _p = _p		+ [70];
- 
+
 _i = _i		+ ["optic_AMS_snd"];
 _u = _u		+ [3];
 _p = _p		+ [70];
