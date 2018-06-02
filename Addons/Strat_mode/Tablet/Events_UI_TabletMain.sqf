@@ -69,10 +69,12 @@ switch (_action) do {
 			};
 		} else {
 			{
-				if !(simulationEnabled _x) then {_x enableSimulation true};
-				if (speed _x < 5 && getPos _x select 2 < 5) then {
-					_x setPos [getPos _x select 0, getPos _x select 1, 1];
-					_x setVelocity [0,0,1];
+				if !((_x == (( CTI_P_SideJoined) call CTI_CO_FNC_GetSideHQ))&& !((group player) == ((CTI_P_SideJoined) call CTI_CO_FNC_GetSideCommander)) ) then {
+					if !(simulationEnabled _x) then {_x enableSimulation true};
+					if (speed _x < 5 && getPos _x select 2 < 5) then {
+						_x setPos [getPos _x select 0, getPos _x select 1, 1];
+						_x setVelocity [0,0,1];
+					};
 				};
 			} forEach (player nearEntities[["Car","Motorcycle","Ship","Tank"],10]);
 		};
