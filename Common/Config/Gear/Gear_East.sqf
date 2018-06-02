@@ -586,7 +586,7 @@ _u = _u		+ [2];
 _p = _p		+ [150];
 
 _i = _i		+ ["U_O_CombatUniform_ocamo"];
-_u = _u		+ [2];
+_u = _u		+ [0];
 _p = _p		+ [100];
 
 _i = _i		+ ["U_O_SpecopsUniform_ocamo"];
@@ -784,31 +784,31 @@ if !(MADE_FOR_STRATIS) then {
 };
 
 _i = _i		+ ["B_FieldPack_blk"];
-_u = _u		+ [1];
+_u = _u		+ [0];
 _p = _p		+ [50];
 
 _i = _i		+ ["B_FieldPack_cbr"];
-_u = _u		+ [1];
+_u = _u		+ [0];
 _p = _p		+ [50];
 
 _i = _i		+ ["B_FieldPack_ghex_F"];
-_u = _u		+ [1];
+_u = _u		+ [0];
 _p = _p		+ [50];
 
 _i = _i		+ ["B_FieldPack_ocamo"];
-_u = _u		+ [1];
+_u = _u		+ [0];
 _p = _p		+ [50];
 
 _i = _i		+ ["B_FieldPack_khk"];
-_u = _u		+ [1];
+_u = _u		+ [0];
 _p = _p		+ [50];
 
 _i = _i		+ ["B_FieldPack_oli"];
-_u = _u		+ [1];
+_u = _u		+ [0];
 _p = _p		+ [50];
 
 _i = _i		+ ["B_FieldPack_oucamo"];
-_u = _u		+ [1];
+_u = _u		+ [0];
 _p = _p		+ [50];
 
 _i = _i		+ ["B_Parachute"];
