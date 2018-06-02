@@ -3,7 +3,7 @@ CTI_P_Repairing = false;
 SM_repair_vehicle={
 	_target = _this select 0;
 	_caller = _this select 1;
-	["SERVER", "Request_Locality", [_target, _caller]] call CTI_CO_FNC_NetSend;
+	//["SERVER", "Request_Locality", [_target, _caller]] call CTI_CO_FNC_NetSend;
 
 	_primary_weapon = primaryWeapon _caller;
 	_caller selectWeapon _primary_weapon;
@@ -28,20 +28,49 @@ SM_repair_vehicle={
 		_currentdamage = getdammage _target;
 		_hps = {_x != 0} count (getAllHitPointsDamage _target select 2);
 		[localize "STR_RepairingVehicle",0,1,0] call HUD_PBar_start;
-		
+
 		_avgdamage = (getAllHitPointsDamage _target select 2) call BIS_fnc_arithmeticMean;
-		_hitpointname = getallhitpointsdamage _target select 0;
-		_repvalue = 0.003;
+		//_hitpointname = getallhitpointsdamage _target select 0;
+		/*_repvalue = 0.003;
 		if (_avgdamage <= 0.10) then {_repvalue = 0.03;};
 		if (_avgdamage <= 0.25 && _avgdamage > 0.10) then {_repvalue = 0.01;};
-		if (_avgdamage <= 0.50 && _avgdamage > 0.25) then {_repvalue = 0.005;};
-		
+		if (_avgdamage <= 0.50 && _avgdamage > 0.25) then {_repvalue = 0.005;};*/
+
+		if ((owner _target) == 0) then {
+			[_target,_caller,_pos] call SM_REPAIRVEHICLEREMOTE ;
+			while {alive _caller && alive _target  && _hps > 0 && (_caller distance2d _target) <5 && (_caller distance _target) <7 && (_caller distance _pos)<=1 && (vehicle _caller) ==_caller && _currentdamage > ((getdammage _target) - 0.01) && _currentcallerdamage > ((getdammage _caller) - 0.02)} do {
+				sleep 1;
+
+				_avgdamage = (getAllHitPointsDamage _target select 2) call BIS_fnc_arithmeticMean;
+				(1-(_avgdamage)) call HUD_PBar_update;
+
+				/*
+				_hitpointdamage = getallhitpointsdamage _target select 2;
+
+				for '_i' from 0 to count(_hitpointname)-1 do {
+					if ((_hitpointdamage select _i) >= _repvalue) then {
+	                _target setHitIndex [_i, ((_hitpointdamage select _i) - _repvalue)];
+	                } else {
+					_target setHitIndex [_i, 0];
+					};
+				};*/
+
+				_hps = {_x != 0} count (getAllHitPointsDamage _target select 2);
+				_currentdamage = getdammage _target;
+			};
+		} else {
+			[["CLIENT", _target], "Repair_vehicle",[_target,_caller,_pos]] call CTI_CO_FNC_NetSend;
+		};
+
+
+
 		while {alive _caller && alive _target  && _hps > 0 && (_caller distance2d _target) <5 && (_caller distance _target) <7 && (_caller distance _pos)<=1 && (vehicle _caller) ==_caller && _currentdamage > ((getdammage _target) - 0.01) && _currentcallerdamage > ((getdammage _caller) - 0.02)} do {
 			sleep 1;
 
 			_avgdamage = (getAllHitPointsDamage _target select 2) call BIS_fnc_arithmeticMean;
 			(1-(_avgdamage)) call HUD_PBar_update;
 
+			/*
 			_hitpointdamage = getallhitpointsdamage _target select 2;
 
 			for '_i' from 0 to count(_hitpointname)-1 do {
@@ -50,14 +79,14 @@ SM_repair_vehicle={
                 } else {
 				_target setHitIndex [_i, 0];
 				};
-			};
-			
+			};*/
+
 			_hps = {_x != 0} count (getAllHitPointsDamage _target select 2);
 			_currentdamage = getdammage _target;
 		};
 
-		_hitpointdamage = getallhitpointsdamage _target select 2;
-		if ((count _hitpointname) == ({_x == 0} count (_hitpointdamage))) then {_target setDammage 0;};
+		//_hitpointdamage = getallhitpointsdamage _target select 2;
+		//if ((count _hitpointname) == ({_x == 0} count (_hitpointdamage))) then {_target setDammage 0;};
 
 		if ((_caller distance2d _target) >5 || (_caller distance _target) >7 || (_caller distance _pos)>1 || !((vehicle _caller) ==_caller)) exitWith {_caller switchMove ""; hint localize "STR_SM_RepairVehicule_Failed";CTI_P_Repairing = false ;0 call HUD_PBar_stop;};
 		_caller switchMove "";
@@ -92,7 +121,7 @@ SM_Force_entry={
 
 	if (_target getVariable ["forced",false]) exitWith {hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br />This vehicle has already been <t color='#F86363'>forced</t> or the <t color='#F86363'>Lock is broken</t>!";};
 	_pos = getPos _caller;
-	
+
 	_rt=0;
 	_heavy=0;
 	_reptruck = [_target, CTI_SPECIAL_REPAIRTRUCK, 50] call CTI_CO_FNC_GetNearestSpecialVehicles;
