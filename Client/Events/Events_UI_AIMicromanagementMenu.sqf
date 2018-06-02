@@ -198,7 +198,7 @@ switch (_action) do {
 				if (_who == effectiveCommander vehicle _who && vehicle _who != _who) then {
 					_veh=(vehicle _who);
 					{_veh deleteVehicleCrew _x} forEach crew _veh;
-					deleteVehicle _veh;
+					if !(_veh in [(CTI_EAST getVariable "cti_hq"),(CTI_WEST getVariable "cti_hq")]) then  {deleteVehicle _veh;};
 				}else {
 					deleteVehicle _who;
 				};
