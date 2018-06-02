@@ -76,5 +76,7 @@ east addScoreSide (_loadeast select 9);
 //Time Left [H]Tom
 diag_log format [" :: SAVE :: TimeLimit",(_loadwest select 11)];
 if (_loadwest select 11 > 0) then {
-missionNamespace setVariable ["CTI_MAX_MISSION_TIME",((_loadwest select 11)/60),true];
+    missionNamespace setVariable ["CTI_MAX_MISSION_TIME",((_loadwest select 11)/60),true];
 };
+
+CTI_Init_Server=True;

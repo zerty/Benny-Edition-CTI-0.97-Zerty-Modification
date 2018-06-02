@@ -15,8 +15,8 @@ link3[] = {2,4};
 link4[] = {4,5};
 link5[] = {5,6};
 link6[] = {6,3};
-globals[] = {0.000000,0,0,0,0,640,480,1,164,6316128,1,-620.422607,163.824570,138.236649,-571.857727,973,884,1};
-window[] = {2,-1,-1,-1,-1,859,78,1333,78,3,991};
+globals[] = {0.000000,0,0,0,0,640,480,1,164,6316128,1,-620.422607,163.824570,138.236649,-571.857727,973,885,1};
+window[] = {2,-1,-1,-1,-1,1031,250,1505,250,3,991};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -42,7 +42,7 @@ class FSM
                          "	_total_value = _total_value + (_x getVariable ""cti_town_value"");" \n
                          "} forEach CTI_Towns;" \n
                          "" \n
-                         "diag_log _total_value;"/*%FSM</STATEINIT""">*/;
+                         ""/*%FSM</STATEINIT""">*/;
                         precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
                         class Links
                         {
@@ -53,7 +53,7 @@ class FSM
                                         priority = 1.000000;
                                         to="Update_Victory";
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/"!CTI_GameOver && time > _ncycle "/*%FSM</CONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!CTI_GameOver && time > _ncycle  && (missionNamespace getvariable [""CTI_Init_Server"",false])"/*%FSM</CONDITION""">*/;
                                         action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
                                 };
                                 /*%FSM</LINK>*/
@@ -103,7 +103,8 @@ class FSM
                          "" \n
                          "		CTI_GameOver = true;" \n
                          "	};" \n
-                         "} forEach [west, east];"/*%FSM</STATEINIT""">*/;
+                         "} forEach [west, east];" \n
+                         ""/*%FSM</STATEINIT""">*/;
                         precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
                         class Links
                         {
@@ -114,7 +115,7 @@ class FSM
                                         priority = 1.000000;
                                         to="Update_Victory";
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/"!CTI_GameOver && time > _ncycle "/*%FSM</CONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!CTI_GameOver && time > _ncycle  && (missionNamespace getvariable [""CTI_Init_Server"",false])"/*%FSM</CONDITION""">*/;
                                         action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
                                 };
                                 /*%FSM</LINK>*/
