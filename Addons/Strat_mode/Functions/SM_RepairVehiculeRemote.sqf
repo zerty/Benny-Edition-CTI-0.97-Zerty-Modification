@@ -3,6 +3,7 @@ _caller = _this	select 1;
 _pos=_this select 2;
 
 _currentdamage = getdammage _target;
+_currentcallerdamage = getdammage _caller;
 _avgdamage = (getAllHitPointsDamage _target select 2) call BIS_fnc_arithmeticMean;
 _hitpointname = getallhitpointsdamage _target select 0;
 _hps = {_x != 0} count (getAllHitPointsDamage _target select 2);
