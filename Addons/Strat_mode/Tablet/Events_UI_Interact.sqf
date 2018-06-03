@@ -45,7 +45,7 @@ switch (_action) do {
 
 			    };
 			    case 4: { // CTI_Icon_fact
-					if ((CTI_P_SideLogic getVariable "cti_commander") == group player && (leader group player) == player && !CTI_P_PreBuilding && CTI_Base_HQInRange) then {
+					if (vehicle player == player &&(CTI_P_SideLogic getVariable "cti_commander") == group player && (leader group player) == player && !CTI_P_PreBuilding && CTI_Base_HQInRange) then {
 
 						((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTextColor [1,1,0,1];
 
@@ -266,7 +266,7 @@ switch (_action) do {
 			    	};
 			    };
 			    case 20: { // CTI_Icon_fact // ok
-			    	if (_target in (CTI_P_SideJoined call CTI_CO_FNC_GetSideStructures) && alive _target && !isnil {missionNamespace getVariable format ["CTI_%1_%2", CTI_P_SideJoined, typeOf _target]}) then  {
+			    	if (_target in (CTI_P_SideJoined call CTI_CO_FNC_GetSideStructures) && !((_target getVariable ["cti_structure_type",""]) in ["",CTI_RADAR,CTI_CONTROLCENTER] )&& alive _target && !isnil {missionNamespace getVariable format ["CTI_%1_%2", CTI_P_SideJoined, typeOf _target]}) then  {
 			    		_var=missionNamespace getVariable format ["CTI_%1_%2", CTI_P_SideJoined, typeOf _target];
 			    		((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (510103)) ctrlsettext (format ["%1", ((_var select 0) select 2)]);
 			    		((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTextColor [0,0,1,1];
@@ -299,7 +299,7 @@ switch (_action) do {
 			    	};
 			    };
 			    case 23: { // CTI_Icon_push //ok
-			    	if (!(_target iskindof "Man" ||_target iskindof "Static" ) &&local _target&& simulationEnabled _target && speed _target <1 && speed _target >-1 && alive _target&& locked _target < 2 ) then  {
+			    	if (!(_target iskindof "Man" ||_target iskindof "Static" ) &&local _target&& simulationEnabled _target && speed _target <1 && speed _target >-1 && alive _target&& locked _target < 2 && typeOf _target != "") then  {
 			    		((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTextColor [0,0,1,1];
 			    		((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetPosition [_base_x+(_offset*_base_w),_base_y+_h_offset*_base_h,_base_w,_base_h];
 			    		_offset=_offset+1;
@@ -308,7 +308,7 @@ switch (_action) do {
 			    	};
 			    };
 			    case 24: { // CTI_Icon_pull //OK
-			    	if (!(_target iskindof "Man" ||_target iskindof "Static" ) &&local _target&& simulationEnabled _target && speed _target <1 && speed _target >-1 && alive _target && locked _target < 2 ) then  {
+			    	if (!(_target iskindof "Man" ||_target iskindof "Static" ) &&local _target&& simulationEnabled _target && speed _target <1 && speed _target >-1 && alive _target && locked _target < 2 && typeOf _target != "") then  {
 			    		((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTextColor [0,0,1,1];
 			    		((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetPosition [_base_x+(_offset*_base_w),_base_y+_h_offset*_base_h,_base_w,_base_h];
 			    		_offset=_offset+1;
@@ -557,7 +557,7 @@ switch (_action) do {
 		['onLoad'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_Interact.sqf'
 	};
 	case "OnNet": {
-		if (locked _target >0) exitwith {false};
+		//if (locked _target >0) exitwith {false}; migth fix the hellcat problem
 		if ((_target getVariable ['CTI_Net',-1])!= -1) Then {
 			_target setVariable ['CTI_Net',-1,true];
 			_target setVariable ['AN_iNet',CTI_P_SideID,true];
@@ -654,11 +654,11 @@ switch (_action) do {
 		[_target,player] execVM "Client\Actions\Action_RepairHQ.sqf";
 		['onLoad'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_Interact.sqf';
 	};
-	case "OnFact": {
+	/*case "OnFact": {
 		closedialog 0;
 		//uiNamespace setVariable ['cti_dialog_ui_purchasemenu',objnull];
 		[_target] execVM "Client\Actions\Action_UseNearestFactory.sqf";
-	};
+	};*/
 	case "OnUnits": {
 		closedialog 0;
 		//uiNamespace setVariable ['cti_dialog_ui_purchasemenu',objnull];
@@ -731,7 +731,7 @@ switch (_action) do {
 	};
 
 	case "OnBFact": {
-		if !((CTI_P_SideLogic getVariable "cti_commander") == group player&& (leader group player) == player  && !CTI_P_PreBuilding && CTI_Base_HQInRange) exitwith {false};
+		if !(vehicle player == player &&(CTI_P_SideLogic getVariable "cti_commander") == group player&& (leader group player) == player  && !CTI_P_PreBuilding && CTI_Base_HQInRange) exitwith {false};
 		closedialog 0;
 		createDialog "CTI_RscBuildMenu_Tablet";
 	};

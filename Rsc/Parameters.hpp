@@ -223,8 +223,8 @@ class Params {
 
 	class CTI_MAX_MISSION_TIME {
 		title = $STR_CTI_MAX_MISSION_TIME;
-		values[] = {0,2,4,6,8,12,24};
-		texts[] = {$STR_CTI_MAX_MISSION_TIME_NEVER,"2h","4h","6h","8h","12h","24h"};
+		values[] = {0,2,3,4,6,8,12,24};
+		texts[] = {$STR_CTI_MAX_MISSION_TIME_NEVER,"2h","3h","4h","6h","8h","12h","24h"};
 		default = 0;
 	};
 	class MIN_TOWNS {

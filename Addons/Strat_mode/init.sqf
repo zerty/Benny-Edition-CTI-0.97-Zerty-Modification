@@ -52,6 +52,8 @@ with missionNamespace do {
 	   	H_PROTECT_WHEELS= compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Functions\handler_protec_wheels.sqf";
 	   	WEATHER_HOOK= compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Functions\WEATHER_HOOK.sqf";
 	   	TUTO_Init_Client= compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Functions\TUTORIAL_init_client.sqf";
+	   	KK_fnc_setPosAGLS= compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Functions\KK_fnc_setPosAGLS.sqf";
+	   	SM_REPAIRVEHICLEREMOTE= compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Functions\SM_RepairVehiculeRemote.sqf";
 };
 
 //Common stuff
@@ -73,6 +75,9 @@ with missionNamespace do {
 
 	CTI_PVF_Protect_Wheels ={
 		_this addEventHandler ["HandleDamage",{_this call H_PROTECT_WHEELS}];
+	};
+	CTI_PVF_Repair_vehicle ={
+		if (local (_this select 0)) then {_this call SM_REPAIRVEHICLEREMOTE ;};
 	};
 };
 

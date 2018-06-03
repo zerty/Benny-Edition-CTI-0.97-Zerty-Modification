@@ -12,7 +12,7 @@ SM_TCAS_MAINLOOP=compile '
 	_dir=[_pos, _town] call CTI_CO_FNC_GetDirTo;
 	if (_fly == "FLY") then {_pos=[_town,1500,2500] call CTI_CO_FNC_GetRandomPosition; _pos set [2,1750];};
 	_dir=[_pos, _town] call CTI_CO_FNC_GetDirTo;
-	_v=[_type,_pos , _dir, resistance, false, true, true,_fly] call CTI_CO_FNC_CreateVehicle;
+	_v=[_type, _pos, _dir, resistance, true, true, true, _fly] call CTI_CO_FNC_CreateVehicle;
 
 	[_v,_group] call bis_fnc_spawncrew;
 	if !( isNil "ADMIN_ZEUS") then { ADMIN_ZEUS addCuratorEditableObjects [([_v]),true];};
@@ -64,6 +64,7 @@ SM_TCAS_CREATE=compile '
 	};
 	if (_rn < 0.90) then {
 		_cas = [_town, "I_Heli_light_03_dynamicLoadout_F","FORM"] call SM_TCAS_MAINLOOP;
+
 	};
 	diag_log _cas;
 	_cas';

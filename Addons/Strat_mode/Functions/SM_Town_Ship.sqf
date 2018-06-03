@@ -7,7 +7,7 @@ SM_TShip_MAINLOOP=compile '
 	_townpos = getpos _town;
 	_pos=[[[_townpos, 500]],["ground"]] call BIS_fnc_randomPos;
 	_dir=([_pos, _town] call CTI_CO_FNC_GetDirTo) + 90;
-	_v=[_type,_pos , _dir, resistance, false, true, true,_form] call CTI_CO_FNC_CreateVehicle;
+	_v=[_type, _pos, _dir, resistance, true, true, true, _form] call CTI_CO_FNC_CreateVehicle;
 	[_v,_group] call bis_fnc_spawncrew;
 	if !( isNil "ADMIN_ZEUS") then { ADMIN_ZEUS addCuratorEditableObjects [([_v]),true];};
 	if !( isNil "ADMIN_ZEUS") then { ADMIN_ZEUS addCuratorEditableObjects [(units _group),true];};

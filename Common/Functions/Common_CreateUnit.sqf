@@ -56,16 +56,7 @@ _unit = _team createUnit [_classname, _position, [], 0, _special];
 
 if (_unit isKindOf "Man") then {
 	EXCEPTIONS = ["Land_Dome_Small_F","Land_Dome_Big_F","Land_Cargo_Tower_V4_F","Land_Cargo_Tower_V1_F","Land_Cargo_Patrol_V4_F","Land_Cargo_Patrol_V1_F","Land_FuelStation_Shed_F","Land_fs_roof_F","Land_FuelStation_01_roof_F","Land_FuelStation_02_roof_F","Land_FuelStation_01_roof_malevil_F","Land_SM_01_shelter_wide_F","Land_Shed_Big_F","Land_Shed_Small_F","Land_SM_01_shelter_narrow_F","Land_TentHangar_V1_F","Land_Airport_01_hangar_F","Land_Shed_06_F","Land_MetalShelter_01_F","Land_MetalShelter_02_F","Land_WarehouseShelter_01_F","Land_SCF_01_shed_F"];
-	KK_fnc_setPosAGLS = {
-		params ["_obj", "_pos", "_offset"];
-		_offset = _pos select 2;
-		if (isNil "_offset") then {_offset = 0};
-		_pos set [2, worldSize]; 
-		_obj setPosASL _pos;
-		_pos set [2, vectorMagnitude (_pos vectorDiff getPosVisual _obj) + _offset];
-		_obj setPosASL _pos;
-	};
-	
+
 	_nearesthouse = typeOf ((position _unit) nearestObject "House");
 	_nearesthousepos = getPos ((position _unit) nearestObject "House");
 	_nearesthouseradius = round (sizeOF _nearesthouse / 2);
@@ -78,7 +69,7 @@ if (_unit isKindOf "Man") then {
 	} else {
 	[_unit, _position] call KK_fnc_setPosAGLS;
 	};
-	
+
 	if (((_unit distance2d nearestbuilding _unit) < 10) && (!(typeOF nearestbuilding _unit in EXCEPTIONS))) then {
 	_buildingpos = nearestBuilding _unit buildingPos -1;
 	_unit setpos (selectrandom _buildingpos);

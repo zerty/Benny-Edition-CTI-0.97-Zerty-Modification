@@ -54,18 +54,11 @@ if (!(CTI_P_Jailed)) then { // if not jailed
 
 
 	_spawn_at = [_spawn_at, 8, 30] call CTI_CO_FNC_GetRandomPosition;
+	player setPos _spawn_at;
 
 	// find building pos
 	EXCEPTIONS = ["Land_Dome_Small_F","Land_Dome_Big_F","Land_Cargo_Tower_V4_F","Land_Cargo_Tower_V1_F","Land_Cargo_Patrol_V4_F","Land_Cargo_Patrol_V1_F","Land_FuelStation_Shed_F","Land_fs_roof_F","Land_FuelStation_01_roof_F","Land_FuelStation_02_roof_F","Land_FuelStation_01_roof_malevil_F","Land_SM_01_shelter_wide_F","Land_Shed_Big_F","Land_Shed_Small_F","Land_SM_01_shelter_narrow_F","Land_TentHangar_V1_F","Land_Airport_01_hangar_F","Land_Shed_06_F","Land_MetalShelter_01_F","Land_MetalShelter_02_F","Land_WarehouseShelter_01_F","Land_SCF_01_shed_F"];
-	KK_fnc_setPosAGLS = {
-		params ["_obj", "_pos", "_offset"];
-		_offset = _pos select 2;
-		if (isNil "_offset") then {_offset = 0};
-		_pos set [2, worldSize];
-		_obj setPosASL _pos;
-		_pos set [2, vectorMagnitude (_pos vectorDiff getPosVisual _obj) + _offset];
-		_obj setPosASL _pos;
-	};
+
 
 	_nearesthouse = typeOf ((position player) nearestObject "House");
 	_nearesthousepos = getPos ((position player) nearestObject "House");
@@ -74,10 +67,10 @@ if (!(CTI_P_Jailed)) then { // if not jailed
 	if (_nearesthouse == "Land_Cargo_Patrol_V4_F" || _nearesthouse == "Land_Cargo_Patrol_V1_F") then {_nearesthouseradius = 6;};
 	if (_nearesthouse == "Land_Shed_Big_F" || _nearesthouse == "Land_SM_01_shelter_wide_F") then {_nearesthouseradius = 16;};
 	if ((_nearesthouse in EXCEPTIONS) && ((player distance2d _nearesthousepos) < (_nearesthouseradius))) then {
-	[player, _spawn_at] call KK_fnc_setPosAGLS;
-	player setPos [getPos player select 0, getPos player select 1, 0.25];
+		[player, _spawn_at] call KK_fnc_setPosAGLS;
+		player setPos [getPos player select 0, getPos player select 1, 0.25];
 	} else {
-	[player, _spawn_at] call KK_fnc_setPosAGLS;
+		[player, _spawn_at] call KK_fnc_setPosAGLS;
 	};
 
 	if (((player distance2d nearestbuilding player) < 10) && (!(typeOF nearestbuilding player in EXCEPTIONS))) then {

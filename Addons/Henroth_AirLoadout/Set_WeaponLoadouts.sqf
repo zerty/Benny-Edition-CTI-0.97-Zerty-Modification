@@ -210,7 +210,7 @@ CTI_LOADOUT_B_Plane_CAS_01_dynamicLoadout_F_MNT_OPTIONS =
 						[ "PylonRack_1Rnd_Missile_AA_04_F" , "4000"],
 						[ "PylonRack_1Rnd_AAA_missiles" , "4000"],
 						[ "PylonRack_1Rnd_LG_scalpel" , "5000"],
-						[ "PylonRack_3Rnd_LG_scalpel" , "5000"],
+						[ "PylonRack_3Rnd_LG_scalpel" , "15000"],
 						[ "PylonRack_7Rnd_Rocket_04_HE_F" , "1000"],
 						[ "PylonRack_7Rnd_Rocket_04_AP_F" , "1000"],
 						[ "PylonRack_12Rnd_PG_missiles" , "8000"],
@@ -385,7 +385,7 @@ CTI_LOADOUT_B_Plane_CAS_01_dynamicLoadout_F_MNT_OPTIONS =
 						[ "PylonRack_1Rnd_Missile_AA_04_F" , "4000"],
 						[ "PylonRack_1Rnd_AAA_missiles" , "4000"],
 						[ "PylonRack_1Rnd_LG_scalpel" , "5000"],
-						[ "PylonRack_3Rnd_LG_scalpel" , "5000"],
+						[ "PylonRack_3Rnd_LG_scalpel" , "15000"],
 						[ "PylonRack_7Rnd_Rocket_04_HE_F" , "1000"],
 						[ "PylonRack_7Rnd_Rocket_04_AP_F" , "1000"],
 						[ "PylonRack_12Rnd_PG_missiles" , "8000"],
@@ -1206,7 +1206,7 @@ CTI_LOADOUT_O_Heli_Light_02_dynamicLoadout_F_MNT_OPTIONS =
 						[ "PylonRack_12Rnd_PG_missiles" , "8000" ],
 						[ "PylonRack_12Rnd_missiles" , "2000" ],
 						[ "PylonRack_1Rnd_AAA_missiles" , "4000" ],
-						[ "PylonRack_1Rnd_LG_scalpel" , "3000" ],
+						[ "PylonRack_1Rnd_LG_scalpel" , "5000" ],
 						[ "PylonWeapon_300Rnd_20mm_shells" , "1000" ],
 						[ "PylonRack_19Rnd_Rocket_Skyfire" , "3000" ]
 					]
@@ -1218,7 +1218,7 @@ CTI_LOADOUT_O_Heli_Light_02_dynamicLoadout_F_MNT_OPTIONS =
 						[ "PylonRack_12Rnd_PG_missiles" , "8000" ],
 						[ "PylonRack_12Rnd_missiles" , "2000" ],
 						[ "PylonRack_1Rnd_AAA_missiles" , "4000" ],
-						[ "PylonRack_1Rnd_LG_scalpel" , "3000" ],
+						[ "PylonRack_1Rnd_LG_scalpel" , "5000" ],
 						[ "PylonWeapon_300Rnd_20mm_shells" , "1000" ],
 						[ "PylonWeapon_2000Rnd_65x39_belt" , "1000" ],
 						[ "PylonRack_19Rnd_Rocket_Skyfire" , "3000" ]
@@ -1944,7 +1944,7 @@ CTI_LOADOUT_O_Plane_CAS_02_dynamicLoadout_F_MNT_OPTIONS =
 					[
 						[ "PylonMissile_1Rnd_Bomb_03_F" , "5000" ],
 						[ "PylonMissile_1Rnd_LG_scalpel" , "5000" ],
-						[ "PylonRack_3Rnd_LG_scalpel" , "1500" ],
+						[ "PylonRack_3Rnd_LG_scalpel" , "15000" ],
 						[ "PylonRack_4Rnd_LG_scalpel" , "20000" ],
 						[ "PylonRack_20Rnd_Rocket_03_HE_F" , "3000" ],
 						[ "PylonRack_20Rnd_Rocket_03_AP_F" , "3000" ],

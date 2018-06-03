@@ -55,6 +55,11 @@ profileNamespace setVariable ["CTI_SAVE_TOWNS",_towns];
 	if (4 in _bases_found) then {_enemybase4 = (_enemy_bases select 4);};
 	if (5 in _bases_found) then {_enemybase5 = (_enemy_bases select 5);};
 	_save pushBack [_enemybase0, _enemybase1, _enemybase2, _enemybase3, _enemybase4, _enemybase5];
+	//save Time Left [H]Tom
+	_limit = (missionNamespace getVariable "CTI_MAX_MISSION_TIME");
+	_time = round (time/60);
+	_left = ((_limit * 60) - _time);
+	_save pushBack _left;
 
 
 	profileNamespace setVariable [format ["CTI_SAVE_%1", _side],_save];

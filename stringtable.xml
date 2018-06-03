@@ -2118,8 +2118,8 @@
 				<Russian>&lt;t color='#ff0000'&gt;Отключены от сети.&lt;/t&gt;</Russian>
 			</Key>
 			<Key ID="STR_Current_Com">
-				<Original>&lt;t color='#F5D363'&gt;Current Com :&lt;/t&gt; %1&lt;br /&gt;</Original>
-				<Russian>&lt;t color='#F5D363'&gt;Командир Стороны :&lt;/t&gt; %1&lt;br /&gt;</Russian>
+				<Original>&lt;t color='#F5D363'&gt;Current Com:&lt;/t&gt; %1</Original>
+				<Russian>&lt;t color='#F5D363'&gt;Командир Стороны:&lt;/t&gt; %1</Russian>
 			</Key>
 			<Key ID="STR_No_Upgrade_Running">
 				<Original>No Upgrade Running</Original>
