@@ -18,7 +18,7 @@ while {alive _caller && alive _target  && _hps > 0 && (_caller distance2d _targe
 
 	_avgdamage = (getAllHitPointsDamage _target select 2) call BIS_fnc_arithmeticMean;
 
-	if (local _target) then {(1-(_avgdamage)) call HUD_PBar_update;};
+
 
 	_hitpointdamage = getallhitpointsdamage _target select 2;
 	for '_i' from 0 to count(_hitpointname)-1 do {
