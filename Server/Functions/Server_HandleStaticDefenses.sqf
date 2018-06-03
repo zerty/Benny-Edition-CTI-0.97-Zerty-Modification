@@ -28,6 +28,7 @@
 
 
 
+private ["_side","_logic","_sideID","_net","_man_timeout","_defs","_defense_team","_nearest_b","_var","_direction","_distance","_position","_ai","_ammo_trucks","_nearest"];
 
 
 _side= _this;
@@ -59,6 +60,9 @@ while {! CTI_GAMEOVER} do {
 						_ai assignAsGunner _x;
 						_x setVariable ["CTI_assigned_gunner_time",time,false];
 						[_ai] orderGetIn true;
+						_defense_team setBehaviour "AWARE";
+						_defense_team setCombatMode "RED";
+						_defense_team setSpeedMode "FULL";
 						diag_log format [":: DEF NG :: creating crew for %1 of side %2 at time %3 : %4", _x,_side,(_x getVariable ["CTI_assigned_gunner_time",0]),_ai];
 					} else {
 						if (!(isnull (assignedGunner _x)) &&alive (assignedGunner _x)) then {
