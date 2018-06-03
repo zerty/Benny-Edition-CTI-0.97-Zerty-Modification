@@ -6,8 +6,8 @@ private ["_main_disp","_ntime"];
 
 
 inGameUISetEventHandler ["Action", "
-	if (_this select 5 != 666 && player getVariable ['REV_UNC',false]) then {
-		hint 'Sorry, You are down!';
+	if (ceil(_this select 5) != 666 && player getVariable ['REV_UNC',false]) then {
+		hint 'Sorry, You are down! :: %1';
 		true
 	}
 "];
