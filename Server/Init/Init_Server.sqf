@@ -266,6 +266,15 @@ while {! (((getMarkerPos format ["HELO_START_%1", _i])select 0) == 0)} do
 	execFSM "Server\FSM\update_resources.fsm";
 	execFSM "Server\FSM\update_victory.fsm";
 };
+
+
+// handle statics for the team
+if (( missionNamespace getVariable [ "CTI_BASE_DEFENSES_AUTO_LIMIT",0]) >0) then {
+	{
+		_x spawn CTI_SE_FNC_HandleStaticDefenses;
+	} forEach [east,west];
+};
+
 if (missionNamespace getvariable "CTI_PERSISTANT" == 1) then {
 	waitUntil {!isNil 'CTI_InitTowns'};
 	sleep 10; // prenvent loading without all town FSM stable
