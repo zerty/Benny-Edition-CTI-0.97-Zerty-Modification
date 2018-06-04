@@ -48,7 +48,7 @@ while {! CTI_GAMEOVER} do {
 			_defense_team = _logic getVariable "cti_defensive_team";
 			if (((_x emptyPositions "gunner" > 0)|| (gunner _x ) != (_x getvariable ["CTI_assigned_gunner",objnull]) || ((isnull (_x getvariable ["CTI_assigned_gunner",objnull])) && ! isnull (gunner _x))) && alive _x) then {
 				_nearest_b = [CTI_BARRACKS, _x, (_side) call CTI_CO_FNC_GetSideStructures, CTI_BASE_DEFENSES_AUTO_REARM_RANGE] call CTI_CO_FNC_GetClosestStructure;
-				if (!(isnull _nearest_b) && alive _nearest_b) then {
+				if (!(isnull _nearest_b) && alive _nearest_b && (getDammage _x) < 0.4 ) then {
 					if (isnull (_x getvariable ["CTI_assigned_gunner",objnull]) && count(_defense_team call CTI_CO_FNC_GetLiveUnits) < CTI_BASE_DEFENSES_AUTO_LIMIT) then {
 						_var = missionNamespace getVariable [format ["CTI_%1_%2", _side, _nearest_b getVariable "cti_structure_type"],[[0,"Town"],0,0,0,[0,0]]];
 						_direction = 360 - ((_var select 4) select 0);
@@ -124,7 +124,7 @@ while {! CTI_GAMEOVER} do {
 	_defense_team = _logic getVariable "cti_defensive_team";
 	if !(isnull _defense_team) then {
 		{
-			if (isnull (_x getVariable ["CTI_assigned_def",objNull]) || (!alive (_x getVariable ["CTI_assigned_def",objNull])) ) then {deleteVehicle _x;};
+			if (isnull (_x getVariable ["CTI_assigned_def",objNull]) || (!alive (_x getVariable ["CTI_assigned_def",objNull])) || ( getDammage (_x getVariable ["CTI_assigned_def",objNull]) >= 0.4 ) ) then {deleteVehicle _x;};
 		} forEach (units _defense_team);
 	};
 
