@@ -22,6 +22,7 @@ if (! (alive _unit) || CTI_GameOver) exitwith {
 	if (player == _unit ) then {CTI_P_PreBuilding = false};
 	player setCaptive false;
 	_unit setVariable ["REV_UNC", false, true];
+	_unit setvariable ["REV_REQREV",false,true];
 	_unit setvariable ["REV_DRAGGED",false,true];
 	0 call HUD_PBar_stop;
 	false
