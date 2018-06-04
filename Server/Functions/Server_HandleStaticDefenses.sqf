@@ -71,6 +71,7 @@ while {! CTI_GAMEOVER} do {
 							_ai = [missionNamespace getVariable format["CTI_%1_Soldier", _side], _defense_team, _position, _sideID, _net] call CTI_CO_FNC_CreateUnit;
 							[_ai] allowGetIn true;
 							_ai assignAsGunner _x;
+							_ai setvariable ["CTI_assigned_def",_x,false];
 							_x setvariable ["CTI_assigned_gunner",_ai,false];
 							_x setVariable ["CTI_assigned_gunner_time",time,false];
 							[_ai] orderGetIn true;
@@ -118,6 +119,14 @@ while {! CTI_GAMEOVER} do {
 			};
 		};
 	} forEach _defs;
+
+
+	_defense_team = _logic getVariable "cti_defensive_team";
+	if !(isnull _defense_team) then {
+		{
+			if (isnull (_x getVariable ["CTI_assigned_def",objNull]) || (!alive (_x getVariable ["CTI_assigned_def",objNull])) ) then {deleteVehicle _x;};
+		} forEach (units _defense_team);
+	};
 
 	sleep 60;
 };
