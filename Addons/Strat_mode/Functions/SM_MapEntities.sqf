@@ -103,9 +103,9 @@ _ug=units player;
     case 	resistance:{ [0,1,0,1] };
     default { [1,1,1,1]  };
 	};
-	if ( ! isNull(_x getVariable "AN_Conn") && _side_id == (player getVariable ["CTI_NET",-11]) && !(_x isKindOf "Man")) then {
+	/*if ( ! isNull(_x getVariable "AN_Conn") && _side_id == (player getVariable ["CTI_NET",-11]) && !(_x isKindOf "Man")) then {
 		_lines set [count _lines , [_x,visiblePosition _x, visiblePosition (_x getVariable "AN_Conn"),_color]];
-	};
+	};*/
 } count CTI_Towns;
 
 
@@ -174,11 +174,11 @@ _ug=units player;
 			};
 
 			_return set [count _return,[_object,_texture, _second_color, _pos,_size select 0,_size select 1, 0, _text, 0, 0.05,'TahomaB', 'right']];
-			if (!isNil {_object getVariable "AN_Conn"} && !(_object isKindOf "Man") && _side_id == (player getvariable ["AN_iNet",-1])) then {
+			/*if (!isNil {_object getVariable "AN_Conn"} && !(_object isKindOf "Man") && _side_id == (player getvariable ["AN_iNet",-1])) then {
 				if (! isNull(_object getVariable "AN_Conn")) then {
 					_lines set [count _lines , [_object,visiblePosition _object, visiblePosition (_object getVariable "AN_Conn"),_color]];
 				};
-			};
+			};*/
 			if (!isnull (lasertarget _object)) then {_return set [count _return,[lasertarget _object,"\a3\ui_f\data\IGUI\RscIngameUI\RscOptics\laser_designator_iconlaseron", [1,0,0,1],  getPos (lasertarget _object),_size select 0,_size select 1, 0, "", 0, 0.05,'TahomaB', 'right']];};
 		};
 	};
