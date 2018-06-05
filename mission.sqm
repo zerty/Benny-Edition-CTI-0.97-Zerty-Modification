@@ -19,7 +19,7 @@ class EditorData
 		pos[]={2450.3237,25.100098,9116.7275};
 		dir[]={0,-0.70710683,0.70710683};
 		up[]={0,0.70710677,0.70710677};
-		aside[]={0.99999994,0,-0};
+		aside[]={0.99999994,0,0};
 	};
 };
 binarizationWanted=0;
@@ -105,7 +105,7 @@ class Mission
 {
 	class Intel
 	{
-		briefingName="BECTI - Zerty/HTom/Yoshi_E 1.3.4.0";
+		briefingName="BECTI BE 0.97 - Zerty 1.3.4.1";
 		overviewText="By Benny - Adapted from OFP era MFCTI (Mike Melvin)";
 		resistanceWest=0;
 		timeOfChanges=24720;
@@ -2017,6 +2017,7 @@ class Mission
 					};
 					id=127;
 					type="O_Soldier_SL_F";
+					atlOffset=4.7683716e-007;
 				};
 				class Item14
 				{
@@ -2109,7 +2110,7 @@ class Mission
 					};
 					id=132;
 					type="O_Soldier_SL_F";
-					atlOffset=2.7273612;
+					atlOffset=2.7273622;
 				};
 				class Item19
 				{
@@ -2163,7 +2164,7 @@ class Mission
 					};
 					id=135;
 					type="O_Soldier_SL_F";
-					atlOffset=3.6859956;
+					atlOffset=3.6859965;
 				};
 				class Item22
 				{
@@ -2181,14 +2182,14 @@ class Mission
 					};
 					id=136;
 					type="O_Soldier_SL_F";
-					atlOffset=2.4978232;
+					atlOffset=2.4978242;
 				};
 				class Item23
 				{
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={14512.12,9.7627974,5843.0957};
+						position[]={14512.12,9.7627964,5843.0957};
 					};
 					side="East";
 					class Attributes
@@ -2217,7 +2218,7 @@ class Mission
 					};
 					id=138;
 					type="O_Soldier_SL_F";
-					atlOffset=3.7724271;
+					atlOffset=3.772428;
 				};
 			};
 			class Attributes
@@ -2503,7 +2504,7 @@ class Mission
 					};
 					id=151;
 					type="B_Soldier_SL_F";
-					atlOffset=1.9073486e-006;
+					atlOffset=3.8146973e-006;
 				};
 				class Item12
 				{
@@ -2540,7 +2541,7 @@ class Mission
 					};
 					id=153;
 					type="B_Soldier_SL_F";
-					atlOffset=2.7794733;
+					atlOffset=2.7794752;
 				};
 				class Item14
 				{
@@ -2633,7 +2634,7 @@ class Mission
 					};
 					id=158;
 					type="B_Soldier_SL_F";
-					atlOffset=2.4224777;
+					atlOffset=2.4224787;
 				};
 				class Item19
 				{

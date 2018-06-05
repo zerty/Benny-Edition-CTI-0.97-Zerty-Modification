@@ -15,12 +15,14 @@ while {(!CTI_GameOver && alive _unit && _unit getVariable ["REV_UNC",false] && t
 		_unit action ["getOut", (vehicle _unit)];
 	};
 	((time- _starting_time) / BLEEDOUT_TIME ) call HUD_PBar_update;
+	if (_unit getVariable ["REV_REQREV",false]) then {_unit setVariable ["REV_UNC",false,true];}; // revive request has arrived
 	sleep 0.1;
 };
 if (! (alive _unit) || CTI_GameOver) exitwith {
 	if (player == _unit ) then {CTI_P_PreBuilding = false};
 	player setCaptive false;
 	_unit setVariable ["REV_UNC", false, true];
+	_unit setvariable ["REV_REQREV",false,true];
 	_unit setvariable ["REV_DRAGGED",false,true];
 	0 call HUD_PBar_stop;
 	false
@@ -32,6 +34,7 @@ _unit enableSimulation true;
 _unit setDamage 0.25;
 _unit setCaptive false;
 _unit setVariable ["REV_UNC", false, true];
+_unit setvariable ["REV_REQREV",false,true];
 _unit setvariable ["REV_DRAGGED",false,true];
 if (player == _unit ) then {CTI_P_PreBuilding = false};
 

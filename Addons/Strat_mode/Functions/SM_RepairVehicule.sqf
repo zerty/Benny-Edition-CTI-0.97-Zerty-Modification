@@ -30,7 +30,7 @@ SM_repair_vehicle={
 		[localize "STR_RepairingVehicle",0,1,0] call HUD_PBar_start;
 
 		["CLIENT", "Repair_vehicle",[_target,_caller,_pos],true] call CTI_CO_FNC_NetSend;
-
+		["SERVER", "Repair_vehicle",[_target,_caller,_pos],true] call CTI_CO_FNC_NetSend;
 
 		while {alive _caller && alive _target  && _hps > 0 && (_caller distance2d _target) <5 && (_caller distance _target) <7 && (_caller distance _pos)<=1 && (vehicle _caller) ==_caller && _currentdamage > ((getdammage _target) - 0.01) && _currentcallerdamage > ((getdammage _caller) - 0.02)} do {
 			sleep 1;
