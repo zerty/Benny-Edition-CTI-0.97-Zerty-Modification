@@ -184,7 +184,7 @@ if (isNull _created) then {
 	//Spawn with components [H]Tom
 	if (_vehicle isKindOf "Wheeled_APC_F" || _vehicle isKindOf "Tank") then {
 		if (_vehicle isKindOf "I_APC_Wheeled_03_cannon_F") then {[_vehicle, nil, ["showTools",1]] call BIS_fnc_initVehicle;};
-		if (_vehicle isKindOf "O_APC_Wheeled_02_rcws_F" || _vehicle isKindOf "O_APC_Wheeled_02_rcws_v2_F" || _vehicle isKindOf "O_T_APC_Wheeled_02_rcws_ghex_F" || _vehicle isKindOf "O_T_APC_Wheeled_02_rcws_v2_ghex_F") then {[_vehicle, nil, ["showTools",1]] call BIS_fnc_initVehicle;};
+		if (_vehicle isKindOf "O_APC_Wheeled_02_rcws_v2_F" || _vehicle isKindOf "O_T_APC_Wheeled_02_rcws_v2_ghex_F") then {[_vehicle, nil, ["showTools",1]] call BIS_fnc_initVehicle;};
 		if (_vehicle isKindOf "O_MBT_02_arty_F" || _vehicle isKindOf "O_T_MBT_02_arty_ghex_F") then {[_vehicle, nil, ["showLog",1]] call BIS_fnc_initVehicle;};
 		if (_vehicle isKindOf "I_LT_01_AT_F" || _vehicle isKindOf "I_LT_01_AA_F" || _vehicle isKindOf "I_LT_01_scout_F" || _vehicle isKindOf "I_LT_01_cannon_F") then {[_vehicle, nil, ["showTools",1]] call BIS_fnc_initVehicle;};
 		if (_vehicle isKindOf "O_APC_Tracked_02_cannon_F" || _vehicle isKindOf "O_T_APC_Tracked_02_cannon_ghex_F") then {[_vehicle, nil, ["showTracks",1]] call BIS_fnc_initVehicle;};
