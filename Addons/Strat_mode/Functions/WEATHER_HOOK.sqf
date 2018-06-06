@@ -11,7 +11,7 @@ _nextfog=random MAXFOG ;
 if (daytime >= 8 && daytime <= 16) then {
 	_nexttime setFog [_nextfog,0.01 + random (0.04),random(10)];
 	} else {
-	_a = [0.25 + random (0.25), 1, random (4)]; //water fog [H]Tom
+	_a = [0.3 + random (0.2), 0.2, 1 + random (1)]; //water fog [H]Tom
 	_b = [_nextfog,0.01 + random (0.04),random(10)];
 	_c = selectRandom [_a, _a, _b];
 	_nexttime setfog _c;
@@ -33,7 +33,7 @@ while {!CTI_GameOver} do {
 	if (daytime >= 8 && daytime <= 16) then {
 		_nexttime setFog [_nextfog,0.01 + random (0.04),random(10)];
 	} else {
-		_a = [0.25 + random (0.25), 1, random (4)]; //water fog [H]Tom
+		_a = [0.3 + random (0.2), 0.2, 1 + random (1)]; //water fog [H]Tom
 		_b = [_nextfog,0.01 + random (0.04),random(10)];
 		_c = selectRandom [_a, _a, _b];
 		_nexttime setfog _c;
