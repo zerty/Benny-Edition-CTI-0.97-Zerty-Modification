@@ -707,7 +707,7 @@ _f = _f + [CTI_FACTORY_LIGHT];
 _s = _s + ["service-medic"];
 
 
-_c = _c + ['O_APC_Wheeled_02_rcws_F'];
+_c = _c + ['O_APC_Wheeled_02_rcws_v2_F'];
 _p = _p + [''];
 _n = _n + [''];
 _o = _o + [3000];
