@@ -27,7 +27,7 @@ missionNamespace setVariable [format["CTI_%1_Vehicles_Startup", _side], [
 		["B_FieldPack_ocamo", 4],
 		["Binocular", 2]
 	]],
-	["O_MRAP_02_F", [	
+	["O_MRAP_02_F", [
 		["firstaidkit", 10],
 		["30Rnd_556x45_Stanag", 15],
 		["launch_RPG32_F", 5], ["RPG32_F", 10],
@@ -124,7 +124,7 @@ _u = _u		+ ['I_Truck_02_MRL_F'];
 missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_LIGHT], _u];
 
 _u 			= ["O_APC_Tracked_02_cannon_F"];
-_u = _u		+ ['O_APC_Wheeled_02_rcws_F'];
+_u = _u		+ ['O_APC_Wheeled_02_rcws_v2_F'];
 _u = _u		+ ["O_MBT_02_cannon_F"];
 _u = _u		+ ["O_MBT_04_cannon_F"];
 _u = _u		+ ["O_MBT_04_command_F"];
