@@ -485,7 +485,6 @@ switch (_action) do {
 						_camohull = "showCamonetHull";
 						_camoturret = "showCamonetTurret";
 						if  (_camohull in _orig || _camoturret in _orig) then {_possible = 1;};
-						if (_target isKindOf "O_APC_Wheeled_02_rcws_F" || _target isKindOf "O_T_APC_Wheeled_02_rcws_ghex_F") then {_possible = 1;}; // temporary fix for bugged marid
 					};
 			    	if (alive _target && (_target isKindOf "Wheeled_APC_F" || _target isKindOf "Tank") && locked _target < 2 && speed _target < 2 && speed _target > -2 && _possible == 1) then {
 			    		_structures = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideStructures;
@@ -512,7 +511,6 @@ switch (_action) do {
 					if (_target isKindOf "Wheeled_APC_F" || _target isKindOf "Tank") then {
 						_orig = [_target] call bis_fnc_getVehicleCustomization select 1;
 						if ("showSLATHull" in _orig || "showSLATTurret" in _orig || "HideHull" in _orig || "HideTurret" in _orig) then {_cage = 1;};
-						if (_target isKindOf "O_APC_Wheeled_02_rcws_F" || _target isKindOf "O_T_APC_Wheeled_02_rcws_ghex_F") then {_cage = 1;}; // temporary fix for bugged marid
 					};
 			    	if (alive _target && (_target isKindOf "Wheeled_APC_F" || _target isKindOf "Tank") && locked _target < 2 && _cage == 1 && speed _target < 2 && speed _target > -2) then {
 			    		_structures = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideStructures;
@@ -803,10 +801,6 @@ switch (_action) do {
 				if (_vct == 0) then {_orig set [_vposct, 1];} else {_orig set [_vposct, 0];};
 			};
 
-			if (_target isKindOf "O_APC_Wheeled_02_rcws_F" || _target isKindOf "O_T_APC_Wheeled_02_rcws_ghex_F") then {
-				_orig = ["showCamonetHull",1];
-			}; //marid temporary fix
-
 			[_target, nil, _orig] call BIS_fnc_initVehicle;
 			[group player, CTI_P_SideJoined, - 500] call CTI_CO_FNC_ChangeFunds;
 		};
@@ -852,10 +846,6 @@ switch (_action) do {
 				_vht = _orig select _htvpos;
 				if (_vht == 1) then {_orig set [_htvpos, 0];} else {_orig set [_htvpos, 1];};
 			};
-
-			if (_target isKindOf "O_APC_Wheeled_02_rcws_F" || _target isKindOf "O_T_APC_Wheeled_02_rcws_ghex_F") then {
-				_orig = ["showSLATHull",1];
-			}; // marid temporary fix
 
 			[_target, nil, _orig] call BIS_fnc_initVehicle;
 			[group player, CTI_P_SideJoined, - 1500] call CTI_CO_FNC_ChangeFunds;
