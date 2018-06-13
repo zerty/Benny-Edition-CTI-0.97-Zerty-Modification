@@ -86,13 +86,32 @@ if (
 if (isNull _created) then {
 	_vehicle setDir _direction;
 
-	if (_vehicle isKindOf "CAR" || _vehicle isKindOf "TANK" || _vehicle isKindOf "SHIP") then {
+	if (_vehicle isKindOf "CAR" || _vehicle isKindOf "TANK") then {
 		_ep = (getPos _vehicle) findEmptyPosition [0,100,"O_T_VTOL_02_vehicle_dynamicLoadout_F"];
 		if (count _ep == 0) then {_ep = (getPos _vehicle) findEmptyPosition [0,250,"O_T_VTOL_02_vehicle_dynamicLoadout_F"];};
 		_vehicle setPos _ep;
 	};
 
-	if (_special == "FORM") then {_vehicle setPos [(getPos _vehicle) select 0, (getPos _vehicle) select 1, 1];}; //--- Make the vehicle spawn above the ground level to prevent any bisteries
+	if (_vehicle isKindOf "HELICOPTER" && _special == "FORM" && _side != CTI_RESISTANCE_ID) then {
+		_pads = nearestObjects [getPos _vehicle, ["Helipad_Base_F"], 150];
+		_free = [];
+		if (count _pads > 0) then {
+			for "_i" from 0 to (count _pads - 1) do {
+				_no = nearestObjects [getPos (_pads select _i), [], 9];
+				_double = "Helipad_Base_F" countType _no;
+				if (_no isEqualTo [_pads select _i] || _double == count _no) then {_free = _free + [getPos (_pads select _i)];};
+			};
+		};
+		if (count _free > 0) then {_vehicle setPos (selectRandom _free);} else {_vehicle setPos (getPos _vehicle);};
+	};
+
+	if (_vehicle isKindOf "SHIP" && _side != CTI_RESISTANCE_ID) then {
+		_wp = [getPos _vehicle, 0, 75, 7, 2, 1, 0] call BIS_fnc_findSafePos;
+		if (count _wp == 0) then {_wp = getPos _vehicle};
+		_vehicle setPos _wp;
+	};
+
+	if (_special == "FORM") then {_vehicle setPos [(getPos _vehicle) select 0, (getPos _vehicle) select 1, 0.75];}; //--- Make the vehicle spawn above the ground level to prevent any bisteries
 	// --- Zerty edit
 	if (_type isKindOf "UAV" || _type isKindOf "UGV_01_base_F") then {createVehicleCrew _vehicle};
 
