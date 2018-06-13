@@ -163,9 +163,7 @@ with missionNamespace do {
 
 	CTI_PVF_Client_LockHQ = {
 		_hq =  (CTI_P_SideJoined) call CTI_CO_FNC_GetSideHQ;
-		player reveal _hq;
-		if (isMultiplayer) then {["SERVER", "Request_HQLocality", [CTI_P_SideJoined, player]] call CTI_CO_FNC_NetSend};
-		waitUntil {local _hq};
+		if !(local _hq) exitWith {};
 		_hq lock 2;
 	};
 
