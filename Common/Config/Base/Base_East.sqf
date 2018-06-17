@@ -125,7 +125,7 @@ _placements = _placements 	+ [[180, 15]];
 _specials = _specials		+ [[["DMG_Reduce", 2]]];
 
 _headers = _headers 		+ [[CTI_LIGHT, localize "STR_Light_Vehicle_Factory", localize "STR_Light_Vehicle_Factory_1"]];
-_classes = _classes 		+ [["Land_i_Garage_V1_F", "Land_Garage_V1_ruins_F"]];
+_classes = _classes 		+ [["Land_i_Garage_V1_F", "Land_Garage_V1_ruins_F", ["Land_i_Garage_V1_dam_F"]]];
 _prices = _prices 			+ [2000];
 _times = _times 			+ [80];
 _placements = _placements 	+ [[90, 25]];
@@ -216,7 +216,7 @@ _categories = _categories 	+ ["Fortification"];
 
 _headers = _headers 		+ ["Empty Crate"];
 _classes = _classes 		+ ["O_supplyCrate_F"];
-_prices = _prices 			+ [5];
+_prices = _prices 			+ [7];
 _placements = _placements 	+ [[0, 2]];
 _categories = _categories 	+ ["Fortification"];
 
@@ -239,7 +239,7 @@ _prices = _prices 			+ [6000];
 _placements = _placements 	+ [[0, 50]];
 _categories = _categories 	+ ["Fortification"];
 
-_headers = _headers 		+ ["Tower"];
+_headers = _headers 		+ [["Tower",[["RuinOnDestroyed", "Land_Cargo_Patrol_V1_ruins_F"]]]];
 _classes = _classes 		+ ["Land_Cargo_Patrol_V1_F"];
 _prices = _prices 			+ [50];
 _placements = _placements 	+ [[0, 15]];
