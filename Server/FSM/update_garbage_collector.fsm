@@ -11,8 +11,8 @@ link1[] = {1,2};
 link2[] = {2,1};
 link3[] = {2,3};
 link4[] = {3,4};
-globals[] = {0.000000,0,0,0,0,640,480,1,129,6316128,1,-454.516235,362.175446,361.950592,-337.128723,760,610,1};
-window[] = {0,-1,-1,-1,-1,956,175,1542,175,1,778};
+globals[] = {0.000000,0,0,0,0,640,480,1,129,6316128,1,-454.516235,362.175446,361.950592,-337.128723,344,884,1};
+window[] = {2,-1,-1,-32000,-32000,833,52,1419,52,3,362};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -51,13 +51,14 @@ class FSM
                         itemno = 2;
                         init = /*%FSM<STATEINIT""">*/"CTI_GarbageCollector = CTI_GarbageCollector - [objNull];" \n
                          "" \n
+                         "_deadhuroncontainers = ((entities [[""Slingload_base_F""], [], false, false]) - (entities [[""Slingload_base_F""], [], false, true]));" \n
                          "{" \n
                          "	if (!(_x in CTI_GarbageCollector) && isNil {_x getVariable ""cti_gc_noremove""}) then {" \n
                          "		CTI_GarbageCollector pushback _x;" \n
                          "		[_x] spawn CTI_SE_FNC_TrashObject;" \n
                          "		diag_log format["":: GC :: sending %1 to trash"",_x];" \n
                          "	};" \n
-                         "} forEach allDead;" \n
+                         "} forEach (allDead + _deadhuroncontainers);" \n
                          "" \n
                          "_groups_empty=[];" \n
                          "" \n
