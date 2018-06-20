@@ -67,6 +67,7 @@ _return=[];
 			if  (_x isKindOf "Ship")exitWith { "naval" };
 			if  (_x isKindOf "Tank")exitWith { "armor" };
 			if  (_x isKindOf "Helicopter")exitWith { "air" };
+			if  (_x isKindOf "ParachuteBase")exitWith { "air" };
 			if  (_x isKindOf "Plane")exitWith { "plane" };
 		};
 		_icon=format ["a3\ui_f\data\map\Markers\NATO\%1.paa",(_p_icon+_s_icon)];
