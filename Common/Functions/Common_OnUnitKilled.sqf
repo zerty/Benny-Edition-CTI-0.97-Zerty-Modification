@@ -97,7 +97,7 @@ if (!isNil '_var' && _isplayable_killer) then {
 	_cost = _var select CTI_UNIT_PRICE;
 
 	if (_side_killer != _side_killed) then { //--- Kill
-		if (_side_killed != civilian) then {
+		if (_side_killed != civilian && (_side_killer != civilian && (_side_killed == west || _side_killed == east))) then {
 			//--- The kill does not come from the leader, award the score to the leader in any cases.
 			if (_killer != leader _group_killer) then {
 				_points = switch (true) do {case (_type_killed isKindOf "Infantry"): {1};case (_type_killed isKindOf "Car"): {2};case (_type_killed isKindOf "Ship"): {4};case (_type_killed isKindOf "Motorcycle"): {1};case (_type_killed isKindOf "Tank"): {4};case (_type_killed isKindOf "Helicopter"): {4};case (_type_killed isKindOf "Plane"): {6};case (_type_killed isKindOf "StaticWeapon"): {2};case (_type_killed isKindOf "Building"): {2};default {1}};
@@ -132,7 +132,7 @@ if (!isNil '_var' && _isplayable_killer) then {
 			// zeus guerilla
 
 		} else {
-			//civ tk
+			//civ tk or crash heli/car
 		};
 	} else { //--- Teamkill
 		//--- Don't bother with local entities on MP.
