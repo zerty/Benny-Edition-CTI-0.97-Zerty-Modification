@@ -5,6 +5,8 @@ _target=_this select 1;
 
 private ["_caller"];
 
+_primary_weapon = primaryWeapon _caller;
+_caller selectWeapon _primary_weapon;
 CTI_P_Repairing = true ;
 _caller switchMove animation;
 ["Removing defense",0,1,0] call HUD_PBar_start;
