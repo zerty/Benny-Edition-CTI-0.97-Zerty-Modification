@@ -87,7 +87,7 @@ while {!CTI_VAR_StructurePlaced && !CTI_VAR_StructureCanceled} do {
 	};
 
 	if (time - _last_collision_update > 1.5) then {_last_collision_update = time;{_local disableCollisionWith _x} forEach (player nearObjects 150)};
-	if (_center distance player > _center_distance || !alive _center) exitWith { CTI_VAR_StructureCanceled = true };
+	if (_center distance player > _center_distance || !alive _center || vehicle player != player) exitWith { CTI_VAR_StructureCanceled = true };
 
 	_dir = ([_local, player] call CTI_CO_FNC_GetDirTo) + _direction_structure + CTI_P_KeyRotate;
 	_pos set [2, 0];
