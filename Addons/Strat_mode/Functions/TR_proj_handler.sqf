@@ -5,6 +5,12 @@ _veh = _this select 0;
 _proj= _this select 1;
 _side_u=side (_this select 2);
 
+
+_ignored_proj = ["R_PG32V_F", "R_TBG32V_F", "M_NLAW_AT_F", "R_PG7_F", "M_SPG9_HEAT", "M_SPG9_HE", "R_MRAAWS_HEAT_F"];
+
+if(_proj in _ignored_proj) exitWith{diag_log format ["Trophy :: skipping %1 irgnoring projectile (%2)", _veh,_proj];};
+}
+
 _side_v=_veh getVariable ["cti_occupant",civilian];
 //Check Side
 if ( _side_v==_side_u ) exitWith{diag_log format ["Trophy :: skipping %1 same side (%2)", _veh,_side_u];};
@@ -26,7 +32,7 @@ _side_tr= if(_dir >20 && _dir <160) then {"TROPHY_ammo_r"} else {"TROPHY_ammo_l"
 _side_time= if(_dir >20 && _dir <160) then {"TROPHY_time_r"} else {"TROPHY_time_l"};
 
 //Check probability and ammo on side
-if (_veh getVariable _side_tr <=0 || time - (_veh getVariable _side_time)< (60/(1+_up_trt)) ) exitWith {diag_log "Trophy :: failed no ammo or cooldonw"};
+if (_veh getVariable _side_tr <=0 || time - (_veh getVariable _side_time)< (300/(1+_up_trt)) ) exitWith {diag_log "Trophy :: failed no ammo or cooldonw"};
 if (random (100) >= (30+(_up_trt*15))) exitWith {diag_log "Trophy :: probability failed"}; //protection failed
 
 //Create the protection zone

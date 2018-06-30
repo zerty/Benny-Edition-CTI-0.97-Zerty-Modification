@@ -421,16 +421,16 @@ CTI_LOADOUT_B_Plane_Fighter_01_F_MNT_OPTIONS =
 		"pylon",
 		[	
 			[
-				[ "Laserdesignator_pilotCamera" ,
+				["Laserdesignator_pilotCamera" ,
 					[
-						[ "Laserbatteries" , "500" , [0]]
+						[ "Laserbatteries" , "500"]
 					]
 				]
 			],			
 			[
-				[ "weapon_Fighter_Gun20mm_AA" ,
+				["weapon_Fighter_Gun20mm_AA" ,
 					[
-						[ " magazine_Fighter01_Gun20mm_AA_x450" , "1000" , [0]]
+						[ "magazine_Fighter01_Gun20mm_AA_x450" , "1000"]
 					]
 				]
 			],
@@ -448,7 +448,7 @@ CTI_LOADOUT_B_Plane_Fighter_01_F_MNT_OPTIONS =
 				]
 			],
 			[ 	
-				["Pylons",
+				["Pylon3",
 					[
 						[ "PylonRack_Missile_AGM_02_x1" , "5000"],
 						[ "PylonRack_Missile_AMRAAM_D_x1" , "4000"],
@@ -468,7 +468,7 @@ CTI_LOADOUT_B_Plane_Fighter_01_F_MNT_OPTIONS =
 				]
 			],		
 			[ 	
-				["PylonBayRight1",
+				["PylonBayLeft1",
 					[
 						[ "PylonMissile_Missile_BIM9X_x1" , "4000"]
 					]
@@ -1536,7 +1536,7 @@ CTI_LOADOUT_O_T_VTOL_02_infantry_dynamicLoadout_F_MNT_OPTIONS =
 						[ "PylonRack_19Rnd_Rocket_Skyfire" , "3000" , [-1]],
 						//[ "PylonRack_3Rnd_LG_scalpel" , "15000" , [0]],
 						[ "PylonMissile_1Rnd_LG_scalpel" , "5000" , [0]],
-						//[ "PylonRack_4Rnd_LG_scalpel" , "15000" , [0]],
+						//[ "PylonRack_4Rnd_LG_scalpel" , "20000" , [0]],
 						[ "PylonRack_20Rnd_Rocket_03_HE_F" , "3000" , [-1]],
 						[ "PylonRack_20Rnd_Rocket_03_AP_F" , "3000" , [-1]],
 						[ "PylonRack_1Rnd_Missile_AA_03_F" , "4000" , [-1]],
@@ -1549,8 +1549,8 @@ CTI_LOADOUT_O_T_VTOL_02_infantry_dynamicLoadout_F_MNT_OPTIONS =
 			[
 				[ "PylonLeft2" ,
 					[
-						[ "PylonRack_4Rnd_LG_scalpel" , "15000" , [0]],
 						[ "PylonRack_3Rnd_LG_scalpel" , "15000" , [0]],
+						[ "PylonRack_4Rnd_LG_scalpel" , "20000" , [0]],
 						[ "PylonMissile_1Rnd_LG_scalpel" , "5000" , [0]],
 						[ "PylonRack_20Rnd_Rocket_03_HE_F" , "3000" , [-1]],
 						[ "PylonRack_20Rnd_Rocket_03_AP_F" , "3000" , [-1]],
@@ -1565,8 +1565,8 @@ CTI_LOADOUT_O_T_VTOL_02_infantry_dynamicLoadout_F_MNT_OPTIONS =
 			[
 				[ "PylonRight2" ,
 					[
-						[ "PylonRack_4Rnd_LG_scalpel" , "15000" , [0]],
 						[ "PylonRack_3Rnd_LG_scalpel" , "15000" , [0]],
+						[ "PylonRack_4Rnd_LG_scalpel" , "20000" , [0]],
 						[ "PylonMissile_1Rnd_LG_scalpel" , "5000" , [0]],
 						[ "PylonRack_20Rnd_Rocket_03_HE_F" , "3000" , [-1]],
 						[ "PylonRack_20Rnd_Rocket_03_AP_F" , "3000" , [-1]],
@@ -1584,7 +1584,7 @@ CTI_LOADOUT_O_T_VTOL_02_infantry_dynamicLoadout_F_MNT_OPTIONS =
 						[ "PylonRack_19Rnd_Rocket_Skyfire" , "3000" , [-1]],
 						//[ "PylonRack_3Rnd_LG_scalpel" , "15000" , [0]],
 						[ "PylonMissile_1Rnd_LG_scalpel" , "5000" , [0]],
-						//[ "PylonRack_4Rnd_LG_scalpel" , "15000" , [0]],
+						//[ "PylonRack_4Rnd_LG_scalpel" , "20000" , [0]],
 						[ "PylonRack_20Rnd_Rocket_03_HE_F" , "3000" , [-1]],
 						[ "PylonRack_20Rnd_Rocket_03_AP_F" , "3000" , [-1]],
 						[ "PylonRack_1Rnd_Missile_AA_03_F" , "4000" , [-1]],
@@ -1787,7 +1787,7 @@ CTI_LOADOUT_O_Heli_Attack_02_dynamicLoadout_F_MNT_OPTIONS =
 						[ "PylonRack_19Rnd_Rocket_Skyfire" , "3000" , [-1]],
 						//[ "PylonRack_3Rnd_LG_scalpel" , "15000" , [0]],
 						[ "PylonMissile_1Rnd_LG_scalpel" , "5000" , [0]],
-						//[ "PylonRack_4Rnd_LG_scalpel" , "15000" , [0]],
+						//[ "PylonRack_4Rnd_LG_scalpel" , "20000" , [0]],
 						[ "PylonRack_20Rnd_Rocket_03_HE_F" , "3000" , [-1]],
 						[ "PylonRack_20Rnd_Rocket_03_AP_F" , "3000" , [-1]],
 						[ "PylonRack_1Rnd_Missile_AA_03_F" , "4000" , [-1]],
@@ -1802,7 +1802,7 @@ CTI_LOADOUT_O_Heli_Attack_02_dynamicLoadout_F_MNT_OPTIONS =
 					[
 						[ "PylonRack_3Rnd_LG_scalpel" , "15000" , [0]],
 						[ "PylonMissile_1Rnd_LG_scalpel" , "5000" , [0]],
-						[ "PylonRack_4Rnd_LG_scalpel" , "15000" , [0]],
+						[ "PylonRack_4Rnd_LG_scalpel" , "20000" , [0]],
 						[ "PylonRack_20Rnd_Rocket_03_HE_F" , "3000" , [-1]],
 						[ "PylonRack_20Rnd_Rocket_03_AP_F" , "3000" , [-1]],
 						[ "PylonRack_19Rnd_Rocket_Skyfire" , "3000" , [-1]],
@@ -1818,7 +1818,7 @@ CTI_LOADOUT_O_Heli_Attack_02_dynamicLoadout_F_MNT_OPTIONS =
 					[
 						[ "PylonRack_3Rnd_LG_scalpel" , "15000" , [0]],
 						[ "PylonMissile_1Rnd_LG_scalpel" , "5000" , [0]],
-						[ "PylonRack_4Rnd_LG_scalpel" , "15000" , [0]],
+						[ "PylonRack_4Rnd_LG_scalpel" , "20000" , [0]],
 						[ "PylonRack_20Rnd_Rocket_03_HE_F" , "3000" , [-1]],
 						[ "PylonRack_20Rnd_Rocket_03_AP_F" , "3000" , [-1]],
 						[ "PylonRack_19Rnd_Rocket_Skyfire" , "3000" , [-1]],
@@ -1835,7 +1835,7 @@ CTI_LOADOUT_O_Heli_Attack_02_dynamicLoadout_F_MNT_OPTIONS =
 						[ "PylonRack_19Rnd_Rocket_Skyfire" , "3000" , [-1]],
 						//[ "PylonRack_3Rnd_LG_scalpel" , "15000" , [0]],
 						[ "PylonMissile_1Rnd_LG_scalpel" , "5000" , [0]],
-						//[ "PylonRack_4Rnd_LG_scalpel" , "15000" , [0]],
+						//[ "PylonRack_4Rnd_LG_scalpel" , "20000" , [0]],
 						[ "PylonRack_20Rnd_Rocket_03_HE_F" , "3000" , [-1]],
 						[ "PylonRack_20Rnd_Rocket_03_AP_F" , "3000" , [-1]],
 						[ "PylonRack_1Rnd_Missile_AA_03_F" , "4000" , [-1]],

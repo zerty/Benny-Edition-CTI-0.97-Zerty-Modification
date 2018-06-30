@@ -22,8 +22,8 @@ if (vehicle	player == player  ) then{
 	_text=_text+format	["<t color='#00ff00'><img image='A3\ui_f\data\IGUI\Cfg\Actions\heal_ca.paa'/> %1 </t>", ceil ((1 - (_avgdamage))*100)];
 	};
 	if ((vehicle player) isKindOf "tank" || (vehicle player) isKindOf "Wheeled_APC_F") then {
-		_col2=if ((time - ((vehicle player) getVariable ["TROPHY_time_l",time])) > (60/(1+_up_trt)) )then { "#00ff00" } else {"#ff0000"};
-		_col3=if ((time - ((vehicle player) getVariable ["TROPHY_time_r",time])) > (60/(1+_up_trt)) )then { "#00ff00" } else {"#ff0000"};
+		_col2=if ((time - ((vehicle player) getVariable ["TROPHY_time_l",time])) > (300/(1+_up_trt)) )then { "#00ff00" } else {"#ff0000"};
+		_col3=if ((time - ((vehicle player) getVariable ["TROPHY_time_r",time])) > (300/(1+_up_trt)) )then { "#00ff00" } else {"#ff0000"};
 		_text=_text+format	[localize "STR_TROPHY_Ammo", (vehicle player) getVariable ["TROPHY_ammo_l",0],(vehicle player) getVariable ["TROPHY_ammo_r",0],_col2,_col3];
 	};
 	_text=_text+"<br />";
