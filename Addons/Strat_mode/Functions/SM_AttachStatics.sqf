@@ -67,7 +67,7 @@ with missionNamespace do {
       (_this select 1) setdir (_this select 3);
       (_this select 1)  addEventHandler ["GetOut", {(_this select 2) attachto [(_this select 0),[-3,-1,-0.65]]; detach (_this select 2);}];
       (_this select 0) lock false;
-      {if !(driver (_this select 0) == _x) then {unassignVehicle _this}; true}  count (crew(_this select 0));
+      {doGetOut _x; true} count ((crew (_this select 0)) - [driver (_this select 0)]);
       (_this select 0) lockCargo true;
       (_this select 0) lockCargo [0,false];
       STATIC_TRY=false;
