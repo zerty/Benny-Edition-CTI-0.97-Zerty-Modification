@@ -187,9 +187,15 @@ for [ {_mount_index = 0},{ _mount_index < ( count ( _all_mountpoint_options ))},
 				} else {
 					// Check if weapon is already mounted and this is another "instance"
 					_already_mounted =  ( _weapon_classname in ( weapons _vehicle ) );
+					
+					if (_already_mounted && _weapon_classname == "SmokeLauncher") then {
+						_vehicle removeWeapon _weapon_classname;
+						_vehicle addMagazine [ _magazine_classname , 0 ];
+					};
+					
 					if ( not _already_mounted ) then
 					{
-						_vehicle addWeaponGlobal _weapon_classname;
+						_vehicle addWeapon _weapon_classname;
 					};
 					
 					
@@ -201,12 +207,12 @@ for [ {_mount_index = 0},{ _mount_index < ( count ( _all_mountpoint_options ))},
 						// Remove weapon is not from a previous instance
 						if ( not _already_mounted ) then
 						{
-							_vehicle removeWeaponGlobal _weapon_classname;
+							_vehicle removeWeapon _weapon_classname;
 						};
 					}
 					else
 					{
-						_vehicle addMagazineGlobal _magazine_classname;
+						_vehicle addMagazine _magazine_classname;
 					};
 				};
 			};

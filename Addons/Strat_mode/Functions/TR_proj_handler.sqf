@@ -7,9 +7,8 @@ _side_u=side (_this select 2);
 
 
 _ignored_proj = ["R_PG32V_F", "R_TBG32V_F", "M_NLAW_AT_F", "R_PG7_F", "M_SPG9_HEAT", "M_SPG9_HE", "R_MRAAWS_HEAT_F"];
+if (typeOf _proj in _ignored_proj) exitWith{diag_log format ["Trophy :: skipping %1 irgnoring projectile (%2)", _veh,typeOf _proj];};
 
-if(_proj in _ignored_proj) exitWith{diag_log format ["Trophy :: skipping %1 irgnoring projectile (%2)", _veh,_proj];};
-}
 
 _side_v=_veh getVariable ["cti_occupant",civilian];
 //Check Side

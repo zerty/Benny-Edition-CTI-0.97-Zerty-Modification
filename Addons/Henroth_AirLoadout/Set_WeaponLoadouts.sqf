@@ -107,16 +107,16 @@ CTI_LOADOUT_B_APC_Tracked_01_AA_F_MNT_OPTIONS =
 				]
 			],
 			[ 	
-				["missiles_Zephyr",
+				["missiles_SAAMI",
 					[
-						[ "4Rnd_GAA_missiles" , "4000"]
+						[ "4Rnd_70mm_SAAMI_missiles" , "4000"]
 					]
 				]
 			],	
 			[ 	
-				["missiles_Zephyr",
+				["missiles_SAAMI",
 					[
-						[ "4Rnd_GAA_missiles" , "4000"]
+						[ "4Rnd_70mm_SAAMI_missiles" , "4000"]
 					]
 				]
 			],			
@@ -152,16 +152,16 @@ CTI_LOADOUT_O_APC_Tracked_02_AA_F_MNT_OPTIONS =
 				]
 			],
 			[ 	
-				["missiles_Zephyr",
+				["missiles_SAAMI",
 					[
-						[ "4Rnd_GAA_missiles" , "4000"]
+						[ "4Rnd_70mm_SAAMI_missiles" , "4000"]
 					]
 				]
 			],	
 			[ 	
-				["missiles_Zephyr",
+				["missiles_SAAMI",
 					[
-						[ "4Rnd_GAA_missiles" , "4000"]
+						[ "4Rnd_70mm_SAAMI_missiles" , "4000"]
 					]
 				]
 			],			
@@ -1784,16 +1784,16 @@ CTI_LOADOUT_O_Heli_Attack_02_dynamicLoadout_F_MNT_OPTIONS =
 			[
 				[ "PylonLeft1" ,
 					[
-						[ "PylonRack_19Rnd_Rocket_Skyfire" , "3000" , [-1]],
+						[ "PylonRack_19Rnd_Rocket_Skyfire" , "3000" , [0]],
 						//[ "PylonRack_3Rnd_LG_scalpel" , "15000" , [0]],
 						[ "PylonMissile_1Rnd_LG_scalpel" , "5000" , [0]],
 						//[ "PylonRack_4Rnd_LG_scalpel" , "20000" , [0]],
-						[ "PylonRack_20Rnd_Rocket_03_HE_F" , "3000" , [-1]],
-						[ "PylonRack_20Rnd_Rocket_03_AP_F" , "3000" , [-1]],
-						[ "PylonRack_1Rnd_Missile_AA_03_F" , "4000" , [-1]],
+						[ "PylonRack_20Rnd_Rocket_03_HE_F" , "3000" , [0]],
+						[ "PylonRack_20Rnd_Rocket_03_AP_F" , "3000" , [0]],
+						[ "PylonRack_1Rnd_Missile_AA_03_F" , "4000" , [0]],
 						[ "PylonRack_1Rnd_Missile_AGM_01_F" , "6000" , [0]],
-						[ "PylonMissile_1Rnd_Bomb_03_F" , "5000" , [-1]],
-						[ "PylonMissile_1Rnd_BombCluster_02_F" , "1000" , [-1]]
+						[ "PylonMissile_1Rnd_Bomb_03_F" , "5000" , [0]],
+						[ "PylonMissile_1Rnd_BombCluster_02_F" , "1000" , [0]]
 					]
 				]
 			],
@@ -1803,13 +1803,13 @@ CTI_LOADOUT_O_Heli_Attack_02_dynamicLoadout_F_MNT_OPTIONS =
 						[ "PylonRack_3Rnd_LG_scalpel" , "15000" , [0]],
 						[ "PylonMissile_1Rnd_LG_scalpel" , "5000" , [0]],
 						[ "PylonRack_4Rnd_LG_scalpel" , "20000" , [0]],
-						[ "PylonRack_20Rnd_Rocket_03_HE_F" , "3000" , [-1]],
-						[ "PylonRack_20Rnd_Rocket_03_AP_F" , "3000" , [-1]],
-						[ "PylonRack_19Rnd_Rocket_Skyfire" , "3000" , [-1]],
-						[ "PylonRack_1Rnd_Missile_AA_03_F" , "4000" , [-1]],
+						[ "PylonRack_20Rnd_Rocket_03_HE_F" , "3000" , [0]],
+						[ "PylonRack_20Rnd_Rocket_03_AP_F" , "3000" , [0]],
+						[ "PylonRack_19Rnd_Rocket_Skyfire" , "3000" , [0]],
+						[ "PylonRack_1Rnd_Missile_AA_03_F" , "4000" , [0]],
 						[ "PylonRack_1Rnd_Missile_AGM_01_F" , "6000" , [0]],
-						[ "PylonMissile_1Rnd_Bomb_03_F" , "5000" , [-1]],
-						[ "PylonMissile_1Rnd_BombCluster_02_F" , "1000" , [-1]]
+						[ "PylonMissile_1Rnd_Bomb_03_F" , "5000" , [0]],
+						[ "PylonMissile_1Rnd_BombCluster_02_F" , "1000" , [0]]
 					]
 				] 
 			],
@@ -1819,29 +1819,29 @@ CTI_LOADOUT_O_Heli_Attack_02_dynamicLoadout_F_MNT_OPTIONS =
 						[ "PylonRack_3Rnd_LG_scalpel" , "15000" , [0]],
 						[ "PylonMissile_1Rnd_LG_scalpel" , "5000" , [0]],
 						[ "PylonRack_4Rnd_LG_scalpel" , "20000" , [0]],
-						[ "PylonRack_20Rnd_Rocket_03_HE_F" , "3000" , [-1]],
-						[ "PylonRack_20Rnd_Rocket_03_AP_F" , "3000" , [-1]],
-						[ "PylonRack_19Rnd_Rocket_Skyfire" , "3000" , [-1]],
-						[ "PylonRack_1Rnd_Missile_AA_03_F" , "4000" , [-1]],
+						[ "PylonRack_20Rnd_Rocket_03_HE_F" , "3000" , [0]],
+						[ "PylonRack_20Rnd_Rocket_03_AP_F" , "3000" , [0]],
+						[ "PylonRack_19Rnd_Rocket_Skyfire" , "3000" , [0]],
+						[ "PylonRack_1Rnd_Missile_AA_03_F" , "4000" , [0]],
 						[ "PylonRack_1Rnd_Missile_AGM_01_F" , "6000" , [0]],
-						[ "PylonMissile_1Rnd_Bomb_03_F" , "5000" , [-1]],
-						[ "PylonMissile_1Rnd_BombCluster_02_F" , "1000" , [-1]]
+						[ "PylonMissile_1Rnd_Bomb_03_F" , "5000" , [0]],
+						[ "PylonMissile_1Rnd_BombCluster_02_F" , "1000" , [0]]
 					]
 				]
 			],
 			[
 				[ "PylonRight1" ,
 					[
-						[ "PylonRack_19Rnd_Rocket_Skyfire" , "3000" , [-1]],
+						[ "PylonRack_19Rnd_Rocket_Skyfire" , "3000" , [0]],
 						//[ "PylonRack_3Rnd_LG_scalpel" , "15000" , [0]],
 						[ "PylonMissile_1Rnd_LG_scalpel" , "5000" , [0]],
 						//[ "PylonRack_4Rnd_LG_scalpel" , "20000" , [0]],
-						[ "PylonRack_20Rnd_Rocket_03_HE_F" , "3000" , [-1]],
-						[ "PylonRack_20Rnd_Rocket_03_AP_F" , "3000" , [-1]],
-						[ "PylonRack_1Rnd_Missile_AA_03_F" , "4000" , [-1]],
+						[ "PylonRack_20Rnd_Rocket_03_HE_F" , "3000" , [0]],
+						[ "PylonRack_20Rnd_Rocket_03_AP_F" , "3000" , [0]],
+						[ "PylonRack_1Rnd_Missile_AA_03_F" , "4000" , [0]],
 						[ "PylonRack_1Rnd_Missile_AGM_01_F" , "6000" , [0]],
-						[ "PylonMissile_1Rnd_Bomb_03_F" , "5000" , [-1]],
-						[ "PylonMissile_1Rnd_BombCluster_02_F" , "1000" , [-1]]
+						[ "PylonMissile_1Rnd_Bomb_03_F" , "5000" , [0]],
+						[ "PylonMissile_1Rnd_BombCluster_02_F" , "1000" , [0]]
 					]
 				]
 			],
