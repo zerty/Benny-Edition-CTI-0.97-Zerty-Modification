@@ -143,6 +143,7 @@ _u = _u		+ ["B_UAV_02_F"];
 _u = _u		+ ["B_UAV_02_CAS_F"];
 _u = _u		+ ["B_UAV_02_dynamicLoadout_F"];
 _u = _u		+ ["B_T_UAV_03_dynamicLoadout_F"];
+_u = _u		+ ["B_UAV_05_F"];
 _u = _u		+ ["B_Plane_CAS_01_dynamicLoadout_F"];
 _u = _u		+ ["B_Plane_Fighter_01_F"];
 _u = _u		+ ['I_Heli_light_03_unarmed_F'];
