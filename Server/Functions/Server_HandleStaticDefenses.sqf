@@ -37,7 +37,7 @@ _sideID = (_side) call CTI_CO_FNC_GetSideID;
 
 _net = if ((missionNamespace getVariable "CTI_MARKERS_INFANTRY") == 1) then {true} else {false};
 _man_timeout = 180;
-
+_skipRearms = 10;
 while {! CTI_GAMEOVER} do {
 
 	_defs=_logic getVariable ["cti_defences",[]];
@@ -111,9 +111,19 @@ while {! CTI_GAMEOVER} do {
 				_nearest = [CTI_AMMO, _x, (_side) call CTI_CO_FNC_GetSideStructures, CTI_BASE_DEFENSES_AUTO_REARM_RANGE] call CTI_CO_FNC_GetClosestStructure;
 
 				if (count _ammo_trucks > 0 || (!isNull _nearest && alive _nearest)) then {
-					if ((gunner _x) == (_x getvariable ["CTI_assigned_gunner",objnull]) || (typeof _x )in ["B_AAA_System_01_F","B_SAM_System_01_F","B_SAM_System_02_F"]) then {
+					if ((gunner _x) == (_x getvariable ["CTI_assigned_gunner",objnull])) then {
 						_x setVehicleAmmoDef 1;
 						diag_log format [":: DEF NG :: %1 of side %2 rearmed", _x,_side];
+					};
+					//rearm special Defenenses only ever "_skipRearms" minutes
+					if((typeof _x )in ["B_AAA_System_01_F","B_SAM_System_01_F","B_SAM_System_02_F"]) then {
+						_skippedR = _x getVariable["skipped_rearms", 0];
+						_x setVariable["skipped_rearms", _skippedR+1];
+						if(_skippedR >= _skipRearms) then {
+							_x setVehicleAmmoDef 1;
+							diag_log format [":: DEF NG :: %1 of side %2 rearmed", _x,_side];
+							_x setVariable["skipped_rearms", 0];
+						};
 					};
 				};
 			};
