@@ -44,7 +44,12 @@ switch (_action) do {
 			lnbClear  260002 ;
 			_worker = (uiNamespace getVariable "cti_dialog_ui_workersmenu_workers") select _selected;
 			_worker setDammage 1;
+			
+			//Refound the worker to commander
 			_logic = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideLogic;
+			_comMoney = _logic getvariable ["cti_commander_funds", 0] ;
+			_logic setvariable ["cti_commander_funds",_comMoney+(round (CTI_BASE_WORKERS_PRICE*0.666)),true];
+			
 			_workers = _logic getVariable "cti_workers";
 			uiNamespace setVariable ["cti_dialog_ui_workersmenu_workers", _workers];
 			{
