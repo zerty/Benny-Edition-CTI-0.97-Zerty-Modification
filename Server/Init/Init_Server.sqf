@@ -161,6 +161,7 @@ while {! (((getMarkerPos format ["HELO_START_%1", _i])select 0) == 0)} do
 	if (CTI_BASE_FOB_MAX > 0) then {_logic setVariable ["cti_fobs", [], true]};
 
 	//--- Startup vehicles
+	if (!(profileNamespace getvariable ["CTI_SAVE_ENABLED",false])) then {
 	{
 		_model = _x select 0;
 		_equipment = _x select 1;
@@ -173,7 +174,7 @@ while {! (((getMarkerPos format ["HELO_START_%1", _i])select 0) == 0)} do
 		if (count _equipment > 0) then {[_vehicle, _equipment] call CTI_CO_FNC_EquipVehicleCargoSpace};
 		if ((missionNamespace getVariable [format ["%1", _model],["","","","","","","",""]]) select 7 != "") then {[_vehicle, _side, ((missionNamespace getVariable [format ["%1", _model],["","","","","","","",""]]) select 7)] call CTI_CO_FNC_InitializeCustomVehicle;};
 	} forEach (missionNamespace getVariable format["CTI_%1_Vehicles_Startup", _side]);
-
+	};
 
 	_teams = [];
 
