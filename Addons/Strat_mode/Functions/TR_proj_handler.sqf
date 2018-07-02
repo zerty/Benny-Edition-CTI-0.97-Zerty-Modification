@@ -30,6 +30,7 @@ if (_dir >= -10 && _dir<= 10 || _dir >= 170 || _dir <= -170) exitWith {diag_log 
 _side_tr= if(_dir >20 && _dir <160) then {"TROPHY_ammo_r"} else {"TROPHY_ammo_l"};
 _side_time= if(_dir >20 && _dir <160) then {"TROPHY_time_r"} else {"TROPHY_time_l"};
 
+
 //Check probability and ammo on side
 if (_veh getVariable _side_tr <=0 || time - (_veh getVariable _side_time)< (300/(1+_up_trt)) ) exitWith {diag_log "Trophy :: failed no ammo or cooldonw"};
 if (random (100) >= (30+(_up_trt*15))) exitWith {diag_log "Trophy :: probability failed"}; //protection failed
@@ -39,5 +40,7 @@ _b='ProtectionZone_Invisible_F' createVehicleLocal (getpos _veh);
 _b setPos (getPos _veh);
 _veh setVariable [_side_tr,((_veh getVariable _side_tr) - 1),true];
 _veh setVariable [_side_time,time,true];
+if(CTI_isCLient && _veh == vehicle player) then {
+if(_side_tr == "TROPHY_ammo_l") then {playSound "trophy_left";} else {playSound "trophy_right";};};
 waitUntil {isNull _proj};
 deleteVehicle _b;
