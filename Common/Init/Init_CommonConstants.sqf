@@ -235,9 +235,10 @@ CTI_UPGRADE_AIRR = 			14;
 CTI_UPGRADE_ARTR = 			15;
 CTI_UPGRADE_NETR = 			16;
 CTI_UPGRADE_EXPI = 			17;
-CTI_UPGRADE_TRT = 			18;
-CTI_UPGRADE_TRA = 			19;
-CTI_UPGRADE_REST = 			20;
+CTI_UPGRADE_DATA = 			18;
+CTI_UPGRADE_TRT = 			19;
+CTI_UPGRADE_TRA = 			20;
+CTI_UPGRADE_REST = 			21;
 //-----------------------------------------------------------------------------------------------------------------------//
 
 

@@ -36,6 +36,13 @@ player addEventHandler ["InventoryOpened",{
 	}
 ];
 
+//Add Data link
+if(count ((CTI_P_SideJoined) call CTI_CO_FNC_GetSideUpgrades) >= CTI_UPGRADE_DATA) then {
+if(((CTI_P_SideJoined) call CTI_CO_FNC_GetSideUpgrades) select CTI_UPGRADE_DATA == 1) then {
+	player setVehicleReportOwnPosition true;
+	player setVehicleReportRemoteTargets true;
+	player setVehicleReceiveRemoteTargets true;
+};};
 
 if (missionNamespace getVariable "CTI_SM_RADAR" == 1) then {
 	player addEventHandler ["WeaponAssembled",{["SERVER", "Server_UAV_FUEL",(_this select 1)] call CTI_CO_FNC_NetSend;["SERVER", "Server_ARTR_handle",(_this select 1)] call CTI_CO_FNC_NetSend;["SERVER", "Request_HandleAction", ["empty", [(_this select 1)]]] call CTI_CO_FNC_NetSend;}];

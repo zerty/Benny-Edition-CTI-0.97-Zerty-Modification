@@ -224,6 +224,16 @@ if (isNull _created) then {
 	};
 
 };
+
+//Add Data link
+if(count ((_t_side) call CTI_CO_FNC_GetSideUpgrades) >= CTI_UPGRADE_DATA) then {
+if(((_t_side) call CTI_CO_FNC_GetSideUpgrades) select CTI_UPGRADE_DATA == 1) then {
+	_vehicle setVehicleReportOwnPosition true;
+	_vehicle setVehicleReportRemoteTargets true;
+	_vehicle setVehicleReceiveRemoteTargets true;
+};};
+
+
 if (missionNamespace getVariable "CTI_TROPHY_APS" == 1) then {
 	if (_vehicle isKindOf "tank" || _vehicle isKindOf "Wheeled_APC_F") then {
 

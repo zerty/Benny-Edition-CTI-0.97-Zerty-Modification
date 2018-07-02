@@ -2337,6 +2337,14 @@
 				<Original>Increase the max range of the respawn truck. 500m + lvl x 500m </Original>
 				<Russian>Увеличивает макс. дальность появления на Мед.Грузовиках и контейнерах: 500м + Ур.Улучш x 500м</Russian>
 			</Key>
+			<Key ID="STR_Up_Data">
+				<Original>Network: Advanced Data Link</Original>
+				<Russian>Сеть: Расширенный канал передачи данных</Russian>
+			</Key>			
+			<Key ID="STR_Up_Data_Descr">
+				<Original>Advanced data link to players. This allows them to share and recive targets via their sensors.</Original>
+				<Russian>Добавьте дополнительную ссылку к игрокам. Это позволяет им делиться и получать цели через свои датчики.</Russian>
+			</Key>
 	</Package>
 </Project>
 <Project name="Base_East_West">
