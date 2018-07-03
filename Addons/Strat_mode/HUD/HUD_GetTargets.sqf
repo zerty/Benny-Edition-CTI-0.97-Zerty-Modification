@@ -32,7 +32,16 @@ _to_share=[];
  true
 } count _targs;
 
-if (count _to_share > 0) then { ["SERVER", "Server_Hud_Share_Add",[_to_share,CTI_P_SideJoined]] call CTI_CO_FNC_NetSend; };
+if (count _to_share > 0) then { 
+	["SERVER", "Server_Hud_Share_Add",[_to_share,CTI_P_SideJoined]] call CTI_CO_FNC_NetSend; 
+	
+	//Send your intel to enemy network
+	if(CTI_P_SideJoined == east) then {
+		["SERVER", "CTI_PVF_Server_Hud_Share_Add_Enemy",[_to_share,west]] call CTI_CO_FNC_NetSend; 
+	} else {	
+		["SERVER", "CTI_PVF_Server_Hud_Share_Add_Enemy",[_to_share,east]] call CTI_CO_FNC_NetSend; 
+	};
+};
 
 _return=[];
 {

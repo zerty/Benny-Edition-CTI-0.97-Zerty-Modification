@@ -66,7 +66,6 @@ _vehicle = if ( isNull _created) then {createVehicle [_type, _position, [], 7, _
 // henroth air loadout
 //Does a gun config exsist?
 _gun_config = missionNamespace getVariable ( format [ "CTI_LOADOUT_%1_MNT_OPTIONS" , typeOf _vehicle ] );
-diag_log format["vehicle: %1", (typeOf _vehicle)];
 if (
 ( 	((typeOf _vehicle) == "O_APC_Tracked_02_AA_F")
 	|| ((typeOf _vehicle) == "B_APC_Tracked_01_AA_F")

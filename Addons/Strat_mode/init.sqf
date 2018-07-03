@@ -175,6 +175,37 @@ if (CTI_IsServer) then {
 				HUD_WRITE=false;
 			};
 		};
+		
+		CTI_PVF_Server_Hud_Share_Add_Enemy= {
+			
+			_this spawn {
+				_sl= (_this select 1) call CTI_CO_FNC_GetSideLogic;
+				while {HUD_WRITE} do {sleep random (1);};
+				HUD_WRITE=true;
+				_hud =_sl getVariable "CTI_HUD_SHARED";
+				_hud=_hud -[objNull] + (_this select 0);
+				{
+					[_x,(_this select 1)] spawn {
+						_side=(_this select 1);
+						_o=(_this select 0);
+						_o setVariable [format ["CTI_HUD_Detected_%1", _side], true, true];
+						_sl= (_this select 1) call CTI_CO_FNC_GetSideLogic;
+						_to=time+180;
+						waitUntil {time > _to};
+						_o setVariable [format ["CTI_HUD_Detected_%1", _side], false, true];
+						while {HUD_WRITE} do {sleep random (1);};
+						HUD_WRITE=true;
+						_hud =_sl getVariable "CTI_HUD_SHARED";
+						_hud=_hud -[objNull] - [_o];
+						_sl setVariable ["CTI_HUD_SHARED",_hud,true];
+						HUD_WRITE=false;
+					}; true
+				} count (_this select 0);
+
+				_sl setVariable ["CTI_HUD_SHARED",_hud,true];
+				HUD_WRITE=false;
+			};
+		};
 
 		CTI_PVF_Server_Addeditable= {
     	(_this select 0) addCuratorEditableObjects [[_this select 1],true] ;

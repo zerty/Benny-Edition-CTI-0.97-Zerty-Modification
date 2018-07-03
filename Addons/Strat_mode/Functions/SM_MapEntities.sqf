@@ -152,10 +152,44 @@ _ug=units player;
 		    case 	resistance:{ [0,1,0,1] };
 		    default { [1,1,1,1]  };
 			};
+			
+			//When data link upgrade is present, it markers your units diffrent when they are spotted by enemy.
+			if(count ((_t_side) call CTI_CO_FNC_GetSideUpgrades) >= CTI_UPGRADE_DATA) then {
+			if(((_t_side) call CTI_CO_FNC_GetSideUpgrades) select CTI_UPGRADE_DATA == 1) then {
+				//If the vehicle is detected by enemy diffrent color is used.
+				if(_object getvariable["CTI_HUD_Detected_east", false]) then {
+					_color = switch (_side) do
+					{
+					case 	west:{ [0,0,1,1] };			///remains unchanged
+					case 	east:{ [0.5,0,0,1] };		//color when detected by enenmy
+					case 	resistance:{ [0,1,0,1] }; 	//remains unchanged
+					default { [1,1,1,1]  };
+					};
+				};
+				
+				if(_object getvariable["CTI_HUD_Detected_west", false]) then {
+					_color = switch (_side) do
+					{
+					case 	west:{ [0,0.3,0.6,1] };		//color when detected by enenmy
+					case 	east:{ [1,0,0,1] };			//remains unchanged
+					case 	resistance:{ [0,1,0,1] }; 	//remains unchanged
+					default { [1,1,1,1]  };
+					};
+				};
+			};};
+			
 			if (! alive _object) then {_color = [0,0,0,1];};
 			_keys=_object getVariable ["v_keys",["",grpNull]];
 			_second_color=_color;
-			if (_object == vehicle player || group player == _keys select 1 || getPlayerUID player == _keys select 0) then  {_second_color = [1,1,0,1];};
+			if (_object == vehicle player || group player == _keys select 1 || getPlayerUID player == _keys select 0) then  {
+				if(_object getvariable[format ["CTI_HUD_Detected_%1", _side], false]) then {
+					if(count ((_t_side) call CTI_CO_FNC_GetSideUpgrades) >= CTI_UPGRADE_DATA) then {
+					if(((_t_side) call CTI_CO_FNC_GetSideUpgrades) select CTI_UPGRADE_DATA == 1) then {_second_color = [0.85,0.4,0,1];};};
+				} else {
+					_second_color = [1,1,0,1];
+				};
+			
+			};
 			_pos = getPosASL _x;
 			_size = [25, 25];
 			if (_object isKindOf "Man") then {_size = [18, 18];};
