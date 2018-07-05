@@ -163,7 +163,6 @@ switch (_action) do {
 		_idc = _this select 2;
 		_dropped = _this select 3;
 		_path = _this select 4;
-
 		_updated = [_idc, _dropped, _kind, _path] call CTI_UI_Gear_OnShoppingItemDrop;
 		if (_updated) then { call CTI_UI_Gear_UpdatePrice };
 	};
@@ -228,7 +227,6 @@ switch (_action) do {
 		_slot = _this select 1;
 		_idc = _this select 2;
 		_default = _this select 3;
-
 		_gear = uiNamespace getVariable "cti_dialog_ui_gear_target_gear";
 
 		if ((_gear select 2) select _slot != "") then {
@@ -245,7 +243,7 @@ switch (_action) do {
 		_slot = _this select 1;
 		_idc = _this select 2;
 		_default = _this select 3;
-
+		
 		_gear = uiNamespace getVariable "cti_dialog_ui_gear_target_gear";
 
 		if ((((_gear select 3) select (_slot select 0)) select (_slot select 1)) != "") then {

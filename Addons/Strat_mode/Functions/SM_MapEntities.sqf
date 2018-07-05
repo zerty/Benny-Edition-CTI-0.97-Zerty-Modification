@@ -154,8 +154,8 @@ _ug=units player;
 			};
 			
 			//When data link upgrade is present, it markers your units diffrent when they are spotted by enemy.
-			if(count ((_t_side) call CTI_CO_FNC_GetSideUpgrades) >= CTI_UPGRADE_DATA) then {
-			if(((_t_side) call CTI_CO_FNC_GetSideUpgrades) select CTI_UPGRADE_DATA == 1) then {
+			if(count ((_side) call CTI_CO_FNC_GetSideUpgrades) >= CTI_UPGRADE_DATA) then {
+			if(((_side) call CTI_CO_FNC_GetSideUpgrades) select CTI_UPGRADE_DATA == 1) then {
 				//If the vehicle is detected by enemy diffrent color is used.
 				if(_object getvariable["CTI_HUD_Detected_east", false]) then {
 					_color = switch (_side) do
@@ -183,8 +183,8 @@ _ug=units player;
 			_second_color=_color;
 			if (_object == vehicle player || group player == _keys select 1 || getPlayerUID player == _keys select 0) then  {
 				if(_object getvariable[format ["CTI_HUD_Detected_%1", _side], false]) then {
-					if(count ((_t_side) call CTI_CO_FNC_GetSideUpgrades) >= CTI_UPGRADE_DATA) then {
-					if(((_t_side) call CTI_CO_FNC_GetSideUpgrades) select CTI_UPGRADE_DATA == 1) then {_second_color = [0.85,0.4,0,1];};};
+					if(count ((_side) call CTI_CO_FNC_GetSideUpgrades) >= CTI_UPGRADE_DATA) then {
+					if(((_side) call CTI_CO_FNC_GetSideUpgrades) select CTI_UPGRADE_DATA == 1) then {_second_color = [0.85,0.4,0,1];};};
 				} else {
 					_second_color = [1,1,0,1];
 				};
