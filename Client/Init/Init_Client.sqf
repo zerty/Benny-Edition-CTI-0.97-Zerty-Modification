@@ -236,8 +236,8 @@ if !(isNil {profileNamespace getVariable format["CTI_PERSISTENT_GEAR_TEMPLATE_%1
 TABLET_KEY_DOWN={
 	_return=false;
 	disableSerialization;
-
-	if (! (_this select 2) && ! (_this select 3) && ! (_this select 4) &&(_this select 1) in ([(profilenamespace getvariable ['CTI_TABLET_KEY',41])]+(actionKeys "User5"))  && !visibleMap && !CTI_P_PreBuilding &&!CTI_P_Repairing && isNull (uiNamespace getVariable ['cti_dialog_ui_interractions',objNull]) && isNull (uiNamespace getVariable ['cti_dialog_ui_defensemenu',objnull]) && isNull (uiNamespace getVariable ['cti_dialog_ui_purchasemenu',objnull]) && isnull (uiNamespace getVariable ["cti_dialog_ui_tabletmain",objnull]) && (isnull (findDisplay 60490))) then {
+	//removed && !CTI_P_Repairing
+	if (! (_this select 2) && ! (_this select 3) && ! (_this select 4) &&(_this select 1) in ([(profilenamespace getvariable ['CTI_TABLET_KEY',41])]+(actionKeys "User5"))  && !visibleMap && !CTI_P_PreBuilding  && isNull (uiNamespace getVariable ['cti_dialog_ui_interractions',objNull]) && isNull (uiNamespace getVariable ['cti_dialog_ui_defensemenu',objnull]) && isNull (uiNamespace getVariable ['cti_dialog_ui_purchasemenu',objnull]) && isnull (uiNamespace getVariable ["cti_dialog_ui_tabletmain",objnull]) && (isnull (findDisplay 60490))) then {
 			uiNamespace setVariable ["INT_TARG", call TABLET_GET_TARGET];
 			createdialog "CTI_RscInteraction";
 			_return=true;
@@ -256,6 +256,7 @@ TABLET_KEY_UP={
 TABLET_GET_TARGET={
 	private ["_target"];
 	_target=objnull;
+	if(CTI_P_Repairing) exitWith {player};
 	if (cursortarget iskindof "CAManBase" && ([player,cursortarget] call BIS_fnc_distance2D) <3 ) exitWith {cursortarget};
 	if (cursortarget == (CTI_P_SideLogic getvariable "cti_hq") && ([player,cursortarget] call BIS_fnc_distance2D) <10 && (isnull attachedTo (CTI_P_SideLogic getvariable "cti_hq") ) ) exitWith {cursortarget};
 	if (vehicle player != player) exitWith {vehicle player};
