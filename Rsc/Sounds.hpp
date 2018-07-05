@@ -5,14 +5,9 @@ class CfgSounds {
 		sound[] = {"Rsc\Sounds\prison.ogg", 1, 1.0};
 		titles[] = {};
 	};	
-	class trophy_left {
+	class trophy {
 		name = "prison";
-		sound[] = {"Rsc\Sounds\trophy_left.ogg", db+10, 1.0};
-		titles[] = {};
-	};
-	class trophy_right {
-		name = "prison";
-		sound[] = {"Rsc\Sounds\trophy_right.ogg", db+10, 1.0};
+		sound[] = {"Rsc\Sounds\trophy.ogg", db+10, 1.0};
 		titles[] = {};
 	};
 	class Vent {

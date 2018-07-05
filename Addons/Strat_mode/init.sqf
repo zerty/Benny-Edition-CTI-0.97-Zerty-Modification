@@ -176,6 +176,7 @@ if (CTI_IsServer) then {
 			};
 		};
 		
+		//Marks enemy vehicles that are known by your network (upgrade data link)
 		CTI_PVF_Server_Hud_Share_Add_Enemy= {
 			
 			_this spawn {

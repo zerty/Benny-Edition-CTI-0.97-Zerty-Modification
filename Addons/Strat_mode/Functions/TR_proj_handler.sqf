@@ -41,11 +41,7 @@ _b setPos (getPos _veh);
 _veh setVariable [_side_tr,((_veh getVariable _side_tr) - 1),true];
 _veh setVariable [_side_time,time,true];
 if(_veh == vehicle player) then {
-	if(_side_tr == "TROPHY_ammo_l") then {
-		["trophy_left","playSound",_veh, false,false] call BIS_fnc_MP;
-	} else {
-		["trophy_right","playSound",_veh, false,false] call BIS_fnc_MP;
-	};
+	["trophy","playSound",_veh, false,false] call BIS_fnc_MP;
 };
 waitUntil {isNull _proj};
 deleteVehicle _b;
