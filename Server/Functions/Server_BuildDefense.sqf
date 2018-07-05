@@ -138,6 +138,11 @@ if (_defense isKindOf "B_AAA_System_01_F" || _defense isKindOf "B_SAM_System_01_
 	_defense setVehicleLock "LOCKED";
 	sleep 30;
 	_defense setPos [_def_pos select 0,_def_pos select 1,(_def_pos select 2) +0.1];
+	
+	if (_defense isKindOf "B_AAA_System_01_F" && FSG_CRAM_ENABLED) then {
+		FSG_CRAMINDEX = FSG_CRAMINDEX +1;
+		_null = [_defense, FSG_CRAMINDEX] execVM "Addons\C_Ram\cram.sqf";
+	};
 };
 
 

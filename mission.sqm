@@ -8,11 +8,11 @@ class EditorData
 	toggles=1025;
 	class ItemIDProvider
 	{
-		nextID=177;
+		nextID=178;
 	};
 	class MarkerIDProvider
 	{
-		nextID=61;
+		nextID=62;
 	};
 	class Camera
 	{
@@ -105,7 +105,7 @@ class Mission
 {
 	class Intel
 	{
-		briefingName="BECTI BE 0.97 - Zerty 1.3.4.1";
+		briefingName="BECTI BE 0.97 - Zerty 1.3.4.2";
 		overviewText="By Benny - Adapted from OFP era MFCTI (Mike Melvin)";
 		resistanceWest=0;
 		timeOfChanges=24720;
@@ -123,7 +123,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=123;
+		items=124;
 		class Item0
 		{
 			dataType="Marker";
@@ -3008,6 +3008,17 @@ class Mission
 			name="CTI_GUER";
 			id=172;
 			type="Logic";
+		};
+		class Item123
+		{
+			dataType="Marker";
+			position[]={505.74133,0,30224.15};
+			name="marker_61";
+			text="Visit our Discord: https://discord.gg/YhBUUSr";
+			type="mil_warning";
+			colorName="ColorWEST";
+			id=177;
+			atlOffset=191.07422;
 		};
 	};
 	class Connections

@@ -157,7 +157,7 @@ _ug=units player;
 			if(count ((_side) call CTI_CO_FNC_GetSideUpgrades) >= CTI_UPGRADE_DATA) then {
 			if(((_side) call CTI_CO_FNC_GetSideUpgrades) select CTI_UPGRADE_DATA == 1) then {
 				//If the vehicle is detected by enemy diffrent color is used.
-				if(_object getvariable["CTI_HUD_Detected_east", false]) then {
+				if(_side == east && _object getvariable["CTI_HUD_Detected_east", false]) then {
 					_color = switch (_side) do
 					{
 					case 	west:{ [0,0,1,1] };			///remains unchanged
@@ -167,7 +167,7 @@ _ug=units player;
 					};
 				};
 				
-				if(_object getvariable["CTI_HUD_Detected_west", false]) then {
+				if(_side == west && _object getvariable["CTI_HUD_Detected_west", false]) then {
 					_color = switch (_side) do
 					{
 					case 	west:{ [0,0.3,0.6,1] };		//color when detected by enenmy
