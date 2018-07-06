@@ -1,4 +1,4 @@
-#define	REVIVE_DELAY	60
+#define	REVIVE_DELAY	20
 
 
 private ["_main_disp","_ntime"];
