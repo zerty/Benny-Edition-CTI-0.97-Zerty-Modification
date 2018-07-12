@@ -29,8 +29,19 @@ _ug=units player;
 		if (isPlayer _object) then {_text =  format ["[%1]%2",(group _object) getVariable ["cti_alias",CTI_PLAYER_DEFAULT_ALIAS], name _object] };
 		_group set [count _group,[_object,_texture, _color, _pos,_size select 0,_size select 1, 0, _text, 0, 0.05,'TahomaB', 'right']];
 	};
-	if (!isnull (lasertarget _object)) then {_return set [count _return,[lasertarget _object,"\a3\ui_f\data\IGUI\RscIngameUI\RscOptics\laser_designator_iconlaseron", [1,0,0,1],  getPos (lasertarget _object),_size select 0,_size select 1, 0, "", 0, 0.05,'TahomaB', 'right']];};
-	if (!isnull (laserTarget getConnectedUAV _object)) then {_return set [count _return,[lasertarget getConnectedUAV _object,"\a3\ui_f\data\IGUI\RscIngameUI\RscOptics\laser_designator_iconlaseron", [1,0,0,1],  getPos (lasertarget getConnectedUAV _object),_size select 0,_size select 1, 0, "", 0, 0.05,'TahomaB', 'right']];};
+	
+	//gets name for laser marker
+	_unitName = getText (configFile >> "cfgVehicles" >> typeOf _object >> "displayName");
+	if(_object isKindOf "Man") then {
+		_unitName = name _object;
+	} else {
+		if(_object isKindOf "UAV" && (count(UAVControl _object) > 0)) then {
+			_unitName = name ((UAVControl _object) select 0);
+		};
+	};
+	
+	if (!isnull (lasertarget _object)) then {_return set [count _return,[lasertarget _object,"\a3\ui_f\data\IGUI\RscIngameUI\RscOptics\laser_designator_iconlaseron", [1,0,0,1],  getPos (lasertarget _object),_size select 0,_size select 1, 0, _unitName, 0, 0.05,'TahomaB', 'right']];};
+	if (!isnull (laserTarget getConnectedUAV _object)) then {_return set [count _return,[lasertarget getConnectedUAV _object,"\a3\ui_f\data\IGUI\RscIngameUI\RscOptics\laser_designator_iconlaseron", [1,0,0,1],  getPos (lasertarget getConnectedUAV _object),_size select 0,_size select 1, 0, _unitName, 0, 0.05,'TahomaB', 'right']];};
 
 	/*if (_x call AN_Check_Connection && ! isNull(_x getVariable "AN_Conn") ) then {
 			_lines set [count _lines , [_x,visiblePosition _x, visiblePosition (_x getVariable "AN_Conn"),[1,1,0,1]]];
