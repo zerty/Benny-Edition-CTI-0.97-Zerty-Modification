@@ -15,7 +15,7 @@ while {!CTI_GameOver && ! isNull _group && alive _vehicle && !isNull _vehicle &&
 	if ( (_vehicle distance _position ) < 300 && ! (_group getvariable ["defending",false]) ) then {
 		diag_log format ["Patrols :: Deleting %1",_group];
 		{deletevehicle _x;true}count (units _group);
-		_vehicle setdamage 1;
+		deletevehicle _vehicle;
 	} else {
 		_position=getpos _vehicle;
 	};
