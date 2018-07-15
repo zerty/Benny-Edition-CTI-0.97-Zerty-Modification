@@ -31,6 +31,10 @@ _killed = _this select 0;
 _killer = _this select 1;
 _sideID = _this select 2;
 
+if(_killer isKindOf "UAV" && (count(UAVControl _killer) > 0)) then {
+	_killer = ((UAVControl _object) select 0);
+};
+
 diag_log format ["::HQ DESTROYED:: %1 killed by %2 sideid %3", _this select 0, _this select 1, _this select 2 ];
 if (((_this select 0) isKindOf "Pod_Heli_Transport_04_base_F") ||((_this select 0) isKindOf "Slingload_base_F")) then {
 	_target =(_this select 0);
