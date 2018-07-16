@@ -32,7 +32,7 @@ _killer = _this select 1;
 _sideID = _this select 2;
 
 if(_killer isKindOf "UAV" && (count(UAVControl _killer) > 0)) then {
-	_killer = ((UAVControl _object) select 0);
+	_killer = ((UAVControl _killer) select 0);
 };
 
 diag_log format ["::HQ DESTROYED:: %1 killed by %2 sideid %3", _this select 0, _this select 1, _this select 2 ];
