@@ -60,7 +60,7 @@ if (((_this select 0) isKindOf "Pod_Heli_Transport_04_base_F") ||((_this select 
 if !(simulationEnabled _killed) then {_killed enableSimulationGlobal true;};
 
 
-[["CLIENT", leader group _killer], "Client_AwardBounty", [(typeOf _killed), 30000]] call CTI_CO_FNC_NetSend;
+[["CLIENT", leader group _killer], "Client_AwardBounty", [(typeOf _killed), round((CTI_BASE_HQ_REPAIR_PRICE/4)*3)]] call CTI_CO_FNC_NetSend;
 
 [["CLIENT", _sideID call CTI_CO_FNC_GetSideFromID], "Client_OnMessageReceived", ["hq-destroyed"],true] call CTI_CO_FNC_NetSend;
 
