@@ -33,7 +33,11 @@ _ug=units player;
 	//gets name for laser marker
 	_unitName = getText (configFile >> "cfgVehicles" >> typeOf _object >> "displayName");
 	if(_object isKindOf "Man") then {
-		_unitName = name _object;
+		if(isPlayer _object) then {
+			_unitName = name _object;
+		} else {
+			_unitName = groupId (group _object);
+		};
 	} else {
 		if(_object isKindOf "UAV" && (count(UAVControl _object) > 0)) then {
 			_unitName = name ((UAVControl _object) select 0);
