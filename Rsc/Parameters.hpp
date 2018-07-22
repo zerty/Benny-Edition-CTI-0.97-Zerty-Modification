@@ -451,6 +451,12 @@ class Params {
 		texts[] = {$STR_CTI_DISABLED,$STR_CTI_ENABLED};
 		default = 1;
 	};
+	class CTI_SM_MINES {
+		title = $STR_CTI_SM_MINES;
+		values[] = {0,1};
+		texts[] = {$STR_CTI_DISABLED,$STR_CTI_ENABLED};
+		default = 1;
+	};
 	class CTI_SM_STRATEGIC {
 		title = $STR_CTI_SM_STRATEGIC;
 		values[] = {0,1};

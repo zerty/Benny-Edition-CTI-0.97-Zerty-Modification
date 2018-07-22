@@ -649,6 +649,10 @@
 				<Original>Zerty: Strategic: Town Mortars</Original>
 				<Russian>Миномёты для защиты городов</Russian>
 			</Key>
+			<Key ID="STR_CTI_SM_MINES">
+				<Original>[H] Tom: Strategic: Town Mines</Original>
+				<Russian>минное поле в городах</Russian>
+			</Key>
 			<Key ID="STR_CTI_SM_STRATEGIC">
 				<Original>Zerty: Strategic: Town Links</Original>
 				<Russian>Города захватываются последовательно</Russian>
@@ -2340,7 +2344,7 @@
 			<Key ID="STR_Up_Data">
 				<Original>Network: Advanced Data Link</Original>
 				<Russian>Сеть: Расширенный канал передачи данных</Russian>
-			</Key>			
+			</Key>
 			<Key ID="STR_Up_Data_Descr">
 				<Original>Advanced data link to players. This allows them to share and recive targets via their sensors.</Original>
 				<Russian>Добавьте дополнительную ссылку к игрокам. Это позволяет им делиться и получать цели через свои датчики.</Russian>

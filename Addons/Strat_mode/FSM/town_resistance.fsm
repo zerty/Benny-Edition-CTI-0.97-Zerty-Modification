@@ -62,8 +62,8 @@ link30[] = {24,25};
 link31[] = {25,1};
 link32[] = {25,26};
 link33[] = {26,25};
-globals[] = {0.000000,0,0,0,0,640,480,1,173,6316128,1,-1091.492065,1056.436035,832.636719,-1191.768555,939,885,1};
-window[] = {2,-1,-1,-1,-1,762,150,1186,150,3,957};
+globals[] = {0.000000,0,0,0,0,640,480,1,173,6316128,1,-1091.492065,1056.436035,832.636719,-1191.768555,939,884,1};
+window[] = {2,-1,-1,-1,-1,656,994,2030,44,3,957};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -83,6 +83,7 @@ class FSM
                          "_town setVariable [""cti_town_mortars"",[0,0,0],true];" \n
                          "_town setVariable [""cti_town_disactivate"",true,true];" \n
                          "_town setVariable [""cti_town_timeofspawn"", -1000,true];};" \n
+                         "_town setVariable [""cti_town_mines"",[],true];" \n
                          "_ncycle = time + 20;"/*%FSM</STATEINIT""">*/;
                         precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
                         class Links
@@ -321,6 +322,14 @@ class FSM
                          "" \n
                          "};" \n
                          "" \n
+                         "if ((missionNamespace getVariable 'CTI_SM_MINES')==1) then {" \n
+                         "	_mines = _town getVariable ""cti_town_mines"";" \n
+                         "	if ((count _mines) >0) then {" \n
+                         "		{deleteVehicle _x} forEach _mines;" \n
+                         "	};" \n
+                         "_town setVariable [""cti_town_mines"",[],true];" \n
+                         "};" \n
+                         "" \n
                          "if ( (missionNamespace getVariable 'CTI_SM_TCAS') <= (_town getVariable ""cti_town_value"")) then {" \n
                          "	(_town getVariable [""CTI_CAS"",[]]) call SM_TCAS_CLEANUP;" \n
                          "};" \n
@@ -416,6 +425,9 @@ class FSM
                          "if ( (missionNamespace getVariable 'CTI_SM_TCAS') <= (_town getVariable ""cti_town_value"")) then {" \n
                          "	_town setVariable[""CTI_CAS"",(_town) call SM_TCAS_CREATE,true];" \n
                          "" \n
+                         "};" \n
+                         "if ((missionNamespace getVariable 'CTI_SM_MINES')==1) then {" \n
+                         "	[_town] call CTI_SM_Mines_script;" \n
                          "};" \n
                          "" \n
                          "if ((_town getVariable ""cti_town_name"" == ""Makrynisi"") || (_town getVariable ""cti_town_name"" == ""Tuadua Island"") || (_town getVariable ""cti_town_name"" == ""Yani Islets"") || (_town getVariable ""cti_town_name"" == ""Ile Sainte-Marie"") || (_town getVariable ""cti_town_name"" == ""Northern Island"") || (_town getVariable ""cti_town_name"" == ""Rock Island"")) then {_town setVariable [""CTI_Ship"",(_town) call SM_TShip_CREATE,true];};" \n

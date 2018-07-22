@@ -54,6 +54,7 @@ with missionNamespace do {
 	   	TUTO_Init_Client= compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Functions\TUTORIAL_init_client.sqf";
 	   	KK_fnc_setPosAGLS= compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Functions\KK_fnc_setPosAGLS.sqf";
 	   	SM_REPAIRVEHICLEREMOTE= compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Functions\SM_RepairVehiculeRemote.sqf";
+	   	CTI_SM_Mines_script = compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Functions\SM_Mines.sqf";
 };
 
 //Common stuff
@@ -175,10 +176,10 @@ if (CTI_IsServer) then {
 				HUD_WRITE=false;
 			};
 		};
-		
+
 		//Marks enemy vehicles that are known by your network (upgrade data link)
 		CTI_PVF_Server_Hud_Share_Add_Enemy= {
-			
+
 			_this spawn {
 				_sl= (_this select 1) call CTI_CO_FNC_GetSideLogic;
 				while {HUD_WRITE} do {sleep random (1);};
