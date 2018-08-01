@@ -462,6 +462,8 @@ CTI_LOADOUT_B_Plane_Fighter_01_F_MNT_OPTIONS =
 						[ "PylonMissile_1Rnd_BombCluster_01_F" , "1000"],
 						[ "PylonRack_2Rnd_BombCluster_01_F" , "2000"],
 						[ "PylonRack_2Rnd_BombCluster_03_F" , "2000"],
+						[ "PylonRack_Bomb_SDB_x4" , "5000"],
+						[ "PylonRack_Missile_HARM_x1" , "10000"],
 						[ "PylonMissile_Missile_BIM9X_x1" , "4000"],
 						[ "PylonMissile_Missile_AMRAAM_D_INT_x1" , "4000"]
 					]
@@ -492,6 +494,7 @@ CTI_LOADOUT_B_Plane_Fighter_01_F_MNT_OPTIONS =
 				["PylonBayCenter3",
 					[
 						["" , ""],
+						[ "PylonRack_Bomb_SDB_x4" , "5000"],
 						["PylonMissile_Missile_AMRAAM_D_INT_x1" , "4000"]
 					]
 				]
@@ -500,6 +503,7 @@ CTI_LOADOUT_B_Plane_Fighter_01_F_MNT_OPTIONS =
 				["PylonBayCenter4",
 					[
 						["" , ""],
+						[ "PylonRack_Bomb_SDB_x4" , "5000"],
 						["PylonMissile_Missile_AMRAAM_D_INT_x1" , "4000"]
 					]
 				]
@@ -546,6 +550,8 @@ CTI_LOADOUT_B_Plane_Fighter_01_F_MNT_OPTIONS =
 						[ "PylonMissile_1Rnd_BombCluster_01_F" , "1000"],
 						[ "PylonRack_2Rnd_BombCluster_01_F" , "2000"],
 						[ "PylonRack_2Rnd_BombCluster_03_F" , "2000"],
+						[ "PylonRack_Bomb_SDB_x4" , "5000"],
+						[ "PylonRack_Missile_HARM_x1" , "10000"],
 						[ "PylonMissile_Missile_BIM9X_x1" , "4000"],
 						[ "PylonMissile_Missile_AMRAAM_D_INT_x1" , "4000"]
 					]
@@ -628,6 +634,7 @@ CTI_LOADOUT_B_Plane_Fighter_01_Stealth_F_MNT_OPTIONS =
 				["PylonBayCenter3",
 					[
 						["" , ""],
+						[ "PylonRack_Bomb_SDB_x4" , "5000"],
 						["PylonMissile_Missile_AMRAAM_D_INT_x1" , "4000"]
 					]
 				]
@@ -636,6 +643,7 @@ CTI_LOADOUT_B_Plane_Fighter_01_Stealth_F_MNT_OPTIONS =
 				["PylonBayCenter4",
 					[
 						["" , ""],
+						[ "PylonRack_Bomb_SDB_x4" , "5000"],
 						["PylonMissile_Missile_AMRAAM_D_INT_x1" , "4000"]
 					]
 				]
@@ -1300,6 +1308,7 @@ CTI_LOADOUT_O_Plane_Fighter_02_Stealth_F_MNT_OPTIONS =
 						["PylonMissile_Missile_AA_R77_INT_x1" , "4000" ],
 						["PylonMissile_Missile_AGM_KH25_INT_x1" , "6000" ],
 						["PylonMissile_Bomb_KAB250_x1" , "6000" ],
+						["PylonMissile_Missile_KH58_INT_x1" , "10000" ],
 						["PylonMissile_1Rnd_BombCluster_02_cap_F" , "1000" ]
 					]
 				]
@@ -1427,6 +1436,7 @@ CTI_LOADOUT_O_Plane_Fighter_02_F_MNT_OPTIONS =
 						[ "PylonMissile_Bomb_KAB250_x1" , "6000" ],
 						[ "PylonMissile_Missile_AA_R77_INT_x1" , "5000" ],
 						[ "PylonMissile_Missile_AGM_KH25_INT_x1" , "5000" ],
+						["PylonMissile_Missile_KH58_INT_x1" , "10000" ],
 						[ "PylonMissile_1Rnd_BombCluster_02_cap_F" , "1000" ]
 					]
 				]
@@ -1467,7 +1477,8 @@ CTI_LOADOUT_O_Plane_Fighter_02_F_MNT_OPTIONS =
 				[ "Pylons5" ,
 					[
 						[ "PylonMissile_Missile_AA_R77_x1" , "5000" ],
-						[ "PylonMissile_Missile_AA_R73_x1" , "5000" ]
+						[ "PylonMissile_Missile_AA_R73_x1" , "5000" ],
+						["PylonMissile_Missile_KH58_INT_x1" , "10000" ]
 					]
 				]
 			],
@@ -1475,7 +1486,8 @@ CTI_LOADOUT_O_Plane_Fighter_02_F_MNT_OPTIONS =
 				[ "Pylons6" ,
 					[
 						[ "PylonMissile_Missile_AA_R73_x1" , "5000" ],
-						[ "PylonMissile_Missile_AA_R77_x1" , "5000" ]
+						[ "PylonMissile_Missile_AA_R77_x1" , "5000" ],
+						["PylonMissile_Missile_KH58_INT_x1" , "10000" ]
 						
 					]
 				]
