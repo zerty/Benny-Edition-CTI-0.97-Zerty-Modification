@@ -208,6 +208,18 @@ _prices = _prices 			+ [80000];
 _placements = _placements 	+ [[180, 15]];
 _categories = _categories 	+ ["Defense"];
 
+_headers = _headers 		+ ["R-750 Cronus Radar - Only on BASE Areas"];
+_classes = _classes 		+ ["O_Radar_System_02_F"];
+_prices = _prices 			+ [12000];
+_placements = _placements 	+ [[180, 15]];
+_categories = _categories 	+ ["Defense"];
+
+_headers = _headers 		+ ["S-750 Rhea - Only on BASE Areas"];
+_classes = _classes 		+ ["O_SAM_System_04_F"];
+_prices = _prices 			+ [40000];
+_placements = _placements 	+ [[180, 15]];
+_categories = _categories 	+ ["Defense"];
+
 _headers = _headers 		+ ["Lamp"];
 _classes = _classes 		+ ["Land_LampHalogen_F"];
 _prices = _prices 			+ [5];

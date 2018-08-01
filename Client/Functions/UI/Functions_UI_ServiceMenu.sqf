@@ -118,7 +118,7 @@ CTI_UI_Service_ProcessRearm = {
 			_times set [_forEachIndex,_x * CTI_ART_REARM_RATIO];
 		} forEach _times;
 	};
-	if (_unit isKindOf "B_AAA_System_01_F" || _unit isKindOf "B_SAM_System_01_F" || _unit isKindOf "B_SAM_System_02_F") then {
+	if (_unit isKindOf "B_AAA_System_01_F" || _unit isKindOf "B_SAM_System_01_F" || _unit isKindOf "B_SAM_System_02_F" || _unit isKindOf "B_SAM_System_03_F" || _unit isKindOf "O_SAM_System_04_F") then {
 		{
 			_times set [_forEachIndex,_x * 3];
 		} forEach _times;

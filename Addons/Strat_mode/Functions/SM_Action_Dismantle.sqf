@@ -15,7 +15,7 @@ _caller switchMove animation;
 _side= if  (_target in (CTI_EAST getVariable ["cti_defences", []])) then { east } else {west};
 _maxtime= if (_target in (CTI_P_SideLogic getVariable ["cti_defences", []])) then {7} else {90};
 
-if (_target isKindOf "B_AAA_System_01_F" || _target isKindOf "B_SAM_System_01_F" || _target isKindOf "B_SAM_System_02_F") then {_maxtime = 90};
+if (_target isKindOf "B_AAA_System_01_F" || _target isKindOf "B_SAM_System_01_F" || _target isKindOf "B_SAM_System_02_F" || _target isKindOf "B_Radar_System_01_F" || _target isKindOf "B_SAM_System_03_F" || _target isKindOf "O_Radar_System_02_F" || _target isKindOf "O_SAM_System_04_F") then {_maxtime = 90};
 
 while {alive _caller  && animationstate _caller == animation &&(getDammage _target) <1 } do {
 			_target setDamage ((getDammage _target)+1/_maxtime);

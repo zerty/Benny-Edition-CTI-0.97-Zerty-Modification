@@ -213,6 +213,18 @@ _prices = _prices 			+ [80000];
 _placements = _placements 	+ [[180, 15]];
 _categories = _categories 	+ ["Defense"];
 
+_headers = _headers 		+ ["AN/MPQ-105 Radar - Only on BASE Areas"];
+_classes = _classes 		+ ["B_Radar_System_01_F"];
+_prices = _prices 			+ [12000];
+_placements = _placements 	+ [[180, 15]];
+_categories = _categories 	+ ["Defense"];
+
+_headers = _headers 		+ ["MIM-145 Defender - Only on BASE Areas"];
+_classes = _classes 		+ ["B_SAM_System_03_F"];
+_prices = _prices 			+ [40000];
+_placements = _placements 	+ [[180, 15]];
+_categories = _categories 	+ ["Defense"];
+
 _headers = _headers 		+ ["Lamp"];
 _classes = _classes 		+ ["Land_LampHalogen_F"];
 _prices = _prices 			+ [5];
