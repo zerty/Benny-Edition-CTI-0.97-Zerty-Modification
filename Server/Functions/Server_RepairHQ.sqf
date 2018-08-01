@@ -84,7 +84,11 @@ _logic setVariable ["cti_hq", _hq, true];
 	if(_logic getVariable ["cti_hq", objNull] == _hq && !alive _hq) then {
 		//refound cash
 		_comMoney = _logic getvariable ["cti_commander_funds", 0] ;
-		_logic setvariable ["cti_commander_funds",_comMoney+CTI_BASE_HQ_REPAIR_PRICE,true];
+		_base_repair_HQ_cost = CTI_BASE_HQ_REPAIR_PRICE;
+		//Reduce repair cost in early game
+		if(scoreSide CTI_P_SideJoined <= 1000) then {_base_repair_HQ_cost = round(_base_repair_HQ_cost / 2);};
+		if(scoreSide CTI_P_SideJoined <= 500) then {_base_repair_HQ_cost = round(_base_repair_HQ_cost / 4);};
+		_logic setvariable ["cti_commander_funds",_comMoney+_base_repair_HQ_cost,true];
 	};
 };
 
