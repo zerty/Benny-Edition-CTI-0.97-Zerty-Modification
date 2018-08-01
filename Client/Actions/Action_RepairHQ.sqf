@@ -5,10 +5,15 @@ CTI_P_LastRepairTime = time;
 
 if (alive _hq) exitWith {}; //--- Don't bother if the HQ is alive
 
+_base_repair_HQ_cost = CTI_BASE_HQ_REPAIR_PRICE;
+//Reduce repair cost in early game
+if(scoreSide CTI_P_SideJoined <= 1000) then {_base_repair_HQ_cost = round(_base_repair_HQ_cost / 2);};
+if(scoreSide CTI_P_SideJoined <= 500) then {_base_repair_HQ_cost = round(_base_repair_HQ_cost / 4);};
+
 if (_hq distance _vehicle <= CTI_BASE_HQ_REPAIR_RANGE) then {
 	_funds = call CTI_CL_FNC_GetPlayerFunds;
 	
-	if (_funds >= CTI_BASE_HQ_REPAIR_PRICE) then {
+	if (_funds >= _base_repair_HQ_cost) then {
 		_delay = CTI_BASE_HQ_REPAIR_TIME;
 		hint parseText localize "STR_RepairHQ";
 		while {_delay > 0} do {
@@ -19,11 +24,11 @@ if (_hq distance _vehicle <= CTI_BASE_HQ_REPAIR_RANGE) then {
 		};
 		
 		if (_delay <= 0) then {
-			if (_funds >= CTI_BASE_HQ_REPAIR_PRICE) then {
-				-CTI_BASE_HQ_REPAIR_PRICE call CTI_CL_FNC_ChangePlayerFunds;
+			if (_funds >= _base_repair_HQ_cost) then {
+				-_base_repair_HQ_cost call CTI_CL_FNC_ChangePlayerFunds;
 				["SERVER", "Request_HQRepair", CTI_P_SideJoined] call CTI_CO_FNC_NetSend;
 			} else {
-				hint parseText format[localize "STR_Needed_RepairHQ", CTI_P_Coloration_Money, CTI_BASE_HQ_REPAIR_PRICE];
+				hint parseText format[localize "STR_Needed_RepairHQ", CTI_P_Coloration_Money, _base_repair_HQ_cost];
 			};
 		} else {
 			if (alive _hq) exitWith {
@@ -37,6 +42,6 @@ if (_hq distance _vehicle <= CTI_BASE_HQ_REPAIR_RANGE) then {
 			};
 		};
 	} else {
-		hint parseText format[localize "STR_Needed_RepairHQ", CTI_P_Coloration_Money, CTI_BASE_HQ_REPAIR_PRICE];
+		hint parseText format[localize "STR_Needed_RepairHQ", CTI_P_Coloration_Money, _base_repair_HQ_cost];
 	};
 };
