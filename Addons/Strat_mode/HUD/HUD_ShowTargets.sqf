@@ -1,5 +1,7 @@
 //if (!visibleMap && profileNamespace getVariable ["HUD_Tactical",true]) then {
 if ( profileNamespace getVariable ["HUD_Tactical",true]) then {
+	_sl= (CTI_P_SideJoined) call CTI_CO_FNC_GetSideLogic;
+	_shared_targets= (_sl getVariable "CTI_HUD_SHARED");
 
 {
 	_ob=_x select 0;
@@ -20,21 +22,25 @@ if ( profileNamespace getVariable ["HUD_Tactical",true]) then {
 
 
 //if ( (vehicle player) getVariable "AN_iNet" == CTI_P_SideID) then {
-{
 
-	_pos=asltoatl getPosASL(_x select 0);
-	if ((_x select 0) isKindOf "Man") then {_pos set[2,(((_x select 0) modelToWorld((_x select 0) selectionPosition "head"))select 2)+0.5]} else {_pos set[2, (_pos select 2) +2 ];};
-	_dis= (positionCameraToWorld [0,0,0]) distance _pos;
-	_fade=1-(_dis/HUD_MAX_RANGE) max 0;
-	if ((_x select 0) == (vehicle player)) then {_fade=0;};
-	_size=(1-((_dis)/HUD_MAX_RANGE)*0.8) max 0;
-	if ((_x select 0) isKindOf "Man") then { _size=_size*0.5;};
-	_color = +(_x select 2);
-	_color set [3,_fade];
-	//(_x select 2) set [3,_fade];
-	//diag_log [(_x select 1)+".paa",_color, _pos , _size, _size, 0,(_x select 7), 0, 0, "PuristaMedium"];
-	drawIcon3D [(_x select 1)+".paa",_color, _pos , _size, _size, 0,(_x select 7), 0, 0.05*_size, "PuristaMedium"];
-}count (SHOWTOMAP select 0)+(SHOWTOMAP select 1) - HUD_Targets;
+
+
+{
+	if !((_x select 0) in _shared_targets) then {
+		_pos=asltoatl getPosASL(_x select 0);
+		if ((_x select 0) isKindOf "Man") then {_pos set[2,(((_x select 0) modelToWorld((_x select 0) selectionPosition "head"))select 2)+0.5]} else {_pos set[2, (_pos select 2) +2 ];};
+		_dis= (positionCameraToWorld [0,0,0]) distance _pos;
+		_fade=1-(_dis/HUD_MAX_RANGE) max 0;
+		if ((_x select 0) == (vehicle player)) then {_fade=0;};
+		_size=(1-((_dis)/HUD_MAX_RANGE)*0.8) max 0;
+		if ((_x select 0) isKindOf "Man") then { _size=_size*0.5;};
+		_color = +(_x select 2);
+		_color set [3,_fade];
+		//(_x select 2) set [3,_fade];
+		//diag_log [(_x select 1)+".paa",_color, _pos , _size, _size, 0,(_x select 7), 0, 0, "PuristaMedium"];
+		drawIcon3D [(_x select 1)+".paa",_color, _pos , _size, _size, 0,(_x select 7), 0, 0.05*_size, "PuristaMedium"];
+	};true
+}count (SHOWTOMAP select 0)+(SHOWTOMAP select 1);
 
 	/*{
 		if (((_x select 0)) call AN_Check_Connection)	then  {

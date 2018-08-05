@@ -44,9 +44,9 @@ if (count _to_share > 0) then {
 	};
 };
 
-
+_input=[];
 _input=+(_sl getVariable ["CTI_HUD_SHARED",[]]);
-{_input pushBackUnique _x;true} count HUD_T_OBJ;
+{if !(_x in _input) then {_input pushBackUnique _x};true} count HUD_T_OBJ;
 
 _return=[];
 {
