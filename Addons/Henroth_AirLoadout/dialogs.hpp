@@ -332,7 +332,7 @@ class CTI_RscTabletAircraftLoadoutMenu {
 			colorShadow[] = {0,0,0,0};
 			colorBorder[] = {0,0,0,0};
 			colorText[] = {1,0.1,0.1,1};
-			text = "NO";
+			text = "YES";
 			action = "[ 'onWeaponMountPressed' , 750000 ] call compile preprocessFileLineNumbers 'Addons\Henroth_AirLoadout\Events_UI_AircraftLoadoutMenu.sqf'";
 		};
 		class select_weapon_2: select_weapon_1
@@ -1127,7 +1127,7 @@ class CTI_RscAircraftLoadoutMenu {
 			colorShadow[] = {0,0,0,0};
 			colorBorder[] = {0,0,0,0};
 			colorText[] = {1,0.1,0.1,1};
-			text = "NO";
+			text = "YES";
 			action = "[ 'onWeaponMountPressed' , 750000 ] call compile preprocessFileLineNumbers 'Addons\Henroth_AirLoadout\Events_UI_AircraftLoadoutMenu.sqf'";
 		};
 		class select_weapon_2: select_weapon_1

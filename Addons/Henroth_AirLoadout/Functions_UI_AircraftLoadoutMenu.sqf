@@ -47,6 +47,7 @@ CTI_AC_UI_IDC_LOADOUT_DISPLAY = 739303;
 CTI_AC_FORCE_UNLOCK_TIME = 180;
 
 CTI_AC_UI_COLOR_REDNO = [ 1 , 0.1 , 0.1 , 1 ];
+CTI_AC_UI_COLOR_GREENYES = [0.1, 1, 0.1, 1];
 CTI_AC_UI_COLOR_GREYNA = [ 0.2, 0.2 , 0.2, 1 ];
 
 CTI_AC_UPDATE_UI_CURRENT_LOADOUT =
@@ -250,14 +251,14 @@ CTI_AC_UNSET_UI_ALL_MOUNT_BUTTONS =
 	/*
 	 * Name: CTI_AC_UNSET_UI_ALL_MOUNT_BUTTONS
 	 *
-	 * Purpose: Unsets all the mount buttons by setting their text to 'NO' where it was once
-	 *          set to 'YES'
+	 * Purpose: Unsets all the mount buttons by setting their text to 'YES' where it was once
+	 *          set to 'NO'
 	 *
 	 * Input: <NONE>
 	 *
 	 * Return: <NONE>
 	 *
-	 * Side effects: Each mount button will be set to NO with the exclusion of those with the value
+	 * Side effects: Each mount button will be set to YES with the exclusion of those with the value
 	 *				 of 'N/A'
 	 *
 	*/
@@ -266,8 +267,8 @@ CTI_AC_UNSET_UI_ALL_MOUNT_BUTTONS =
 		if ( ( ctrlText _control ) != "N/A" ) then
 		{
 			_control = ((uiNamespace getVariable "cti_dialog_ui_aircraftloadoutmenu") displayCtrl ( _x ));
-			_control ctrlSetTextColor CTI_AC_UI_COLOR_REDNO;
-			_control ctrlSetText "NO";
+			_control ctrlSetTextColor CTI_AC_UI_COLOR_GREENYES;
+			_control ctrlSetText "YES";
 		};
 	} forEach ( CTI_AC_UI_ALL_WEAPON_CHECKBOX_IDCS );
 };
@@ -804,8 +805,8 @@ CTI_AC_UI_LOCK_IF_NOT_RESEARCHED_MOUNT_N =
 	else
 	{
 		_control ctrlEnable true;
-		_control ctrlSetTextColor CTI_AC_UI_COLOR_REDNO;
-		_control ctrlSetText "NO";
+		_control ctrlSetTextColor CTI_AC_UI_COLOR_GREENYES;
+		_control ctrlSetText "YES";
 	};
 
 
