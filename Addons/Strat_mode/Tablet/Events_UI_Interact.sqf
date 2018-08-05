@@ -760,6 +760,12 @@ switch (_action) do {
 		['onLoad'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_Interact.sqf'
 	};
 	case "OnExitT": {
+		["InitializePlayer",[player] ] call BIS_fnc_dynamicGroups;
+		_new_group= createGroup CTI_P_SideJoined;
+		[player] joinsilent _new_group;
+		["RegisterGroup", [_new_group, player,[nil, nil, true]]] call BIS_fnc_dynamicGroups;
+
+		waitUntil {(["PlayerHasGroup",[player] ] call BIS_fnc_dynamicGroups)};
 		TUTO_COMPLETE=true;
 		//profileNamespace setVariable ["TUTO_COMPLETE", true];
 		//saveProfileNamespace;
