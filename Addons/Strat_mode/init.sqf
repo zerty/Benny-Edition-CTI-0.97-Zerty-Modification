@@ -471,6 +471,7 @@ if (CTI_IsClient) then {
 
 		if ( (missionNamespace getVariable 'CTI_SM_BASEP_M')!=0) then {
 			waitUntil {!isNil {CTI_P_SideLogic getVariable "CTI_BASES_NEIGH"} && !isNil {CTI_P_SideLogic getVariable "CTI_BASES_FOUND"} };
+			waitUntil { (missionNamespace getvariable "CTI_PERSISTANT" == 0) || ((missionNamespace getvariable "CTI_PERSISTANT" == 1) && CTI_P_SideLogic getVariable ["CTI_LOAD_COMPLETED",false])};
 			_ci=0;
 			{
 				_b=_x;

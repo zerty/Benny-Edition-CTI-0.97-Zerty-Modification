@@ -49,6 +49,9 @@ diag_log " :: SAVE :: Loading";
     diag_log format [" :: SAVE :: Loading upgrade %1",(_load select 7)];
     if (((_load select 7) select 0 ) > -1) then {_logic setvariable ["cti_upgrade_lt",((_load select 7) select 2 ),true]; [_side,((_load select 7) select 0 ), ((_load select 7) select 1 )] spawn CTI_SE_FNC_StartUpgrade;   };
 
+    //bases found
+    diag_log format [" :: SAVE :: Loading detected bases %1 for side %2",(_load select 10),_x];
+    _logic setVariable ["CTI_BASES_FOUND",(_load select 10),true];
 
 } forEach [east,west];
 
@@ -78,5 +81,10 @@ diag_log format [" :: SAVE :: TimeLimit",(_loadwest select 11)];
 if (_loadwest select 11 > 0) then {
     missionNamespace setVariable ["CTI_MAX_MISSION_TIME",((_loadwest select 11)/60),true];
 };
+{
+    _side=_x;
+    _logic= (_side) call CTI_CO_FNC_GetSideLogic;
+    _logic setVariable ["CTI_LOAD_COMPLETED",true,true];
+} forEach [east,west];
 
 CTI_Init_Server=True;

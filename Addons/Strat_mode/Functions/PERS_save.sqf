@@ -41,7 +41,6 @@ profileNamespace setVariable ["CTI_SAVE_TOWNS",_towns];
 	_save pushBack _teamscore;
 	//save found bases [H]Tom
 	_bases_found = (_logic getVariable "CTI_BASES_FOUND");
-	_arrint = _bases_found arrayIntersect _bases_found;
 	_save pushBack _arrint;
 	//save Time Left [H]Tom
 	_limit = (missionNamespace getVariable "CTI_MAX_MISSION_TIME");

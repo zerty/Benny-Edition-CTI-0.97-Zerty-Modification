@@ -279,7 +279,16 @@ if (( missionNamespace getVariable [ "CTI_BASE_DEFENSES_AUTO_LIMIT",0]) >0) then
 if (missionNamespace getvariable "CTI_PERSISTANT" == 1) then {
 	waitUntil {!isNil 'CTI_InitTowns'};
 	sleep 10; // prenvent loading without all town FSM stable
-	if (profileNamespace getvariable ["CTI_SAVE_ENABLED",false]) then { 0 call PERS_LOAD} else {CTI_Init_Server=True;};
+	if (profileNamespace getvariable ["CTI_SAVE_ENABLED",false]) then {
+		0 call PERS_LOAD;
+	} else {
+		CTI_Init_Server=True;
+		{
+		    _side=_x;
+		    _logic= (_side) call CTI_CO_FNC_GetSideLogic;
+		    _logic setVariable ["CTI_LOAD_COMPLETED",true,true];
+		} forEach [east,west];
+	};
 	0 spawn {
 		while {!CTi_GameOver} do {
 			sleep 270 +random (60);
