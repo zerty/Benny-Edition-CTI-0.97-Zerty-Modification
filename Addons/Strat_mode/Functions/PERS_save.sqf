@@ -40,32 +40,9 @@ profileNamespace setVariable ["CTI_SAVE_TOWNS",_towns];
 	_teamscore = scoreSide _side;
 	_save pushBack _teamscore;
 	//save found bases [H]Tom
-	_enemy = switch (_side) do {
-	   	 	case west: {east};
-	    	case east: {west};
-			};
-	_enemylogic = (_enemy) call CTI_CO_FNC_GetSideLogic;
-	_bases_found = (_logic getVariable ["CTI_BASES_FOUND",[]]);
-	_enemy_bases = (_enemylogic getVariable ["cti_structures_areas",[]]);
-	_enemy_bases_found=[];
-	if ((count _bases_found) >0) then {
-		_max = selectMax _bases_found;
-		if ((count _enemy_bases) >= _max) then {
-			{
-				_enemy_bases_found pushback (_enemy_bases select _x);
-			} forEach _bases_found;
-		};
-
-	};
-	_save pushBack _enemy_bases_found;
-	/*_enemybase0 = []; _enemybase1 = []; _enemybase2 = []; _enemybase3 = []; _enemybase4 = []; _enemybase5 = [];
-	if (0 in _bases_found) then {_enemybase0 = (_enemy_bases select 0);};
-	if (1 in _bases_found) then {_enemybase1 = (_enemy_bases select 1);};
-	if (2 in _bases_found) then {_enemybase2 = (_enemy_bases select 2);};
-	if (3 in _bases_found) then {_enemybase3 = (_enemy_bases select 3);};
-	if (4 in _bases_found) then {_enemybase4 = (_enemy_bases select 4);};
-	if (5 in _bases_found) then {_enemybase5 = (_enemy_bases select 5);};
-	_save pushBack [_enemybase0, _enemybase1, _enemybase2, _enemybase3, _enemybase4, _enemybase5];*/
+	_bases_found = (_logic getVariable "CTI_BASES_FOUND");
+	_arrint = _bases_found arrayIntersect _bases_found;
+	_save pushBack _arrint;
 	//save Time Left [H]Tom
 	_limit = (missionNamespace getVariable "CTI_MAX_MISSION_TIME");
 	_time = round (time/60);
