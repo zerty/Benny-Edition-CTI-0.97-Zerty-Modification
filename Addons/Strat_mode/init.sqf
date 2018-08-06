@@ -363,10 +363,6 @@ if (CTI_IsServer) then {
 			};
 
 		};
-		/*
-		if (profileNamespace getvariable ["CTI_SAVE_ENABLED",false]) then {
-			0 execVM "Addons\Strat_mode\Functions\PERS_Mark.sqf";
-		};*/
 
 };
 
