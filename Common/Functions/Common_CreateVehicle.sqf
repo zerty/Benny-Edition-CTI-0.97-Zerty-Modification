@@ -289,8 +289,6 @@ if (_vehicle isKindOf "CargoNet_01_base_F") then {
 
 //AdminZeus
 
-if (getAmmoCargo _vehicle > 0) then {_vehicle setAmmoCargo  0};
-
 if !( isNil "ADMIN_ZEUS") then {
 	if !(CTI_isServer) then {
 		["SERVER", "Server_Addeditable",[ADMIN_ZEUS,_vehicle]] call CTI_CO_FNC_NetSend;
@@ -331,7 +329,10 @@ if (_vehicle isKindOf "Car" && ! isnil "H_PROTECT_WHEELS") then {
 
 };
 
-//Dynamic group Fix
+//Disable Repair/Rearm/Refuel actions
+_vehicle setAmmoCargo 0;
+_vehicle setFuelCargo 0;
+_vehicle setRepairCargo 0;
 
 //tutorial protection
 
