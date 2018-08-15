@@ -341,6 +341,13 @@ _vehicle spawn {
 		};
 };
 
+
+// attachement system
+
+if (_vehicle  isKindOf "Helicopter") then {
+	_vehicle addEventHandler ["RopeAttach", {	["SERVER", "Request_Locality", [(_this select 2), (_this select 0)]] call CTI_CO_FNC_NetSend ;  }];
+};
+
 //_vehicle addEventHandler ["getIn", {if ((isplayer (_this select 2)) && ({isplayer _x} count (crew (_this select 0)))<2) exitwith {(_this select 2) assignAsCommander (_this select 0)}}];
 
 
