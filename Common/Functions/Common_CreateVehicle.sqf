@@ -246,9 +246,6 @@ if (missionNamespace getVariable "CTI_TROPHY_APS" == 1) then {
 	};
 };
 
-//slingload modification
-if (_type isKindOf 'Slingload_01_Base_F') then {_vehicle setmass [4000,0]};
-if (_type isKindOf "Pod_Heli_Transport_04_base_F") then {_vehicle setmass [2000,0]};
 
 
 if ((missionNamespace getVariable [format ["%1", typeOf _vehicle],["","","","","","","",""]]) select 7 != "") then {
@@ -314,6 +311,7 @@ if (missionNamespace getVariable "CTI_TROPHY_APS" == 1) then {
 
 // weigth fix
 if ((_vehicle isKindOf "Pod_Heli_Transport_04_base_F") || (_vehicle isKindOf "Slingload_01_Base_F")  ) then { _vehicle setmass [2000,0];};
+
 
 //cache
 
