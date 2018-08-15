@@ -43,7 +43,7 @@ SM_TShip_MAINLOOP=compile '
 	_wp3=_group addWaypoint [_pos3, 25];
 	_wp3  setwaypointtype "CYCLE";
 	_group setCurrentWaypoint _wp;
-	diag_log format [ "Town Ship ::  %1 Calling Ship %2", _town,_type];
+	diag_log format [ ":: Town Ship ::  %1 Calling Ship %2", _town,_type];
 	[_group,_v]';
 
 

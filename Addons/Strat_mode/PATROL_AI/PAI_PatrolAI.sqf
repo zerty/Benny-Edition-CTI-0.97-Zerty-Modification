@@ -6,7 +6,7 @@ _group=_this select 0;
 _vehicle=_this select 1;
 
 waitUntil {!isnull _group};
-diag_log format ["Patrols ::Starting AI for %1",_group];
+diag_log format [":: Patrols ::Starting AI for %1",_group];
 _current_town= _vehicle call CTI_CO_FNC_GetClosestTown;
 _previous=_current_town;
 while {!CTI_GameOver && ! isNull _group && alive _vehicle && !isNull _vehicle && (_vehicle getvariable ["cti_occupant",civilian] )== resistance} do {
@@ -30,7 +30,7 @@ while {!CTI_GameOver && ! isNull _group && alive _vehicle && !isNull _vehicle &&
 		_wp setWaypointCombatMode "RED";
 		_wp setWaypointSpeed "NORMAL";
 		_group setCurrentWaypoint _wp;
-		diag_log format ["Patrols :: %1 moving from %2 to %3",_group,(_current_town getVariable "cti_town_name"),(_next_target getVariable "cti_town_name")];
+		diag_log format [":: Patrols :: %1 moving from %2 to %3",_group,(_current_town getVariable "cti_town_name"),(_next_target getVariable "cti_town_name")];
 		_previous=_current_town;
 		_current_town=_next_target;
 	};

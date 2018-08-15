@@ -26,7 +26,7 @@ diag_log ":: SAVE :: Loading";
     _logic setVariable ["cti_upgrades", (_load select 2 ), true];
 
     //base area
-    diag_log format [" :: SAVE :: Loading Base areas",(_load select 3 )];
+    diag_log format [":: SAVE :: Loading Base areas",(_load select 3 )];
     _logic setVariable ["cti_structures_areas", (_load select 3 ), true];
 
     //structures

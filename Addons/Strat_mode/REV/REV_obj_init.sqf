@@ -1,7 +1,7 @@
 private ["_obj","_handdled"];
 _obj=_this;
 
-diag_log format [":: REV:: trying to handle player as %1", _obj];
+diag_log format [":: REV :: trying to handle player as %1", _obj];
 waitUntil {! isnull _obj && alive _obj};
 
 
