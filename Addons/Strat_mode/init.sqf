@@ -44,7 +44,7 @@ with missionNamespace do {
 	    SM_ACTION_REPAIR = compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Functions\SM_Action_Repair.sqf";
 	    SM_ACTION_DISMANTLE = compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Functions\SM_Action_Dismantle.sqf";
 	    SM_COM_Init = compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Old_Com_Eject\SM_COM_init.sqf";
-	   	HCGA_Init = compileFinal preprocessFileLineNumbers "Addons\Strat_mode\HC_GA\HCGA_Init.sqf";
+
 	   	UAV_FUEL = compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Functions\UAV_Fuel.sqf";
 	   	UAV_RANGE = compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Functions\UAV_Range.sqf";
 	   	DYNG_WAIT = compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Functions\DYNG_waitforgroup.sqf";
@@ -345,9 +345,6 @@ if (CTI_IsServer) then {
 		if ((missionNamespace getVariable "CTI_AC_ENABLED")>0) then{
 			0 execVM "Addons\Henroth_AirLoadout\init.sqf"
 		};
-		// hc balance
-		0 spawn HCGA_Init;
-
 
 		// time compression
 		0 spawn {
@@ -362,10 +359,6 @@ if (CTI_IsServer) then {
 				sleep 120;
 			};
 
-		};
-
-		if (profileNamespace getvariable ["CTI_SAVE_ENABLED",false]) then {
-			0 execVM "Addons\Strat_mode\Functions\PERS_Mark.sqf";
 		};
 
 };
@@ -471,6 +464,7 @@ if (CTI_IsClient) then {
 
 		if ( (missionNamespace getVariable 'CTI_SM_BASEP_M')!=0) then {
 			waitUntil {!isNil {CTI_P_SideLogic getVariable "CTI_BASES_NEIGH"} && !isNil {CTI_P_SideLogic getVariable "CTI_BASES_FOUND"} };
+			waitUntil { (missionNamespace getvariable "CTI_PERSISTANT" == 0) || ((missionNamespace getvariable "CTI_PERSISTANT" == 1) && CTI_P_SideLogic getVariable ["CTI_LOAD_COMPLETED",false])};
 			_ci=0;
 			{
 				_b=_x;

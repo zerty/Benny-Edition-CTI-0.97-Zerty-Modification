@@ -4,11 +4,11 @@ AN_E_Intrusion_Loop={
 	_vehicle=_this;
 	_last_time=time;
 	_hackers=[];
-	diag_log format ["::HACK:: starting loop for %1", _vehicle];
+	diag_log format [":: HACK :: starting loop for %1", _vehicle];
 	while {(_vehicle getVariable ["AN_Hacked",0])>0 && alive _vehicle} do {
 		waitUntil {(_vehicle getvariable "CTI_NET") ==  (_vehicle getvariable "AN_iNET") &&( _vehicle getVariable ['AN_Hack_started',false])};
 		_last_time=time;
-		diag_log format ["::HACK::  loop for %1 at %2 ", _vehicle,_last_time];
+		diag_log format [":: HACK ::  loop for %1 at %2 ", _vehicle,_last_time];
 		{if (!alive _x || ! (vehicle _x == _vehicle)) then {_x setVariable ["CTI_NET",((side _x )   call CTI_CO_FNC_GetSideID),true];_hackers=_hackers-[_x];};true}  count _hackers;
 		{if (!(_x getvariable "CTI_NET" == _vehicle getvariable "CTI_NET") && isplayer _x) then {_hackers set [count _hackers,_x];_x setVariable ["CTI_NET", _vehicle getvariable "CTI_NET",true];};true }count crew _vehicle;
 		sleep 1;
@@ -17,7 +17,7 @@ AN_E_Intrusion_Loop={
 	};
 	_vehicle setVariable ["AN_Hack_handle",nil,true];
 	_vehicle setVariable ['AN_Hack_started',false,true];
-	diag_log format ["::HACK:: Stopping loop for %1", _vehicle];
+	diag_log format [":: HACK :: Stopping loop for %1", _vehicle];
 	{_x setVariable ["CTI_NET",((side _x )   call CTI_CO_FNC_GetSideID),true];true}  count _hackers;
 };
 

@@ -246,9 +246,6 @@ if (missionNamespace getVariable "CTI_TROPHY_APS" == 1) then {
 	};
 };
 
-//slingload modification
-if (_type isKindOf 'Slingload_01_Base_F') then {_vehicle setmass [4000,0]};
-if (_type isKindOf "Pod_Heli_Transport_04_base_F") then {_vehicle setmass [2000,0]};
 
 
 if ((missionNamespace getVariable [format ["%1", typeOf _vehicle],["","","","","","","",""]]) select 7 != "") then {
@@ -289,8 +286,6 @@ if (_vehicle isKindOf "CargoNet_01_base_F") then {
 
 //AdminZeus
 
-if (getAmmoCargo _vehicle > 0) then {_vehicle setAmmoCargo  0};
-
 if !( isNil "ADMIN_ZEUS") then {
 	if !(CTI_isServer) then {
 		["SERVER", "Server_Addeditable",[ADMIN_ZEUS,_vehicle]] call CTI_CO_FNC_NetSend;
@@ -317,6 +312,7 @@ if (missionNamespace getVariable "CTI_TROPHY_APS" == 1) then {
 // weigth fix
 if ((_vehicle isKindOf "Pod_Heli_Transport_04_base_F") || (_vehicle isKindOf "Slingload_01_Base_F")  ) then { _vehicle setmass [2000,0];};
 
+
 //cache
 
 if ((!((_vehicle isKindOf "Plane") || (_vehicle isKindOf "UAV") ||(_vehicle isKindOf "Pod_Heli_Transport_04_base_F") || (_vehicle isKindOf "Slingload_01_Base_F")))  && (missionNamespace getVariable "CACHE_EMPTY") == 1)then {
@@ -331,7 +327,10 @@ if (_vehicle isKindOf "Car" && ! isnil "H_PROTECT_WHEELS") then {
 
 };
 
-//Dynamic group Fix
+//Disable Repair/Rearm/Refuel actions
+_vehicle setAmmoCargo 0;
+_vehicle setFuelCargo 0;
+_vehicle setRepairCargo 0;
 
 //tutorial protection
 
@@ -340,6 +339,13 @@ _vehicle spawn {
 		    sleep 20;
 		    if ((([_this,getMarkerPos "CTI_TUTORIAL"] call  BIS_fnc_distance2D) < 1000) && !isNull _this && alive _this) then {_this setDamage 1};
 		};
+};
+
+
+// attachement system
+
+if (_vehicle  isKindOf "Helicopter") then {
+	_vehicle addEventHandler ["RopeAttach", {	["SERVER", "Request_Locality", [(_this select 2), (_this select 0)]] call CTI_CO_FNC_NetSend ;  }];
 };
 
 //_vehicle addEventHandler ["getIn", {if ((isplayer (_this select 2)) && ({isplayer _x} count (crew (_this select 0)))<2) exitwith {(_this select 2) assignAsCommander (_this select 0)}}];

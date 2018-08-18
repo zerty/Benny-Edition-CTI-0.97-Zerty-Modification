@@ -23,6 +23,6 @@ if (count _roads >0 ) then {
 	if !( isNil "ADMIN_ZEUS") then { ADMIN_ZEUS addCuratorEditableObjects [[_v],true];};
 	_group setvariable ["defending",false,true];
 	["SERVER", "Request_HandleAction", ["empty", [_v]]] call CTI_CO_FNC_NetSend;
-	diag_log format ["Patrols :: Creating %1 :: %2",_v,position _pos];
+	diag_log format [":: Patrols :: Creating %1 :: %2",_v,position _pos];
 };
 [_group,_v]

@@ -29,7 +29,7 @@ private ["_delay", "_timeout", "_vehicle"];
 
 _vehicle = _this select 0;
 _delay = if (count _this > 1) then {_this select 1} else {missionNamespace getVariable "CTI_VEHICLES_EMPTY_TIMEOUT"};
-Diag_log format ["HANDLE :: Starting empty vehicle loop for %1",_vehicle];
+Diag_log format [":: HANDLE :: Starting empty vehicle loop for %1",_vehicle];
 _timeout = time;
 
 

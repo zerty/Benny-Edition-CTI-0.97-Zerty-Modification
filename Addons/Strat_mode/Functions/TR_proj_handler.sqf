@@ -12,7 +12,7 @@ if (typeOf _proj in _ignored_proj) exitWith{diag_log format ["Trophy :: skipping
 
 _side_v=_veh getVariable ["cti_occupant",civilian];
 //Check Side
-if ( _side_v==_side_u ) exitWith{diag_log format ["Trophy :: skipping %1 same side (%2)", _veh,_side_u];};
+if ( _side_v==_side_u ) exitWith{diag_log format [":: Trophy :: skipping %1 same side (%2)", _veh,_side_u];};
 
 //Check upgrade
 _up_trt=if (! (count ((_side_v) call CTI_CO_FNC_GetSideUpgrades) == 0)) then {((_side_v) call CTI_CO_FNC_GetSideUpgrades) select CTI_UPGRADE_TRT} else {0};
@@ -33,7 +33,7 @@ _side_time= if(_dir >20 && _dir <160) then {"TROPHY_time_r"} else {"TROPHY_time_
 
 //Check probability and ammo on side
 if (_veh getVariable _side_tr <=0 || time - (_veh getVariable _side_time)< (300/(1+_up_trt)) ) exitWith {diag_log "Trophy :: failed no ammo or cooldonw"};
-if (random (100) >= (30+(_up_trt*15))) exitWith {diag_log "Trophy :: probability failed"}; //protection failed
+if (random (100) >= (30+(_up_trt*15))) exitWith {diag_log ":: Trophy :: probability failed"}; //protection failed
 
 //Create the protection zone
 _b='ProtectionZone_Invisible_F' createVehicleLocal (getpos _veh);
