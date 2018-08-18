@@ -30,7 +30,7 @@ if (_target == ((CTI_P_SideJoined) call CTI_CO_FNC_GetSideHQ)) then {
 	//_hq addEventHandler ["getIn", {_this spawn CTI_CO_FNC_OnUnitGetOut}];
 	//_hq addEventHandler ["getOut", {_this spawn CTI_CO_FNC_OnUnitGetOut}];
 	_hq setVariable ["cti_occupant", _side,true];
-	//["CLIENT", "CLIENT_SA_PROTECT_HQ",[_hq],true] call CTI_CO_FNC_NetSend;
+	["CLIENT", "CLIENT_SA_PROTECT_HQ",[_hq,_side],true] call CTI_CO_FNC_NetSend;
 	["SERVER", "SERVER_SA_PROTECT_HQ",[_hq,_side]] call CTI_CO_FNC_NetSend;
 	((_side) call CTI_CO_FNC_GetSideLogic) setVariable ["cti_hq", _hq, true];
 	[["CLIENT", _side], "Client_givehqlock", [],true] call CTI_CO_FNC_NetSend;
