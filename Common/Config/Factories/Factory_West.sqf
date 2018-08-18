@@ -131,6 +131,7 @@ _u = _u		+ ['I_MBT_03_cannon_F'];
 missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_HEAVY], _u];
 
 _u 			= ["B_Heli_Light_01_dynamicLoadout_F"];
+_u = _u		+ ['C_Plane_Civil_01_F'];
 _u = _u		+ ["B_T_VTOL_01_infantry_F"];
 _u = _u		+ ["B_T_VTOL_01_vehicle_F"];
 _u = _u		+ ["B_T_VTOL_01_armed_F"];

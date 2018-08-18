@@ -871,6 +871,15 @@ _u = _u + [0];
 _f = _f + [CTI_FACTORY_AMMO];
 _s = _s + ["service-ammotruck"];
 
+_c = _c + ['C_Plane_Civil_01_F'];
+_p = _p + [''];
+_n = _n + [''];
+_o = _o + [3000];
+_t = _t + [35];
+_u = _u + [0];
+_f = _f + [CTI_FACTORY_AIR];
+_s = _s + [""];
+
 _c = _c + ['O_UAV_02_F'];
 _p = _p + [''];
 _n = _n + ['K40 Ababil-3 AA'];
