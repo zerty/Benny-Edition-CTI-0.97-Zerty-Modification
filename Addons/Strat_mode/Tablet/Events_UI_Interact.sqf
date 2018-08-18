@@ -570,6 +570,8 @@ switch (_action) do {
 			player setVariable ['CTI_Net',-1,true];
 			player setVariable ['AN_iNet',CTI_P_SideID,true];
 		} else {
+			player setVariable ["AN_iNet",-1,true];
+			player setVariable ["AN_Parrents",[],false];
 			player setVariable ['CTI_Net',CTI_P_SideID,true];
 			//["SERVER","Server_Run_Net",[_target,CTI_P_SideID]] call CTI_CO_FNC_NetSend;
 		};

@@ -191,6 +191,8 @@ switch (_action) do {
 			((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210016) ctrlSetBackgroundColor [0.7, 0, 0, 1];
 			((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210016) ctrlSetForegroundColor [0.7, 0, 0, 1];
 		} else {
+			player setVariable ["AN_iNet",-1,true];
+			player setVariable ["AN_Parrents",[],false];
 			player setVariable ['CTI_Net',CTI_P_SideID,true];
 			((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210016) ctrlsettext "Net-Disco.";
 		};
