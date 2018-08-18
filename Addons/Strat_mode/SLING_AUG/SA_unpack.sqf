@@ -19,12 +19,13 @@ if (_target == ((CTI_P_SideJoined) call CTI_CO_FNC_GetSideHQ)) then {
 	_side = _target getVariable "cti_occupant";
 	deletevehicle _target;
 	waitUntil {isNull _target};
-
+	
 	if ((_initial_pos select 2) <0) then {
 		_hq = [missionNamespace getVariable Format["CTI_%1_HQ", _side], _initial_pos, _initial_dir, _side, true, true,false, "CAN_COLLIDE"] call CTI_CO_FNC_CreateVehicle; //if underwatter
 	} else {
 		_hq = [missionNamespace getVariable Format["CTI_%1_HQ", _side], _initial_pos, _initial_dir, _side, true, true,false, "FORM"] call CTI_CO_FNC_CreateVehicle; // if on ground
 	};
+	_hq allowdamage false;
 	_hq setVariable ["cti_gc_noremove", true,true]; //--- HQ wreck cannot be removed nor salvaged
 	_hq setVariable ["cti_ai_prohib", true,true]; //--- HQ may not be used by AI as a commandable vehicle
 	//_hq addEventHandler ["getIn", {_this spawn CTI_CO_FNC_OnUnitGetOut}];
@@ -34,6 +35,9 @@ if (_target == ((CTI_P_SideJoined) call CTI_CO_FNC_GetSideHQ)) then {
 	["SERVER", "SERVER_SA_PROTECT_HQ",[_hq,_side]] call CTI_CO_FNC_NetSend;
 	((_side) call CTI_CO_FNC_GetSideLogic) setVariable ["cti_hq", _hq, true];
 	[["CLIENT", _side], "Client_givehqlock", [],true] call CTI_CO_FNC_NetSend;
+	_hq setVelocity [0,0,1];
+	sleep 5;
+	_hq allowdamage true; //protection for glitching during server lag
 
 }else {
 	if (isnil {_target getvariable "SA_PACKED"}) exitwith {false};
@@ -47,5 +51,6 @@ if (_target == ((CTI_P_SideJoined) call CTI_CO_FNC_GetSideHQ)) then {
 	_packed setpos _initial_pos;
 
 	_packed setVelocity [0,0,1];
+	sleep 5;
 	_packed allowdamage true;
 };
