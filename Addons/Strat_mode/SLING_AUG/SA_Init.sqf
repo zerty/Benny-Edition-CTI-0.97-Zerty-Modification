@@ -11,7 +11,8 @@ with missionnamespace do {
 		diag_log  format [":: HQ :: Handling death of hq %1 for player side",_this select 0];
 		(_this select 0) addEventHandler ["killed", format["[_this select 0, _this select 1, %1] spawn CTI_CL_FNC_OnHQDestroyed", (_this select 1)]];
 		if (CTI_BASE_NOOBPROTECTION == 1) then {
-			(_this select 0) addEventHandler ["handleDamage", format["[_this select 2, _this select 3, %1] call CTI_CO_FNC_OnHQHandleDamage", ( _this select 1)]]; //--- You want that on public
+			_sideid= ((_this select 1) call CTI_CO_FNC_GetSideID);
+			(_this select 0) addEventHandler ["handleDamage", format["[_this select 2, _this select 3, %1] call CTI_CO_FNC_OnHQHandleDamage", _sideid]]; //--- You want that on public
 		};
 	};
 };
