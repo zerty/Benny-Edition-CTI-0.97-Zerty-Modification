@@ -184,7 +184,7 @@ _ug=units player;
 			if (! alive _object) then {_color = [0,0,0,1];};
 			_keys=_object getVariable ["v_keys",["",grpNull]];
 			_second_color=_color;
-			if (_object == vehicle player || group player == _keys select 1 || getPlayerUID player == _keys select 0) then  {
+			if (alive _object && (_object == vehicle player || group player == _keys select 1 || getPlayerUID player == _keys select 0)) then  {
 				if(_object getvariable[format ["CTI_HUD_Detected_%1", _side], false]) then {
 					if(count ((_side) call CTI_CO_FNC_GetSideUpgrades) >= CTI_UPGRADE_DATA) then {
 					if(((_side) call CTI_CO_FNC_GetSideUpgrades) select CTI_UPGRADE_DATA == 1) then {_second_color = [0.85,0.4,0,1];};};
