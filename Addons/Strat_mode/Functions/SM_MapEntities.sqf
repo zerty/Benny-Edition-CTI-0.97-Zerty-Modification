@@ -170,13 +170,14 @@ _ug=units player;
 			
 			//When data link upgrade is present, it markers your units diffrent when they are spotted by enemy.
 			if(count ((_side) call CTI_CO_FNC_GetSideUpgrades) >= CTI_UPGRADE_DATA) then {
-			if(((_side) call CTI_CO_FNC_GetSideUpgrades) select CTI_UPGRADE_DATA == 1) then {
+			if(((_side) call CTI_CO_FNC_GetSideUpgrades) select CTI_UPGRADE_DATA == 1 && 
+			_object getvariable[format ["CTI_HUD_Detected_%1", _side], false]) then {
 				//If the vehicle is detected by enemy diffrent color is used.
-				if(_side == east && _object getvariable["CTI_HUD_Detected_east", false]) then {
+				if(_side == east) then {
 					_color = [0.5,0,0,1];
 				};
 				
-				if(_side == west && _object getvariable["CTI_HUD_Detected_west", false]) then {
+				if(_side == west) then {
 					_color = [0,0.3,0.6,1];
 				};
 			};};
