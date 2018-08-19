@@ -94,7 +94,7 @@ _ug=units player;
 		//When data link upgrade is present, it markers your units diffrent when they are spotted by enemy.
 		if(	_side == CTI_P_SideJoined && 															//only on same sidethan player
 		   ((CTI_P_SideJoined) call CTI_CO_FNC_GetSideUpgrades) select CTI_UPGRADE_DATA == 1 && 	// side of player has upgrade
-			_object getvariable["CTI_HUD_Detected", -1] < time 										// and did not timeout on enemy side shares
+			_object getvariable["CTI_HUD_Detected", -1] > time 										// and did not timeout on enemy side shares
 			) then {
 				_color = switch (_side) do
 				{
@@ -107,7 +107,7 @@ _ug=units player;
 		} else {
 				_color = switch (_side) do
 				{
-				    case 	west:{ [0,0,01,1] };
+				    case 	west:{ [0,0,1,1] };
 				    case 	east:{ [1,0,0,1] };
 				    case 	resistance:{ [0,1,0,1] };
 				    default { [1,1,1,1]  };
