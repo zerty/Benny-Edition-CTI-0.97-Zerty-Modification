@@ -35,12 +35,12 @@ _to_share=+[];
 	_pt=getPosASL (_x select 4);
 	_pt set [2,(_pt select 2) + 2];
 	if (Client_AN_Connected) then {
-		if ((_sl getVariable "CTI_HUD_SHARED") findif {_x select 0 == _t} == -1 && ((player getVariable ["CTI_net",-10])  call CTI_CO_FNC_GetSideFromID) == CTI_P_SideJoined && !((_x select 2) == CTI_P_SideJoined)&& vehicle _t == _t) then {
-			_to_share pushback [_t,time+ random 10];
+		if ((_sl getVariable "CTI_HUD_SHARED") findif {_x select 0 == _t && _x select 1 > time} == -1 && ((player getVariable ["CTI_net",-10])  call CTI_CO_FNC_GetSideFromID) == CTI_P_SideJoined && !((_x select 2) == CTI_P_SideJoined)&& vehicle _t == _t) then {
+			_to_share pushback [_t,time+ random 20];
 		};
 	};
-	if ({_x select 0 == _t} count HUD_T_OBJ == 0 ) then {
-		HUD_T_OBJ pushback [_t,time + random 10] ;
+	if ((HUD_T_OBJ findif {_x select 0 == _t}) == -1 ) then {
+		HUD_T_OBJ pushback [_t,time +120+ random 20] ;
 	};
 
  true

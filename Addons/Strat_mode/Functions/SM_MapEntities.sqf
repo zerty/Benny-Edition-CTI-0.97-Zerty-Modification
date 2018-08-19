@@ -57,7 +57,7 @@ _ug=units player;
 	//if (!isNil {_object getVariable "AN_iNet"}) then {_side_id=_object getVariable "AN_iNet";};
 	_side= if (_side_id<0) then {side _object} else {(_side_id)  call CTI_CO_FNC_GetSideFromID};
 
-	if ( HUD_T_OBJ findif {_object == _x select 0} >-1 ||  												// object detected by local tack hud
+	if ( HUD_T_OBJ findif {_object == _x select 0 && _x select 1 > time} >-1 ||  												// object detected by local tack hud
 	    _object getVariable ["AN_iNet",-1000] == player getvariable ["CTI_Net",-10] && _connected ||	// both connected to same network
 	    _connected && (_hud_targets findif {_object == _x select 0 && time < _x select 1} >-1)			//shared by team
 	    ) then {

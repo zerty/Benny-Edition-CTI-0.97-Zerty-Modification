@@ -49,7 +49,7 @@ HUD_RemoveFrameHandler={
 			HUD_Targets = (0) call HUD_GetTargets;
 			//HUD_Targets = (0) exec "Addons\Strat_mode\HUD\HUD_GetTargets.sqf";
 			//HUD_Towns = (0) call HUD_GetTowns;
-		sleep 5;
+		sleep 3;
 	};
 };
 

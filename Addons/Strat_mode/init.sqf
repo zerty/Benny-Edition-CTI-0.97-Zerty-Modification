@@ -150,7 +150,6 @@ if (CTI_IsServer) then {
 
 
 		CTI_PVF_Server_Hud_Share_Add= {
-			diag_log _this;
 			_this spawn {
 				_sl= (_this select 1) call CTI_CO_FNC_GetSideLogic;
 				while {HUD_WRITE} do {sleep random (1);};
