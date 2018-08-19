@@ -448,7 +448,7 @@ class CTI_RscTablet_main {
 		};*/
 		class CTI_Control_Teams : RscButton {
 			idc = 210003;
-			x = "SafeZoneX + (SafeZoneW - (3/4*SafeZoneH))/2+ (3/4*SafeZoneH) *0.191+(3/4*SafeZoneH)*0.615*0.54";
+			x = "SafeZoneX + (SafeZoneW - (3/4*SafeZoneH))/2+ (3/4*SafeZoneH) *0.191+(3/4*SafeZoneH)*0.615*0.54+1000";
 			y = "SafeZoneY+safezoneH*(0.420+0.005)";
 			w = "(3/4*SafeZoneH)*0.615*0.42";
 			h = "SafeZoneH * 0.03";

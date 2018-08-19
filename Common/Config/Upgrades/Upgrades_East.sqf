@@ -143,6 +143,13 @@ _lev=_lev+	[3];
 _lin=_lin+	[[[CTI_UPGRADE_NETR, 1],[CTI_UPGRADE_NETR, 2],[CTI_UPGRADE_NETR, 3]]];
 _t=_t+			[[10*CTI_UPGRADE_RATIO,30*CTI_UPGRADE_RATIO,60*CTI_UPGRADE_RATIO]];
 
+_l=_l+			[[localize "STR_Up_Data", localize "STR_Up_Data_Descr"]];
+_a=_a	+			[True];
+_c=_c +			[[30000]];
+_lev=_lev+	[1];
+_lin=_lin+	[[[CTI_UPGRADE_NETR, 3],[],[]]];
+_t=_t+			[[60*CTI_UPGRADE_RATIO]];
+
 _l=_l+			[[localize "STR_Up_Trophy", localize "STR_Up_Trophy_Descr"]];
 _a=_a	+			[True];
 _c=_c +			[[6000,12000]];
@@ -163,6 +170,7 @@ _c=_c +				[[1000,2000,4000,8000,16000]];
 _lev=_lev+			[5];
 _lin=_lin+			[[[],[],[],[],[]]];
 _t=_t+				[[10*CTI_UPGRADE_RATIO,20*CTI_UPGRADE_RATIO,40*CTI_UPGRADE_RATIO,80*CTI_UPGRADE_RATIO,160*CTI_UPGRADE_RATIO]];
+
 /*
 _l=_l+			[["Network: Reconfiguration cycle", "Lower Mesh Network reconfiguration cycle time (600s - 60s*lvl)"]];
 _a=_a	+			[false];

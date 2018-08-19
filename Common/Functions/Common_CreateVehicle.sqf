@@ -66,7 +66,6 @@ _vehicle = if ( isNull _created) then {createVehicle [_type, _position, [], 7, _
 // henroth air loadout
 //Does a gun config exsist?
 _gun_config = missionNamespace getVariable ( format [ "CTI_LOADOUT_%1_MNT_OPTIONS" , typeOf _vehicle ] );
-diag_log format["vehicle: %1", (typeOf _vehicle)];
 if (
 ( 	((typeOf _vehicle) == "O_APC_Tracked_02_AA_F")
 	|| ((typeOf _vehicle) == "B_APC_Tracked_01_AA_F")
@@ -86,13 +85,32 @@ if (
 if (isNull _created) then {
 	_vehicle setDir _direction;
 
-	if (_vehicle isKindOf "CAR" || _vehicle isKindOf "TANK" || _vehicle isKindOf "SHIP") then {
+	if (_vehicle isKindOf "CAR" || _vehicle isKindOf "TANK") then {
 		_ep = (getPos _vehicle) findEmptyPosition [0,100,"O_T_VTOL_02_vehicle_dynamicLoadout_F"];
 		if (count _ep == 0) then {_ep = (getPos _vehicle) findEmptyPosition [0,250,"O_T_VTOL_02_vehicle_dynamicLoadout_F"];};
 		_vehicle setPos _ep;
 	};
 
-	if (_special == "FORM") then {_vehicle setPos [(getPos _vehicle) select 0, (getPos _vehicle) select 1, 1];}; //--- Make the vehicle spawn above the ground level to prevent any bisteries
+	if (_vehicle isKindOf "HELICOPTER" && _special == "FORM" && _side != CTI_RESISTANCE_ID) then {
+		_pads = nearestObjects [getPos _vehicle, ["Helipad_Base_F"], 150];
+		_free = [];
+		if (count _pads > 0) then {
+			for "_i" from 0 to (count _pads - 1) do {
+				_no = nearestObjects [getPos (_pads select _i), [], 9];
+				_double = "Helipad_Base_F" countType _no;
+				if (_no isEqualTo [_pads select _i] || _double == count _no) then {_free = _free + [getPos (_pads select _i)];};
+			};
+		};
+		if (count _free > 0) then {_vehicle setPos (selectRandom _free);} else {_vehicle setPos (getPos _vehicle);};
+	};
+
+	if (_vehicle isKindOf "SHIP" && _side != CTI_RESISTANCE_ID) then {
+		_wp = [getPos _vehicle, 0, 75, 7, 2, 1, 0] call BIS_fnc_findSafePos;
+		if (count _wp == 0) then {_wp = getPos _vehicle};
+		_vehicle setPos _wp;
+	};
+
+	if (_special == "FORM") then {_vehicle setPos [(getPos _vehicle) select 0, (getPos _vehicle) select 1, 0.75];}; //--- Make the vehicle spawn above the ground level to prevent any bisteries
 	// --- Zerty edit
 	if (_type isKindOf "UAV" || _type isKindOf "UGV_01_base_F") then {createVehicleCrew _vehicle};
 
@@ -184,7 +202,7 @@ if (isNull _created) then {
 	//Spawn with components [H]Tom
 	if (_vehicle isKindOf "Wheeled_APC_F" || _vehicle isKindOf "Tank") then {
 		if (_vehicle isKindOf "I_APC_Wheeled_03_cannon_F") then {[_vehicle, nil, ["showTools",1]] call BIS_fnc_initVehicle;};
-		if (_vehicle isKindOf "O_APC_Wheeled_02_rcws_F" || _vehicle isKindOf "O_APC_Wheeled_02_rcws_v2_F" || _vehicle isKindOf "O_T_APC_Wheeled_02_rcws_ghex_F" || _vehicle isKindOf "O_T_APC_Wheeled_02_rcws_v2_ghex_F") then {[_vehicle, nil, ["showTools",1]] call BIS_fnc_initVehicle;};
+		if (_vehicle isKindOf "O_APC_Wheeled_02_rcws_v2_F" || _vehicle isKindOf "O_T_APC_Wheeled_02_rcws_v2_ghex_F") then {[_vehicle, nil, ["showTools",1]] call BIS_fnc_initVehicle;};
 		if (_vehicle isKindOf "O_MBT_02_arty_F" || _vehicle isKindOf "O_T_MBT_02_arty_ghex_F") then {[_vehicle, nil, ["showLog",1]] call BIS_fnc_initVehicle;};
 		if (_vehicle isKindOf "I_LT_01_AT_F" || _vehicle isKindOf "I_LT_01_AA_F" || _vehicle isKindOf "I_LT_01_scout_F" || _vehicle isKindOf "I_LT_01_cannon_F") then {[_vehicle, nil, ["showTools",1]] call BIS_fnc_initVehicle;};
 		if (_vehicle isKindOf "O_APC_Tracked_02_cannon_F" || _vehicle isKindOf "O_T_APC_Tracked_02_cannon_ghex_F") then {[_vehicle, nil, ["showTracks",1]] call BIS_fnc_initVehicle;};
@@ -205,6 +223,16 @@ if (isNull _created) then {
 	};
 
 };
+
+//Add Data link
+if(count ((_t_side) call CTI_CO_FNC_GetSideUpgrades) >= CTI_UPGRADE_DATA) then {
+if(((_t_side) call CTI_CO_FNC_GetSideUpgrades) select CTI_UPGRADE_DATA == 1) then {
+	_vehicle setVehicleReportOwnPosition true;
+	_vehicle setVehicleReportRemoteTargets true;
+	_vehicle setVehicleReceiveRemoteTargets true;
+};};
+
+
 if (missionNamespace getVariable "CTI_TROPHY_APS" == 1) then {
 	if (_vehicle isKindOf "tank" || _vehicle isKindOf "Wheeled_APC_F") then {
 
@@ -218,9 +246,6 @@ if (missionNamespace getVariable "CTI_TROPHY_APS" == 1) then {
 	};
 };
 
-//slingload modification
-if (_type isKindOf 'Slingload_01_Base_F') then {_vehicle setmass [4000,0]};
-if (_type isKindOf "Pod_Heli_Transport_04_base_F") then {_vehicle setmass [2000,0]};
 
 
 if ((missionNamespace getVariable [format ["%1", typeOf _vehicle],["","","","","","","",""]]) select 7 != "") then {
@@ -250,6 +275,9 @@ if (_net &&missionNamespace getVariable "CTI_EW_ANET" == 1 && !(_side == CTI_RES
 	["SERVER","Server_Run_Net",[_vehicle,_side]] call CTI_CO_FNC_NetSend;
 };
 
+// fix for empty resistance vehicles
+if (_vehicle getVariable ["CTI_Net",100]==100 && (_side == CTI_RESISTANCE_ID)) then {_vehicle setvariable ["CTI_Net",CTI_RESISTANCE_ID,true];};
+
 if (_vehicle isKindOf "CargoNet_01_base_F") then {
 	clearBackpackCargoGlobal _vehicle;
 	clearMagazineCargoGlobal  _vehicle;
@@ -260,8 +288,6 @@ if (_vehicle isKindOf "CargoNet_01_base_F") then {
 
 
 //AdminZeus
-
-if (getAmmoCargo _vehicle > 0) then {_vehicle setAmmoCargo  0};
 
 if !( isNil "ADMIN_ZEUS") then {
 	if !(CTI_isServer) then {
@@ -289,6 +315,7 @@ if (missionNamespace getVariable "CTI_TROPHY_APS" == 1) then {
 // weigth fix
 if ((_vehicle isKindOf "Pod_Heli_Transport_04_base_F") || (_vehicle isKindOf "Slingload_01_Base_F")  ) then { _vehicle setmass [2000,0];};
 
+
 //cache
 
 if ((!((_vehicle isKindOf "Plane") || (_vehicle isKindOf "UAV") ||(_vehicle isKindOf "Pod_Heli_Transport_04_base_F") || (_vehicle isKindOf "Slingload_01_Base_F")))  && (missionNamespace getVariable "CACHE_EMPTY") == 1)then {
@@ -303,7 +330,10 @@ if (_vehicle isKindOf "Car" && ! isnil "H_PROTECT_WHEELS") then {
 
 };
 
-//Dynamic group Fix
+//Disable Repair/Rearm/Refuel actions
+_vehicle setAmmoCargo 0;
+_vehicle setFuelCargo 0;
+_vehicle setRepairCargo 0;
 
 //tutorial protection
 
@@ -312,6 +342,13 @@ _vehicle spawn {
 		    sleep 20;
 		    if ((([_this,getMarkerPos "CTI_TUTORIAL"] call  BIS_fnc_distance2D) < 1000) && !isNull _this && alive _this) then {_this setDamage 1};
 		};
+};
+
+
+// attachement system
+
+if (_vehicle  isKindOf "Helicopter") then {
+	_vehicle addEventHandler ["RopeAttach", {	["SERVER", "Request_Locality", [(_this select 2), (_this select 0)]] call CTI_CO_FNC_NetSend ;  }];
 };
 
 //_vehicle addEventHandler ["getIn", {if ((isplayer (_this select 2)) && ({isplayer _x} count (crew (_this select 0)))<2) exitwith {(_this select 2) assignAsCommander (_this select 0)}}];

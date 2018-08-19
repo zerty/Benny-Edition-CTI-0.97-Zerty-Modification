@@ -72,6 +72,27 @@ _logic setVariable ["cti_hq", _hq, true];
 [["CLIENT", _side], "Client_OnMessageReceived", ["hq-repair"]] call CTI_CO_FNC_NetSend;
 [["CLIENT", _side], "Client_RenewHQ", []] call CTI_CO_FNC_NetSend;
 
+
+//check if HQ was sucessfully repaired, else refound repair cost
+[_hq, _logic] spawn {
+	_hq = _this select 0;
+	_logic = _this select 1;
+	
+	sleep(5);
+	_hq setVelocity [0, 5, 0]; //move it a little to check if its inside an object
+	sleep(5);
+	if(_logic getVariable ["cti_hq", objNull] == _hq && !alive _hq) then {
+		//refound cash
+		_comMoney = _logic getvariable ["cti_commander_funds", 0] ;
+		_base_repair_HQ_cost = CTI_BASE_HQ_REPAIR_PRICE;
+		//Reduce repair cost in early game
+		if(scoreSide CTI_P_SideJoined <= 1000) then {_base_repair_HQ_cost = round(_base_repair_HQ_cost / 2);};
+		if(scoreSide CTI_P_SideJoined <= 500) then {_base_repair_HQ_cost = round(_base_repair_HQ_cost / 4);};
+		_logic setvariable ["cti_commander_funds",_comMoney+_base_repair_HQ_cost,true];
+	};
+};
+
+
 //--- Set the HQ to be local to a player commander if possible.
 _commander = (_side) call CTI_CO_FNC_GetSideCommander;
 if (isPlayer leader _commander) then {

@@ -1,8 +1,8 @@
 /*%FSM<COMPILE "scriptedFSM.cfg, town_resistance.fsm">*/
 /*%FSM<HEAD>*/
 /*
-item0[] = {"Start_FSM",0,250,-100.000000,-675.000000,0.000000,-625.000000,0.000000,"Start FSM"};
-item1[] = {"Cycle",4,218,-100.000000,-400.000000,0.000000,-350.000000,1.000000,"Cycle"};
+item0[] = {"Start_FSM",0,250,-86.275269,-615.525940,13.724731,-565.525940,0.000000,"Start FSM"};
+item1[] = {"Cycle",4,4314,-100.000000,-400.000000,0.000000,-350.000000,1.000000,"Cycle"};
 item2[] = {"Resistance_hold",2,250,-100.000000,-200.000000,0.000000,-150.000000,0.000000,"Resistance hold" \n "the town?"};
 item3[] = {"End_FSM",1,250,-250.000000,-100.000000,-150.000000,-50.000000,0.000000,"End FSM"};
 item4[] = {"Held_by_Resistan",4,218,-100.000000,-100.000000,0.000000,-50.000000,2.000000,"Held by" \n "Resistance"};
@@ -14,8 +14,8 @@ item9[] = {"Active",8,218,175.000000,0.000000,275.000000,50.000000,0.000000,"Act
 item10[] = {"Inactive",4,218,175.000000,-100.000000,275.000000,-50.000000,1.000000,"Inactive"};
 item11[] = {"Still_active",8,218,300.000000,0.000000,400.000000,50.000000,0.000000,"Still active"};
 item12[] = {"Timed_out",4,218,475.000000,100.000000,575.000000,150.000000,1.000000,"Timed out"};
-item13[] = {"Skip",2,250,300.000000,-400.000000,400.000000,-350.000000,0.000000,"Skip"};
-item14[] = {"Cleanup",2,4346,475.000000,-400.000000,575.000000,-350.000000,0.000000,"Cleanup"};
+item13[] = {"Skip",2,250,302.287354,-265.039612,402.287354,-215.039612,0.000000,"Skip"};
+item14[] = {"Cleanup",2,250,475.000000,-400.000000,575.000000,-350.000000,0.000000,"Cleanup"};
 item15[] = {"Resistance_Active",2,250,50.000000,-100.000000,150.000000,-50.000000,0.000000,"Resistance" \n "Active?"};
 item16[] = {"Contact",8,218,-100.000000,100.000000,0.000000,150.000000,0.000000,"Contact"};
 item17[] = {"Clear",4,218,50.000000,0.000000,150.000000,50.000000,1.000000,"Clear"};
@@ -25,10 +25,7 @@ item20[] = {"Inactive",4,218,-250.000000,200.000000,-150.000000,250.000000,1.000
 item21[] = {"Active",4,218,175.000000,200.000000,275.000000,250.000000,2.000000,"Active"};
 item22[] = {"",7,210,-354.000000,-379.000000,-346.000000,-371.000000,0.000000,""};
 item23[] = {"_",8,218,300.000000,275.000000,400.000000,325.000000,0.000000,""};
-item24[] = {"_",8,218,475.000000,-550.000000,575.000000,-500.000000,0.000000,""};
-item25[] = {"Skip_possible_owner",2,250,175.000000,-550.000000,275.000000,-500.000000,0.000000,"Skip possible" \n "owner change"};
-item26[] = {"_",4,218,-100.000000,-550.000000,0.000000,-500.000000,0.000000,""};
-link0[] = {0,26};
+link0[] = {0,1};
 link1[] = {1,2};
 link2[] = {2,4};
 link3[] = {2,5};
@@ -41,11 +38,11 @@ link9[] = {7,15};
 link10[] = {8,11};
 link11[] = {8,12};
 link12[] = {9,8};
-link13[] = {10,25};
+link13[] = {10,13};
 link14[] = {11,13};
 link15[] = {12,14};
 link16[] = {13,1};
-link17[] = {14,24};
+link17[] = {14,1};
 link18[] = {15,9};
 link19[] = {15,10};
 link20[] = {16,19};
@@ -58,12 +55,8 @@ link26[] = {20,18};
 link27[] = {21,8};
 link28[] = {22,1};
 link29[] = {23,13};
-link30[] = {24,25};
-link31[] = {25,1};
-link32[] = {25,26};
-link33[] = {26,25};
 globals[] = {0.000000,0,0,0,0,640,480,1,173,6316128,1,-1091.492065,1056.436035,832.636719,-1191.768555,939,885,1};
-window[] = {2,-1,-1,-1,-1,762,150,1186,150,3,957};
+window[] = {2,-1,-1,-1,-1,712,100,1136,100,3,957};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -83,18 +76,20 @@ class FSM
                          "_town setVariable [""cti_town_mortars"",[0,0,0],true];" \n
                          "_town setVariable [""cti_town_disactivate"",true,true];" \n
                          "_town setVariable [""cti_town_timeofspawn"", -1000,true];};" \n
+                         "_town setVariable [""cti_town_mines"",[],true];" \n
                          "_ncycle = time + 20;"/*%FSM</STATEINIT""">*/;
                         precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
                         class Links
                         {
-                                /*%FSM<LINK "_">*/
-                                class _
+                                /*%FSM<LINK "Cycle">*/
+                                class Cycle
                                 {
-                                        itemno = 26;
-                                        priority = 0.000000;
-                                        to="Skip_possible_owner";
+                                        itemno = 1;
+                                        priority = 1.000000;
+                                        to="Resistance_hold";
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/"time > _ncycle"/*%FSM</CONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"time > _ncycle" \n
+                                         "// && !( _town getVariable ""cti_town_disactivate"");"/*%FSM</CONDITION""">*/;
                                         action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
                                 };
                                 /*%FSM</LINK>*/
@@ -276,7 +271,7 @@ class FSM
                                         priority = 1.000000;
                                         to="Resistance_hold";
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/"time > _ncycle && ((_town getvariable [""cti_town_owner"",""0""])==""0"" && CTI_isServer || (_town getvariable [""cti_town_owner"",""0""]) == (getPlayerUID player) && ! CTI_isServer)  " \n
+                                        condition=/*%FSM<CONDITION""">*/"time > _ncycle" \n
                                          "// && !( _town getVariable ""cti_town_disactivate"");"/*%FSM</CONDITION""">*/;
                                         action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
                                 };
@@ -321,6 +316,14 @@ class FSM
                          "" \n
                          "};" \n
                          "" \n
+                         "if ((missionNamespace getVariable 'CTI_SM_MINES')==1) then {" \n
+                         "	_mines = _town getVariable ""cti_town_mines"";" \n
+                         "	if ((count _mines) >0) then {" \n
+                         "		{deleteVehicle _x} forEach _mines;" \n
+                         "	};" \n
+                         "_town setVariable [""cti_town_mines"",[],true];" \n
+                         "};" \n
+                         "" \n
                          "if ( (missionNamespace getVariable 'CTI_SM_TCAS') <= (_town getVariable ""cti_town_value"")) then {" \n
                          "	(_town getVariable [""CTI_CAS"",[]]) call SM_TCAS_CLEANUP;" \n
                          "};" \n
@@ -333,14 +336,15 @@ class FSM
                         precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
                         class Links
                         {
-                                /*%FSM<LINK "_">*/
-                                class _
+                                /*%FSM<LINK "Cycle">*/
+                                class Cycle
                                 {
-                                        itemno = 24;
-                                        priority = 0.000000;
-                                        to="Skip_possible_owner";
+                                        itemno = 1;
+                                        priority = 1.000000;
+                                        to="Resistance_hold";
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"time > _ncycle" \n
+                                         "// && !( _town getVariable ""cti_town_disactivate"");"/*%FSM</CONDITION""">*/;
                                         action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
                                 };
                                 /*%FSM</LINK>*/
@@ -361,7 +365,7 @@ class FSM
                                 {
                                         itemno = 10;
                                         priority = 1.000000;
-                                        to="Skip_possible_owner";
+                                        to="Skip";
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
                                         condition=/*%FSM<CONDITION""">*/"!(_town getVariable ""cti_town_resistance_active"")"/*%FSM</CONDITION""">*/;
                                         action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
@@ -417,6 +421,9 @@ class FSM
                          "	_town setVariable[""CTI_CAS"",(_town) call SM_TCAS_CREATE,true];" \n
                          "" \n
                          "};" \n
+                         "if ((missionNamespace getVariable 'CTI_SM_MINES')==1) then {" \n
+                         "	[_town] call CTI_SM_Mines_script;" \n
+                         "};" \n
                          "" \n
                          "if ((_town getVariable ""cti_town_name"" == ""Makrynisi"") || (_town getVariable ""cti_town_name"" == ""Tuadua Island"") || (_town getVariable ""cti_town_name"" == ""Yani Islets"") || (_town getVariable ""cti_town_name"" == ""Ile Sainte-Marie"") || (_town getVariable ""cti_town_name"" == ""Northern Island"") || (_town getVariable ""cti_town_name"" == ""Rock Island"")) then {_town setVariable [""CTI_Ship"",(_town) call SM_TShip_CREATE,true];};" \n
                          "" \n
@@ -440,7 +447,7 @@ class FSM
                                         priority = 1.000000;
                                         to="Resistance_hold";
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/"time > _ncycle && ((_town getvariable [""cti_town_owner"",""0""])==""0"" && CTI_isServer || (_town getvariable [""cti_town_owner"",""0""]) == (getPlayerUID player) && ! CTI_isServer)  " \n
+                                        condition=/*%FSM<CONDITION""">*/"time > _ncycle" \n
                                          "// && !( _town getVariable ""cti_town_disactivate"");"/*%FSM</CONDITION""">*/;
                                         action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
                                 };
@@ -488,41 +495,6 @@ class FSM
                                         to="Skip";
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
                                         condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
-                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-                                };
-                                /*%FSM</LINK>*/
-                        };
-                };
-                /*%FSM</STATE>*/
-                /*%FSM<STATE "Skip_possible_owner">*/
-                class Skip_possible_owner
-                {
-                        name = "Skip_possible_owner";
-                        itemno = 25;
-                        init = /*%FSM<STATEINIT""">*/"_ncycle = time +2 ;"/*%FSM</STATEINIT""">*/;
-                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-                        class Links
-                        {
-                                /*%FSM<LINK "Cycle">*/
-                                class Cycle
-                                {
-                                        itemno = 1;
-                                        priority = 1.000000;
-                                        to="Resistance_hold";
-                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/"time > _ncycle && ((_town getvariable [""cti_town_owner"",""0""])==""0"" && CTI_isServer || (_town getvariable [""cti_town_owner"",""0""]) == (getPlayerUID player) && ! CTI_isServer)  " \n
-                                         "// && !( _town getVariable ""cti_town_disactivate"");"/*%FSM</CONDITION""">*/;
-                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-                                };
-                                /*%FSM</LINK>*/
-                                /*%FSM<LINK "_">*/
-                                class _
-                                {
-                                        itemno = 26;
-                                        priority = 0.000000;
-                                        to="Skip_possible_owner";
-                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/"time > _ncycle"/*%FSM</CONDITION""">*/;
                                         action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
                                 };
                                 /*%FSM</LINK>*/

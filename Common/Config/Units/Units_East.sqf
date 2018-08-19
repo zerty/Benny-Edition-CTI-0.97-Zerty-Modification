@@ -707,7 +707,7 @@ _f = _f + [CTI_FACTORY_LIGHT];
 _s = _s + ["service-medic"];
 
 
-_c = _c + ['O_APC_Wheeled_02_rcws_F'];
+_c = _c + ['O_APC_Wheeled_02_rcws_v2_F'];
 _p = _p + [''];
 _n = _n + [''];
 _o = _o + [3000];
@@ -870,6 +870,15 @@ _t = _t + [25];
 _u = _u + [0];
 _f = _f + [CTI_FACTORY_AMMO];
 _s = _s + ["service-ammotruck"];
+
+_c = _c + ['C_Plane_Civil_01_F'];
+_p = _p + [''];
+_n = _n + [''];
+_o = _o + [3000];
+_t = _t + [35];
+_u = _u + [0];
+_f = _f + [CTI_FACTORY_AIR];
+_s = _s + [""];
 
 _c = _c + ['O_UAV_02_F'];
 _p = _p + [''];
@@ -1269,6 +1278,24 @@ _c = _c + ['B_SAM_System_02_F'];
 _p = _p + [''];
 _n = _n + [''];
 _o = _o + [80000];
+_t = _t + [30];
+_u = _u + [0];
+_f = _f + [""];
+_s = _s + [""];
+
+_c = _c + ['O_Radar_System_02_F'];
+_p = _p + [''];
+_n = _n + [''];
+_o = _o + [12000];
+_t = _t + [30];
+_u = _u + [0];
+_f = _f + [""];
+_s = _s + [""];
+
+_c = _c + ['O_SAM_System_04_F'];
+_p = _p + [''];
+_n = _n + [''];
+_o = _o + [40000];
 _t = _t + [30];
 _u = _u + [0];
 _f = _f + [""];

@@ -1,6 +1,6 @@
 _side = _this;
 
-missionNamespace setVariable [format["CTI_%1_HQ", _side], "O_APC_Wheeled_02_rcws_F"];
+missionNamespace setVariable [format["CTI_%1_HQ", _side], "O_APC_Wheeled_02_rcws_v2_F"];
 missionNamespace setVariable [format["CTI_%1_Factories", _side], ["Barracks","Light","Heavy","Air","Ammo","Repair"]];
 
 missionNamespace setVariable [format["CTI_%1_Base_Template", _side], [
@@ -125,7 +125,7 @@ _placements = _placements 	+ [[180, 15]];
 _specials = _specials		+ [[["DMG_Reduce", 2]]];
 
 _headers = _headers 		+ [[CTI_LIGHT, localize "STR_Light_Vehicle_Factory", localize "STR_Light_Vehicle_Factory_1"]];
-_classes = _classes 		+ [["Land_i_Garage_V1_F", "Land_Garage_V1_ruins_F"]];
+_classes = _classes 		+ [["Land_i_Garage_V1_F", "Land_Garage_V1_ruins_F", ["Land_i_Garage_V1_dam_F"]]];
 _prices = _prices 			+ [2000];
 _times = _times 			+ [80];
 _placements = _placements 	+ [[90, 25]];
@@ -136,7 +136,7 @@ _classes = _classes 		+ [["Land_i_House_Small_03_V1_F", "Land_House_Small_03_V1_
 _prices = _prices 			+ [3000];
 _times = _times 			+ [90];
 _placements = _placements 	+ [[180, 20]];
-_specials = _specials		+ [[["Connected"],["DMG_Alternative"],["DMG_Reduce", 0.4]]];
+_specials = _specials		+ [[["Connected"],["DMG_Alternative"],["DMG_Reduce", 0.2]]];
 
 _headers = _headers 		+ [[CTI_HEAVY, localize "STR_Heavy_Vehicle_Factory", localize "STR_Heavy_Vehicle_Factory_1"]];
 _classes = _classes 		+ [["Land_Cargo_HQ_V1_F", "Land_Cargo_HQ_V1_ruins_F"]];
@@ -208,6 +208,18 @@ _prices = _prices 			+ [80000];
 _placements = _placements 	+ [[180, 15]];
 _categories = _categories 	+ ["Defense"];
 
+_headers = _headers 		+ ["R-750 Cronus Radar - Only on BASE Areas"];
+_classes = _classes 		+ ["O_Radar_System_02_F"];
+_prices = _prices 			+ [12000];
+_placements = _placements 	+ [[180, 15]];
+_categories = _categories 	+ ["Defense"];
+
+_headers = _headers 		+ ["S-750 Rhea - Only on BASE Areas"];
+_classes = _classes 		+ ["O_SAM_System_04_F"];
+_prices = _prices 			+ [40000];
+_placements = _placements 	+ [[180, 15]];
+_categories = _categories 	+ ["Defense"];
+
 _headers = _headers 		+ ["Lamp"];
 _classes = _classes 		+ ["Land_LampHalogen_F"];
 _prices = _prices 			+ [5];
@@ -216,7 +228,7 @@ _categories = _categories 	+ ["Fortification"];
 
 _headers = _headers 		+ ["Empty Crate"];
 _classes = _classes 		+ ["O_supplyCrate_F"];
-_prices = _prices 			+ [5];
+_prices = _prices 			+ [7];
 _placements = _placements 	+ [[0, 2]];
 _categories = _categories 	+ ["Fortification"];
 
@@ -239,7 +251,7 @@ _prices = _prices 			+ [6000];
 _placements = _placements 	+ [[0, 50]];
 _categories = _categories 	+ ["Fortification"];
 
-_headers = _headers 		+ ["Tower"];
+_headers = _headers 		+ [["Tower",[["RuinOnDestroyed", "Land_Cargo_Patrol_V1_ruins_F"]]]];
 _classes = _classes 		+ ["Land_Cargo_Patrol_V1_F"];
 _prices = _prices 			+ [50];
 _placements = _placements 	+ [[0, 15]];

@@ -235,9 +235,10 @@ CTI_UPGRADE_AIRR = 			14;
 CTI_UPGRADE_ARTR = 			15;
 CTI_UPGRADE_NETR = 			16;
 CTI_UPGRADE_EXPI = 			17;
-CTI_UPGRADE_TRT = 			18;
-CTI_UPGRADE_TRA = 			19;
-CTI_UPGRADE_REST = 			20;
+CTI_UPGRADE_DATA = 			18;
+CTI_UPGRADE_TRT = 			19;
+CTI_UPGRADE_TRA = 			20;
+CTI_UPGRADE_REST = 			21;
 //-----------------------------------------------------------------------------------------------------------------------//
 
 
@@ -391,7 +392,7 @@ CTI_BASE_CONSTRUCTION_DECAY_DELAY = 10; //--- Decay each x seconds.
 CTI_BASE_CONSTRUCTION_DECAY_FROM = 10; //--- Decay of x / 100 each y seconds.
 CTI_BASE_CONSTRUCTION_RANGE = 250; //--- Determine how far the commander may be from the HQ to build
 CTI_BASE_CONSTRUCTION_RATIO_INIT = 1; //--- The initial construction ratio
-CTI_BASE_CONSTRUCTION_RATIO_ON_DEATH = 0.60; //--- The completion ratio is multiplied by this coefficient to make repairs less effective at each factory's destruction.
+CTI_BASE_CONSTRUCTION_RATIO_ON_DEATH = 0.90; //--- The completion ratio is multiplied by this coefficient to make repairs less effective at each factory's destruction.
 
 //--- Base: Defenses
 // CTI_BASE_DEFENSES_AUTO_DELAY = 240; //--- Delay after which a new unit will replace a dead one for a defense
@@ -520,7 +521,7 @@ CTI_SERVICE_PRICE_REFUEL = 200;
 CTI_SERVICE_PRICE_REFUEL_COEF = 0.1;
 CTI_SERVICE_PRICE_HEAL = 50;
 
-CTI_ART_REARM_RATIO=10;
+CTI_ART_REARM_RATIO=30;
 CTI_AIR_REARM_RATIO=5;
 //todo: add fuel & heal later on
 CTI_SERVICE_AMMO_DEPOT_RANGE = 150;
@@ -538,7 +539,7 @@ CTI_SCORE_TOWN_VALUE_PERPOINT = 100; //--- Town value / x
 
 CTI_GC_DELAY = 90;
 CTI_GC_DELAY_AIR = 360;
-CTI_GC_DELAY_CAR = 20;
+CTI_GC_DELAY_CAR = 30;
 CTI_GC_DELAY_MAN = 300;
 CTI_GC_DELAY_TANK = 300;
 CTI_GC_DELAY_SHIP = 60;
@@ -624,6 +625,7 @@ with missionNamespace do {
 	if (isNil "CTI_SM_BASEP_M") then {CTI_SM_BASEP_M=0};
 	if (isNil "CTI_SM_REPAIR") then {CTI_SM_REPAIR=1};
 	if (isNil "CTI_SM_MORTARS") then {CTI_SM_MORTARS=1};
+	if (isNil "CTI_SM_MINES") then {CTI_SM_MINES=1};
 	if (isNil "CTI_SM_STRATEGIC") then {CTI_SM_STRATEGIC=0};
 	if (isNil "CTI_SM_STRATEGIC_NB") then {CTI_SM_STRATEGIC_NB=3};
 	if (isNil "CTI_SM_HALO") then {CTI_SM_HALO=1};

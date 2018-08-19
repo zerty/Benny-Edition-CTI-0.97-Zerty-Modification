@@ -46,7 +46,7 @@ SM_TCAS_MAINLOOP=compile '
 	_wp3=_group addWaypoint [[[[(getPos _town),700]]] call BIS_fnc_randomPos, 0];
 	_wp3  setwaypointtype "CYCLE";
 	_group setCurrentWaypoint _wp;
-	diag_log format [ "Town CAS ::  %1 Calling CAS %2", _town,_type];
+	diag_log format [ ":: Town CAS ::  %1 Calling CAS %2", _town,_type];
 	[_group,_v]';
 
 

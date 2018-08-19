@@ -161,6 +161,7 @@ while {! (((getMarkerPos format ["HELO_START_%1", _i])select 0) == 0)} do
 	if (CTI_BASE_FOB_MAX > 0) then {_logic setVariable ["cti_fobs", [], true]};
 
 	//--- Startup vehicles
+	if (!(profileNamespace getvariable ["CTI_SAVE_ENABLED",false])) then {
 	{
 		_model = _x select 0;
 		_equipment = _x select 1;
@@ -173,7 +174,7 @@ while {! (((getMarkerPos format ["HELO_START_%1", _i])select 0) == 0)} do
 		if (count _equipment > 0) then {[_vehicle, _equipment] call CTI_CO_FNC_EquipVehicleCargoSpace};
 		if ((missionNamespace getVariable [format ["%1", _model],["","","","","","","",""]]) select 7 != "") then {[_vehicle, _side, ((missionNamespace getVariable [format ["%1", _model],["","","","","","","",""]]) select 7)] call CTI_CO_FNC_InitializeCustomVehicle;};
 	} forEach (missionNamespace getVariable format["CTI_%1_Vehicles_Startup", _side]);
-
+	};
 
 	_teams = [];
 
@@ -278,7 +279,16 @@ if (( missionNamespace getVariable [ "CTI_BASE_DEFENSES_AUTO_LIMIT",0]) >0) then
 if (missionNamespace getvariable "CTI_PERSISTANT" == 1) then {
 	waitUntil {!isNil 'CTI_InitTowns'};
 	sleep 10; // prenvent loading without all town FSM stable
-	if (profileNamespace getvariable ["CTI_SAVE_ENABLED",false]) then { 0 call PERS_LOAD} else {CTI_Init_Server=True;};
+	if (profileNamespace getvariable ["CTI_SAVE_ENABLED",false]) then {
+		0 call PERS_LOAD;
+	} else {
+		CTI_Init_Server=True;
+		{
+		    _side=_x;
+		    _logic= (_side) call CTI_CO_FNC_GetSideLogic;
+		    _logic setVariable ["CTI_LOAD_COMPLETED",true,true];
+		} forEach [east,west];
+	};
 	0 spawn {
 		while {!CTi_GameOver} do {
 			sleep 270 +random (60);

@@ -44,7 +44,7 @@ with missionNamespace do {
 	    SM_ACTION_REPAIR = compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Functions\SM_Action_Repair.sqf";
 	    SM_ACTION_DISMANTLE = compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Functions\SM_Action_Dismantle.sqf";
 	    SM_COM_Init = compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Old_Com_Eject\SM_COM_init.sqf";
-	   	HCGA_Init = compileFinal preprocessFileLineNumbers "Addons\Strat_mode\HC_GA\HCGA_Init.sqf";
+
 	   	UAV_FUEL = compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Functions\UAV_Fuel.sqf";
 	   	UAV_RANGE = compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Functions\UAV_Range.sqf";
 	   	DYNG_WAIT = compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Functions\DYNG_waitforgroup.sqf";
@@ -54,6 +54,7 @@ with missionNamespace do {
 	   	TUTO_Init_Client= compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Functions\TUTORIAL_init_client.sqf";
 	   	KK_fnc_setPosAGLS= compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Functions\KK_fnc_setPosAGLS.sqf";
 	   	SM_REPAIRVEHICLEREMOTE= compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Functions\SM_RepairVehiculeRemote.sqf";
+	   	CTI_SM_Mines_script = compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Functions\SM_Mines.sqf";
 };
 
 //Common stuff
@@ -153,28 +154,38 @@ if (CTI_IsServer) then {
 				_sl= (_this select 1) call CTI_CO_FNC_GetSideLogic;
 				while {HUD_WRITE} do {sleep random (1);};
 				HUD_WRITE=true;
-				_hud =_sl getVariable "CTI_HUD_SHARED";
-				_hud=_hud -[objNull] + (_this select 0);
+				_hud =_sl getVariable ["CTI_HUD_SHARED",[]];
+
+
+				//cleanup
+				_delete=+ [];
 				{
-					[_x,(_this select 1)] spawn {
-						_o=(_this select 0);
-						_side=(_this select 1);
-						_sl= (_this select 1) call CTI_CO_FNC_GetSideLogic;
-						_to=time+180;
-						waitUntil {time > _to};
-						while {HUD_WRITE} do {sleep random (1);};
-						HUD_WRITE=true;
-						_hud =_sl getVariable "CTI_HUD_SHARED";
-						_hud=_hud -[objNull] - [_o];
-						_sl setVariable ["CTI_HUD_SHARED",_hud,true];
-						HUD_WRITE=false;
-					}; true
-				} count (_this select 0);
+					_obj = _x select 0;
+					_timeout= _x select 1;
+					if( isNull _obj || time > _timeout) then {_delete pushBack _forEachIndex;};
+				}  forEach  _hud;
+
+				{_hud deleteAt _x;true} count _delete;
+				//new objects
+				{
+					_new_obj= _x select 0;
+					_new_timeout= _x select 1;
+					_find=(_hud findif {_x select 0 == _new_obj});
+					if (_find == -1) then {
+						_hud pushBack _x;
+						_new_obj setVariable ["CTI_HUD_Detected",_new_timeout,true];
+					};
+					true
+				}count (_this select 0);
+
+
 
 				_sl setVariable ["CTI_HUD_SHARED",_hud,true];
 				HUD_WRITE=false;
 			};
 		};
+
+
 
 		CTI_PVF_Server_Addeditable= {
     	(_this select 0) addCuratorEditableObjects [[_this select 1],true] ;
@@ -312,9 +323,6 @@ if (CTI_IsServer) then {
 		if ((missionNamespace getVariable "CTI_AC_ENABLED")>0) then{
 			0 execVM "Addons\Henroth_AirLoadout\init.sqf"
 		};
-		// hc balance
-		0 spawn HCGA_Init;
-
 
 		// time compression
 		0 spawn {
@@ -329,10 +337,6 @@ if (CTI_IsServer) then {
 				sleep 120;
 			};
 
-		};
-
-		if (profileNamespace getvariable ["CTI_SAVE_ENABLED",false]) then {
-			0 execVM "Addons\Strat_mode\Functions\PERS_Mark.sqf";
 		};
 
 };
@@ -438,6 +442,7 @@ if (CTI_IsClient) then {
 
 		if ( (missionNamespace getVariable 'CTI_SM_BASEP_M')!=0) then {
 			waitUntil {!isNil {CTI_P_SideLogic getVariable "CTI_BASES_NEIGH"} && !isNil {CTI_P_SideLogic getVariable "CTI_BASES_FOUND"} };
+			waitUntil { (missionNamespace getvariable "CTI_PERSISTANT" == 0) || ((missionNamespace getvariable "CTI_PERSISTANT" == 1) && CTI_P_SideLogic getVariable ["CTI_LOAD_COMPLETED",false])};
 			_ci=0;
 			{
 				_b=_x;

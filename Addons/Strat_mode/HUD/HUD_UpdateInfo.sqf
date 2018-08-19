@@ -75,7 +75,12 @@ _sl=CTI_P_SideJoined call  CTI_CO_FNC_GetSideLogic;
 	    case 	"ColorRed":{ "<t color='#ff0000' size='0.75'><img image='A3\ui_f\data\map\Markers\Military\flag_ca.paa'/></t>" };
 	    default { "<t color='#00ff00' size='0.75'><img image='A3\ui_f\data\map\Markers\Military\flag_ca.paa'/></t>"  };
 	};
-	_t = _t + format ["%2 %1 ",(_x getVariable "cti_town_name"),_icon	]
+	if (_x == (_sl getVariable ["CTI_PRIORITY",objNull])) then  {
+			_t = _t + format ["%2 (P) %1 ",(_x getVariable "cti_town_name"),_icon	];
+		} else {
+			_t = _t + format ["%2 %1 ",(_x getVariable "cti_town_name"),_icon	];
+		};
+	true
 } count (_sl getVariable ["CTI_ACTIVE",[]]);
 _t=_t+"<br />";
 if ( (missionNamespace getVariable 'CTI_SM_RADAR')==1 && (count ([CTI_RADAR, ((CTI_P_SideJoined) call CTI_CO_FNC_GetSideStructures)] call CTI_CO_FNC_GetSideStructuresByType) > 0 )) then {

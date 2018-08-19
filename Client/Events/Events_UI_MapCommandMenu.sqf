@@ -17,8 +17,9 @@ switch (_action) do {
 		((uiNamespace getVariable "cti_dialog_ui_mapcommandmenu") displayCtrl 220002) lnbSetValue [[0, 0], -1];
 		_markers = [];
 		{
+			_unitName = [format ["%1 (%2)", groupId _x, name (leader _x)],0,20] call BIS_fnc_trimString;
 			_order = (_x getVariable "cti_order") call CTI_CL_FNC_GetOrderLabel;
-			((uiNamespace getVariable "cti_dialog_ui_mapcommandmenu") displayCtrl 220002) lnbAddRow [_x getVariable ["cti_alias", CTI_PLAYER_DEFAULT_ALIAS], _order];
+			((uiNamespace getVariable "cti_dialog_ui_mapcommandmenu") displayCtrl 220002) lnbAddRow [_unitName, _order];
 			((uiNamespace getVariable "cti_dialog_ui_mapcommandmenu") displayCtrl 220002) lnbSetValue [[_forEachIndex+1, 0], _forEachIndex];
 			((uiNamespace getVariable "cti_dialog_ui_mapcommandmenu") displayCtrl 220002) lnbSetValue [[_forEachIndex+1, 1], _order];
 

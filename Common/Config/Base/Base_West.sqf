@@ -130,7 +130,7 @@ _placements = _placements 	+ [[180, 15]];
 _specials = _specials		+ [[["DMG_Reduce", 2]]];
 
 _headers = _headers 		+ [[CTI_LIGHT, localize "STR_Light_Vehicle_Factory", localize "STR_Light_Vehicle_Factory_1"]];
-_classes = _classes 		+ [["Land_i_Garage_V1_F", "Land_Garage_V1_ruins_F"]];
+_classes = _classes 		+ [["Land_i_Garage_V1_F", "Land_Garage_V1_ruins_F", ["Land_i_Garage_V1_dam_F"]]];
 _prices = _prices 			+ [2000];
 _times = _times 			+ [80];
 _placements = _placements 	+ [[90, 25]];
@@ -141,7 +141,7 @@ _classes = _classes 		+ [["Land_i_House_Small_03_V1_F", "Land_House_Small_03_V1_
 _prices = _prices 			+ [3000];
 _times = _times 			+ [90];
 _placements = _placements 	+ [[180, 20]];
-_specials = _specials		+ [[["Connected"],["DMG_Alternative"],["DMG_Reduce", 0.4]]];
+_specials = _specials		+ [[["Connected"],["DMG_Alternative"],["DMG_Reduce", 0.2]]];
 
 _headers = _headers 		+ [[CTI_HEAVY, localize "STR_Heavy_Vehicle_Factory", localize "STR_Heavy_Vehicle_Factory_1"]];
 _classes = _classes 		+ [["Land_Cargo_HQ_V1_F", "Land_Cargo_HQ_V1_ruins_F"]];
@@ -213,6 +213,18 @@ _prices = _prices 			+ [80000];
 _placements = _placements 	+ [[180, 15]];
 _categories = _categories 	+ ["Defense"];
 
+_headers = _headers 		+ ["AN/MPQ-105 Radar - Only on BASE Areas"];
+_classes = _classes 		+ ["B_Radar_System_01_F"];
+_prices = _prices 			+ [12000];
+_placements = _placements 	+ [[180, 15]];
+_categories = _categories 	+ ["Defense"];
+
+_headers = _headers 		+ ["MIM-145 Defender - Only on BASE Areas"];
+_classes = _classes 		+ ["B_SAM_System_03_F"];
+_prices = _prices 			+ [40000];
+_placements = _placements 	+ [[180, 15]];
+_categories = _categories 	+ ["Defense"];
+
 _headers = _headers 		+ ["Lamp"];
 _classes = _classes 		+ ["Land_LampHalogen_F"];
 _prices = _prices 			+ [5];
@@ -221,7 +233,7 @@ _categories = _categories 	+ ["Fortification"];
 
 _headers = _headers 		+ ["Empty Crate"];
 _classes = _classes 		+ ["B_supplyCrate_F"];
-_prices = _prices 			+ [5];
+_prices = _prices 			+ [7];
 _placements = _placements 	+ [[0, 2]];
 _categories = _categories 	+ ["Fortification"];
 
@@ -244,7 +256,7 @@ _prices = _prices 			+ [6000];
 _placements = _placements 	+ [[0, 50]];
 _categories = _categories 	+ ["Fortification"];
 
-_headers = _headers 		+ ["Tower"];
+_headers = _headers 		+ [["Tower",[["RuinOnDestroyed", "Land_Cargo_Patrol_V1_ruins_F"]]]];
 _classes = _classes 		+ ["Land_Cargo_Patrol_V1_F"];
 _prices = _prices 			+ [50];
 _placements = _placements 	+ [[0, 15]];

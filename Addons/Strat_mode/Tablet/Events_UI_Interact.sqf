@@ -117,7 +117,7 @@ switch (_action) do {
 
 			    case 10: {// CTI_Icon_Lock // ok
 
-			    	if (! isnull _target &&( (getplayeruid player) in (_target getVariable ["v_keys",["",grpnull]]) || (group player) in (_target getVariable ["v_keys",["",grpnull]]) && alive _target)) then  {
+			    	if (! isnull _target && alive _target &&( (getplayeruid player) in (_target getVariable ["v_keys",["",grpnull]]) || (group player) in (_target getVariable ["v_keys",["",grpnull]]) || ((CTI_P_SideLogic getVariable "cti_commander") == (group player) && (_target getvariable ["cti_occupant",civilian]) == CTI_P_sidejoined)) ) then  {
 			    		if (locked _target >0 ) then {((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTextColor [1,0,0,1];} else {((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTextColor [0,1,0,1];};
 
 			    		((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetPosition [_base_x+(_offset*_base_w),_base_y+_h_offset*_base_h,_base_w,_base_h];
@@ -485,7 +485,6 @@ switch (_action) do {
 						_camohull = "showCamonetHull";
 						_camoturret = "showCamonetTurret";
 						if  (_camohull in _orig || _camoturret in _orig) then {_possible = 1;};
-						if (_target isKindOf "O_APC_Wheeled_02_rcws_F" || _target isKindOf "O_T_APC_Wheeled_02_rcws_ghex_F") then {_possible = 1;}; // temporary fix for bugged marid
 					};
 			    	if (alive _target && (_target isKindOf "Wheeled_APC_F" || _target isKindOf "Tank") && locked _target < 2 && speed _target < 2 && speed _target > -2 && _possible == 1) then {
 			    		_structures = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideStructures;
@@ -512,7 +511,6 @@ switch (_action) do {
 					if (_target isKindOf "Wheeled_APC_F" || _target isKindOf "Tank") then {
 						_orig = [_target] call bis_fnc_getVehicleCustomization select 1;
 						if ("showSLATHull" in _orig || "showSLATTurret" in _orig || "HideHull" in _orig || "HideTurret" in _orig) then {_cage = 1;};
-						if (_target isKindOf "O_APC_Wheeled_02_rcws_F" || _target isKindOf "O_T_APC_Wheeled_02_rcws_ghex_F") then {_cage = 1;}; // temporary fix for bugged marid
 					};
 			    	if (alive _target && (_target isKindOf "Wheeled_APC_F" || _target isKindOf "Tank") && locked _target < 2 && _cage == 1 && speed _target < 2 && speed _target > -2) then {
 			    		_structures = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideStructures;
@@ -557,7 +555,7 @@ switch (_action) do {
 		['onLoad'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_Interact.sqf'
 	};
 	case "OnNet": {
-		//if (locked _target >0) exitwith {false}; migth fix the hellcat problem
+		if (locked _target >0&& !(_target isKindOf "Heli_light_03_base_F")) exitwith {false}; // migth fix the hellcat problem
 		if ((_target getVariable ['CTI_Net',-1])!= -1) Then {
 			_target setVariable ['CTI_Net',-1,true];
 			_target setVariable ['AN_iNet',CTI_P_SideID,true];
@@ -572,6 +570,8 @@ switch (_action) do {
 			player setVariable ['CTI_Net',-1,true];
 			player setVariable ['AN_iNet',CTI_P_SideID,true];
 		} else {
+			player setVariable ["AN_iNet",-1,true];
+			player setVariable ["AN_Parrents",[],false];
 			player setVariable ['CTI_Net',CTI_P_SideID,true];
 			//["SERVER","Server_Run_Net",[_target,CTI_P_SideID]] call CTI_CO_FNC_NetSend;
 		};
@@ -803,10 +803,6 @@ switch (_action) do {
 				if (_vct == 0) then {_orig set [_vposct, 1];} else {_orig set [_vposct, 0];};
 			};
 
-			if (_target isKindOf "O_APC_Wheeled_02_rcws_F" || _target isKindOf "O_T_APC_Wheeled_02_rcws_ghex_F") then {
-				_orig = ["showCamonetHull",1];
-			}; //marid temporary fix
-
 			[_target, nil, _orig] call BIS_fnc_initVehicle;
 			[group player, CTI_P_SideJoined, - 500] call CTI_CO_FNC_ChangeFunds;
 		};
@@ -852,10 +848,6 @@ switch (_action) do {
 				_vht = _orig select _htvpos;
 				if (_vht == 1) then {_orig set [_htvpos, 0];} else {_orig set [_htvpos, 1];};
 			};
-
-			if (_target isKindOf "O_APC_Wheeled_02_rcws_F" || _target isKindOf "O_T_APC_Wheeled_02_rcws_ghex_F") then {
-				_orig = ["showSLATHull",1];
-			}; // marid temporary fix
 
 			[_target, nil, _orig] call BIS_fnc_initVehicle;
 			[group player, CTI_P_SideJoined, - 1500] call CTI_CO_FNC_ChangeFunds;

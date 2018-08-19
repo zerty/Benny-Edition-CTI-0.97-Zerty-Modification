@@ -39,9 +39,9 @@ while { true } do {
 
 
 	if !(CTI_Base_ControlCenterInRange && Client_AN_Connected) then {
-		{((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl _x) ctrlEnable false} forEach [210005,210009];
+		((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210005) ctrlEnable false;
 	} else {
-		{((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl _x) ctrlEnable true} forEach [210005,210009];
+		((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210005) ctrlEnable true;
 	};
 
 	//if ((missionNamespace getVariable"CTI_SM_STRATEGIC") >0 ) then {

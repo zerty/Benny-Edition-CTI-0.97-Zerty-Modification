@@ -45,6 +45,23 @@ switch (_action) do {
 			((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210019) ctrlSetPosition [SafeZoneX + (SafeZoneW - (3/4*SafeZoneH))/2+ (3/4*SafeZoneH) *0.191+(3/4*SafeZoneH)*0.615*0.76,SafeZoneY+safezoneH*(0.28+0.035*3+5),(3/4*SafeZoneH)*0.615*0.22,SafeZoneH * 0.03]; ((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210019) ctrlCommit 0;
 		};
 		if ((player getVariable ['CTI_Net',-1])!= -1) Then {((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210016) ctrlsettext "Net-Discon.";} else {((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210016) ctrlsettext "Net-Recon.";} ;
+		_column=SafeZoneX + (SafeZoneW - (3/4*SafeZoneH))/2+ (3/4*SafeZoneH) *0.191+(3/4*SafeZoneH)*0.615*0.54;
+		((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210003) ctrlSetPosition [_column,(ctrlPosition ((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210003)) select 1];
+		((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210003) ctrlCommit 0;
+		((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210004) ctrlSetPosition [_column, (ctrlPosition ((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210004)) select 1];
+		((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210004) ctrlCommit 0;
+		((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210005) ctrlSetPosition [_column, (ctrlPosition ((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210005)) select 1];
+		((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210005) ctrlCommit 0;
+		((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210006) ctrlSetPosition [_column, (ctrlPosition ((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210006)) select 1];
+		((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210006) ctrlCommit 0;
+		((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210008) ctrlSetPosition [_column,(ctrlPosition ((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210008)) select 1];
+		((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210008) ctrlCommit 0;
+		((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210009) ctrlSetPosition [_column, (ctrlPosition ((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210009)) select 1];
+		((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210009) ctrlCommit 0;
+		((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210010) ctrlSetPosition [_column,(ctrlPosition ((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210010)) select 1];
+		((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210010) ctrlCommit 0;
+		((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210011) ctrlSetPosition [_column,(ctrlPosition ((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210011)) select 1];
+		((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210011) ctrlCommit 0;
 		execVM "Addons\Strat_mode\Tablet\GUI_TabletMain.sqf";
 		CTI_P_LastRootMenu = "Options";
 	};
@@ -174,6 +191,8 @@ switch (_action) do {
 			((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210016) ctrlSetBackgroundColor [0.7, 0, 0, 1];
 			((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210016) ctrlSetForegroundColor [0.7, 0, 0, 1];
 		} else {
+			player setVariable ["AN_iNet",-1,true];
+			player setVariable ["AN_Parrents",[],false];
 			player setVariable ['CTI_Net',CTI_P_SideID,true];
 			((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210016) ctrlsettext "Net-Disco.";
 		};

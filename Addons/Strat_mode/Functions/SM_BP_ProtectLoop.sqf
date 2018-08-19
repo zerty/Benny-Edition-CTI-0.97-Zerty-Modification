@@ -19,7 +19,7 @@ while {!CTI_GameOver} do {
 			if (CTI_SM_BASEP_M< 0 ) then {_x allowDammage false;};
 			_protected set [count _protected,_x];};true } count _objects;
 	} else {
-		{diag_log format [ "%1 :: Protecting off  %2" , _base,_x];_x allowDammage true;_x setvariable ["CTI_protected",false,false];true} count _protected;
+		{diag_log format [ ":: BP :: %1 :: Protecting off  %2" , _base,_x];_x allowDammage true;_x setvariable ["CTI_protected",false,false];true} count _protected;
 		_protected = [];
 	};
 	sleep 10;

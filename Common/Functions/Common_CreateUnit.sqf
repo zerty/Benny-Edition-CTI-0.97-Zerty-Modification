@@ -202,6 +202,10 @@ if (_rnd > 0.8) then {
 	};
 };
 
+//Ad event handle to UAV operators
+_unit addEventHandler ["WeaponAssembled",{["SERVER", "Server_UAV_FUEL",(_this select 1)] call CTI_CO_FNC_NetSend;}];	
+
+
 if (_net) then {_unit setVariable ["cti_net", _sideID, true]};
 
 //--- Add a Killed EH.

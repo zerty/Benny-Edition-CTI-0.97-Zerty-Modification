@@ -281,8 +281,9 @@ switch (_action) do {
 
 					// Calculate cost total cost
 					_selected_cost_total = call CTI_AC_CALCULATE_CHOSEN_LOADOUT_COST;
+					_selected_cost_total = _selected_cost_total + ([ _selected_vehicle, CTI_SERVICE_PRICE_REAMMO, CTI_SERVICE_PRICE_REAMMO_COEF] call CTI_UI_Service_GetPrice);
 					_vehicle_loadout_value = _selected_vehicle getVariable "CTI_AC_AIRCRAFT_LOADOUT_COST";
-
+	
 					// Get current funds
 					_funds = call CTI_CL_FNC_GetPlayerFunds;
 

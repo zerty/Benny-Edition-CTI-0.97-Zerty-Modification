@@ -7,23 +7,23 @@
 	Author: 		Benny
 	Creation Date:	19-09-2013
 	Revision Date:	19-09-2013
-	
+
   # PARAMETERS #
     0	[Object]: The shooter
     1	[Object]: The explosive object
-	
+
   # RETURNED VALUE #
 	None
-	
+
   # SYNTAX #
 	[SHOOTER, EXPLOSIVE] call CTI_CL_FNC_OnExplosivePlaced
-	
+
   # DEPENDENCIES #
 	Common Function: CTI_CO_FNC_GetClosestEntity
 	Common Function: CTI_CO_FNC_GetSideHQ
 	Common Function: CTI_CO_FNC_GetSideStructures
 	Common Function: CTI_CO_FNC_NetSend
-	
+
   # EXAMPLE #
     [_unit, _projectile] spawn CTI_CL_FNC_OnExplosivePlaced
 	  -> Check if the explosive placement is valid or not, if near a friendly structure then it's removed
@@ -37,14 +37,16 @@ _closest = [_unit, _structures] call CTI_CO_FNC_GetClosestEntity;
 
 if (_closest distance _unit < 30) then {
 	deleteVehicle _projectile;
-	
+
 	_label = "Headquarters";
 	if !(isNil {_closest getVariable "cti_structure_type"}) then {
 		_var = missionNamespace getVariable format ["CTI_%1_%2", CTI_P_SideJoined, _closest getVariable "cti_structure_type"];
 		_label = (_var select 0) select 1;
 	};
-	
+
 	[["CLIENT", CTI_P_SideJoined], "Client_OnMessageReceived", ["structure-teamkill-attempt", [name _unit, (group _unit) getVariable ["cti_alias",CTI_PLAYER_DEFAULT_ALIAS], _label]]] call CTI_CO_FNC_NetSend;
 	if (isPlayer _unit) then {["SERVER", "Request_NoobLogger", [_unit, 1]] call CTI_CO_FNC_NetSend};
 	hint parseText "<t size='1.3' color='#F86363'>Warning!</t><br /><br />Do not place explosives near friendly buildings or MHQ!";
+} else {
+	CTI_P_SideJoined revealMine _projectile;
 };

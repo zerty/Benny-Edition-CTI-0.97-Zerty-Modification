@@ -25,7 +25,7 @@ HUD_AddFrameHandler={
 	 	disableSerialization;
 		_hud=uiNamespace getVariable 'HUD';
 		[_hud] call HUD_ShowTargets;
-		[_hud] call HUD_ShowTowns;
+		//[_hud] call HUD_ShowTowns;
 	}] call BIS_fnc_addStackedEventHandler;
 };
 
@@ -46,10 +46,10 @@ HUD_RemoveFrameHandler={
 0 spawn {
 	while {!CTI_GameOver} do {
 		waitUntil {([CTI_P_SideJoined, CTI_UPGRADE_HUD, 1] call CTI_CO_FNC_HasUpgrade || CTI_Debug) && profileNamespace getVariable ["HUD_Tactical",true]};
-			HUD_Targets = (0) call HUD_GetTargets;
+			(0) call HUD_GetTargets;
 			//HUD_Targets = (0) exec "Addons\Strat_mode\HUD\HUD_GetTargets.sqf";
-			HUD_Towns = (0) call HUD_GetTowns;
-		sleep 5;
+			//HUD_Towns = (0) call HUD_GetTowns;
+		sleep 3;
 	};
 };
 

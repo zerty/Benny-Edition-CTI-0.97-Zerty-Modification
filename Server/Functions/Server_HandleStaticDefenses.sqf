@@ -37,14 +37,14 @@ _sideID = (_side) call CTI_CO_FNC_GetSideID;
 
 _net = if ((missionNamespace getVariable "CTI_MARKERS_INFANTRY") == 1) then {true} else {false};
 _man_timeout = 180;
-
+_skipRearms = 10;
 while {! CTI_GAMEOVER} do {
 
 	_defs=_logic getVariable ["cti_defences",[]];
 
 
 	{
-		if ((_x  getVariable ["cti_aman_enabled", false])|| (typeof _x )in ["B_AAA_System_01_F","B_SAM_System_01_F","B_SAM_System_02_F"]) then {
+		if ((_x  getVariable ["cti_aman_enabled", false])|| (typeof _x )in ["B_AAA_System_01_F","B_SAM_System_01_F","B_SAM_System_02_F","B_Radar_System_01_F","B_SAM_System_03_F","O_Radar_System_02_F","O_SAM_System_04_F"]) then {
 			_defense_team = _logic getVariable "cti_defensive_team";
 			if (((_x emptyPositions "gunner" > 0)|| (gunner _x ) != (_x getvariable ["CTI_assigned_gunner",objnull]) || ((isnull (_x getvariable ["CTI_assigned_gunner",objnull])) && ! isnull (gunner _x))) && alive _x) then {
 				_nearest_b = [CTI_BARRACKS, _x, (_side) call CTI_CO_FNC_GetSideStructures, CTI_BASE_DEFENSES_AUTO_REARM_RANGE] call CTI_CO_FNC_GetClosestStructure;
@@ -55,7 +55,7 @@ while {! CTI_GAMEOVER} do {
 						_distance = (_var select 4) select 1;
 						_position = _nearest_b modelToWorld [(sin _direction * _distance), (cos _direction * _distance), 0];
 
-						if ((typeof _x )in ["B_AAA_System_01_F","B_SAM_System_01_F","B_SAM_System_02_F"] ) then {
+						if ((typeof _x )in ["B_AAA_System_01_F","B_SAM_System_01_F","B_SAM_System_02_F","B_Radar_System_01_F","B_SAM_System_03_F","O_Radar_System_02_F","O_SAM_System_04_F"] ) then {
 							if  (isnull (gunner _x) || !alive (gunner _x)) then {
 								_x deleteVehicleCrew ( gunner _x);
 								createVehicleCrew _x;
@@ -111,9 +111,19 @@ while {! CTI_GAMEOVER} do {
 				_nearest = [CTI_AMMO, _x, (_side) call CTI_CO_FNC_GetSideStructures, CTI_BASE_DEFENSES_AUTO_REARM_RANGE] call CTI_CO_FNC_GetClosestStructure;
 
 				if (count _ammo_trucks > 0 || (!isNull _nearest && alive _nearest)) then {
-					if ((gunner _x) == (_x getvariable ["CTI_assigned_gunner",objnull]) || (typeof _x )in ["B_AAA_System_01_F","B_SAM_System_01_F","B_SAM_System_02_F"]) then {
+					if ((gunner _x) == (_x getvariable ["CTI_assigned_gunner",objnull])) then {
 						_x setVehicleAmmoDef 1;
 						diag_log format [":: DEF NG :: %1 of side %2 rearmed", _x,_side];
+					};
+					//rearm special Defenenses only ever "_skipRearms" minutes
+					if((typeof _x )in ["B_AAA_System_01_F","B_SAM_System_01_F","B_SAM_System_02_F","B_SAM_System_03_F","O_SAM_System_04_F"]) then {
+						_skippedR = _x getVariable["skipped_rearms", 0];
+						_x setVariable["skipped_rearms", _skippedR+1];
+						if(_skippedR >= _skipRearms) then {
+							_x setVehicleAmmoDef 1;
+							diag_log format [":: DEF NG :: %1 of side %2 rearmed", _x,_side];
+							_x setVariable["skipped_rearms", 0];
+						};
 					};
 				};
 			};

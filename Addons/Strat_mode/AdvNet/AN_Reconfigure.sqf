@@ -17,6 +17,10 @@ _global=if (_vehicle isKindOf "Man") then {false} else  {true};
 _side_id=_vehicle getVariable ["CTI_Net",-11];
 if (_side_id < 0 || isNil {_vehicle getVariable "AN_iNet"}) exitWith {false};
 
+
+if ((_vehicle isKindOf "FlagPole_F") && (_vehicle getVariable ["cti_town_sideID",CTI_RESISTANCE_ID]) == CTI_RESISTANCE_ID)  exitWith {false};
+
+// always connected objects (cc)
 _side =(_side_id)  call CTI_CO_FNC_GetSideFromID;
 _forced=_vehicle getVariable ["AN_Forced",false];
 if (_forced) exitWith {

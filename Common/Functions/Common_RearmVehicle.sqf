@@ -33,7 +33,13 @@ _side = _this select 1;
 _type = typeOf _vehicle;
 _t_side = if (typeName _side == "SCALAR") then {(_side call CTI_CO_FNC_GetSideFromID)} else {_side};
 
-//_vehicle setVehicleAmmoDef 1;
+//Add Data link
+if(count ((_t_side) call CTI_CO_FNC_GetSideUpgrades) >= CTI_UPGRADE_DATA) then {
+if(((_t_side) call CTI_CO_FNC_GetSideUpgrades) select CTI_UPGRADE_DATA == 1) then {
+	_vehicle setVehicleReportOwnPosition true;
+	_vehicle setVehicleReportRemoteTargets true;
+	_vehicle setVehicleReceiveRemoteTargets true;
+};};
 
 // Fix for air vehicles ... uses sanatise script to clean up afterwards
 //enable for && (!(_vehicle isKindOf "O_Plane_Fighter_02_F")) && (!(_vehicle isKindOf "B_Plane_Fighter_01_F")) && (!(_vehicle isKindOf "I_Plane_Fighter_04_F"))
@@ -78,9 +84,8 @@ if (	(((typeOf _vehicle) == "O_APC_Tracked_02_AA_F")
 
 	//--- Sanitize the artillery loadout, mines may lag the server for instance
 	if (CTI_ARTILLERY_FILTER == 1) then {if (typeOf _vehicle in (missionNamespace getVariable ["CTI_ARTILLERY", []])) then {(_vehicle) call CTI_CO_FNC_SanitizeArtillery}};
-
-	// Reload the trophy system
-
+	
+	
 	if (_vehicle isKindOf "tank" || _vehicle isKindOf "Wheeled_APC_F") then {
 		_ammo=if (! (count ((_side) call CTI_CO_FNC_GetSideUpgrades) == 0)) then {2+2*(((_side) call CTI_CO_FNC_GetSideUpgrades) select CTI_UPGRADE_TRA)} else {2};
 		_vehicle setVariable ["TROPHY_time_l",time-10000,true];

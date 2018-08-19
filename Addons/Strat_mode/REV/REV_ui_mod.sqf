@@ -1,4 +1,4 @@
-#define	REVIVE_DELAY	60
+#define	REVIVE_DELAY	20
 
 
 private ["_main_disp","_ntime"];
@@ -7,7 +7,7 @@ private ["_main_disp","_ntime"];
 
 inGameUISetEventHandler ["Action", "
 	if (round(_this select 5) != 666 && player getVariable ['REV_UNC',false]) then {
-		hint 'Sorry, You are down! :: %1';
+		hint 'Sorry, You are down!';
 		true
 	}
 "];

@@ -31,6 +31,10 @@ _killed = _this select 0;
 _killer = _this select 1;
 _sideID = _this select 2;
 
+if(_killer isKindOf "UAV" && (count(UAVControl _killer) > 0)) then {
+	_killer = ((UAVControl _killer) select 0);
+};
+
 diag_log format ["::HQ DESTROYED:: %1 killed by %2 sideid %3", _this select 0, _this select 1, _this select 2 ];
 if (((_this select 0) isKindOf "Pod_Heli_Transport_04_base_F") ||((_this select 0) isKindOf "Slingload_base_F")) then {
 	_target =(_this select 0);
@@ -56,7 +60,7 @@ if (((_this select 0) isKindOf "Pod_Heli_Transport_04_base_F") ||((_this select 
 if !(simulationEnabled _killed) then {_killed enableSimulationGlobal true;};
 
 
-[["CLIENT", leader group _killer], "Client_AwardBounty", [(typeOf _killed), 30000]] call CTI_CO_FNC_NetSend;
+[["CLIENT", leader group _killer], "Client_AwardBounty", [(typeOf _killed), round((CTI_BASE_HQ_REPAIR_PRICE/4)*3)]] call CTI_CO_FNC_NetSend;
 
 [["CLIENT", _sideID call CTI_CO_FNC_GetSideFromID], "Client_OnMessageReceived", ["hq-destroyed"],true] call CTI_CO_FNC_NetSend;
 

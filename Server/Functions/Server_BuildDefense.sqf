@@ -140,6 +140,15 @@ if (_defense isKindOf "B_AAA_System_01_F" || _defense isKindOf "B_SAM_System_01_
 	_defense setPos [_def_pos select 0,_def_pos select 1,(_def_pos select 2) +0.1];
 };
 
+if (_defense isKindOf "B_Radar_System_01_F" || _defense isKindOf "B_SAM_System_03_F" || _defense isKindOf "O_Radar_System_02_F" || _defense isKindOf "O_SAM_System_04_F") then {
+	createVehicleCrew _defense;
+	_defense joinAsSilent [createGroup _side, 99];
+	(group _defense) setBehaviour "COMBAT";
+	(group _defense) setCombatMode "RED";
+	_defense setVehicleRadar 1;
+	_defense setVehicleLock "LOCKED";
+};
+
 
 if (missionNamespace getVariable "CTI_TROPHY_APS" == 1) then {
 	_defense addEventHandler["Fired","_this call TR_HANDLER;"];
