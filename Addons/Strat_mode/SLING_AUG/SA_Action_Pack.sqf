@@ -7,6 +7,10 @@ private ["_caller","_started","_finished"];
 _caller=_this select 0;
 _target=_this select 1;
 
+
+//prevent packing enemy HQ
+if (_target == (CTI_P_EnemySide call CTI_CO_FNC_GetSideHQ)) exitwith{false};
+
 _primary_weapon = primaryWeapon _caller;
 _caller selectWeapon _primary_weapon;
 
