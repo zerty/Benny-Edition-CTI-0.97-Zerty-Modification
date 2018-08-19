@@ -275,6 +275,9 @@ if (_net &&missionNamespace getVariable "CTI_EW_ANET" == 1 && !(_side == CTI_RES
 	["SERVER","Server_Run_Net",[_vehicle,_side]] call CTI_CO_FNC_NetSend;
 };
 
+// fix for empty resistance vehicles
+if (_vehicle getVariable ["CTI_Net",100]==100 && (_side == CTI_RESISTANCE_ID)) then {_vehicle setvariable ["CTI_Net",CTI_RESISTANCE_ID,true];};
+
 if (_vehicle isKindOf "CargoNet_01_base_F") then {
 	clearBackpackCargoGlobal _vehicle;
 	clearMagazineCargoGlobal  _vehicle;
