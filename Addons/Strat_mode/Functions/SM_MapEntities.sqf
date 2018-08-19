@@ -145,33 +145,38 @@ _ug=units player;
 
 
 
-if ! ( ( player) getVariable "AN_iNet" == _side_id && (player getVariable ["CTI_Net",-10])>= 0) exitWith {[_group,_return,[]]};
+if ! (player call AN_Check_Connection) exitWith {[_group,_return,[]]};
 
 
 
 // switchableUnits
 {
-	_pgroup=_x;
-	{	_object = _x;
-		_side_id=-1;
-		if (!isNil {_object getVariable "CTI_Net"}) then {_side_id=_object getVariable "CTI_Net";};
-		if (!isNil {_object getVariable "AN_iNet"}) then {_side_id=_object getVariable "AN_iNet";};
-		_side= (_side_id)  call CTI_CO_FNC_GetSideFromID;
-		if (vehicle _x == _x && _side_id == (player getVariable ["CTI_Net",-10]) && (vehicle _x == _x || !(((vehicle _x ) getVariable ["AN_iNet",-10] )== (_x getVariable ["CTI_Net",-11])))) then {
-			_p_icon= switch (_side) do
-			{
-		    case 	west:{ "b_" };
-		    case 	east:{ "o_" };
-		    case 	resistance:{ "n_" };
-		    default { "n_"  };
-		  };
-			_texture= format ["a3\ui_f\data\map\Markers\NATO\%1inf",_p_icon];
-			_color = switch (_side) do
+	_inigroup=_x;
+
+	{
+		_object = _x;
+
+		_sidef =side _inigroup;
+
+		if (vehicle _x == _x &&
+		    _object getVariable ["CTI_Net",-1] == player getvariable ["CTI_NET",-1001] &&
+		    _x call AN_Check_Connection
+		    ) then {
+
+			_p_icon= switch (_sidef) do
 				{
-			    case 	west:{ [0,0,1,1] };
-			    case 	east:{ [1,0,0,1] };
-			    case 	resistance:{ [0,1,0,1] };
-			    default { [1,1,1,1]  };
+				    case 	west:{ "b_" };
+				    case 	east:{ "o_" };
+				    case 	resistance:{ "n_" };
+				    default { "n_"  };
+			  	};
+			_texture= format ["a3\ui_f\data\map\Markers\NATO\%1inf",_p_icon];
+			_color = switch (_sidef) do
+				{
+				    case 	west:{ [0,0,1,1] };
+				    case 	east:{ [1,0,0,1] };
+				    case 	resistance:{ [0,1,0,1] };
+				    default { [1,1,1,1]  };
 				};
 			if (! alive _object) then {_color = [0,0,0,1];};
 			if (_object getvariable ["REV_UNC",false]) then {_color = [0.5,0.32,0.09,1]};
@@ -179,17 +184,20 @@ if ! ( ( player) getVariable "AN_iNet" == _side_id && (player getVariable ["CTI_
 			_size = [18, 18];
 			_text="";
 			if (isplayer _object && _object isKindOf "Man") then {
-				if (_pgroup == ((_side) call CTI_CO_FNC_GetSideCommander)) then {
+				if (_inigroup == ((_sidef) call CTI_CO_FNC_GetSideCommander)) then {
 					_text =  format ["[%1]%2","Commander", name _object];
 				}else {
 					_text =  format ["[%1]%2",(group _object) getVariable ["cti_alias",CTI_PLAYER_DEFAULT_ALIAS], name _object];
 				};
 			};
-			_return set [count _return,[_object,_texture, _color, _pos,_size select 0,_size select 1, 0, _text, 0, 0.05,'TahomaB', 'right']];
-			if (!isnull (lasertarget _object)) then {_return set [count _return,[lasertarget _object,"\a3\ui_f\data\IGUI\RscIngameUI\RscOptics\laser_designator_iconlaseron", [0,0,1,1],  getPos (lasertarget _object),_size select 0,_size select 1, 0, "", 0, 0.05,'TahomaB', 'right']];};
-			if (!isnull (laserTarget getConnectedUAV _object)) then {_return set [count _return,[lasertarget getConnectedUAV _object,"\a3\ui_f\data\IGUI\RscIngameUI\RscOptics\laser_designator_iconlaseron", [1,0,0,1],  getPos (lasertarget getConnectedUAV _object),_size select 0,_size select 1, 0, "", 0, 0.05,'TahomaB', 'right']];};
+			_return pushBack [_object,_texture, _color, _pos,_size select 0,_size select 1, 0, _text, 0, 0.05,'TahomaB', 'right'];
+			if (!isnull (lasertarget _object)) then {_return pushBack [lasertarget _object,"\a3\ui_f\data\IGUI\RscIngameUI\RscOptics\laser_designator_iconlaseron", [0,0,1,1],  getPos (lasertarget _object),_size select 0,_size select 1, 0, "", 0, 0.05,'TahomaB', 'right'];};
+			if (!isnull (laserTarget getConnectedUAV _object)) then {_return pushBack [lasertarget getConnectedUAV _object,"\a3\ui_f\data\IGUI\RscIngameUI\RscOptics\laser_designator_iconlaseron", [1,0,0,1],  getPos (lasertarget getConnectedUAV _object),_size select 0,_size select 1, 0, "", 0, 0.05,'TahomaB', 'right'];};
 
-		};TRUE} count units _x;TRUE
-}count ((_side call CTI_CO_FNC_GetSideGroups)-[group player] );
+		};
+		TRUE
+	} count units _inigroup;
+	TRUE
+}count ((CTI_P_SideJoined call CTI_CO_FNC_GetSideGroups)-[group player] );
 
 [_group,_return,_lines]
