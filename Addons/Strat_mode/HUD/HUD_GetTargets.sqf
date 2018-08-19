@@ -14,20 +14,33 @@ _a_targs= player nearTargets (HUD_MAX_RANGE);
 	};
 } count _a_targs;
 
-HUD_T_OBJ=HUD_T_OBJ-[objNull];
-_to_share=[];
+
+//cleanup or timeout
+_delete=+ [];
+
+{
+	_obj = _x select 0;
+	_timeout= _x select 1;
+	if( isNull _obj || time > _timeout) then {_delete pushBack _forEachIndex;};
+}  forEach  HUD_T_OBJ;
+
+{HUD_T_OBJ deleteAt _x;true} count _delete;
+
+//
+
+
+_to_share=+[];
 {
 	_t=(_x select 4);
 	_pt=getPosASL (_x select 4);
 	_pt set [2,(_pt select 2) + 2];
 	if (Client_AN_Connected) then {
-		if ({_x == _t} count (_sl getVariable "CTI_HUD_SHARED") == 0 && ((player getVariable ["CTI_net",-10])  call CTI_CO_FNC_GetSideFromID) == CTI_P_SideJoined && !((_x select 2) == CTI_P_SideJoined)&& vehicle _t == _t) then {
-			_to_share pushback _t;
+		if ((_sl getVariable "CTI_HUD_SHARED") findif {_x select 0 == _t} == -1 && ((player getVariable ["CTI_net",-10])  call CTI_CO_FNC_GetSideFromID) == CTI_P_SideJoined && !((_x select 2) == CTI_P_SideJoined)&& vehicle _t == _t) then {
+			_to_share pushback [_t,time+ random 10];
 		};
 	};
-	if ({_x == _t} count HUD_T_OBJ == 0 ) then {
-		HUD_T_OBJ pushback _t;
-		_t spawn {_to=time+120 + random 10; waitUntil {time > _to}; HUD_T_OBJ = HUD_T_OBJ - [_this];};
+	if ({_x select 0 == _t} count HUD_T_OBJ == 0 ) then {
+		HUD_T_OBJ pushback [_t,time + random 10] ;
 	};
 
  true

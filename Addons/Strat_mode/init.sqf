@@ -150,64 +150,43 @@ if (CTI_IsServer) then {
 
 
 		CTI_PVF_Server_Hud_Share_Add= {
+			diag_log _this;
 			_this spawn {
 				_sl= (_this select 1) call CTI_CO_FNC_GetSideLogic;
 				while {HUD_WRITE} do {sleep random (1);};
 				HUD_WRITE=true;
-				_hud =_sl getVariable "CTI_HUD_SHARED";
-				_hud=_hud -[objNull] + (_this select 0);
+				_hud =_sl getVariable ["CTI_HUD_SHARED",[]];
+
+
+				//cleanup
+				_delete=+ [];
 				{
-					[_x,(_this select 1)] spawn {
-						_o=(_this select 0);
-						_side=(_this select 1);
-						_sl= (_this select 1) call CTI_CO_FNC_GetSideLogic;
-						_to=time+180;
-						waitUntil {time > _to};
-						while {HUD_WRITE} do {sleep random (1);};
-						HUD_WRITE=true;
-						_hud =_sl getVariable "CTI_HUD_SHARED";
-						_hud=_hud -[objNull] - [_o];
-						_sl setVariable ["CTI_HUD_SHARED",_hud,true];
-						HUD_WRITE=false;
-					}; true
-				} count (_this select 0);
+					_obj = _x select 0;
+					_timeout= _x select 1;
+					if( isNull _obj || time > _timeout) then {_delete pushBack _forEachIndex;};
+				}  forEach  _hud;
+
+				{_hud deleteAt _x;true} count _delete;
+				//new objects
+				{
+					_new_obj= _x select 0;
+					_new_timeout= _x select 1;
+					_find=(_hud findif {_x select 0 == _new_obj});
+					if (_find == -1) then {
+						_hud pushBack _x;
+						_new_obj setVariable ["CTI_HUD_Detected",_new_timeout,true];
+					};
+					true
+				}count (_this select 0);
+
+
 
 				_sl setVariable ["CTI_HUD_SHARED",_hud,true];
 				HUD_WRITE=false;
 			};
 		};
 
-		//Marks enemy vehicles that are known by your network (upgrade data link)
-		CTI_PVF_Server_Hud_Share_Add_Enemy= {
 
-			_this spawn {
-				_sl= (_this select 1) call CTI_CO_FNC_GetSideLogic;
-				while {HUD_WRITE} do {sleep random (1);};
-				HUD_WRITE=true;
-				_hud =_sl getVariable "CTI_HUD_SHARED";
-				_hud=_hud -[objNull] + (_this select 0);
-				{
-					[_x,(_this select 1)] spawn {
-						_side=(_this select 1);
-						_o=(_this select 0);
-						_o setVariable [format ["CTI_HUD_Detected_%1", _side], true, true];
-						_sl= (_this select 1) call CTI_CO_FNC_GetSideLogic;
-						_to=time+180;
-						waitUntil {time > _to};
-						_o setVariable [format ["CTI_HUD_Detected_%1", _side], false, true];
-						while {HUD_WRITE} do {sleep random (1);};
-						HUD_WRITE=true;
-						_hud =_sl getVariable "CTI_HUD_SHARED";
-						_hud=_hud -[objNull] - [_o];
-						_sl setVariable ["CTI_HUD_SHARED",_hud,true];
-						HUD_WRITE=false;
-					}; true
-				} count (_this select 0);
-
-				_sl setVariable ["CTI_HUD_SHARED",_hud,true];
-				HUD_WRITE=false;
-			};
-		};
 
 		CTI_PVF_Server_Addeditable= {
     	(_this select 0) addCuratorEditableObjects [[_this select 1],true] ;

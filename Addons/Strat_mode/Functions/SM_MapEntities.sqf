@@ -47,9 +47,6 @@ _ug=units player;
 	if (!isnull (lasertarget _object)) then {_return pushBack [lasertarget _object,"\a3\ui_f\data\IGUI\RscIngameUI\RscOptics\laser_designator_iconlaseron", [1,0,0,1],  getPos (lasertarget _object),_size select 0,_size select 1, 0, _unitName, 0, 0.05,'TahomaB', 'right'];};
 	if (!isnull (laserTarget getConnectedUAV _object)) then {_return pushBack [lasertarget getConnectedUAV _object,"\a3\ui_f\data\IGUI\RscIngameUI\RscOptics\laser_designator_iconlaseron", [1,0,0,1],  getPos (lasertarget getConnectedUAV _object),_size select 0,_size select 1, 0, _unitName, 0, 0.05,'TahomaB', 'right'];};
 
-	/*if (_x call AN_Check_Connection && ! isNull(_x getVariable "AN_Conn") ) then {
-			_lines set [count _lines , [_x,visiblePosition _x, visiblePosition (_x getVariable "AN_Conn"),[1,1,0,1]]];
-	};*/
 } count _ug;
 
 
@@ -60,10 +57,10 @@ _ug=units player;
 	//if (!isNil {_object getVariable "AN_iNet"}) then {_side_id=_object getVariable "AN_iNet";};
 	_side= if (_side_id<0) then {side _object} else {(_side_id)  call CTI_CO_FNC_GetSideFromID};
 
-	if (_object in HUD_T_OBJ ||  																	// object detected by tack hud
-	    _object getVariable ["AN_iNet",-1000] == player getvariable ["CTI_Net",-10] && _connected 	// both connected to same network
+	if ( HUD_T_OBJ findif {_object == _x select 0} >-1 ||  												// object detected by local tack hud
+	    _object getVariable ["AN_iNet",-1000] == player getvariable ["CTI_Net",-10] && _connected ||	// both connected to same network
+	    _connected && (_hud_targets findif {_object == _x select 0 && time < _x select 1} >-1)			//shared by team
 	    ) then {
-		diag_log format ["trying to show %1",_x];
 		_p_icon= switch (_side) do
 			{
 		    case 	west:{ "b_" };
@@ -89,40 +86,37 @@ _ug=units player;
 		_texture= format ["a3\ui_f\data\map\Markers\NATO\%1%2",_p_icon,_s_icon];
 		if (_x isKindOf "ReammoBox_F" && !(_x isKindOf "Slingload_base_F"))  then {_texture= "\A3\ui_f\data\map\vehicleicons\iconCrateAmmo_ca"};
 
-		_color = switch (_side) do
-		{
-		    case 	west:{ [0,0,1,1] };
-		    case 	east:{ [1,0,0,1] };
-		    case 	resistance:{ [0,1,0,1] };
-		    default { [1,1,1,1]  };
-		};
+
+		// WUT IS COLOR?
+		_keys=_object getVariable ["v_keys",["",grpNull]];
+		_is_owner=(_object == vehicle player || group player == _keys select 1 || getPlayerUID player == _keys select 0);
 
 		//When data link upgrade is present, it markers your units diffrent when they are spotted by enemy.
-		if(count ((_side) call CTI_CO_FNC_GetSideUpgrades) >= CTI_UPGRADE_DATA) then {
-		if(((_side) call CTI_CO_FNC_GetSideUpgrades) select CTI_UPGRADE_DATA == 1 &&
-		_object getvariable[format ["CTI_HUD_Detected_%1", _side], false]) then {
-			//If the vehicle is detected by enemy diffrent color is used.
-			if(_side == east) then {
-				_color = [0.5,0,0,1];
-			};
-
-			if(_side == west) then {
-				_color = [0,0.3,0.6,1];
-			};
-		};};
+		if(	_side == CTI_P_SideJoined && 															//only on same sidethan player
+		   ((CTI_P_SideJoined) call CTI_CO_FNC_GetSideUpgrades) select CTI_UPGRADE_DATA == 1 && 	// side of player has upgrade
+			_object getvariable["CTI_HUD_Detected", -1] < time 										// and did not timeout on enemy side shares
+			) then {
+				_color = switch (_side) do
+				{
+				    case 	west:{ [0,0.3,0.6,1] };
+				    case 	east:{ [0.5,0,0,1] };
+				    case 	resistance:{ [0,1,0,1] };
+				    default { [1,1,1,1]  };
+				};
+				if (_is_owner) then {_color=[0.85,0.4,0,1]};
+		} else {
+				_color = switch (_side) do
+				{
+				    case 	west:{ [0,0,01,1] };
+				    case 	east:{ [1,0,0,1] };
+				    case 	resistance:{ [0,1,0,1] };
+				    default { [1,1,1,1]  };
+				};
+				if (_is_owner) then {_color=[1,1,0,1]};
+		};
 
 		if (! alive _object) then {_color = [0,0,0,1];};
-		_keys=_object getVariable ["v_keys",["",grpNull]];
-		_second_color=_color;
-		if (alive _object && (_object == vehicle player || group player == _keys select 1 || getPlayerUID player == _keys select 0)) then  {
-			if(_object getvariable[format ["CTI_HUD_Detected_%1", _side], false]) then {
-				if(count ((_side) call CTI_CO_FNC_GetSideUpgrades) >= CTI_UPGRADE_DATA) then {
-				if(((_side) call CTI_CO_FNC_GetSideUpgrades) select CTI_UPGRADE_DATA == 1) then {_second_color = [0.85,0.4,0,1];};};
-			} else {
-				_second_color = [1,1,0,1];
-			};
 
-		};
 		_pos = getPosASL _x;
 		_size = [25, 25];
 		if (_object isKindOf "Man") then {_size = [18, 18];};
@@ -140,7 +134,7 @@ _ug=units player;
 			}count crew _x;
 		};
 
-		_return pushBack [_object,_texture, _second_color, _pos,_size select 0,_size select 1, 0, _text, 0, 0.05,'TahomaB', 'right'];
+		_return pushBack [_object,_texture, _color, _pos,_size select 0,_size select 1, 0, _text, 0, 0.05,'TahomaB', 'right'];
 
 		if (!isnull (lasertarget _object)) then {_return pushBack [lasertarget _object,"\a3\ui_f\data\IGUI\RscIngameUI\RscOptics\laser_designator_iconlaseron", [1,0,0,1],  getPos (lasertarget _object),_size select 0,_size select 1, 0, "", 0, 0.05,'TahomaB', 'right'];};
 	};
@@ -194,37 +188,8 @@ if ! ( ( player) getVariable "AN_iNet" == _side_id && (player getVariable ["CTI_
 			_return set [count _return,[_object,_texture, _color, _pos,_size select 0,_size select 1, 0, _text, 0, 0.05,'TahomaB', 'right']];
 			if (!isnull (lasertarget _object)) then {_return set [count _return,[lasertarget _object,"\a3\ui_f\data\IGUI\RscIngameUI\RscOptics\laser_designator_iconlaseron", [0,0,1,1],  getPos (lasertarget _object),_size select 0,_size select 1, 0, "", 0, 0.05,'TahomaB', 'right']];};
 			if (!isnull (laserTarget getConnectedUAV _object)) then {_return set [count _return,[lasertarget getConnectedUAV _object,"\a3\ui_f\data\IGUI\RscIngameUI\RscOptics\laser_designator_iconlaseron", [1,0,0,1],  getPos (lasertarget getConnectedUAV _object),_size select 0,_size select 1, 0, "", 0, 0.05,'TahomaB', 'right']];};
-			/*if (!isNil {_object getVariable "AN_Conn"}) then {
-				if (_object call AN_Check_Connection && ! isNull(_object getVariable "AN_Conn") ) then {
-					_lines set [count _lines , [_object,visiblePosition _object, visiblePosition (_object getVariable "AN_Conn"),[1,1,0,1]]];
-				};
-			};*/
+
 		};TRUE} count units _x;TRUE
 }count ((_side call CTI_CO_FNC_GetSideGroups)-[group player] );
-
-//towns
-/*
-{
-	_side_id=-1;
-	if (!isNil {_x getVariable "AN_iNet"}) then {_side_id=_x getVariable "AN_iNet";};
-	_side= (_side_id)  call CTI_CO_FNC_GetSideFromID;
-	_color = switch (_side) do
-	{
-    case 	west:{ [0,0,1,1] };
-    case 	east:{ [1,0,0,1] };
-    case 	resistance:{ [0,1,0,1] };
-    default { [1,1,1,1]  };
-	};
-	if ( ! isNull(_x getVariable "AN_Conn") && _side_id == (player getVariable ["CTI_NET",-11]) && !(_x isKindOf "Man")) then {
-		_lines set [count _lines , [_x,visiblePosition _x, visiblePosition (_x getVariable "AN_Conn"),_color]];
-	};
-} count CTI_Towns;
-*/
-
-// Team Vehicles
-
-
-
-//[texture, color, position, width, height, angle, text, shadow, textSize, font, align]
 
 [_group,_return,_lines]
