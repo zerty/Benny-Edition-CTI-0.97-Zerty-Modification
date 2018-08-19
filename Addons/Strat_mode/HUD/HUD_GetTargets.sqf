@@ -44,57 +44,6 @@ if (count _to_share > 0) then {
 	};*/
 };
 
-_input=[];
-_input=+(_sl getVariable ["CTI_HUD_SHARED",[]]);
-{if !(_x in _input) then {_input pushBackUnique _x};true} count HUD_T_OBJ;
-
 _return=[];
-{
-	_o=_x;
-	_side = side _x ;
-	_text="";
-	if (_x isKindOf "Man" ) then { _side = side (group _x);};
-	_dis= player distance _x;
-	if (_dis <= HUD_MAX_RANGE && (vehicle _o == _o)  && !((side _o) == civilian) ) then
-	{
 
-		_fade=1-(_dis/HUD_MAX_RANGE) max 0;
-		_size=(1-((_dis)/HUD_MAX_RANGE)*0.8) max 0;
-		_shared=false;
-
-		if (_x isKindOf "Man" ) then {
-			_size=_size *0.75;
-
-		};
-
-		_p_icon= switch (_side) do
-		{
-	    case 	west:{ "b_" };
-	    case 	east:{ "o_" };
-	    case 	resistance:{ "n_" };
-	    default { "n_"  };
-	  };
-	  _s_icon=0 call {
-	  	if (_x isKindOf "Man") exitWith { "inf" };
-			if ((_x isKindOf "Car" || _x isKindOf "Motorcycle") && !(_x isKindOf "Wheeled_APC_F")) exitWith { "motor_inf" };
-			if  (_x isKindOf "Wheeled_APC_F")exitWith { "mech_inf" };
-			if  (_x isKindOf "Ship")exitWith { "naval" };
-			if  (_x isKindOf "Tank")exitWith { "armor" };
-			if  (_x isKindOf "Helicopter")exitWith { "air" };
-			if  (_x isKindOf "ParachuteBase")exitWith { "air" };
-			if  (_x isKindOf "Plane")exitWith { "plane" };
-		};
-		_icon=format ["a3\ui_f\data\map\Markers\NATO\%1.paa",(_p_icon+_s_icon)];
-		_color = switch (_side) do
-		{
-	    case 	west:{ [0,0,1,1] };
-	    case 	east:{ [1,0,0,1] };
-	    case 	resistance:{ [0,1,0,1] };
-	    default { [1,1,1,1]  };
-		};
-		_color set [3,_fade];
-		if ( {_x == _o} count (_sl getVariable "CTI_HUD_SHARED") >0 ) then {_shared=true};
-		_return set [count _return,[_x,_icon,_color,_shared,_size,_text]];
-	};
-} count _input;
 _return
