@@ -105,7 +105,7 @@ class Mission
 {
 	class Intel
 	{
-		briefingName="BECTI BE 0.97 - Zerty 1.3.4.4";
+		briefingName="BECTI BE 0.97 - Zerty 1.3.4.5";
 		overviewText="By Benny - Adapted from OFP era MFCTI (Mike Melvin)";
 		resistanceWest=0;
 		timeOfChanges=24720;
