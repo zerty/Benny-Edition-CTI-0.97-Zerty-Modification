@@ -160,7 +160,7 @@ if ! (player call AN_Check_Connection) exitWith {[_group,_return,[]]};
 
 		if (vehicle _x == _x &&
 		    _object getVariable ["CTI_Net",-1] == player getvariable ["CTI_NET",-1001] &&
-		    _x call AN_Check_Connection
+		    _object getVariable ["CTI_Net",-1] == _object getVariable ["AN_iNet",-2]
 		    ) then {
 
 			_p_icon= switch (_sidef) do
