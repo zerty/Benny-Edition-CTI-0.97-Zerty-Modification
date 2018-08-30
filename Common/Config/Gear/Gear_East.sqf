@@ -101,13 +101,21 @@ _i = _i		+ ["30Rnd_556x45_Stanag_Tracer_Green"];
 _u = _u		+ [0];
 _p = _p		+ [5];
 
+_i = _i		+ ["30Rnd_762x39_Mag_F"];
+_u = _u		+ [1];
+_p = _p		+ [15];
+
 _i = _i		+ ["30Rnd_762x39_Mag_Green_F"];
+_u = _u		+ [1];
+_p = _p		+ [15];
+
+_i = _i		+ ["30Rnd_762x39_Mag_Tracer_F"];
 _u = _u		+ [1];
 _p = _p		+ [20];
 
 _i = _i		+ ["30Rnd_762x39_Mag_Tracer_Green_F"];
 _u = _u		+ [1];
-_p = _p		+ [15];
+_p = _p		+ [20];
 
 _i = _i		+ ["30Rnd_65x39_caseless_green"];
 _u = _u		+ [1];
