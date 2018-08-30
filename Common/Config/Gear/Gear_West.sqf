@@ -80,6 +80,14 @@ _i = _i		+ ["30Rnd_9x21_Red_Mag"];
 _u = _u		+ [0];
 _p = _p		+ [10];
 
+_i = _i		+ ["30Rnd_9x21_Mag_SMG_02"];
+_u = _u		+ [0];
+_p = _p		+ [10];
+
+_i = _i		+ ["30Rnd_9x21_Mag_SMG_02_Tracer_Yellow"];
+_u = _u		+ [0];
+_p = _p		+ [10];
+
 _i = _i		+ ["30Rnd_45ACP_Mag_SMG_01"];
 _u = _u		+ [0];
 _p = _p		+ [10];
