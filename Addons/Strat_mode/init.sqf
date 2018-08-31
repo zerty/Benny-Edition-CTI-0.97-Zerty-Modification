@@ -55,6 +55,8 @@ with missionNamespace do {
 	   	KK_fnc_setPosAGLS= compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Functions\KK_fnc_setPosAGLS.sqf";
 	   	SM_REPAIRVEHICLEREMOTE= compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Functions\SM_RepairVehiculeRemote.sqf";
 	   	CTI_SM_Mines_script = compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Functions\SM_Mines.sqf";
+
+	   	TASKS_LOOP= compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Functions\TASKS_loop.sqf";
 };
 
 //Common stuff
@@ -477,6 +479,9 @@ if (CTI_IsClient) then {
 		["darter","onEachFrame",{0 call UAV_RANGE } ] call BIS_fnc_addStackedEventHandler;
 	};
 
+
+	// Taks loop
+	0 spawn TASKS_LOOP;
 
 };
 
