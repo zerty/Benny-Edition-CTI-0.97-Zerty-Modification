@@ -426,7 +426,11 @@ switch (_action) do {
 			    case 33: {// CTI_Icon_Exit Tutorial
 
 			    	if (_target isKindOf "Land_Wreck_Heli_Attack_01_F") then {
-			    		((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTextColor [1,1,1,1];
+			    		if ((CTI_P_SideLogic getVariable ["CTI_LOAD_COMPLETED",false])) then {
+			    				((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTextColor [1,1,1,1];
+			    			} else {
+			    				((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTextColor [0.2,0.2,0.2,1];
+			    			};
 			    		((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetPosition [_base_x+(_offset*_base_w),_base_y+_h_offset*_base_h,_base_w,_base_h];
 			    		_offset=_offset+1;
 			    	} else {
@@ -762,7 +766,9 @@ switch (_action) do {
 		['onLoad'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_Interact.sqf'
 	};
 	case "OnExitT": {
-		TUTO_COMPLETE=true;
+		if (CTI_P_SideLogic getVariable ["CTI_LOAD_COMPLETED",false]) then {
+			TUTO_COMPLETE=true;
+			} else {hintsilent "Wait for loading to complete";};
 		//profileNamespace setVariable ["TUTO_COMPLETE", true];
 		//saveProfileNamespace;
 	};
