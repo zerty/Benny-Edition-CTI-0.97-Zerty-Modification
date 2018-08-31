@@ -768,7 +768,7 @@ switch (_action) do {
 	case "OnExitT": {
 		if (CTI_P_SideLogic getVariable ["CTI_LOAD_COMPLETED",false]) then {
 			TUTO_COMPLETE=true;
-			} else {hintsilent "Wait for loading to complete";};
+			} else {hintsilent "Wait for loading to complete";0 spawn {sleep 2 ; hintsilent "";};};
 		//profileNamespace setVariable ["TUTO_COMPLETE", true];
 		//saveProfileNamespace;
 	};
