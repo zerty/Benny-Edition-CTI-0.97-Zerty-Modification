@@ -98,7 +98,6 @@ while {!CTI_GAMEOVER} do
 	// DEFEND TASKS
 	{
 		_town=_x;
-		diag_log _town;
 		if ((_town getvariable ["cti_town_sideID",-1]) == _sideID && ((_town getvariable ["cti_town_occupation_active",false]) || (_town getvariable ["cti_town_resistance_active",false]) ) ) then {
 			if ((TASKS_LIST findif {(_x select 0) == CTI_TASK_TYPE_DEFEND && (_x select 1) == _town}) == -1) then {
 				_taskname=format ["D_%1_%2",ceil(random(100000)),ceil(time)];
