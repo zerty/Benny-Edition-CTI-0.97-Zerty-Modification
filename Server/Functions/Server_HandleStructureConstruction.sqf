@@ -36,7 +36,7 @@
     [_side, _structure, _variable, _position, _direction] spawn CTI_SE_FNC_HandleStructureConstruction;
 */
 
-private ["_completion", "_completion_ratio", "_completion_last", "_direction", "_lasttouch", "_position", "_side", "_structure", "_variable"];
+private ["_completion", "_completion_ratio", "_completion_last", "_direction", "_lasttouch", "_position", "_side", "_structure", "_variable","_timeout"];
 
 _side = _this select 0;
 _side_id= (_side) call CTI_CO_FNC_GetSideID;
@@ -47,6 +47,10 @@ _direction = _this select 4;
 
 if (CTI_DEBUG) then {_structure setVariable ["cti_completion", 100,true]};
 waitUntil {!isNil {_structure getVariable "cti_completion"}};
+
+
+
+/*
 _completion = _structure getVariable "cti_completion";
 _completion_ratio = _structure getVariable "cti_completion_ratio";
 _completion_last = _completion;
@@ -65,19 +69,26 @@ while {_completion > 0 && _completion < 100} do {
 
 	_completion_last = _completion;
 };
+*/
+
+_timeout=time +(CTI_BASE_CONSTRUCTION_DECAY_TIMEOUT*1.5) ;
+
+waitUntil { _structure getVariable ["cti_completion",-1] >= 100 || time >_timeout};
 
 _logic = (_side) call CTI_CO_FNC_GetSideLogic;
 _logic setVariable ["cti_structures_wip", (_logic getVariable "cti_structures_wip") - [_structure, objNull],true];
+
+_completion = _structure getVariable "cti_completion";
+_completion_ratio = _structure getVariable "cti_completion_ratio";
 
 deleteVehicle _structure;
 
 if (_completion >= 100) then {
 	_var = missionNamespace getVariable _variable;
-	_structure = ((_var select 1) select 0) createVehicle _position;
-	_structure setDir _direction;
-	_structure setPos _position;
+	_structure = ((_var select 1) select 0) createVehicle [100000+random(1000),100000+random(1000),1000+random(1000)];
 	_structure setDir _direction;
 	_structure setVectorUp [0,0,0];
+	_structure setPos _position;
 	_structure setVariable ["cti_save", _variable,false];
 	_structure setVariable ["cti_structure_type", ((_var select 0) select 0)];
 
