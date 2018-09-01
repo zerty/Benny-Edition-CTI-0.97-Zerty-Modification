@@ -36,7 +36,10 @@ _unit setCaptive false;
 _unit setVariable ["REV_UNC", false, true];
 _unit setvariable ["REV_REQREV",false,true];
 _unit setvariable ["REV_DRAGGED",false,true];
-if (player == _unit ) then {CTI_P_PreBuilding = false};
+if (player == _unit ) then {
+	CTI_P_PreBuilding = false;
+	vehicle (player) switchCamera 'Internal';
+};
 
 if ((getPos _unit) select 2 <0) then { _unit setPos (getPos _unit);};
 _unit playMove "amovppnemstpsraswrfldnon";
