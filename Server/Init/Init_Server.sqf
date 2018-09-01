@@ -301,8 +301,8 @@ if (missionNamespace getvariable "CTI_PERSISTANT" == 1) then {
 		    _side=_x;
 		    _logic= (_side) call CTI_CO_FNC_GetSideLogic;
 		    _logic setVariable ["CTI_LOAD_COMPLETED",true,true];
-		} forEach [east,west];
-	};
+	} forEach [east,west];
+
 };
 
 
