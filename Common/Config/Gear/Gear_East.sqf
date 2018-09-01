@@ -55,7 +55,19 @@ _p = _p		+ [10];
 
 _i = _i		+ ["16Rnd_9x21_Mag"];
 _u = _u		+ [0];
-_p = _p		+ [20];
+_p = _p		+ [10];
+
+_i = _i		+ ["16Rnd_9x21_red_Mag"];
+_u = _u		+ [0];
+_p = _p		+ [10];
+
+_i = _i		+ ["16Rnd_9x21_green_Mag"];
+_u = _u		+ [0];
+_p = _p		+ [10];
+
+_i = _i		+ ["16Rnd_9x21_yellow_Mag"];
+_u = _u		+ [0];
+_p = _p		+ [10];
 
 _i = _i		+ ["6Rnd_45ACP_Cylinder"];
 _u = _u		+ [1];
@@ -69,19 +81,34 @@ _i = _i		+ ["6Rnd_RedSignal_F"];
 _u = _u		+ [0];
 _p = _p		+ [20];
 
-
 //SMG Ammo
 _i = _i		+ ["30Rnd_9x21_Mag_SMG_02_Tracer_Green"];
 _u = _u		+ [0];
-_p = _p		+ [10];
+_p = _p		+ [15];
 
 _i = _i		+ ["30Rnd_9x21_Mag"];
 _u = _u		+ [0];
-_p = _p		+ [10];
+_p = _p		+ [15];
 
 _i = _i		+ ["30Rnd_9x21_Red_Mag"];
 _u = _u		+ [0];
-_p = _p		+ [10];
+_p = _p		+ [15];
+
+_i = _i		+ ["30Rnd_9x21_Yellow_Mag"];
+_u = _u		+ [0];
+_p = _p		+ [15];
+
+_i = _i		+ ["30Rnd_9x21_Green_Mag"];
+_u = _u		+ [0];
+_p = _p		+ [15];
+
+_i = _i		+ ["30Rnd_545x39_Mag_F"];
+_u = _u		+ [0];
+_p = _p		+ [20];
+
+_i = _i		+ ["30Rnd_545x39_Mag_Tracer_F"];
+_u = _u		+ [0];
+_p = _p		+ [20];
 
 _i = _i		+ ["30Rnd_545x39_Mag_Green_F"];
 _u = _u		+ [0];
@@ -91,31 +118,42 @@ _i = _i		+ ["30Rnd_545x39_Mag_Tracer_Green_F"];
 _u = _u		+ [0];
 _p = _p		+ [20];
 
-
 //Rifles Ammo
+_i = _i		+ ["30Rnd_556x45_Stanag_red"];
+_u = _u		+ [0];
+_p = _p		+ [10];
+
 _i = _i		+ ["30Rnd_556x45_Stanag_green"];
+_u = _u		+ [0];
+_p = _p		+ [10];
+
+_i = _i		+ ["30Rnd_556x45_Stanag_Tracer_Red"];
+_u = _u		+ [0];
+_p = _p		+ [10];
+
+_i = _i		+ ["30Rnd_556x45_Stanag_Tracer_Yellow"];
 _u = _u		+ [0];
 _p = _p		+ [10];
 
 _i = _i		+ ["30Rnd_556x45_Stanag_Tracer_Green"];
 _u = _u		+ [0];
-_p = _p		+ [5];
+_p = _p		+ [10];
 
 _i = _i		+ ["30Rnd_762x39_Mag_F"];
 _u = _u		+ [1];
-_p = _p		+ [15];
+_p = _p		+ [30];
 
 _i = _i		+ ["30Rnd_762x39_Mag_Green_F"];
 _u = _u		+ [1];
-_p = _p		+ [15];
+_p = _p		+ [30];
 
 _i = _i		+ ["30Rnd_762x39_Mag_Tracer_F"];
 _u = _u		+ [1];
-_p = _p		+ [20];
+_p = _p		+ [30];
 
 _i = _i		+ ["30Rnd_762x39_Mag_Tracer_Green_F"];
 _u = _u		+ [1];
-_p = _p		+ [20];
+_p = _p		+ [30];
 
 _i = _i		+ ["30Rnd_65x39_caseless_green"];
 _u = _u		+ [1];
@@ -123,7 +161,7 @@ _p = _p		+ [30];
 
 _i = _i		+ ["30Rnd_65x39_caseless_green_mag_Tracer"];
 _u = _u		+ [1];
-_p = _p		+ [25];
+_p = _p		+ [30];
 
 _i = _i		+ ["30Rnd_580x42_Mag_F"];
 _u = _u		+ [1];
@@ -131,7 +169,7 @@ _p = _p		+ [15];
 
 _i = _i		+ ["30Rnd_580x42_Mag_Tracer_F"];
 _u = _u		+ [1];
-_p = _p		+ [10];
+_p = _p		+ [15];
 
 _i = _i		+ ["10Rnd_50BW_Mag_F"];
 _u = _u		+ [3];
@@ -139,8 +177,7 @@ _p = _p		+ [100];
 
 _i = _i		+ ["20Rnd_556x45_UW_mag"];
 _u = _u		+ [2];
-_p = _p		+ [100];
-
+_p = _p		+ [50];
 
 //MG Ammo
 _i = _i		+ ["150Rnd_762x54_Box"];
@@ -149,7 +186,7 @@ _p = _p		+ [100];
 
 _i = _i		+ ["150Rnd_762x54_Box_Tracer"];
 _u = _u		+ [2];
-_p = _p		+ [90];
+_p = _p		+ [100];
 
 _i = _i		+ ["150Rnd_93x64_Mag"];
 _u = _u		+ [3];
@@ -161,9 +198,7 @@ _p = _p		+ [30];
 
 _i = _i		+ ["100Rnd_580x42_Mag_Tracer_F"];
 _u = _u		+ [1];
-_p = _p		+ [25];
-
-
+_p = _p		+ [30];
 
 //Sniper rifles Ammo
 _i = _i		+ ["10Rnd_762x54_Mag"];
@@ -189,7 +224,6 @@ _p = _p		+ [250];
 _i = _i		+ ["5Rnd_127x108_APDS_Mag"];
 _u = _u		+ [3];
 _p = _p		+ [250];
-
 
 //Launchers Ammo
 _i = _i		+ ["RPG7_F"];
@@ -224,7 +258,6 @@ _i = _i		+ ["Titan_AT"];
 _u = _u		+ [3];
 _p = _p		+ [250];
 
-
 //Grenades
 _i = _i		+ ["HandGrenade"];
 _u = _u		+ [1];
@@ -237,7 +270,6 @@ _p = _p		+ [50];
 _i = _i		+ ["O_IR_Grenade"];
 _u = _u		+ [2];
 _p = _p		+ [40];
-
 
 //Smoke Shell
 _i = _i		+ ["SmokeShellBlue"];
@@ -268,7 +300,6 @@ _i = _i		+ ["SmokeShellYellow"];
 _u = _u		+ [0];
 _p = _p		+ [50];
 
-
 //Chemlights
 _i = _i		+ ["Chemlight_green"];
 _u = _u		+ [0];
@@ -285,7 +316,6 @@ _p = _p		+ [10];
 _i = _i		+ ["Chemlight_blue"];
 _u = _u		+ [0];
 _p = _p		+ [10];
-
 
 //GL Ammo
 _i = _i		+ ["1Rnd_HE_Grenade_shell"];
@@ -320,7 +350,6 @@ _i = _i		+ ["1Rnd_SmokeOrange_Grenade_shell"];
 _u = _u		+ [1];
 _p = _p		+ [10];
 
-
 _i = _i		+ ["UGL_FlareWhite_F"];
 _u = _u		+ [0];
 _p = _p		+ [10];
@@ -341,7 +370,6 @@ _i = _i		+ ["UGL_FlareCIR_F"];
 _u = _u		+ [1];
 _p = _p		+ [10];
 
-
 //--- Weapons (Nested array elements are defined but skiped in the gear menu)
 //Rifles
 _i = _i		+ ["hgun_PDW2000_F"];
@@ -356,6 +384,10 @@ _i = _i		+ ["arifle_AKS_F"];
 _u = _u		+ [0];
 _p = _p		+ [30];
 
+_i = _i		+ ["arifle_TRG20_F"];
+_u = _u		+ [0];
+_p = _p		+ [35];
+
 _i = _i		+ ["arifle_TRG21_F"];
 _u = _u		+ [0];
 _p = _p		+ [40];
@@ -366,7 +398,7 @@ _p = _p		+ [50];
 
 _i = _i		+ ["arifle_AKM_F"];
 _u = _u		+ [1];
-_p = _p		+ [30];
+_p = _p		+ [40];
 
 _i = _i		+ ["arifle_Katiba_C_F"];
 _u = _u		+ [1];
@@ -390,27 +422,27 @@ _p = _p		+ [200];
 
 _i = _i		+ ["arifle_CTAR_blk_F"];
 _u = _u		+ [1];
-_p = _p		+ [20];
+_p = _p		+ [30];
 
 _i = _i		+ ["arifle_CTAR_ghex_F"];
 _u = _u		+ [1];
-_p = _p		+ [20];
+_p = _p		+ [30];
 
 _i = _i		+ ["arifle_CTAR_hex_F"];
 _u = _u		+ [1];
-_p = _p		+ [20];
+_p = _p		+ [30];
 
 _i = _i		+ ["arifle_CTAR_GL_blk_F"];
 _u = _u		+ [1];
-_p = _p		+ [30];
+_p = _p		+ [35];
 
 _i = _i		+ ["arifle_CTAR_GL_ghex_F"];
 _u = _u		+ [1];
-_p = _p		+ [30];
+_p = _p		+ [35];
 
 _i = _i		+ ["arifle_CTAR_GL_hex_F"];
 _u = _u		+ [1];
-_p = _p		+ [30];
+_p = _p		+ [35];
 
 _i = _i		+ ["arifle_CTARS_blk_F"];
 _u = _u		+ [1];
@@ -500,7 +532,6 @@ _i = _i		+ ["srifle_GM6_ghex_F"];
 _u = _u		+ [3];
 _p = _p		+ [500];
 
-
 //Launchers
 _i = _i		+ ["launch_O_Titan_short_F"];
 _u = _u		+ [3];
@@ -554,7 +585,6 @@ _p = _p		+ [20];
 _i = _i		+ ["hgun_Pistol_Signal_F"];
 _u = _u		+ [0];
 _p = _p		+ [15];
-
 
 //Uniforms
 _i = _i		+ ["U_O_V_Soldier_Viper_F"];
@@ -621,7 +651,6 @@ _i = _i		+ ["U_O_Wetsuit"];
 _u = _u		+ [2];
 _p = _p		+ [50];
 
-
 //Vests
 _i = _i		+ ["V_TacVest_blk"];
 _u = _u		+ [3];
@@ -682,7 +711,6 @@ _p = _p		+ [100];
 _i = _i		+ ["V_EOD_coyote_F"];
 _u = _u		+ [1];
 _p = _p		+ [100];
-
 
 //Backpacks
 _i = _i		+ ["B_Bergen_dgtl_F"];
@@ -827,7 +855,6 @@ _i = _i		+ ["O_Static_Designator_02_weapon_F"];
 _u = _u		+ [2];
 _p = _p		+ [5000];
 
-
 //Helms
 _i = _i		+ ["H_HelmetO_ViperSP_hex_F"];
 _u = _u		+ [3];
@@ -965,7 +992,6 @@ _i = _i		+ ["H_ShemagOpen_tan"];
 _u = _u		+ [0];
 _p = _p		+ [20];
 
-
 //Glasses
 _i = _i		+ ["G_Tactical_Black"];
 _u = _u		+ [1];
@@ -1030,7 +1056,6 @@ _p = _p		+ [5];
 _i = _i		+ ["G_O_Diving"];
 _u = _u		+ [2];
 _p = _p		+ [50];
-
 
 //Optics
 _i = _i		+ ["optic_ACO_grn_smg"];
@@ -1114,7 +1139,6 @@ _i = _i		+ ["acc_flashlight"];
 _u = _u		+ [1];
 _p = _p		+ [20];
 
-
 //Silencers
 _i = _i		+ ["muzzle_snds_L"];
 _u = _u		+ [1];
@@ -1133,6 +1157,14 @@ _u = _u		+ [1];
 _p = _p		+ [50];
 
 _i = _i		+ ["muzzle_snds_58_blk_F"];
+_u = _u		+ [1];
+_p = _p		+ [50];
+
+_i = _i		+ ["muzzle_snds_58_hex_F"];
+_u = _u		+ [1];
+_p = _p		+ [50];
+
+_i = _i		+ ["muzzle_snds_58_ghex_F"];
 _u = _u		+ [1];
 _p = _p		+ [50];
 
@@ -1196,7 +1228,6 @@ _i = _i		+ ["muzzle_snds_65_TI_blk_F"];
 _u = _u		+ [3];
 _p = _p		+ [100];
 
-
 //Bipods
 _i = _i		+ ["bipod_02_F_blk"];
 _u = _u		+ [2];
@@ -1209,7 +1240,6 @@ _p = _p		+ [50];
 _i = _i		+ ["bipod_02_F_tan"];
 _u = _u		+ [2];
 _p = _p		+ [50];
-
 
 //Items
 _i = _i		+ ["NVGoggles_OPFOR"];
@@ -1279,9 +1309,6 @@ _p = _p		+ [10];
 _i = _i		+ ["Toolkit"];
 _u = _u		+ [0];
 _p = _p		+ [25];
-
-
-
 
 
 [_faction, _i, _u, _p] call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_Config_Set.sqf";
