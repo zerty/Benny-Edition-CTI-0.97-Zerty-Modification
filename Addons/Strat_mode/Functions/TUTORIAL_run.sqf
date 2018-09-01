@@ -57,21 +57,18 @@ if (!(CTI_P_Jailed)) then { // if not jailed
 	player setPos _spawn_at;
 
 	// find building pos
-	EXCEPTIONS = ["Land_Dome_Small_F","Land_Dome_Big_F","Land_FuelStation_Shed_F","Land_fs_roof_F","Land_FuelStation_01_roof_F","Land_FuelStation_02_roof_F","Land_FuelStation_01_roof_malevil_F","Land_SM_01_shelter_wide_F","Land_Shed_Big_F","Land_Shed_Small_F","Land_SM_01_shelter_narrow_F","Land_TentHangar_V1_F","Land_Airport_01_hangar_F","Land_Shed_06_F","Land_MetalShelter_01_F","Land_MetalShelter_02_F","Land_WarehouseShelter_01_F","Land_SCF_01_shed_F"];
-
-
 	_nearesthouse = typeOf ((position player) nearestObject "House");
 	_nearesthousepos = getPos ((position player) nearestObject "House");
 	_nearesthouseradius = round (sizeOF _nearesthouse / 2);
 	if (_nearesthouse == "Land_Shed_Big_F" || _nearesthouse == "Land_SM_01_shelter_wide_F") then {_nearesthouseradius = 16;};
-	if ((_nearesthouse in EXCEPTIONS) && ((player distance2d _nearesthousepos) < (_nearesthouseradius))) then {
+	if ((_nearesthouse in CTI_BUILDINGPOS_MISSING) && ((player distance2d _nearesthousepos) < (_nearesthouseradius))) then {
 		[player, _spawn_at] call KK_fnc_setPosAGLS;
 		player setPos [getPos player select 0, getPos player select 1, 0.25];
 	} else {
 		[player, _spawn_at] call KK_fnc_setPosAGLS;
 	};
 
-	if (((player distance2d nearestbuilding player) < 10) && (!(typeOF nearestbuilding player in EXCEPTIONS))) then {
+	if (((player distance2d nearestbuilding player) < 10) && (!(typeOF nearestbuilding player in CTI_BUILDINGPOS_MISSING))) then {
 	_buildingpos = nearestBuilding player buildingPos -1;
 	if (count _buildingpos > 10) then {_buildingpos deleteRange [(count _buildingpos / 3), count _buildingpos];};
 	player setpos (selectrandom _buildingpos);

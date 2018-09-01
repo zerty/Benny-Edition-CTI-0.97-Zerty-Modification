@@ -53,7 +53,7 @@ _ug=units player;
 {
 	_object = _x;
 	_connected=player call AN_Check_Connection;
-	_side_id =	_object getVariable ["CTI_Net",-10]; ;
+	_side_id = _object getVariable ["CTI_Net",-10];
 	//if (!isNil {_object getVariable "AN_iNet"}) then {_side_id=_object getVariable "AN_iNet";};
 	_side= if (_side_id<0) then {side _object} else {(_side_id)  call CTI_CO_FNC_GetSideFromID};
 
