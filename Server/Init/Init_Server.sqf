@@ -297,6 +297,12 @@ if (missionNamespace getvariable "CTI_PERSISTANT" == 1) then {
 	};
 } else {
 	CTI_Init_Server=True;
+	{
+		    _side=_x;
+		    _logic= (_side) call CTI_CO_FNC_GetSideLogic;
+		    _logic setVariable ["CTI_LOAD_COMPLETED",true,true];
+		} forEach [east,west];
+	};
 };
 
 
