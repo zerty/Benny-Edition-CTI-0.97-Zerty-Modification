@@ -45,7 +45,11 @@ if(((CTI_P_SideJoined) call CTI_CO_FNC_GetSideUpgrades) select CTI_UPGRADE_DATA 
 };};
 
 if (missionNamespace getVariable "CTI_SM_RADAR" == 1) then {
-	player addEventHandler ["WeaponAssembled",{["SERVER", "Server_UAV_FUEL",(_this select 1)] call CTI_CO_FNC_NetSend;["SERVER", "Server_ARTR_handle",(_this select 1)] call CTI_CO_FNC_NetSend;["SERVER", "Request_HandleAction", ["empty", [(_this select 1)]]] call CTI_CO_FNC_NetSend;}];
+	player addEventHandler ["WeaponAssembled",{["SERVER", "Server_ARTR_handle",(_this select 1)] call CTI_CO_FNC_NetSend;["SERVER", "Request_HandleAction", ["empty", [(_this select 1)]]] call CTI_CO_FNC_NetSend;}];
+};
+
+if (missionNamespace getvariable "CTI_GAMEPLAY_DARTER_FUEL" > 0) then{
+	player addEventHandler ["WeaponAssembled",{[["CLIENT",CTI_P_SideJoined], "Client_UAVSetFuel",(_this select 1),true] call CTI_CO_FNC_NetSend;}];
 };
 
 if (CTI_SM_FAR == 1) then {

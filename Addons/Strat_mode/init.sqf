@@ -196,11 +196,6 @@ if (CTI_IsServer) then {
 		CTI_PVF_Server_Assign_Zeus= {
   		_this  assignCurator ADMIN_ZEUS;
 		};
-		CTI_PVF_Server_UAV_FUEL={
-			if (missionNamespace getvariable "CTI_GAMEPLAY_DARTER_FUEL" > 0) then {
-				_this spawn UAV_FUEL;
-			};
-		};
 	};
 
 };
@@ -237,9 +232,8 @@ if (CTI_IsClient) then {
 			_marker setMarkerColorLocal  ((_side) call CTI_CO_FNC_GetSideColoration);
 			_marker setMarkerAlphaLocal 0.5;
 		};
-		CTI_PVF_SetFuel={
-			diag_log format [":: Fuel :: setting %1 at %2", _this select 0 , _this select 1];
-			(vehicle (_this select 0)) setfuel (_this select 1);
+		CTI_PVF_Client_UAVSetFuel={
+			if (_this isKindOf "Helicopter_Base_F") then {_this spawn UAV_FUEL;};
 		};
 	};
 
