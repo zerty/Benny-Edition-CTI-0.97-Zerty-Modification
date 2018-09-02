@@ -128,7 +128,7 @@ switch (_action) do {
 			    };
 
 			    case 11: { // CTI_Icon_Net // ok
-					if ( alive _target && (missionNamespace getVariable "CTI_EW_ANET" == 1) && ( _target iskindof "Car" || _target iskindof "Tank" || _target iskindof "Truck" || _target iskindof "Air"|| _target iskindof "Ship") && !(_target isKindOf "I_G_Offroad_01_F")) then  {
+					if ( alive _target && (missionNamespace getVariable "CTI_EW_ANET" == 1) && ( _target iskindof "Car" || _target iskindof "Tank" || _target iskindof "Truck" || _target iskindof "Air"|| _target iskindof "Ship") && !(_target isKindOf "I_G_Offroad_01_F" || _target isKindOf "UAV_01_base_F" || _target isKindOf "UAV_06_base_F")) then  {
 						((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetPosition [_base_x+(_offset*_base_w),_base_y+_h_offset*_base_h,_base_w,_base_h];
 						if (locked _target >0 ) Then {
 							((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTextColor [0.3,0.3,0.3,1];
@@ -190,7 +190,7 @@ switch (_action) do {
 				case 14: { // CTI_Icon_fl //ok
 					_hqs=[];
 					{_hqs set [count _hqs, _x call CTI_CO_FNC_GetSideHQ];true} count [east,west];
-					if (vehicle player == player && (_target iskindof "Car" || _target iskindof "Ship" || _target iskindof "Wheeled_APC_F" || _target iskindof "Truck_F") && alive _target && !( getplayeruid player in (_target getVariable ["v_keys",[]])) && !(_target getVariable ["cti_occupant",civilian] == CTI_P_SideJoined)&& !(_target in _hqs)) then {
+					if (vehicle player == player && (_target iskindof "Car" || _target iskindof "Ship" || _target iskindof "Wheeled_APC_F" || _target iskindof "Truck_F") && alive _target && !( getplayeruid player in (_target getVariable ["v_keys",[]])) && !(_target getVariable ["cti_occupant",civilian] == CTI_P_SideJoined)&& !(_target in _hqs || _target isKindOf "UAV_01_base_F" || _target isKindOf "UAV_06_base_F")) then {
 						if ((({_x == "Toolkit"} count (backpackItems player)) +({_x == "Toolkit"} count (vestItems player))) >0) then {
 			    			((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTextColor [0,0,1,1];
 			    			((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTooltip localize "STR_Icon_FL";
@@ -201,7 +201,7 @@ switch (_action) do {
 			    		((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetPosition [_base_x+(_offset*_base_w),_base_y+_h_offset*_base_h,_base_w,_base_h];
 			    		_offset=_offset+1;
 			    	} else {
-						if (vehicle player == player && (_target iskindof "Tank" || _target iskindof "Air") && !(_target iskindof "UAV_01_base_F") && alive _target && !( getplayeruid player in (_target getVariable ["v_keys",[]])) && !(_target getVariable ["cti_occupant",civilian] == CTI_P_SideJoined)&& !(_target in _hqs)) then {
+						if (vehicle player == player && (_target iskindof "Tank" || _target iskindof "Air") && !(_target isKindOf "UAV_01_base_F" || _target isKindOf "UAV_06_base_F") && alive _target && !( getplayeruid player in (_target getVariable ["v_keys",[]])) && !(_target getVariable ["cti_occupant",civilian] == CTI_P_SideJoined)&& !(_target in _hqs)) then {
 						_rt = 0;
 						_reptruck = [_target, CTI_SPECIAL_REPAIRTRUCK, 50] call CTI_CO_FNC_GetNearestSpecialVehicles;
 						if (count _reptruck > 0) then {_rt = 1;};
@@ -378,7 +378,7 @@ switch (_action) do {
 			    	};
 			    };
 			    case 30: { // CTI_Icon_al
-			    	if (alive _target  && _target iskindof "Air" && (!(_target iskindOf "parachutebase"))) then {
+			    	if (alive _target  && _target iskindof "Air" && !(_target iskindOf "parachutebase" || _target isKindOf "UAV_01_base_F" || _target isKindOf "UAV_06_base_F")) then {
 			    		_structures = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideStructures;
 			    		_ammo_depots = [CTI_AMMO, _structures] call CTI_CO_FNC_GetSideStructuresByType;
 			    		_available_ammo_depots = [_target, _ammo_depots, CTI_SERVICE_AMMO_DEPOT_RANGE] call CTI_UI_Service_GetBaseDepots;
