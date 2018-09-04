@@ -94,6 +94,11 @@ while {!CTI_VAR_StructurePlaced && !CTI_VAR_StructureCanceled} do {
 	_helper setPos _helper_pos;
 	_helper setDir _dir;
 
+	if (count (CTI_P_SideLogic getVariable "cti_structures_areas") > 0 && count (CTI_P_SideLogic getVariable "cti_structures_areas") < CTI_BASE_AREA_MAX) then {
+		_closest = [_pos, (CTI_P_SideLogic getVariable "cti_structures_areas")] call CTI_CO_FNC_SortByDistance;
+		if ((_pos distance2D (_closest select 0)) > CTI_BASE_AREA_RANGE) then {hintsilent parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br />This placement create a new base area.";} else {hintsilent "";};
+	};
+
 	sleep .01;
 };
 hintsilent "";
@@ -113,7 +118,7 @@ if (surfaceIsWater _pos) exitWith {hint parseText "<t size='1.3' color='#2394ef'
 
 //--- Check the distance 2D between our position and the potential areas
 _in_area = false;
-{if ([_pos select 0, _pos select 1] distance [_x select 0, _x select 1] <= CTI_BASE_AREA_RANGE) exitWith {_in_area = true}} forEach (CTI_P_SideLogic getVariable "cti_structures_areas");
+{if ([_pos select 0, _pos select 1] distance2D [_x select 0, _x select 1] <= CTI_BASE_AREA_RANGE) exitWith {_in_area = true}} forEach (CTI_P_SideLogic getVariable "cti_structures_areas");
 
 //--- Maybe we have no area in range?
 if (!(_in_area) && ! CTI_VAR_StructureCanceled) then {
