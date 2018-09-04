@@ -1,6 +1,7 @@
 private ["_action","_target"];
 _action = _this select 0;
 _target=uiNamespace getVariable ['INT_TARG',objnull];
+if !(cameraOn == player || cameraOn == vehicle player) then {_target = player;};
 
 _base_x=SafeZoneX + SafeZoneW*0.5;
 _base_y=SafeZoneY+safezoneH*0.50;
