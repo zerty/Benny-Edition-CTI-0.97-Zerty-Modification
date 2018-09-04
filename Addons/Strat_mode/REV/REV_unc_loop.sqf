@@ -7,6 +7,11 @@ _starting_time=time;
 _bleedout_time=_starting_time+BLEEDOUT_TIME;
 ["Bleeding out ... Wait for a revive or suicide.",0,1,0] call HUD_PBar_start;
 while {(!CTI_GameOver && alive _unit && _unit getVariable ["REV_UNC",false] && time <_bleedout_time) }do {
+	if (cameraOn != _unit) then {
+		_unit connectTerminalToUAV objNull;
+		cameraOn action ["BackFromUAV", _unit];
+	};
+
 	if (vehicle _unit != _unit) then
 	{
 		(vehicle player) lock false;

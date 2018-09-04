@@ -12,6 +12,11 @@ _unit spawn {
 	private ["_unit"];
 	_unit=_this;
 
+	// Release UAV and AI remote control
+	if (cameraOn != _unit) then {
+		_unit connectTerminalToUAV objNull;
+		cameraOn action ["BackFromUAV", _unit];
+	};
 
 	// Eject unit if inside vehicle
 	while {vehicle _unit != _unit} do
