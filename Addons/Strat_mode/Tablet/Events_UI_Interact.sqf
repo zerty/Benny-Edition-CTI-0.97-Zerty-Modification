@@ -300,7 +300,7 @@ switch (_action) do {
 			    	};
 			    };
 			    case 23: { // CTI_Icon_push //ok
-			    	if (!(_target iskindof "Man" ||_target iskindof "Static" ) &&local _target&& simulationEnabled _target && speed _target <1 && speed _target >-1 && alive _target&& locked _target < 2 && typeOf _target != "") then  {
+			    	if (!(_target iskindof "Man" || _target iskindof "Static" || _target isKindOf "UAV_01_base_F" || _target isKindOf "UAV_06_base_F") && local _target && simulationEnabled _target && speed _target <1 && speed _target >-1 && alive _target && locked _target < 2 && typeOf _target != "") then  {
 			    		((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTextColor [0,0,1,1];
 			    		((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetPosition [_base_x+(_offset*_base_w),_base_y+_h_offset*_base_h,_base_w,_base_h];
 			    		_offset=_offset+1;
@@ -309,7 +309,7 @@ switch (_action) do {
 			    	};
 			    };
 			    case 24: { // CTI_Icon_pull //OK
-			    	if (!(_target iskindof "Man" ||_target iskindof "Static" ) &&local _target&& simulationEnabled _target && speed _target <1 && speed _target >-1 && alive _target && locked _target < 2 && typeOf _target != "") then  {
+			    	if (!(_target iskindof "Man" || _target iskindof "Static" || _target isKindOf "UAV_01_base_F" || _target isKindOf "UAV_06_base_F") && local _target && simulationEnabled _target && speed _target <1 && speed _target >-1 && alive _target && locked _target < 2 && typeOf _target != "") then  {
 			    		((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTextColor [0,0,1,1];
 			    		((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetPosition [_base_x+(_offset*_base_w),_base_y+_h_offset*_base_h,_base_w,_base_h];
 			    		_offset=_offset+1;
