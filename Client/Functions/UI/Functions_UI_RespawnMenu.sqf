@@ -281,6 +281,10 @@ CTI_UI_Respawn_OnRespawnReady = {
 		player setpos (selectrandom _buildingpos);
 		};
 
+		//Respawn vehicles cargo
+		_selectedspawn = uiNamespace getVariable "cti_dialog_ui_respawnmenu_respawnat";
+		if ((_selectedspawn isKindOf "Car" || _selectedspawn isKindOf "Wheeled_APC_F" || _selectedspawn isKindOf "Land_Pod_Heli_Transport_04_medevac_F") && abs (speed _selectedspawn) < 5 && locked _selectedspawn < 2 && (getPos _selectedspawn select 2) < 5) then {player moveInCargo _selectedspawn;};
+
 //		player setPos _spawn_at;
 	};
 
