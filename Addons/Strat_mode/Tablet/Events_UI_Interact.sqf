@@ -129,7 +129,7 @@ switch (_action) do {
 			    };
 
 			    case 11: { // CTI_Icon_Net // ok
-					if ( alive _target && (missionNamespace getVariable "CTI_EW_ANET" == 1) && ( _target iskindof "Car" || _target iskindof "Tank" || _target iskindof "Truck" || _target iskindof "Air"|| _target iskindof "Ship") && !(_target isKindOf "I_G_Offroad_01_F" || _target isKindOf "UAV_01_base_F" || _target isKindOf "UAV_06_base_F")) then  {
+					if ( alive _target && (missionNamespace getVariable "CTI_EW_ANET" == 1) && ( _target iskindof "Car" || _target iskindof "Tank" || _target iskindof "Truck" || _target iskindof "Air"|| _target iskindof "Ship") && !(_target isKindOf "UAV_01_base_F" || _target isKindOf "UAV_06_base_F")) then  {
 						((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetPosition [_base_x+(_offset*_base_w),_base_y+_h_offset*_base_h,_base_w,_base_h];
 						if (locked _target >0 ) Then {
 							((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTextColor [0.3,0.3,0.3,1];
