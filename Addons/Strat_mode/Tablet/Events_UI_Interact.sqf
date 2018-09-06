@@ -146,6 +146,15 @@ switch (_action) do {
 				case 12: { // CTI_Icon_Def // ok
 			    	if (vehicle player == player && alive _target) then {
 			    		_ok=false;
+			    		_reptrucknear = [player, CTI_SPECIAL_REPAIRTRUCK, 20] call CTI_CO_FNC_GetNearestSpecialVehicles;
+						if (count _reptrucknear > 0) then {_ok=true};
+						_hq = (CTI_P_sidejoined) call CTI_CO_FNC_GetSideHQ;
+						if ((player distance2D _hq) < 20 && alive _hq) then {_ok=true};
+						_structures = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideStructures;
+			    		_rep_depots = [CTI_REPAIR, _structures] call CTI_CO_FNC_GetSideStructuresByType;
+			    		_available_rep_depots = [player, _rep_depots, 20] call CTI_UI_Service_GetBaseDepots;
+						if (count _available_rep_depots > 0) then {_ok=true};
+						/*
 			    		if (_target == ((CTI_P_sidejoined) call CTI_CO_FNC_GetSideHQ)) then {_ok=true};
 			    		if (_target in (CTI_P_SideLogic getVariable ["cti_structures",[]]) ) then {
 			    			if ((((missionNamespace getVariable [format ["CTI_%1_%2", CTI_P_SideJoined, typeOf _target],[[""]]]) select 0) select 0  == CTI_REPAIR )) then {_ok=true;};
@@ -153,6 +162,7 @@ switch (_action) do {
 			    		if (_target in ((CTI_WEST getvariable ["cti_service", []]) + (CTI_EAST getvariable ["cti_service", []])) ) then {
 			    			if ((missionNamespace getVariable [format ["%1", typeOf _target],["","","","","","","",""]]) select 7 == "service-repairtruck") then {_ok=true;};
 			    		};
+			    		*/
 			    		//if (_target == ((CTI_P_sidejoined) call CTI_CO_FNC_GetSideHQ) || (missionNamespace getVariable [format ["%1", typeOf _target],["","","","","","","",""]]) select 7 == "service-repairtruck"  || ((missionNamespace getVariable [format ["CTI_%1_%2", CTI_P_SideJoined, typeOf _target],[[""]]]) select 0) select 0  == CTI_REPAIR )) then  {
 						if (_ok) then {
 				    		((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTextColor [0,0,1,1];
