@@ -81,6 +81,7 @@ CTI_LOADOUT_UNARMED_FLARES =
 	]
 ];
 
+
 // ***************************
 // Experimental loadouts for AA tanks
 // ***************************
@@ -126,6 +127,13 @@ CTI_LOADOUT_B_APC_Tracked_01_AA_F_MNT_OPTIONS =
 						[ "SmokeLauncherMag" , "1000", [0,0]]
 					]
 				]
+			],
+			[ 	
+				["SmokeLauncher",
+					[
+						[ "SmokeLauncherMag" , "1000", [0,0]]
+					]
+				]
 			]
 		]
 	]
@@ -165,6 +173,13 @@ CTI_LOADOUT_O_APC_Tracked_02_AA_F_MNT_OPTIONS =
 					]
 				]
 			],			
+			[ 	
+				["SmokeLauncher",
+					[
+						[ "SmokeLauncherMag" , "1000", [0,0]]
+					]
+				]
+			],
 			[ 	
 				["SmokeLauncher",
 					[
@@ -407,6 +422,106 @@ CTI_LOADOUT_B_Plane_CAS_01_dynamicLoadout_F_MNT_OPTIONS =
 				]
 			]
 		]
+	],
+	[
+		"Bomber" ,
+		"pylon",
+		[	
+			[
+				[ "Laserdesignator_pilotCamera" ,
+					[
+						[ "Laserbatteries" , "500"]
+					]
+				]
+			],			
+			[
+				[ "Gatling_30mm_Plane_CAS_01_F" ,
+					[
+						[ "1000Rnd_Gatling_30mm_Plane_CAS_01_F" , "1000"]
+					]
+				]
+			],
+			[ 	
+				["Pylons1",
+					[
+						[ "PylonMissile_1Rnd_Bomb_04_F" , "5000"]
+					]
+				]
+			],
+			[ 
+				["Pylons2",
+					[
+						[ "PylonMissile_1Rnd_Bomb_04_F" , "5000"]
+					]
+				]
+			],
+			[ 	
+				["Pylons3",
+					[
+						[ "PylonMissile_1Rnd_Bomb_04_F" , "5000"]
+					]
+				]
+			],
+			[ 
+				["Pylons4",
+					[
+						[ "PylonMissile_1Rnd_Bomb_04_F" , "5000"]
+					]
+				]
+			],
+			[ 	
+				["Pylons5",
+					[
+						[ "PylonMissile_1Rnd_Bomb_04_F" , "5000"]
+					]
+				]
+			],			
+			[ 	
+				["Pylons6",
+					[
+						[ "PylonMissile_1Rnd_Bomb_04_F" , "5000"]
+					]
+				]
+			],
+			[ 	
+				["Pylons7",
+					[
+						[ "PylonMissile_1Rnd_Bomb_04_F" , "5000"]
+					]
+				]
+			],	
+			[ 	
+				["Pylons8",
+					[
+						[ "PylonMissile_1Rnd_Bomb_04_F" , "5000"]
+					]
+				]
+			],			
+			[ 	
+				["Pylons9",
+					[
+						[ "PylonMissile_1Rnd_Bomb_04_F" , "5000"]
+					]
+				]
+			],	
+			[ 	
+				["Pylons10",
+					[
+						[ "PylonMissile_1Rnd_Bomb_04_F" , "5000"]
+					]
+				]
+			],			
+			[
+				["CMFlareLauncher" ,
+					[
+						[ "240Rnd_CMFlare_Chaff_Magazine" , "2000" , [-1] ],
+						[ "120Rnd_CMFlare_Chaff_Magazine" , "500" , [-1] ],
+						[ "168Rnd_CMFlare_Chaff_Magazine" , "1000" , [-1] ],
+						[ "192Rnd_CMFlare_Chaff_Magazine" , "1500" , [-1] ]
+					]
+				]
+			]
+		]
 	]
 ];
 
@@ -581,8 +696,237 @@ CTI_LOADOUT_B_Plane_Fighter_01_F_MNT_OPTIONS =
 				]
 			]
 		]
+	],
+	[
+		"Air Supremacy - Maddog",
+		"pylon",
+		[	
+			[
+				["Laserdesignator_pilotCamera" ,
+					[
+						[ "Laserbatteries" , "500"]
+					]
+				]
+			],			
+			[
+				["weapon_Fighter_Gun20mm_AA" ,
+					[
+						[ "magazine_Fighter01_Gun20mm_AA_x450" , "1000"]
+					]
+				]
+			],
+			[ 	
+				["Pylon1",
+					[
+						[ "PylonRack_Missile_AMRAAM_D_x2" , "4000"]
+					]
+				]
+			],
+			[ 	
+				["Pylon3",
+					[
+						[ "PylonRack_Missile_AMRAAM_D_x2" , "4000"]
+					]
+				]
+			],		
+			[ 	
+				["PylonBayLeft1",
+					[
+						[ "PylonMissile_Missile_BIM9X_x1" , "4000"]
+					]
+				]
+			],
+			[ 	
+				["PylonBayCenter1",
+					[
+						["PylonMissile_Missile_AMRAAM_D_INT_x1" , "4000"]
+					]
+				]
+			],
+			[ 	
+				["PylonBayCenter2",
+					[
+						["PylonMissile_Missile_AMRAAM_D_INT_x1" , "4000"]
+					]
+				]
+			],			
+			[ 	
+				["PylonBayCenter3",
+					[
+						["PylonMissile_Missile_AMRAAM_D_INT_x1" , "4000"]
+					]
+				]
+			],
+			[ 	
+				["PylonBayCenter4",
+					[
+						["PylonMissile_Missile_AMRAAM_D_INT_x1" , "4000"]
+					]
+				]
+			],	
+			[ 	
+				["PylonBayCenter5",
+					[
+						[ "PylonMissile_Bomb_GBU12_x1" , "5000"]
+					]
+				]
+			],			
+			[ 	
+				["PylonBayCenter6",
+					[
+						[ "PylonMissile_Bomb_GBU12_x1" , "5000"]
+					]
+				]
+			],	
+			[ 	
+				["PylonBayRight1",
+					[
+						[ "PylonMissile_Missile_BIM9X_x1" , "4000"]
+					]
+				]
+			],			
+			[ 	
+				["Pylon4",
+					[
+						[ "PylonRack_Missile_AMRAAM_D_x2" , "4000"]
+					]
+				]
+			],			
+			[ 	
+				["Pylon2",
+					[
+						[ "PylonRack_Missile_AMRAAM_D_x2" , "4000"]
+					]
+				]
+			],
+			[
+				["CMFlareLauncher" ,
+					[
+						[ "240Rnd_CMFlare_Chaff_Magazine" , "2000" , [-1] ],
+						[ "120Rnd_CMFlare_Chaff_Magazine" , "500" , [-1] ],
+						[ "168Rnd_CMFlare_Chaff_Magazine" , "1000" , [-1] ],
+						[ "192Rnd_CMFlare_Chaff_Magazine" , "1500" , [-1] ]
+					]
+				]
+			]
+		]
+	],
+	[
+		"Ground Supremacy - Hybrid" ,
+		"pylon",
+		[	
+			[
+				["Laserdesignator_pilotCamera" ,
+					[
+						[ "Laserbatteries" , "500"]
+					]
+				]
+			],			
+			[
+				["weapon_Fighter_Gun20mm_AA" ,
+					[
+						[ "magazine_Fighter01_Gun20mm_AA_x450" , "1000"]
+					]
+				]
+			],
+			[ 	
+				["Pylon1",
+					[
+						[ "PylonRack_Missile_AGM_02_x1" , "5000"]
+					]
+				]
+			],
+			[ 	
+				["Pylon3",
+					[
+						[ "PylonRack_Missile_HARM_x1" , "10000"]
+					]
+				]
+			],		
+			[ 	
+				["PylonBayLeft1",
+					[
+						[ "PylonMissile_Missile_BIM9X_x1" , "4000"]
+					]
+				]
+			],
+			[ 	
+				["PylonBayCenter1",
+					[
+						["PylonMissile_Missile_AMRAAM_D_INT_x1" , "4000"]
+					]
+				]
+			],
+			[ 	
+				["PylonBayCenter2",
+					[
+						["PylonMissile_Missile_AMRAAM_D_INT_x1" , "4000"]
+					]
+				]
+			],			
+			[ 	
+				["PylonBayCenter3",
+					[
+						[ "PylonRack_Bomb_SDB_x4" , "5000"]
+					]
+				]
+			],
+			[ 	
+				["PylonBayCenter4",
+					[
+						[ "PylonRack_Bomb_SDB_x4" , "5000"]
+					]
+				]
+			],	
+			[ 	
+				["PylonBayCenter5",
+					[
+						[ "PylonMissile_Bomb_GBU12_x1" , "5000"]
+					]
+				]
+			],			
+			[ 	
+				["PylonBayCenter6",
+					[
+						[ "PylonMissile_Bomb_GBU12_x1" , "5000"]
+					]
+				]
+			],	
+			[ 	
+				["PylonBayRight1",
+					[
+						[ "PylonMissile_Missile_BIM9X_x1" , "4000"]
+					]
+				]
+			],			
+			[ 	
+				["Pylon4",
+					[
+						[ "PylonRack_Missile_HARM_x1" , "10000"]
+					]
+				]
+			],			
+			[ 	
+				["Pylon2",
+					[
+						[ "PylonRack_Missile_AGM_02_x1" , "5000"]
+					]
+				]
+			],
+			[
+				["CMFlareLauncher" ,
+					[
+						[ "240Rnd_CMFlare_Chaff_Magazine" , "2000" , [-1] ],
+						[ "120Rnd_CMFlare_Chaff_Magazine" , "500" , [-1] ],
+						[ "168Rnd_CMFlare_Chaff_Magazine" , "1000" , [-1] ],
+						[ "192Rnd_CMFlare_Chaff_Magazine" , "1500" , [-1] ]
+					]
+				]
+			]
+		]
 	]
 ];
+
 
 
 
@@ -708,12 +1052,11 @@ CTI_LOADOUT_B_Heli_Light_01_dynamicLoadout_F_MNT_OPTIONS =
 				["PylonRight1" , 
 					[
 						[ "PylonRack_12Rnd_missiles" , "2000"],
-						[ "PylonRack_1Rnd_AAA_missiles" , "4000"],
-						[ "PylonRack_1Rnd_LG_scalpel" , "5000"],
+						//[ "PylonRack_1Rnd_AAA_missiles" , "4000"],
+						//[ "PylonRack_1Rnd_LG_scalpel" , "5000"],
 						[ "PylonRack_7Rnd_Rocket_04_HE_F" , "1000"],
-						[ "PylonRack_7Rnd_Rocket_04_AP_F" , "1000"],
+						[ "PylonRack_7Rnd_Rocket_04_AP_F" , "1000"]
 						//[ "PylonRack_12Rnd_PG_missiles" , "8000"],
-						[ "PylonRack_12Rnd_missiles" , "2000"]
 					]
 				]
 			],	
@@ -721,18 +1064,173 @@ CTI_LOADOUT_B_Heli_Light_01_dynamicLoadout_F_MNT_OPTIONS =
 				["PylonLeft1" , 
 					[
 						[ "PylonRack_12Rnd_missiles" , "2000"],
-						[ "PylonRack_1Rnd_AAA_missiles" , "4000"],
-						[ "PylonRack_1Rnd_LG_scalpel" , "5000"],
+						//[ "PylonRack_1Rnd_AAA_missiles" , "4000"],
+						//[ "PylonRack_1Rnd_LG_scalpel" , "5000"],
 						[ "PylonRack_7Rnd_Rocket_04_HE_F" , "1000"],
-						[ "PylonRack_7Rnd_Rocket_04_AP_F" , "1000"],
+						[ "PylonRack_7Rnd_Rocket_04_AP_F" , "1000"]
 						//[ "PylonRack_12Rnd_PG_missiles" , "8000"],
-						[ "PylonRack_12Rnd_missiles" , "2000"]
 					]
 				]
 			]
 		]
 	]
 ];
+
+
+// ***************************
+// Heli - UH-80 Ghost Hawk
+// ***************************
+CTI_LOADOUT_B_Heli_Transport_01_F_MNT_OPTIONS =
+[
+	[
+		"Pylon - Configuration" ,
+		"pylon",
+		[
+			[
+				["CMFlareLauncher" ,
+					[
+						[ "240Rnd_CMFlare_Chaff_Magazine" , "2000" , [0] ],
+						[ "120Rnd_CMFlare_Chaff_Magazine" , "500" , [0] ],
+						[ "168Rnd_CMFlare_Chaff_Magazine" , "1000" , [0] ],
+						[ "192Rnd_CMFlare_Chaff_Magazine" , "1500" , [0] ]
+					]
+				]
+			],
+			[
+				["LMG_Minigun_Transport" ,
+					[
+						[ "2000Rnd_65x39_Belt_Tracer_Red" , "500", [1]]
+					]
+				]
+			],
+			[
+				["LMG_Minigun_Transport" ,
+					[
+						[ "2000Rnd_65x39_Belt_Tracer_Red" , "500", [1]]
+					]
+				]
+			],
+			[
+				["LMG_Minigun_Transport" ,
+					[
+						[ "2000Rnd_65x39_Belt_Tracer_Red" , "500", [2]]
+					]
+				]
+			],
+			[
+				["LMG_Minigun_Transport" ,
+					[
+						[ "2000Rnd_65x39_Belt_Tracer_Red" , "500", [2]]
+					]
+				]
+			]
+		]
+	]
+];
+CTI_LOADOUT_B_CTRG_Heli_Transport_01_sand_F_MNT_OPTIONS = CTI_LOADOUT_B_Heli_Transport_01_F_MNT_OPTIONS;
+CTI_LOADOUT_B_CTRG_Heli_Transport_01_tropic_F_MNT_OPTIONS = CTI_LOADOUT_B_Heli_Transport_01_F_MNT_OPTIONS;
+CTI_LOADOUT_B_Heli_Transport_01_camo_F_MNT_OPTIONS = CTI_LOADOUT_B_Heli_Transport_01_F_MNT_OPTIONS;
+
+
+// ***************************
+// Heli - CH-67 Huron Armed
+// ***************************
+CTI_LOADOUT_B_Heli_Transport_03_F_MNT_OPTIONS = CTI_LOADOUT_B_Heli_Transport_01_F_MNT_OPTIONS;
+CTI_LOADOUT_B_Heli_Transport_03_black_F_MNT_OPTIONS = CTI_LOADOUT_B_Heli_Transport_03_F_MNT_OPTIONS;
+
+
+
+// ***************************
+// Heli - CH-67 Huron Unarmed
+// ***************************
+CTI_LOADOUT_B_Heli_Transport_03_unarmed_F_MNT_OPTIONS = CTI_LOADOUT_UNARMED_FLARES;
+CTI_LOADOUT_B_Heli_Transport_03_unarmed_green_F_MNT_OPTIONS  = CTI_LOADOUT_UNARMED_FLARES;
+
+
+
+// ***************************
+// VTOL - 	V-44 X Blackfish (Armed)
+// ***************************
+CTI_LOADOUT_B_T_VTOL_01_armed_F_MNT_OPTIONS =
+[
+	[
+		"Pylon - Configuration" ,
+		"pylon",
+		[
+			[
+				["CMFlareLauncher" ,
+					[
+						[ "240Rnd_CMFlare_Chaff_Magazine" , "2000" , [-1] ],
+						[ "120Rnd_CMFlare_Chaff_Magazine" , "500" , [-1] ],
+						[ "168Rnd_CMFlare_Chaff_Magazine" , "1000" , [-1] ],
+						[ "192Rnd_CMFlare_Chaff_Magazine" , "1500" , [-1] ]
+					]
+				]
+			],
+			[
+				[ "Laserdesignator_mounted" ,
+					[
+						[ "Laserbatteries" , "500", [0]]
+					]
+				]
+			],			
+			[
+				["cannon_105mm_VTOL_01" ,
+					[
+						[ "100Rnd_105mm_HEAT_MP" , "2000", [1]]
+					]
+				]
+			],			
+			[
+				["cannon_105mm_VTOL_01" ,
+					[
+						[ "40Rnd_105mm_APFSDS_T_Red" , "2000", [1]]
+					]
+				]
+			],			
+			[
+				["gatling_20mm_VTOL_01" ,
+					[
+						[ "4000Rnd_20mm_Tracer_Red_shells" , "2000", [1]]
+					]
+				]
+			],			
+			[
+				["autocannon_40mm_VTOL_01" ,
+					[
+						[ "240Rnd_40mm_GPR_Tracer_Red_shells" , "2000", [2]]
+					]
+				]
+			],			
+			[
+				["autocannon_40mm_VTOL_01" ,
+					[
+						[ "240Rnd_40mm_GPR_Tracer_Red_shells" , "2000", [2]]
+					]
+				]
+			],			
+			[
+				["autocannon_40mm_VTOL_01" ,
+					[
+						[ "160Rnd_40mm_APFSDS_Tracer_Red_shells" , "2000", [2]]
+					]
+				]
+			],
+			[
+				["gatling_20mm_VTOL_01" ,
+					[
+						[ "4000Rnd_20mm_Tracer_Red_shells" , "2000", [2]]
+					]
+				]
+			]			
+		]
+	]
+];
+
+CTI_LOADOUT_B_T_VTOL_01_infantry_F_MNT_OPTIONS = CTI_LOADOUT_UNARMED_FLARES;
+CTI_LOADOUT_B_T_VTOL_01_vehicle_F_MNT_OPTIONS = CTI_LOADOUT_UNARMED_FLARES;
+ 
+
 
 // ***************************
 // Heli - AH-99 Blackfoot
@@ -1504,6 +2002,272 @@ CTI_LOADOUT_O_Plane_Fighter_02_F_MNT_OPTIONS =
 				]
 			]
 		]
+	],
+	[
+		"Air Supremacy - Maddog",
+		"pylon",
+		[
+			[
+				[ "weapon_Fighter_Gun_30mm" ,
+					[
+						[ "magazine_Fighter02_Gun30mm_AA_x180" , "1000" ]
+					]
+				]
+			],
+			[
+				[ "Laserdesignator_pilotCamera" ,
+					[
+						[ "Laserbatteries" , "500" ]
+					]
+				]
+			],
+			[
+				[ "Pylons1" ,
+					[
+						[ "PylonMissile_Missile_AA_R77_x1" , "5000" ]
+					]
+				]
+			],
+			[
+				[ "Pylons2" ,
+					[
+						[ "PylonMissile_Missile_AA_R77_x1" , "5000" ]
+						
+					]
+				] 
+			],
+			[
+				[ "Pylons3" ,
+					[
+						[ "PylonMissile_Missile_AA_R77_x1" , "5000" ]
+					]
+				]
+			],		
+			[
+				[ "PylonBayRight1" ,
+					[
+						["PylonMissile_Missile_AA_R73_x1" , "5000" ]
+					]
+				]
+			],
+			[
+				[ "PylonBayRight2" ,
+					[
+						["PylonMissile_Missile_AA_R77_x1" , "5000" ]
+					]
+				]
+			],
+			[
+				[ "PylonBayCenter1" ,
+					[
+						["PylonMissile_Missile_AA_R77_INT_x1" , "5000" ]
+						
+					]
+				]
+			],	
+			[
+				[ "PylonBayCenter3" ,
+					[
+						[ "PylonMissile_Missile_AA_R77_INT_x1" , "5000" ]
+					]
+				]
+			],
+			[
+				[ "PylonBayCenter2" ,
+					[
+						["PylonMissile_Missile_AA_R77_INT_x1" , "5000" ]
+					]
+				]
+			],		
+			[
+				[ "PylonBayLeft2" ,
+					[
+						["PylonMissile_Missile_AA_R77_x1" , "5000" ]
+					]
+				]
+			],
+			[
+				[ "PylonBayLeft1" ,
+					[
+						["PylonMissile_Missile_AA_R73_x1" , "5000" ]
+					]
+				]
+			],
+			[
+				[ "Pylons4" ,
+					[
+						[ "PylonMissile_Missile_AA_R77_x1" , "5000" ]
+					]
+				]
+			],
+			[
+				[ "Pylons5" ,
+					[
+						[ "PylonMissile_Missile_AA_R73_x1" , "5000" ]
+					]
+				]
+			],
+			[
+				[ "Pylons6" ,
+					[
+						[ "PylonMissile_Missile_AA_R77_x1" , "5000" ]
+					]
+				]
+			],	
+			[
+				[ "CMFlareLauncher" ,
+					[
+						[ "240Rnd_CMFlare_Chaff_Magazine" , "5000" , [-1] ],
+						[ "120Rnd_CMFlare_Chaff_Magazine" , "500" , [-1]],
+						[ "168Rnd_CMFlare_Chaff_Magazine" , "3000" , [-1] ],
+						[ "192Rnd_CMFlare_Chaff_Magazine" , "4000" , [-1] ]
+						
+					]
+				]
+			]
+		]
+	],
+	[
+		"Ground Supremacy",
+		"pylon",
+		[
+			[
+				[ "weapon_Fighter_Gun_30mm" ,
+					[
+						[ "magazine_Fighter02_Gun30mm_AA_x180" , "1000" ]
+					]
+				]
+			],
+			[
+				[ "Laserdesignator_pilotCamera" ,
+					[
+						[ "Laserbatteries" , "500" ]
+					]
+				]
+			],
+			[
+				[ "Pylons1" ,
+					[
+						[ "PylonMissile_Missile_AA_R73_x1" , "5000" ],
+						[ "PylonMissile_Missile_AA_R77_x1" , "5000" ]
+					]
+				]
+			],
+			[
+				[ "Pylons2" ,
+					[
+						[ "PylonMissile_Missile_AA_R77_x1" , "5000" ],
+						[ "PylonMissile_Missile_AA_R73_x1" , "5000" ]
+						
+					]
+				] 
+			],
+			[
+				[ "Pylons3" ,
+					[
+						[ "PylonMissile_Missile_AGM_KH25_x1" , "5000" ],
+						[ "PylonMissile_Bomb_KAB250_x1" , "6000" ],
+						[ "PylonMissile_Missile_AA_R73_x1" , "5000" ],
+						[ "PylonMissile_Missile_AA_R77_x1" , "5000" ],
+						[ "PylonMissile_1Rnd_BombCluster_02_cap_F" , "1000" ]
+					]
+				]
+			],		
+			[
+				[ "PylonBayRight1" ,
+					[
+						["PylonMissile_Missile_AA_R73_x1" , "5000" ]
+					]
+				]
+			],
+			[
+				[ "PylonBayRight2" ,
+					[
+						["PylonMissile_Missile_AA_R77_x1" , "5000" ]
+					]
+				]
+			],
+			[
+				[ "PylonBayCenter1" ,
+					[
+						["PylonMissile_Missile_AA_R77_INT_x1" , "5000" ]
+						
+					]
+				]
+			],	
+			[
+				[ "PylonBayCenter3" ,
+					[
+						["PylonMissile_Missile_KH58_INT_x1" , "10000" ],
+						[ "PylonMissile_Bomb_KAB250_x1" , "6000" ],
+						[ "PylonMissile_Missile_AA_R77_INT_x1" , "5000" ],
+						[ "PylonMissile_Missile_AGM_KH25_INT_x1" , "5000" ],
+						[ "PylonMissile_1Rnd_BombCluster_02_cap_F" , "1000" ]
+					]
+				]
+			],
+			[
+				[ "PylonBayCenter2" ,
+					[
+						["PylonMissile_Missile_AA_R77_INT_x1" , "5000" ]
+					]
+				]
+			],		
+			[
+				[ "PylonBayLeft2" ,
+					[
+						["PylonMissile_Missile_AA_R77_x1" , "5000" ]
+					]
+				]
+			],
+			[
+				[ "PylonBayLeft1" ,
+					[
+						["PylonMissile_Missile_AA_R73_x1" , "5000" ]
+					]
+				]
+			],
+			[
+				[ "Pylons4" ,
+					[
+						[ "PylonMissile_Missile_AGM_KH25_x1" , "5000" ],
+						[ "PylonMissile_Bomb_KAB250_x1" , "6000" ],
+						[ "PylonMissile_Missile_AA_R73_x1" , "5000" ],
+						[ "PylonMissile_Missile_AA_R77_x1" , "5000" ],
+						[ "PylonMissile_1Rnd_BombCluster_02_cap_F" , "1000" ]
+					]
+				]
+			],
+			[
+				[ "Pylons5" ,
+					[
+						["PylonMissile_Missile_KH58_INT_x1" , "10000" ],
+						[ "PylonMissile_Missile_AA_R77_x1" , "5000" ],
+						[ "PylonMissile_Missile_AA_R73_x1" , "5000" ]
+					]
+				]
+			],
+			[
+				[ "Pylons6" ,
+					[
+						["PylonMissile_Missile_KH58_INT_x1" , "10000" ],
+						[ "PylonMissile_Missile_AA_R73_x1" , "5000" ],
+						[ "PylonMissile_Missile_AA_R77_x1" , "5000" ]					
+					]
+				]
+			],	
+			[
+				[ "CMFlareLauncher" ,
+					[
+						[ "240Rnd_CMFlare_Chaff_Magazine" , "5000" , [-1] ],
+						[ "120Rnd_CMFlare_Chaff_Magazine" , "500" , [-1]],
+						[ "168Rnd_CMFlare_Chaff_Magazine" , "3000" , [-1] ],
+						[ "192Rnd_CMFlare_Chaff_Magazine" , "4000" , [-1] ]
+						
+					]
+				]
+			]
+		]
 	]
 ];
 
@@ -1636,7 +2400,7 @@ CTI_LOADOUT_O_UAV_02_F_MNT_OPTIONS =
 			],
 			[
 				["Missile_AA_04_Plane_CAS_01_F" ,
-					[
+					[sssssd
 						[ "2Rnd_Missile_AA_04_F" , "8000"]
 					]
 				],
