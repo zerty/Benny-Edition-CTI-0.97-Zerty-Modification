@@ -2400,7 +2400,7 @@ CTI_LOADOUT_O_UAV_02_F_MNT_OPTIONS =
 			],
 			[
 				["Missile_AA_04_Plane_CAS_01_F" ,
-					[sssssd
+					[
 						[ "2Rnd_Missile_AA_04_F" , "8000"]
 					]
 				],
