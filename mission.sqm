@@ -1979,6 +1979,7 @@ class Mission
 					};
 					id=125;
 					type="O_Soldier_SL_F";
+					atlOffset=-9.5367432e-007;
 				};
 				class Item12
 				{
@@ -2212,6 +2213,7 @@ class Mission
 					};
 					id=137;
 					type="O_Soldier_SL_F";
+					atlOffset=-4.7683716e-007;
 				};
 				class Item24
 				{
@@ -2555,6 +2557,7 @@ class Mission
 					};
 					id=153;
 					type="B_Soldier_SL_F";
+					atlOffset=-9.5367432e-007;
 				};
 				class Item14
 				{
@@ -2708,6 +2711,7 @@ class Mission
 					};
 					id=161;
 					type="B_Soldier_SL_F";
+					atlOffset=4.7683716e-007;
 				};
 				class Item22
 				{
@@ -2727,6 +2731,7 @@ class Mission
 					};
 					id=162;
 					type="B_Soldier_SL_F";
+					atlOffset=4.7683716e-007;
 				};
 				class Item23
 				{
