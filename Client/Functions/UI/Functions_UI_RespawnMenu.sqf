@@ -287,6 +287,15 @@ CTI_UI_Respawn_OnRespawnReady = {
 
 //		player setPos _spawn_at;
 	};
+	
+	//removes unclosed ppEffects (halo jump radialblur bug)
+	//thanks to auQuiksilver
+	for '_i' from 0 to 499 step 1 do {
+		if (ppEffectEnabled _i) then {
+			_i ppEffectEnable FALSE;
+			_i ppEffectCommit 0;
+		};
+	};
 
 	titleCut["","BLACK IN",1];
 
