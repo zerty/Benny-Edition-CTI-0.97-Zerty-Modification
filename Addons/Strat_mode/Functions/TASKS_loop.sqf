@@ -55,6 +55,7 @@ while {!CTI_GAMEOVER} do
 
 	{
 		 _task=TASKS_LIST select _x;
+		 [(_task select 2), "CANCELED", false] call BIS_fnc_taskSetState;
 		 [(_task select 2) ] call BIS_fnc_deleteTask;
 		 true
 	} count _to_delete;
