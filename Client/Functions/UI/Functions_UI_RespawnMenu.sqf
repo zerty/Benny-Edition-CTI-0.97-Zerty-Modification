@@ -245,7 +245,7 @@ CTI_UI_Respawn_OnRespawnReady = {
 	CTI_P_LastRespawnTime=time;
 	if !(_respawn_ai) then { //--- Stock respawn
 
-		if ((_where isKindOf "Car" || _where isKindOf "Wheeled_APC_F" || _where isKindOf "Land_Pod_Heli_Transport_04_medevac_F") && (_where emptyPositions "cargo")>0 && abs (speed _where) < 5 && (locked _where < 2 ||  abs (speed _where) > 5) && (getPos _where select 2) < 5) then {// todo :: corect
+		if ((_where isKindOf "Car" || _where isKindOf "Wheeled_APC_F" || _where isKindOf "Land_Pod_Heli_Transport_04_medevac_F") && (_where emptyPositions "cargo")>0 && abs (speed _where) < 5 && (locked _where < 2 ||  abs (speed _where) > 5) ) then {// todo :: corect
 				//Respawn in vehicles cargo
 				player moveInCargo _where;
 			} else {
