@@ -87,8 +87,8 @@ if (_completion >= 100) then {
 	_var = missionNamespace getVariable _variable;
 	_structure = ((_var select 1) select 0) createVehicle [100000+random(1000),100000+random(1000),1000+random(1000)];
 	_structure setDir _direction;
-	_structure setVectorUp [0,0,0];
 	_structure setPos _position;
+	_structure setVectorUp [0,0,1];
 	_structure setVariable ["cti_save", _variable,false];
 	_structure setVariable ["cti_structure_type", ((_var select 0) select 0)];
 
