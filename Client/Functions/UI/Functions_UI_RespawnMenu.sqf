@@ -253,7 +253,7 @@ CTI_UI_Respawn_OnRespawnReady = {
 
 				//try to find and position on building position
 				_nearestbuilding= nearestbuilding _spawn_at;
-				if (((_spawn_at distance2d _nearestbuilding) < 25) && (!(typeOF _nearestbuilding in CTI_BUILDINGPOS_MISSING))) then {
+				if (alive _nearestbuilding && ((_spawn_at distance2d _nearestbuilding) < 25) && (!(typeOF _nearestbuilding in CTI_BUILDINGPOS_MISSING))) then {
 					_buildingpos = _nearestbuilding buildingPos -1;
 					if (count _buildingpos > 10) then {
 						_buildingpos deleteRange [ceil(count _buildingpos / 3), count _buildingpos];
