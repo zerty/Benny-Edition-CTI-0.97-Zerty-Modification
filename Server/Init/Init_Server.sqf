@@ -232,12 +232,13 @@ while {! (((getMarkerPos format ["HELO_START_%1", _i])select 0) == 0)} do
 			sleep 120;
 			//if (isMultiplayer) then { sleep 60 };
 			while {!CTi_GameOver} do {
-				if (isMultiplayer) then { sleep 20 };
+				if (isMultiplayer) then { sleep 30 };
 				if ((isnull (_logic getVariable "cti_commander")&& ! (_logic getVariable ["cti_ai_commander",true])) || isplayer leader (_logic getVariable ["cti_ai_commander_group",grpNull]) )then {
 					_teams =_logic getVariable ["cti_teams",[]];
 					_possible=[];
 					{if ! (isplayer leader _x) then {_possible set [count _possible,_x]};true} count _teams;
 					_next_commander= _possible select floor random (count _possible);
+					if  ! (isnil "_next_commander") then {
 					_logic setVariable ["cti_ai_commander", true,true];
 					_logic setVariable ["cti_ai_commander_group", _next_commander,true];
 					(leader _next_commander) setpos( [(_logic getVariable "cti_hq"), 8, 30] call CTI_CO_FNC_GetRandomPosition);
@@ -250,8 +251,9 @@ while {! (((getMarkerPos format ["HELO_START_%1", _i])select 0) == 0)} do
 					_next_commander setVariable ["cti_order_pos",[0,0,0]];
 					//waitUntil {isNil {_next_commander getVariable "cti_aifsm_handled"}};
 					[_side,_next_commander] execFSM "Server\FSM\update_commander.fsm";
+					};
 				};
-			    sleep 5;
+			    sleep 10;
 			};
 		};
 
