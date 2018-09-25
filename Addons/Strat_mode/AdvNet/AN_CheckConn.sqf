@@ -10,7 +10,15 @@ _vehicle getVariable "CTI_Net"
 private ["_vehicle","_side_id","_side","_forced","_connection","_max_distance","_up","_up_r"];
 if (CTI_isServer) then {waituntil {CTI_Init_Server}};
 _vehicle = _this;
+
+
+
 if !(alive _vehicle) exitWith {false};
+
+
+
+//resistance town no need to run reconnect:
+if ((_vehicle isKindOf "FlagPole_F") && (_vehicle  getVariable ["cti_town_sideID",CTI_RESISTANCE_ID])  == CTI_RESISTANCE_ID) exitWith {true};
 
 _side_id=_vehicle getVariable ["CTI_Net",-11];
 if (_side_id < 0 ) exitWith {false};
