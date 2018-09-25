@@ -2,8 +2,8 @@
 /*%FSM<HEAD>*/
 /*
 item0[] = {"Start_FSM",0,250,-100.000000,-800.000000,0.000000,-750.000000,0.000000,"Start FSM"};
-item1[] = {"Cycle",4,4314,-100.000000,-400.000000,0.000000,-350.000000,1.000000,"Cycle"};
-item2[] = {"Occupation_hold",2,250,-100.000000,-200.000000,0.000000,-150.000000,0.000000,"Occupation hold" \n "the town?"};
+item1[] = {"Cycle",4,218,-100.000000,-400.000000,0.000000,-350.000000,1.000000,"Cycle"};
+item2[] = {"Occupation_hold",2,4346,-100.000000,-200.000000,0.000000,-150.000000,0.000000,"Occupation hold" \n "the town?"};
 item3[] = {"End_FSM",1,250,-250.000000,-100.000000,-150.000000,-50.000000,0.000000,"End FSM"};
 item4[] = {"Held_by_Occupati",4,218,-100.000000,-100.000000,0.000000,-50.000000,2.000000,"Held by" \n "Occupation"};
 item5[] = {"Gameover",8,218,-250.000000,-200.000000,-150.000000,-150.000000,0.000000,"Gameover"};
@@ -56,7 +56,7 @@ link27[] = {21,8};
 link28[] = {22,1};
 link29[] = {23,13};
 globals[] = {0.000000,0,0,0,0,640,480,1,177,6316128,1,-582.603027,790.527588,465.883545,-1210.282837,725,885,1};
-window[] = {2,-1,-1,-1,-1,837,225,1261,225,3,743};
+window[] = {2,-1,-1,-1,-1,812,200,1236,200,3,743};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -103,7 +103,7 @@ class FSM
                 {
                         name = "Occupation_hold";
                         itemno = 2;
-                        init = /*%FSM<STATEINIT""">*/"_ncycle = time +2;" \n
+                        init = /*%FSM<STATEINIT""">*/"_ncycle = time +5;" \n
                          "" \n
                          "_sideID = _town getVariable ""cti_town_sideID"";" \n
                          "_side = (_sideID) call CTI_CO_FNC_GetSideFromID;"/*%FSM</STATEINIT""">*/;
