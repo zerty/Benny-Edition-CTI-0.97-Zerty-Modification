@@ -51,18 +51,6 @@ while {!CTI_GAMEOVER} do
 
 	} foreach TASKS_LIST;
 
-	// DO THE CLEANUP
-
-	{
-		 _task=TASKS_LIST select _x;
-		 [(_task select 2), "CANCELED", false] call BIS_fnc_taskSetState;
-		 [(_task select 2) ] call BIS_fnc_deleteTask;
-		 true
-	} count _to_delete;
-	{
-		TASKS_LIST deleteAt _x;
-		true
-	} count _to_delete;
 
 	//*****************************************************************
 	//********************** TASK CREATION ****************************
@@ -109,6 +97,21 @@ while {!CTI_GAMEOVER} do
 		};
 		true
 	} count (_logic getVariable ["CTI_TOWNS",[]]);
+
+
+	// DO THE CLEANUP
+
+	{
+		 _task=TASKS_LIST select _x;
+		 [(_task select 2), "CANCELED", false] call BIS_fnc_taskSetState;
+		 [(_task select 2) ] call BIS_fnc_deleteTask;
+		 true
+	} count _to_delete;
+	{
+		TASKS_LIST deleteAt _x;
+		true
+	} count _to_delete;
+
 
 	//wait some time
 	sleep 3;
