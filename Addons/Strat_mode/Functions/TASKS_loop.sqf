@@ -46,7 +46,7 @@ while {!CTI_GAMEOVER} do
 	{
 		if ((_x select 0 )== CTI_TASK_TYPE_DEFEND ) then {
 			_town=_x select 1 ;
-			if ((_town getvariable ["cti_town_sideID",-1]) == _sideID && !((_town getvariable ["cti_town_occupation_active",false]) || (_town getvariable ["cti_town_resistance_active",false]) ) ) then {_to_delete pushBackUnique _forEachIndex};
+			if ((_town getvariable ["cti_town_sideID",-1]) == _sideID && !((_town getvariable ["cti_town_occupation_active",false]) && (_town getvariable ["cti_town_resistance_active",false]) ) ) then {_to_delete pushBackUnique _forEachIndex};
 		};
 
 	} foreach TASKS_LIST;
