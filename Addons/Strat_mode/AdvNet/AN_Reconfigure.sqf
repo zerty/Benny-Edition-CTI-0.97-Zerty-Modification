@@ -64,7 +64,7 @@ if (_side in [east,west]) then {
 	{ if (_vehicle distance2D _x <= _max_distance) then {_candidates set [count _candidates,_x];}; true}count _ccs;
 };
 // Try to connect to closest town
-if (count _candidates == 0 || _vehicle isKindOf "FlagPole_F"&& (_side in [east,west])) then {
+if (count _candidates == 0 ) then {
 	{
 		_town=_x;
 		if (!(isNull _town) && !(_town == _vehicle) && _vehicle distance2D _town <=  _max_distance && (_town getVariable "AN_iNet" == _side_id )&& ! (_x getVariable "AN_Conn" == _vehicle) && {_x == _vehicle} count (_x getVariable ["AN_Parrents",[]]) == 0 ) then
