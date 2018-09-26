@@ -36,7 +36,7 @@ while {!CTI_GAMEOVER} do
 	{
 		if ((_x select 0 )== CTI_TASK_TYPE_ATTACK ) then {
 			_town=_x select 1 ;
-			if ((_town getVariable ["cti_town_sideID",-1] ==  _sideID) || ((_active_towns find _town) == -1 && (_logic  getVariable  ["CTI_PRIORITY",objNull]) != _town) ) then {_to_delete pushBackUnique _forEachIndex};
+			if ( (_active_towns find _town) == -1 )  then {_to_delete pushBackUnique _forEachIndex};
 
 		};
 
@@ -46,7 +46,7 @@ while {!CTI_GAMEOVER} do
 	{
 		if ((_x select 0 )== CTI_TASK_TYPE_DEFEND ) then {
 			_town=_x select 1 ;
-			if ((_town getvariable ["cti_town_sideID",-1]) == _sideID && !((_town getvariable ["cti_town_occupation_active",false]) && (_town getvariable ["cti_town_resistance_active",false]) ) ) then {_to_delete pushBackUnique _forEachIndex};
+			if ((_town getvariable ["cti_town_sideID",-1]) == _sideID && !(_town getvariable ["cti_town_occupation_active",false]) ) then {_to_delete pushBackUnique _forEachIndex};
 		};
 
 	} foreach TASKS_LIST;
@@ -87,7 +87,7 @@ while {!CTI_GAMEOVER} do
 	// DEFEND TASKS
 	{
 		_town=_x;
-		if ((_town getvariable ["cti_town_sideID",-1]) == _sideID && ((_town getvariable ["cti_town_occupation_active",false]) || (_town getvariable ["cti_town_resistance_active",false]) ) ) then {
+		if ((_town getvariable ["cti_town_sideID",-1]) == _sideID && (_town getvariable ["cti_town_occupation_active",false]) ) then {
 			if ((TASKS_LIST findif {(_x select 0) == CTI_TASK_TYPE_DEFEND && (_x select 1) == _town}) == -1) then {
 				_taskname=format ["D_%1_%2",ceil(random(100000)),ceil(time)];
 				TASKS_LIST pushBack [CTI_TASK_TYPE_DEFEND,_town,_taskname];
