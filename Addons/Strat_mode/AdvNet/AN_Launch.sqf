@@ -1,5 +1,5 @@
 private ["_vehicle","_side_id"];
-_vehicle = _this select 0;
+_vehicle = vehicle (_this select 0);
 _side_id= _this select 1;
 if (NET_LOG) then {diag_log format [":: NET :: Trying to launch for %1 with sideid %2",_vehicle,_side_id]};
 if ! (isNil {_vehicle getVariable "AN_iNet"}) exitWith {false};
