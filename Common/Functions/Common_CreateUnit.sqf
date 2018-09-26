@@ -210,7 +210,7 @@ if (_net) then {_unit setVariable ["cti_net", _sideID, true]};
 _unit addEventHandler ["killed", format["[_this select 0, _this select 1, %1] spawn CTI_CO_FNC_OnUnitKilled", _sideID]];
 
 //Adv network
-if (missionNamespace getVariable "CTI_EW_ANET" == 1 && !(_sideID == CTI_RESISTANCE_ID)) then {
+if (_net && missionNamespace getVariable "CTI_EW_ANET" == 1 && !(_sideID == CTI_RESISTANCE_ID)) then {
 	//["SERVER","Server_Run_Net",[_unit,_sideID]] call CTI_CO_FNC_NetSend;
 	[_unit,_sideID] spawn AN_Launch;
 };
