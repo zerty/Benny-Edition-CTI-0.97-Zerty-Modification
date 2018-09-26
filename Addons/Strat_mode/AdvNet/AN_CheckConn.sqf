@@ -33,6 +33,7 @@ _connection=_vehicle getVariable ["AN_Conn",objNull];
 // disconnected
 if (isNull _connection ) exitWith {false};
 
+
 //dead
 if !(alive _connection ) exitWith {false};
 
