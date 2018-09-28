@@ -80,7 +80,7 @@ while {!CTI_VAR_StructurePlaced && !CTI_VAR_StructureCanceled} do {
 	_pos = player modelToWorld [0, _distance_structure + CTI_P_KeyDistance + 5, 0];
 
 	if (time - _last_collision_update > 1.5) then {_last_collision_update = time;{_local disableCollisionWith _x} forEach (player nearObjects 150)};
-	CTI_P_PreBuilding_SafePlace = if (!(_pos isFlatEmpty [0, -1, 0.5, 3, 0, false] isEqualTo []) && _pos distance ([_pos, CTI_P_SideJoined call CTI_CO_FNC_GetSideStructures] call CTI_CO_FNC_GetClosestEntity) >20 && _pos distance ( [_pos, ((CTI_P_SideJoined) call CTI_CO_FNC_GetSideLogic) getVariable "cti_structures_wip"] call CTI_CO_FNC_GetClosestEntity) >20 && !surfaceIsWater _pos && !(lineIntersects [ATLtoASL (player modelToWorld (player selectionPosition "pilot")),ATLtoASL (_local modelToWorld (_local selectionPosition "pilot")), player, _local])) then {true} else {false};
+	CTI_P_PreBuilding_SafePlace = if (_pos distance ([_pos, CTI_P_SideJoined call CTI_CO_FNC_GetSideStructures] call CTI_CO_FNC_GetClosestEntity) >20 && _pos distance ( [_pos, ((CTI_P_SideJoined) call CTI_CO_FNC_GetSideLogic) getVariable "cti_structures_wip"] call CTI_CO_FNC_GetClosestEntity) >20 && !surfaceIsWater _pos && !(lineIntersects [ATLtoASL (player modelToWorld (player selectionPosition "pilot")),ATLtoASL (_local modelToWorld (_local selectionPosition "pilot")), player, _local])) then {true} else {false};
 	if (_center distance player > _center_distance || !alive _center || vehicle player != player) exitWith { CTI_VAR_StructureCanceled = true };
 
 	_dir = ([_local, player] call CTI_CO_FNC_GetDirTo) + _direction_structure + CTI_P_KeyRotate;
@@ -93,11 +93,6 @@ while {!CTI_VAR_StructurePlaced && !CTI_VAR_StructureCanceled} do {
 	_helper_pos set [2, 0];
 	_helper setPos _helper_pos;
 	_helper setDir _dir;
-
-	if (count (CTI_P_SideLogic getVariable "cti_structures_areas") > 0 && count (CTI_P_SideLogic getVariable "cti_structures_areas") < CTI_BASE_AREA_MAX) then {
-		_closest = [_pos, (CTI_P_SideLogic getVariable "cti_structures_areas")] call CTI_CO_FNC_SortByDistance;
-		if ((_pos distance2D (_closest select 0)) > CTI_BASE_AREA_RANGE) then {hintsilent parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br />This placement create a new base area.";} else {hintsilent "";};
-	};
 
 	sleep .01;
 };
@@ -118,7 +113,7 @@ if (surfaceIsWater _pos) exitWith {hint parseText "<t size='1.3' color='#2394ef'
 
 //--- Check the distance 2D between our position and the potential areas
 _in_area = false;
-{if ([_pos select 0, _pos select 1] distance2D [_x select 0, _x select 1] <= CTI_BASE_AREA_RANGE) exitWith {_in_area = true}} forEach (CTI_P_SideLogic getVariable "cti_structures_areas");
+{if ([_pos select 0, _pos select 1] distance [_x select 0, _x select 1] <= CTI_BASE_AREA_RANGE) exitWith {_in_area = true}} forEach (CTI_P_SideLogic getVariable "cti_structures_areas");
 
 //--- Maybe we have no area in range?
 if (!(_in_area) && ! CTI_VAR_StructureCanceled) then {
