@@ -78,7 +78,7 @@ waitUntil { _structure getVariable ["cti_completion",-1] >= 100 || time >_timeou
 _logic = (_side) call CTI_CO_FNC_GetSideLogic;
 _logic setVariable ["cti_structures_wip", (_logic getVariable "cti_structures_wip") - [_structure, objNull],true];
 
-_completion = _structure getVariable "cti_completion";
+_completion = _structure getVariable ["cti_completion",10];
 _completion_ratio = _structure getVariable "cti_completion_ratio";
 
 deleteVehicle _structure;
