@@ -24,7 +24,7 @@ if (! _adv_net) then {
 	//try to register in Hud targets
 	while {!CTI_GameOver && alive _vehicle && alive _radar} do {
 		_alt=((getposASL _vehicle) select 2 ) min ((getposATL _vehicle) select 2 );
-		if ( ([_vehicle,_radar]  call BIS_fnc_distance2D) < Radar_Range && _alt >= Min_Alt && !(terrainIntersect [_top_radar,(getPosATL _vehicle)]) && {_x == _vehicle} count (_sl getVariable "CTI_HUD_SHARED") == 0 && !((_vehicle getvariable ["CTI_Net",-10]) == (_side  call CTI_CO_FNC_GetSideID)) ) then {
+		if ( ([_vehicle,_radar]  call BIS_fnc_distance2D) < Radar_Range && _alt >= Min_Alt && !(terrainIntersect [_top_radar,(getPosATL _vehicle)]) &&  ((_sl getVariable "CTI_HUD_SHARED")  findif {_x select 0 == _vehicle && _x select 1 > time}) > -1 && !((_vehicle getvariable ["CTI_Net",-10]) == (_side  call CTI_CO_FNC_GetSideID)) ) then {
 			//diag_log format [":: AIR Radar ::%1::%2:: Detected by %3",_vehicle,_side,_radar];
 			["SERVER", "Server_Hud_Share_Add",[[_vehicle],_side]] call CTI_CO_FNC_NetSend; //we use the netPV to not do strange stuff
 			[["CLIENT",_side], "Client_AIRR_touched"] call CTI_CO_FNC_NetSend;//for the hud
