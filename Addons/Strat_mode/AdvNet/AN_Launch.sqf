@@ -2,7 +2,7 @@ private ["_vehicle","_side_id"];
 _vehicle = vehicle (_this select 0);
 _side_id= _this select 1;
 if (NET_LOG) then {diag_log format [":: NET :: Trying to launch for %1 with sideid %2",_vehicle,_side_id]};
-//if ! (isNil {_vehicle getVariable "AN_iNet"}) exitWith {false};
+if ! (isNil {_vehicle getVariable "AN_iNet"}) exitWith {false};
 //diag_log format ["Starting networking for %1 side %2", _this select 0 , _this	 select 1];
 if (isNil {_vehicle getVariable "CTI_Net"}) then {_vehicle setVariable ["CTI_Net",_side_id,true];};
 if (isNil {_vehicle getVariable "AN_Conn"}) then {_vehicle setVariable ["AN_Conn",objNull,false];};
