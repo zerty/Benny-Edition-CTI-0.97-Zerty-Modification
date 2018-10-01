@@ -1089,10 +1089,10 @@ CTI_LOADOUT_B_Heli_Transport_01_F_MNT_OPTIONS =
 			[
 				["CMFlareLauncher" ,
 					[
-						[ "240Rnd_CMFlare_Chaff_Magazine" , "2000" , [0] ],
-						[ "120Rnd_CMFlare_Chaff_Magazine" , "500" , [0] ],
-						[ "168Rnd_CMFlare_Chaff_Magazine" , "1000" , [0] ],
-						[ "192Rnd_CMFlare_Chaff_Magazine" , "1500" , [0] ]
+						[ "240Rnd_CMFlare_Chaff_Magazine" , "2000" , [-1] ],
+						[ "120Rnd_CMFlare_Chaff_Magazine" , "500" , [-1] ],
+						[ "168Rnd_CMFlare_Chaff_Magazine" , "1000" , [-1] ],
+						[ "192Rnd_CMFlare_Chaff_Magazine" , "1500" , [-1] ]
 					]
 				]
 			],
@@ -1619,7 +1619,9 @@ CTI_LOADOUT_B_UAV_05_F_MNT_OPTIONS =
 						[ "PylonMissile_Bomb_GBU12_x1" , "5000" , [0]],
 						[ "PylonMissile_Missile_AGM_02_x2" , "10000" , [0]],
 						[ "PylonMissile_1Rnd_BombCluster_01_F" , "1000" , [0]],
-						[ "PylonMissile_1Rnd_BombCluster_03_F" , "1000" , [0]]
+						[ "PylonMissile_1Rnd_BombCluster_03_F" , "1000" , [0]],
+						[ "PylonMissile_Missile_HARM_INT_x1" , "10000" , [0]],
+						[ "PylonRack_Bomb_SDB_x4" , "5000" , [0]]
 					]
 				]
 			],
@@ -1629,7 +1631,9 @@ CTI_LOADOUT_B_UAV_05_F_MNT_OPTIONS =
 						[ "PylonMissile_Bomb_GBU12_x1" , "5000" , [0]],
 						[ "PylonMissile_Missile_AGM_02_x2" , "10000" , [0]],
 						[ "PylonMissile_1Rnd_BombCluster_01_F" , "1000" , [0]],
-						[ "PylonMissile_1Rnd_BombCluster_03_F" , "1000" , [0]]
+						[ "PylonMissile_1Rnd_BombCluster_03_F" , "1000" , [0]],
+						[ "PylonMissile_Missile_HARM_INT_x1" , "10000" , [0]],
+						[ "PylonRack_Bomb_SDB_x4" , "5000" , [0]]
 					]
 				]
 			],			
