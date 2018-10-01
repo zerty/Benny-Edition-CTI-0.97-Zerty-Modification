@@ -74,9 +74,10 @@ _logic setVariable ["cti_hq", _hq, true];
 
 
 //check if HQ was sucessfully repaired, else refound repair cost
-[_hq, _logic] spawn {
+[_hq, _logic, _side] spawn {
 	_hq = _this select 0;
 	_logic = _this select 1;
+	_side = _this select 2;
 	
 	sleep(5);
 	_hq setVelocity [0, 5, 0]; //move it a little to check if its inside an object
@@ -90,6 +91,7 @@ _logic setVariable ["cti_hq", _hq, true];
 		if(scoreSide CTI_P_SideJoined <= 500) then {_base_repair_HQ_cost = round(_base_repair_HQ_cost / 4);};
 		_logic setvariable ["cti_commander_funds",_comMoney+_base_repair_HQ_cost,true];
 	};
+	missionNamespace setVariable [format["CTI_HQ_Repair_Lock_%1", _side], false, true];
 };
 
 
