@@ -2,7 +2,8 @@ _vehicle = _this select 0;
 _hq = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideHQ;
 
 CTI_P_LastRepairTime = time;
-
+if(missionNamespace getVariable [format["CTI_HQ_Repair_Lock_%1", CTI_P_SideJoined], false]) exitWith {};
+missionNamespace setVariable [format["CTI_HQ_Repair_Lock_%1", CTI_P_SideJoined], true, true];
 if (alive _hq) exitWith {}; //--- Don't bother if the HQ is alive
 
 _base_repair_HQ_cost = CTI_BASE_HQ_REPAIR_PRICE;
@@ -45,3 +46,4 @@ if (_hq distance _vehicle <= CTI_BASE_HQ_REPAIR_RANGE) then {
 		hint parseText format[localize "STR_Needed_RepairHQ", CTI_P_Coloration_Money, _base_repair_HQ_cost];
 	};
 };
+missionNamespace setVariable [format["CTI_HQ_Repair_Lock_%1", CTI_P_SideJoined], false, true];

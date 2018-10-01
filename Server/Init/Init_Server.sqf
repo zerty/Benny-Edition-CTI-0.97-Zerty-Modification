@@ -62,6 +62,8 @@ execVM "Server\Init\Init_Prison.sqf";
 execVM "Addons\Strat_mode\Functions\TUTORIAL_Init.sqf";
 
 CTI_Structure_Lock=False;
+CTI_HQ_Repair_Lock_EAST=False;
+CTI_HQ_Repair_Lock_WEST=False;
 CTI_Worker_Lock=False;
 
 
