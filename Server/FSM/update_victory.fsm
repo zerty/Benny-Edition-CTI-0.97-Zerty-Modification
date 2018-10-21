@@ -15,8 +15,8 @@ link3[] = {2,4};
 link4[] = {4,5};
 link5[] = {5,6};
 link6[] = {6,3};
-globals[] = {0.000000,0,0,0,0,640,480,1,164,6316128,1,-620.422607,163.824570,138.236649,-571.857727,973,885,1};
-window[] = {2,-1,-1,-1,-1,1015,234,1489,234,3,991};
+globals[] = {0.000000,0,0,0,0,640,480,1,164,6316128,1,-620.422607,163.824570,138.236649,-571.857727,973,884,1};
+window[] = {2,-1,-1,-1,-1,937,156,1411,156,3,991};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -79,8 +79,7 @@ class FSM
                          "	{_townvalue=_townvalue+ (_x getVariable ""cti_town_value""); } ForEach ((_x) call CTI_CO_FNC_GetFriendlyTowns);" \n
                          "	_factories = 0;" \n
                          "	{_factories = _factories + count([_x, _structures] call CTI_CO_FNC_GetSideStructuresByType)} forEach (missionNamespace getVariable format[""CTI_%1_Factories"", _side]);" \n
-                         "	if (( ( time > _max_time && _max_time != 0)  || !(alive _hq) && _victory_hq == 1 || (!(alive _hq) && _factories == 0)) && !CTI_GameOver) exitWith {" \n
-                         "		diag_log [""CTI_Mission_Performance: GameOver win"", _x];		" \n
+                         "	if (( ( time > _max_time && _max_time != 0)  || !(alive _hq) && _victory_hq == 1 || (!(alive _hq) && _factories == 0)) && !CTI_GameOver) exitWith {		" \n
                          "		[""CLIENT"", ""Client_OnMissionEnding"", [_x, ""loose""]] call CTI_CO_FNC_NetSend;" \n
                          "" \n
                          "		profileNamespace setVariable [""CTI_SAVE_ENABLED"",false];" \n
@@ -89,6 +88,7 @@ class FSM
                          "		CTI_GameOver = true;" \n
                          "	};" \n
                          "	if (_towns == _total && !CTI_GameOver) exitWith {" \n
+                         "		diag_log [""CTI_Mission_Performance: GameOver win"", _x];" \n
                          "		[""CLIENT"", ""Client_OnMissionEnding"", [_x, ""win""]] call CTI_CO_FNC_NetSend;" \n
                          "" \n
                          "		profileNamespace setVariable [""CTI_SAVE_ENABLED"",false];" \n
