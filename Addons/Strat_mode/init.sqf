@@ -152,39 +152,39 @@ if (CTI_IsServer) then {
 
 
 		CTI_PVF_Server_Hud_Share_Add= {
-			_this spawn {
-				_sl= (_this select 1) call CTI_CO_FNC_GetSideLogic;
-				while {HUD_WRITE} do {sleep random (1);};
-				HUD_WRITE=true;
-				_hud =_sl getVariable ["CTI_HUD_SHARED",[]];
+
+			_sl= (_this select 1) call CTI_CO_FNC_GetSideLogic;
+			while {HUD_WRITE} do {sleep random (1);};
+			HUD_WRITE=true;
+			_hud =_sl getVariable ["CTI_HUD_SHARED",[]];
 
 
-				//cleanup
-				_delete=+ [];
-				{
-					_obj = _x select 0;
-					_timeout= _x select 1;
-					if( isNull _obj || time > _timeout) then {_delete pushBack _forEachIndex;};
-				}  forEach  _hud;
+			//cleanup
+			_delete=+ [];
+			{
+				_obj = _x select 0;
+				_timeout= _x select 1;
+				if( isNull _obj || time > _timeout) then {_delete pushBack _forEachIndex;};
+			}  forEach  _hud;
 
-				{_hud deleteAt _x;true} count _delete;
-				//new objects
-				{
-					_new_obj= _x select 0;
-					_new_timeout= _x select 1;
-					_find=(_hud findif {_x select 0 == _new_obj});
-					if (_find == -1) then {
-						_hud pushBack _x;
-						_new_obj setVariable ["CTI_HUD_Detected",_new_timeout,true];
-					};
-					true
-				}count (_this select 0);
+			{_hud deleteAt _x;true} count _delete;
+			//new objects
+			{
+				_new_obj= _x select 0;
+				_new_timeout= _x select 1;
+				_find=(_hud findif {_x select 0 == _new_obj});
+				if (_find == -1) then {
+					_hud pushBack _x;
+					_new_obj setVariable ["CTI_HUD_Detected",_new_timeout,true];
+				};
+				true
+			}count (_this select 0);
 
 
 
-				_sl setVariable ["CTI_HUD_SHARED",_hud,true];
-				HUD_WRITE=false;
-			};
+			_sl setVariable ["CTI_HUD_SHARED",_hud,true];
+			HUD_WRITE=false;
+
 		};
 
 
