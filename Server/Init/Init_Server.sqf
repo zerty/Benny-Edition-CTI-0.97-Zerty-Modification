@@ -309,4 +309,32 @@ if (missionNamespace getvariable "CTI_PERSISTANT" == 1) then {
 
 };
 
-
+//Logging of varius values
+0 spawn {
+		sleep 100; //wait for everything to finish loading
+		diag_log "CTI_Mission_Performance: Starting Server";
+		while {!CTI_GameOver} do {
+			_hud_east = count (((east) call CTI_CO_FNC_GetSideLogic) getVariable ["CTI_HUD_SHARED",[]]);
+			_hud_west = count (((west) call CTI_CO_FNC_GetSideLogic) getVariable ["CTI_HUD_SHARED",[]]);
+			
+			_arr = 	["CTI_Mission_Performance:",
+					["time", time], 
+					["fps", diag_fps],
+					["score_east", (scoreSide east)],
+					["score_west", (scoreSide west)],
+					["hud_count_east", _hud_east],
+					["hud_count_west", _hud_west],
+					["player_count_east", (west countSide allPlayers)],
+					["player_count_west", (east countSide allPlayers)],
+					["commander_east", (name leader ((east) call CTI_CO_FNC_GetSideCommander))],
+					["commander_west", (name leader ((west) call CTI_CO_FNC_GetSideCommander))],
+					["town_count_east", ((east) call CTI_CO_FNC_GetSideTownCount)],
+					["town_count_west", ((west) call CTI_CO_FNC_GetSideTownCount)],
+					["active_SQF_count", count(diag_activeSQFScripts)]
+					];
+					
+			diag_log _arr;
+			sleep 600;
+		};
+		diag_log "CTI_Mission_Performance: Stopping Server";
+};
