@@ -31,11 +31,9 @@ diag_log ":: SAVE :: Loading";
 
     //structures
     {diag_log format [":: SAVE :: Loading %1",_x];
-	sleep 0.2;
 	_build=[(_x select 0), _side,(_x select 1)  select 0 ,(_x select 1)  select 1 ] call CTI_SE_FNC_BuildStructure;
-	sleep 0.2;
+	sleep 0.1;
 	_build setvariable ["cti_completion",100,true];
-	sleep 0.2;
 	true
 	} count (_load select 4);
 
@@ -55,7 +53,7 @@ diag_log ":: SAVE :: Loading";
 
 } forEach [east,west];
 
-sleep 0.2;
+
 
 _loadwest = profileNamespace getVariable format ["CTI_SAVE_%1", west];
 _loadeast = profileNamespace getVariable format ["CTI_SAVE_%1", east];
@@ -66,7 +64,7 @@ _currenttime = round (daytime);
 if (_currenttime > (_loadwest select 8)) then {skipTime ((24 - _currenttime) + (_loadwest select 8));};
 if (_currenttime < (_loadwest select 8)) then {skipTime ((_loadwest select 8) - _currenttime);};
 
-sleep 0.2;
+
 
 //team score west [H]Tom
 diag_log format [":: SAVE :: TeamScoreWest",(_loadwest select 9)];
