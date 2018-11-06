@@ -15,8 +15,8 @@ link3[] = {2,4};
 link4[] = {4,5};
 link5[] = {5,6};
 link6[] = {6,3};
-globals[] = {0.000000,0,0,0,0,640,480,1,164,6316128,1,-620.422607,163.824570,138.236649,-571.857727,635,884,1};
-window[] = {2,-1,-1,-1,-1,833,52,1307,52,3,653};
+globals[] = {0.000000,0,0,0,0,640,480,1,164,6316128,1,-620.422607,163.824570,138.236649,-571.857727,635,885,1};
+window[] = {2,-1,-1,-1,-1,806,25,1280,25,3,653};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -86,7 +86,6 @@ class FSM
                          "		profileNamespace setVariable [""CTI_SAVE_ENABLED"",false];" \n
                          "		saveProfileNamespace;" \n
                          "" \n
-                         "		CTI_GameOver = true;" \n
                          "	};" \n
                          "	if (_towns == _total && !CTI_GameOver) exitWith {" \n
                          "		diag_log [""CTI_Mission_Performance: GameOver win"", _x];" \n
@@ -95,7 +94,6 @@ class FSM
                          "		profileNamespace setVariable [""CTI_SAVE_ENABLED"",false];" \n
                          "		saveProfileNamespace;" \n
                          "" \n
-                         "		CTI_GameOver = true;" \n
                          "	};" \n
                          "	if (_townvalue > (_total_value*0.75) && !CTI_GameOver) exitWith {" \n
                          "		diag_log [""CTI_Mission_Performance: GameOver eco win"", _x];" \n
@@ -103,11 +101,10 @@ class FSM
                          "		" \n
                          "		profileNamespace setVariable [""CTI_SAVE_ENABLED"",false];" \n
                          "		saveProfileNamespace;" \n
-                         "" \n
-                         "		CTI_GameOver = true;" \n
+                         "		" \n
                          "	};" \n
                          "} forEach [west, east];" \n
-                         ""/*%FSM</STATEINIT""">*/;
+                         "CTI_GameOver = true;"/*%FSM</STATEINIT""">*/;
                         precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
                         class Links
                         {
