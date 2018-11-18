@@ -46,14 +46,14 @@ _ug=units player;
 
 	if (!isnull (lasertarget _object)) then {_return pushBack [lasertarget _object,"\a3\ui_f\data\IGUI\RscIngameUI\RscOptics\laser_designator_iconlaseron", [1,0,0,1],  getPos (lasertarget _object),_size select 0,_size select 1, 0, _unitName, 0, 0.05,'TahomaB', 'right'];};
 	if (!isnull (laserTarget getConnectedUAV _object)) then {_return pushBack [lasertarget getConnectedUAV _object,"\a3\ui_f\data\IGUI\RscIngameUI\RscOptics\laser_designator_iconlaseron", [1,0,0,1],  getPos (lasertarget getConnectedUAV _object),_size select 0,_size select 1, 0, _unitName, 0, 0.05,'TahomaB', 'right'];};
-
+	true
 } count _ug;
 
 
 {
 	_object = _x;
 	_connected=player call AN_Check_Connection;
-	_side_id =	_object getVariable ["CTI_Net",-10]; ;
+	_side_id = _object getVariable ["CTI_Net",-10];
 	//if (!isNil {_object getVariable "AN_iNet"}) then {_side_id=_object getVariable "AN_iNet";};
 	_side= if (_side_id<0) then {side _object} else {(_side_id)  call CTI_CO_FNC_GetSideFromID};
 

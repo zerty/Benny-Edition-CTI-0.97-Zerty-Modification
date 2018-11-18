@@ -2,8 +2,8 @@
 /*%FSM<HEAD>*/
 /*
 item0[] = {"Start_FSM",0,250,-86.275269,-615.525940,13.724731,-565.525940,0.000000,"Start FSM"};
-item1[] = {"Cycle",4,4314,-100.000000,-400.000000,0.000000,-350.000000,1.000000,"Cycle"};
-item2[] = {"Resistance_hold",2,250,-100.000000,-200.000000,0.000000,-150.000000,0.000000,"Resistance hold" \n "the town?"};
+item1[] = {"Cycle",4,218,-100.000000,-400.000000,0.000000,-350.000000,1.000000,"Cycle"};
+item2[] = {"Resistance_hold",2,4346,-100.000000,-200.000000,0.000000,-150.000000,0.000000,"Resistance hold" \n "the town?"};
 item3[] = {"End_FSM",1,250,-250.000000,-100.000000,-150.000000,-50.000000,0.000000,"End FSM"};
 item4[] = {"Held_by_Resistan",4,218,-100.000000,-100.000000,0.000000,-50.000000,2.000000,"Held by" \n "Resistance"};
 item5[] = {"Gameover",8,218,-250.000000,-200.000000,-150.000000,-150.000000,0.000000,"Gameover"};
@@ -56,7 +56,7 @@ link27[] = {21,8};
 link28[] = {22,1};
 link29[] = {23,13};
 globals[] = {0.000000,0,0,0,0,640,480,1,173,6316128,1,-1091.492065,1056.436035,832.636719,-1191.768555,939,885,1};
-window[] = {2,-1,-1,-1,-1,712,100,1136,100,3,957};
+window[] = {2,-1,-1,-1,-1,662,50,1086,50,3,957};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -102,7 +102,7 @@ class FSM
                         name = "Resistance_hold";
                         itemno = 2;
                         init = /*%FSM<STATEINIT""">*/"" \n
-                         "_ncycle = time +2 ;" \n
+                         "_ncycle = time +5 ;" \n
                          "" \n
                          "_sideID = _town getVariable ""cti_town_sideID"";"/*%FSM</STATEINIT""">*/;
                         precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;

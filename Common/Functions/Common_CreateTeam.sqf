@@ -8,7 +8,7 @@ _locked = if (count _this > 4) then {_this select 4} else {true};
 _net = if (count _this > 5) then {_this select 5} else {false};
 _bounty = if (count _this > 6) then {_this select 6} else {false};
 
-if (_side == resistance) then {_net=false};
+_net=false;
 
 _sideID = (_side) call CTI_CO_FNC_GetSideID;
 //if (isNull _group) then {_group = createGroup _side};

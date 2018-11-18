@@ -1,6 +1,7 @@
 private ["_action","_target"];
 _action = _this select 0;
 _target=uiNamespace getVariable ['INT_TARG',objnull];
+if !(cameraOn == player || cameraOn == vehicle player) then {_target = cameraOn;};
 
 _base_x=SafeZoneX + SafeZoneW*0.5;
 _base_y=SafeZoneY+safezoneH*0.50;
@@ -128,7 +129,7 @@ switch (_action) do {
 			    };
 
 			    case 11: { // CTI_Icon_Net // ok
-					if ( alive _target && (missionNamespace getVariable "CTI_EW_ANET" == 1) && ( _target iskindof "Car" || _target iskindof "Tank" || _target iskindof "Truck" || _target iskindof "Air"|| _target iskindof "Ship") && !(_target isKindOf "I_G_Offroad_01_F")) then  {
+					if ( alive _target && (missionNamespace getVariable "CTI_EW_ANET" == 1) && ( _target iskindof "Car" || _target iskindof "Tank" || _target iskindof "Truck" || _target iskindof "Air"|| _target iskindof "Ship") && !(_target isKindOf "UAV_01_base_F" || _target isKindOf "UAV_06_base_F")) then  {
 						((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetPosition [_base_x+(_offset*_base_w),_base_y+_h_offset*_base_h,_base_w,_base_h];
 						if (locked _target >0 ) Then {
 							((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTextColor [0.3,0.3,0.3,1];
@@ -145,6 +146,15 @@ switch (_action) do {
 				case 12: { // CTI_Icon_Def // ok
 			    	if (vehicle player == player && alive _target) then {
 			    		_ok=false;
+			    		_reptrucknear = [player, CTI_SPECIAL_REPAIRTRUCK, 20] call CTI_CO_FNC_GetNearestSpecialVehicles;
+						if (count _reptrucknear > 0) then {_ok=true};
+						_hq = (CTI_P_sidejoined) call CTI_CO_FNC_GetSideHQ;
+						if ((player distance2D _hq) < 20 && alive _hq) then {_ok=true};
+						_structures = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideStructures;
+			    		_rep_depots = [CTI_REPAIR, _structures] call CTI_CO_FNC_GetSideStructuresByType;
+			    		_available_rep_depots = [player, _rep_depots, 20] call CTI_UI_Service_GetBaseDepots;
+						if (count _available_rep_depots > 0) then {_ok=true};
+						/*
 			    		if (_target == ((CTI_P_sidejoined) call CTI_CO_FNC_GetSideHQ)) then {_ok=true};
 			    		if (_target in (CTI_P_SideLogic getVariable ["cti_structures",[]]) ) then {
 			    			if ((((missionNamespace getVariable [format ["CTI_%1_%2", CTI_P_SideJoined, typeOf _target],[[""]]]) select 0) select 0  == CTI_REPAIR )) then {_ok=true;};
@@ -152,6 +162,7 @@ switch (_action) do {
 			    		if (_target in ((CTI_WEST getvariable ["cti_service", []]) + (CTI_EAST getvariable ["cti_service", []])) ) then {
 			    			if ((missionNamespace getVariable [format ["%1", typeOf _target],["","","","","","","",""]]) select 7 == "service-repairtruck") then {_ok=true;};
 			    		};
+			    		*/
 			    		//if (_target == ((CTI_P_sidejoined) call CTI_CO_FNC_GetSideHQ) || (missionNamespace getVariable [format ["%1", typeOf _target],["","","","","","","",""]]) select 7 == "service-repairtruck"  || ((missionNamespace getVariable [format ["CTI_%1_%2", CTI_P_SideJoined, typeOf _target],[[""]]]) select 0) select 0  == CTI_REPAIR )) then  {
 						if (_ok) then {
 				    		((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTextColor [0,0,1,1];
@@ -190,7 +201,7 @@ switch (_action) do {
 				case 14: { // CTI_Icon_fl //ok
 					_hqs=[];
 					{_hqs set [count _hqs, _x call CTI_CO_FNC_GetSideHQ];true} count [east,west];
-					if (vehicle player == player && (_target iskindof "Car" || _target iskindof "Ship" || _target iskindof "Wheeled_APC_F" || _target iskindof "Truck_F") && alive _target && !( getplayeruid player in (_target getVariable ["v_keys",[]])) && !(_target getVariable ["cti_occupant",civilian] == CTI_P_SideJoined)&& !(_target in _hqs)) then {
+					if (vehicle player == player && (_target iskindof "Car" || _target iskindof "Ship" || _target iskindof "Wheeled_APC_F" || _target iskindof "Truck_F") && alive _target && !( getplayeruid player in (_target getVariable ["v_keys",[]])) && !(_target getVariable ["cti_occupant",civilian] == CTI_P_SideJoined)&& !(_target in _hqs || _target isKindOf "UAV_01_base_F" || _target isKindOf "UAV_06_base_F")) then {
 						if ((({_x == "Toolkit"} count (backpackItems player)) +({_x == "Toolkit"} count (vestItems player))) >0) then {
 			    			((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTextColor [0,0,1,1];
 			    			((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTooltip localize "STR_Icon_FL";
@@ -201,7 +212,7 @@ switch (_action) do {
 			    		((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetPosition [_base_x+(_offset*_base_w),_base_y+_h_offset*_base_h,_base_w,_base_h];
 			    		_offset=_offset+1;
 			    	} else {
-						if (vehicle player == player && (_target iskindof "Tank" || _target iskindof "Air") && !(_target iskindof "UAV_01_base_F") && alive _target && !( getplayeruid player in (_target getVariable ["v_keys",[]])) && !(_target getVariable ["cti_occupant",civilian] == CTI_P_SideJoined)&& !(_target in _hqs)) then {
+						if (vehicle player == player && (_target iskindof "Tank" || _target iskindof "Air") && !(_target isKindOf "UAV_01_base_F" || _target isKindOf "UAV_06_base_F") && alive _target && !( getplayeruid player in (_target getVariable ["v_keys",[]])) && !(_target getVariable ["cti_occupant",civilian] == CTI_P_SideJoined)&& !(_target in _hqs)) then {
 						_rt = 0;
 						_reptruck = [_target, CTI_SPECIAL_REPAIRTRUCK, 50] call CTI_CO_FNC_GetNearestSpecialVehicles;
 						if (count _reptruck > 0) then {_rt = 1;};
@@ -287,7 +298,7 @@ switch (_action) do {
 			    };
 			    case 22: { // CTI_Icon_rephq
 			    	if ((missionNamespace getVariable "CTI_BASE_HQ_REPAIR") > 0 && (missionNamespace getVariable [format ["%1", typeOf _target],["","","","","","","",""]]) select 7 == "service-repairtruck" &&  !alive(CTI_P_SideJoined call CTI_CO_FNC_GetSideHQ) ) then  {
-			    		if ((CTI_P_SideJoined call CTI_CO_FNC_GetSideHQ) distance _target <= CTI_BASE_HQ_REPAIR_RANGE && (0 call CTI_CL_FNC_GetPlayerFunds) >= CTI_BASE_HQ_REPAIR_PRICE) then {
+			    		if ((CTI_P_SideJoined call CTI_CO_FNC_GetSideHQ) distance _target <= CTI_BASE_HQ_REPAIR_RANGE && (0 call CTI_CL_FNC_GetPlayerFunds) >= CTI_BASE_HQ_REPAIR_PRICE && !(missionNamespace getVariable [format["CTI_HQ_Repair_Lock_%1", CTI_P_SideJoined], false])) then {
 			    			((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTextColor [0,0,1,1];
 			    		}else {
 			    			((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTextColor [0.3,0.3,0.3,1];
@@ -299,7 +310,7 @@ switch (_action) do {
 			    	};
 			    };
 			    case 23: { // CTI_Icon_push //ok
-			    	if (!(_target iskindof "Man" ||_target iskindof "Static" ) &&local _target&& simulationEnabled _target && speed _target <1 && speed _target >-1 && alive _target&& locked _target < 2 && typeOf _target != "") then  {
+			    	if (!(_target iskindof "Man" || _target iskindof "Static" || _target isKindOf "UAV_01_base_F" || _target isKindOf "UAV_06_base_F") && local _target && simulationEnabled _target && speed _target <1 && speed _target >-1 && alive _target && locked _target < 2 && typeOf _target != "") then  {
 			    		((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTextColor [0,0,1,1];
 			    		((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetPosition [_base_x+(_offset*_base_w),_base_y+_h_offset*_base_h,_base_w,_base_h];
 			    		_offset=_offset+1;
@@ -308,7 +319,7 @@ switch (_action) do {
 			    	};
 			    };
 			    case 24: { // CTI_Icon_pull //OK
-			    	if (!(_target iskindof "Man" ||_target iskindof "Static" ) &&local _target&& simulationEnabled _target && speed _target <1 && speed _target >-1 && alive _target && locked _target < 2 && typeOf _target != "") then  {
+			    	if (!(_target iskindof "Man" || _target iskindof "Static" || _target isKindOf "UAV_01_base_F" || _target isKindOf "UAV_06_base_F") && local _target && simulationEnabled _target && speed _target <1 && speed _target >-1 && alive _target && locked _target < 2 && typeOf _target != "") then  {
 			    		((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTextColor [0,0,1,1];
 			    		((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetPosition [_base_x+(_offset*_base_w),_base_y+_h_offset*_base_h,_base_w,_base_h];
 			    		_offset=_offset+1;
@@ -378,7 +389,7 @@ switch (_action) do {
 			    	};
 			    };
 			    case 30: { // CTI_Icon_al
-			    	if (alive _target  && _target iskindof "Air" && (!(_target iskindOf "parachutebase"))) then {
+			    	if (alive _target  && _target iskindof "Air" && !(_target iskindOf "parachutebase" || _target isKindOf "UAV_01_base_F" || _target isKindOf "UAV_06_base_F")) then {
 			    		_structures = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideStructures;
 			    		_ammo_depots = [CTI_AMMO, _structures] call CTI_CO_FNC_GetSideStructuresByType;
 			    		_available_ammo_depots = [_target, _ammo_depots, CTI_SERVICE_AMMO_DEPOT_RANGE] call CTI_UI_Service_GetBaseDepots;
@@ -426,7 +437,11 @@ switch (_action) do {
 			    case 33: {// CTI_Icon_Exit Tutorial
 
 			    	if (_target isKindOf "Land_Wreck_Heli_Attack_01_F") then {
-			    		((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTextColor [1,1,1,1];
+			    		if ((CTI_P_SideLogic getVariable ["CTI_LOAD_COMPLETED",false])) then {
+			    				((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTextColor [1,1,1,1];
+			    			} else {
+			    				((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTextColor [0.2,0.2,0.2,1];
+			    			};
 			    		((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetPosition [_base_x+(_offset*_base_w),_base_y+_h_offset*_base_h,_base_w,_base_h];
 			    		_offset=_offset+1;
 			    	} else {
@@ -762,7 +777,9 @@ switch (_action) do {
 		['onLoad'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_Interact.sqf'
 	};
 	case "OnExitT": {
-		TUTO_COMPLETE=true;
+		if (CTI_P_SideLogic getVariable ["CTI_LOAD_COMPLETED",false]) then {
+			TUTO_COMPLETE=true;
+			} else {hintsilent "Wait for loading to complete";0 spawn {sleep 2 ; hintsilent "";};};
 		//profileNamespace setVariable ["TUTO_COMPLETE", true];
 		//saveProfileNamespace;
 	};

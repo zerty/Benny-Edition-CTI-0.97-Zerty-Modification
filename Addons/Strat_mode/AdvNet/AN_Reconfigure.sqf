@@ -55,19 +55,19 @@ if (_side in [east,west] ) then {
 	_up_r=0;
 };
 if (_vehicle isKindOf "Man") then {_max_distance=AN_Range_I+200*_up_r;} else {_max_distance=AN_Range_V+1000*_up_r;};
-if (_vehicle isKindOf "FlagPole_F") then {_max_distance=5000};
+if (_vehicle isKindOf "FlagPole_F") then {_max_distance=100000};
 
 // Try to connect to closest CC
 if (_side in [east,west]) then {
 	_structures = (_side) call CTI_CO_FNC_GetSideStructures;
 	_ccs = [CTI_CONTROLCENTER, _structures] call CTI_CO_FNC_GetSideStructuresByType;
-	{ if (_vehicle distance _x <= _max_distance) then {_candidates set [count _candidates,_x];}; true}count _ccs;
+	{ if (_vehicle distance2D _x <= _max_distance) then {_candidates set [count _candidates,_x];}; true}count _ccs;
 };
 // Try to connect to closest town
-if (count _candidates == 0 || _vehicle isKindOf "FlagPole_F"&& (_side in [east,west])) then {
+if (count _candidates == 0 ) then {
 	{
 		_town=_x;
-		if (!(isNull _town) && !(_town == _vehicle) && _vehicle distance _town <=  _max_distance && (_town getVariable "AN_iNet" == _side_id )&& ! (_x getVariable "AN_Conn" == _vehicle) && {_x == _vehicle} count (_x getVariable ["AN_Parrents",[]]) == 0 ) then
+		if (!(isNull _town) && !(_town == _vehicle) && _vehicle distance2D _town <=  _max_distance && (_town getVariable "AN_iNet" == _side_id )&& ! (_x getVariable "AN_Conn" == _vehicle) && {_x == _vehicle} count (_x getVariable ["AN_Parrents",[]]) == 0 ) then
 		{
 			_candidates set [count _candidates,_town];
 		};
@@ -78,7 +78,7 @@ if (count _candidates == 0 || _vehicle isKindOf "FlagPole_F"&& (_side in [east,w
 // try to connect to the HQ
 if ((count _candidates == 0) && _side in [east,west]) then {
 	_hq = (_side) call CTI_CO_FNC_GetSideHQ;
-	if ((_vehicle distance _hq <= _max_distance) && alive _hq) then { _candidates set [count _candidates,_hq]};
+	if ((_vehicle distance2D _hq <= _max_distance) && alive _hq) then { _candidates set [count _candidates,_hq]};
 };
 
 // try to connect to another connected vehicle
@@ -97,6 +97,7 @@ if ! (isNull _final) then {
 		_vehicle setVariable ["AN_Conn",_final,_global];
 	};
 	_vehicle setVariable ["AN_Parrents",((_vehicle getVariable "AN_Conn") getVariable ["AN_Parrents",[]]) + [_vehicle],false];
+	_vehicle setVariable ["AN_iNet",-1,true];
 	if (NET_LOG) then {diag_log format [":: NET :: Sucess in reconf %1 to %2 through %3",_vehicle,_final,((_vehicle getVariable "AN_Conn") getVariable ["AN_Parrents",[]]) ]};
 } else {
 	_vehicle setVariable ["AN_Conn",_final,_global];

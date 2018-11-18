@@ -130,7 +130,8 @@ with missionNamespace do {
 		_marker setMarkerTypeLocal format["%1installation", CTI_P_MarkerPrefix];
 		_marker setMarkerColorLocal "ColorBlack";
 		_marker setMarkerSizeLocal [0.75, 0.75];
-		_marker setMarkerTextLocal "";
+		_type = _structure getVariable ["cti_structure_type", ""];
+		_marker setMarkerTextLocal _type;
 		[_structure,_marker] spawn {
 			private ["_structure","_marker"];
 			_structure = _this	 select 0;

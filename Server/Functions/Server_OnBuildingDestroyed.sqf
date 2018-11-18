@@ -69,7 +69,7 @@ if !(_sell) then {
 	_structure setDir _direction;
 	_structure setPos _position;
 	_structure setDir _direction;
-	_structure setVectorUp [0,0,0];
+	_structure setVectorUp [0,0,1];
 
 	_structure setVariable ["cti_save", _variable,true];
 	_structure setVariable ["cti_completion", 10,true];

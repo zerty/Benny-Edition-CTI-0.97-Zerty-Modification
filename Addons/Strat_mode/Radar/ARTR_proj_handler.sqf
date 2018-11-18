@@ -11,5 +11,5 @@ _seed= diag_frameno+floor(random (10000));
 [["CLIENT",_side], "Client_ARTR_marker",[_seed,_init_pos],true] call CTI_CO_FNC_NetSend;
 while {!isnull _proj} do {
 	[["CLIENT",_side], "Client_ARTR_update",[_seed,_init_pos,getpos _proj],true] call CTI_CO_FNC_NetSend;
-	sleep 2;
+	sleep 5;
 };

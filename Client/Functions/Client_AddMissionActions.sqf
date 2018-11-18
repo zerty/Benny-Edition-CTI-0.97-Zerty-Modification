@@ -27,7 +27,7 @@ if (! isNil "HUD_PBar_stop" ) then {0 call HUD_PBar_stop};
 
 //player addaction ["<t color='#86F078'>Online Help</t>",'createdialog "CTI_RscTabletOnlineHelpMenu";', [], -99];
 //titleCut["","BLACK IN",1];
-
+player removeAllEventHandlers "InventoryOpened";
 player addEventHandler ["InventoryOpened",{
 		if !(simulationEnabled (_this select 1)) then {
 			(_this select 1) enableSimulation true;
@@ -43,9 +43,14 @@ if(((CTI_P_SideJoined) call CTI_CO_FNC_GetSideUpgrades) select CTI_UPGRADE_DATA 
 	player setVehicleReportRemoteTargets true;
 	player setVehicleReceiveRemoteTargets true;
 };};
+player removeAllEventHandlers "WeaponAssembled";
 
 if (missionNamespace getVariable "CTI_SM_RADAR" == 1) then {
-	player addEventHandler ["WeaponAssembled",{["SERVER", "Server_UAV_FUEL",(_this select 1)] call CTI_CO_FNC_NetSend;["SERVER", "Server_ARTR_handle",(_this select 1)] call CTI_CO_FNC_NetSend;["SERVER", "Request_HandleAction", ["empty", [(_this select 1)]]] call CTI_CO_FNC_NetSend;}];
+	player addEventHandler ["WeaponAssembled",{["SERVER", "Server_ARTR_handle",(_this select 1)] call CTI_CO_FNC_NetSend;["SERVER", "Request_HandleAction", ["empty", [(_this select 1)]]] call CTI_CO_FNC_NetSend;}];
+};
+
+if (missionNamespace getvariable "CTI_GAMEPLAY_DARTER_FUEL" > 0) then{
+	player addEventHandler ["WeaponAssembled",{[["CLIENT",CTI_P_SideJoined], "Client_UAVSetFuel",(_this select 1),true] call CTI_CO_FNC_NetSend;}];
 };
 
 if (CTI_SM_FAR == 1) then {
