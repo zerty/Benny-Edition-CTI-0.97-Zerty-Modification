@@ -383,8 +383,8 @@ with missionNamespace do {
  */
 
 //--- Base: Area
-//CTI_BASE_AREA_MAX = if !(MADE_FOR_STRATIS) then {4} else {3};
-CTI_BASE_AREA_RANGE = if !(MADE_FOR_STRATIS) then {250} else {100};
+//CTI_BASE_AREA_MAX = if (ISLAND != 1) then {4} else {3};
+CTI_BASE_AREA_RANGE = if (ISLAND != 1) then {250} else {100};
 
 //--- Base: Construction
 CTI_BASE_CONSTRUCTION_DECAY_TIMEOUT = 600; //--- Decay starts after x seconds unattended.
@@ -430,8 +430,8 @@ CTI_BASE_WORKERS_WANDER_RANGE_MAX = 225; //--- Worker may wander no further than
 
 //--- Base: Parameters
 with missionNamespace do {
-	if (isNil 'CTI_BASE_AREA_MAX') then {CTI_BASE_AREA_MAX=if !(MADE_FOR_STRATIS) then {4} else {3};};
-	if (isNil 'CTI_BASE_AREA_RANGE') then {CTI_BASE_AREA_MAX=if !(MADE_FOR_STRATIS) then {250} else {100};};
+	if (isNil 'CTI_BASE_AREA_MAX') then {CTI_BASE_AREA_MAX = if (ISLAND != 1) then {4} else {3};};
+	if (isNil 'CTI_BASE_AREA_RANGE') then {CTI_BASE_AREA_MAX = if (ISLAND != 1) then {250} else {100};};
 	if (isNil 'CTI_BASE_FOB_MAX') then {CTI_BASE_FOB_MAX = 4}; //--- Maximum amount of FOBs which a side may place
 	if (isNil 'CTI_BASE_HQ_REPAIR') then {CTI_BASE_HQ_REPAIR = 1}; //--- Determine whether the HQ can be repaired or not
 	if (isNil 'CTI_BASE_STARTUP_PLACEMENT') then {CTI_BASE_STARTUP_PLACEMENT = 10000}; //--- Each side need to be further than x meters
@@ -501,7 +501,7 @@ CTI_ARTILLERY_TIMEOUT = 180; //--- Delay between each fire mission
 CTI_ECONOMY_POOL_RESOURCES_PERCENTAGE_MIN = 30; //--- Keep values of 10
 
 CTI_MARKERS_OPACITY = 0.5;
-CTI_MARKERS_TOWN_AREA_RANGE = if !(MADE_FOR_STRATIS) then {250} else {150};
+CTI_MARKERS_TOWN_AREA_RANGE = if (ISLAND != 1) then {250} else {150};
 CTI_MARKERS_UNITS_DEAD_DELAY = 50;
 CTI_MARKERS_VEHICLES_DEAD_DELAY = 125;
 
@@ -552,7 +552,7 @@ CTI_HALO_COOLDOWN = 20*60;
 CTI_HALO_LASTTIME=-CTI_HALO_COOLDOWN;
 CTI_HALO_ALTITUDE = 3000;
 CTI_HALO_RATIO = 3;
-CTI_UPGRADE_RATIO=if !(MADE_FOR_STRATIS) then {7} else {2};
+CTI_UPGRADE_RATIO = if (ISLAND != 1) then {7} else {2};
 
 
 CTI_VOTE_RATIO=0.51;
