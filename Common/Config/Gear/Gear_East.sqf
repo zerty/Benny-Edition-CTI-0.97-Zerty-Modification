@@ -118,6 +118,10 @@ _i = _i		+ ["30Rnd_545x39_Mag_Tracer_Green_F"];
 _u = _u		+ [0];
 _p = _p		+ [20];
 
+_i = _i		+ ["50Rnd_570x28_SMG_03"];
+_u = _u		+ [0];
+_p = _p		+ [20];
+
 //Rifles Ammo
 _i = _i		+ ["30Rnd_556x45_Stanag_red"];
 _u = _u		+ [0];
@@ -379,6 +383,38 @@ _p = _p		+ [10];
 _i = _i		+ ["SMG_02_F"];
 _u = _u		+ [0];
 _p = _p		+ [10];
+
+_i = _i		+ ["SMG_03C_black"];
+_u = _u		+ [0];
+_p = _p		+ [15];
+
+_i = _i		+ ["SMG_03C_hex"];
+_u = _u		+ [0];
+_p = _p		+ [15];
+
+_i = _i		+ ["SMG_03_black"];
+_u = _u		+ [0];
+_p = _p		+ [15];
+
+_i = _i		+ ["SMG_03_hex"];
+_u = _u		+ [0];
+_p = _p		+ [15];
+
+_i = _i		+ ["SMG_03C_TR_black"];
+_u = _u		+ [1];
+_p = _p		+ [20];
+
+_i = _i		+ ["SMG_03C_TR_hex"];
+_u = _u		+ [1];
+_p = _p		+ [20];
+
+_i = _i		+ ["SMG_03_TR_black"];
+_u = _u		+ [1];
+_p = _p		+ [20];
+
+_i = _i		+ ["SMG_03_TR_hex"];
+_u = _u		+ [1];
+_p = _p		+ [20];
 
 _i = _i		+ ["arifle_AKS_F"];
 _u = _u		+ [0];
