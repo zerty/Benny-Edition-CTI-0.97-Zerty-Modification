@@ -104,9 +104,9 @@ if (isNull _created) then {
 		if (count _free > 0) then {_vehicle setPos (selectRandom _free);} else {_vehicle setPos (getPos _vehicle);};
 	};
 
-	if (_vehicle isKindOf "SHIP" && _side != CTI_RESISTANCE_ID) then {
+	if (_vehicle isKindOf "SHIP" && _side != CTI_RESISTANCE_ID && !(surfaceIsWater position _vehicle)) then {
 		_wp = [getPos _vehicle, 0, 75, 7, 2, 1, 0] call BIS_fnc_findSafePos;
-		if (count _wp == 0) then {_wp = getPos _vehicle};
+		if (count _wp == 0 || !(surfaceIsWater _wp)) then {_wp = getPos _vehicle;};
 		_vehicle setPos _wp;
 	};
 
