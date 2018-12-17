@@ -47,6 +47,8 @@ profileNamespace setVariable ["CTI_SAVE_TOWNS",_towns];
 	_time = round (time/60);
 	_left = ((_limit * 60) - _time);
 	_save pushBack _left;
+	//save current island [H]Tom
+	_save pushBack ISLAND;
 
 
 	profileNamespace setVariable [format ["CTI_SAVE_%1", _side],_save];
