@@ -273,11 +273,7 @@ if (CTI_IsServer) then {
 		};
 		//skipTime _it;
 		//[H]Tom - loading saved time
-		if (missionNamespace getvariable "CTI_PERSISTANT" == 1) then {
-			if (!(profileNamespace getvariable ["CTI_SAVE_ENABLED",false]) || ISLAND != (profileNamespace getVariable format ["CTI_SAVE_%1", west] select 12)) then {skipTime _it;};
-		} else {
-			skipTime _it;
-		};
+		if (!(profileNamespace getvariable ["CTI_SAVE_ENABLED",false])) then {skipTime _it;};
 
 		// dynamic wheather
 		0 spawn WEATHER_HOOK;

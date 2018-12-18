@@ -103,7 +103,7 @@ if (CTI_IsServer) then {
 	// load player saved informations
 	CTI_PLAYER_VARIABLES=[];
 	if (missionNamespace getvariable "CTI_PERSISTANT" == 1) then {
-		if (profileNamespace getvariable ["CTI_SAVE_ENABLED",false] && ISLAND == (profileNamespace getVariable format ["CTI_SAVE_%1", west] select 12)) then {
+		if (profileNamespace getvariable ["CTI_SAVE_ENABLED",false]) then {
 			_players= profileNamespace getVariable ["CTI_SAVE_PLAYERS",[]];
 			{ diag_log format [" :: SAVE ::Loading player %1 ",(_x select 1 )];missionNamespace setVariable [_x select 0,_x select 1];CTI_PLAYER_VARIABLES pushBack (_x select 0); true} count _players;
 		};
