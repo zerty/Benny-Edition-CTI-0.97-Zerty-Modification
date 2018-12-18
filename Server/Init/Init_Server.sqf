@@ -163,7 +163,7 @@ while {! (((getMarkerPos format ["HELO_START_%1", _i])select 0) == 0)} do
 	if (CTI_BASE_FOB_MAX > 0) then {_logic setVariable ["cti_fobs", [], true]};
 
 	//--- Startup vehicles
-	if (!(profileNamespace getvariable ["CTI_SAVE_ENABLED",false])) then {
+	if (missionNamespace getvariable "CTI_PERSISTANT" != 1 || (missionNamespace getvariable "CTI_PERSISTANT" == 1 && !(profileNamespace getvariable ["CTI_SAVE_ENABLED",false])) || (missionNamespace getvariable "CTI_PERSISTANT" == 1 && (profileNamespace getvariable ["CTI_SAVE_ENABLED",false]) && ISLAND != (profileNamespace getVariable format ["CTI_SAVE_%1", west] select 12))) then {
 	{
 		_model = _x select 0;
 		_equipment = _x select 1;
@@ -315,9 +315,9 @@ if (missionNamespace getvariable "CTI_PERSISTANT" == 1) then {
 		diag_log "CTI_Mission_Performance: Starting Server";
 		while {!CTI_GameOver} do {
 			_towns = count(((east) call CTI_CO_FNC_GetSideLogic) getVariable  ["CTI_ACTIVE",[]]) + count(((west) call CTI_CO_FNC_GetSideLogic) getVariable  ["CTI_ACTIVE",[]]);
-					
+
 			_arr = 	["CTI_Mission_Performance:",
-					["time", time], 
+					["time", time],
 					["fps", diag_fps],
 					["score_east", (scoreSide east)],
 					["score_west", (scoreSide west)],
@@ -332,7 +332,7 @@ if (missionNamespace getvariable "CTI_PERSISTANT" == 1) then {
 					["total_objects", count(allMissionObjects "All")],
 					["active_towns", _towns]
 					];
-					
+
 			diag_log _arr;
 			sleep 60;
 		};
