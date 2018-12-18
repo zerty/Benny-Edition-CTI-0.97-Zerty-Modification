@@ -1,6 +1,6 @@
 diag_log " :: SAVE :: Trying to load";
 _towns = profileNamespace getVariable ["CTI_SAVE_TOWNS",[]];
-if (count _towns != count CTI_TOWNS) exitWith {diag_log " :: SAVE :: Loading fail / Island changed";};
+if (count _towns != count CTI_TOWNS) exitWith {diag_log " :: SAVE :: Loading fail";};
 
 diag_log ":: SAVE :: Loading";
 { _x setVariable ["cti_town_lastSideID", (_towns select _foreachindex) select 0, true];[_x, ((_towns select _foreachindex) select 1) call CTI_CO_FNC_GetSideFromID] call CTI_SE_FNC_OnTownCaptured;true }foreach (CTI_TOWNS);
