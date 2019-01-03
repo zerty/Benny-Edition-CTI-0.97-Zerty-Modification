@@ -393,7 +393,7 @@ switch (_action) do {
 			    		_structures = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideStructures;
 			    		_ammo_depots = [CTI_AMMO, _structures] call CTI_CO_FNC_GetSideStructuresByType;
 			    		_available_ammo_depots = [_target, _ammo_depots, CTI_SERVICE_AMMO_DEPOT_RANGE] call CTI_UI_Service_GetBaseDepots;
-			    		if (!(_target getVariable ["CTI_AC_AIRCRAFT_LOADOUT_IS_BUSY",true]) && count (_available_ammo_depots) >0 && local _target ) then {
+			    		if (!(_target getVariable ["CTI_AC_AIRCRAFT_LOADOUT_IS_BUSY",true]) && count (_available_ammo_depots) >0 && local _target && locked _target < 2) then {
 			    			((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTextColor [0,0,1,1];
 			    		} else {
 			    			((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTextColor [0.3,0.3,0.3,1];
@@ -728,7 +728,7 @@ switch (_action) do {
 		_ammo_depots = [CTI_AMMO, _structures, player] call CTI_CO_FNC_GetSideStructuresByType;
 		_available_ammo_depots = [_target, _ammo_depots, CTI_SERVICE_AMMO_DEPOT_RANGE] call CTI_UI_Service_GetBaseDepots;
 		_available_ammo_trucks = [_target, CTI_SPECIAL_AMMOTRUCK, CTI_SERVICE_AMMO_TRUCK_RANGE] call CTI_CO_FNC_GetNearestSpecialVehicles;
-		if (!(_target getVariable ["CTI_AC_AIRCRAFT_LOADOUT_IS_BUSY",true]) && count (_available_ammo_depots + _available_ammo_trucks) >0 && local _target ) then {
+		if (!(_target getVariable ["CTI_AC_AIRCRAFT_LOADOUT_IS_BUSY",true]) && count (_available_ammo_depots + _available_ammo_trucks) >0 && local _target && locked _target < 2) then {
 			uiNamespace setVariable ['HAL_TARG',_target];
 			closedialog 0;
 			createDialog "CTI_RscTabletAircraftLoadoutMenu";
