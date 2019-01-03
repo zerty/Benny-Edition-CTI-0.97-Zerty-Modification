@@ -34,7 +34,7 @@ while { true } do {
 	//if ((CTI_Base_GearInRange || CTI_Base_GearInRange_Mobile || CTI_Base_GearInRange_FOB) && !CTI_P_PreBuilding) then {((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210012) ctrlEnable true;} else {((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210012) ctrlEnable false;};
 	if (!CTI_P_PreBuilding &&Client_AN_Connected) then {((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210012) ctrlEnable true;} else {((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210012) ctrlEnable false;};
 	if (!CTI_P_PreBuilding &&Client_AN_Connected && (CTI_Base_BarracksInRange || CTI_Base_LightInRange || CTI_Base_HeavyInRange || CTI_Base_AirInRange || CTI_Base_AmmoInRange || CTI_Base_RepairInRange || CTI_Base_NavalInRange)) then {((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210013) ctrlEnable true;} else {((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210013) ctrlEnable false;};
-	if (vehicle player == player && !CTI_P_PreBuilding && CTI_Base_HaloInRange && [CTI_P_SideJoined, CTI_UPGRADE_HALO, 1] call CTI_CO_FNC_HasUpgrade && ( (missionNamespace getVariable 'CTI_SM_HALO')==1)) then {((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210014) ctrlEnable true;} else {((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210014) ctrlEnable false;};
+	if (vehicle player == player && !CTI_P_PreBuilding && CTI_Base_HaloInRange && [CTI_P_SideJoined, CTI_UPGRADE_HALO, 1] call CTI_CO_FNC_HasUpgrade && ( (missionNamespace getVariable 'CTI_SM_HALO')==1) && !(player getvariable ["REV_UNC",false])) then {((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210014) ctrlEnable true;} else {((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210014) ctrlEnable false;};
 	if (vehicle player == player && (CTI_P_SideLogic getVariable "cti_commander") == group player && !CTI_P_PreBuilding && CTI_Base_HQInRange) then {((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210015) ctrlEnable true;} else {((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210015) ctrlEnable false;};
 
 
@@ -45,7 +45,7 @@ while { true } do {
 	};
 
 	//if ((missionNamespace getVariable"CTI_SM_STRATEGIC") >0 ) then {
-	//!CTI_P_PreBuilding && ! CTI_P_Repairing 
+	//!CTI_P_PreBuilding && ! CTI_P_Repairing
 		if !(true && CTI_CL_FNC_IsPlayerCommander) then {((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210010) ctrlEnable false;};
 		if !(true && CTI_CL_FNC_IsPlayerCommander && !(isNull ((CTI_P_SideJoined call CTI_CO_FNC_GetSideLogic) getVariable "CTI_PRIORITY") ) && time > (SM_Last_dis +SM_TO_dis) ) then {((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210011) ctrlEnable false;};
 	/*} else {
