@@ -245,16 +245,16 @@ CTI_UI_Respawn_OnRespawnReady = {
 	CTI_P_LastRespawnTime=time;
 	if !(_respawn_ai) then { //--- Stock respawn
 
-		if ((_where isKindOf "Car" || _where isKindOf "Wheeled_APC_F" || _where isKindOf "Land_Pod_Heli_Transport_04_medevac_F") && (_where emptyPositions "cargo")>0 && (locked _where) < 2 &&  abs (speed _where) < 5) then {
+		if ((_where isKindOf "Car" || _where isKindOf "Wheeled_APC_F" || _where isKindOf "Land_Pod_Heli_Transport_04_medevac_F") && (_where emptyPositions "cargo")>0 && (locked _where) < 2 &&  abs (speed _where) > 5) then {
 				//Respawn in vehicles cargo
 				player moveInCargo _where;
 			} else {
 				_spawn_at = [_where, 8, 30] call CTI_CO_FNC_GetRandomPosition;
 
 				//try to find and position on building position
-				_nearestbuilding= nearestbuilding _spawn_at;
-				if (alive _nearestbuilding && ((_spawn_at distance2d _nearestbuilding) < 25) && (!(typeOF _nearestbuilding in CTI_BUILDINGPOS_MISSING))) then {
-					_buildingpos = _nearestbuilding buildingPos -1;
+				_nearestbuilding = nearestbuilding _spawn_at;
+				_buildingpos = _nearestbuilding buildingPos -1;
+				if (count _buildingpos > 0 && alive _nearestbuilding && ((_spawn_at distance2d _nearestbuilding) < 25) && (!(typeOF _nearestbuilding in CTI_BUILDINGPOS_MISSING))) then {
 					if (count _buildingpos > 10) then {
 						_buildingpos deleteRange [ceil(count _buildingpos / 3), count _buildingpos];
 					};
