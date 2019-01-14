@@ -105,6 +105,9 @@ if (isMultiplayer) then {
 };
 
 
+waitUntil {CTI_P_SideLogic getVariable ["CTI_LOAD_COMPLETED",false]};
+
+
 
 //--- Initialize the client PV
 call compile preprocessFile "Client\Init\Init_PublicVariables.sqf";

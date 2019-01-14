@@ -84,6 +84,10 @@ with missionNamespace do {
 	};
 };
 
+
+
+waitUntil {CTI_EAST getVariable ["CTI_LOAD_COMPLETED",false]};
+
 if (CTI_IsServer) then {
 
 		//constants for the server
