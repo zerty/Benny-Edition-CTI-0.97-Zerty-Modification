@@ -328,8 +328,11 @@ if (CTI_IsServer) then {
 		0 spawn {
 			_day_ratio=14/CTI_WEATHER_FAST;
 			_nigth_ratio=10/CTI_WEATHER_FAST_NIGTH;
+			_sunrise = 5;
+			_sunset = 19;
+			if (ISLAND == 3) then {_sunrise = 7; _sunset = 18;};
 			while {!CTI_Gameover} do {
-				if (daytime > 5 && daytime <19 ) then {
+				if (daytime > _sunrise && daytime < _sunset) then {
 					if (timeMultiplier != _day_ratio) then  {setTimeMultiplier _day_ratio;};
 				} else {
 					if (timeMultiplier !=  _nigth_ratio) then {setTimeMultiplier _nigth_ratio;};
