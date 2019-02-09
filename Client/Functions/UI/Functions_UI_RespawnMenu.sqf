@@ -92,6 +92,7 @@ CTI_UI_Respawn_GetRespawnLabel = {
 			_var = missionNamespace getVariable format ["CTI_%1_%2", CTI_P_SideJoined, _location getVariable "cti_structure_type"];
 			_value = (_var select 0) select 1;
 		};
+		case (typeOf _location == "B_Slingload_01_Medevac_F"): { _value = "Huron Medical Container" };
 		case (_location == (leader group player)) : {_value=format ["[LEADER] %1",name _location]};
 		case (_location isKindOf "AllVehicles"&& !(_location == (leader group player))): { _value = getText(configFile >> "CfgVehicles" >> typeOf _location >> "displayName") };
 	};
