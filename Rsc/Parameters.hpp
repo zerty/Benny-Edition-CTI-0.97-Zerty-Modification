@@ -153,7 +153,7 @@ class Params {
 		title = $STR_CTI_VEHICLES_EMPTY_TIMEOUT;
 		values[] = {60,120,180,240,300,600,1200,1800,2400,3000,3600};
 		texts[] = {"1 Minute","2 Minutes","3 Minutes","4 Minutes","5 Minutes","10 Minutes","20 Minutes","30 Minutes","40 Minutes","50 Minutes","1 Hour"};
-		default = 3600;
+		default = 2400;
 	};
 	class CTI_GRAPHICS_TG_MAX {
 		title = $STR_CTI_GRAPHICS_TG_MAX;
