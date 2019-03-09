@@ -4,7 +4,7 @@
 #define MIN_FPS 25
 
 waitUntil {CTI_Init_Server && CTI_Init_Strat&& CTI_InitTowns};
-sleep 30;
+sleep 240;
 
 if ((missionNamespace getVariable ["CTI_SM_PATROLS",0])==0) exitWith {false};
 while { !CTI_GameOver} do
