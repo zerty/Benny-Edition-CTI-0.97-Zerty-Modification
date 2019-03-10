@@ -29,4 +29,4 @@ _side = _this;
 
 _logic = (_side) call CTI_CO_FNC_GetSideLogic;
 _funds = _logic getVariable "cti_commander_funds";
-if (isNil '_funds') then {0} else {_funds}
+if (isNil '_funds') then {0} else {_funds};

@@ -7,6 +7,8 @@ NET_LOG=false;
 
 CTI_P_SideJoined = side player;
 
+CTI_P_EnemySide = If (side player == WEST) then {EAST} else {WEST};
+
 CTI_P_SideID = CTI_P_SideJoined call CTI_CO_FNC_GetSideID;
 CTI_P_SideLogic = CTI_P_SideJoined call CTI_CO_FNC_GetSideLogic;
 
@@ -79,7 +81,7 @@ CTI_P_RapidDefence=-1;
 CTI_P_Coloration_Money = "#BAFF81";
 CTI_P_Locks=[];
 CTI_P_Interaction=false;
-CTI_DIALOGS=["cti_dialog_ui_interractions","cti_dialog_ui_tabletmain","cti_dialog_ui_buildmenu","cti_dialog_ui_videosettingsmenu","cti_dialog_ui_transferresourcesmenu","cti_dialog_ui_servicemenu","cti_dialog_ui_purchasemenu","cti_dialog_ui_upgrademenu","cti_dialog_ui_workersmenu","cti_dialog_ui_defensemenu","cti_dialog_ui_requestmenu","cti_dialog_ui_onlinehelpmenu","cti_dialog_ui_gear","cti_dialog_ui_satcam","cti_dialog_ui_unitscam","cti_dialog_ui_teamsmenu","cti_dialog_ui_mapcommandmenu","cti_dialog_ui_aimicromenu","cti_dialog_ui_artillerymenu"];
+CTI_DIALOGS=["cti_dialog_ui_interractions","cti_dialog_ui_tabletmain","cti_dialog_ui_buildmenu","cti_dialog_ui_videosettingsmenu","cti_dialog_ui_transferresourcesmenu","cti_dialog_ui_servicemenu","cti_dialog_ui_purchasemenu","cti_dialog_ui_upgrademenu","cti_dialog_ui_workersmenu","cti_dialog_ui_defensemenu","cti_dialog_ui_requestmenu","cti_dialog_ui_onlinehelpmenu","cti_dialog_ui_gear","cti_dialog_ui_satcam","cti_dialog_ui_unitscam","cti_dialog_ui_teamsmenu","cti_dialog_ui_mapcommandmenu","cti_dialog_ui_aimicromenu","cti_dialog_ui_artillerymenu","cti_dialog_ui_aircraftloadoutmenu"];
 CTI_TABLET_DIALOG="cti_dialog_ui_tabletmain";
 HUD_NOTIFICATIONS=[];
 
@@ -101,6 +103,9 @@ if (isMultiplayer) then {
 
 
 };
+
+
+waitUntil {CTI_P_SideLogic getVariable ["CTI_LOAD_COMPLETED",false]};
 
 
 
@@ -234,8 +239,8 @@ if !(isNil {profileNamespace getVariable format["CTI_PERSISTENT_GEAR_TEMPLATE_%1
 TABLET_KEY_DOWN={
 	_return=false;
 	disableSerialization;
-
-	if (! (_this select 2) && ! (_this select 3) && ! (_this select 4) &&(_this select 1) in ([(profilenamespace getvariable ['CTI_TABLET_KEY',41])]+(actionKeys "User5"))  && !visibleMap && !CTI_P_PreBuilding &&!CTI_P_Repairing && isNull (uiNamespace getVariable ['cti_dialog_ui_interractions',objNull]) && isNull (uiNamespace getVariable ['cti_dialog_ui_defensemenu',objnull]) && isNull (uiNamespace getVariable ['cti_dialog_ui_purchasemenu',objnull]) && isnull (uiNamespace getVariable ["cti_dialog_ui_tabletmain",objnull]) && (isnull (findDisplay 60490))) then {
+	//removed && !CTI_P_Repairing
+	if (! (_this select 2) && ! (_this select 3) && ! (_this select 4) &&(_this select 1) in ([(profilenamespace getvariable ['CTI_TABLET_KEY',41])]+(actionKeys "User5"))  && !visibleMap && !CTI_P_PreBuilding  && isNull (uiNamespace getVariable ['cti_dialog_ui_interractions',objNull]) && isNull (uiNamespace getVariable ['cti_dialog_ui_defensemenu',objnull]) && isNull (uiNamespace getVariable ['cti_dialog_ui_purchasemenu',objnull]) && isnull (uiNamespace getVariable ["cti_dialog_ui_tabletmain",objnull]) && (isnull (findDisplay 60490))) then {
 			uiNamespace setVariable ["INT_TARG", call TABLET_GET_TARGET];
 			createdialog "CTI_RscInteraction";
 			_return=true;
@@ -245,7 +250,7 @@ TABLET_KEY_DOWN={
 TABLET_KEY_UP={
 	_return=false;
 	disableSerialization;
-	if (! (_this select 2) && ! (_this select 3) && ! (_this select 4) && (_this select 1) in [(profilenamespace getvariable ['CTI_TABLET_KEY',41])]  && !isNil {uiNamespace getVariable 'cti_dialog_ui_interractions'}&& isNil {uiNamespace getVariable 'cti_dialog_ui_purchasemenu'} && isNil {uiNamespace getVariable 'cti_dialog_ui_buildmenu'} && isNil {uiNamespace getVariable 'cti_dialog_ui_defensemenu'}&& isNil {uiNamespace getVariable 'cti_dialog_ui_gear'} && isnil {uiNamespace getVariable "cti_dialog_ui_tabletmain"} && (isnull (findDisplay 60490)) ) then {
+	if (! (_this select 2) && ! (_this select 3) && ! (_this select 4) && (_this select 1) in [(profilenamespace getvariable ['CTI_TABLET_KEY',41])]  && !isNil {uiNamespace getVariable 'cti_dialog_ui_interractions'}&& isNil {uiNamespace getVariable 'cti_dialog_ui_purchasemenu'} && isNil {uiNamespace getVariable 'cti_dialog_ui_buildmenu'} && isNil {uiNamespace getVariable 'cti_dialog_ui_defensemenu'}&& isNil {uiNamespace getVariable 'cti_dialog_ui_gear'}&& isNil {uiNamespace getVariable 'cti_dialog_ui_aircraftloadoutmenu'} && isnil {uiNamespace getVariable "cti_dialog_ui_tabletmain"} && (isnull (findDisplay 60490)) ) then {
 		closeDialog 0;
 	};
 	_return
@@ -254,10 +259,11 @@ TABLET_KEY_UP={
 TABLET_GET_TARGET={
 	private ["_target"];
 	_target=objnull;
+	if(CTI_P_Repairing) exitWith {player};
 	if (cursortarget iskindof "CAManBase" && ([player,cursortarget] call BIS_fnc_distance2D) <3 ) exitWith {cursortarget};
 	if (cursortarget == (CTI_P_SideLogic getvariable "cti_hq") && ([player,cursortarget] call BIS_fnc_distance2D) <10 && (isnull attachedTo (CTI_P_SideLogic getvariable "cti_hq") ) ) exitWith {cursortarget};
 	if (vehicle player != player) exitWith {vehicle player};
-	_target = lineintersectsobjs [(eyepos player),(atltoasl screentoworld [0.5,0.5]),objnull,objnull,false,16];
+	_target = lineintersectsobjs [(eyepos player),(atltoasl screentoworld [0.5,0.5]),objnull,objnull,false,2];
 	if (count _target == 0 && !(cursortarget iskindof "CAManBase") && ( [player,cursortarget] call BIS_fnc_distance2D) <8) exitWith {cursortarget};
 	if ((count _target) == 0) exitWith {player};
 	if (( [player,(_target select 0)] call BIS_fnc_distance2D) > 8) exitWith {player};

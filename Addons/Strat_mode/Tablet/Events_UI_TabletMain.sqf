@@ -45,6 +45,23 @@ switch (_action) do {
 			((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210019) ctrlSetPosition [SafeZoneX + (SafeZoneW - (3/4*SafeZoneH))/2+ (3/4*SafeZoneH) *0.191+(3/4*SafeZoneH)*0.615*0.76,SafeZoneY+safezoneH*(0.28+0.035*3+5),(3/4*SafeZoneH)*0.615*0.22,SafeZoneH * 0.03]; ((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210019) ctrlCommit 0;
 		};
 		if ((player getVariable ['CTI_Net',-1])!= -1) Then {((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210016) ctrlsettext "Net-Discon.";} else {((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210016) ctrlsettext "Net-Recon.";} ;
+		_column=SafeZoneX + (SafeZoneW - (3/4*SafeZoneH))/2+ (3/4*SafeZoneH) *0.191+(3/4*SafeZoneH)*0.615*0.54;
+		((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210003) ctrlSetPosition [_column,(ctrlPosition ((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210003)) select 1];
+		((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210003) ctrlCommit 0;
+		((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210004) ctrlSetPosition [_column, (ctrlPosition ((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210004)) select 1];
+		((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210004) ctrlCommit 0;
+		((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210005) ctrlSetPosition [_column, (ctrlPosition ((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210005)) select 1];
+		((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210005) ctrlCommit 0;
+		((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210006) ctrlSetPosition [_column, (ctrlPosition ((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210006)) select 1];
+		((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210006) ctrlCommit 0;
+		((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210008) ctrlSetPosition [_column,(ctrlPosition ((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210008)) select 1];
+		((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210008) ctrlCommit 0;
+		((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210009) ctrlSetPosition [_column, (ctrlPosition ((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210009)) select 1];
+		((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210009) ctrlCommit 0;
+		((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210010) ctrlSetPosition [_column,(ctrlPosition ((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210010)) select 1];
+		((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210010) ctrlCommit 0;
+		((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210011) ctrlSetPosition [_column,(ctrlPosition ((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210011)) select 1];
+		((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210011) ctrlCommit 0;
 		execVM "Addons\Strat_mode\Tablet\GUI_TabletMain.sqf";
 		CTI_P_LastRootMenu = "Options";
 	};
@@ -69,10 +86,12 @@ switch (_action) do {
 			};
 		} else {
 			{
-				if !(simulationEnabled _x) then {_x enableSimulation true};
-				if (speed _x < 5 && getPos _x select 2 < 5) then {
-					_x setPos [getPos _x select 0, getPos _x select 1, 1];
-					_x setVelocity [0,0,1];
+				if !((_x == (( CTI_P_SideJoined) call CTI_CO_FNC_GetSideHQ))&& !((group player) == ((CTI_P_SideJoined) call CTI_CO_FNC_GetSideCommander)) ) then {
+					if !(simulationEnabled _x) then {_x enableSimulation true};
+					if (speed _x < 5 && getPos _x select 2 < 5) then {
+						_x setPos [getPos _x select 0, getPos _x select 1, 1];
+						_x setVelocity [0,0,1];
+					};
 				};
 			} forEach (player nearEntities[["Car","Motorcycle","Ship","Tank"],10]);
 		};
@@ -149,8 +168,12 @@ switch (_action) do {
 		createDialog "CTI_RscTabletPurchaseMenu";
 	};
 	case "onHaloPressed": {
+		if (time - CTI_HALO_LASTTIME >= CTI_HALO_COOLDOWN) then {
 		closeDialog 0;
 		0 execvm "Addons\ATM_airdrop\atm_airdrop.sqf"
+		} else {
+		hintsilent parseText format ["<t size='1.3' color='#2394ef'>Information</t><br /><br />Next HALO Jump in:<br /><t color='#ccffaf'>%1 min.</t>", floor((CTI_HALO_COOLDOWN - (time - CTI_HALO_LASTTIME))/60)];
+		};
 	};
 	case "onPriorityPressed": {
 		closeDialog 0;
@@ -168,6 +191,8 @@ switch (_action) do {
 			((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210016) ctrlSetBackgroundColor [0.7, 0, 0, 1];
 			((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210016) ctrlSetForegroundColor [0.7, 0, 0, 1];
 		} else {
+			player setVariable ["AN_iNet",-1,true];
+			player setVariable ["AN_Parrents",[],false];
 			player setVariable ['CTI_Net',CTI_P_SideID,true];
 			((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210016) ctrlsettext "Net-Disco.";
 		};
@@ -177,7 +202,11 @@ switch (_action) do {
 		if ( 0 call CTI_CL_FNC_IsPlayerCommander )then {
 			["SERVER", "Server_Com_Leave", CTI_P_SideJoined] call CTI_CO_FNC_NetSend;
 		} else {
+			if (([player,getMarkerPos "CTI_TUTORIAL"] call  BIS_fnc_distance2D) > 42.5) then {
 			["SERVER", "Server_Vote_Eject", [player,CTI_P_SideJoined]] call CTI_CO_FNC_NetSend;
+			} else {
+			hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br />No vote in Tutorial area!";
+			};
 		};
 	};
 

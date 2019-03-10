@@ -27,5 +27,5 @@ switch (_this) do {
 	case CTI_WEST_ID: {west};
 	case CTI_EAST_ID: {east};
 	case CTI_RESISTANCE_ID: {resistance};
-	default {civilian}
-}
+	default {civilian};
+};

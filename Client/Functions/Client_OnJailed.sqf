@@ -47,7 +47,10 @@ for '_i' from 0 to 25 do { player removeAction _i };
 removeAllWeapons player;
 removeAllItems player;
 removeAllAssignedItems player;
-removeAllContainers player;
+removeGoggles player;
+removeHeadgear player;
+removeBackpack player;
+removeVest player;
 
 while {true} do {
 	if (time > _over) exitWith {};

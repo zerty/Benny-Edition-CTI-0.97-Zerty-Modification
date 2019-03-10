@@ -27,5 +27,5 @@ switch (_this) do {
 	case west: {CTI_WEST_COLOR};
 	case east: {CTI_EAST_COLOR};
 	case resistance: {CTI_RESISTANCE_COLOR};
-	default {"ColorGreen"}
-}
+	default {"ColorGreen"};
+};

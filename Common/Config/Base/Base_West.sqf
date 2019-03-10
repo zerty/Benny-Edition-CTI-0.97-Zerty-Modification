@@ -30,16 +30,52 @@ missionNamespace setVariable [format["CTI_%1_Commander_Path", _side], [
 	["build-structures", CTI_HEAVY, {true}],
 	["build-structures", CTI_REPAIR, {true}],
 	["build-structures", CTI_AMMO, {true}],
+	["upgrade", [CTI_UPGRADE_NETR, 1], {true}],
 	["upgrade", [CTI_UPGRADE_HEAVY, 1], {true}],
+	["upgrade", [CTI_UPGRADE_TOWNS, 2], {true}],
+	["upgrade", [CTI_UPGRADE_NETR, 2], {true}],
+	["upgrade", [CTI_UPGRADE_BARRACKS, 2], {true}],
 	["upgrade", [CTI_UPGRADE_GEAR, 3], {true}],
 	["build-structures", CTI_AIR, {true}],
-	["upgrade", [CTI_UPGRADE_TOWNS, 2], {true}],
+	["upgrade", [CTI_UPGRADE_HALO, 1], {true}],
+	["build-structures", CTI_RADAR, {true}],
+	["build-structures", CTI_NAVAL, {true}],
+
+	["upgrade", [CTI_UPGRADE_REST, 1], {true}],
+	["upgrade", [CTI_UPGRADE_REST, 2], {true}],
+	["upgrade", [CTI_UPGRADE_REST, 3], {true}],
+	["upgrade", [CTI_UPGRADE_TOWNS, 3], {true}],
+	["upgrade", [CTI_UPGRADE_HUD, 1], {true}],
+	["upgrade", [CTI_UPGRADE_AAF, 1], {true}],
+	["upgrade", [CTI_UPGRADE_AAF, 2], {true}],
+	["upgrade", [CTI_UPGRADE_TRA, 1], {true}],
+	["upgrade", [CTI_UPGRADE_TRA, 2], {true}],
+	["upgrade", [CTI_UPGRADE_TRT, 1], {true}],
+	["upgrade", [CTI_UPGRADE_TRT, 2], {true}],
+	["upgrade", [CTI_UPGRADE_NETR, 3], {true}],
+	["upgrade", [CTI_UPGRADE_ARTR, 1], {true}],
+	["upgrade", [CTI_UPGRADE_AIRR, 1], {true}],
+	["upgrade", [CTI_UPGRADE_DATA, 1], {true}],
+	["upgrade", [CTI_UPGRADE_EXPI, 1], {true}],
+	["upgrade", [CTI_UPGRADE_EXPI, 2], {true}],
+
 	["upgrade", [CTI_UPGRADE_AIR, 1], {true}],
 	["upgrade", [CTI_UPGRADE_AIR_CM, 1], {true}],
 	["upgrade", [CTI_UPGRADE_AIR_AT, 1], {true}],
 	["upgrade", [CTI_UPGRADE_AIR_FFAR, 1], {true}],
 	["upgrade", [CTI_UPGRADE_AIR_AA, 1], {true}],
-	["upgrade", [CTI_UPGRADE_TOWNS, 3], {true}],
+
+	["upgrade", [CTI_UPGRADE_BARRACKS, 3], {true}],
+	["upgrade", [CTI_UPGRADE_AAF, 3], {true}],
+	["upgrade", [CTI_UPGRADE_REST, 4], {true}],
+	["upgrade", [CTI_UPGRADE_REST, 5], {true}],
+	["upgrade", [CTI_UPGRADE_EXPI, 3], {true}],
+
+	["upgrade", [CTI_UPGRADE_AAF, 4], {true}],
+	["upgrade", [CTI_UPGRADE_AAF, 5], {true}],
+	["upgrade", [CTI_UPGRADE_AAF, 6], {true}],
+
+	["upgrade", [CTI_UPGRADE_HEAVY, 2], {true}],
 	["upgrade", [CTI_UPGRADE_SATELLITE, 1], {true}]
 ]];
 
@@ -130,10 +166,10 @@ _placements = _placements 	+ [[180, 15]];
 _specials = _specials		+ [[["DMG_Reduce", 2]]];
 
 _headers = _headers 		+ [[CTI_LIGHT, localize "STR_Light_Vehicle_Factory", localize "STR_Light_Vehicle_Factory_1"]];
-_classes = _classes 		+ [["Land_i_Garage_V1_F", "Land_Garage_V1_ruins_F"]];
+_classes = _classes 		+ [["Land_i_Garage_V1_F", "Land_Garage_V1_ruins_F", ["Land_i_Garage_V1_dam_F"]]];
 _prices = _prices 			+ [2000];
 _times = _times 			+ [80];
-_placements = _placements 	+ [[90, 20]];
+_placements = _placements 	+ [[90, 25]];
 _specials = _specials		+ [[["DMG_Alternative"],["DMG_Reduce", 0.7]]];
 
 _headers = _headers 		+ [[CTI_CONTROLCENTER, localize "STR_Control_Center", localize "STR_Control_Center_1"]];
@@ -141,13 +177,13 @@ _classes = _classes 		+ [["Land_i_House_Small_03_V1_F", "Land_House_Small_03_V1_
 _prices = _prices 			+ [3000];
 _times = _times 			+ [90];
 _placements = _placements 	+ [[180, 20]];
-_specials = _specials		+ [[["Connected"],["DMG_Alternative"],["DMG_Reduce", 0.4]]];
+_specials = _specials		+ [[["Connected"],["DMG_Alternative"],["DMG_Reduce", 0.2]]];
 
 _headers = _headers 		+ [[CTI_HEAVY, localize "STR_Heavy_Vehicle_Factory", localize "STR_Heavy_Vehicle_Factory_1"]];
 _classes = _classes 		+ [["Land_Cargo_HQ_V1_F", "Land_Cargo_HQ_V1_ruins_F"]];
 _prices = _prices 			+ [3500];
 _times = _times 			+ [120];
-_placements = _placements 	+ [[90, 20]];
+_placements = _placements 	+ [[90, 25]];
 _specials = _specials		+ [[]];
 
 _headers = _headers 		+ [[CTI_AIR, localize "STR_Aircraft_Factory", localize "STR_Aircraft_Factory_1"]];
@@ -161,21 +197,21 @@ _headers = _headers 		+ [[CTI_AMMO, localize "STR_Ammo_Depot", localize "STR_Amm
 _classes = _classes 		+ [["Land_TBox_F", "Land_TBox_ruins_F"]];
 _prices = _prices 			+ [500];
 _times = _times 			+ [40];
-_placements = _placements 	+ [[0, 20]];
+_placements = _placements 	+ [[0, 25]];
 _specials = _specials		+ [[]];
 
 _headers = _headers 		+ [[CTI_REPAIR, localize "STR_Repair_Depot", localize "STR_Repair_Depot_1"]];
 _classes = _classes 		+ [["Land_FuelStation_Build_F", "Land_FuelStation_Build_ruins_F"]];
 _prices = _prices 			+ [600];
 _times = _times 			+ [35];
-_placements = _placements 	+ [[180, 20]];
+_placements = _placements 	+ [[180, 25]];
 _specials = _specials		+ [[]];
 
 _headers = _headers 		+ [[CTI_NAVAL, localize "STR_Naval_Yard", localize "STR_Naval_Yard_1"]];
 _classes = _classes 		+ [["Land_Lighthouse_small_F", "Land_Lighthouse_small_ruins_F"]];
 _prices = _prices 			+ [1500];
 _times = _times 			+ [35];
-_placements = _placements 	+ [[180, 25]];
+_placements = _placements 	+ [[180, 30]];
 _specials = _specials		+ [[]];
 
 _headers = _headers 		+[[CTI_RADAR, localize "STR_Air_Radar", localize "STR_Air_Radar_1"]];
@@ -184,6 +220,7 @@ _prices =  _prices 			+[8000];
 _times =  _times 			+[120];
 _placements =_placements 	+  [[180, 30]];
 _specials = _specials		+ [[["DMG_Reduce", 0.2]]];
+
 [_side, _headers, _classes, _prices, _times, _placements, _specials] call compile preprocessFileLineNumbers "Common\Config\Base\Set_Structures.sqf";
 
 //--- Defenses
@@ -193,6 +230,37 @@ _prices = [];
 _placements = [];
 _categories = [];
 
+
+_headers = _headers 		+ [["Praetorian 1C - Only on BASE Areas", [["DMG_Reduce", 10]]]];
+_classes = _classes 		+ ["B_AAA_System_01_F"];
+_prices = _prices 			+ [40000];
+_placements = _placements 	+ [[180, 15]];
+_categories = _categories 	+ ["Defense"];
+
+_headers = _headers 		+ [["Mk49 Spartan - Only on BASE Areas", [["DMG_Reduce", 10]]]];
+_classes = _classes 		+ ["B_SAM_System_01_F"];
+_prices = _prices 			+ [60000];
+_placements = _placements 	+ [[180, 15]];
+_categories = _categories 	+ ["Defense"];
+
+_headers = _headers 		+ [["Mk21 Centurion - Only on BASE Areas", [["DMG_Reduce", 10]]]];
+_classes = _classes 		+ ["B_SAM_System_02_F"];
+_prices = _prices 			+ [80000];
+_placements = _placements 	+ [[180, 15]];
+_categories = _categories 	+ ["Defense"];
+
+_headers = _headers 		+ ["AN/MPQ-105 Radar - Only on BASE Areas"];
+_classes = _classes 		+ ["B_Radar_System_01_F"];
+_prices = _prices 			+ [12000];
+_placements = _placements 	+ [[180, 15]];
+_categories = _categories 	+ ["Defense"];
+
+_headers = _headers 		+ ["MIM-145 Defender - Only on BASE Areas"];
+_classes = _classes 		+ ["B_SAM_System_03_F"];
+_prices = _prices 			+ [40000];
+_placements = _placements 	+ [[180, 15]];
+_categories = _categories 	+ ["Defense"];
+
 _headers = _headers 		+ ["Lamp"];
 _classes = _classes 		+ ["Land_LampHalogen_F"];
 _prices = _prices 			+ [5];
@@ -201,7 +269,7 @@ _categories = _categories 	+ ["Fortification"];
 
 _headers = _headers 		+ ["Empty Crate"];
 _classes = _classes 		+ ["B_supplyCrate_F"];
-_prices = _prices 			+ [5];
+_prices = _prices 			+ [7];
 _placements = _placements 	+ [[0, 2]];
 _categories = _categories 	+ ["Fortification"];
 
@@ -224,7 +292,7 @@ _prices = _prices 			+ [6000];
 _placements = _placements 	+ [[0, 50]];
 _categories = _categories 	+ ["Fortification"];
 
-_headers = _headers 		+ ["Tower"];
+_headers = _headers 		+ [["Tower",[["RuinOnDestroyed", "Land_Cargo_Patrol_V1_ruins_F"]]]];
 _classes = _classes 		+ ["Land_Cargo_Patrol_V1_F"];
 _prices = _prices 			+ [50];
 _placements = _placements 	+ [[0, 15]];
@@ -296,6 +364,12 @@ _classes = _classes 		+ ["Land_HBarrierTower_F"];
 _prices = _prices 			+ [40];
 _placements = _placements 	+ [[0, 7]];
 
+_headers = _headers 		+ ["Concrete Barrier (Roadblock)"];
+_classes = _classes 		+ ["Land_CncBarrier_stripes_F"];
+_prices = _prices 			+ [15];
+_placements = _placements 	+ [[0, 7]];
+_categories = _categories 	+ ["Structures"];
+
 if ((missionNamespace getVariable "CTI_RESPAWN_FOB_RANGE")> 0) then {
 	_headers = _headers 		+ [["FOB",[["RuinOnDestroyed", "Land_Medevac_house_V1_ruins_F"], ["FOB"],["Condition", {_cpt = if (isNil {CTI_P_SideLogic getVariable "cti_fobs"}) then {1000} else {count (CTI_P_SideLogic getVariable "cti_fobs")}; (_cpt < CTI_BASE_FOB_MAX) && (call CTI_CL_FNC_IsPlayerCommander || (!(call CTI_CL_FNC_IsPlayerCommander) && CTI_P_TeamsRequests_FOB > 0)|| ( missionNamespace getVariable 'CTI_BASE_FOB_PERMISSION' ) == 0 )}]]]];
 	_classes = _classes 		+ ["Land_Medevac_house_V1_F"];
@@ -326,7 +400,7 @@ _classes = _classes 		+ ["B_static_AA_F"];
 _prices = _prices 			+ [800];
 _placements = _placements 	+ [[180, 5]];
 _categories = _categories 	+ ["Defense"];
-if !(MADE_FOR_STRATIS) then {
+if (ISLAND != 1) then {
 _headers = _headers 		+ ["Mortar"];
 _classes = _classes 		+ ["B_Mortar_01_F"];
 _prices = _prices 			+ [3000];
@@ -352,6 +426,23 @@ _prices = _prices 			+ [50];
 _placements = _placements 	+ [[0, 15]];
 _categories = _categories 	+ ["Fortification"];
 
+_headers = _headers 		+ ["Dragon Teeth"];
+_classes = _classes 		+ ["Land_DragonsTeeth_01_1x1_new_F"];
+_prices = _prices 			+ [40];
+_placements = _placements 	+ [[0, 7]];
+_categories = _categories 	+ ["Fortification"];
+
+_headers = _headers 		+ ["Steel Hedgehog"];
+_classes = _classes 		+ ["Land_CzechHedgehog_01_new_F"];
+_prices = _prices 			+ [40];
+_placements = _placements 	+ [[0, 7]];
+_categories = _categories 	+ ["Fortification"];
+
+_headers = _headers 		+ ["Concrete Hedgehog"];
+_classes = _classes 		+ ["Land_ConcreteHedgehog_01_F"];
+_prices = _prices 			+ [40];
+_placements = _placements 	+ [[0, 7]];
+_categories = _categories 	+ ["Fortification"];
 
 _headers = _headers 		+ ["Flag"];
 _classes = _classes 		+ ["Flag_NATO_F"];
@@ -520,13 +611,6 @@ _placements = _placements 	+ [[0, 10]];
 _categories = _categories 	+ ["Fortification"];
 
 
-_headers = _headers 		+ ["Lamp Stadium"];
-_classes = _classes 		+ ["Land_LampStadium_F"];
-_prices = _prices 			+ [5];
-_placements = _placements 	+ [[0, 10]];
-_categories = _categories 	+ ["Fortification"];
-
-
 _headers = _headers 		+ ["LampHarbour"];
 _classes = _classes 		+ ["Land_LampHarbour_F"];
 _prices = _prices 			+ [1];
@@ -555,13 +639,11 @@ _placements = _placements 	+ [[0, 10]];
 _categories = _categories 	+ ["Fortification"];
 
 
-
-
-
-
-
-
-
+_headers = _headers 		+ ["Campfire"];
+_classes = _classes 		+ ["Campfire_burning_F"];
+_prices = _prices 			+ [1];
+_placements = _placements 	+ [[0, 7]];
+_categories = _categories 	+ ["Fortification"];
 
 
 [_side, _headers, _classes, _prices, _placements, _categories] call compile preprocessFileLineNumbers "Common\Config\Base\Set_Defenses.sqf";

@@ -87,9 +87,17 @@ Health: %2<br />
 		_type = getText(configFile >> "CfgVehicles" >> typeOf _vehicle >> "displayName");
 		_dmg = getDammage _vehicle;
 		_health = format ["%1 (Value: %2)%3%4<br />", switch (true) do { case (_dmg <= 0.1): {"<t color='#99f26d'>Operational</t>"}; case (_dmg > 0.1 && _dmg < 0.6): {"<t color='#f9f461'>Lightly Damaged</t>"}; default {"<t color='#f25752'>Heavily Damaged</t>"}}, format["%1%2",round((1 - _dmg) * 100), "%"], if (!canMove _vehicle && !(_vehicle isKindOf "StaticWeapon")) then {", <t color='#f25752'>Can't Move</t>"} else {""}, if (!canFire _vehicle && (_vehicle emptyPositions "gunner" > 0 || alive gunner _vehicle)) then {", <t color='#f9f461'>Can't Fire</t>"} else {""}];
+		_fuel = "-";
+		if !(_vehicle isKindof "parachutebase" || _vehicle isKindOf "staticweapon") then {
+		_f_level = fuel _vehicle;
+			switch (true) do {
+				case (_f_level < 0.2): {_fuel = format ["<t color='#f25752'>%1%2</t>", round (_f_level * 100), "%"];};
+				case (_f_level >= 0.2 && _f_level < 0.5): {_fuel = format ["<t color='#f9f461'>%1%2</t>", round (_f_level * 100), "%"];};
+				default {_fuel = format ["%1%2", round (_f_level * 100), "%"];};
+			};
+		};
 		_vehicle_roles = "Crew:<br />";
 		_vehicle_roles = _vehicle_roles + (_vehicle call CTI_UI_SatelitteCamera_GetParsedVehicleRoles);
-
 		_weapons = "Weapons:<br />";
 		{_weapons = _weapons + format [" <t color='#99f26d'>%1</t><br />",getText(configFile >> "CfgWeapons" >> _x >> "displayName")]} forEach weapons _vehicle;
 		_magazines = "Magazines:<br />";
@@ -99,11 +107,13 @@ Health: %2<br />
 
 _html = _html + format ["<br /><t size='1.3' color='#2394ef'>Vehicle :</t><br />
 Class: <t color='#8ccdff'>%1</t><br />
-Health: %2<br />
+Health: %2
+Fuel: %6<br />
+<br />
 %3
 %4
 %5
-", _type, _health, _vehicle_roles, _weapons, _magazines];
+", _type, _health, _vehicle_roles, _weapons, _magazines, _fuel];
 	};
 
 	((uiNamespace getVariable _namespace) displayCtrl _idc) ctrlSetStructuredText parseText _html;

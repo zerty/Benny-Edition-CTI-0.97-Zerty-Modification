@@ -8,7 +8,7 @@ _locked = if (count _this > 4) then {_this select 4} else {true};
 _net = if (count _this > 5) then {_this select 5} else {false};
 _bounty = if (count _this > 6) then {_this select 6} else {false};
 
-if (_side == resistance) then {_net=false};
+_net=false;
 
 _sideID = (_side) call CTI_CO_FNC_GetSideID;
 //if (isNull _group) then {_group = createGroup _side};
@@ -24,8 +24,10 @@ _v_groups=[];
 		_created_units pushBack _unit;
 	} else {
 		_crew = switch (true) do {
+			case (_x isKindOf "Wheeled_APC_F"): { missionNamespace getVariable format["%1_SOLDIER_CREW", _side] };
 			case (_x isKindOf "Tank"): { missionNamespace getVariable format["%1_SOLDIER_CREW", _side] };
-			case (_x isKindOf "Air"): { missionNamespace getVariable format["%1_SOLDIER_PILOT", _side] };
+			case (_x isKindOf "Helicopter"): { missionNamespace getVariable format["%1_SOLDIER_PILOT", _side] };
+			case (_x isKindOf "Plane"): { missionNamespace getVariable format["%1_SOLDIER_JETPILOT", _side] };
 			default { missionNamespace getVariable format["%1_SOLDIER", _side] };
 		};
 		if (typeName _crew == "ARRAY") then {_crew = _crew select 0};

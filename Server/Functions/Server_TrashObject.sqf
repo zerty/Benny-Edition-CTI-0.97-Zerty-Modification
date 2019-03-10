@@ -45,6 +45,12 @@ if (isNull _object) exitWith {
 	if (CTI_Log_Level >= CTI_Log_Error) then { ["ERROR", "FILE: Server\Functions\Server_TrashObject.sqf", "Cannot delete a null object"] call CTI_CO_FNC_Log };
 };
 
+_attachment = attachedObjects _object;
+if (count _attachment > 0) then {
+	{detach _x;} forEach attachedObjects _object;
+	{if (!alive _x && !(_object isKindOf "Helicopter") && !(_x in [(CTI_EAST getVariable "cti_hq"),(CTI_WEST getVariable "cti_hq")])) then {deleteVehicle _x;};} forEach _attachment;
+};
+
 _object_type = typeOf  _object;
 
 //--- Determine the nature of the given entity if the delay is not specified
@@ -56,9 +62,9 @@ if (_delay == -1) then {
 			case (_object isKindOf "Tank"): { CTI_GC_DELAY_TANK };
 			case (_object isKindOf "Air"): { CTI_GC_DELAY_AIR };
 			case (_object isKindOf "Ship"): { CTI_GC_DELAY_SHIP };
-			case (_object isKindOf "StaticWeapon"): { CTI_GC_DELAY_STATIC };
+			case (_object isKindOf "StaticWeapon" || _object isKindOf "Slingload_base_F"): { CTI_GC_DELAY_STATIC };
 			case (_object isKindOf "Building"): { CTI_GC_DELAY_BUILDING };
-			default { CTI_GC_DELAY }
+			default { CTI_GC_DELAY };
 		};
 	};
 };

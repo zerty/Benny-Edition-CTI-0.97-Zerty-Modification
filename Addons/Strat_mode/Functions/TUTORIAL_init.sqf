@@ -4,7 +4,7 @@ _off=5.5;
 _z = -0.5;
 _m = "Land_Mil_WiredFence_F";
 _lamp_o="Land_LampHalogen_F";
-_lamp_offcet=6;
+_lamp_offcet=7;
 _text="UserTexture10m_F";
 TUTORIAL_EXIT=objNull;
 

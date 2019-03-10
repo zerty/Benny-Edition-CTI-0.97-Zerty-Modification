@@ -45,9 +45,18 @@ if (isNull (CTI_P_SideLogic getVariable ["cti_commander",grpnull])) then {
 };
 
 if (_com_name == "") then {_com_name = "NONE"};
-_t=_t+ (format [localize "STR_Current_Com",_com_name ]);
+_maxareas = CTI_BASE_AREA_MAX;
+_areas = CTI_P_SideLogic getvariable "cti_structures_areas";
+_current = count _areas;
 
+_t = _t + (format [localize "STR_Current_Com", _com_name ]) + (format [" || "]) + (format ["<t color='#F5D363'>Base Areas:</t><t> %1/%2</t><br />", _current, _maxareas]);
 
+_limit = (missionNamespace getVariable "CTI_MAX_MISSION_TIME");
+if (_limit > 0) then {
+_time = round (time/60);
+_left = ((_limit * 60) - _time);
+_t = _t + (format ["<t color='#F5D363'>Time Left:</t><t> %1</t> min.<br />", _left]);
+};
 
 _running = CTI_P_SideLogic getVariable "cti_upgrade";
 _ttext = localize "STR_No_Upgrade_Running";
@@ -66,7 +75,12 @@ _sl=CTI_P_SideJoined call  CTI_CO_FNC_GetSideLogic;
 	    case 	"ColorRed":{ "<t color='#ff0000' size='0.75'><img image='A3\ui_f\data\map\Markers\Military\flag_ca.paa'/></t>" };
 	    default { "<t color='#00ff00' size='0.75'><img image='A3\ui_f\data\map\Markers\Military\flag_ca.paa'/></t>"  };
 	};
-	_t = _t + format ["%2 %1 ",(_x getVariable "cti_town_name"),_icon	]
+	if (_x == (_sl getVariable ["CTI_PRIORITY",objNull])) then  {
+			_t = _t + format ["%2 (P) %1 ",(_x getVariable "cti_town_name"),_icon	];
+		} else {
+			_t = _t + format ["%2 %1 ",(_x getVariable "cti_town_name"),_icon	];
+		};
+	true
 } count (_sl getVariable ["CTI_ACTIVE",[]]);
 _t=_t+"<br />";
 if ( (missionNamespace getVariable 'CTI_SM_RADAR')==1 && (count ([CTI_RADAR, ((CTI_P_SideJoined) call CTI_CO_FNC_GetSideStructures)] call CTI_CO_FNC_GetSideStructuresByType) > 0 )) then {

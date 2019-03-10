@@ -10,14 +10,24 @@ SM_TCAS_MAINLOOP=compile '
 		_pos= _ppos select (floor random (4));
 	};
 	_dir=[_pos, _town] call CTI_CO_FNC_GetDirTo;
-	if (_fly == "FLY") then {_pos set [2,1000];};
+	if (_fly == "FLY") then {_pos=[_town,1500,2500] call CTI_CO_FNC_GetRandomPosition; _pos set [2,1750];};
 	_dir=[_pos, _town] call CTI_CO_FNC_GetDirTo;
-	_v=[_type,_pos , _dir, resistance, false, true, true,_fly] call CTI_CO_FNC_CreateVehicle;
+	_v=[_type, _pos, _dir, resistance, true, true, true, _fly] call CTI_CO_FNC_CreateVehicle;
 
 	[_v,_group] call bis_fnc_spawncrew;
 	if !( isNil "ADMIN_ZEUS") then { ADMIN_ZEUS addCuratorEditableObjects [([_v]),true];};
 	if !( isNil "ADMIN_ZEUS") then { ADMIN_ZEUS addCuratorEditableObjects [(units _group),true];};
 	//_v flyInHeight 300;
+	_AISkill = missionNamespace getVariable "CTI_AI_SKILL";
+	_rnSkill = 0;
+	switch (_AISkill) do {
+	case 1: {_rnSkill = (0.05 + (random 20/100));};
+	case 2: {_rnSkill = (0.25 + (random 20/100));};
+	case 3: {_rnSkill = (0.45 + (random 20/100));};
+	case 4: {_rnSkill = (0.65 + (random 20/100));};
+	case 5: {_rnSkill = (0.85 + (random 15/100));};
+	};
+	{_x setSkill _rnSkill; true} count units _group;
 	_wp=_group addWaypoint [(getPos _town), 500];
 	_wp setWaypointType "MOVE";
 	_wp setWaypointBehaviour "CARELESS";
@@ -36,7 +46,7 @@ SM_TCAS_MAINLOOP=compile '
 	_wp3=_group addWaypoint [[[[(getPos _town),700]]] call BIS_fnc_randomPos, 0];
 	_wp3  setwaypointtype "CYCLE";
 	_group setCurrentWaypoint _wp;
-	diag_log format [ "Town CAS ::  %1 Calling CAS %2", _town,_type];
+	diag_log format [ ":: Town CAS ::  %1 Calling CAS %2", _town,_type];
 	[_group,_v]';
 
 
@@ -46,10 +56,15 @@ SM_TCAS_CREATE=compile '
 	_town=_this;
 	_rn= random (1);
 	_cas="";
-	if (_rn > 0.90) then {
-		_cas = [_town, "I_Plane_Fighter_03_CAS_F","FLY"] call SM_TCAS_MAINLOOP;
-	} else {
-		_cas = [_town, "I_Heli_light_03_F","FORM"] call SM_TCAS_MAINLOOP;
+	if (_rn > 0.95 && _rn <= 1) then {
+		_cas = [_town, "I_Plane_Fighter_04_F","FLY"] call SM_TCAS_MAINLOOP;
+	};
+	if (_rn >= 0.90 && _rn <= 0.95) then {
+		_cas = [_town, "I_Plane_Fighter_03_dynamicLoadout_F","FLY"] call SM_TCAS_MAINLOOP;
+	};
+	if (_rn < 0.90) then {
+		_cas = [_town, "I_Heli_light_03_dynamicLoadout_F","FORM"] call SM_TCAS_MAINLOOP;
+
 	};
 	diag_log _cas;
 	_cas';

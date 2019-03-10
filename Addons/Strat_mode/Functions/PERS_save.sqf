@@ -33,6 +33,20 @@ profileNamespace setVariable ["CTI_SAVE_TOWNS",_towns];
 	_save pushBack _save_structures;
 	//Current upgrade
 	_save pushBack [(_logic getVariable "cti_upgrade"),(_logic getVariable "cti_upgrade_level"),(_logic getVariable "cti_upgrade_lt")];
+	//save current time [H]Tom
+	_currenttime = round (daytime);
+	_save pushBack _currenttime;
+	//save team scores [H]Tom
+	_teamscore = scoreSide _side;
+	_save pushBack _teamscore;
+	//save found bases [H]Tom
+	_bases_found = (_logic getVariable "CTI_BASES_FOUND");
+	_save pushBack _bases_found;
+	//save Time Left [H]Tom
+	_limit = (missionNamespace getVariable "CTI_MAX_MISSION_TIME");
+	_time = round (time/60);
+	_left = ((_limit * 60) - _time);
+	_save pushBack _left;
 
 
 	profileNamespace setVariable [format ["CTI_SAVE_%1", _side],_save];

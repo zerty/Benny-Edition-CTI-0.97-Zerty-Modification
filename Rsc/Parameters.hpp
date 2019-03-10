@@ -39,7 +39,7 @@ class Params {
 		title = $STR_CTI_BASE_STARTUP_PLACEMENT;
 		values[] = {2000,3000,4000,5000,6000,7000,8000,9000,10000,12000,15000,20000};
 		texts[] = {"2 KM","3 KM","4 KM","5 KM","6 KM","7 KM","8 KM","9 KM","10 KM","12 KM","15 KM","20 KM"};
-		default = 12000;
+		default = 15000;
 	};
 	class CTI_ECONOMY_INCOME_CYCLE {
 		title = $STR_CTI_ECONOMY_INCOME_CYCLE;
@@ -153,7 +153,7 @@ class Params {
 		title = $STR_CTI_VEHICLES_EMPTY_TIMEOUT;
 		values[] = {60,120,180,240,300,600,1200,1800,2400,3000,3600};
 		texts[] = {"1 Minute","2 Minutes","3 Minutes","4 Minutes","5 Minutes","10 Minutes","20 Minutes","30 Minutes","40 Minutes","50 Minutes","1 Hour"};
-		default = 1800;
+		default = 2400;
 	};
 	class CTI_GRAPHICS_TG_MAX {
 		title = $STR_CTI_GRAPHICS_TG_MAX;
@@ -218,13 +218,13 @@ class Params {
 		title = $STR_CTI_AI_SKILL;
 		values[] = {1,2,3,4,5};
 		texts[] = {$STR_CTI_AI_SKILL_0,$STR_CTI_AI_SKILL_1,$STR_CTI_AI_SKILL_2,$STR_CTI_AI_SKILL_3,$STR_CTI_AI_SKILL_4};
-		default = 3;
+		default = 4;
 	};
 
 	class CTI_MAX_MISSION_TIME {
 		title = $STR_CTI_MAX_MISSION_TIME;
-		values[] = {0,2,4,6,8,12,24};
-		texts[] = {$STR_CTI_MAX_MISSION_TIME_NEVER,"2h","4h","6h","8h","12h","24h"};
+		values[] = {0,2,3,4,6,8,12,24};
+		texts[] = {$STR_CTI_MAX_MISSION_TIME_NEVER,"2h","3h","4h","6h","8h","12h","24h"};
 		default = 0;
 	};
 	class MIN_TOWNS {
@@ -315,11 +315,17 @@ class Params {
 		texts[] = {"None","Connection range 500m","Connection range 800m","Connection range 1200m","Connection range 1500m","Connection range 2000m"};
 		default = 1200;
 	};
+	class CTI_GAMEPLAY_UAV_ALT {
+		title = $STR_CTI_GAMEPLAY_UAV_ALT;
+		values[] = {1000,1200,1500,1600,2000,3000,5000};
+		texts[] = {"UAV disconnection over 1000m","UAV disconnection over 1200m","UAV disconnection over 1500m","UAV disconnection over 1600m","UAV disconnection over 2000m","UAV disconnection over 3000m","UAV disconnection over 5000m"};
+		default = 5000;
+	};
 	class CTI_GAMEPLAY_DARTER_FUEL {
 		title = $STR_CTI_GAMEPLAY_DARTER_FUEL;
 		values[] = {0,1};
 		texts[] = {$STR_CTI_DISABLED,$STR_CTI_ENABLED};
-		default = 0;
+		default = 1;
 	};
 	class CTI_SM_NONV {
 		title = $STR_CTI_SM_NONV;
@@ -337,7 +343,7 @@ class Params {
 		title = $STR_CTI_VEHICLES_BOUNTY;
 		values[] = {0,25,50,75,100};
 		texts[] = {$STR_CTI_VEHICLES_BOUNTY_NO,$STR_CTI_VEHICLES_BOUNTY_LOW,$STR_CTI_VEHICLES_BOUNTY_MED,$STR_CTI_VEHICLES_BOUNTY_HIGH,$STR_CTI_VEHICLES_BOUNTY_FULL};
-		default = 50;
+		default = 25;
 	};
 	class CTI_PLAYER_REEQUIP {
 		title = $STR_CTI_PLAYER_REEQUIP;
@@ -398,7 +404,7 @@ class Params {
 		title = $STR_CTI_WEATHER_ALLOWRAIN;
 		values[] = {0,1};
 		texts[] = {$STR_CTI_WEATHER_ALLOWRAIN_F,$STR_CTI_WEATHER_ALLOWRAIN_T};
-		default = 0;
+		default = 1;
 	};
   	class CTI_WEATHER_FAST {
 		title = $STR_CTI_WEATHER_FAST;
@@ -441,6 +447,12 @@ class Params {
 
 	class CTI_SM_MORTARS {
 		title = $STR_CTI_SM_MORTARS;
+		values[] = {0,1};
+		texts[] = {$STR_CTI_DISABLED,$STR_CTI_ENABLED};
+		default = 1;
+	};
+	class CTI_SM_MINES {
+		title = $STR_CTI_SM_MINES;
 		values[] = {0,1};
 		texts[] = {$STR_CTI_DISABLED,$STR_CTI_ENABLED};
 		default = 1;
@@ -529,6 +541,12 @@ class Params {
 		title = $STR_CTI_TROPHY_APS;
 		values[] = {0,1};
 		texts[] = {$STR_CTI_WEATHER_ALLOWRAIN_F,$STR_CTI_WEATHER_ALLOWRAIN_T};
+		default = 1;
+	};
+	class CTI_AC_ENABLED {
+		title = $STR_CTI_AC_ENABLED;
+		values[] = {0,1};
+		texts[] = {$STR_CTI_DISABLED,$STR_CTI_ENABLED};
 		default = 1;
 	};
 };

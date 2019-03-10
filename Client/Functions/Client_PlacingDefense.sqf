@@ -62,6 +62,7 @@ _deh = (findDisplay 46) displayAddEventHandler ["KeyDown", "nullReturn = _this s
 _var = missionNamespace getVariable _variable;
 _classname = _var select 1;
 _local = _classname createVehicleLocal [0,0,0];
+_local lock 2;
 _direction_structure = (_var select 4) select 0;
 _distance_structure = (_var select 4) select 1;
 {_local disableCollisionWith _x} forEach (player nearObjects 150);
@@ -79,10 +80,14 @@ _dir = 0;
 _pos = [];
 while {!CTI_VAR_StructurePlaced && !CTI_VAR_StructureCanceled} do {
 	_pos = player modelToWorld [0, _distance_structure + CTI_P_KeyDistance, 0];
-	CTI_P_PreBuilding_SafePlace = if (_pos distance (((CTI_P_SideJoined) call CTI_CO_FNC_GetSideLogic) getVariable "cti_hq") >15 && _pos distance ([_pos, CTI_P_SideJoined call CTI_CO_FNC_GetSideStructures] call CTI_CO_FNC_GetClosestEntity) >15 && _pos distance ( [_pos, ((CTI_P_SideJoined) call CTI_CO_FNC_GetSideLogic) getVariable "cti_structures_wip"] call CTI_CO_FNC_GetClosestEntity) >15 && _pos distance ( [_pos, ((CTI_P_SideJoined) call CTI_CO_FNC_GetSideLogic) getVariable "cti_fobs"] call CTI_CO_FNC_GetClosestEntity) >15 && !surfaceIsWater _pos && !(lineIntersects [ATLtoASL (player modelToWorld (player selectionPosition "pilot")),ATLtoASL (_local modelToWorld (_local selectionPosition "pilot")), player, _local])) then {true} else {false};
+	CTI_P_PreBuilding_SafePlace = if (_classname == "B_AAA_System_01_F" || _classname == "B_SAM_System_01_F" || _classname == "B_SAM_System_02_F" || _classname == "B_Radar_System_01_F" || _classname == "B_SAM_System_03_F" || _classname == "O_Radar_System_02_F" || _classname == "O_SAM_System_04_F") then {
+	if (_pos distance ([_pos, CTI_P_EnemySide call CTI_CO_FNC_GetSideStructures] call CTI_CO_FNC_GetClosestEntity) >40 && _pos distance (((CTI_P_SideJoined) call CTI_CO_FNC_GetSideLogic) getVariable "cti_hq") >20 && _pos distance ([_pos, CTI_P_SideJoined call CTI_CO_FNC_GetSideStructures] call CTI_CO_FNC_GetClosestEntity) >20 && _pos distance ([_pos, (CTI_P_SideJoined call CTI_CO_FNC_GetSideLogic) getVariable "cti_structures_areas"] call CTI_CO_FNC_GetClosestEntity) >0 && _pos distance ([_pos, (CTI_P_SideJoined call CTI_CO_FNC_GetSideLogic) getVariable "cti_structures_areas"] call CTI_CO_FNC_GetClosestEntity) <250 && _pos distance ( [_pos, ((CTI_P_SideJoined) call CTI_CO_FNC_GetSideLogic) getVariable "cti_structures_wip"] call CTI_CO_FNC_GetClosestEntity) >20 && _pos distance ( [_pos, ((CTI_P_SideJoined) call CTI_CO_FNC_GetSideLogic) getVariable "cti_fobs"] call CTI_CO_FNC_GetClosestEntity) >20 && !surfaceIsWater _pos && !(lineIntersects [ATLtoASL (player modelToWorld (player selectionPosition "pilot")),ATLtoASL (_local modelToWorld (_local selectionPosition "pilot")), player, _local])) then {true} else {false};
+	} else {
+	if (_pos distance ([_pos, CTI_P_EnemySide call CTI_CO_FNC_GetSideStructures] call CTI_CO_FNC_GetClosestEntity) >40 && _pos distance (((CTI_P_SideJoined) call CTI_CO_FNC_GetSideLogic) getVariable "cti_hq") >15 && _pos distance ([_pos, CTI_P_SideJoined call CTI_CO_FNC_GetSideStructures] call CTI_CO_FNC_GetClosestEntity) >15 && _pos distance ( [_pos, ((CTI_P_SideJoined) call CTI_CO_FNC_GetSideLogic) getVariable "cti_structures_wip"] call CTI_CO_FNC_GetClosestEntity) >15 && _pos distance ( [_pos, ((CTI_P_SideJoined) call CTI_CO_FNC_GetSideLogic) getVariable "cti_fobs"] call CTI_CO_FNC_GetClosestEntity) >15 && !surfaceIsWater _pos && !(lineIntersects [ATLtoASL (player modelToWorld (player selectionPosition "pilot")),ATLtoASL (_local modelToWorld (_local selectionPosition "pilot")), player, _local])) then {true} else {false};
+	};
 
 	if (time - _last_collision_update > 1.5) then {_last_collision_update = time;{_local disableCollisionWith _x} forEach (player nearObjects 150)};
-	if (_center distance player > _center_distance || !alive _center) exitWith { CTI_VAR_StructureCanceled = true };
+	if (_center distance player > _center_distance || !alive _center || vehicle player != player) exitWith { CTI_VAR_StructureCanceled = true };
 
 	_dir = ([_local, player] call CTI_CO_FNC_GetDirTo) + _direction_structure + CTI_P_KeyRotate;
 	_pos set [2, 0];
@@ -106,6 +111,7 @@ if !(CTI_VAR_StructureCanceled) then {
 		if (_funds >= (_var select 2)) then {
 			-(_var select 2) call CTI_CL_FNC_ChangePlayerFunds;
 			["SERVER", "Request_Defense", [_variable, CTI_P_SideJoined, [_pos select 0, _pos select 1], _dir, player, CTI_P_WallsAutoAlign, CTI_P_DefensesAutoManning]] call CTI_CO_FNC_NetSend;
+			if (_classname == "B_AAA_System_01_F" || _classname == "B_SAM_System_01_F" || _classname == "B_SAM_System_02_F") then {hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br />Preparing <t color='#ccffaf'>AA defense system</t> :: <t color='#fcffaf'>30s</t><br /><t color='#F86363'>Do not place another defense at this location!</t>";};
 		} else {
 			hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br />You do not have enough funds to place that defense.";
 		};

@@ -9,7 +9,9 @@ private ["_target_mass","_target_masscenter","_pod","_pod_mass","_pod_masscenter
 
 _target=_this;
 
-if (typeof _target != taru || isNull (getSlingLoad _target) || !((typeof (getSlingLoad _target)) in pods) || count (attachedObjects _target) >0) exitwith {false};
+diag_log format [":: S A :: trying to attach pod to %1", _target];
+
+if (typeof _target != taru || isNull (getSlingLoad _target) || !((typeof (getSlingLoad _target)) in pods) || count (attachedObjects _target) >0) exitwith {diag_log format [":: S A ::  attach pod to %1 failed", _target]; false};
 
 _pod=getSlingLoad _target;
 _target_mass=getmass _target;

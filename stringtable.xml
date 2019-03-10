@@ -110,15 +110,15 @@
 				<Russian>&lt;t size='1.4' color='#2394ef'&gt;Тактический HUD&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Доступен, если вы оснащены тактическими очками и эта модернизация завершена для вашей стороны.&lt;br /&gt; &lt;br /&gt;&lt;t color='#e8bd12'&gt;Функционал HUD:&lt;/t&gt;&lt;br /&gt; - Подсветка целей &lt;br /&gt; - Подсветка целей остальной команде. Общие цели отмечены точкой над ними &lt;br /&gt;(При подключении к ячеистой сети поля) &lt;br /&gt; - Подсветка городов и их статуса &lt;br /&gt; - Подсветка дружественных юнитов (если подключены к сети)&lt;br /&gt;  &lt;br /&gt; В начале цель локальна для игрока, как только игрок подключится к расширенной сети, то цель будет показана всем на карте и в HUD.</Russian>
 			</Key>
 			<Key ID="STR_Trophy_system">
-				<Original>&lt;t size='1.4' color='#2394ef'&gt;Trophy system&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;The Trophy system is a real world &lt;t color='#e8bd12'&gt;Active Protection System (APS) &lt;/t&gt; made by Rafael. It protect your heavy vehicle of soft targets (missiles and rockets).&lt;br /&gt;&lt;br /&gt;&lt;t color='#e8bd12'&gt;Without upgrades&lt;/t&gt;, all MBTs and APCs starts with two ammos (one of each side), a 60 seconds cooldown and a 50% effectiveness. &lt;br /&gt;&lt;br /&gt;&lt;t color='#e8bd12'&gt;Two blind spots are present:&lt;/t&gt; one on the front between -20° and 20° and another on the back between 160 and 200 °.&lt;br /&gt;&lt;br /&gt;With the &lt;t color='#e8bd12'&gt;ammunition upgrade&lt;/t&gt;, all side vehicles are getting two more ammunition each level (1 on each side).&lt;br /&gt;&lt;br /&gt;The &lt;t color='#e8bd12'&gt;Cooldown and effectiveness upgrade&lt;/t&gt; increases working probability by 15% each level and reduces the cooldown time (60s /(1+level))&lt;br /&gt;&lt;br /&gt;You can find the current &lt;t color='#e8bd12'&gt;status&lt;/t&gt; of your trophy system in the &lt;t color='#e8bd12'&gt;vehicle hud.&lt;/t&gt;</Original>
-				<Russian>&lt;t size='1.4' color='#2394ef'&gt;Система Trophy&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Основана на &lt;t color='#e8bd12'&gt;Активной Защите&lt;/t&gt; от Rafael. Защищает вашу тяжёлую технику от ракет.&lt;br /&gt;&lt;br /&gt;&lt;t color='#e8bd12'&gt;Без модернизации&lt;/t&gt; - все Танки, БМП, БТР начинают с двумя зарядами, 60 секундной задержкой и 50% эффективностью. &lt;br /&gt;&lt;br /&gt;&lt;t color='#e8bd12'&gt;Слепые зоны:&lt;/t&gt; одна спереди от -20° до 20° и одна позади между 160° и 200°.&lt;br /&gt;&lt;br /&gt;С &lt;t color='#e8bd12'&gt;Улучшением Макс.боезапас&lt;/t&gt; вся техника получает по два заряда каждый уровень (1 заряд с каждой стороны).&lt;br /&gt;&lt;br /&gt;&lt;t color='#e8bd12'&gt;Улучшение Восстановление и эффективность&lt;/t&gt; увеличивается вероятность срабатывания на 15% каждый уровень и сокращает время перезарядки - 60 сек/(1 + ур.улучшения)&lt;br /&gt;&lt;br /&gt;&lt;t color='#e8bd12'&gt;Текущий статус системы&lt;/t&gt; показан на &lt;t color='#e8bd12'&gt;интерфейсе техники&lt;/t&gt;, чуть выше правого нижнего угла экрана.</Russian>
+				<Original>&lt;t size='1.4' color='#2394ef'&gt;Trophy system&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;The Trophy system is a real world &lt;t color='#e8bd12'&gt;Active Protection System (APS) &lt;/t&gt; made by Rafael. It protect your heavy vehicle of soft targets (missiles and rockets).&lt;br /&gt;&lt;br /&gt;&lt;t color='#e8bd12'&gt;Without upgrades&lt;/t&gt;, all MBTs and APCs starts with two ammos (one of each side), a 300 seconds cooldown and a 50% effectiveness. &lt;br /&gt;&lt;br /&gt;&lt;t color='#e8bd12'&gt;Two blind spots are present:&lt;/t&gt; one on the front between -20° and 20° and another on the back between 160 and 200 °.&lt;br /&gt;&lt;br /&gt;With the &lt;t color='#e8bd12'&gt;ammunition upgrade&lt;/t&gt;, all side vehicles are getting two more ammunition each level (1 on each side).&lt;br /&gt;&lt;br /&gt;The &lt;t color='#e8bd12'&gt;Cooldown and effectiveness upgrade&lt;/t&gt; increases working probability by 15% each level and reduces the cooldown time (300s /(1+level))&lt;br /&gt;&lt;br /&gt;You can find the current &lt;t color='#e8bd12'&gt;status&lt;/t&gt; of your trophy system in the &lt;t color='#e8bd12'&gt;vehicle hud.&lt;/t&gt;</Original>
+				<Russian>&lt;t size='1.4' color='#2394ef'&gt;Система Trophy&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Основана на &lt;t color='#e8bd12'&gt;Активной Защите&lt;/t&gt; от Rafael. Защищает вашу тяжёлую технику от ракет.&lt;br /&gt;&lt;br /&gt;&lt;t color='#e8bd12'&gt;Без модернизации&lt;/t&gt; - все Танки, БМП, БТР начинают с двумя зарядами, 300 секундной задержкой и 50% эффективностью. &lt;br /&gt;&lt;br /&gt;&lt;t color='#e8bd12'&gt;Слепые зоны:&lt;/t&gt; одна спереди от -20° до 20° и одна позади между 160° и 200°.&lt;br /&gt;&lt;br /&gt;С &lt;t color='#e8bd12'&gt;Улучшением Макс.боезапас&lt;/t&gt; вся техника получает по два заряда каждый уровень (1 заряд с каждой стороны).&lt;br /&gt;&lt;br /&gt;&lt;t color='#e8bd12'&gt;Улучшение Восстановление и эффективность&lt;/t&gt; увеличивается вероятность срабатывания на 15% каждый уровень и сокращает время перезарядки - 300 сек/(1 + ур.улучшения)&lt;br /&gt;&lt;br /&gt;&lt;t color='#e8bd12'&gt;Текущий статус системы&lt;/t&gt; показан на &lt;t color='#e8bd12'&gt;интерфейсе техники&lt;/t&gt;, чуть выше правого нижнего угла экрана.</Russian>
 			</Key>
 			<Key ID="STR_Remote_Control">
 				<Original>&lt;t size='1.4' color='#2394ef'&gt;Remote Control&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Since the AI in ArmA III can be realy frustrating while driving, the ability of &lt;t color='#e8bd12'&gt;remote controling the drivers and pilots&lt;/t&gt; have been introduced.&lt;br/&gt;You can initiate the remote controling using the &lt;t color='#e8bd12'&gt;action menu of the unit&lt;/t&gt;. (F1-10 Keys and then the 6 key). &lt;br /&gt;In order to be able to remote control, the following conditions must be all met &lt;br /&gt;- The unit and player must be alive&lt;br /&gt;- No gunner must be present in the vehicle&lt;br /&gt;- The unit must be driver/ pilot of the vehicle&lt;br /&gt;- The vehicle must be unlocked (BIS related)&lt;br /&gt;- The player cannot be in the same vehicle&lt;br /&gt;&lt;br /&gt;Be aware that it migth disconnect you from your current uav.</Original>
 				<Russian>&lt;t size='1.4' color='#2394ef'&gt;Удаленное Управление&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Так как искусственный интеллект в ArmA III во время вождения расстраивает Вас, была введена возможность &lt;t color='#e8bd12'&gt;удаленного управления водителями и пилотами&lt;/t&gt;.&lt;br/&gt;Вы можете начать управлять удаленно выбрав бота (клавиши F1-10), нажав клавишу 6 и выбрав действие &lt;t color='#ff9900'&gt;Удаленное Управление&lt;/t&gt;. Для выхода из этого режима, выберите действие - Бросить управление БПА.&lt;br /&gt;Для того, чтобы иметь возможность удаленного управления, следующие условия должны быть выполнены:&lt;br /&gt;- Игрок и выбранный бот должны быть живы&lt;br /&gt;- В технике должен быть только один выбранный бот, без игрока и других ботов&lt;br /&gt;- Выбранный бот должен быть водителем/пилотом&lt;br /&gt;- Техника должна быть открыта&lt;br /&gt;&lt;br /&gt;Имейте в виду, что Вас отключит от вашего текущего БПЛА.&lt;br /&gt;&lt;t color='#FF0000'&gt;Если вы убьёте бота в удал.управлении, то сразу же станете предателем и покините свою группу!&lt;/t&gt;</Russian>
 			</Key>
 			<Key ID="STR_Current_Credits">
-				<Original>&lt;t size='1.4' color='#2394ef'&gt;Current Credits&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;- &lt;t color='#e8bd12'&gt;Benny&lt;/t&gt; for the mission&lt;br /&gt;- &lt;t color='#e8bd12'&gt;Bl1p, Fluit&lt;/t&gt; for random AI skill&lt;br /&gt;- &lt;t color='#e8bd12'&gt;=ATM=Pokertour&lt;/t&gt; for ATM airdrop&lt;br /&gt;- &lt;t color='#e8bd12'&gt;Prodavec&lt;/t&gt; for Map Markers titling&lt;br /&gt;- &lt;t color='#e8bd12'&gt;^HS^&lt;/t&gt; for writting the diary help &lt;br /&gt;- &lt;t color='#e8bd12'&gt;Farooq&lt;/t&gt; for his original idea of a revive script &lt;br /&gt;- &lt;t color='#e8bd12'&gt;Sari&lt;/t&gt; for updating the sanitize scripts &lt;br /&gt;- &lt;t color='#e8bd12'&gt;John681611&lt;/t&gt; for his original idea of offroad aug.&lt;br /&gt;- &lt;t color='#e8bd12'&gt;Grumpy Old Man&lt;/t&gt; for his Aircraft loadout customisation framework.&lt;br /&gt;&lt;br /&gt;&lt;t color='#e8bd12'&gt;And of course, everyone who gave feedback and bug reports.&lt;/t&gt;&lt;br /&gt;</Original>
+				<Original>&lt;t size='1.4' color='#2394ef'&gt;Current Credits&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;- &lt;t color='#e8bd12'&gt;Benny&lt;/t&gt; for the mission&lt;br /&gt;- &lt;t color='#e8bd12'&gt;Bl1p, Fluit&lt;/t&gt; for random AI skill&lt;br /&gt;- &lt;t color='#e8bd12'&gt;=ATM=Pokertour&lt;/t&gt; for ATM airdrop&lt;br /&gt;- &lt;t color='#e8bd12'&gt;Prodavec&lt;/t&gt; for Map Markers titling&lt;br /&gt;- &lt;t color='#e8bd12'&gt;^HS^&lt;/t&gt; for writting the diary help &lt;br /&gt;- &lt;t color='#e8bd12'&gt;Farooq&lt;/t&gt; for his original idea of a revive script &lt;br /&gt;- &lt;t color='#e8bd12'&gt;Sari&lt;/t&gt; for updating the sanitize scripts &lt;br /&gt;- &lt;t color='#e8bd12'&gt;John681611&lt;/t&gt; for his original idea of offroad aug.&lt;br /&gt;- &lt;t color='#e8bd12'&gt;Henroth&lt;/t&gt; for his Aircraft loadout customisation framework.&lt;br /&gt;&lt;br /&gt;&lt;t color='#e8bd12'&gt;And of course, everyone who gave feedback and bug reports.&lt;/t&gt;&lt;br /&gt;</Original>
 				<Russian>&lt;t size='1.4' color='#2394ef'&gt;Благодарности&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;- &lt;t color='#e8bd12'&gt;Benny&lt;/t&gt; создатель миссии&lt;br /&gt;- &lt;t color='#e8bd12'&gt;Bl1p, Fluit&lt;/t&gt; for random AI skill&lt;br /&gt;- &lt;t color='#e8bd12'&gt;=ATM=Pokertour&lt;/t&gt; for ATM airdrop&lt;br /&gt;- &lt;t color='#e8bd12'&gt;Prodavec&lt;/t&gt; за обозначение маркеров на карте&lt;br /&gt;- &lt;t color='#e8bd12'&gt;^HS^&lt;/t&gt; for writting the diary help &lt;br /&gt;- &lt;t color='#e8bd12'&gt;Farooq&lt;/t&gt; for his original idea of a revive script &lt;br /&gt;- &lt;t color='#e8bd12'&gt;Sari&lt;/t&gt; for updating the sanitize scripts &lt;br /&gt;- &lt;t color='#e8bd12'&gt;John681611&lt;/t&gt; for his original idea of offroad aug.&lt;br /&gt;- &lt;t color='#e8bd12'&gt;Henroth&lt;/t&gt; for his Aircraft loadout customisation framework.&lt;br /&gt;- &lt;t color='#e8bd12'&gt;SteelRat&lt;/t&gt; за подсказки в скриптах и немного кода.&lt;br /&gt;&lt;br /&gt;&lt;t color='#e8bd12'&gt;И конечно же, каждый кто оставил отзыв и сообщение об ошибке.&lt;/t&gt;&lt;br /&gt;</Russian>
 			</Key>
 	</Package>
@@ -493,6 +493,10 @@
 				<Original>Zerty: GAMEPLAY: Darter Range limitation</Original>
 				<Russian>Дальность связи с маленькими БПЛА</Russian>
 			</Key>
+			<Key ID="STR_CTI_GAMEPLAY_UAV_ALT">
+				<Original>[H] Tom: GAMEPLAY: MQ-4A and Ababil-3 flight altitude limitation</Original>
+				<Russian>Ограничение высоты полета MQ-4A и Ababil-3</Russian>
+			</Key>
 			<Key ID="STR_CTI_GAMEPLAY_DARTER_FUEL">
 				<Original>Zerty: GAMEPLAY: Darter Fuel limitation</Original>
 				<Russian>Ограничение маленьких БПЛА по топливу</Russian>
@@ -645,6 +649,10 @@
 				<Original>Zerty: Strategic: Town Mortars</Original>
 				<Russian>Миномёты для защиты городов</Russian>
 			</Key>
+			<Key ID="STR_CTI_SM_MINES">
+				<Original>[H] Tom: Strategic: Town Mines</Original>
+				<Russian>минное поле в городах</Russian>
+			</Key>
 			<Key ID="STR_CTI_SM_STRATEGIC">
 				<Original>Zerty: Strategic: Town Links</Original>
 				<Russian>Города захватываются последовательно</Russian>
@@ -720,6 +728,10 @@
 			<Key ID="STR_CTI_TROPHY_APS">
 				<Original>Zerty: Trophy: Enabled</Original>
 				<Russian>Система Trophy</Russian>
+			</Key>
+			<Key ID="STR_CTI_AC_ENABLED">
+				<Original>Henroth: Aircraft Loadout Customisation : Enabled</Original>
+				<Russian>Изменённая Загрузка Авиации</Russian>
 			</Key>
 	</Package>
 </Project>
@@ -885,6 +897,10 @@
 				<Original>Repair Structure</Original>
 				<Russian>Починить Строение</Russian>
 			</Key>
+			<Key ID="STR_Icon_ALC">
+				<Original>Aircraft Loadout Customisation</Original>
+				<Russian>Изменённая загрузка Авиации</Russian>
+			</Key>
 			<Key ID="STR_Icon_TCom">
 				<Original>Take Command</Original>
 				<Russian>Взять Командование</Russian>
@@ -904,6 +920,18 @@
 			<Key ID="STR_Icon_DisDef">
 				<Original>Dismount Defense</Original>
 				<Russian>Демонтировать Оборону</Russian>
+			</Key>
+			<Key ID="STR_Icon_EjectCargo">
+				<Original>Eject Cargo</Original>
+				<Russian>выгружать груз</Russian>
+			</Key>
+			<Key ID="STR_Icon_Camo">
+				<Original>Camo Net $500</Original>
+				<Russian>камуфляжная сетка $500</Russian>
+			</Key>
+			<Key ID="STR_Icon_SlatCage">
+				<Original>Slat Cage $1500</Original>
+				<Russian>ламельная клетка $1500</Russian>
 			</Key>
 			<Key ID="STR_Menu_Options_OnlineHelp">
 				<Original>Online Help</Original>
@@ -1377,6 +1405,10 @@
 				<Original>Force Lock (No ToolKit)</Original>
 				<Russian>Взломать (Нет Набора Инструментов)</Russian>
 			</Key>
+			<Key ID="STR_Force_Lock_No_ToolKit_No_RepTruck">
+				<Original>Force Lock (ToolKit and Repair Truck needed)</Original>
+				<Russian>Взломать (Набора Инструментов и ремонтный грузовик необходимо)</Russian>
+			</Key>
 			<Key ID="STR_MGA_sec">
 				<Original>Mobile Gear Access (%1 s.)</Original>
 				<Russian>Доступ к мобильному снаряжению (%1 сек.)</Russian>
@@ -1818,8 +1850,12 @@
 				<Russian>&lt;t size='1.3' color='#BB0000'&gt;Информация&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;%2&lt;t&gt;Ваш заказ &lt;t color='#ccffaf'&gt;%1&lt;/t&gt; &lt;t color='#fcffaf'&gt;Отклонён&lt;/t&gt;, недостаточно средств.</Russian>
 			</Key>
 			<Key ID="STR_OnPurchase_TooMuchUnits">
-				<Original>&lt;t size='1.3' color='#BB0000'&gt;Information&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;%2&lt;t&gt;Your &lt;t color='#ccffaf'&gt;%1&lt;/t&gt; order has been &lt;t color='#fcffaf'&gt;Denied&lt;/t&gt;, too much units in group.</Original>
+				<Original>&lt;t size='1.3' color='#BB0000'&gt;Information&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;%2&lt;t&gt;Your &lt;t color='#ccffaf'&gt;%1&lt;/t&gt; order has been &lt;t color='#fcffaf'&gt;Denied&lt;/t&gt;, too many units in group.</Original>
 				<Russian>&lt;t size='1.3' color='#BB0000'&gt;Информация&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;%2&lt;t&gt;Ваш заказ &lt;t color='#ccffaf'&gt;%1&lt;/t&gt; &lt;t color='#fcffaf'&gt;Отклонён&lt;/t&gt;, слишко много юнитов в группе.</Russian>
+			</Key>
+			<Key ID="STR_OnPurchase_RefundUnit">
+				<Original>&lt;t size='1.3' color='#2394ef'&gt;Information&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;%4&lt;t&gt;Your &lt;t color='#ccffaf'&gt;%1&lt;/t&gt; has been refunded</Original>
+				<Russian>&lt;t size='1.3' color='#2394ef'&gt;Информация&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;%4&lt;t&gt;Ваш &lt;t color='#ccffaf'&gt;%1&lt;/t&gt; был возвращен</Russian>
 			</Key>
 	</Package>
 	<Package name="Client_OnStructureConstructed">
@@ -1914,8 +1950,8 @@
 				<Russian>&lt;t size='1.3' color='#2394ef'&gt;Вам нужен Набор Инструментов для этого&lt;/t&gt;</Russian>
 			</Key>
 			<Key ID="STR_ForcedVehicle">
-				<Original>This vehicle has already been forced</Original>
-				<Russian>Данная техника уже была взломана</Russian>
+				<Original>This vehicle has already been forced or the lock is broken</Original>
+				<Russian>Данная техника уже была взломана или блокировка сломана</Russian>
 			</Key>
 			<Key ID="STR_ForcedVehicleLock">
 				<Original>Forcing vehicle lock</Original>
@@ -1946,8 +1982,8 @@
 				<Russian>ST LOAD :: Обьект Выгружен : %1 из %2 </Russian>
 			</Key>
 			<Key ID="STR_ST_NotFound">
-				<Original>ST LOAD :: No Static/Crate found, it must be behind your offroad</Original>
-				<Russian>ST LOAD :: Нет обьектов, позади вашей машины, которые можно загрузить </Russian>
+				<Original>ST LOAD :: No Static/Crate found, it must be behind your offroad/van</Original>
+				<Russian>ST LOAD :: Нет обьектов, позади вашей машины, которые можно загрузить</Russian>
 			</Key>
 	</Package>
 	<Package name="town_markers">
@@ -1992,6 +2028,12 @@
 			<Key ID="STR_UAV_Range">
 				<Original>&lt;t size='1.3' color='#2394ef'&gt;Information&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;You have lost connection to your UAV. Maximum range is &lt;t color='#ccffaf'&gt;%1 meters.&lt;/t&gt;</Original>
 				<Russian>&lt;t size='1.3' color='#2394ef'&gt;Информация&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Вы потеряли связь с вашим маленьким БПЛА. Макс.дальность - &lt;t color='#ccffaf'&gt;%1 метров.&lt;/t&gt;</Russian>
+			</Key>
+	</Package>
+	<Package name="UAV_ALT">
+			<Key ID="STR_UAV_ALT">
+				<Original>&lt;t size='1.3' color='#2394ef'&gt;Information&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;You have lost connection to your UAV. Maximum flight altitude is &lt;t color='#ccffaf'&gt;%1 meters.&lt;/t&gt;</Original>
+				<Russian>&lt;t size='1.3' color='#2394ef'&gt;Информация&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Вы потеряли соединение с вашим БПЛА. Максимальная высота полета - &lt;t color='#ccffaf'&gt;%1 метров.&lt;/t&gt;</Russian>
 			</Key>
 	</Package>
 	<Package name="SM_COM_UnSet_Client">
@@ -2080,8 +2122,8 @@
 				<Russian>&lt;t color='#ff0000'&gt;Отключены от сети.&lt;/t&gt;</Russian>
 			</Key>
 			<Key ID="STR_Current_Com">
-				<Original>&lt;t color='#F5D363'&gt;Current Com :&lt;/t&gt; %1&lt;br /&gt;</Original>
-				<Russian>&lt;t color='#F5D363'&gt;Командир Стороны :&lt;/t&gt; %1&lt;br /&gt;</Russian>
+				<Original>&lt;t color='#F5D363'&gt;Current Com:&lt;/t&gt; %1</Original>
+				<Russian>&lt;t color='#F5D363'&gt;Командир Стороны:&lt;/t&gt; %1</Russian>
 			</Key>
 			<Key ID="STR_No_Upgrade_Running">
 				<Original>No Upgrade Running</Original>
@@ -2094,8 +2136,8 @@
 	</Package>
 	<Package name="HUD_UpdateVehicle">
 			<Key ID="STR_TROPHY_Ammo">
-				<Original> |  Trophy : &lt;t color='%3'&gt;%1&lt;/t&gt;|&lt;t color='%4'&gt;%2&lt;/t&gt;</Original>
-				<Russian> |  Trophy : &lt;t color='%3'&gt;%1&lt;/t&gt;|&lt;t color='%4'&gt;%2&lt;/t&gt;</Russian>
+				<Original> | Trophy: &lt;t color='%3'&gt;%1&lt;/t&gt;|&lt;t color='%4'&gt;%2&lt;/t&gt;</Original>
+				<Russian> | Trophy: &lt;t color='%3'&gt;%1&lt;/t&gt;|&lt;t color='%4'&gt;%2&lt;/t&gt;</Russian>
 			</Key>
 			<Key ID="STR_Hacked">
 				<Original> | Hacked (&lt;t color='#ff0000'&gt;%1&lt;/t&gt; s)</Original>
@@ -2152,8 +2194,8 @@
 				<Russian>Завод Тяжелой Техники</Russian>
 			</Key>
 			<Key ID="STR_Up_Heavy_Factory_Descr">
-				<Original>Unlock better armored units</Original>
-				<Russian>Разблокировать новую бронированную технику</Russian>
+				<Original>Unlock armored units (1::HEAVY TANKS, 2::ARTILLERY TANKS)</Original>
+				<Russian>Разблокировать бронированные устройства (1 :: ТЯЖЕЛЫЕ ТАНКИ, 2: АРТИЛЛЕРЕЯ)</Russian>
 			</Key>
 			<Key ID="STR_Up_Aircraft_Factory">
 				<Original>Factory: Aircraft Factory</Original>
@@ -2168,8 +2210,8 @@
 				<Russian>Технологии AAF</Russian>
 			</Key>
 			<Key ID="STR_Up_AAF_technologies_Descr">
-				<Original>Unlock AAF units (1::MRAPS, 2::APC , 3::TRACKED, 4::CHOPPERS, 5::PLANES)</Original>
-				<Russian>Разблокировать технику AAF (1::Легкая Техника 2::БТР 3::БМП, Танки 4::Вертолёты 5::Самолёты)</Russian>
+				<Original>Unlock AAF units (1::MRAPS and VANS, 2::APC, 3::TRACKED, 4::CHOPPERS, 5::PLANES, 6::ARTILLERY)</Original>
+				<Russian>Разблокировать технику AAF (1::Легкая Техника и фургоны, 2::БТР 3::БМП, Танки 4::Вертолёты, 5::Самолёты, 6::АРТИЛЛЕРИЯ)</Russian>
 			</Key>
 			<Key ID="STR_Up_Aircraft_FFAR">
 				<Original>Air: Aircraft FFAR</Original>
@@ -2298,6 +2340,14 @@
 			<Key ID="STR_Up_Respawn_Truck_Descr">
 				<Original>Increase the max range of the respawn truck. 500m + lvl x 500m </Original>
 				<Russian>Увеличивает макс. дальность появления на Мед.Грузовиках и контейнерах: 500м + Ур.Улучш x 500м</Russian>
+			</Key>
+			<Key ID="STR_Up_Data">
+				<Original>Network: Advanced Data Link</Original>
+				<Russian>Сеть: Расширенный канал передачи данных</Russian>
+			</Key>
+			<Key ID="STR_Up_Data_Descr">
+				<Original>Advanced data link to players. This allows them to share and recive targets via their sensors.</Original>
+				<Russian>Добавьте дополнительную ссылку к игрокам. Это позволяет им делиться и получать цели через свои датчики.</Russian>
 			</Key>
 	</Package>
 </Project>

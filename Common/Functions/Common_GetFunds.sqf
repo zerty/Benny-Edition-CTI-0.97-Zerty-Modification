@@ -40,4 +40,4 @@ if ((_side call CTI_CO_FNC_GetSideCommander) == _group) then {
 	(_side) call CTI_CO_FNC_GetFundsCommander;
 } else {
 	(_group) call CTI_CO_FNC_GetFundsTeam;
-}
+};

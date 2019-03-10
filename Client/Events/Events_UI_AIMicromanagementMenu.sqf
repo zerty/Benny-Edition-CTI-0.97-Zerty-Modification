@@ -195,8 +195,13 @@ switch (_action) do {
 			{
 				_value = ((uiNamespace getVariable "cti_dialog_ui_aimicromenu") displayCtrl 270002) lbValue _x;
 				_who = (uiNamespace getVariable "cti_dialog_ui_aimicromenu_units") select _value;
-				if (_who == effectiveCommander vehicle _who && vehicle _who != _who) then {(vehicle _who) setDammage 1};
-				_who setDammage 1;
+				if (_who == effectiveCommander vehicle _who && vehicle _who != _who) then {
+					_veh=(vehicle _who);
+					{_veh deleteVehicleCrew _x} forEach crew _veh;
+					if !(_veh in [(CTI_EAST getVariable "cti_hq"),(CTI_WEST getVariable "cti_hq")]) then  {deleteVehicle _veh;};
+				}else {
+					deleteVehicle _who;
+				};
 			} forEach _selection;
 			{((uiNamespace getVariable "cti_dialog_ui_aimicromenu") displayCtrl 270002) lbDelete _x} forEach _selection;
 

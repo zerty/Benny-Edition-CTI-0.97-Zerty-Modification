@@ -1,3 +1,4 @@
+
 #define animation "ainvpknlmstpsnonwrfldnon_medic0s"
 #define player_ratio 4
 #define reward 25
@@ -6,6 +7,8 @@ _target=_this select 1;
 
 private ["_caller"];
 
+_primary_weapon = primaryWeapon _caller;
+_caller selectWeapon _primary_weapon;
 CTI_P_Repairing = true ;
 _caller switchMove animation;
 [localize "STR_Action_Build",0,100,0] call HUD_PBar_start;
@@ -19,4 +22,3 @@ while {alive _caller  && animationstate _caller == animation && _target in (CTI_
 _caller switchMove "";
 CTI_P_Repairing = false ;
 0 call HUD_PBar_stop;
-

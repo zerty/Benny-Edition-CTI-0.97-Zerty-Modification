@@ -53,7 +53,7 @@ _pv_parameters = if (count _this > 2) then {_this select 2} else {[]};
 _pv_exec_local = if (count _this > 3) then {_this select 3} else {false};
 
 _pv_target = "";
-//if (CTI_isServer) then {diag_log format ["::PVNET :: %3 :: %1 to %2 :: %4",_pv_name,_pv_destination,diag_tickTime,_pv_parameters];};
+if (NETSEND_DEBUG) then {diag_log format ["::PVNET :: %3 :: %1 to %2 :: %4",_pv_name,_pv_destination,diag_tickTime,_pv_parameters];};
 CTI_NetCom = [_pv_destination, _pv_name, _pv_parameters]; //--- Compose the net message
 if !(isMultiplayer) exitWith { CTI_NetCom call CTI_CO_FNC_OnPVFReceived }; //--- In singleplayer, it's simple!
 

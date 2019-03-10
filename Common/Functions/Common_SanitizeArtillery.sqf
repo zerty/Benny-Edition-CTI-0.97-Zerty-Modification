@@ -26,7 +26,7 @@ private ["_vehicle"];
 _vehicle = _this;
 
 {
-	if (_x in ["6Rnd_155mm_Mo_mine","6Rnd_155mm_Mo_AT_mine"]) then {_vehicle removeMagazine _x};
+	if (_x in ["6Rnd_155mm_Mo_mine","6Rnd_155mm_Mo_AT_mine","6Rnd_155mm_Mo_mine_O","6Rnd_155mm_Mo_AT_mine_O"]) then {_vehicle removeMagazine _x};
 } forEach magazines _vehicle;
 
 true

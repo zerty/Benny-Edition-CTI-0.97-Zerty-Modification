@@ -32,7 +32,7 @@ _s = _s		+ [[]];
 
 _v = _v		+ ["InfantryAT"];
 _t = _t		+ ["Infantry - AT"];
-_p = _p		+ [[["O_soldier_AT_F", 5, 85], ["O_medic_F", 1], ["O_soldier_LAT_F", 3, 75]]];
+_p = _p		+ [[["O_soldier_AT_F", 5, 85], ["O_medic_F", 1], ["O_soldier_LAT_F", 3, 75], ["O_Soldier_HAT_F", 2, 70]]];
 _f = _f		+ [CTI_BARRACKS];
 _m = _m		+ [800];
 _c = _c		+ ["InfantryAT"];
@@ -72,7 +72,7 @@ _s = _s		+ [[]];
 
 _v = _v		+ ["Mechanized"];
 _t = _t		+ ["Mechanized - APC"];
-_p = _p		+ [[["O_APC_Wheeled_02_rcws_F", 1], ["O_APC_Tracked_02_cannon_F", 1, 50]]];
+_p = _p		+ [[["O_APC_Wheeled_02_rcws_v2_F", 1], ["O_APC_Tracked_02_cannon_F", 1, 50]]];
 _f = _f		+ [CTI_HEAVY];
 _m = _m		+ [2500];
 _c = _c		+ ["Mechanized"];
@@ -88,7 +88,7 @@ _s = _s		+ [[]];
 
 _v = _v		+ ["Armored"];
 _t = _t		+ ["Armored - MBT"];
-_p = _p		+ [[["O_MBT_02_cannon_F", 1]]];
+_p = _p		+ [[["O_MBT_02_cannon_F", 1], ["O_MBT_04_cannon_F", 1, 50]]];
 _f = _f		+ [CTI_HEAVY];
 _m = _m		+ [6500];
 _c = _c		+ ["Armored"];
@@ -104,7 +104,7 @@ _s = _s		+ [[]];
 
 _v = _v		+ ["AirAttack"];
 _t = _t		+ ["Air - Attack"];
-_p = _p		+ [[["O_Heli_Attack_02_F", 1]]];
+_p = _p		+ [[["O_Heli_Attack_02_dynamicLoadout_F", 1]]];
 _f = _f		+ [CTI_AIR];
 _m = _m		+ [25000];
 _c = _c		+ ["Air"];

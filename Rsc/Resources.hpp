@@ -538,6 +538,7 @@ class RscMapControl {
 	showCountourInterval = 0;
 	scaleMin = 0.001;
 	scaleMax = 1.0;
+	widthRailWay = 4;
 	scaleDefault = 0.16;
 	maxSatelliteAlpha = 0.85;
 	alphaFadeStartScale = 0.35;
@@ -870,6 +871,23 @@ class RscTablet   {
 	moving = 1;
 	colorBackground[] = {0, 0, 0, 1};
 	text="Rsc\Pictures\tablet.paa";
+	font = "PuristaMedium";
+	sizeEx = "(			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
+};
+
+class RscExtendedTablet   {
+	type = CT_STATIC;
+	idc = -1;
+	style = ST_PICTURE;
+	shadow = 0;
+	colorText[] = {1,1,1,1};
+	x = "SafeZoneX + (SafeZoneW - (3/4*SafeZoneH))/2";
+	y = "SafeZoneY + (SafezoneH * 0)";
+	w = "3/4*SafeZoneH";
+	h = "SafeZoneH";
+	moving = 1;
+	colorBackground[] = {0, 0, 0, 1};
+	text="Rsc\Pictures\tablet_large.paa";
 	font = "PuristaMedium";
 	sizeEx = "(			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
 };

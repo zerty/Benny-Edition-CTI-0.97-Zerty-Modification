@@ -37,7 +37,7 @@ HUD_Revives=[];
 
 
 waitUntil {!(isNull player)};
-("CTI_HUD" call BIS_fnc_rscLayer) cutrsc["CTI_HUD_RSC","PLAIN",0,false];
+("CTI_HUD" call BIS_fnc_rscLayer) cutrsc["CTI_HUD_RSC","PLAIN",0,true];
 waitUntil {!isNil {uiNamespace getVariable 'HUD'}};
 
 0 execVM	 "Addons\Strat_mode\HUD\HUD_launch.sqf";
@@ -48,7 +48,8 @@ waitUntil {!isNil {uiNamespace getVariable 'HUD'}};
 	while {!CTI_GameOver} do
 	{
 		waitUntil {[CTI_P_SideJoined, CTI_UPGRADE_HUD, 1] call CTI_CO_FNC_HasUpgrade || CTI_Debug};
-		if (((tolower (goggles player)) in  ['g_tactical_clear','g_tactical_black'] || CTI_Debug)&& profileNamespace getVariable ["HUD_Tactical",true] ) then {
+		//(tolower (goggles player)) in  ['g_tactical_clear','g_tactical_black']
+		if ((true || CTI_Debug)&& profileNamespace getVariable ["HUD_Tactical",true] ) then {
 				waitUntil {! isNil "HUD_AddFrameHandler"};
 				0 call HUD_AddFrameHandler;
 				2001 cutText ["Welcome in the Tactical Overlay; Press the Windows key to show.","PLAIN",5,false];

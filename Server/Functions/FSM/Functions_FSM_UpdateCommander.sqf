@@ -166,7 +166,7 @@ CTI_FSM_UpdateCommander_GetStructureEmplacement = {
 	_done = false;
 	while {_i < 1000 && !_done} do {
 		_tpos = [(_position select 0)+(_radius - (random (_radius * 2))),(_position select 1)+(_radius - (random (_radius * 2)))];
-		_fpos = _tpos isFlatEmpty [13, 1, 0.5, 10, 0, false, objNull];
+		_fpos = _tpos isFlatEmpty [13, -1, 0.5, 10, 0, false, objNull];
 		if (count _fpos > 0 && count(_tpos nearRoads 17) == 0 && ([_tpos, _structures] call CTI_CO_FNC_GetClosestEntity) distance _tpos > 25) then {
 			_position = _fpos; _done = true
 		};

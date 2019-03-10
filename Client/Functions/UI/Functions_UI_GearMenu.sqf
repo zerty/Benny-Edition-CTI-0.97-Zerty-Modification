@@ -353,6 +353,8 @@ CTI_UI_Gear_TryContainerAddItem = {
 CTI_UI_Gear_AddItem = {
 	private ["_current", "_get", "_gear", "_index", "_item", "_slot", "_sub_type", "_type", "_updated"];
 
+	
+	
 	_item = toLower(_this);
 	_target = uiNamespace getVariable "cti_dialog_ui_gear_target";
 	_get = missionNamespace getVariable _item;
@@ -393,7 +395,31 @@ CTI_UI_Gear_AddItem = {
 						((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl (70006+_index)) ctrlSetTooltip getText(configFile >> 'CfgWeapons' >> _item >> 'displayName');
 
 						((_gear select 3) select 0) set [_index, _item];
+						
+						
+						//Test if Special Helmet is present
+						_helmet =  (_gear select 2) select 0;
+						if(_helmet == "H_HelmetO_ViperSP_hex_F" || _helmet == "H_HelmetO_ViperSP_ghex_F") then {
+							//remove helmet
+							_slot = 0;
+							_idc = 70004;
+							_default = "\A3\Ui_f\data\GUI\Rsc\RscDisplayGear\ui_gear_helmet_gs.paa";
+							_gear = uiNamespace getVariable "cti_dialog_ui_gear_target_gear";
+							if ((_gear select 2) select _slot != "") then {
+								//--- Apply the default picture and release the tooltip
+								((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl _idc) ctrlSetText _default;
+								((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl _idc) ctrlSetTooltip "";
+
+								(_gear select 2) set [_slot, ""];
+								call CTI_UI_Gear_UpdatePrice;
+							};
+							
+							//delet helmet 6:06:43 "removing item: 0 70004 \A3\Ui_f\data\GUI\Rsc\RscDisplayGear\ui_gear_helmet_gs.paa"
+							
+							//delete NVG 16:05:31 "removing item: [0,0] 70006 \A3\Ui_f\data\GUI\Rsc\RscDisplayGear\ui_gear_nvg_gs.paa"
+						};
 						_updated = true;
+						
 					};
 				};
 				case "Item": { //--- Uniform, vest, helm, gps, compass, toolkit...
@@ -415,7 +441,6 @@ CTI_UI_Gear_AddItem = {
 							};
 							if (_slot != -1) then { //--- Special item
 								_current = ((_gear select 3) select 1) select _slot;
-
 								if (_current != _item) then {
 									((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl (70008+_slot)) ctrlSetText getText(configFile >> 'CfgWeapons' >> _item >> 'picture');
 									((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl (70008+_slot)) ctrlSetTooltip getText(configFile >> 'CfgWeapons' >> _item >> 'displayName');
@@ -432,13 +457,30 @@ CTI_UI_Gear_AddItem = {
 						};
 						case (_sub_type == "Headgear"): {
 							_current = (_gear select 2) select 0;
-
 							if (_current != _item) then {
 								((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl 70004) ctrlSetText getText(configFile >> 'CfgWeapons' >> _item >> 'picture');
 								((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl 70004) ctrlSetTooltip getText(configFile >> 'CfgWeapons' >> _item >> 'displayName');
-
+								
 								(_gear select 2) set [0, _item];
+								
+								//Test if NVG googles is present (dont work with special helmet)
+								if(_item == "H_HelmetO_ViperSP_hex_F" || _item == "H_HelmetO_ViperSP_ghex_F") then {
+									//remove nvg
+									_slot = 0;
+									_idc = 70006;
+									_default = "\A3\Ui_f\data\GUI\Rsc\RscDisplayGear\ui_gear_nvg_gs.paa";
+									_gear = uiNamespace getVariable "cti_dialog_ui_gear_target_gear";
+									if (((_gear select 3) select 0) select _slot != "") then {
+										//--- Apply the default picture and release the tooltip
+										((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl _idc) ctrlSetText _default;
+										((uiNamespace getVariable "cti_dialog_ui_gear") displayCtrl _idc) ctrlSetTooltip "";
+
+										((_gear select 3) select 0) set [_slot, ""];
+										call CTI_UI_Gear_UpdatePrice;
+									};
+								};
 								_updated = true;
+	
 							};
 						};
 						case (_sub_type in ["Uniform","Vest"]): {
@@ -519,7 +561,7 @@ CTI_UI_Gear_CanAddItemWithMass = {
 	_mass_items_container = ((_mass select 1) select _index) select 0;
 	_mass_capacity_container = ((_mass select 1) select _index) select 1;
 
-	if (_mass_item + _mass_items_container <= _mass_capacity_container || _mass_capacity_container == 0 && _mm >0) then {true} else {false}
+	if (_mass_item + _mass_items_container <= _mass_capacity_container || _mass_capacity_container == 0 && _mm >0) then {true} else {false};
 };
 
 //--- Check whether accessories shall be kept after changing a weapon or not
@@ -841,7 +883,7 @@ CTI_UI_Gear_GetItemBaseConfig = {
 		case (isClass (configFile >> 'CfgVehicles' >> _this)): {"CfgVehicles"};
 		case (isClass (configFile >> 'CfgGlasses' >> _this)): {"CfgGlasses"};
 		default {"nil"};
-	}
+	};
 };
 
 //--- Return the mass of an generic item

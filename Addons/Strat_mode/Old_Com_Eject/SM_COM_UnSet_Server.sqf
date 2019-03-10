@@ -37,7 +37,9 @@ _side_logic setVariable ["cti_commander", grpNull, true];
 diag_log format [":: COM %1 :: Reseting group to %2",_side,_side_logic getvariable  "cti_commander"];
 
 diag_log format [":: COM %1 :: Locking HQ %2",_side,_hq];
-if (_hq iskindof "Car") then {_hq lock 2};
+if (_hq iskindof "Car") then {
+	if (local _hq) then {_hq lock 2} else {["CLIENT", "Client_LockHQ", [],true] call CTI_CO_FNC_NetSend;};
+};
 _hq setVariable ["v_keys",["",grpNull],true];
 diag_log format [":: COM %1 :: HQ %2 locks: %3",_side,_hq,_hq getVariable "v_keys"];
 

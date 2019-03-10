@@ -4,14 +4,14 @@ setObjectViewDistance 4000;
 
 NET_LOG=False;
 
-MADE_FOR_STRATIS=false;
+ISLAND = 2; //--- 1: Stratis, 2: Altis, 3: Tanoa, 4: Malden, 5: VR
 //--- Early definition, will be override later on in the init files.
 CTI_P_SideJoined = civilian;
 
 
 //CTI_DEBUG = true;
 CTI_DEBUG = false;
-
+NETSEND_DEBUG= false;
 //--- Log levels
 CTI_Log_Debug = 3;
 CTI_Log_Information = 2;
@@ -125,7 +125,7 @@ if (CTI_IsClient && !CTI_IsHeadless) then {
 if (CTI_IsHeadless) then {
 	if (CTI_Log_Level >= CTI_Log_Information) then { ["INFORMATION", "FILE: init.sqf", "Running headless client initialization"] call CTI_CO_FNC_Log };
 
-	//execVM "Client\Init\Init_Client_Headless.sqf";
+	execVM "Client\Init\Init_Client_Headless.sqf";
 };
 
 //--- Set the group ID

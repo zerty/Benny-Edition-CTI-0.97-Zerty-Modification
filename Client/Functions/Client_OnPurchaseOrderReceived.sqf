@@ -7,7 +7,7 @@
 					the "Client_OnPurchaseOrderReceived" PVF
 	Author: 		Benny
 	Creation Date:	19-09-2013
-	Revision Date:	19-09-2013
+	Revision Date:	19-05-2018
 
   # PARAMETERS #
     0	[Number]: The purchase seed
@@ -36,7 +36,7 @@
 	[_seed, _classname, group player, _veh_infos, _factory] spawn CTI_CL_FNC_OnPurchaseOrderReceived
 */
 
-private ["_cost", "_factory", "_funds", "_index", "_model", "_net", "_req_buyer", "_req_classname", "_req_seed", "_req_time", "_req_time_out", "_script", "_var", "_var_classname", "_vehicle", "_veh_infos"];
+private ["_cost", "_factory", "_funds", "_index", "_model", "_net", "_req_buyer", "_req_classname", "_req_seed", "_req_time", "_req_time_out", "_script", "_var", "_var_classname", "_vehicle", "_veh_infos","_group"];
 
 _req_seed = _this select 0;
 _req_classname = _this select 1;
@@ -44,6 +44,8 @@ _req_buyer = _this select 2;
 _factory = _this select 3;
 _veh_infos = _this select 4;
 
+
+_group= group (_req_buyer);
 _model = _req_classname;
 _var_classname = missionNamespace getVariable _req_classname;
 _picture = if ((_var_classname select CTI_UNIT_PICTURE) != "") then {format["<img image='%1' size='2.5'/><br /><br />", _var_classname select CTI_UNIT_PICTURE]} else {""};
@@ -88,7 +90,7 @@ if !(_model isKindOf "Man") then { //--- Add the vehicle crew cost if applicable
 	};
 };
 
-_funds = [group (_req_buyer), CTI_P_SideJoined] call CTI_CO_FNC_GetFunds;
+_funds = [_group, CTI_P_SideJoined] call CTI_CO_FNC_GetFunds;
 
 
 if (_funds < _cost) exitWith {
@@ -121,12 +123,12 @@ if !(_process) exitWith {
 
 //--- Check funds
 
-_funds = [group(_req_buyer), CTI_P_SideJoined] call CTI_CO_FNC_GetFunds;
+_funds = [_group, CTI_P_SideJoined] call CTI_CO_FNC_GetFunds;
 if (_funds < _cost) exitWith {
 	["SERVER", "Answer_Purchase", [_req_seed, _req_classname, _req_buyer, _factory]] call CTI_CO_FNC_NetSend;
 	hint parseText format [localize "STR_OnPurchase_NotFunds", _var_classname select CTI_UNIT_LABEL, _picture];
 };
-[group(_req_buyer), CTI_P_SideJoined, -_cost] call CTI_CO_FNC_ChangeFunds; //--- Change the buyer's funds
+[_group, CTI_P_SideJoined, -_cost] call CTI_CO_FNC_ChangeFunds; //--- Change the buyer's funds
 
 if (CTI_Log_Level >= CTI_Log_Information) then { ["INFORMATION", "FILE: Client\Functions\Client_OnPurchaseOrderReceived.sqf", format["Purchase order concerning classname [%1] with seed [%2] from [%3] on factory [%4, (%5)] is done. Processing the creation...", _req_classname, _req_seed, _req_buyer, _factory, _factory getVariable "cti_structure_type"]] call CTI_CO_FNC_Log };
 
@@ -140,10 +142,24 @@ _net = if ((missionNamespace getVariable "CTI_MARKERS_INFANTRY") == 1) then { tr
 _vehicle = objNull;
 _units = [];
 if (_model isKindOf "Man") then {
-	_vehicle = [_model, group player, _position, CTI_P_SideID, _net] call CTI_CO_FNC_CreateUnit;
+	_vehicle = [_model, _group, _position, CTI_P_SideID, _net] call CTI_CO_FNC_CreateUnit;
 	_units pushBack _vehicle;
 } else {
 	_vehicle = [_model, _position, _direction + getDir _factory, CTI_P_SideID, (_veh_infos select 4), true, true] call CTI_CO_FNC_CreateVehicle;
+
+	[_vehicle, _group, _cost, _var_classname] spawn {
+		_veh = _this select 0;
+		_group = _this select 1;
+		_cost = _this select 2;
+		_var_classname = _this select 3;
+		sleep(15);
+		if(!alive _veh) then {
+			//delete wreck & refound cash
+			deleteVehicle _veh;
+			[ _group, CTI_P_SideJoined, _cost] call CTI_CO_FNC_ChangeFunds;
+			hint parseText format [localize "STR_OnPurchase_RefundUnit", _var_classname select CTI_UNIT_LABEL];
+		};
+	};
 
 	if (_veh_infos select 0 || _veh_infos select 1 || _veh_infos select 2 || _veh_infos select 3) then { //--- Not empty.
 		_crew = switch (true) do { case (_model isKindOf "Tank"): {"Crew"}; case (_model isKindOf "Air"): {"Pilot"}; default {"Soldier"}};

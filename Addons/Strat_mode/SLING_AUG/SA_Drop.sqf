@@ -38,5 +38,7 @@ if ! (isnil "_para") then  {
     _drop disableCollisionWith _para;
 };
 _shell= createvehicle [_shellclass,getpos _drop,[],0, "CAN_COLLIDE"];
+if ! (isnil "_para") then {
 sleep 10;
 deletevehicle _para;
+};

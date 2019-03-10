@@ -130,7 +130,8 @@ with missionNamespace do {
 		_marker setMarkerTypeLocal format["%1installation", CTI_P_MarkerPrefix];
 		_marker setMarkerColorLocal "ColorBlack";
 		_marker setMarkerSizeLocal [0.75, 0.75];
-		_marker setMarkerTextLocal "";
+		_type = _structure getVariable ["cti_structure_type", ""];
+		_marker setMarkerTextLocal _type;
 		[_structure,_marker] spawn {
 			private ["_structure","_marker"];
 			_structure = _this	 select 0;
@@ -159,8 +160,14 @@ with missionNamespace do {
 			} ;
 
 		};
-
 	};
+
+	CTI_PVF_Client_LockHQ = {
+		_hq =  (CTI_P_SideJoined) call CTI_CO_FNC_GetSideHQ;
+		if !(local _hq) exitWith {};
+		_hq lock 2;
+	};
+
 	CTI_PVF_Client_RenewHQ={
 		_hq = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideHQ;
 		_hq addEventHandler ["killed", format["[_this select 0, _this select 1, %1] spawn CTI_CL_FNC_OnHQDestroyed", CTI_P_SideID]];

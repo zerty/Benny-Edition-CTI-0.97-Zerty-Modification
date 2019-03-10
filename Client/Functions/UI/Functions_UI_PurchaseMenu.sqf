@@ -109,7 +109,7 @@ CTI_UI_Purchase_UpdateVehicleIcons = {
 
 	_IDCs = [110100, 110101, 110102, 110103];
 
-	if (_classname isKindOf "Man"||_classname isKindOf "UAV_01_base_F" ||_classname isKindOf "UGV_01_base_F"||_classname isKindOf "UAV"||_classname isKindOf "StaticWeapon" ||_classname isKindOf "Thing" || (leader group player)!= player ) then {
+	if (_classname isKindOf "Man"||_classname isKindOf "UAV_01_base_F" ||_classname isKindOf "B_T_UAV_03_dynamicLoadout_F" ||_classname isKindOf "UGV_01_base_F"||_classname isKindOf "UAV"||_classname isKindOf "StaticWeapon" ||_classname isKindOf "Thing" || (leader group player)!= player ) then {
 		// {
 			// ((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl _x) ctrlShow false;
 		// } forEach (_IDCs + [110104]);

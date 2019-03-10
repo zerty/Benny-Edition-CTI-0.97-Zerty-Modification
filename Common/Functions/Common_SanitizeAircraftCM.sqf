@@ -33,4 +33,16 @@ if ("CMFlareLauncher" in _weapons) then {
 	} forEach (getArray(configFile >> "CfgVehicles" >> typeOf _vehicle >> "magazines"));
 };
 
+if ("CMFlareLauncher_Singles" in _weapons) then {
+	{
+		if (getText(configFile >> "CfgMagazines" >> _x >> "ammo") in ["CMflareAmmo", "CMflare_Chaff_Ammo"]) then {_vehicle removeMagazineTurret [_x, [-1]]};
+	} forEach (getArray(configFile >> "CfgVehicles" >> typeOf _vehicle >> "magazines"));
+};
+
+if ("CMFlareLauncher_Triples" in _weapons) then {
+	{
+		if (getText(configFile >> "CfgMagazines" >> _x >> "ammo") in ["CMflareAmmo", "CMflare_Chaff_Ammo"]) then {_vehicle removeMagazineTurret [_x, [-1]]};
+	} forEach (getArray(configFile >> "CfgVehicles" >> typeOf _vehicle >> "magazines"));
+};
+
 true
