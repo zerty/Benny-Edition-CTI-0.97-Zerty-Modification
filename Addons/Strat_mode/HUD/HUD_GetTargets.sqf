@@ -12,6 +12,7 @@ _a_targs= player nearTargets (HUD_MAX_RANGE);
 		if ((_x select 4) isKindOf "Air") then {_targs pushBack _x;};
 		if ((_x select 4) isKindOf "Ship") then {_targs pushBack _x;};
 	};
+	true
 } count _a_targs;
 
 
