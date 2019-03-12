@@ -295,8 +295,8 @@ if (missionNamespace getvariable "CTI_PERSISTANT" == 1) then {
 	};
 	0 spawn {
 		while {!CTi_GameOver} do {
-			sleep 270 +random (60);
 			0 call PERS_SAVE;
+			sleep 270 +random (60);
 		};
 	};
 } else {
