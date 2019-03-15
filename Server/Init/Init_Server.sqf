@@ -294,6 +294,7 @@ if (missionNamespace getvariable "CTI_PERSISTANT" == 1) then {
 		} forEach [east,west];
 	};
 	0 spawn {
+		sleep 270;
 		while {!CTi_GameOver} do {
 			0 call PERS_SAVE;
 			sleep 270 +random (60);
