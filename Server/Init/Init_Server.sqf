@@ -320,8 +320,8 @@ if (missionNamespace getvariable "CTI_PERSISTANT" == 1) then {
 				];
 		diag_log _arr;
 		while {!CTI_GameOver} do {
-			east_sl = (east) call CTI_CO_FNC_GetSideLogic;
-			west_sl = (west) call CTI_CO_FNC_GetSideLogic;
+			_east_sl = (east) call CTI_CO_FNC_GetSideLogic;
+			_west_sl = (west) call CTI_CO_FNC_GetSideLogic;
 			_towns = count(east_sl getVariable  ["CTI_ACTIVE",[]]) + count(west_sl getVariable  ["CTI_ACTIVE",[]]);
 			_players = [];
 			{
@@ -346,8 +346,8 @@ if (missionNamespace getvariable "CTI_PERSISTANT" == 1) then {
 					["player_count_east", (east countSide allPlayers)],
 					["player_count_west", (west countSide allPlayers)],
 					["players", _players],
-					["bases_east", east_sl getVariable ["cti_structures_areas",[]]],
-					["bases_west", west_sl getVariable ["cti_structures_areas",[]]],
+					["bases_east", _east_sl getVariable ["cti_structures_areas",[]]],
+					["bases_west", _west_sl getVariable ["cti_structures_areas",[]]],
 					["east_towns", _east_towns],
 					["west_towns", _west_towns],
 					["commander_east", (name leader ((east) call CTI_CO_FNC_GetSideCommander))],
