@@ -322,7 +322,7 @@ if (missionNamespace getvariable "CTI_PERSISTANT" == 1) then {
 		while {!CTI_GameOver} do {
 			_east_sl = (east) call CTI_CO_FNC_GetSideLogic;
 			_west_sl = (west) call CTI_CO_FNC_GetSideLogic;
-			_towns = count(east_sl getVariable  ["CTI_ACTIVE",[]]) + count(west_sl getVariable  ["CTI_ACTIVE",[]]);
+			_towns = count(_east_sl getVariable  ["CTI_ACTIVE",[]]) + count(_west_sl getVariable  ["CTI_ACTIVE",[]]);
 			_players = [];
 			{
 				_players pushBack [name _x, str (side _x), getPlayerUID _x, getPlayerScores _x, getPos _x];
