@@ -90,7 +90,7 @@ if (_completion >= 100) then {
 	_structure setPos _position;
 	_structure setVectorUp [0,0,1];
 	_structure setVariable ["cti_save", _variable,false];
-	_structure setVariable ["cti_structure_type", ((_var select 0) select 0)];
+	_structure setVariable ["cti_structure_type", ((_var select 0) select 0),true];
 
 	//--- Do we use our alternative damage system to prevent some bisteries from happening?
 	_alternative_damages = false;
