@@ -163,7 +163,7 @@ while {! (((getMarkerPos format ["HELO_START_%1", _i])select 0) == 0)} do
 	if (CTI_BASE_FOB_MAX > 0) then {_logic setVariable ["cti_fobs", [], true]};
 
 	//--- Startup vehicles
-	if !((profileNamespace getvariable ["CTI_SAVE_ENABLED",false]) &&(count(profileNamespace getVariable ["CTI_SAVE_TOWNS",[]]) == count CTI_TOWNS)) then {
+	if !((profileNamespace getvariable ["CTI_SAVE_ENABLED",false]) &&(count(profileNamespace getVariable ["CTI_SAVE_TOWNS",[]]) == count CTI_TOWNS) && (ISLAND in [2,3])) then {
 	{
 		_model = _x select 0;
 		_equipment = _x select 1;
