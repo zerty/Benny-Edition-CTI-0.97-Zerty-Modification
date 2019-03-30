@@ -341,6 +341,8 @@ if (CTI_IsServer) then {
 			};
 
 		};
+		// Tasks loop
+		{_x spawn TASKS_LOOP;} foreach [east,west];
 
 };
 
@@ -481,8 +483,7 @@ if (CTI_IsClient) then {
 	};
 
 
-	// Taks loop
-	0 spawn TASKS_LOOP;
+
 
 };
 
