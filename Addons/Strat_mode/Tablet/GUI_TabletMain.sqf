@@ -47,7 +47,7 @@ while { true } do {
 	//if ((missionNamespace getVariable"CTI_SM_STRATEGIC") >0 ) then {
 	//!CTI_P_PreBuilding && ! CTI_P_Repairing
 		if !(true && CTI_CL_FNC_IsPlayerCommander) then {((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210010) ctrlEnable false;};
-		if !(true && CTI_CL_FNC_IsPlayerCommander && !(isNull ((CTI_P_SideJoined call CTI_CO_FNC_GetSideLogic) getVariable "CTI_PRIORITY") ) && time > (SM_Last_dis +SM_TO_dis) ) then {((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210011) ctrlEnable false;};
+		if !(true && CTI_CL_FNC_IsPlayerCommander && !(isNull ((CTI_P_SideJoined call CTI_CO_FNC_GetSideLogic) getVariable "CTI_PRIORITY") ) && time > (SM_Last_dis +SM_TO_dis) && (count ((CTI_P_SideJoined call CTI_CO_FNC_GetSideLogic) getVariable "CTI_ACTIVE"))== CTI_SM_STRATEGIC_NB ) then {((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210011) ctrlEnable false;};
 	/*} else {
 	((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210010) ctrlEnable false;
 		((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210011) ctrlEnable false;
