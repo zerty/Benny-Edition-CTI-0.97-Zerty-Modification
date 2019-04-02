@@ -290,13 +290,79 @@ if (missionNamespace getvariable "CTI_PERSISTANT" == 1) then {
 		} forEach [east,west];
 	};
 	0 spawn {
+		sleep 270;
 		while {!CTi_GameOver} do {
-			sleep 270 +random (60);
 			0 call PERS_SAVE;
+			sleep 270 +random (60);
 		};
 	};
 } else {
 	CTI_Init_Server=True;
+	{
+		    _side=_x;
+		    _logic= (_side) call CTI_CO_FNC_GetSideLogic;
+		    _logic setVariable ["CTI_LOAD_COMPLETED",true,true];
+	} forEach [east,west];
+
 };
 
+//Logging of varius values
+0 spawn {
+		sleep 100; //wait for everything to finish loading
+		_version = 2; //version of DiscordBot logReader
+		_arr = 	[["CTI_DataPacket", "Header"],
+				 ["Version", _version], 
+				 ["Map", worldName]
+				];
+		diag_log _arr;
+		while {!CTI_GameOver} do {
+			_east_sl = (east) call CTI_CO_FNC_GetSideLogic;
+			_west_sl = (west) call CTI_CO_FNC_GetSideLogic;
+			_towns = count(_east_sl getVariable  ["CTI_ACTIVE",[]]) + count(_west_sl getVariable  ["CTI_ACTIVE",[]]);
+			_players = [];
+			{
+				_players pushBack [name _x, str (side _x), getPlayerUID _x, getPlayerScores _x, getPos _x];
+			} forEach allPlayers - entities "HeadlessClient_F";
+			
+			_west_towns = [];
+			{
+				_west_towns pushBack str _x;
+			} forEach (west call CTI_CO_FNC_GetSideTowns);			
+			_east_towns = [];
+			{
+				_east_towns pushBack str _x;
+			} forEach (east call CTI_CO_FNC_GetSideTowns);
+			
+			
+			_arr = 	[["CTI_DataPacket", "Data"],
+					["time", time],
+					["fps", diag_fps],
+					["score_east", (scoreSide east)],
+					["score_west", (scoreSide west)],
+					["player_count_east", (east countSide allPlayers)],
+					["player_count_west", (west countSide allPlayers)],
+					["players", _players],
+					["bases_east", _east_sl getVariable ["cti_structures_areas",[]]],
+					["bases_west", _west_sl getVariable ["cti_structures_areas",[]]],
+					["east_towns", _east_towns],
+					["west_towns", _west_towns],
+					["commander_east", (name leader ((east) call CTI_CO_FNC_GetSideCommander))],
+					["commander_west", (name leader ((west) call CTI_CO_FNC_GetSideCommander))],
+					["town_count_east", ((east) call CTI_CO_FNC_GetSideTownCount)],
+					["town_count_west", ((west) call CTI_CO_FNC_GetSideTownCount)],
+					["active_SQF_count", count(diag_activeSQFScripts)],
+					["active_AI", count(allUnits)],
+					["total_objects", count(allMissionObjects "All")],
+					["active_towns", _towns]
+					];
 
+			diag_log _arr;
+			sleep 60;
+		};
+		//Triggerd on Misson end, used when FSM does not trigger. (used for debugging)
+		_arr = 	[["CTI_DataPacket", "EOF"], 
+				 ["Version", _version],
+				 ["Map", worldName]
+				];
+		diag_log _arr;
+};
