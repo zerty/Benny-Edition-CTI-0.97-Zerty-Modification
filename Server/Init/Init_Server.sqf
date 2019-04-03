@@ -313,7 +313,7 @@ if (missionNamespace getvariable "CTI_PERSISTANT" == 1) then {
 //Logging of varius values
 0 spawn {
 		sleep 100; //wait for everything to finish loading
-		_version = 2; //version of DiscordBot logReader
+		_version = 3; //version of DiscordBot logReader
 		_arr = 	[["CTI_DataPacket", "Header"],
 				 ["Version", _version], 
 				 ["Map", worldName]
@@ -325,7 +325,7 @@ if (missionNamespace getvariable "CTI_PERSISTANT" == 1) then {
 			_towns = count(_east_sl getVariable  ["CTI_ACTIVE",[]]) + count(_west_sl getVariable  ["CTI_ACTIVE",[]]);
 			_players = [];
 			{
-				_players pushBack [name _x, str (side _x), getPlayerUID _x, getPlayerScores _x, getPos _x];
+				_players pushBack [name _x, str (side _x), getPlayerScores _x, getPos _x];
 			} forEach allPlayers - entities "HeadlessClient_F";
 			
 			_west_towns = [];
@@ -337,19 +337,14 @@ if (missionNamespace getvariable "CTI_PERSISTANT" == 1) then {
 				_east_towns pushBack str _x;
 			} forEach (east call CTI_CO_FNC_GetSideTowns);
 			
-			
-			_arr = 	[["CTI_DataPacket", "Data"],
+			//Data for general mission performance
+			diag_log[["CTI_DataPacket", "Data_1"], 
 					["time", time],
 					["fps", diag_fps],
 					["score_east", (scoreSide east)],
 					["score_west", (scoreSide west)],
 					["player_count_east", (east countSide allPlayers)],
 					["player_count_west", (west countSide allPlayers)],
-					["players", _players],
-					["bases_east", _east_sl getVariable ["cti_structures_areas",[]]],
-					["bases_west", _west_sl getVariable ["cti_structures_areas",[]]],
-					["east_towns", _east_towns],
-					["west_towns", _west_towns],
 					["commander_east", (name leader ((east) call CTI_CO_FNC_GetSideCommander))],
 					["commander_west", (name leader ((west) call CTI_CO_FNC_GetSideCommander))],
 					["town_count_east", ((east) call CTI_CO_FNC_GetSideTownCount)],
@@ -357,10 +352,16 @@ if (missionNamespace getvariable "CTI_PERSISTANT" == 1) then {
 					["active_SQF_count", count(diag_activeSQFScripts)],
 					["active_AI", count(allUnits)],
 					["total_objects", count(allMissionObjects "All")],
-					["active_towns", _towns]
-					];
+					["active_towns", _towns]];
+			//Data for Replay		
+			diag_log[["CTI_DataPacket", "Data_2"],
+					["players", _players]];
+			diag_log[["CTI_DataPacket", "Data_3"],
+					["bases_east", _east_sl getVariable ["cti_structures_areas",[]]],
+					["bases_west", _west_sl getVariable ["cti_structures_areas",[]]],
+					["east_towns", _east_towns],
+					["west_towns", _west_towns]];
 
-			diag_log _arr;
 			sleep 60;
 		};
 		//Triggerd on Misson end, used when FSM does not trigger. (used for debugging)

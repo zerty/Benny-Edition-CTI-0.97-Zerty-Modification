@@ -15,8 +15,8 @@ link3[] = {2,4};
 link4[] = {4,5};
 link5[] = {5,6};
 link6[] = {6,3};
-globals[] = {0.000000,0,0,0,0,640,480,1,164,6316128,1,-626.312195,169.713379,529.355530,-580.065979,635,885,1};
-window[] = {2,-1,-1,-1,-1,963,182,1437,182,3,653};
+globals[] = {0.000000,0,0,0,0,640,480,1,164,6316128,1,-626.312195,169.713379,529.355530,-580.065979,635,884,1};
+window[] = {2,-1,-1,-1,-1,833,52,1307,52,3,653};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -84,7 +84,7 @@ class FSM
                          "	{_factories = _factories + count([_x, _structures] call CTI_CO_FNC_GetSideStructuresByType)} forEach (missionNamespace getVariable format[""CTI_%1_Factories"", _side]);" \n
                          "	if (( ( time > _max_time && _max_time != 0)  || !(alive _hq) && _victory_hq == 1 || (!(alive _hq) && _factories == 0)) && !CTI_GameOver) exitWith {	" \n
                          "		diag_log[[""CTI_DataPacket"", ""GameOver""], " \n
-                         "					[""Version"", 2], //version of DiscordBot logReader" \n
+                         "					[""Version"", 3], //version of DiscordBot logReader" \n
                          "					[""Map"", worldName]," \n
                          "					[""Side"", _x]," \n
                          "					[""Lost"", true]," \n
@@ -99,7 +99,7 @@ class FSM
                          "	};" \n
                          "	if (_towns == _total && !CTI_GameOver) exitWith {" \n
                          "		diag_log[[""CTI_DataPacket"", ""GameOver""], " \n
-                         "					[""Version"", 2], //version of DiscordBot logReader" \n
+                         "					[""Version"", 3], //version of DiscordBot logReader" \n
                          "					[""Map"", worldName]," \n
                          "					[""Side"", _x]," \n
                          "					[""Lost"", false]," \n
@@ -114,7 +114,7 @@ class FSM
                          "	};" \n
                          "	if (_townvalue > (_total_value*0.75) && !CTI_GameOver) exitWith {" \n
                          "		diag_log[[""CTI_DataPacket"", ""GameOver""], " \n
-                         "					[""Version"", 2], //version of DiscordBot logReader" \n
+                         "					[""Version"", 3], //version of DiscordBot logReader" \n
                          "					[""Map"", worldName]," \n
                          "					[""Side"", _x]," \n
                          "					[""Lost"", false]," \n
