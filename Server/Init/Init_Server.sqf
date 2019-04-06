@@ -323,11 +323,23 @@ if (missionNamespace getvariable "CTI_PERSISTANT" == 1) then {
 			_east_sl = (east) call CTI_CO_FNC_GetSideLogic;
 			_west_sl = (west) call CTI_CO_FNC_GetSideLogic;
 			_towns = count(_east_sl getVariable  ["CTI_ACTIVE",[]]) + count(_west_sl getVariable  ["CTI_ACTIVE",[]]);
-			_players = [];
-			{
-				_players pushBack [name _x, str (side _x), getPlayerScores _x, getPos _x];
-			} forEach allPlayers - entities "HeadlessClient_F";
 			
+			//build player array, splitting at 800 to ensure char limit of 1000 is not reached
+			_players = [];
+			_players_sub = [];
+			{
+				if(count (_players_sub joinString ", ") >= 800) then {
+					_players pushBack _players_sub;
+					_players_sub = [];
+				};
+				_players_sub pushBack [name _x, str (side _x), getPlayerScores _x, getPos _x];
+			} forEach allPlayers - entities "HeadlessClient_F";
+			if(count (_players_sub joinString ", ") >= 10) then {
+					_players pushBack _players_sub;
+					_players_sub = [];
+			};
+			
+			//Build town arrays
 			_west_towns = [];
 			{
 				_west_towns pushBack str _x;
@@ -337,6 +349,7 @@ if (missionNamespace getvariable "CTI_PERSISTANT" == 1) then {
 				_east_towns pushBack str _x;
 			} forEach (east call CTI_CO_FNC_GetSideTowns);
 			
+			//Post Data to .rpt log
 			//Data for general mission performance
 			diag_log[["CTI_DataPacket", "Data_1"], 
 					["time", time],
@@ -353,10 +366,15 @@ if (missionNamespace getvariable "CTI_PERSISTANT" == 1) then {
 					["active_AI", count(allUnits)],
 					["total_objects", count(allMissionObjects "All")],
 					["active_towns", _towns]];
-			//Data for Replay		
-			diag_log[["CTI_DataPacket", "Data_2"],
-					["players", _players]];
-			diag_log[["CTI_DataPacket", "Data_3"],
+			_dataP = 2; //next data packet index
+			{ 	 
+				//Data for Replay		
+				diag_log[["CTI_DataPacket", (format ["Data_%1", _dataP])],
+						["players", _x]];
+				_dataP = _dataP+1;
+			} forEach _players;
+			
+			diag_log[["CTI_DataPacket", format ["Data_EOD_%1", _dataP]], //Marking package as "last"
 					["bases_east", _east_sl getVariable ["cti_structures_areas",[]]],
 					["bases_west", _west_sl getVariable ["cti_structures_areas",[]]],
 					["east_towns", _east_towns],
