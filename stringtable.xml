@@ -2174,7 +2174,7 @@
 <Project name="Upgrades_East_West">
 	<Package name="Main">
 			<Key ID="STR_Up_Barracks">
-				<Original>Barracks</Original>
+				<Original>Factory: Barracks</Original>
 				<Russian>Казармы</Russian>
 			</Key>
 			<Key ID="STR_Up_Barracks_Descr">
