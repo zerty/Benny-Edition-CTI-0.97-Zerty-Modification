@@ -146,11 +146,9 @@ switch (_action) do {
 	};
 	case "onUnitsAILBSelChanged": {
 		_changeto = _this select 1;
-
-		if (count (uiNamespace getVariable "cti_dialog_ui_unitscam_groups_ai") >=  (_changeto +1) ) then {
+		_ai =objnull;
+		if (count (uiNamespace getVariable "cti_dialog_ui_unitscam_groups_ai") > _changeto) then {
 			_ai = (uiNamespace getVariable "cti_dialog_ui_unitscam_groups_ai") select _changeto;
-		} else {
-			_ai =objnull;
 		};
 
 		if ( alive _ai) then {
