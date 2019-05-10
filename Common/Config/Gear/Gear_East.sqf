@@ -159,6 +159,14 @@ _i = _i		+ ["30Rnd_762x39_Mag_Tracer_Green_F"];
 _u = _u		+ [1];
 _p = _p		+ [30];
 
+_i = _i		+ ["30Rnd_762x39_AK12_Mag_F"];
+_u = _u		+ [1];
+_p = _p		+ [30];
+
+_i = _i		+ ["30Rnd_762x39_AK12_Mag_Tracer_F"];
+_u = _u		+ [1];
+_p = _p		+ [30];
+
 _i = _i		+ ["30Rnd_65x39_caseless_green"];
 _u = _u		+ [1];
 _p = _p		+ [30];
@@ -201,6 +209,22 @@ _u = _u		+ [1];
 _p = _p		+ [30];
 
 _i = _i		+ ["100Rnd_580x42_Mag_Tracer_F"];
+_u = _u		+ [1];
+_p = _p		+ [30];
+
+_i = _i		+ ["100Rnd_580x42_hex_Mag_F"];
+_u = _u		+ [1];
+_p = _p		+ [30];
+
+_i = _i		+ ["100Rnd_580x42_hex_Mag_Tracer_F"];
+_u = _u		+ [1];
+_p = _p		+ [30];
+
+_i = _i		+ ["100Rnd_580x42_ghex_Mag_F"];
+_u = _u		+ [1];
+_p = _p		+ [30];
+
+_i = _i		+ ["100Rnd_580x42_ghex_Mag_Tracer_F"];
 _u = _u		+ [1];
 _p = _p		+ [30];
 
