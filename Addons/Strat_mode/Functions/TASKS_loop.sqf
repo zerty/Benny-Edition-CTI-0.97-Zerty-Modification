@@ -18,8 +18,8 @@ _TASKS_LIST=[];
 
 //other values used but the script
 _side=_this;
-_logic= CTI_P_SideJoined call  CTI_CO_FNC_GetSideLogic;
-_sideID = CTI_P_SideJoined call CTI_CO_FNC_GetSideID;
+_logic= _side call  CTI_CO_FNC_GetSideLogic;
+_sideID = _side call CTI_CO_FNC_GetSideID;
 
 // main Loop
 waitUntil { (_logic getVariable ["CTI_LOAD_COMPLETED",false])};
