@@ -153,7 +153,7 @@ _placements =_placements 	+  [[180, 30]];
 _specials = _specials		+ [[["DMG_Reduce", 1.5]]];*/
 
 
-_headers = _headers 		+ [[CTI_BARRACKS, localize "STR_Up_Barracks", localize "STR_Up_Barracks"]];
+_headers = _headers 		+ [[CTI_BARRACKS, localize "STR_Barracks", localize "STR_Barracks_1"]];
 _classes = _classes 		+ [["Land_Cargo_House_V1_F", "Land_Cargo_House_V1_ruins_F"]];
 _prices = _prices 			+ [1000];
 _times = _times 			+ [60];

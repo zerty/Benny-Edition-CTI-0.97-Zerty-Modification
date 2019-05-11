@@ -2353,6 +2353,14 @@
 </Project>
 <Project name="Base_East_West">
 	<Package name="Main">
+			<Key ID="STR_Barracks">
+				<Original>Barracks</Original>
+				<Russian>Казармы</Russian>
+			</Key>
+			<Key ID="STR_Barracks_1">
+				<Original>Barracks</Original>
+				<Russian>Казармы</Russian>
+			</Key>
 			<Key ID="STR_Light_Vehicle_Factory">
 				<Original>Light Vehicle Factory</Original>
 				<Russian>Завод Легкой Техники</Russian>
