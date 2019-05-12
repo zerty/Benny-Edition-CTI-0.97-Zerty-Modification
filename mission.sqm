@@ -16,7 +16,7 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={14608.123,155.19696,5895.5967};
+		pos[]={14700.625,180.32924,5894.1079};
 		dir[]={-0.80275387,-0.42684528,0.41648361};
 		up[]={-0.37890467,0.90431285,0.19658338};
 		aside[]={0.46054059,-1.7105776e-008,0.887676};
@@ -105,7 +105,7 @@ class Mission
 {
 	class Intel
 	{
-		briefingName="BECTI BE 0.97 - Zerty 1.3.4.5";
+		briefingName="BECTI BE 0.97 - Zerty 1.3.5.0";
 		overviewText="By Benny - Adapted from OFP era MFCTI (Mike Melvin)";
 		resistanceWest=0;
 		timeOfChanges=24720;
