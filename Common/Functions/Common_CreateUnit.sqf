@@ -241,15 +241,15 @@ if (missionNamespace getVariable "CTI_SM_RADAR" == 1) then {
 _unit addAction [localize "STR_Common_CreateUnit_Remote_Control","
 	player connectTerminalToUAV ( vehicle(_this select 0));
 	(_this select 0) spawn {
-		waitUntil {   uavControl ( vehicle(_this)) select 1 == 'GUNNER' || ! (driver (vehicle _this)==_this) || (vehicle _this ==_this) || ! alive _this || ! alive player};
+		waitUntil {uavControl ( vehicle(_this)) select 1 == 'GUNNER' || ! (driver (vehicle _this)==_this) || (vehicle _this ==_this) || ! alive _this || ! alive player || (player getvariable 'REV_UNC')};
 		sleep 1;
-		 player connectTerminalToUAV objNull;
+		player connectTerminalToUAV objNull;
 		objNull remoteControl cameraon;
 		vehicle (player) switchCamera 'Internal'
-
 		};
+	if (!(player getvariable 'REV_UNC')) then {
 	player remoteControl (driver vehicle (_this select 0));
-	( vehicle(_this select 0)) switchCamera 'Internal';
+	( vehicle(_this select 0)) switchCamera 'Internal';};
 	","",100, false, true, "", "(vehicle _this) == (vehicle _target) && ! (vehicle _this ==_this) && driver (vehicle _this)==_this  && isnull gunner (vehicle _this) && !((vehicle _this) == vehicle (player)) &&! (uavControl ( vehicle(_this)) select 0 == player)"];
 
 // returnvehicle objNull remoteControl cameraon;  player connectTerminalToUAV objNull; (player) switchCamera 'Internal';
