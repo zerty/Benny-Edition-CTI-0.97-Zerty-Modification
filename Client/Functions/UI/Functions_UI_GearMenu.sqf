@@ -642,7 +642,7 @@ CTI_UI_Gear_CheckMagazines = {
 				_freespace = _container_capacity - _container_items_mass;
 				_expected_mass = _count * _magazine_new_mass;
 
-				while { _expected_mass > _freespace && _expected_mass > 0 } do { _expected_mass = _expected_mass - _magazine_new_mass; sleep 0.2;};
+				while { _expected_mass > _freespace && _expected_mass > 0 } do { _expected_mass = _expected_mass - _magazine_new_mass };
 
 				if (_expected_mass > 0) then {
 					for '_k' from 1 to (_expected_mass/_magazine_new_mass) do {
