@@ -243,8 +243,8 @@ _positions = [];
 	//diag_log _x;
 
 	_maxSpawnRange = CTI_TOWNS_OCCUPATION_SPAWN_RANGE;
-	if (name _town == "Town29") then {_maxSpawnRange = 25};	//--- Makrynisi
-	if (name _town == "Town9") then {_maxSpawnRange = 125};	//--- Telos
+	//if (name _town == "Town29" && ISLAND == 2) then {_maxSpawnRange = 50;};	//--- Makrynisi
+	//if (name _town == "Town9" && ISLAND == 2) then {_maxSpawnRange = 150;};	//--- Telos
 	_position = [getPos _town, 25, _maxSpawnRange] call CTI_CO_FNC_GetRandomPosition;
 
 //	_position = [getPos _town, 25, CTI_TOWNS_OCCUPATION_SPAWN_RANGE] call CTI_CO_FNC_GetRandomPosition;
