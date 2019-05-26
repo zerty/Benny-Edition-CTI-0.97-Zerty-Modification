@@ -57,6 +57,7 @@ if (CTI_IsClient) then {
 				};
 				//update
 				_marker setMarkerPosLocal (getPos _obj);
+				sleep 0.5;
 			};
 			deleteMarkerLocal _marker;
 		};

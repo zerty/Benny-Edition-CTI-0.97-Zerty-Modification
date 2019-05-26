@@ -115,6 +115,7 @@ CTI_UI_Artillery_UpdateArtilleryMarker = {
 
 	while {alive _artillery} do {
 		{_x setMarkerPosLocal getPos _artillery} forEach [_marker_min, _marker_max];
+		sleep 0.5;
 	};
 
 	{deleteMarkerLocal _x} forEach [_marker_min, _marker_max];
