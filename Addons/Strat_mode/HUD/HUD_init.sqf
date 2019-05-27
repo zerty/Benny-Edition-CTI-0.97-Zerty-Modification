@@ -82,6 +82,7 @@ with missionNamespace do {
 		{
 			_o= _x;
 			(group player) reveal [_o,(missionNamespace getVariable "CTI_EW_HUD_S")];
+		true
 		} count _this;
 	};
 };

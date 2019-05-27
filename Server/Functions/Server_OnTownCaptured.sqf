@@ -78,6 +78,7 @@ if (count _award_teams > 0) then {
 		_mult=if ((missionNamespace getVariable "CTI_GROUP_AWARD_MULT") == 1) then {{isplayer _x}count (units _x)} else {1};
 		{if (isplayer _x )then {[["CLIENT", _x], "Client_OnMessageReceived", ["town_award",[( _value*_mult), (_town getVariable "cti_town_name")]],true] call CTI_CO_FNC_NetSend};true} count (units _x);
 		[_x, _newSide,( _value*_mult)] call CTI_CO_FNC_ChangeFunds;
+	true
 	} count _award_teams;
 };
 

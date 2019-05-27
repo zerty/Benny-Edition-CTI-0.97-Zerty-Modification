@@ -29,7 +29,7 @@ if (missionNamespace getVariable "CTI_EW_ANET" == 1) then {
 		while {isNull _map2} do {
 			_frames =[];
 			{_frames set [count _frames,_x select 0]; true} count (missionNameSpace getVariable ["BIS_stackedEventHandlers_onEachFrame", []]);
-			{if !(isNil {_x displayctrl 101}) then {_map2= _x displayctrl 101};} count (uiNamespace getVariable "IGUI_Displays");
+			{if !(isNil {_x displayctrl 101}) then {_map2= _x displayctrl 101}; true} count (uiNamespace getVariable "IGUI_Displays");
 			sleep 0.1;
 		};
 		_map2 ctrlAddEventHandler ["Draw", "

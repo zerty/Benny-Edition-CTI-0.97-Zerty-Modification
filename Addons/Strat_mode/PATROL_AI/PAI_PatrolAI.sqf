@@ -22,7 +22,7 @@ while {!CTI_GameOver && ! isNull _group && alive _vehicle && !isNull _vehicle &&
 		_neigh=_neigh- _not_valid -[_previous] ;
 		_next_target=if (count _priority >0) then { _priority select floor random (count _priority)} else {_neigh select floor random (count _neigh)};
 		if (isNil "_next_target") then {_next_target= CTI_Towns select floor random (count CTI_Towns)};
-		{deleteWaypoint _x } count (waypoints _group);
+		{deleteWaypoint _x; true} count (waypoints _group);
 		_wp=_group addWaypoint [(getPos _next_target),0];
 		_wp setWaypointType "MOVE";
 		_wp setWaypointBehaviour "AWARE" ;

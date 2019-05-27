@@ -71,7 +71,7 @@ if (count _candidates == 0 ) then {
 		{
 			_candidates set [count _candidates,_town];
 		};
-
+	true
 	} count ( (_side_id) call CTI_CO_FNC_GetSideTowns);
 };
 
@@ -85,6 +85,7 @@ if ((count _candidates == 0) && _side in [east,west]) then {
 if (!(_vehicle isKindOf "FlagPole_F"))  then {
 	{
 		if (!(_x == _vehicle) && !(_x ==(_side) call CTI_CO_FNC_GetSideHQ) && alive _x && (_x getVariable "AN_iNet" == _side_id ) && ! (_x getVariable "AN_Conn" == _vehicle) && {_x == _vehicle} count (_x getVariable ["AN_Parrents",[]]) == 0 ) then {_candidates set [count _candidates,_x]};
+	true
 	} count vehicles;
 };
 

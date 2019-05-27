@@ -21,7 +21,7 @@ CTI_UI_Respawn_GetAvailableLocations = {
 			_sid = (CTI_P_SideJoined)  call CTI_CO_FNC_GetSideID;
 			_c_towns = ( _sid )  call CTI_CO_FNC_GetSideTowns;
 			_posible =[];
-			{if ((_x  getVariable "cti_town_capture") == CTI_TOWNS_CAPTURE_VALUE_CEIL) then{ _posible set [count _posible,_x]};} count _c_towns;
+			{if ((_x  getVariable "cti_town_capture") == CTI_TOWNS_CAPTURE_VALUE_CEIL) then{ _posible set [count _posible,_x]}; true} count _c_towns;
 
 			_t = [CTI_DeathPosition, _posible ] call CTI_CO_FNC_GetClosestEntity;
 			if (! (isNull _t) ) then {_towns pushBack _t;};

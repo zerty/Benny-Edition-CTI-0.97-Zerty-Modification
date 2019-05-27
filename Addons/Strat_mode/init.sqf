@@ -104,6 +104,7 @@ if (CTI_IsServer) then {
 		if (count (_sl getVariable ["CTI_BASES_FOUND",[]]) == 0) then {
 			_sl setVariable ["CTI_BASES_FOUND",[],true];
 		};
+	true
 	} count [east,west];
 
 	//dynamic group loop

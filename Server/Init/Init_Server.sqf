@@ -216,6 +216,7 @@ while {! (((getMarkerPos format ["HELO_START_%1", _i])select 0) == 0)} do
 
 
 				};
+			true
 			}count (playableUnits+switchableUnits);
 			sleep 10;
 		};
@@ -315,7 +316,7 @@ if (missionNamespace getvariable "CTI_PERSISTANT" == 1) then {
 		sleep 100; //wait for everything to finish loading
 		_version = 3; //version of DiscordBot logReader
 		_arr = 	[["CTI_DataPacket", "Header"],
-				 ["Version", _version], 
+				 ["Version", _version],
 				 ["Map", worldName]
 				];
 		diag_log _arr;
@@ -323,7 +324,7 @@ if (missionNamespace getvariable "CTI_PERSISTANT" == 1) then {
 			_east_sl = (east) call CTI_CO_FNC_GetSideLogic;
 			_west_sl = (west) call CTI_CO_FNC_GetSideLogic;
 			_towns = count(_east_sl getVariable  ["CTI_ACTIVE",[]]) + count(_west_sl getVariable  ["CTI_ACTIVE",[]]);
-			
+
 			//build player array, splitting at 800 to ensure char limit of 1000 is not reached
 			_players = [];
 			_players_sub = [];
@@ -338,20 +339,20 @@ if (missionNamespace getvariable "CTI_PERSISTANT" == 1) then {
 					_players pushBack _players_sub;
 					_players_sub = [];
 			};
-			
+
 			//Build town arrays
 			_west_towns = [];
 			{
 				_west_towns pushBack str _x;
-			} forEach (west call CTI_CO_FNC_GetSideTowns);			
+			} forEach (west call CTI_CO_FNC_GetSideTowns);
 			_east_towns = [];
 			{
 				_east_towns pushBack str _x;
 			} forEach (east call CTI_CO_FNC_GetSideTowns);
-			
+
 			//Post Data to .rpt log
 			//Data for general mission performance
-			diag_log[["CTI_DataPacket", "Data_1"], 
+			diag_log[["CTI_DataPacket", "Data_1"],
 					["time", time],
 					["fps", diag_fps],
 					["score_east", (scoreSide east)],
@@ -367,13 +368,13 @@ if (missionNamespace getvariable "CTI_PERSISTANT" == 1) then {
 					["total_objects", count(allMissionObjects "All")],
 					["active_towns", _towns]];
 			_dataP = 2; //next data packet index
-			{ 	 
-				//Data for Replay		
+			{
+				//Data for Replay
 				diag_log[["CTI_DataPacket", (format ["Data_%1", _dataP])],
 						["players", _x]];
 				_dataP = _dataP+1;
 			} forEach _players;
-			
+
 			diag_log[["CTI_DataPacket", format ["Data_EOD_%1", _dataP]], //Marking package as "last"
 					["bases_east", _east_sl getVariable ["cti_structures_areas",[]]],
 					["bases_west", _west_sl getVariable ["cti_structures_areas",[]]],
@@ -383,7 +384,7 @@ if (missionNamespace getvariable "CTI_PERSISTANT" == 1) then {
 			sleep 60;
 		};
 		//Triggerd on Misson end, used when FSM does not trigger. (used for debugging)
-		_arr = 	[["CTI_DataPacket", "EOF"], 
+		_arr = 	[["CTI_DataPacket", "EOF"],
 				 ["Version", _version],
 				 ["Map", worldName]
 				];
