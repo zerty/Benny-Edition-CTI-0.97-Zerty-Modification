@@ -624,11 +624,11 @@ with missionNamespace do {
 
 
 
-	if (isNil "CTI_SM_BASEP_M") then {CTI_SM_BASEP_M=0};
+	if (isNil "CTI_SM_BASEP_M") then {CTI_SM_BASEP_M=-1};
 	if (isNil "CTI_SM_REPAIR") then {CTI_SM_REPAIR=1};
 	if (isNil "CTI_SM_MORTARS") then {CTI_SM_MORTARS=1};
 	if (isNil "CTI_SM_MINES") then {CTI_SM_MINES=1};
-	if (isNil "CTI_SM_STRATEGIC") then {CTI_SM_STRATEGIC=0};
+	if (isNil "CTI_SM_STRATEGIC") then {CTI_SM_STRATEGIC=1};
 	if (isNil "CTI_SM_STRATEGIC_NB") then {CTI_SM_STRATEGIC_NB=3};
 	if (isNil "CTI_SM_HALO") then {CTI_SM_HALO=1};
 	if (isNil "CTI_SM_RADAR") then {CTI_SM_RADAR=1};
