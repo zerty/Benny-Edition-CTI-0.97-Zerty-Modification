@@ -111,7 +111,7 @@ _pool_u = [];
 		for '_i' from 1 to _presence do { _pool_u pushBack [missionNamespace getVariable _unit, if (count _x > 2) then {_x select 2} else {100}] };
 	};
 } forEach (_pool_units select 0);
-_pool_u = _pool_u call CTI_CO_FNC_ArrayShuffle;
+_pool_u = _pool_u call BIS_fnc_arrayShuffle;
 _pool_v = [];
 
 {
@@ -121,7 +121,7 @@ _pool_v = [];
 		for '_i' from 1 to _presence do { _pool_v pushBack [missionNamespace getVariable _unit, if (count _x > 2) then {_x select 2} else {100}]};
 	};
 } forEach (_pool_units select 1);
-_pool_v =_pool_v call CTI_CO_FNC_ArrayShuffle;
+_pool_v =_pool_v call BIS_fnc_arrayShuffle;
 
 //--- Shuffle!
 _pool = _pool_v + _pool_u;
@@ -148,7 +148,7 @@ for '_i' from 1 to _totalGroups do {
 		};
 		//diag_log [_unit,_probability,_can_use];
 		if (_can_use) then {
-			if (typeName _unit == "ARRAY") then { _unit = _unit select floor(random count _unit) };
+			if (_unit isEqualType []) then { _unit = _unit select floor(random count _unit) };
 			_units pushBack _unit;
 
 			_pool_group_size_current = _pool_group_size_current - 1;

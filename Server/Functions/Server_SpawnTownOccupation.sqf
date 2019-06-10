@@ -151,7 +151,7 @@ _pool_u = [];
 		};
 	};
 } forEach (_pool_units select 0);
-_pool_u = _pool_u call CTI_CO_FNC_ArrayShuffle;
+_pool_u = _pool_u call BIS_fnc_arrayShuffle;
 
 _pool_v = [];
 {
@@ -195,7 +195,7 @@ _pool_v = [];
 	};
 } forEach (_pool_units select 1);
 
-_pool_v = _pool_v call CTI_CO_FNC_ArrayShuffle;
+_pool_v = _pool_v call BIS_fnc_arrayShuffle;
 
 _pool=_pool_v+_pool_u;
 
@@ -223,7 +223,7 @@ for '_i' from 1 to _totalGroups do {
 		};
 
 		if (_can_use) then {
-			if (typeName _unit == "ARRAY") then { _unit = _unit select floor(random count _unit) };
+			if (_unit isEqualType []) then { _unit = _unit select floor(random count _unit) };
 			_units pushBack _unit;
 
 			_pool_group_size_current = _pool_group_size_current - 1;
