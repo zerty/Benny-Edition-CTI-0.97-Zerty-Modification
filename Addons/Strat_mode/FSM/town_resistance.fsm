@@ -3,7 +3,7 @@
 /*
 item0[] = {"Start_FSM",0,250,-86.275269,-615.525940,13.724731,-565.525940,0.000000,"Start FSM"};
 item1[] = {"Cycle",4,218,-100.000000,-400.000000,0.000000,-350.000000,1.000000,"Cycle"};
-item2[] = {"Resistance_hold",2,4346,-100.000000,-200.000000,0.000000,-150.000000,0.000000,"Resistance hold" \n "the town?"};
+item2[] = {"Resistance_hold",2,250,-100.000000,-200.000000,0.000000,-150.000000,0.000000,"Resistance hold" \n "the town?"};
 item3[] = {"End_FSM",1,250,-250.000000,-100.000000,-150.000000,-50.000000,0.000000,"End FSM"};
 item4[] = {"Held_by_Resistan",4,218,-100.000000,-100.000000,0.000000,-50.000000,2.000000,"Held by" \n "Resistance"};
 item5[] = {"Gameover",8,218,-250.000000,-200.000000,-150.000000,-150.000000,0.000000,"Gameover"};
@@ -15,7 +15,7 @@ item10[] = {"Inactive",4,218,175.000000,-100.000000,275.000000,-50.000000,1.0000
 item11[] = {"Still_active",8,218,300.000000,0.000000,400.000000,50.000000,0.000000,"Still active"};
 item12[] = {"Timed_out",4,218,475.000000,100.000000,575.000000,150.000000,1.000000,"Timed out"};
 item13[] = {"Skip",2,250,302.287354,-265.039612,402.287354,-215.039612,0.000000,"Skip"};
-item14[] = {"Cleanup",2,250,475.000000,-400.000000,575.000000,-350.000000,0.000000,"Cleanup"};
+item14[] = {"Cleanup",2,4346,475.000000,-400.000000,575.000000,-350.000000,0.000000,"Cleanup"};
 item15[] = {"Resistance_Active",2,250,50.000000,-100.000000,150.000000,-50.000000,0.000000,"Resistance" \n "Active?"};
 item16[] = {"Contact",8,218,-100.000000,100.000000,0.000000,150.000000,0.000000,"Contact"};
 item17[] = {"Clear",4,218,50.000000,0.000000,150.000000,50.000000,1.000000,"Clear"};
@@ -55,8 +55,8 @@ link26[] = {20,18};
 link27[] = {21,8};
 link28[] = {22,1};
 link29[] = {23,13};
-globals[] = {0.000000,0,0,0,0,640,480,1,173,6316128,1,-1091.492065,1056.436035,832.636719,-1191.768555,939,885,1};
-window[] = {2,-1,-1,-1,-1,662,50,1086,50,3,957};
+globals[] = {0.000000,0,0,0,0,640,480,1,173,6316128,1,-984.095642,949.039673,729.243164,-1090.662720,939,884,1};
+window[] = {2,-1,-1,-32000,-32000,794,182,1218,182,3,957};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -304,15 +304,15 @@ class FSM
                          "		};" \n
                          "	} forEach _town_groups;" \n
                          "" \n
-                         "" \n
                          "_town setVariable [""cti_town_resistance_active_vehicles"", [],true];" \n
+                         "" \n
                          "_mortars = _town getVariable ""cti_town_mortars_units"";" \n
                          "//diag_log _mortars;" \n
                          "if ((count _mortars) >0) then {" \n
                          "" \n
                          "	{deleteVehicle _x} forEach units (_mortars select 1) ;" \n
                          "	{deleteVehicle _x} forEach  (_mortars select 0) ;		" \n
-                         "	deleteGroup  (_mortars select 1);" \n
+                         "	deleteGroup (_mortars select 1);" \n
                          "" \n
                          "};" \n
                          "" \n
@@ -321,14 +321,18 @@ class FSM
                          "	if ((count _mines) >0) then {" \n
                          "		{deleteVehicle _x} forEach _mines;" \n
                          "	};" \n
-                         "_town setVariable [""cti_town_mines"",[],true];" \n
+                         "	_town setVariable [""cti_town_mines"",[],true];" \n
                          "};" \n
                          "" \n
                          "if ( (missionNamespace getVariable 'CTI_SM_TCAS') <= (_town getVariable ""cti_town_value"")) then {" \n
                          "	(_town getVariable [""CTI_CAS"",[]]) call SM_TCAS_CLEANUP;" \n
                          "};" \n
                          "" \n
-                         "if ((_town getVariable ""cti_town_name"" == ""Makrynisi"") || (_town getVariable ""cti_town_name"" == ""Tuadua Island"") || (_town getVariable ""cti_town_name"" == ""Yani Islets"") || (_town getVariable ""cti_town_name"" == ""Ile Sainte-Marie"") || (_town getVariable ""cti_town_name"" == ""Northern Island"") || (_town getVariable ""cti_town_name"" == ""Rock Island"")) then {(_town getVariable [""CTI_Ship"",[]]) call SM_TShip_CLEANUP;};" \n
+                         "if ((missionNamespace getVariable 'CTI_SM_SHIP')==1) then {" \n
+                         "	if (ISLAND == 2 || ISLAND == 3) then {" \n
+                         "		if ((_town getVariable ""cti_town_name"" == ""Makrynisi"") || (_town getVariable ""cti_town_name"" == ""Tuadua Island"") || (_town getVariable ""cti_town_name"" == ""Yani Islets"") || (_town getVariable ""cti_town_name"" == ""Ile Sainte-Marie"") || (_town getVariable ""cti_town_name"" == ""Northern Island"") || (_town getVariable ""cti_town_name"" == ""Rock Island"")) then {(_town getVariable [""CTI_Ship"",[]]) call SM_TShip_CLEANUP;};" \n
+                         "	};" \n
+                         "};" \n
                          "" \n
                          "//_town setVariable [""cti_town_disactivate"",true];" \n
                          "" \n
@@ -410,23 +414,28 @@ class FSM
                          "_town setVariable [""cti_town_resistance_active"", true,true];" \n
                          "" \n
                          "" \n
-                         "if ( (missionNamespace getVariable 'CTI_SM_MORTARS')==1) then {" \n
+                         "if ((missionNamespace getVariable 'CTI_SM_MORTARS')==1) then {" \n
                          "	_mortars=[_town,_town_groups] call CTI_SM_Mortars_script;" \n
                          "	[""CLIENT"", ""Client_Update_Mortars"",[_town,(_mortars select 2)]] call CTI_CO_FNC_NetSend;" \n
                          "	_town setVariable [""cti_town_mortars"",(_mortars select 2),true];" \n
                          "	_town setVariable [""cti_town_mortars_units"",(_mortars),true];" \n
                          "};" \n
+                         "" \n
                          "_town setVariable [""cti_town_resistance_active"", true,true];" \n
+                         "" \n
                          "if ( (missionNamespace getVariable 'CTI_SM_TCAS') <= (_town getVariable ""cti_town_value"")) then {" \n
                          "	_town setVariable[""CTI_CAS"",(_town) call SM_TCAS_CREATE,true];" \n
-                         "" \n
                          "};" \n
+                         "" \n
                          "if ((missionNamespace getVariable 'CTI_SM_MINES')==1) then {" \n
                          "	[_town] call CTI_SM_Mines_script;" \n
                          "};" \n
                          "" \n
-                         "if ((_town getVariable ""cti_town_name"" == ""Makrynisi"") || (_town getVariable ""cti_town_name"" == ""Tuadua Island"") || (_town getVariable ""cti_town_name"" == ""Yani Islets"") || (_town getVariable ""cti_town_name"" == ""Ile Sainte-Marie"") || (_town getVariable ""cti_town_name"" == ""Northern Island"") || (_town getVariable ""cti_town_name"" == ""Rock Island"")) then {_town setVariable [""CTI_Ship"",(_town) call SM_TShip_CREATE,true];};" \n
-                         "" \n
+                         "if ((missionNamespace getVariable 'CTI_SM_SHIP')==1) then {" \n
+                         "	if (ISLAND == 2 || ISLAND == 3) then {" \n
+                         "		if ((_town getVariable ""cti_town_name"" == ""Makrynisi"") || (_town getVariable ""cti_town_name"" == ""Tuadua Island"") || (_town getVariable ""cti_town_name"" == ""Yani Islets"") || (_town getVariable ""cti_town_name"" == ""Ile Sainte-Marie"") || (_town getVariable ""cti_town_name"" == ""Northern Island"") || (_town getVariable ""cti_town_name"" == ""Rock Island"")) then {_town setVariable [""CTI_Ship"",(_town) call SM_TShip_CREATE,true];};" \n
+                         "	};" \n
+                         "};" \n
                          "" \n
                          "if ( _town in (CTI_WEST getvariable ""CTI_ACTIVE"")) then {" \n
                          "    [[""CLIENT"",west],""SM_message"",format [localize ""STR_TownActive"",(_town getVariable ""cti_town_name"")]] call CTI_CO_FNC_NetSend ;" \n

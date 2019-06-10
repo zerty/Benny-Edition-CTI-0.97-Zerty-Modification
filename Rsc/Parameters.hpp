@@ -475,7 +475,12 @@ class Params {
 		texts[] = {"0","100","150","200","250","300","350","400","500","600"};
 		default = 250;
 	};
-
+	class CTI_SM_SHIP {
+		title = $STR_CTI_SM_SHIP;
+		values[] = {0,1};
+		texts[] = {$STR_CTI_DISABLED,$STR_CTI_ENABLED};
+		default = 1;
+	};
 
 	class SEPARATOR3 {
 		title = $STR_CTI_SEPARATOR3;

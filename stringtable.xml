@@ -665,6 +665,10 @@
 				<Original>Zerty: Strategic: Town CAS if value above</Original>
 				<Russian>Разрешить поддержку с воздуха если стоимость города больше</Russian>
 			</Key>
+			<Key ID="STR_CTI_SM_SHIP">
+				<Original>[H] Tom: Strategic: Patrol Ships near small islands</Original>
+				<Russian>Патрульные корабли возле небольших островов</Russian>
+			</Key>
 			<Key ID="STR_CTI_SEPARATOR3">
 				<Original>===================== Electronic Warfare =======================</Original>
 				<Russian>===================== Electronic Warfare =======================</Russian>
