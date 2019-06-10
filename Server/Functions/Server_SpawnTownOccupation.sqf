@@ -223,7 +223,7 @@ for '_i' from 1 to _totalGroups do {
 		};
 
 		if (_can_use) then {
-			if (_unit isEqualType []) then { _unit = _unit select floor(random count _unit) };
+			if (_unit isEqualType []) then { _unit = selectRandom _unit; };
 			_units pushBack _unit;
 
 			_pool_group_size_current = _pool_group_size_current - 1;
@@ -250,7 +250,7 @@ _positions = [];
 //	_position = [getPos _town, 25, CTI_TOWNS_OCCUPATION_SPAWN_RANGE] call CTI_CO_FNC_GetRandomPosition;
 	_position = [_position, 50] call CTI_CO_FNC_GetEmptyPosition;
 	_road_pos=(_position nearRoads 100);
-	if (count _road_pos > 0) then {_position = _road_pos select floor random (count _road_pos);};
+	if (count _road_pos > 0) then {_position = selectRandom _road_pos;};
 	_positions pushBack _position;
 
 	_group = createGroup _side;
