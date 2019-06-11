@@ -212,11 +212,13 @@ if (isNull _created) then {
 		if (_vehicle isKindOf "O_MBT_02_cannon_F" || _vehicle isKindOf "O_T_MBT_02_cannon_ghex_F") then {[_vehicle, nil, ["showLog",1]] call BIS_fnc_initVehicle;};
 		if (_vehicle isKindOf "O_APC_Tracked_02_AA_F" || _vehicle isKindOf "O_T_APC_Tracked_02_AA_ghex_F") then {[_vehicle, nil, ["showTracks",1]] call BIS_fnc_initVehicle;};
 	};
-	if (_vehicle isKindOf "Car") then {
+	if (_vehicle isKindOf "Offroad_01_base_F") then {
 		_offroads = ["I_G_Offroad_01_F", "I_G_Offroad_01_armed_F", "I_G_Offroad_01_AT_F", "B_G_Offroad_01_F", "B_G_Offroad_01_armed_F", "B_G_Offroad_01_AT_F", "O_G_Offroad_01_F", "O_G_Offroad_01_armed_F", "O_G_Offroad_01_AT_F"];
 		if ((typeOf _vehicle) in _offroads) then {
 		_offroadcolors = ["Guerilla_01", "Guerilla_02", "Guerilla_03", "Guerilla_04", "Guerilla_05", "Guerilla_06", "Guerilla_07", "Guerilla_08", "Guerilla_09", "Guerilla_10", "Guerilla_11", "Guerilla_12"];
 		[_vehicle, [(selectRandom _offroadcolors),1], nil] call BIS_fnc_initVehicle;};
+	};
+	if (_vehicle isKindOf "Offroad_02_base_F") then {
 		_4wds = ["I_C_Offroad_02_unarmed_F", "I_C_Offroad_02_LMG_F", "I_C_Offroad_02_AT_F", "C_Offroad_02_unarmed_F"];
 		if ((typeOf _vehicle) in _4wds) then {
 		_4wdcolors = ["Green", "Olive", "Black", "Brown"];
