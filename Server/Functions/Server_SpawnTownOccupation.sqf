@@ -151,7 +151,7 @@ _pool_u = [];
 		};
 	};
 } forEach (_pool_units select 0);
-_pool_u = _pool_u call CTI_CO_FNC_ArrayShuffle;
+_pool_u = _pool_u call BIS_fnc_arrayShuffle;
 
 _pool_v = [];
 {
@@ -195,7 +195,7 @@ _pool_v = [];
 	};
 } forEach (_pool_units select 1);
 
-_pool_v = _pool_v call CTI_CO_FNC_ArrayShuffle;
+_pool_v = _pool_v call BIS_fnc_arrayShuffle;
 
 _pool=_pool_v+_pool_u;
 
@@ -223,7 +223,7 @@ for '_i' from 1 to _totalGroups do {
 		};
 
 		if (_can_use) then {
-			if (typeName _unit == "ARRAY") then { _unit = _unit select floor(random count _unit) };
+			if (_unit isEqualType []) then { _unit = selectRandom _unit; };
 			_units pushBack _unit;
 
 			_pool_group_size_current = _pool_group_size_current - 1;
@@ -243,14 +243,14 @@ _positions = [];
 	//diag_log _x;
 
 	_maxSpawnRange = CTI_TOWNS_OCCUPATION_SPAWN_RANGE;
-	if (name _town == "Town29") then {_maxSpawnRange = 25};	//--- Makrynisi
-	if (name _town == "Town9") then {_maxSpawnRange = 125};	//--- Telos
+	//if (name _town == "Town29" && ISLAND == 2) then {_maxSpawnRange = 50;};	//--- Makrynisi
+	//if (name _town == "Town9" && ISLAND == 2) then {_maxSpawnRange = 150;};	//--- Telos
 	_position = [getPos _town, 25, _maxSpawnRange] call CTI_CO_FNC_GetRandomPosition;
 
 //	_position = [getPos _town, 25, CTI_TOWNS_OCCUPATION_SPAWN_RANGE] call CTI_CO_FNC_GetRandomPosition;
 	_position = [_position, 50] call CTI_CO_FNC_GetEmptyPosition;
 	_road_pos=(_position nearRoads 100);
-	if (count _road_pos > 0) then {_position = _road_pos select floor random (count _road_pos);};
+	if (count _road_pos > 0) then {_position = selectRandom _road_pos;};
 	_positions pushBack _position;
 
 	_group = createGroup _side;

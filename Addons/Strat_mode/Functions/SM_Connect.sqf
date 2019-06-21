@@ -21,7 +21,7 @@ _dir	= atan ( _xdif / _ydif );
 _name 	= format ["CM_%1_%2",floor(time),floor(random(1000))];
 _type	= "RECTANGLE";
 
-_l=if !(MADE_FOR_STRATIS) then {20} else {10};
+_l = if (ISLAND != 1) then {20} else {10};
 
 _marker = CreateMarkerLocal [_name, _pos];
 _marker setMarkerShapeLocal "RECTANGLE";

@@ -9,5 +9,6 @@ _ob= player nearEntities ["Man",150];
 		_scale = 1*(1-(_dis/150)*0.7);
 		_rev set[count _rev,[_x,_fade,_scale]];
 	};
+true
 } count _ob;
 _rev

@@ -40,7 +40,7 @@ missionNamespace setVariable [format["CTI_%1_Commander_Path", _side], [
 	["upgrade", [CTI_UPGRADE_HALO, 1], {true}],
 	["build-structures", CTI_RADAR, {true}],
 	["build-structures", CTI_NAVAL, {true}],
-	
+
 	["upgrade", [CTI_UPGRADE_REST, 1], {true}],
 	["upgrade", [CTI_UPGRADE_REST, 2], {true}],
 	["upgrade", [CTI_UPGRADE_REST, 3], {true}],
@@ -58,13 +58,13 @@ missionNamespace setVariable [format["CTI_%1_Commander_Path", _side], [
 	["upgrade", [CTI_UPGRADE_DATA, 1], {true}],
 	["upgrade", [CTI_UPGRADE_EXPI, 1], {true}],
 	["upgrade", [CTI_UPGRADE_EXPI, 2], {true}],
-	
+
 	["upgrade", [CTI_UPGRADE_AIR, 1], {true}],
 	["upgrade", [CTI_UPGRADE_AIR_CM, 1], {true}],
 	["upgrade", [CTI_UPGRADE_AIR_AT, 1], {true}],
 	["upgrade", [CTI_UPGRADE_AIR_FFAR, 1], {true}],
 	["upgrade", [CTI_UPGRADE_AIR_AA, 1], {true}],
-	
+
 	["upgrade", [CTI_UPGRADE_BARRACKS, 3], {true}],
 	["upgrade", [CTI_UPGRADE_AAF, 3], {true}],
 	["upgrade", [CTI_UPGRADE_REST, 4], {true}],
@@ -74,7 +74,7 @@ missionNamespace setVariable [format["CTI_%1_Commander_Path", _side], [
 	["upgrade", [CTI_UPGRADE_AAF, 4], {true}],
 	["upgrade", [CTI_UPGRADE_AAF, 5], {true}],
 	["upgrade", [CTI_UPGRADE_AAF, 6], {true}],
-	
+
 	["upgrade", [CTI_UPGRADE_HEAVY, 2], {true}],
 	["upgrade", [CTI_UPGRADE_SATELLITE, 1], {true}]
 ]];
@@ -158,7 +158,7 @@ _times =  _times 			+[120];
 _placements =_placements 	+  [[180, 30]];
 _specials = _specials		+ [[["DMG_Reduce", 1.5]]];*/
 
-_headers = _headers 		+ [[CTI_BARRACKS, localize "STR_Up_Barracks", localize "STR_Up_Barracks"]];
+_headers = _headers 		+ [[CTI_BARRACKS, localize "STR_Barracks", localize "STR_Barracks_1"]];
 _classes = _classes 		+ [["Land_Cargo_House_V1_F", "Land_Cargo_House_V1_ruins_F"]];
 _prices = _prices 			+ [1000];
 _times = _times 			+ [60];
@@ -400,7 +400,7 @@ _classes = _classes 		+ ["B_static_AA_F"];
 _prices = _prices 			+ [800];
 _placements = _placements 	+ [[180, 5]];
 _categories = _categories 	+ ["Defense"];
-if !(MADE_FOR_STRATIS) then {
+if (ISLAND != 1) then {
 _headers = _headers 		+ ["Mortar"];
 _classes = _classes 		+ ["B_Mortar_01_F"];
 _prices = _prices 			+ [3000];

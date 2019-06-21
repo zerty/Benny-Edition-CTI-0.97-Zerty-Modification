@@ -84,6 +84,10 @@ with missionNamespace do {
 	};
 };
 
+
+
+waitUntil {CTI_EAST getVariable ["CTI_LOAD_COMPLETED",false]};
+
 if (CTI_IsServer) then {
 
 		//constants for the server
@@ -97,7 +101,10 @@ if (CTI_IsServer) then {
 		CTI_BASES_NEIGH=[];
 		for "_i" from 1 to CTI_BASE_AREA_MAX do {	CTI_BASES_NEIGH=CTI_BASES_NEIGH + [[]];	};
 		_sl setVariable ["CTI_BASES_NEIGH",CTI_BASES_NEIGH,true];
-		_sl setVariable ["CTI_BASES_FOUND",[],true];
+		if (count (_sl getVariable ["CTI_BASES_FOUND",[]]) == 0) then {
+			_sl setVariable ["CTI_BASES_FOUND",[],true];
+		};
+	true
 	} count [east,west];
 
 	//dynamic group loop
@@ -324,8 +331,11 @@ if (CTI_IsServer) then {
 		0 spawn {
 			_day_ratio=14/CTI_WEATHER_FAST;
 			_nigth_ratio=10/CTI_WEATHER_FAST_NIGTH;
+			_sunrise = 5;
+			_sunset = 19;
+			if (ISLAND == 3) then {_sunrise = 7; _sunset = 18;};
 			while {!CTI_Gameover} do {
-				if (daytime > 5 && daytime <19 ) then {
+				if (daytime > _sunrise && daytime < _sunset) then {
 					if (timeMultiplier != _day_ratio) then  {setTimeMultiplier _day_ratio;};
 				} else {
 					if (timeMultiplier !=  _nigth_ratio) then {setTimeMultiplier _nigth_ratio;};
@@ -334,6 +344,8 @@ if (CTI_IsServer) then {
 			};
 
 		};
+		// Tasks loop
+		{_x spawn TASKS_LOOP;} foreach [east,west];
 
 };
 
@@ -474,8 +486,7 @@ if (CTI_IsClient) then {
 	};
 
 
-	// Taks loop
-	0 spawn TASKS_LOOP;
+
 
 };
 

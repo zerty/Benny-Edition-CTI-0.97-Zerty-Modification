@@ -13,13 +13,13 @@ CTI_TASK_TYPE_DEFEND=1;
 CTI_TASK_TYPE_BUILD=2;
 CTI_TASK_TYPE_EVACUATE=3;
 
-//List of current task the player has
-TASKS_LIST=[];
+//List of current task
+_TASKS_LIST=[];
 
 //other values used but the script
-_side=CTI_P_SideJoined;
-_logic= CTI_P_SideJoined call  CTI_CO_FNC_GetSideLogic;
-_sideID = CTI_P_SideJoined call CTI_CO_FNC_GetSideID;
+_side=_this;
+_logic= _side call  CTI_CO_FNC_GetSideLogic;
+_sideID = _side call CTI_CO_FNC_GetSideID;
 
 // main Loop
 waitUntil { (_logic getVariable ["CTI_LOAD_COMPLETED",false])};
@@ -40,7 +40,7 @@ while {!CTI_GAMEOVER} do
 
 		};
 
-	} foreach TASKS_LIST;
+	} foreach _TASKS_LIST;
 
 	// CLEAN DEFENSE TASKS
 	{
@@ -49,7 +49,7 @@ while {!CTI_GAMEOVER} do
 			if ((_town getvariable ["cti_town_sideID",-1]) == _sideID && !(_town getvariable ["cti_town_occupation_active",false]) ) then {_to_delete pushBackUnique _forEachIndex};
 		};
 
-	} foreach TASKS_LIST;
+	} foreach _TASKS_LIST;
 
 
 	//*****************************************************************
@@ -60,11 +60,11 @@ while {!CTI_GAMEOVER} do
 
 	{
 		_town=_x;
-		if ((TASKS_LIST findif {(_x select 0) == CTI_TASK_TYPE_ATTACK && (_x select 1) == _town}) == -1) then {
-			_taskname=format ["A_%1_%2",ceil(random(100000)),ceil(time)];
-			TASKS_LIST pushBack [CTI_TASK_TYPE_ATTACK,_town,_taskname];
+		if ((_TASKS_LIST findif {(_x select 0) == CTI_TASK_TYPE_ATTACK && (_x select 1) == _town}) == -1) then {
+			_taskname=format ["A_%1_%2_%3",_side,ceil(random(100000)),ceil(time)];
 			_tasktext=format ["Attack %1",_town getvariable ["cti_town_name",""]];
-			[player, _taskname, [_tasktext,_tasktext,""], _town, "CREATED", 1, true, "attack", true] call BIS_fnc_taskCreate;
+			waitUntil {_taskname==[_side, _taskname, [_tasktext,_tasktext,""], _town, "CREATED", 1, true, "attack", true] call BIS_fnc_taskCreate};
+			if ([_taskname] call BIS_fnc_taskExists) then {_TASKS_LIST pushBack [CTI_TASK_TYPE_ATTACK,_town,_taskname];};
 		};
 		true
 	} count _active_towns;
@@ -88,11 +88,12 @@ while {!CTI_GAMEOVER} do
 	{
 		_town=_x;
 		if ((_town getvariable ["cti_town_sideID",-1]) == _sideID && (_town getvariable ["cti_town_occupation_active",false]) ) then {
-			if ((TASKS_LIST findif {(_x select 0) == CTI_TASK_TYPE_DEFEND && (_x select 1) == _town}) == -1) then {
-				_taskname=format ["D_%1_%2",ceil(random(100000)),ceil(time)];
-				TASKS_LIST pushBack [CTI_TASK_TYPE_DEFEND,_town,_taskname];
+			if ((_TASKS_LIST findif {(_x select 0) == CTI_TASK_TYPE_DEFEND && (_x select 1) == _town}) == -1) then {
+				_taskname=format ["D_%1_%2_%3",_side,ceil(random(100000)),ceil(time)];
 				_tasktext=format ["Defend %1",_town getvariable ["cti_town_name",""]];
-				[player, _taskname, [_tasktext,_tasktext,""], _town, "CREATED", 1, true, "defend", true] call BIS_fnc_taskCreate;
+				waitUntil {_taskname==[_side, _taskname, [_tasktext,_tasktext,""], _town, "CREATED", 1, true, "defend", true] call BIS_fnc_taskCreate};
+				if ([_taskname] call BIS_fnc_taskExists) then {_TASKS_LIST pushBack [CTI_TASK_TYPE_DEFEND,_town,_taskname];};
+
 			};
 		};
 		true
@@ -102,13 +103,14 @@ while {!CTI_GAMEOVER} do
 	// DO THE CLEANUP
 
 	{
-		 _task=TASKS_LIST select _x;
-		 [(_task select 2), "CANCELED", false] call BIS_fnc_taskSetState;
-		 [(_task select 2) ] call BIS_fnc_deleteTask;
+		 _task=_TASKS_LIST select _x;
+		 [(_task select 2), "CANCELED"] call BIS_fnc_taskSetState;
+		 sleep 0.5;
+		 waitUntil {[(_task select 2) ] call BIS_fnc_deleteTask};
 		 true
 	} count _to_delete;
 	{
-		TASKS_LIST deleteAt _x;
+		if !([_TASKS_LIST select _x select 2] call BIS_fnc_taskExists) then {_TASKS_LIST deleteAt _x};
 		true
 	} count _to_delete;
 

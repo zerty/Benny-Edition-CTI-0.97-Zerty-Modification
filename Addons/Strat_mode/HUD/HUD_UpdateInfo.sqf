@@ -10,7 +10,7 @@ if (!(profileNamespace getVariable ["HUD_Normal",true]) ||visiblemap) exitWith {
 _basic ctrlShow true;
 // capture
 _town=((player) call CTI_CO_FNC_GetClosestTown);
-if ( player distance _town < CTI_MARKERS_TOWN_AREA_RANGE) then {
+if ( player distance _town < CTI_MARKERS_TOWN_AREA_RANGE && (!visibleMap )) then {
 	_pro ctrlShow true;
 	_pb=((_town getVariable "cti_town_capture")) / CTI_TOWNS_CAPTURE_VALUE_CEIL ;
 	if ((_town getVariable ["cti_town_occupation_active",true]) || (_town getVariable ["cti_town_resistance_active",true])) then

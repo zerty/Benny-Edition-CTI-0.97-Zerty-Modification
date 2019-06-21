@@ -153,7 +153,7 @@ class Params {
 		title = $STR_CTI_VEHICLES_EMPTY_TIMEOUT;
 		values[] = {60,120,180,240,300,600,1200,1800,2400,3000,3600};
 		texts[] = {"1 Minute","2 Minutes","3 Minutes","4 Minutes","5 Minutes","10 Minutes","20 Minutes","30 Minutes","40 Minutes","50 Minutes","1 Hour"};
-		default = 3600;
+		default = 2400;
 	};
 	class CTI_GRAPHICS_TG_MAX {
 		title = $STR_CTI_GRAPHICS_TG_MAX;
@@ -475,7 +475,12 @@ class Params {
 		texts[] = {"0","100","150","200","250","300","350","400","500","600"};
 		default = 250;
 	};
-
+	class CTI_SM_SHIP {
+		title = $STR_CTI_SM_SHIP;
+		values[] = {0,1};
+		texts[] = {$STR_CTI_DISABLED,$STR_CTI_ENABLED};
+		default = 1;
+	};
 
 	class SEPARATOR3 {
 		title = $STR_CTI_SEPARATOR3;

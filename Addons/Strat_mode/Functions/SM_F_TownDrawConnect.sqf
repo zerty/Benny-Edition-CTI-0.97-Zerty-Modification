@@ -8,9 +8,8 @@ if (!(CTI_P_SideJoined == resistance))then {
 		  	_neigh= _ct getVariable "CTI_Neigh";
 		  	sleep 0.3;
 		};
-		_o=if !(MADE_FOR_STRATIS) then {500} else {0};
 		{
-			[getPos _ct,getPos _x,"ColorBlack",_o] call CTI_SM_Connect;
+			[getPos _ct,getPos _x,"ColorBlack",CTI_MARKERS_TOWN_AREA_RANGE] call CTI_SM_Connect;
 		} forEach _neigh;
 	} forEach CTI_Towns;
 };

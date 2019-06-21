@@ -76,7 +76,7 @@ if !(_sell) then {
 	_structure setVariable ["cti_completion_ratio", _completion_ratio * CTI_BASE_CONSTRUCTION_RATIO_ON_DEATH,true];
 	// _structure setVariable ["cti_structures_iteration", round(CTI_BASE_WORKERS_BUILD_COEFFICIENT / ((_var select 3)/100))];
 	_structure setVariable ["cti_structures_iteration", (_var select 3)/100,true];
-	_structure setVariable ["cti_structure_type", ((_var select 0) select 0)];
+	_structure setVariable ["cti_structure_type", ((_var select 0) select 0),true];
 
 	[_side, _structure, _variable, _position, _direction] spawn CTI_SE_FNC_HandleStructureConstruction;
 

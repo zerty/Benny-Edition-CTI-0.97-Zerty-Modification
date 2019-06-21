@@ -104,9 +104,9 @@ if (isNull _created) then {
 		if (count _free > 0) then {_vehicle setPos (selectRandom _free);} else {_vehicle setPos (getPos _vehicle);};
 	};
 
-	if (_vehicle isKindOf "SHIP" && _side != CTI_RESISTANCE_ID) then {
+	if (_vehicle isKindOf "SHIP" && _side != CTI_RESISTANCE_ID && !(surfaceIsWater position _vehicle)) then {
 		_wp = [getPos _vehicle, 0, 75, 7, 2, 1, 0] call BIS_fnc_findSafePos;
-		if (count _wp == 0) then {_wp = getPos _vehicle};
+		if (count _wp == 0 || !(surfaceIsWater _wp)) then {_wp = (getPos _vehicle) findEmptyPosition [0,100,"O_T_VTOL_02_vehicle_dynamicLoadout_F"];};
 		_vehicle setPos _wp;
 	};
 
@@ -212,11 +212,13 @@ if (isNull _created) then {
 		if (_vehicle isKindOf "O_MBT_02_cannon_F" || _vehicle isKindOf "O_T_MBT_02_cannon_ghex_F") then {[_vehicle, nil, ["showLog",1]] call BIS_fnc_initVehicle;};
 		if (_vehicle isKindOf "O_APC_Tracked_02_AA_F" || _vehicle isKindOf "O_T_APC_Tracked_02_AA_ghex_F") then {[_vehicle, nil, ["showTracks",1]] call BIS_fnc_initVehicle;};
 	};
-	if (_vehicle isKindOf "Car") then {
+	if (_vehicle isKindOf "Offroad_01_base_F") then {
 		_offroads = ["I_G_Offroad_01_F", "I_G_Offroad_01_armed_F", "I_G_Offroad_01_AT_F", "B_G_Offroad_01_F", "B_G_Offroad_01_armed_F", "B_G_Offroad_01_AT_F", "O_G_Offroad_01_F", "O_G_Offroad_01_armed_F", "O_G_Offroad_01_AT_F"];
 		if ((typeOf _vehicle) in _offroads) then {
 		_offroadcolors = ["Guerilla_01", "Guerilla_02", "Guerilla_03", "Guerilla_04", "Guerilla_05", "Guerilla_06", "Guerilla_07", "Guerilla_08", "Guerilla_09", "Guerilla_10", "Guerilla_11", "Guerilla_12"];
 		[_vehicle, [(selectRandom _offroadcolors),1], nil] call BIS_fnc_initVehicle;};
+	};
+	if (_vehicle isKindOf "Offroad_02_base_F") then {
 		_4wds = ["I_C_Offroad_02_unarmed_F", "I_C_Offroad_02_LMG_F", "I_C_Offroad_02_AT_F", "C_Offroad_02_unarmed_F"];
 		if ((typeOf _vehicle) in _4wds) then {
 		_4wdcolors = ["Green", "Olive", "Black", "Brown"];
@@ -260,7 +262,11 @@ if ((missionNamespace getVariable [format ["%1", typeOf _vehicle],["","","","","
 
 
 if (_locked && !( _vehicle isKindOf "Thing") && !( _vehicle isKindOf "StaticWeapon") && !( _vehicle isKindOf "UAV") && !( _vehicle isKindOf "UGV_01_base_F") && !( _vehicle isKindOf "B_T_UAV_03_dynamicLoadout_F")) then {_vehicle lock 2} else {_vehicle lock 0};
-if (_net && !( _vehicle isKindOf "Thing")) then {_vehicle setVariable ["cti_net", _side, true]};
+if (_net && !( _vehicle isKindOf "Thing")) then {
+	_vehicle setVariable ["cti_net", _side, true];
+	} else {
+	if (_vehicle isKindOf "Slingload_01_Base_F") then {_vehicle setVariable ["cti_net", _side, true];};
+	};
 if (_handle) then {
 	_vehicle addEventHandler ["killed", format["[_this select 0, _this select 1, %1] spawn CTI_CO_FNC_OnUnitKilled", _side]]; //--- Called on destruction
 	_vehicle addEventHandler ["hit", {_this spawn CTI_CO_FNC_OnUnitHit}]; //--- Register importants hits

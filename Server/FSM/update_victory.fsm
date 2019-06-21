@@ -15,8 +15,8 @@ link3[] = {2,4};
 link4[] = {4,5};
 link5[] = {5,6};
 link6[] = {6,3};
-globals[] = {0.000000,0,0,0,0,640,480,1,164,6316128,1,-620.422607,163.824570,138.236649,-571.857727,635,885,1};
-window[] = {2,-1,-1,-1,-1,806,25,1280,25,3,653};
+globals[] = {0.000000,0,0,0,0,640,480,1,164,6316128,1,-626.312195,169.713379,529.355530,-580.065979,635,884,1};
+window[] = {2,-1,-1,-1,-1,833,52,1307,52,3,653};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -70,6 +70,9 @@ class FSM
                          "_max_time = missionNamespace getVariable ""CTI_MAX_MISSION_TIME"";" \n
                          "_max_time=_max_time*60*60; // cycle for loadgame - time limit [H]Tom" \n
                          "" \n
+                         "" \n
+                         "_end=false;" \n
+                         "" \n
                          "{" \n
                          "	_side = _x;" \n
                          "	_hq = (_x) call CTI_CO_FNC_GetSideHQ;" \n
@@ -79,32 +82,59 @@ class FSM
                          "	{_townvalue=_townvalue+ (_x getVariable ""cti_town_value""); } ForEach ((_x) call CTI_CO_FNC_GetFriendlyTowns);" \n
                          "	_factories = 0;" \n
                          "	{_factories = _factories + count([_x, _structures] call CTI_CO_FNC_GetSideStructuresByType)} forEach (missionNamespace getVariable format[""CTI_%1_Factories"", _side]);" \n
-                         "	if (( ( time > _max_time && _max_time != 0)  || !(alive _hq) && _victory_hq == 1 || (!(alive _hq) && _factories == 0)) && !CTI_GameOver) exitWith {		" \n
-                         "		diag_log [""CTI_Mission_Performance: GameOver losse"", _x];		" \n
+                         "	if (( ( time > _max_time && _max_time != 0)  || !(alive _hq) && _victory_hq == 1 || (!(alive _hq) && _factories == 0)) && !CTI_GameOver) exitWith {	" \n
+                         "		diag_log[[""CTI_DataPacket"", ""GameOver""], " \n
+                         "					[""Version"", 3], //version of DiscordBot logReader" \n
+                         "					[""Map"", worldName]," \n
+                         "					[""Side"", _x]," \n
+                         "					[""Lost"", true]," \n
+                         "					[""HQ_Alive"", (alive _hq)]," \n
+                         "					[""Towns_Owned"", _towns]," \n
+                         "					[""Towns_Total"", _total]," \n
+                         "					[""Factories"", _factories]," \n
+                         "					[""Town_Value"", _townvalue]" \n
+                         "					];		" \n
                          "		[""CLIENT"", ""Client_OnMissionEnding"", [_x, ""loose""]] call CTI_CO_FNC_NetSend;" \n
-                         "" \n
-                         "		profileNamespace setVariable [""CTI_SAVE_ENABLED"",false];" \n
-                         "		saveProfileNamespace;" \n
-                         "" \n
+                         "		_end=true;" \n
                          "	};" \n
                          "	if (_towns == _total && !CTI_GameOver) exitWith {" \n
-                         "		diag_log [""CTI_Mission_Performance: GameOver win"", _x];" \n
+                         "		diag_log[[""CTI_DataPacket"", ""GameOver""], " \n
+                         "					[""Version"", 3], //version of DiscordBot logReader" \n
+                         "					[""Map"", worldName]," \n
+                         "					[""Side"", _x]," \n
+                         "					[""Lost"", false]," \n
+                         "					[""HQ_Alive"", (alive _hq)]," \n
+                         "					[""Towns_Owned"", _towns]," \n
+                         "					[""Towns_Total"", _total]," \n
+                         "					[""Factories"", _factories]," \n
+                         "					[""Town_Value"", _townvalue]" \n
+                         "					];	" \n
                          "		[""CLIENT"", ""Client_OnMissionEnding"", [_x, ""win""]] call CTI_CO_FNC_NetSend;" \n
-                         "" \n
-                         "		profileNamespace setVariable [""CTI_SAVE_ENABLED"",false];" \n
-                         "		saveProfileNamespace;" \n
-                         "" \n
+                         "		_end=true;" \n
                          "	};" \n
                          "	if (_townvalue > (_total_value*0.75) && !CTI_GameOver) exitWith {" \n
-                         "		diag_log [""CTI_Mission_Performance: GameOver eco win"", _x];" \n
+                         "		diag_log[[""CTI_DataPacket"", ""GameOver""], " \n
+                         "					[""Version"", 3], //version of DiscordBot logReader" \n
+                         "					[""Map"", worldName]," \n
+                         "					[""Side"", _x]," \n
+                         "					[""Lost"", false]," \n
+                         "					[""HQ_Alive"", (alive _hq)]," \n
+                         "					[""Towns_Owned"", _towns]," \n
+                         "					[""Towns_Total"", _total]," \n
+                         "					[""Factories"", _factories]," \n
+                         "					[""Town_Value"", _townvalue]" \n
+                         "					];	" \n
                          "		[""CLIENT"", ""Client_OnMissionEnding"", [_x, ""win""]] call CTI_CO_FNC_NetSend;" \n
-                         "		" \n
-                         "		profileNamespace setVariable [""CTI_SAVE_ENABLED"",false];" \n
-                         "		saveProfileNamespace;" \n
-                         "		" \n
+                         "		_end=true;" \n
                          "	};" \n
                          "} forEach [west, east];" \n
-                         "CTI_GameOver = true;"/*%FSM</STATEINIT""">*/;
+                         "" \n
+                         "if (_end) then {" \n
+                         "" \n
+                         "	CTI_GameOver = true;" \n
+                         "	profileNamespace setVariable [""CTI_SAVE_ENABLED"",false];" \n
+                         "	saveProfileNamespace;" \n
+                         "};"/*%FSM</STATEINIT""">*/;
                         precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
                         class Links
                         {
@@ -154,7 +184,7 @@ class FSM
                 {
                         name = "Sleep";
                         itemno = 5;
-                        init = /*%FSM<STATEINIT""">*/"_endtime=time+10;" \n
+                        init = /*%FSM<STATEINIT""">*/"_endtime=time+5;" \n
                          ""/*%FSM</STATEINIT""">*/;
                         precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
                         class Links

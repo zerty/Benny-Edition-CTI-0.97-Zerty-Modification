@@ -105,6 +105,9 @@ if (isMultiplayer) then {
 };
 
 
+waitUntil {CTI_P_SideLogic getVariable ["CTI_LOAD_COMPLETED",false]};
+
+
 
 //--- Initialize the client PV
 call compile preprocessFile "Client\Init\Init_PublicVariables.sqf";
@@ -260,7 +263,7 @@ TABLET_GET_TARGET={
 	if (cursortarget iskindof "CAManBase" && ([player,cursortarget] call BIS_fnc_distance2D) <3 ) exitWith {cursortarget};
 	if (cursortarget == (CTI_P_SideLogic getvariable "cti_hq") && ([player,cursortarget] call BIS_fnc_distance2D) <10 && (isnull attachedTo (CTI_P_SideLogic getvariable "cti_hq") ) ) exitWith {cursortarget};
 	if (vehicle player != player) exitWith {vehicle player};
-	_target = lineintersectsobjs [(eyepos player),(atltoasl screentoworld [0.5,0.5]),objnull,objnull,false,16];
+	_target = lineintersectsobjs [(eyepos player),(atltoasl screentoworld [0.5,0.5]),objnull,objnull,false,2];
 	if (count _target == 0 && !(cursortarget iskindof "CAManBase") && ( [player,cursortarget] call BIS_fnc_distance2D) <8) exitWith {cursortarget};
 	if ((count _target) == 0) exitWith {player};
 	if (( [player,(_target select 0)] call BIS_fnc_distance2D) > 8) exitWith {player};

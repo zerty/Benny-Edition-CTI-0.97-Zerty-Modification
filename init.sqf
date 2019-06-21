@@ -4,7 +4,7 @@ setObjectViewDistance 4000;
 
 NET_LOG=False;
 
-MADE_FOR_STRATIS=false;
+ISLAND = 2; //--- 1: Stratis, 2: Altis, 3: Tanoa, 4: Malden, 5: VR
 //--- Early definition, will be override later on in the init files.
 CTI_P_SideJoined = civilian;
 

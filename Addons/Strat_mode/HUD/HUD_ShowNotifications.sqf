@@ -36,6 +36,7 @@ if (time- (_reverse select 0 select 3) < 7 || !isNil {uiNamespace getVariable ['
 
 		//_text=_text +		 format ["<t size='0.8' color='#%1%2'> (+) ",if (((_x select 1) - time)>3) then {"ff"} else {(99 min ((floor (((_x select 1) - time)*100/4)) max 10))},_x select 2]+		  (_x select 0) +		  "</t><br/>";
 		_text=_text +format ["<t size='0.8' color='#ff%1'>(+) %2</t><br/>",_x select 2,(_x select 0)];
+	true
 	} count _reverse;
 } else {
 	(_hud displayCtrl (HUD_IDC+7)) ctrlShow false;

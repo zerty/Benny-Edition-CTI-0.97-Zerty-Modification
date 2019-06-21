@@ -665,6 +665,10 @@
 				<Original>Zerty: Strategic: Town CAS if value above</Original>
 				<Russian>Разрешить поддержку с воздуха если стоимость города больше</Russian>
 			</Key>
+			<Key ID="STR_CTI_SM_SHIP">
+				<Original>[H] Tom: Strategic: Patrol Ships near small islands</Original>
+				<Russian>Патрульные корабли возле небольших островов</Russian>
+			</Key>
 			<Key ID="STR_CTI_SEPARATOR3">
 				<Original>===================== Electronic Warfare =======================</Original>
 				<Russian>===================== Electronic Warfare =======================</Russian>
@@ -2174,7 +2178,7 @@
 <Project name="Upgrades_East_West">
 	<Package name="Main">
 			<Key ID="STR_Up_Barracks">
-				<Original>Barracks</Original>
+				<Original>Factory: Barracks</Original>
 				<Russian>Казармы</Russian>
 			</Key>
 			<Key ID="STR_Up_Barracks_Descr">
@@ -2353,6 +2357,14 @@
 </Project>
 <Project name="Base_East_West">
 	<Package name="Main">
+			<Key ID="STR_Barracks">
+				<Original>Barracks</Original>
+				<Russian>Казармы</Russian>
+			</Key>
+			<Key ID="STR_Barracks_1">
+				<Original>Barracks</Original>
+				<Russian>Казармы</Russian>
+			</Key>
 			<Key ID="STR_Light_Vehicle_Factory">
 				<Original>Light Vehicle Factory</Original>
 				<Russian>Завод Легкой Техники</Russian>

@@ -47,7 +47,7 @@ while {isNull _unit && !((side _unit) in [east,west]) && _try <10} do {
 		{
 		_unit = _x;
 		};
-	} forEach allUnits + allDead ;
+	} forEach allPlayers; // allUnits + allDead 
 
 
 

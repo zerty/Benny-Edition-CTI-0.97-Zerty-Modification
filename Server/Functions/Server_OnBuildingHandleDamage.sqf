@@ -46,7 +46,7 @@ _side = (_sideID) call CTI_CO_FNC_GetSideFromID;
 _ratio=if (_damaged getvariable ["CTI_protected",false]&& CTI_SM_BASEP_M > 0) then { CTI_SM_BASEP_M} else {1};
 _currentdmg = getDammage _damaged;
 _damage = _currentdmg + ((_damage - _currentdmg) / _ratio);
-if (CTI_BASE_NOOBPROTECTION == 1 && side _shooter in [_side, sideEnemy]) exitWith {0};
+if (CTI_BASE_NOOBPROTECTION == 1 && side _shooter in [_side, sideEnemy,civilian]) exitWith {0};
 if (_reduce_damages > 0) then {_currentdmg = getDammage _damaged; _damage = _currentdmg + ((_damage - _currentdmg) / _reduce_damages)};
 if (_damaged getvariable ["CTI_protected",false]&& CTI_SM_BASEP_M > 0) then { CTI_SM_BASEP_M} else {1};
 _logic = (_side) call CTI_CO_FNC_GetSideLogic;

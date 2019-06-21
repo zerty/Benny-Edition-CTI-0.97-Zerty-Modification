@@ -118,6 +118,10 @@ _i = _i		+ ["30Rnd_545x39_Mag_Tracer_Green_F"];
 _u = _u		+ [0];
 _p = _p		+ [20];
 
+_i = _i		+ ["50Rnd_570x28_SMG_03"];
+_u = _u		+ [0];
+_p = _p		+ [20];
+
 //Rifles Ammo
 _i = _i		+ ["30Rnd_556x45_Stanag_red"];
 _u = _u		+ [0];
@@ -152,6 +156,14 @@ _u = _u		+ [1];
 _p = _p		+ [30];
 
 _i = _i		+ ["30Rnd_762x39_Mag_Tracer_Green_F"];
+_u = _u		+ [1];
+_p = _p		+ [30];
+
+_i = _i		+ ["30Rnd_762x39_AK12_Mag_F"];
+_u = _u		+ [1];
+_p = _p		+ [30];
+
+_i = _i		+ ["30Rnd_762x39_AK12_Mag_Tracer_F"];
 _u = _u		+ [1];
 _p = _p		+ [30];
 
@@ -197,6 +209,22 @@ _u = _u		+ [1];
 _p = _p		+ [30];
 
 _i = _i		+ ["100Rnd_580x42_Mag_Tracer_F"];
+_u = _u		+ [1];
+_p = _p		+ [30];
+
+_i = _i		+ ["100Rnd_580x42_hex_Mag_F"];
+_u = _u		+ [1];
+_p = _p		+ [30];
+
+_i = _i		+ ["100Rnd_580x42_hex_Mag_Tracer_F"];
+_u = _u		+ [1];
+_p = _p		+ [30];
+
+_i = _i		+ ["100Rnd_580x42_ghex_Mag_F"];
+_u = _u		+ [1];
+_p = _p		+ [30];
+
+_i = _i		+ ["100Rnd_580x42_ghex_Mag_Tracer_F"];
 _u = _u		+ [1];
 _p = _p		+ [30];
 
@@ -379,6 +407,38 @@ _p = _p		+ [10];
 _i = _i		+ ["SMG_02_F"];
 _u = _u		+ [0];
 _p = _p		+ [10];
+
+_i = _i		+ ["SMG_03C_black"];
+_u = _u		+ [0];
+_p = _p		+ [15];
+
+_i = _i		+ ["SMG_03C_hex"];
+_u = _u		+ [0];
+_p = _p		+ [15];
+
+_i = _i		+ ["SMG_03_black"];
+_u = _u		+ [0];
+_p = _p		+ [15];
+
+_i = _i		+ ["SMG_03_hex"];
+_u = _u		+ [0];
+_p = _p		+ [15];
+
+_i = _i		+ ["SMG_03C_TR_black"];
+_u = _u		+ [1];
+_p = _p		+ [20];
+
+_i = _i		+ ["SMG_03C_TR_hex"];
+_u = _u		+ [1];
+_p = _p		+ [20];
+
+_i = _i		+ ["SMG_03_TR_black"];
+_u = _u		+ [1];
+_p = _p		+ [20];
+
+_i = _i		+ ["SMG_03_TR_hex"];
+_u = _u		+ [1];
+_p = _p		+ [20];
 
 _i = _i		+ ["arifle_AKS_F"];
 _u = _u		+ [0];
@@ -809,7 +869,7 @@ _i = _i		+ ["B_ViperLightHarness_oli_F"];
 _u = _u		+ [2];
 _p = _p		+ [100];
 
-if !(MADE_FOR_STRATIS) then {
+if (ISLAND != 1) then {
 	_i = _i		+ ["O_Mortar_01_support_F"];
 	_u = _u		+ [3];
 	_p = _p		+ [5];

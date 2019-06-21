@@ -538,6 +538,7 @@ class RscMapControl {
 	showCountourInterval = 0;
 	scaleMin = 0.001;
 	scaleMax = 1.0;
+	widthRailWay = 4;
 	scaleDefault = 0.16;
 	maxSatelliteAlpha = 0.85;
 	alphaFadeStartScale = 0.35;

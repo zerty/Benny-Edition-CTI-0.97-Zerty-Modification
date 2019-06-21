@@ -50,7 +50,7 @@ _structure setVariable ["cti_completion", 10,true];
 _structure setVariable ["cti_completion_ratio", CTI_BASE_CONSTRUCTION_RATIO_INIT,true];
 // _structure setVariable ["cti_structures_iteration", round(CTI_BASE_WORKERS_BUILD_COEFFICIENT / ((_var select 3)/100))];
 _structure setVariable ["cti_structures_iteration", (_var select 3)/100,true];
-_structure setVariable ["cti_structure_type", ((_var select 0) select 0)];
+_structure setVariable ["cti_structure_type", ((_var select 0) select 0),true];
 
 _logic = (_side) call CTI_CO_FNC_GetSideLogic;
 _logic setVariable ["cti_structures_wip", (_logic getVariable "cti_structures_wip") + [_structure] - [objNull],true];

@@ -6,4 +6,5 @@
 	_fade=_x select 1;
 	_size=_x select 2;
 	drawIcon3D ['A3\ui_f\data\IGUI\Cfg\Actions\heal_ca.paa', [1,0,0,_fade], _pos , _size, _size, 0,"", 0, 0, "PuristaMedium"];
+true
 } count HUD_Revives;

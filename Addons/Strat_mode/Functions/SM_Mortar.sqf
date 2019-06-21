@@ -16,7 +16,7 @@ _maingrouploop={
 	_target=[];
 	_group=_this select 1;
 	_town_groups=_this select 2;
-	_to_mortar=if !(MADE_FOR_STRATIS) then {120} else {60};
+	_to_mortar=if (ISLAND != 1) then {120} else {60};
 	diag_log format [ ":: MORTAR :: Starting mortar from group %1 for town %2 linked to %3", _group,_town,_town_groups];
 	while {count(_group call CTI_CO_FNC_GetLiveUnits)>0 &&( _town getVariable "cti_town_sideID")==CTI_RESISTANCE_ID && (_town getVariable "cti_town_resistance_active")} do
 	{
@@ -53,7 +53,7 @@ _group= createGroup resistance;
 _pos= [_town,1000,1500] call CTI_CO_FNC_GetRandomPosition;
 
 _mp=[];
-_max_mortar=if !(MADE_FOR_STRATIS) then {3} else {1};
+_max_mortar=if (ISLAND != 1) then {3} else {1};
 
 for "_x" from 1 to _max_mortar do {
 	_pos2= [_pos,100,400] call CTI_CO_FNC_GetRandomPosition;

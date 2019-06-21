@@ -28,7 +28,7 @@
 			_vt=_vt+[[_town,_text,_color,_fade]];
 
 		};
-
+	true
 	}count CTI_Towns;
 
 	_vt

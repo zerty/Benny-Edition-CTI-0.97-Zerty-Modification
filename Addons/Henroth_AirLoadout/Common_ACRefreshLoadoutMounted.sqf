@@ -141,9 +141,10 @@ for [ {_mount_index = 0},{ _mount_index < ( count ( _all_mountpoint_options ))},
 					{
 						_vehicle addWeaponTurret [ _weapon_classname , _turret_position ];
 					};
-
-					_vehicle addMagazineTurret [ _magazine_classname , _turret_position ];
-					
+					if ( not _not_resreached_magzine ) then
+					{ 
+						_vehicle addMagazineTurret [ _magazine_classname , _turret_position ];
+					};
 					if ( not _mount_loadout_enabled ) then
 					{
 						_vehicle setAmmo [ _weapon_classname , 0 ];
