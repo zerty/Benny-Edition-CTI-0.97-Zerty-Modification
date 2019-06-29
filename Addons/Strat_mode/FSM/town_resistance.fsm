@@ -15,32 +15,17 @@ item10[] = {"Inactive",4,218,175.000000,-100.000000,275.000000,-50.000000,1.0000
 item11[] = {"Still_active",8,218,300.000000,0.000000,400.000000,50.000000,0.000000,"Still active"};
 item12[] = {"Timed_out",4,218,475.000000,100.000000,575.000000,150.000000,1.000000,"Timed out"};
 item13[] = {"Skip",2,250,302.287354,-265.039612,402.287354,-215.039612,0.000000,"Skip"};
-item14[] = {"Cleanup",2,250,475.000000,-400.000000,575.000000,-350.000000,0.000000,"Cleanup"};
+item14[] = {"Cleanup",2,4346,475.000000,-400.000000,575.000000,-350.000000,0.000000,"Cleanup"};
 item15[] = {"Resistance_Active",2,250,50.000000,-100.000000,150.000000,-50.000000,0.000000,"Resistance" \n "Active?"};
 item16[] = {"Contact",8,218,-100.000000,100.000000,0.000000,150.000000,0.000000,"Contact"};
 item17[] = {"Clear",4,218,50.000000,0.000000,150.000000,50.000000,1.000000,"Clear"};
-item18[] = {"Calc",2,250,-405.286591,200.000000,-305.286591,250.000000,0.000000,"Calc"};
+item18[] = {"Create",2,250,-400.000000,200.000000,-300.000000,250.000000,0.000000,"Create"};
 item19[] = {"Resistance_Active_1",2,250,-100.000000,200.000000,0.000000,250.000000,0.000000,"Resistance" \n "Active?"};
 item20[] = {"Inactive",4,218,-250.000000,200.000000,-150.000000,250.000000,1.000000,"Inactive"};
 item21[] = {"Active",4,218,175.000000,200.000000,275.000000,250.000000,2.000000,"Active"};
-item22[] = {"",7,210,-351.746582,-418.493622,-343.746582,-410.493622,0.000000,""};
+item22[] = {"",7,210,-354.000000,-379.000000,-346.000000,-371.000000,0.000000,""};
 item23[] = {"_",8,218,300.000000,275.000000,400.000000,325.000000,0.000000,""};
-item24[] = {"Create_G1",2,250,-403.897888,112.289322,-303.897888,162.289322,0.000000,"Create G1"};
-item25[] = {"Wait",4,218,-402.292999,83.576782,-303.756409,105.971649,1.000000,"Wait"};
-item26[] = {"",7,210,-40.530235,-569.115356,-32.530251,-561.115356,0.000000,""};
-item27[] = {"Create_G2",2,250,-403.032166,26.257862,-303.032166,76.257881,0.000000,"Create G2"};
-item28[] = {"Wait",4,218,-404.894409,170.550903,-306.357819,192.945770,1.000000,"Wait"};
-item29[] = {"Create_G3",2,250,-401.294312,-56.101166,-301.294312,-6.101151,0.000000,"Create G3"};
-item30[] = {"Wait",4,218,-401.987091,-1.587708,-303.450500,20.807159,1.000000,"Wait"};
-item31[] = {"Create_G4",2,250,-400.878967,-141.958054,-300.878906,-91.958038,0.000000,"Create G4"};
-item32[] = {"Create_G5",2,250,-397.118561,-226.637772,-297.118561,-176.637802,0.000000,"Create G5"};
-item33[] = {"Create_G6",2,4346,-398.124298,-312.866913,-298.124298,-262.866913,0.000000,"Create G6"};
-item34[] = {"Wait",4,218,-399.633942,-84.102051,-301.097351,-61.707184,1.000000,"Wait"};
-item35[] = {"Wait",4,218,-398.621429,-170.179230,-300.084839,-147.784363,1.000000,"Wait"};
-item36[] = {"Wait",4,218,-396.509552,-255.200638,-297.972961,-232.805847,1.000000,"Wait"};
-item37[] = {"Create_C__M__M_",2,250,-398.652588,-399.085297,-298.652588,-349.085297,0.000000,"Create C, M, M, S"};
-item38[] = {"Wait",4,218,-397.133728,-342.601624,-298.597107,-320.206787,1.000000,"Wait"};
-link0[] = {0,26};
+link0[] = {0,1};
 link1[] = {1,2};
 link2[] = {2,4};
 link3[] = {2,5};
@@ -62,7 +47,7 @@ link18[] = {15,9};
 link19[] = {15,10};
 link20[] = {16,19};
 link21[] = {17,15};
-link22[] = {18,28};
+link22[] = {18,22};
 link23[] = {19,20};
 link24[] = {19,21};
 link25[] = {19,23};
@@ -70,23 +55,8 @@ link26[] = {20,18};
 link27[] = {21,8};
 link28[] = {22,1};
 link29[] = {23,13};
-link30[] = {24,25};
-link31[] = {25,27};
-link32[] = {26,1};
-link33[] = {27,30};
-link34[] = {28,24};
-link35[] = {29,34};
-link36[] = {30,29};
-link37[] = {31,35};
-link38[] = {32,36};
-link39[] = {33,38};
-link40[] = {34,31};
-link41[] = {35,32};
-link42[] = {36,33};
-link43[] = {37,22};
-link44[] = {38,37};
-globals[] = {0.000000,0,0,0,0,640,480,1,197,6316128,1,-531.517700,-94.375397,293.288269,-925.745911,317,884,1};
-window[] = {2,-1,-1,-1,-1,1134,104,1127,104,3,335};
+globals[] = {0.000000,0,0,0,0,640,480,1,173,6316128,1,-984.095642,949.039673,729.243164,-1090.662720,939,884,1};
+window[] = {2,-1,-1,-32000,-32000,794,182,1218,182,3,957};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -419,10 +389,10 @@ class FSM
                         };
                 };
                 /*%FSM</STATE>*/
-                /*%FSM<STATE "Calc">*/
-                class Calc
+                /*%FSM<STATE "Create">*/
+                class Create
                 {
-                        name = "Calc";
+                        name = "Create";
                         itemno = 18;
                         init = /*%FSM<STATEINIT""">*/"//--- We get the main information first (The teams, the groups and the positions)" \n
                          "_return = (_town) call CTI_SE_FNC_SpawnTownResistance;" \n
@@ -431,269 +401,18 @@ class FSM
                          "_town_positions = _return select 2;" \n
                          "" \n
                          "_town setvariable [""CTI_TOWN_GROUPS"",_town_groups,true];" \n
+                         "//--- Warn" \n
+                         "//[[""CLIENT"",resistance], ""Client_OnMessageReceived"", [""town-hostilenear"", _town]] call CTI_CO_FNC_NetSend;" \n
                          "" \n
-                         "_size = count _town_groups; " \n
                          "" \n
-                         "_wait = time + 0.5;"/*%FSM</STATEINIT""">*/;
-                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-                        class Links
-                        {
-                                /*%FSM<LINK "Wait">*/
-                                class Wait
-                                {
-                                        itemno = 28;
-                                        priority = 1.000000;
-                                        to="Create_G1";
-                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/"time > _wait"/*%FSM</CONDITION""">*/;
-                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-                                };
-                                /*%FSM</LINK>*/
-                        };
-                };
-                /*%FSM</STATE>*/
-                /*%FSM<STATE "Resistance_Active_1">*/
-                class Resistance_Active_1
-                {
-                        name = "Resistance_Active_1";
-                        itemno = 19;
-                        init = /*%FSM<STATEINIT""">*/"_town  setVariable [""cti_town_resistance_activeTime"", time,true];"/*%FSM</STATEINIT""">*/;
-                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-                        class Links
-                        {
-                                /*%FSM<LINK "Active">*/
-                                class Active
-                                {
-                                        itemno = 21;
-                                        priority = 2.000000;
-                                        to="Resistance_Timeout";
-                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/"_town getVariable ""cti_town_resistance_active"""/*%FSM</CONDITION""">*/;
-                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-                                };
-                                /*%FSM</LINK>*/
-                                /*%FSM<LINK "Inactive">*/
-                                class Inactive
-                                {
-                                        itemno = 20;
-                                        priority = 1.000000;
-                                        to="Calc";
-                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/"_sideID == CTI_RESISTANCE_ID &&!(_town getVariable ""cti_town_resistance_active"") &&(_town in ((CTI_WEST getvariable ""CTI_ACTIVE"") + (CTI_EAST getvariable ""CTI_ACTIVE"") )) && !(_town getVariable ""cti_town_occupation_active"")" \n
-                                         ""/*%FSM</CONDITION""">*/;
-                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-                                };
-                                /*%FSM</LINK>*/
-                                /*%FSM<LINK "_">*/
-                                class _
-                                {
-                                        itemno = 23;
-                                        priority = 0.000000;
-                                        to="Skip";
-                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
-                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-                                };
-                                /*%FSM</LINK>*/
-                        };
-                };
-                /*%FSM</STATE>*/
-                /*%FSM<STATE "Create_G1">*/
-                class Create_G1
-                {
-                        name = "Create_G1";
-                        itemno = 24;
-                        init = /*%FSM<STATEINIT""">*/"if (_size > 0) then {" \n
-                         "_town_vehicles_groups_1 = [_town, resistance, [_town_teams select 0], [_town_groups select 0], [_town_positions select 0]] call CTI_CO_FNC_CreateTownUnits;" \n
-                         "diag_log format["":: %1 :: %2"",(_town getVariable ""cti_town_name""),_town_vehicles_groups_1];" \n
+                         "_town_vehicles_groups = [_town, resistance, _town_teams, _town_groups, _town_positions] call CTI_CO_FNC_CreateTownUnits;" \n
+                         "diag_log format["":: %1 :: %2"",(_town getVariable ""cti_town_name""),_town_vehicles_groups];" \n
                          "" \n
-                         "_town setvariable [""CTI_TOWN_GROUPS"",_town_vehicles_groups_1 select 1,true];" \n
-                         "_town setVariable [""cti_town_resistance_active_vehicles"", (_town getVariable ""cti_town_resistance_active_vehicles"") + (_town_vehicles_groups_1 select 0),true];" \n
-                         "" \n
-                         "_wait = time + 0.5;" \n
-                         "};"/*%FSM</STATEINIT""">*/;
-                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-                        class Links
-                        {
-                                /*%FSM<LINK "Wait">*/
-                                class Wait
-                                {
-                                        itemno = 25;
-                                        priority = 1.000000;
-                                        to="Create_G2";
-                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/"time > _wait"/*%FSM</CONDITION""">*/;
-                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-                                };
-                                /*%FSM</LINK>*/
-                        };
-                };
-                /*%FSM</STATE>*/
-                /*%FSM<STATE "Create_G2">*/
-                class Create_G2
-                {
-                        name = "Create_G2";
-                        itemno = 27;
-                        init = /*%FSM<STATEINIT""">*/"if (_size > 1) then {" \n
-                         "_town_vehicles_groups_2 = [_town, resistance, [_town_teams select 1], [_town_groups select 1], [_town_positions select 1]] call CTI_CO_FNC_CreateTownUnits;" \n
-                         "diag_log format["":: %1 :: %2"",(_town getVariable ""cti_town_name""),_town_vehicles_groups_2];" \n
-                         "" \n
-                         "_town setvariable [""CTI_TOWN_GROUPS"",(_town getVariable ""CTI_TOWN_GROUPS"") + (_town_vehicles_groups_2 select 1),true];" \n
-                         "_town setVariable [""cti_town_resistance_active_vehicles"", (_town getVariable ""cti_town_resistance_active_vehicles"") + (_town_vehicles_groups_2 select 0),true];" \n
-                         "" \n
-                         "_wait = time + 0.5;" \n
-                         "};"/*%FSM</STATEINIT""">*/;
-                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-                        class Links
-                        {
-                                /*%FSM<LINK "Wait">*/
-                                class Wait
-                                {
-                                        itemno = 30;
-                                        priority = 1.000000;
-                                        to="Create_G3";
-                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/"time > _wait"/*%FSM</CONDITION""">*/;
-                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-                                };
-                                /*%FSM</LINK>*/
-                        };
-                };
-                /*%FSM</STATE>*/
-                /*%FSM<STATE "Create_G3">*/
-                class Create_G3
-                {
-                        name = "Create_G3";
-                        itemno = 29;
-                        init = /*%FSM<STATEINIT""">*/"if (_size > 2) then {" \n
-                         "_town_vehicles_groups_3 = [_town, resistance, [_town_teams select 2], [_town_groups select 2], [_town_positions select 2]] call CTI_CO_FNC_CreateTownUnits;" \n
-                         "diag_log format["":: %1 :: %2"",(_town getVariable ""cti_town_name""),_town_vehicles_groups_3];" \n
-                         "" \n
-                         "_town setvariable [""CTI_TOWN_GROUPS"",(_town getVariable ""CTI_TOWN_GROUPS"") + (_town_vehicles_groups_3 select 1),true];" \n
-                         "_town setVariable [""cti_town_resistance_active_vehicles"", (_town getVariable ""cti_town_resistance_active_vehicles"") + (_town_vehicles_groups_3 select 0),true];" \n
-                         "" \n
-                         "_wait = time + 0.5;" \n
-                         "};"/*%FSM</STATEINIT""">*/;
-                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-                        class Links
-                        {
-                                /*%FSM<LINK "Wait">*/
-                                class Wait
-                                {
-                                        itemno = 34;
-                                        priority = 1.000000;
-                                        to="Create_G4";
-                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/"time > _wait"/*%FSM</CONDITION""">*/;
-                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-                                };
-                                /*%FSM</LINK>*/
-                        };
-                };
-                /*%FSM</STATE>*/
-                /*%FSM<STATE "Create_G4">*/
-                class Create_G4
-                {
-                        name = "Create_G4";
-                        itemno = 31;
-                        init = /*%FSM<STATEINIT""">*/"if (_size > 3) then {" \n
-                         "_town_vehicles_groups_4 = [_town, resistance, [_town_teams select 3], [_town_groups select 3], [_town_positions select 3]] call CTI_CO_FNC_CreateTownUnits;" \n
-                         "diag_log format["":: %1 :: %2"",(_town getVariable ""cti_town_name""),_town_vehicles_groups_4];" \n
-                         "" \n
-                         "_town setvariable [""CTI_TOWN_GROUPS"",(_town getVariable ""CTI_TOWN_GROUPS"") + (_town_vehicles_groups_4 select 1),true];" \n
-                         "_town setVariable [""cti_town_resistance_active_vehicles"", (_town getVariable ""cti_town_resistance_active_vehicles"") + (_town_vehicles_groups_4 select 0),true];" \n
-                         "" \n
-                         "_wait = time + 0.5;" \n
-                         "};"/*%FSM</STATEINIT""">*/;
-                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-                        class Links
-                        {
-                                /*%FSM<LINK "Wait">*/
-                                class Wait
-                                {
-                                        itemno = 35;
-                                        priority = 1.000000;
-                                        to="Create_G5";
-                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/"time > _wait"/*%FSM</CONDITION""">*/;
-                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-                                };
-                                /*%FSM</LINK>*/
-                        };
-                };
-                /*%FSM</STATE>*/
-                /*%FSM<STATE "Create_G5">*/
-                class Create_G5
-                {
-                        name = "Create_G5";
-                        itemno = 32;
-                        init = /*%FSM<STATEINIT""">*/"if (_size > 4) then {" \n
-                         "_town_vehicles_groups_5 = [_town, resistance, [_town_teams select 4], [_town_groups select 4], [_town_positions select 4]] call CTI_CO_FNC_CreateTownUnits;" \n
-                         "diag_log format["":: %1 :: %2"",(_town getVariable ""cti_town_name""),_town_vehicles_groups_5];" \n
-                         "" \n
-                         "_town setvariable [""CTI_TOWN_GROUPS"",(_town getVariable ""CTI_TOWN_GROUPS"") + (_town_vehicles_groups_5 select 1),true];" \n
-                         "_town setVariable [""cti_town_resistance_active_vehicles"", (_town getVariable ""cti_town_resistance_active_vehicles"") + (_town_vehicles_groups_5 select 0),true];" \n
-                         "" \n
-                         "_wait = time + 0.5;" \n
-                         "};"/*%FSM</STATEINIT""">*/;
-                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-                        class Links
-                        {
-                                /*%FSM<LINK "Wait">*/
-                                class Wait
-                                {
-                                        itemno = 36;
-                                        priority = 1.000000;
-                                        to="Create_G6";
-                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/"time > _wait"/*%FSM</CONDITION""">*/;
-                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-                                };
-                                /*%FSM</LINK>*/
-                        };
-                };
-                /*%FSM</STATE>*/
-                /*%FSM<STATE "Create_G6">*/
-                class Create_G6
-                {
-                        name = "Create_G6";
-                        itemno = 33;
-                        init = /*%FSM<STATEINIT""">*/"if (_size > 5) then {" \n
-                         "_town_vehicles_groups_6 = [_town, resistance, [_town_teams select 5], [_town_groups select 5], [_town_positions select 5]] call CTI_CO_FNC_CreateTownUnits;" \n
-                         "diag_log format["":: %1 :: %2"",(_town getVariable ""cti_town_name""),_town_vehicles_groups_6];" \n
-                         "" \n
-                         "_town setvariable [""CTI_TOWN_GROUPS"",(_town getVariable ""CTI_TOWN_GROUPS"") + (_town_vehicles_groups_6 select 1),true];" \n
-                         "_town setVariable [""cti_town_resistance_active_vehicles"", (_town getVariable ""cti_town_resistance_active_vehicles"") + (_town_vehicles_groups_6 select 0),true];" \n
-                         "" \n
-                         "_wait = time + 0.5;" \n
-                         "};" \n
-                         "" \n
+                         "_town setvariable [""CTI_TOWN_GROUPS"",_town_vehicles_groups select 1,true];" \n
+                         "_town setVariable [""cti_town_resistance_active_vehicles"", (_town getVariable ""cti_town_resistance_active_vehicles"") + (_town_vehicles_groups select 0),true];" \n
+                         "_town setVariable [""cti_town_mortars_units"",[],true];" \n
                          "_town setVariable [""cti_town_resistance_active"", true,true];" \n
                          "" \n
-                         "//diag_log (_town getVariable ""CTI_TOWN_GROUPS"");"/*%FSM</STATEINIT""">*/;
-                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-                        class Links
-                        {
-                                /*%FSM<LINK "Wait">*/
-                                class Wait
-                                {
-                                        itemno = 38;
-                                        priority = 1.000000;
-                                        to="Create_C__M__M_";
-                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/"time > _wait"/*%FSM</CONDITION""">*/;
-                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-                                };
-                                /*%FSM</LINK>*/
-                        };
-                };
-                /*%FSM</STATE>*/
-                /*%FSM<STATE "Create_C__M__M_">*/
-                class Create_C__M__M_
-                {
-                        name = "Create_C__M__M_";
-                        itemno = 37;
-                        init = /*%FSM<STATEINIT""">*/"_town setVariable [""cti_town_mortars_units"",[],true];" \n
                          "" \n
                          "if ((missionNamespace getVariable 'CTI_SM_MORTARS')==1) then {" \n
                          "	_mortars=[_town,_town_groups] call CTI_SM_Mortars_script;" \n
@@ -701,6 +420,8 @@ class FSM
                          "	_town setVariable [""cti_town_mortars"",(_mortars select 2),true];" \n
                          "	_town setVariable [""cti_town_mortars_units"",(_mortars),true];" \n
                          "};" \n
+                         "" \n
+                         "_town setVariable [""cti_town_resistance_active"", true,true];" \n
                          "" \n
                          "if ( (missionNamespace getVariable 'CTI_SM_TCAS') <= (_town getVariable ""cti_town_value"")) then {" \n
                          "	_town setVariable[""CTI_CAS"",(_town) call SM_TCAS_CREATE,true];" \n
@@ -737,6 +458,52 @@ class FSM
                                         precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
                                         condition=/*%FSM<CONDITION""">*/"time > _ncycle" \n
                                          "// && !( _town getVariable ""cti_town_disactivate"");"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Resistance_Active_1">*/
+                class Resistance_Active_1
+                {
+                        name = "Resistance_Active_1";
+                        itemno = 19;
+                        init = /*%FSM<STATEINIT""">*/"_town  setVariable [""cti_town_resistance_activeTime"", time,true];"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Active">*/
+                                class Active
+                                {
+                                        itemno = 21;
+                                        priority = 2.000000;
+                                        to="Resistance_Timeout";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_town getVariable ""cti_town_resistance_active"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Inactive">*/
+                                class Inactive
+                                {
+                                        itemno = 20;
+                                        priority = 1.000000;
+                                        to="Create";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_sideID == CTI_RESISTANCE_ID &&!(_town getVariable ""cti_town_resistance_active"") &&(_town in ((CTI_WEST getvariable ""CTI_ACTIVE"") + (CTI_EAST getvariable ""CTI_ACTIVE"") )) && !(_town getVariable ""cti_town_occupation_active"")" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "_">*/
+                                class _
+                                {
+                                        itemno = 23;
+                                        priority = 0.000000;
+                                        to="Skip";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
                                         action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
                                 };
                                 /*%FSM</LINK>*/

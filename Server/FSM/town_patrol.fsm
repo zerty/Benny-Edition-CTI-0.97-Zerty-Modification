@@ -3,260 +3,225 @@
 /*
 item0[] = {"Init",0,250,-25.000000,-475.000000,75.000000,-425.000000,0.000000,"Init"};
 item1[] = {"Cycle",4,218,125.000000,-475.000000,225.000000,-425.000000,0.000000,"Cycle"};
-item2[] = {"Check",2,250,275.000031,-473.715515,375.000031,-423.715515,0.000000,"Check"};
+item2[] = {"Check",2,250,275.000000,-475.000000,375.000000,-425.000000,0.000000,"Check"};
 item3[] = {"Renew_Path",4,218,275.000000,-575.000000,375.000000,-525.000000,3.000000,"Renew" \n "Path"};
 item4[] = {"Process_Action",4,218,275.000000,-375.000000,375.000000,-325.000000,2.000000,"Process" \n "Action"};
 item5[] = {"Done",8,218,425.000000,-475.000000,525.000000,-425.000000,0.000000,"Done"};
 item6[] = {"End",1,250,575.000000,-475.000000,675.000000,-425.000000,0.000000,"End"};
-item7[] = {"Patrol",2,250,125.000000,-575.000000,225.000000,-525.000000,0.000000,"Patrol"};
-item8[] = {"Defend",2,4346,125.000000,-375.000000,225.000000,-325.000000,0.000000,"Defend"};
+item7[] = {"Patrol",2,4346,125.000000,-575.000000,225.000000,-525.000000,0.000000,"Patrol"};
+item8[] = {"Defend",2,250,125.000000,-375.000000,225.000000,-325.000000,0.000000,"Defend"};
+item9[] = {"_",4,218,450.000000,-300.000000,550.000000,-250.000000,1.000000,""};
+item10[] = {"SKIP",2,250,-25.000000,-300.000000,75.000000,-250.000000,0.000000,"SKIP"};
 link0[] = {0,1};
 link1[] = {1,2};
 link2[] = {2,3};
 link3[] = {2,4};
 link4[] = {2,5};
-link5[] = {3,7};
-link6[] = {4,8};
-link7[] = {5,6};
-link8[] = {7,1};
-link9[] = {8,1};
-globals[] = {0.000000,0,0,0,0,640,480,1,49,6316128,1,-65.822006,695.793152,454.302429,-733.118652,567,884,1};
-window[] = {2,-1,-1,-32000,-32000,958,104,1564,104,3,585};
+link5[] = {2,9};
+link6[] = {3,7};
+link7[] = {4,8};
+link8[] = {5,6};
+link9[] = {7,1};
+link10[] = {8,1};
+link11[] = {9,10};
+link12[] = {10,1};
+globals[] = {25.000000,1,0,0,0,640,480,1,45,6316128,1,-49.166565,679.138794,-34.083618,-705.564575,769,709,1};
+window[] = {0,-1,-1,-1,-1,961,10,1470,107,1,787};
 *//*%FSM</HEAD>*/
 class FSM
 {
-        fsmName = "town_patrol.fsm";
-        class States
+  fsmName = "town_patrol.fsm";
+  class States
+  {
+    /*%FSM<STATE "Init">*/
+    class Init
+    {
+      name = "Init";
+      init = /*%FSM<STATEINIT""">*/"_town = _this select 0;" \n
+       "_team = _this select 1;" \n
+       "_sideID = _this select 2;" \n
+       "" \n
+       "_ncycle = time + random(5) ;" \n
+       "" \n
+       "_last_action = """";"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Cycle">*/
+        class Cycle
         {
-                /*%FSM<STATE "Init">*/
-                class Init
-                {
-                        name = "Init";
-                        itemno = 0;
-                        init = /*%FSM<STATEINIT""">*/"_town = _this select 0;" \n
-                         "_team = _this select 1;" \n
-                         "_sideID = _this select 2;" \n
-                         "" \n
-                         "_ncycle = time + random [0,5,1];" \n
-                         "" \n
-                         "_roads_town = [];" \n
-                         "_roads_near_team = [];" \n
-                         "_wp0 = [];" \n
-                         "_veh = false;" \n
-                         "_current_wp = -1;"/*%FSM</STATEINIT""">*/;
-                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-                        class Links
-                        {
-                                /*%FSM<LINK "Cycle">*/
-                                class Cycle
-                                {
-                                        itemno = 1;
-                                        priority = 0.000000;
-                                        to="Check";
-                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/"time > _ncycle"/*%FSM</CONDITION""">*/;
-                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-                                };
-                                /*%FSM</LINK>*/
-                        };
-                };
-                /*%FSM</STATE>*/
-                /*%FSM<STATE "Check">*/
-                class Check
-                {
-                        name = "Check";
-                        itemno = 2;
-                        init = /*%FSM<STATEINIT""">*/"_aliveTeam = if ({alive _x} count units _team < 1 || isNull _team) then {false} else {true};"/*%FSM</STATEINIT""">*/;
-                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-                        class Links
-                        {
-                                /*%FSM<LINK "Renew_Path">*/
-                                class Renew_Path
-                                {
-                                        itemno = 3;
-                                        priority = 3.000000;
-                                        to="Patrol";
-                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/"((_town getVariable 'cti_town_capture') >= CTI_TOWNS_CAPTURE_VALUE_CEIL)  && _aliveTeam &&  _sideID == (_town getVariable 'cti_town_sideID')"/*%FSM</CONDITION""">*/;
-                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-                                };
-                                /*%FSM</LINK>*/
-                                /*%FSM<LINK "Process_Action">*/
-                                class Process_Action
-                                {
-                                        itemno = 4;
-                                        priority = 2.000000;
-                                        to="Defend";
-                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/"_aliveTeam && ( ((_town getVariable 'cti_town_capture') < CTI_TOWNS_CAPTURE_VALUE_CEIL) || _sideID != (_town getVariable 'cti_town_sideID') )"/*%FSM</CONDITION""">*/;
-                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-                                };
-                                /*%FSM</LINK>*/
-                                /*%FSM<LINK "Done">*/
-                                class Done
-                                {
-                                        itemno = 5;
-                                        priority = 0.000000;
-                                        to="End";
-                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
-                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-                                };
-                                /*%FSM</LINK>*/
-                        };
-                };
-                /*%FSM</STATE>*/
-                /*%FSM<STATE "End">*/
-                class End
-                {
-                        name = "End";
-                        itemno = 6;
-                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
-                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-                        class Links
-                        {
-                        };
-                };
-                /*%FSM</STATE>*/
-                /*%FSM<STATE "Patrol">*/
-                class Patrol
-                {
-                        name = "Patrol";
-                        itemno = 7;
-                        init = /*%FSM<STATEINIT""">*/"_ncycle = time + 10;" \n
-                         "" \n
-                         "// ais usually not complete defend box's waypoint types so need remove or change" \n
-                         "if (waypointType [_team, currentWaypoint _team] != ""MOVE"") then {{_x setwaypointtype ""MOVE""} forEach (waypoints _team);};" \n
-                         "" \n
-                         "// need wp or not" \n
-                         "if ((currentWaypoint _team) != _current_wp) then {" \n
-                         "" \n
-                         "// remove all waypoints" \n
-                         "{deleteWaypoint [_team, _forEachIndex];} forEach (waypoints _team);" \n
-                         "" \n
-                         "// position of team leader" \n
-                         "_pos = getPos (leader _team);" \n
-                         "" \n
-                         "// vehicle?" \n
-                         "if (vehicle (leader _team) != leader _team) then {_veh = true;} else {_veh = false;};" \n
-                         "" \n
-                         "// roads near leader 60-80m inside patrol range" \n
-                         "_roads_town = (getPos _town) nearRoads CTI_TOWNS_PATROL_RANGE;" \n
-                         "" \n
-                         "if (!_veh) then {" \n
-                         "		_roads_near_team = ((_pos nearRoads 80) - (_pos nearRoads 60));" \n
-                         "	} else {" \n
-                         "		_roads_near_team = ((_pos nearRoads 140) - (_pos nearRoads 100));" \n
-                         "	};" \n
-                         "" \n
-                         "_roads = (_roads_town arrayIntersect _roads_near_team);" \n
-                         "" \n
-                         "// make waypoint" \n
-                         "if (count _roads > 0) then {" \n
-                         "		_wp0 = _team addWaypoint [getPos (selectRandom _roads), 3];" \n
-                         "	} else {" \n
-                         "		_wp0 = _team addWaypoint [getPos _town, CTI_TOWNS_PATROL_RANGE];" \n
-                         "	};" \n
-                         "" \n
-                         "// set wp 0.5m height (because sometimes ais can't find path on ground or inside object)" \n
-                         "_wp0 setWaypointPosition [[(waypointPosition _wp0) select 0, (waypointPosition _wp0) select 1, 0.5], 0];" \n
-                         "" \n
-                         "_wp0 setwaypointtype ""MOVE"";" \n
-                         "_team setCurrentWaypoint _wp0;" \n
-                         "_current_wp = (currentWaypoint _team);" \n
-                         "" \n
-                         "_team setCombatMode ""RED"";" \n
-                         "_team setBehaviour ""AWARE"";" \n
-                         "_team setSpeedMode ""LIMITED"";" \n
-                         "" \n
-                         "};"/*%FSM</STATEINIT""">*/;
-                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-                        class Links
-                        {
-                                /*%FSM<LINK "Cycle">*/
-                                class Cycle
-                                {
-                                        itemno = 1;
-                                        priority = 0.000000;
-                                        to="Check";
-                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/"time > _ncycle"/*%FSM</CONDITION""">*/;
-                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-                                };
-                                /*%FSM</LINK>*/
-                        };
-                };
-                /*%FSM</STATE>*/
-                /*%FSM<STATE "Defend">*/
-                class Defend
-                {
-                        name = "Defend";
-                        itemno = 8;
-                        init = /*%FSM<STATEINIT""">*/"_ncycle = time + 10;" \n
-                         "" \n
-                         "if ((currentWaypoint _team) != _current_wp) then {" \n
-                         "" \n
-                         "if (count (waypoints _team) > 0) then" \n
-                         "	{" \n
-                         "		{deleteWaypoint [_team, _forEachIndex];} forEach (waypoints _team);" \n
-                         "	};" \n
-                         "" \n
-                         "_pos = getPos (leader _team);" \n
-                         "" \n
-                         "if (vehicle (leader _team) != leader _team) then {_veh = true;} else {_veh = false;};" \n
-                         "" \n
-                         "// roads near flag (50m)" \n
-                         "_roads_town = (getPos _town) nearRoads (CTI_TOWNS_PATROL_RANGE / 4);" \n
-                         "" \n
-                         "if (!_veh) then {" \n
-                         "		_roads_near_team = ((_pos nearRoads 100) - (_pos nearRoads 30));" \n
-                         "	} else {" \n
-                         "		_roads_near_team = ((_pos nearRoads 140) - (_pos nearRoads 50));" \n
-                         "	};" \n
-                         "" \n
-                         "_roads = (_roads_town arrayIntersect _roads_near_team);" \n
-                         "" \n
-                         "// make waypoint" \n
-                         "if (count _roads > 0) then {" \n
-                         "		_wp0 = _team addWaypoint [getPos (selectRandom _roads), 3];" \n
-                         "	} else {" \n
-                         "		_wp0 = _team addWaypoint [getPos _town, (CTI_TOWNS_PATROL_RANGE / 4)];" \n
-                         "	};" \n
-                         "" \n
-                         "_wp0 setWaypointPosition [[(waypointPosition _wp0) select 0, (waypointPosition _wp0) select 1, 0.5], 0];" \n
-                         "" \n
-                         "_types = [""HOLD"", ""SENTRY"", ""GUARD"", ""SAD""];" \n
-                         "_wp0 setwaypointtype (selectRandom _types);" \n
-                         "_team setCurrentWaypoint _wp0;" \n
-                         "_current_wp = (currentWaypoint _team);" \n
-                         "" \n
-                         "_team setCombatMode ""RED"";" \n
-                         "_team setBehaviour ""COMBAT"";" \n
-                         "_team setSpeedMode ""NORMAL"";" \n
-                         "" \n
-                         "};"/*%FSM</STATEINIT""">*/;
-                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
-                        class Links
-                        {
-                                /*%FSM<LINK "Cycle">*/
-                                class Cycle
-                                {
-                                        itemno = 1;
-                                        priority = 0.000000;
-                                        to="Check";
-                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-                                        condition=/*%FSM<CONDITION""">*/"time > _ncycle"/*%FSM</CONDITION""">*/;
-                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
-                                };
-                                /*%FSM</LINK>*/
-                        };
-                };
-                /*%FSM</STATE>*/
+          priority = 0.000000;
+          to="Check";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"time > _ncycle"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
         };
-        initState="Init";
-        finalStates[] =
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Check">*/
+    class Check
+    {
+      name = "Check";
+      init = /*%FSM<STATEINIT""">*/"_aliveTeam = if ({alive _x} count units _team < 1 || isNull _team) then {false} else {true};" \n
+       ""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Renew_Path">*/
+        class Renew_Path
         {
-                "End",
+          priority = 3.000000;
+          to="Patrol";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"((_town getVariable 'cti_town_capture') >= CTI_TOWNS_CAPTURE_VALUE_CEIL)  && _last_action != ""patrol"" && _aliveTeam &&  _sideID == (_town getVariable 'cti_town_sideID')"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
         };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Process_Action">*/
+        class Process_Action
+        {
+          priority = 2.000000;
+          to="Defend";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_aliveTeam && _last_action != ""defend"" && ( (   (_town getVariable 'cti_town_capture') < CTI_TOWNS_CAPTURE_VALUE_CEIL   ) || _sideID != (_town getVariable 'cti_town_sideID') )"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 1.000000;
+          to="SKIP";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_aliveTeam "/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Done">*/
+        class Done
+        {
+          priority = 0.000000;
+          to="End";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "End">*/
+    class End
+    {
+      name = "End";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Patrol">*/
+    class Patrol
+    {
+      name = "Patrol";
+      init = /*%FSM<STATEINIT""">*/"_ncycle = time +20;" \n
+       "" \n
+       "while {(count (waypoints _team)) > 0} do" \n
+       " {" \n
+       "  deleteWaypoint ((waypoints _team) select 0);" \n
+       " };" \n
+       "_wp0= _team addwaypoint [_town,CTI_TOWNS_PATROL_RANGE];" \n
+       "_wp0 setwaypointtype ""MOVE"";" \n
+       "for '_i' from 1 to CTI_TOWNS_PATROL_HOPS do {" \n
+       "	_wp= _team addwaypoint [_town,CTI_TOWNS_PATROL_RANGE];" \n
+       "	_wp setwaypointtype ""MOVE"";" \n
+       "};" \n
+       "_wp =  _team addwaypoint [_town,CTI_TOWNS_PATROL_RANGE];" \n
+       "_wp setwaypointtype ""CYCLE"";" \n
+       "_team setCurrentWaypoint _wp0;" \n
+       "_last_action = ""patrol"";" \n
+       "_team setCombatMode ""RED"";" \n
+       "_team setBehaviour ""AWARE"";" \n
+       "_team setSpeedMode ""LIMITED"";"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Cycle">*/
+        class Cycle
+        {
+          priority = 0.000000;
+          to="Check";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"time > _ncycle"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Defend">*/
+    class Defend
+    {
+      name = "Defend";
+      init = /*%FSM<STATEINIT""">*/"_ncycle = time +20;" \n
+       "" \n
+       "while {(count (waypoints _team)) > 0} do" \n
+       " {" \n
+       "  deleteWaypoint ((waypoints _team) select 0);" \n
+       " };" \n
+       "" \n
+       "_wp0= _team addwaypoint [_town,25];" \n
+       "_wp0 setwaypointtype ""HOLD"";" \n
+       "_team setCurrentWaypoint _wp0;" \n
+       "_last_action = ""defend"";" \n
+       "_team setCombatMode ""RED"";" \n
+       "_team setBehaviour ""COMBAT"";" \n
+       "_team setSpeedMode ""NORMAL"";"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Cycle">*/
+        class Cycle
+        {
+          priority = 0.000000;
+          to="Check";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"time > _ncycle"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "SKIP">*/
+    class SKIP
+    {
+      name = "SKIP";
+      init = /*%FSM<STATEINIT""">*/"_ncycle = time +30;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Cycle">*/
+        class Cycle
+        {
+          priority = 0.000000;
+          to="Check";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"time > _ncycle"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+  };
+  initState="Init";
+  finalStates[] =
+  {
+    "End"
+  };
 };
 /*%FSM</COMPILE>*/
