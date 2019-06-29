@@ -8,7 +8,7 @@ class EditorData
 	toggles=1025;
 	class ItemIDProvider
 	{
-		nextID=178;
+		nextID=179;
 	};
 	class MarkerIDProvider
 	{
@@ -123,7 +123,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=124;
+		items=125;
 		class Item0
 		{
 			dataType="Marker";
@@ -3045,6 +3045,20 @@ class Mission
 			colorName="ColorWEST";
 			id=177;
 			atlOffset=191.07422;
+		};
+		class Item124
+		{
+			dataType="Marker";
+			position[]={8457.834,105.3189,25118.711};
+			name="marker_0";
+			text="Welcome Area (Do not enter)";
+			markerType="ELLIPSE";
+			type="rectangle";
+			colorName="ColorCIV";
+			fillName="DiagGrid";
+			a=1000;
+			b=1000;
+			id=178;
 		};
 	};
 	class Connections
