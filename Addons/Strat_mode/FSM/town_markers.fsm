@@ -12,7 +12,7 @@ link2[] = {2,1};
 link3[] = {2,4};
 link4[] = {4,3};
 globals[] = {0.000000,0,0,0,0,640,480,1,133,6316128,1,-422.283691,326.652069,345.310455,-698.696411,632,884,1};
-window[] = {2,-1,-1,-32000,-32000,794,182,1218,182,3,650};
+window[] = {2,-1,-1,-1,-1,768,156,1192,156,3,650};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -85,8 +85,13 @@ class FSM
                          "			" \n
                          "			if (CTI_RESISTANCE_ID == _sideID) then  {" \n
                          "				_marker_area setMarkerColorLocal  ""ColorWhite"";" \n
-                         "				if (markerAlpha _mortar == 0) then { _mortar setMarkerAlphaLocal 1 };" \n
-                         "				if (markerAlpha _mortar_zone == 0) then { _mortar_zone setMarkerAlphaLocal 1 };" \n
+                         "				if (player distance _town <= CTI_TOWNS_OCCUPATION_DETECTION_RANGE) then {" \n
+                         "					if (markerAlpha _mortar == 0) then { _mortar setMarkerAlphaLocal 1 };" \n
+                         "					if (markerAlpha _mortar_zone == 0) then { _mortar_zone setMarkerAlphaLocal 1 };" \n
+                         "				} else {	" \n
+                         "					if (markerAlpha _mortar != 0) then { _mortar setMarkerAlphaLocal 0 };" \n
+                         "					if (markerAlpha _mortar_zone != 0) then { _mortar_zone setMarkerAlphaLocal 0 };" \n
+                         "				};" \n
                          "			} else {	" \n
                          "				if (markerAlpha _mortar != 0) then { _mortar setMarkerAlphaLocal 0 };" \n
                          "				if (markerAlpha _mortar_zone != 0) then { _mortar_zone setMarkerAlphaLocal 0 };" \n
