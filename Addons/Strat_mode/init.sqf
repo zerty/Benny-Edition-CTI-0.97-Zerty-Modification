@@ -333,7 +333,10 @@ if (CTI_IsServer) then {
 			_nigth_ratio=10/CTI_WEATHER_FAST_NIGTH;
 			_sunrise = 5;
 			_sunset = 19;
-			if (ISLAND == 3) then {_sunrise = 7; _sunset = 18;};
+			switch (true) do {
+				case (ISLAND == 3): {_sunrise = 7; _sunset = 18;};
+				case (ISLAND == 6): {_sunrise = 4; _sunset = 20;};
+			};
 			while {!CTI_Gameover} do {
 				if (daytime > _sunrise && daytime < _sunset) then {
 					if (timeMultiplier != _day_ratio) then  {setTimeMultiplier _day_ratio;};
