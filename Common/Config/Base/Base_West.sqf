@@ -233,13 +233,13 @@ _categories = [];
 
 _headers = _headers 		+ [["Praetorian 1C - Only on BASE Areas", [["DMG_Reduce", 10]]]];
 _classes = _classes 		+ ["B_AAA_System_01_F"];
-_prices = _prices 			+ [40000];
+_prices = _prices 			+ [25000];
 _placements = _placements 	+ [[180, 15]];
 _categories = _categories 	+ ["Defense"];
 
 _headers = _headers 		+ [["Mk49 Spartan - Only on BASE Areas", [["DMG_Reduce", 10]]]];
 _classes = _classes 		+ ["B_SAM_System_01_F"];
-_prices = _prices 			+ [60000];
+_prices = _prices 			+ [40000];
 _placements = _placements 	+ [[180, 15]];
 _categories = _categories 	+ ["Defense"];
 
@@ -251,13 +251,13 @@ _categories = _categories 	+ ["Defense"];
 
 _headers = _headers 		+ ["AN/MPQ-105 Radar - Only on BASE Areas"];
 _classes = _classes 		+ ["B_Radar_System_01_F"];
-_prices = _prices 			+ [12000];
+_prices = _prices 			+ [20000];
 _placements = _placements 	+ [[180, 15]];
 _categories = _categories 	+ ["Defense"];
 
 _headers = _headers 		+ ["MIM-145 Defender - Only on BASE Areas"];
 _classes = _classes 		+ ["B_SAM_System_03_F"];
-_prices = _prices 			+ [40000];
+_prices = _prices 			+ [50000];
 _placements = _placements 	+ [[180, 15]];
 _categories = _categories 	+ ["Defense"];
 
