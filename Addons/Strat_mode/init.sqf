@@ -46,6 +46,7 @@ with missionNamespace do {
 	    SM_COM_Init = compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Old_Com_Eject\SM_COM_init.sqf";
 
 	   	UAV_FUEL = compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Functions\UAV_Fuel.sqf";
+	   	UAV_FIX_CREW = compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Functions\UAV_Fix_Crew.sqf";
 	   	UAV_RANGE = compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Functions\UAV_Range.sqf";
 	   	DYNG_WAIT = compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Functions\DYNG_waitforgroup.sqf";
 	   	DYNG_SERVERLOOP = compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Functions\DYNG_serverloop.sqf";

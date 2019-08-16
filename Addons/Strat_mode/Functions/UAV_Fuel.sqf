@@ -8,6 +8,15 @@ private ["_uav","_last_fuel","_newfuel"];
 
 _uav=_this;
 _last_fuel=fuel _uav;
+
+{
+	_action = _uav actionParams _x;
+	if(_action select 0 == "Reset Crew") then {
+		_uav removeAction _x;
+	};
+} forEach actionIDs _uav;
+_uav addAction ["Reset Crew", UAV_FIX_CREW, [], 0.01, false, true, "", "true", 0.1];
+
 while {!CTI_GameOver && alive _uav} do {
 	if (local _uav) then {
 		if (fuel _uav <0.05) then {_uav setDammage 1};
