@@ -308,7 +308,7 @@ _p = _p		+ [50];
 
 _i = _i		+ ["Vorona_HEAT"];
 _u = _u		+ [3];
-_p = _p		+ [300];
+_p = _p		+ [350];
 
 _i = _i		+ ["Vorona_HE"];
 _u = _u		+ [3];
@@ -324,7 +324,7 @@ _p = _p		+ [100];
 
 _i = _i		+ ["Titan_AT"];
 _u = _u		+ [3];
-_p = _p		+ [250];
+_p = _p		+ [550];
 
 //Grenades
 _i = _i		+ ["HandGrenade"];
