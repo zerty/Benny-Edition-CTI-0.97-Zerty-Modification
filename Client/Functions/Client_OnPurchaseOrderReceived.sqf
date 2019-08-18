@@ -104,7 +104,7 @@ while { time <= _req_time_out && alive _factory } do { sleep .25 };
 if !(alive _factory) exitWith { diag_log "the factory is dead" };
 
 
-if (_factory in CTI_TOWNS && ( ! ((_factory getvariable ["cti_town_sideID",-1]) == CTI_P_SideID) || (_factory getvariable ["cti_town_capture",-1]) != CTI_TOWNS_CAPTURE_VALUE_CEIL || ({!(side _x == CTI_P_SideJoined)} count (_factory nearEntities ["CAManBase", CTI_TOWNS_CAPTURE_RANGE])) >0 ) ) exitWith { ["SERVER", "Answer_Purchase", [_req_seed, _req_classname, _req_buyer, _factory]] call CTI_CO_FNC_NetSend; hint parseText format ["<t size='1.3' color='#BB0000'>Information</t><br /><br />%2<t>Your <t color='#ccffaf'>%1</t> order has been <t color='#fcffaf'>Denied</t>, Flag area is not clear.", _var_classname select CTI_UNIT_LABEL, _picture];};
+if (_factory in CTI_TOWNS && ( ! ((_factory getvariable ["cti_town_sideID",-1]) == CTI_P_SideID) || (_factory getvariable ["cti_town_capture",-1]) != CTI_TOWNS_CAPTURE_VALUE_CEIL || ({!(side _x == CTI_P_SideJoined || side _x == civilian)} count (_factory nearEntities ["CAManBase", CTI_TOWNS_CAPTURE_RANGE])) >0 ) ) exitWith { ["SERVER", "Answer_Purchase", [_req_seed, _req_classname, _req_buyer, _factory]] call CTI_CO_FNC_NetSend; hint parseText format ["<t size='1.3' color='#BB0000'>Information</t><br /><br />%2<t>Your <t color='#ccffaf'>%1</t> order has been <t color='#fcffaf'>Denied</t>, Flag area is not clear.", _var_classname select CTI_UNIT_LABEL, _picture];};
 
 
 //--- Check if the group can handle the current unit without breaking the group size limit
