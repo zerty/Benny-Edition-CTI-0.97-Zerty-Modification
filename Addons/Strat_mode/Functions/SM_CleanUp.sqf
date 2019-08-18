@@ -51,7 +51,7 @@ SM_CLEAN_GCONT= {
 	};
 };
 
-//Clean all groups that are no longer tracked by the mission (e.g. BIS_fnc_dynamicGroups)
+//Clean all groups that are no longer tracked by the mission (e.g. kicked units from BIS_fnc_dynamicGroups)
 SM_CLEAN_DG= {
 	private ["_side", "_logic", "_groups", "_check"];
 	_check = { 		
@@ -64,7 +64,8 @@ SM_CLEAN_DG= {
 				!(_x getVariable ["cti_server_group", false]) &&
 				!(_x == _logic getVariable ["cti_defensive_team", grpNull]) &&
 				!(groupId _x == "Default Team" && (units _x) findIf {isDamageAllowed _x} == 0) &&
-				!(_x in (_logic getVariable ["cti_workers", []]))
+				!(_x in (_logic getVariable ["cti_workers", []])) &&
+				!((units _x) findIf {unitIsUAV (vehicle _x)} >= 0)
 				) then {
 					//Empty the group and delete it
 					{ deleteVehicle _x }forEach units _x; 
