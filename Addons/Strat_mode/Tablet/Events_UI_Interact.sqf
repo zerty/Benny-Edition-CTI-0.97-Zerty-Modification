@@ -201,7 +201,7 @@ switch (_action) do {
 				case 14: { // CTI_Icon_fl //ok
 					_hqs=[];
 					{_hqs set [count _hqs, _x call CTI_CO_FNC_GetSideHQ];true} count [east,west];
-					if (vehicle player == player && (_target iskindof "Car" || _target iskindof "Ship" || _target iskindof "Wheeled_APC_F" || _target iskindof "Truck_F") && alive _target && !( getplayeruid player in (_target getVariable ["v_keys",[]])) && !(_target getVariable ["cti_occupant",civilian] == CTI_P_SideJoined)&& !(_target in _hqs || _target isKindOf "UAV_01_base_F" || _target isKindOf "UAV_06_base_F")) then {
+					if (vehicle player == player && (_target iskindof "Car" || _target iskindof "Ship" || _target iskindof "Wheeled_APC_F" || _target iskindof "Truck_F") && alive _target && !( getplayeruid player in (_target getVariable ["v_keys",[]])) && !(_target getVariable ["cti_occupant",civilian] == CTI_P_SideJoined)&& !(_target in _hqs || _target isKindOf "UAV_01_base_F" || _target isKindOf "UAV_06_base_F" || _target isKindOf "UGV_02_Base_F")) then {
 						if ((({_x == "Toolkit"} count (backpackItems player)) +({_x == "Toolkit"} count (vestItems player))) >0) then {
 			    			((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTextColor [0,0,1,1];
 			    			((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTooltip localize "STR_Icon_FL";
