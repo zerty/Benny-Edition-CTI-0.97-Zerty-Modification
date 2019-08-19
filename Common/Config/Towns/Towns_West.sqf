@@ -16,10 +16,11 @@ with missionNamespace do {
 	WEST_SOLDIER_SQUADLEADER = ["B_Soldier_TL_F", 1];
 	WEST_SOLDIER_SNIPER = ["B_Soldier_M_F", 1];
 	WEST_SOLDIER_TEAMLEADER = ["B_Soldier_TL_F", 1];
-	
+
 	//--- Vehicles
-	WEST_MOTORIZED_MG = ["B_MRAP_01_hmg_F", 2];
+	WEST_MOTORIZED_MG = [["B_MRAP_01_hmg_F", 2], ["B_LSV_01_armed_F", 2]];
 	WEST_MOTORIZED_GL = ["B_MRAP_01_gmg_F", 2];
+	WEST_MOTORIZED_AT = ["B_LSV_01_AT_F", 2];
 
 	//--- Infantry - Mixed
 	// WEST_SOLDIERS_MG = [WEST_SOLDIER_MG, WEST_SOLDIER_AR];
@@ -37,7 +38,7 @@ with missionNamespace do {
 	// WEST_VEHICLE_ARMORED_HEAVY = ["armoheavy1","armoheavy2"];
 	WEST_VEHICLE_ARMORED_LIGHT = [["B_MBT_01_cannon_F", 2], ["B_MBT_01_TUSK_F", 2], ["B_AFV_Wheeled_01_cannon_F", 3], ["B_AFV_Wheeled_01_up_cannon_F", 3]];
 	// WEST_VEHICLE_MECHANIZED = ["mechanized1","mechanized2"];
-	WEST_VEHICLE_MOTORIZED = [WEST_MOTORIZED_MG, WEST_MOTORIZED_GL, WEST_MOTORIZED_MG];
+	WEST_VEHICLE_MOTORIZED = WEST_MOTORIZED_MG + [WEST_MOTORIZED_GL] + [WEST_MOTORIZED_AT];
 
 	//--- Vehicles - Mixed
 	WEST_VEHICLES_AA_LIGHT = WEST_VEHICLE_AA;

@@ -18,8 +18,9 @@ with missionNamespace do {
 	EAST_SOLDIER_TEAMLEADER = ["O_soldierU_TL_F", 1];
 
 	//--- Vehicles
-	EAST_MOTORIZED_MG = ["O_MRAP_02_hmg_F", 2];
+	EAST_MOTORIZED_MG = [["O_MRAP_02_hmg_F", 2], ["O_LSV_02_armed_F", 2]];
 	EAST_MOTORIZED_GL = ["O_MRAP_02_gmg_F", 2];
+	EAST_MOTORIZED_AT = ["O_LSV_02_AT_F", 2];
 
 	//--- Infantry - Mixed
 	// EAST_SOLDIERS_MG = [EAST_SOLDIER_MG, EAST_SOLDIER_AR];
@@ -37,7 +38,7 @@ with missionNamespace do {
 	// EAST_VEHICLE_ARMORED_HEAVY = ["armoheavy1","armoheavy2"];
 	EAST_VEHICLE_ARMORED_LIGHT = [["O_MBT_02_cannon_F", 2], ["O_MBT_04_cannon_F", 2]];
 	// EAST_VEHICLE_MECHANIZED = ["mechanized1","mechanized2"];
-	EAST_VEHICLE_MOTORIZED = [EAST_MOTORIZED_MG, EAST_MOTORIZED_GL, EAST_MOTORIZED_MG];
+	EAST_VEHICLE_MOTORIZED = EAST_MOTORIZED_MG + [EAST_MOTORIZED_GL] + [EAST_MOTORIZED_AT];
 
 	//--- Vehicles - Mixed
 	EAST_VEHICLES_AA_LIGHT = EAST_VEHICLE_AA;
