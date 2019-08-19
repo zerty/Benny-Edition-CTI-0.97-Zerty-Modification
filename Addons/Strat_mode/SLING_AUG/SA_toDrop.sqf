@@ -10,7 +10,7 @@ if (!(_target iskindof "Helicopter") || (isNull  (getSlingLoad _target) && count
 _drop=objNull;
 _attached=false;
 
-if (count (attachedObjects _target) ==1) then {_drop=(attachedObjects _target) select 0;_attached=true;};
+if (count (attachedObjects _target) >=1) then {_drop=(attachedObjects _target) select 0;_attached=true;};
 if !(isNull  (getSlingLoad _target)) then {_drop=getSlingLoad _target};
 
 if (_attached) then {
