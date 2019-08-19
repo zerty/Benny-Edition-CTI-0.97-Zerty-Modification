@@ -1069,7 +1069,7 @@ CTI_UI_Gear_OnShoppingItemDrag = {
 							//--- Where does it fit?
 							{
 								if ((_x select 0) != "") then {
-									if (_item in (getArray(configFile >> _config_type >> (_x select 0) >> 'WeaponSlotsInfo' >> 'MuzzleSlot' >> 'compatibleItems') call CTI_CO_FNC_ArrayToLower)) then {_idcs = _idcs + [_acc_idcs select _forEachIndex]};
+									if((toLower _item) in (((_x select 0) call bis_fnc_compatibleItems) call CTI_CO_FNC_ArrayToLower)) then {_idcs = _idcs + [_acc_idcs select _forEachIndex]};
 								};
 							} forEach (_gear select 0);
 						};
@@ -1078,7 +1078,7 @@ CTI_UI_Gear_OnShoppingItemDrag = {
 							//--- Where does it fit?
 							{
 								if ((_x select 0) != "") then {
-									if (_item in (getArray(configFile >> _config_type >> (_x select 0) >> 'WeaponSlotsInfo' >> 'CowsSlot' >> 'compatibleItems') call CTI_CO_FNC_ArrayToLower)) then {_idcs = _idcs + [_acc_idcs select _forEachIndex]};
+									if((toLower _item) in (((_x select 0) call bis_fnc_compatibleItems) call CTI_CO_FNC_ArrayToLower)) then {_idcs = _idcs + [_acc_idcs select _forEachIndex]};
 								};
 							} forEach (_gear select 0);
 						};
@@ -1087,7 +1087,7 @@ CTI_UI_Gear_OnShoppingItemDrag = {
 							//--- Where does it fit?
 							{
 								if ((_x select 0) != "") then {
-									if (_item in (getArray(configFile >> _config_type >> (_x select 0) >> 'WeaponSlotsInfo' >> 'PointerSlot' >> 'compatibleItems') call CTI_CO_FNC_ArrayToLower)) then {_idcs = _idcs + [_acc_idcs select _forEachIndex]};
+									if((toLower _item) in (((_x select 0) call bis_fnc_compatibleItems) call CTI_CO_FNC_ArrayToLower)) then {_idcs = _idcs + [_acc_idcs select _forEachIndex]};
 								};
 							} forEach (_gear select 0);
 						};
@@ -1096,7 +1096,7 @@ CTI_UI_Gear_OnShoppingItemDrag = {
 							//--- Where does it fit?
 							{
 								if ((_x select 0) != "") then {
-									if (_item in (getArray(configFile >> _config_type >> (_x select 0) >> 'WeaponSlotsInfo' >> 'UnderBarrelSlot' >> 'compatibleItems') call CTI_CO_FNC_ArrayToLower)) then {_idcs = _idcs + [_acc_idcs select _forEachIndex]};
+									if((toLower _item) in (((_x select 0) call bis_fnc_compatibleItems) call CTI_CO_FNC_ArrayToLower)) then {_idcs = _idcs + [_acc_idcs select _forEachIndex]};
 								};
 							} forEach (_gear select 0);
 						};
