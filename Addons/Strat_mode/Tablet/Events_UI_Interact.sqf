@@ -212,7 +212,7 @@ switch (_action) do {
 			    		((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetPosition [_base_x+(_offset*_base_w),_base_y+_h_offset*_base_h,_base_w,_base_h];
 			    		_offset=_offset+1;
 			    	} else {
-						if (vehicle player == player && (_target iskindof "Tank" || _target iskindof "Air") && !(_target isKindOf "UAV_01_base_F" || _target isKindOf "UAV_06_base_F") && alive _target && !( getplayeruid player in (_target getVariable ["v_keys",[]])) && !(_target getVariable ["cti_occupant",civilian] == CTI_P_SideJoined)&& !(_target in _hqs)) then {
+						if (vehicle player == player && (_target iskindof "Tank" || _target iskindof "Air") && !(_target isKindOf "UAV_01_base_F" || _target isKindOf "UAV_06_base_F" || _target isKindOf "UGV_02_Base_F") && alive _target && !( getplayeruid player in (_target getVariable ["v_keys",[]])) && !(_target getVariable ["cti_occupant",civilian] == CTI_P_SideJoined)&& !(_target in _hqs)) then {
 						_rt = 0;
 						_reptruck = [_target, CTI_SPECIAL_REPAIRTRUCK, 50] call CTI_CO_FNC_GetNearestSpecialVehicles;
 						if (count _reptruck > 0) then {_rt = 1;};
