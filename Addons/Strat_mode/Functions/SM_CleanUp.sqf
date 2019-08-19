@@ -56,14 +56,14 @@ SM_CLEAN_DG= {
 	private ["_side", "_logic", "_groups", "_check"];
 	_check = { 		
 		params ["_side"];
+		_logic=(_side) call CTI_CO_FNC_GetSideLogic;
 		_groups = allGroups select {side _x isEqualTo _side};
 		{
-			_logic=(_side) call CTI_CO_FNC_GetSideLogic;
 			//Exclude all town defenses, player groups, or workers
 			if( !(_x in (["GetAllGroups",[]] call BIS_fnc_dynamicGroups)) &&
-				("" != _x getVariable ["cti_server_group", ""]) &&
+				("" == _x getVariable ["cti_server_group", ""]) &&
 				(_x != _logic getVariable ["cti_defensive_team", grpNull]) &&
-				((units _x) findIf {isDamageAllowed _x} == -1) &&
+				((units _x) findIf {isDamageAllowed _x} >= 0) &&
 				((units _x) findIf {_x in (_logic getVariable ["cti_workers", []])} == -1) &&
 				((units _x) findIf {unitIsUAV (vehicle _x)} == -1)
 				) then {
