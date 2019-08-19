@@ -29,6 +29,7 @@ CTI_GET_MAGAZINES = {
 			_magazines = _magazines + getArray(configfile >> "CfgMagazineWells" >>  _well select 0  >> "BI_Enoch_Magazines");
 		};
 	} forEach (getArray(configFile >> 'CfgWeapons' >> _weapon >> 'muzzles'));
+	_magazines = _magazines arrayIntersect _magazines;
 	_magazines;
 };
 
