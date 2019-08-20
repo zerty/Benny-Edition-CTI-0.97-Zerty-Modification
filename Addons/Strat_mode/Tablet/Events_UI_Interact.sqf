@@ -752,7 +752,9 @@ switch (_action) do {
 	};
 	case "OnPilot": {
 		closedialog 0;
-		if  (isNull (driver _target)) then {player moveInDriver _target} else {0 spawn { hint "There is already a pilot";sleep 3;hintSilent "";}};
+		if (locked _target < 2) then {
+			if (isNull (driver _target)) then {player moveInDriver _target} else {0 spawn {hint "There is already a pilot"; sleep 3; hintSilent "";};};
+		};
 	};
 	case "OnHalo": {
 		if !(vehicle player == player && !CTI_P_PreBuilding && CTI_Base_HaloInRange && [CTI_P_SideJoined, CTI_UPGRADE_HALO, 1] call CTI_CO_FNC_HasUpgrade && ( (missionNamespace getVariable 'CTI_SM_HALO')==1 && !(player getvariable ["REV_UNC",false])) && (time - CTI_HALO_LASTTIME >= CTI_HALO_COOLDOWN)) exitwith {false};
