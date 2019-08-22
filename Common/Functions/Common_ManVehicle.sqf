@@ -53,7 +53,7 @@ _position = getPos _vehicle;
 _position = [(_position select 0) + 5, (_position select 1) + 5, 0];
 
 _net = if ((missionNamespace getVariable "CTI_MARKERS_INFANTRY") == 1 && _sideID in [CTI_WEST_ID, CTI_EAST_ID]) then { true } else { false };
-
+_group setVariable ["cti_server_group", format ["%1", _side], true];  
 if (_vehicle emptyPositions "driver" > 0) then {
 	_unit = [_crew, _group, _position, _sideID, _net] call CTI_CO_FNC_CreateUnit;
 	_unit moveInDriver _vehicle;
