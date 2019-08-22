@@ -241,7 +241,7 @@ if (CTI_IsClient) then {
 			_marker setMarkerAlphaLocal 0.5;
 		};
 		CTI_PVF_Client_UAVSetFuel={
-			if (_this isKindOf "Helicopter_Base_F") then {_this spawn UAV_FUEL;};
+			if (_this isKindOf "Helicopter_Base_F" || _this isKindOf "UGV_02_Base_F") then {_this spawn UAV_FUEL;};
 		};
 	};
 
