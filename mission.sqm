@@ -1732,8 +1732,8 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={14487.121,9.6155596,5888.3711};
-						angles[]={0.30364406,0,5.9329162};
+						position[]={14487.121,9.6157026,5888.3706};
+						angles[]={0.30365241,0,5.9329152};
 					};
 					side="East";
 					flags=4;
@@ -1741,11 +1741,53 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="COLONEL";
-						init="this allowDamage false; (group this) setGroupID [""Default Team""];this disableAI ""MOVE"";this disableAI ""AUTOTARGET"";this disableAI ""TARGET"";";
+						init="this allowDamage false; (group this) setGroupID [""Default Team""];this disableAI ""MOVE"";this disableAI ""AUTOTARGET"";this disableAI ""TARGET""; (group this) setVariable [""cti_server_group"", str (side (group this))];";
 						name="CTI_EAST_DEFAULT_GROUP";
 					};
 					id=115;
 					type="O_Soldier_F";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="Male01PER";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1.04;
+								};
+							};
+						};
+						nAttributes=2;
+					};
 				};
 				class Item2
 				{
@@ -2253,8 +2295,8 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={2314.9258,12.648989,9283.7012};
-						angles[]={0.057271164,0,0.1312411};
+						position[]={2314.926,12.649018,9283.7012};
+						angles[]={0.05726425,0,0.13124876};
 					};
 					side="West";
 					flags=6;
@@ -2262,11 +2304,53 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="COLONEL";
-						init="this allowDamage false;(group this) setGroupIDGlobal [""Default Team""];this disableAI ""MOVE"";this disableAI ""AUTOTARGET"";this disableAI ""TARGET"";";
+						init="this allowDamage false;(group this) setGroupIDGlobal [""Default Team""];this disableAI ""MOVE"";this disableAI ""AUTOTARGET"";this disableAI ""TARGET""; (group this) setVariable [""cti_server_group"", str (side (group this))];";
 						name="CTI_WEST_DEFAULT_GROUP";
 					};
 					id=140;
 					type="B_Soldier_F";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="Male06ENG";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1.02;
+								};
+							};
+						};
+						nAttributes=2;
+					};
 				};
 				class Item1
 				{
