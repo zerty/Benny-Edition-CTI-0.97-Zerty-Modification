@@ -62,6 +62,7 @@ SM_CLEAN_DG= {
 			//Exclude all town defenses, player groups, or workers
 			if( !(_x in (["GetAllGroups",[]] call BIS_fnc_dynamicGroups)) &&
 				("" == _x getVariable ["cti_server_group", ""]) &&
+				("" == _x getVariable ["cti_role_evo", ""]) &&
 				(_x != _logic getVariable ["cti_defensive_team", grpNull]) &&
 				((units _x) findIf {isDamageAllowed _x} >= 0) &&
 				((units _x) findIf {_x in (_logic getVariable ["cti_workers", []])} == -1) &&
