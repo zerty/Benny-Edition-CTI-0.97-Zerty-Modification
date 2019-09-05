@@ -79,7 +79,7 @@ SM_CLEAN_DG= {
 		{
 			[_x] call _check;
 		} forEach [east,west];
-		sleep 10;
+		sleep 300;
 	};
 };
 
