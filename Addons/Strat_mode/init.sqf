@@ -46,6 +46,7 @@ with missionNamespace do {
 	    SM_COM_Init = compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Old_Com_Eject\SM_COM_init.sqf";
 
 	   	UAV_FUEL = compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Functions\UAV_Fuel.sqf";
+	   	UAV_FUELDEATH = compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Functions\UAV_FuelDeath.sqf";
 	   	UAV_FIX_CREW = compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Functions\UAV_Fix_Crew.sqf";
 	   	UAV_RANGE = compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Functions\UAV_Range.sqf";
 	   	DYNG_WAIT = compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Functions\DYNG_waitforgroup.sqf";
@@ -241,7 +242,8 @@ if (CTI_IsClient) then {
 			_marker setMarkerAlphaLocal 0.5;
 		};
 		CTI_PVF_Client_UAVSetFuel={
-			if (_this isKindOf "Helicopter_Base_F" || _this isKindOf "UGV_02_Base_F") then {_this spawn UAV_FUEL;};
+			if (_this isKindOf "Helicopter_Base_F") then {_this spawn UAV_FUEL;};
+			if (_this isKindOf "UGV_02_Base_F") then {_this spawn UAV_FUELDEATH;};
 		};
 	};
 
