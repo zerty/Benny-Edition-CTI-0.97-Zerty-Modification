@@ -9,7 +9,7 @@ _base_w=safezoneH * 0.04;
 _base_h=safezoneH * 0.04;
 _offset=-5;
 _h_offset=-1;
-_max_ctrl=40;
+_max_ctrl=41;
 
 
 
@@ -547,7 +547,17 @@ switch (_action) do {
 			    		((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetPosition [_base_x+(_offset*_base_w),_base_y+5,_base_w,_base_h];
 			    	};
 			    };
-
+				case 39: { //OnResetDroneAI - Yoshi_E
+					_uav = getConnectedUAV player;
+					if (alive _uav && unitIsUAV _uav) then {
+						((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTextColor [0,0,1,1];
+						
+						((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetPosition [_base_x+(_offset*_base_w),_base_y+_h_offset*_base_h,_base_w,_base_h];
+			    		_offset=_offset+1;
+					} else {
+			    		((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetPosition [_base_x+(_offset*_base_w),_base_y+5,_base_w,_base_h];
+			    	};
+				};
 			};
 		};
 		//if (_offset == 0) exitwith {false};
@@ -871,5 +881,10 @@ switch (_action) do {
 			[_target, nil, _orig] call BIS_fnc_initVehicle;
 			[group player, CTI_P_SideJoined, - 1500] call CTI_CO_FNC_ChangeFunds;
 		};
+	};
+	case "OnResetDroneAI": {
+		closedialog 0;
+		_drone = getConnectedUAV player;
+		[_drone, player] spawn UAV_FIX_CREW;
 	};
 };

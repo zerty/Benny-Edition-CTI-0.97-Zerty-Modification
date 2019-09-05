@@ -112,15 +112,9 @@ if (isNull _created) then {
 
 	//if (_special == "FORM") then {_vehicle setPos [(getPos _vehicle) select 0, (getPos _vehicle) select 1, 0.75];}; //--- Make the vehicle spawn above the ground level to prevent any bisteries
 	if (_special == "FORM") then {_vehicle setPos [(getPos _vehicle) select 0, (getPos _vehicle) select 1];};
-	// --- Zerty edit
-	if (_type isKindOf "UAV" || _type isKindOf "UGV_01_base_F") then {
-		createVehicleCrew _vehicle;
-		_vehicle addAction ["Reset Crew", UAV_FIX_CREW, [], 0.01, false, true, "", "true", 0.1];
-	};
-
-	if (_vehicle isKindOf "B_T_UAV_03_dynamicLoadout_F") then {
+	
+	if (unitIsUAV _vehicle) then {
 		createVehicleCrew _vehicle; 
-		_vehicle addAction ["Reset Crew", UAV_FIX_CREW, [], 0.01, false, true, "", "true", 0.1];
 	};
 
 

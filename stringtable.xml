@@ -936,6 +936,10 @@
 			<Key ID="STR_Icon_SlatCage">
 				<Original>Slat Cage $1500</Original>
 				<Russian>ламельная клетка $1500</Russian>
+			</Key>			
+			<Key ID="STR_Icon_Reset">
+				<Original>Reset AI Crew</Original>
+				<Russian>Сбросить AI Crew</Russian>
 			</Key>
 			<Key ID="STR_Menu_Options_OnlineHelp">
 				<Original>Online Help</Original>

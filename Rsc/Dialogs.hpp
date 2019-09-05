@@ -310,6 +310,13 @@ class CTI_RscInteraction {
 			text = "Rsc\Pictures\icon_cage.paa";
 			action = "['OnSlatCage'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_Interact.sqf'";
 			toolTip=$STR_Icon_SlatCage;
+		};		
+		class CTI_Icon_Reset : CTI_Icon_fpk {
+			idc = 511039;
+			x = "SafeZoneX + SafeZoneW*0.55";
+			text = "Rsc\Pictures\icon_reset.paa";
+			action = "['OnResetDroneAI'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_Interact.sqf'";
+			toolTip=$STR_Icon_Reset;
 		};
 	};
 };
