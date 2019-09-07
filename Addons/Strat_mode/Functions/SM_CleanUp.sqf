@@ -68,9 +68,26 @@ SM_CLEAN_DG= {
 				((units _x) findIf {_x in (_logic getVariable ["cti_workers", []])} == -1) &&
 				((units _x) findIf {unitIsUAV (vehicle _x)} == -1)
 				) then {
-					//Empty the group and delete it
-					{ deleteVehicle _x }forEach units _x; 
-					deleteGroup _x;
+					//Start deletion process
+					[_x] spawn {
+						params ["_group"];
+						_is_player_group = false;
+						//Scan over a period of time if the player is / was in the group before deleting it. 
+						//When a player suicides the group is not in BIS_fnc_dynamicGroups se we have to check multiple times:
+						for [{private _i = 0}, {_i < 25}, {_i = _i + 1}] do {
+							sleep(10);
+							if(!(isNull _group) && _group in (["GetAllGroups",[]] call BIS_fnc_dynamicGroups)) then {
+								_is_player_group = true;
+							};
+							if(_is_player_group isEqualTo true) exitwith {};
+						}; 
+						//Now we can assume that the no player is in that group:
+						if(!(isNull _group) && _is_player_group isEqualTo false) then {
+							//Empty the group and delete it
+							{ deleteVehicle _x } forEach units _group; 
+							deleteGroup _group;
+						};
+					}
 			}
 		} forEach _groups;
 	};
