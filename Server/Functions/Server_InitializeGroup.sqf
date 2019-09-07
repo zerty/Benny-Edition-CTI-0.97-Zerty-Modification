@@ -28,7 +28,9 @@ _team = _this select 0;
 _side = _this select 1;
 _players=_this select 2;
 _side_logic=_side call CTI_CO_FNC_GetSideLogic;
-
+if(isMultiplayer && isPlayer (_group getVariable ["bis_dg_cre", objNull])) then {
+	_team setVariable ["cti_client_group", true];
+};
 
 if (isNil {_team getVariable "cti_role_evo"}) then {_team setVariable ["cti_role_evo", "Infantry"]}; //--- Evolutive role
 if (isNil {_team getVariable "cti_order"}) then {_team setVariable ["cti_order", CTI_ORDER_TAKETOWNS, true]};

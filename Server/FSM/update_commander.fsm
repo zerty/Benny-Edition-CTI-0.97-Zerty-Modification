@@ -87,7 +87,7 @@ link45[] = {34,1};
 link46[] = {35,36};
 link47[] = {36,19};
 globals[] = {0.000000,0,0,0,0,640,480,1,223,6316128,1,-382.509674,787.605042,926.103088,57.078770,554,609,1};
-window[] = {0,-1,-1,-1,-1,899,283,1744,118,1,572};
+window[] = {0,-1,-1,-1,-1,989,208,1669,208,1,572};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -283,6 +283,8 @@ class FSM
                          "for '_j' from _teams_count-1 to 0 step -1 do {" \n
                          "	_group = _teams select _j;" \n
                          "	if(!(isMultiplayer && isPlayer (_group getVariable [""bis_dg_cre"", objNull]))) then {" \n
+                         "      _group setVariable [""cti_client_group"", true];" \n
+                         "	};" \n
                          "	_last_assigned = _assigned;" \n
                          "	while { _ratio_air > 0 && _assigned == _last_assigned} do {" \n
                          "		_group setVariable [""cti_role_evo"", ""Air""];" \n
@@ -311,7 +313,6 @@ class FSM
                          "	if !(isNil '_category') then { [_category, _group, _side, _teams] call CTI_FSM_UpdateCommander_SetAIRole };" \n
                          "	" \n
                          "	diag_log format [""DEBUG TEAM SET: %1 %2 %3"", _group, _group getVariable ""cti_role_evo"", _group getVariable ""cti_role""];" \n
-                         "   };" \n
                          "};" \n
                          "" \n
                          "//--- Assign Take Hold randomly" \n
