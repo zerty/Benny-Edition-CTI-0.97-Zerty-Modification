@@ -19,6 +19,7 @@
     5	{Optionnal} [Boolean]: Determine if the vehicle should be "public" or not
     6	{Optionnal} [Boolean]: Determine if the vehicle should be handled upon destruction or not (bounty...tk...)
     7	{Optionnal} [String]: Set a special spawn mode for the vehicle
+    8	{Optionnal} [Object]: Vehicle if already create
 
   # RETURNED VALUE #
 	[Object]: The created vehicle
@@ -45,6 +46,7 @@
 */
 
 private ["_direction", "_handle", "_locked", "_net", "_position", "_side", "_special", "_type", "_vehicle"];
+#define MAX_SPAWN_ATTEMPTS 3
 
 _type = _this select 0;
 _position = _this select 1;
@@ -60,7 +62,35 @@ if (typeName _position == "OBJECT") then {_position = getPos _position};
 if (typeName _side == "SIDE") then {_side = (_side) call CTI_CO_FNC_GetSideID};
 
 
+ 
 _vehicle = if ( isNull _created) then {createVehicle [_type, _position, [], 7, _special]} else {_created};
+
+_handle_fail_spawns = {
+		params ["_unit"];
+		//TODO check if shot, and if yes do nothing
+		if(damage _unit > 0.9) then {
+			if(_unit getVariable ["cti_gc_noremove", false] isEqualTo false) then {
+				{
+					if(isPlayer (_x select 0)) then {moveOut (_x select 0);} else {deleteVehicle (_x select 0);};
+				} forEach (fullCrew _unit);
+				deleteVehicle _unit;
+			};
+		} else {
+			_unit setDammage 0;
+		};
+};
+	
+
+//Ensures the vehicle spawns correctly.
+_EH_Dammaged = _vehicle addEventHandler ["Dammaged", _handle_fail_spawns];
+_EH_Killed = _vehicle addEventHandler ["Killed", _handle_fail_spawns];
+
+[_vehicle, _EH_Dammaged, _EH_Killed] spawn {
+	params ["_vehicle", "_EH_Dammaged", "_EH_Killed"];
+	sleep(5);
+	 _vehicle removeEventHandler ["Dammaged", _EH_Dammaged];
+	 _vehicle removeEventHandler ["Killed", _EH_Killed];
+};
 
 
 // henroth air loadout

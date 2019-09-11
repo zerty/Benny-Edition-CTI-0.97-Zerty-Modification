@@ -152,7 +152,7 @@ if (_model isKindOf "Man") then {
 		_group = _this select 1;
 		_cost = _this select 2;
 		_var_classname = _this select 3;
-		sleep(15);
+		sleep(10);
 		if(!alive _veh) then {
 			//delete wreck & refound cash
 			deleteVehicle _veh;
@@ -161,7 +161,7 @@ if (_model isKindOf "Man") then {
 		};
 	};
 
-	if (_veh_infos select 0 || _veh_infos select 1 || _veh_infos select 2 || _veh_infos select 3) then { //--- Not empty.
+	if (alive _vehicle && (_veh_infos select 0 || _veh_infos select 1 || _veh_infos select 2 || _veh_infos select 3)) then { //--- Not empty.
 		_crew = switch (true) do { case (_model isKindOf "Tank"): {"Crew"}; case (_model isKindOf "Air"): {"Pilot"}; default {"Soldier"}};
 		_crew = missionNamespace getVariable format["CTI_%1_%2", CTI_P_SideJoined, _crew];
 
