@@ -46,7 +46,6 @@
 */
 
 private ["_direction", "_handle", "_locked", "_net", "_position", "_side", "_special", "_type", "_vehicle"];
-#define MAX_SPAWN_ATTEMPTS 3
 
 _type = _this select 0;
 _position = _this select 1;
@@ -64,6 +63,7 @@ if (typeName _side == "SIDE") then {_side = (_side) call CTI_CO_FNC_GetSideID};
 
  
 _vehicle = if ( isNull _created) then {createVehicle [_type, _position, [], 7, _special]} else {_created};
+_vehicle setVariable ["_spawn_location", _position];
 
 _handle_fail_spawns = {
 		params ["_unit"];
@@ -77,6 +77,9 @@ _handle_fail_spawns = {
 			};
 		} else {
 			_unit setDammage 0;
+			{
+				(_x select 0) setDammage 0;
+			} forEach (fullCrew _unit);
 		};
 };
 	
@@ -87,7 +90,18 @@ _EH_Killed = _vehicle addEventHandler ["Killed", _handle_fail_spawns];
 
 [_vehicle, _EH_Dammaged, _EH_Killed] spawn {
 	params ["_vehicle", "_EH_Dammaged", "_EH_Killed"];
-	sleep(5);
+	sleep(1);
+	//Check if vehicle flew away after spawn (due to physics glitching)
+	if(!(_vehicle isKindOf "Air")) then {
+		_pos = _vehicle getVariable ["_spawn_location", [0,0,0]];
+		if(_pos distance (getPos _vehicle) > 500) then {
+			{
+				if(isPlayer (_x select 0)) then {moveOut (_x select 0);} else {deleteVehicle (_x select 0);};
+			} forEach (fullCrew _vehicle);
+			deleteVehicle _vehicle;
+		};
+	};
+	sleep(2);
 	 _vehicle removeEventHandler ["Dammaged", _EH_Dammaged];
 	 _vehicle removeEventHandler ["Killed", _EH_Killed];
 };

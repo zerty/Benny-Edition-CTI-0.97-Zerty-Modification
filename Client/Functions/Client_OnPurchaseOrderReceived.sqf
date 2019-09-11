@@ -160,7 +160,7 @@ if (_model isKindOf "Man") then {
 			hint parseText format [localize "STR_OnPurchase_RefundUnit", _var_classname select CTI_UNIT_LABEL];
 		};
 	};
-
+	sleep(1); //Wait for the vehicle to spawn correctly (or die on spawn)
 	if (alive _vehicle && (_veh_infos select 0 || _veh_infos select 1 || _veh_infos select 2 || _veh_infos select 3)) then { //--- Not empty.
 		_crew = switch (true) do { case (_model isKindOf "Tank"): {"Crew"}; case (_model isKindOf "Air"): {"Pilot"}; default {"Soldier"}};
 		_crew = missionNamespace getVariable format["CTI_%1_%2", CTI_P_SideJoined, _crew];
