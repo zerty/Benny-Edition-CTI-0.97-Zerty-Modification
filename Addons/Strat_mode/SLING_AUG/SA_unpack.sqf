@@ -21,9 +21,9 @@ if (_target == ((CTI_P_SideJoined) call CTI_CO_FNC_GetSideHQ)) then {
 	waitUntil {isNull _target};
 	
 	if ((_initial_pos select 2) <0) then {
-		_hq = [missionNamespace getVariable Format["CTI_%1_HQ", _side], _initial_pos, _initial_dir, _side, true, true,false, "CAN_COLLIDE"] call CTI_CO_FNC_CreateVehicle; //if underwatter
+		_hq = [missionNamespace getVariable Format["CTI_%1_HQ", _side], _initial_pos, _initial_dir, _side, true, true,false, "CAN_COLLIDE", objNull, false] call CTI_CO_FNC_CreateVehicle; //if underwatter
 	} else {
-		_hq = [missionNamespace getVariable Format["CTI_%1_HQ", _side], _initial_pos, _initial_dir, _side, true, true,false, "FORM"] call CTI_CO_FNC_CreateVehicle; // if on ground
+		_hq = [missionNamespace getVariable Format["CTI_%1_HQ", _side], _initial_pos, _initial_dir, _side, true, true,false, "FORM", objNull, false] call CTI_CO_FNC_CreateVehicle; // if on ground
 	};
 	_hq allowdamage false;
 	_hq setVariable ["cti_gc_noremove", true,true]; //--- HQ wreck cannot be removed nor salvaged

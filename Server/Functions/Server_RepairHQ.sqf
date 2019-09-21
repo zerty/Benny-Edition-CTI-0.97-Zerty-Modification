@@ -54,7 +54,7 @@ _position = _ep;
 if (alive _hq_wreck) exitWith {};
 deleteVehicle _hq_wreck;
 
-_hq = [missionNamespace getVariable Format["CTI_%1_HQ", _side], _position, _direction, _side, true, false] call CTI_CO_FNC_CreateVehicle;
+_hq = [missionNamespace getVariable Format["CTI_%1_HQ", _side], _position, _direction, _side, true, false, false, "FORM", objNull, false] call CTI_CO_FNC_CreateVehicle;
 _hq setVariable ["cti_gc_noremove", true]; //--- HQ wreck cannot be removed nor salvaged
 _hq setVariable ["cti_ai_prohib", true]; //--- HQ may not be used by AI as a commandable vehicle
 _hq addEventHandler ["getIn", {_this spawn CTI_CO_FNC_OnUnitGetOut}];

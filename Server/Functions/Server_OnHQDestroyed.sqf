@@ -44,7 +44,7 @@ if (((_this select 0) isKindOf "Pod_Heli_Transport_04_base_F") ||((_this select 
 	_side = _target getVariable "cti_occupant";
 	deletevehicle _target;
 	waitUntil {isNull _target};
-	_hq = [missionNamespace getVariable Format["CTI_%1_HQ", _side], _initial_pos, _initial_dir, _side, true, true,false, "CAN_COLLIDE"] call CTI_CO_FNC_CreateVehicle;
+	_hq = [missionNamespace getVariable Format["CTI_%1_HQ", _side], _initial_pos, _initial_dir, _side, true, true,false, "CAN_COLLIDE", objNull, false] call CTI_CO_FNC_CreateVehicle;
 	_hq setVariable ["cti_gc_noremove", true,true]; //--- HQ wreck cannot be removed nor salvaged
 	_hq setVariable ["cti_ai_prohib", true,true]; //--- HQ may not be used by AI as a commandable vehicle
 	//_hq addEventHandler ["getIn", {_this spawn CTI_CO_FNC_OnUnitGetOut}];

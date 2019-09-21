@@ -20,6 +20,7 @@
     6	{Optionnal} [Boolean]: Determine if the vehicle should be handled upon destruction or not (bounty...tk...)
     7	{Optionnal} [String]: Set a special spawn mode for the vehicle
     8	{Optionnal} [Object]: Vehicle if already create
+    9	{Optionnal} [Boolean]: Vehicle can be deleted
 
   # RETURNED VALUE #
 	[Object]: The created vehicle
@@ -56,6 +57,7 @@ _net = if (count _this > 5) then {_this select 5} else {false};
 _handle = if (count _this > 6) then {_this select 6} else {false};
 _special = if (count _this > 7) then {_this select 7} else {"FORM"};
 _created = if (count _this > 8) then {_this select 8} else {objNull};
+_can_be_removed = if (count _this > 9) then {_this select 9} else {true};
 _t_side=if (typeName _side == "SCALAR") then {(_side call CTI_CO_FNC_GetSideFromID)} else {_side};
 if (typeName _position == "OBJECT") then {_position = getPos _position};
 if (typeName _side == "SIDE") then {_side = (_side) call CTI_CO_FNC_GetSideID};
@@ -64,7 +66,7 @@ if (typeName _side == "SIDE") then {_side = (_side) call CTI_CO_FNC_GetSideID};
  
 _vehicle = if ( isNull _created) then {createVehicle [_type, _position, [], 7, _special]} else {_created};
 _vehicle setVariable ["_spawn_location", _position];
-
+if(!_can_be_removed) then {_vehicle setVariable ["cti_gc_noremove", true,true]};
 _handle_fail_spawns = {
 		params ["_unit"];
 		//TODO check if shot, and if yes do nothing
