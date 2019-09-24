@@ -314,15 +314,17 @@ if (missionNamespace getvariable "CTI_PERSISTANT" == 1) then {
 //Logging of varius values
 0 spawn {
 		sleep 100; //wait for everything to finish loading
-		_version = 3; //version of DiscordBot logReader
+		_version = 4; //version of DiscordBot logReader
 		_arr = 	[["CTI_DataPacket", "Header"],
 				 ["Version", _version],
 				 ["Map", worldName]
 				];
 		diag_log _arr;
+		
+		_east_sl = (east) call CTI_CO_FNC_GetSideLogic;
+		_west_sl = (west) call CTI_CO_FNC_GetSideLogic;
 		while {!CTI_GameOver} do {
-			_east_sl = (east) call CTI_CO_FNC_GetSideLogic;
-			_west_sl = (west) call CTI_CO_FNC_GetSideLogic;
+			
 			_towns = count(_east_sl getVariable  ["CTI_ACTIVE",[]]) + count(_west_sl getVariable  ["CTI_ACTIVE",[]]);
 
 			//build player array, splitting at 800 to ensure char limit of 1000 is not reached
@@ -374,7 +376,15 @@ if (missionNamespace getvariable "CTI_PERSISTANT" == 1) then {
 						["players", _x]];
 				_dataP = _dataP+1;
 			} forEach _players;
-
+			
+			//Logging more detailed data about team
+			_east_hq = ((east) call CTI_CO_FNC_GetSideHQ);
+			_west_hq = ((west) call CTI_CO_FNC_GetSideHQ);
+			diag_log[["CTI_DataPacket", format ["Data_%1", _dataP]],
+					["hq_east", [getPos _east_hq, alive _east_hq]],
+					["hq_west", [getPos _west_hq, alive _west_hq]]];
+			_dataP = _dataP+1;
+			
 			diag_log[["CTI_DataPacket", format ["Data_EOD_%1", _dataP]], //Marking package as "last"
 					["bases_east", _east_sl getVariable ["cti_structures_areas",[]]],
 					["bases_west", _west_sl getVariable ["cti_structures_areas",[]]],

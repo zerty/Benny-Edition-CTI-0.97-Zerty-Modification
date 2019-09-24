@@ -49,14 +49,10 @@ while {isNull _unit && !((side _unit) in [east,west]) && _try <10} do {
 		};
 	} forEach allPlayers; // allUnits + allDead 
 
-
-
 	["INFORMATION", "FILE: Server\Functions\Server_OnPlayerConnected.sqf", format["Unit for  [%1]  found : [%2] ",_uid,_unit]] call CTI_CO_FNC_Log;
 	_try=_try+1;
-
-	//if (CTI_Log_Level >= CTI_Log_Information) then {["INFORMATION", "FILE: Server\Functions\Server_OnPlayerConnected.sqf", format["Unit for  [%1]  found : [%2] ",_uid,_unit]] call CTI_CO_FNC_Log};
 };
-
+if (_try >=10) then {["ERROR", "FILE: Server\Functions\Server_OnPlayerConnected.sqf", format["Failed to locate player: uid: '%1' name: '%2' id: '%3' unit: '%4' side: '%5'", _uid, _name, _id, _unit, side _unit]] call CTI_CO_FNC_Log;};
 if (_try >=10) exitWith {false};
 
 
