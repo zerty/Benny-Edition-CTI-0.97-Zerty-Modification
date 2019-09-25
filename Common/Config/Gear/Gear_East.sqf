@@ -833,6 +833,7 @@ _u = _u		+ [1];
 _p = _p		+ [100];
 
 //Backpacks
+if(CTI_SHOPS_HEAVY==1) then {
 _i = _i		+ ["B_Bergen_dgtl_F"];
 _u = _u		+ [3];
 _p = _p		+ [500];
@@ -840,7 +841,7 @@ _p = _p		+ [500];
 _i = _i		+ ["B_Bergen_hex_F"];
 _u = _u		+ [3];
 _p = _p		+ [500];
-
+};
 _i = _i		+ ["B_Carryall_cbr"];
 _u = _u		+ [3];
 _p = _p		+ [200];
@@ -933,7 +934,7 @@ _i = _i		+ ["B_ViperLightHarness_oli_F"];
 _u = _u		+ [2];
 _p = _p		+ [100];
 
-if (ISLAND != 1) then {
+if (ISLAND != 1 && CTI_SHOPS_HEAVY==1) then {
 	_i = _i		+ ["O_Mortar_01_support_F"];
 	_u = _u		+ [3];
 	_p = _p		+ [5];

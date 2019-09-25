@@ -111,7 +111,7 @@ _u = _u		+ ['C_Kart_01_F'];
 _u = _u		+ ['I_Truck_02_MRL_F'];
 missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_LIGHT], _u];
 
-
+if(CTI_SHOPS_HEAVY==1) then {
 _u 			= ["B_APC_Tracked_01_rcws_F"];
 _u = _u  	+ ["B_APC_Wheeled_01_cannon_F"];
 _u = _u  	+ ["B_AFV_Wheeled_01_cannon_F"];
@@ -128,8 +128,15 @@ _u = _u		+ ['I_LT_01_cannon_F'];
 _u = _u		+ ['I_LT_01_AA_F'];
 _u = _u		+ ['I_LT_01_AT_F'];
 _u = _u		+ ['I_MBT_03_cannon_F'];
+} else {
+_u = 		  ['I_LT_01_scout_F'];
+_u = _u		+ ['I_LT_01_cannon_F'];
+_u = _u		+ ['I_LT_01_AA_F'];
+_u = _u		+ ['I_LT_01_AT_F'];
+};
 missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_HEAVY], _u];
 
+if(CTI_SHOPS_HEAVY==1) then {
 _u 			= ["B_Heli_Light_01_dynamicLoadout_F"];
 _u = _u		+ ['C_Plane_Civil_01_F'];
 _u = _u		+ ["B_T_VTOL_01_infantry_F"];
@@ -156,6 +163,25 @@ _u = _u		+ ['I_Plane_Fighter_03_CAS_F'];
 _u = _u		+ ['I_Plane_Fighter_04_F'];
 _u = _u		+ ['B_Slingload_01_Medevac_F'];
 _u = _u		+ ['Land_Device_slingloadable_F'];
+} else {
+_u 			= ["B_Heli_Light_01_dynamicLoadout_F"];
+_u = _u		+ ['C_Plane_Civil_01_F'];
+_u = _u		+ ["B_T_VTOL_01_infantry_F"];
+_u = _u		+ ["B_T_VTOL_01_vehicle_F"];
+_u = _u		+ ["B_T_VTOL_01_armed_F"];
+_u = _u		+ ["B_Heli_Transport_01_F"];
+_u = _u		+ ["B_Heli_Transport_03_unarmed_F"];
+_u = _u		+ ["B_Heli_Transport_03_F"];
+_u = _u		+ ["B_Heli_Light_01_F"];
+_u = _u		+ ["B_Heli_Attack_01_dynamicLoadout_F"];
+_u = _u		+ ["B_UAV_02_F"];
+_u = _u		+ ["B_UAV_02_CAS_F"];
+_u = _u		+ ["B_UAV_02_dynamicLoadout_F"];
+_u = _u		+ ["B_Plane_CAS_01_dynamicLoadout_F"];
+_u = _u		+ ['I_Plane_Fighter_03_CAS_F'];
+_u = _u		+ ['B_Slingload_01_Medevac_F'];
+_u = _u		+ ['Land_Device_slingloadable_F'];
+};
 missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_AIR], _u];
 
 _u 			= ["B_Truck_01_Repair_F"];

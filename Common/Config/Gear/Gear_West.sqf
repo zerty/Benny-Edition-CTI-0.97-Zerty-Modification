@@ -1111,7 +1111,7 @@ _p = _p		+ [150];
 _i = _i		+ ["B_Carryall_oli"];
 _u = _u		+ [3];
 _p = _p		+ [150];
-
+if(CTI_SHOPS_HEAVY==1) then {
 _i = _i		+ ["B_Bergen_mcamo_F"];
 _u = _u		+ [3];
 _p = _p		+ [1000];
@@ -1119,7 +1119,7 @@ _p = _p		+ [1000];
 _i = _i		+ ["B_Bergen_tna_F"];
 _u = _u		+ [3];
 _p = _p		+ [1000];
-
+};
 _i = _i		+ ["B_UAV_01_backpack_F"];
 _u = _u		+ [3];
 _p = _p		+ [2500];
@@ -1156,7 +1156,7 @@ _i = _i		+ ["B_Static_Designator_01_weapon_F"];
 _u = _u		+ [2];
 _p = _p		+ [5000];
 
-if (ISLAND != 1) then {
+if (ISLAND != 1 && CTI_SHOPS_HEAVY==1) then {
 _i = _i		+ ["B_Mortar_01_support_F"];
 _u = _u		+ [3];
 _p = _p		+ [5];

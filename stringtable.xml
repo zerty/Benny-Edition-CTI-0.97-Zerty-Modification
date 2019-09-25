@@ -578,15 +578,23 @@
 				<Russian>За сколько метров активируется город</Russian>
 			</Key>
 			<Key ID="STR_CTI_TOWNS_RESISTANCE_GROUPS_RATIO">
-				<Original>Zerty: TOWNS : Resistance difficulty</Original>
+				<Original>Zerty: TOWNS: Resistance difficulty</Original>
 				<Russian>Уровень сопротивления в городах</Russian>
+			</Key>			
+			<Key ID="STR_CTI_TOWNS_RESISTANCE_HEAVY">
+				<Original>Yoshi_E: TOWNS: Heavy vehicles in towns</Original>
+				<Russian>Тяжелая техника в городах</Russian>
 			</Key>
 			<Key ID="STR_CTI_TOWNS_RESISTANCE_INACTIVE_MAX">
-				<Original>Zerty: TOWNS : Resistance despawn Timer</Original>
+				<Original>Zerty: TOWNS: Resistance despawn Timer</Original>
 				<Russian>Дезактивация захваченного города</Russian>
 			</Key>
+			<Key ID="STR_CTI_SHOPS_HEAVY">
+				<Original>Yoshi_E: SHOP: Heavy Vehicles/Equipment</Original>
+				<Russian>Тяжелая техника / Оборудование</Russian>
+			</Key>			
 			<Key ID="STR_CTI_TOWNS_SHOPS">
-				<Original>Zerty: TOWNS : Shop price ratio</Original>
+				<Original>Zerty: TOWNS: Shop price ratio</Original>
 				<Russian>Во сколько раз покупки в городах дороже, чем на базе</Russian>
 			</Key>
 			<Key ID="STR_CTI_WEATHER_INITIAL">
