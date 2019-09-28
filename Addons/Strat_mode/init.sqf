@@ -106,6 +106,7 @@ if (CTI_IsServer) then {
 		if (count (_sl getVariable ["CTI_BASES_FOUND",[]]) == 0) then {
 			_sl setVariable ["CTI_BASES_FOUND",[],true];
 		};
+		_sl setVariable ["CTI_COM_BLACKLIST_GLOBAL",profileNamespace getVariable ["CTI_COM_BLACKLIST_GLOBAL",[]],true];
 	true
 	} count [east,west];
 
@@ -204,6 +205,25 @@ if (CTI_IsServer) then {
 
 		CTI_PVF_Server_Assign_Zeus= {
   		_this  assignCurator ADMIN_ZEUS;
+		};
+
+		CTI_PVF_Server_Update_BL= {
+			_pfbl= profileNamespace getVariable ["CTI_COM_BLACKLIST_GLOBAL",[]];
+			_index=(_pfbl find _this);
+			if (_index >=0) then{
+				_pfbl deleteAt _index;
+			} else {
+				_pfbl pushBack _this;
+
+			};
+			profileNamespace setVariable ["CTI_COM_BLACKLIST_GLOBAL",_pfbl];
+			saveProfileNamespace;
+			{
+				_sl=_x call CTI_CO_FNC_GetSideLogic;
+				_sl setVariable ["CTI_COM_BLACKLIST_GLOBAL",profileNamespace getVariable ["CTI_COM_BLACKLIST_GLOBAL",[]],true];
+				true
+			} count [east,west];
+
 		};
 	};
 

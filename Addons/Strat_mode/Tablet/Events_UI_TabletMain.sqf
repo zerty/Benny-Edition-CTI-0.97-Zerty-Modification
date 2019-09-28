@@ -37,6 +37,15 @@ switch (_action) do {
 
 		if ((missionNamespace getVariable "CTI_ARTILLERY_SETUP") < 0) then {((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210009) ctrlEnable false};
 		if !(missionNamespace getVariable "CTI_EW_ANET" == 1) then {((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210016) ctrlEnable false};
+		if ((serverCommandAvailable '#shutdown' || !isMultiplayer)) then {
+			((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210017) ctrlEnable true;
+			((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210017) ctrlSetPosition [SafeZoneX + (SafeZoneW - (3/4*SafeZoneH))/2+ (3/4*SafeZoneH) *0.191+(3/4*SafeZoneH)*0.615*0.76,SafeZoneY+safezoneH*(0.28+0.035*1),(3/4*SafeZoneH)*0.615*0.22,SafeZoneH * 0.03]; ((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210017) ctrlCommit 0;
+		} else {
+			((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210017) ctrlEnable false;
+			((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210017) ctrlSetPosition [SafeZoneX + (SafeZoneW - (3/4*SafeZoneH))/2+ (3/4*SafeZoneH) *0.191+(3/4*SafeZoneH)*0.615*0.76,SafeZoneY+safezoneH*(0.28+0.035*1+5),(3/4*SafeZoneH)*0.615*0.22,SafeZoneH * 0.03]; ((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210017) ctrlCommit 0;
+		};
+
+
 		if (!((getAssignedCuratorUnit ADMIN_ZEUS) == player) && (serverCommandAvailable '#shutdown' || !isMultiplayer)) then {
 			((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210019) ctrlEnable true;
 			((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210019) ctrlSetPosition [SafeZoneX + (SafeZoneW - (3/4*SafeZoneH))/2+ (3/4*SafeZoneH) *0.191+(3/4*SafeZoneH)*0.615*0.76,SafeZoneY+safezoneH*(0.28+0.035*3),(3/4*SafeZoneH)*0.615*0.22,SafeZoneH * 0.03]; ((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210019) ctrlCommit 0;
@@ -208,6 +217,10 @@ switch (_action) do {
 			hint parseText "<t size='1.3' color='#2394ef'>Information</t><br /><br />No vote in Tutorial area!";
 			};
 		};
+	};
+	case "onCOMBLPressed": {
+		closeDialog 0;
+		createDialog "CTI_RscTabletComBLMenu";
 	};
 
 };

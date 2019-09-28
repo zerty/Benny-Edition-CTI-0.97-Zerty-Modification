@@ -310,7 +310,7 @@ class CTI_RscInteraction {
 			text = "Rsc\Pictures\icon_cage.paa";
 			action = "['OnSlatCage'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_Interact.sqf'";
 			toolTip=$STR_Icon_SlatCage;
-		};		
+		};
 		class CTI_Icon_Reset : CTI_Icon_fpk {
 			idc = 511039;
 			x = "SafeZoneX + SafeZoneW*0.55";
@@ -588,9 +588,13 @@ class CTI_RscTablet_main {
 			tooltip = $STR_Control_Eject_Tooltip;
 			action = "['onVotePressed'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_TabletMain.sqf'";
 		};
-		class CTI_Control_Log : CTI_Control_Eject {
+		class CTI_Control_ComBL : CTI_Control_Eject {
 			idc = 210017;
 			y = "SafeZoneY+safezoneH*(0.28+0.035*1+5)";
+			text = "COM Blacklist";
+			tooltip ="manage global commander blacklist";
+			action = "['onCOMBLPressed'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_TabletMain.sqf'";
+
 		};
 		class CTI_Control_Request : CTI_Control_Eject {
 			idc = 210018;
@@ -2231,6 +2235,86 @@ class CTI_RscTabletOnlineHelpMenu {
 			onLBSelChanged = "['onKeyLBSelChanged', _this select 1] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_OnlineHelpMenu.sqf'";
 			sizeEx = "0.8 * (			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
 		};
+	};
+};
+
+
+//#####################################################################################################################################
+//#####################################################################################################################################
+//#####################################################################################################################################
+//#####################################################################################################################################
+
+
+
+class CTI_RscTabletComBLMenu {
+	movingEnable = 0;
+	idd = 999000;
+	onLoad = "uiNamespace setVariable ['cti_dialog_ui_comblacklist', _this select 0];['onLoad'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Old_Com_Eject\Events_UI_combl.sqf'";
+	onUnload = "uiNamespace setVariable ['cti_dialog_ui_comblacklist', nil]; ['onUnload'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Old_Com_Eject\Events_UI_combl.sqf'";
+
+	class controlsBackground {
+		class CTI_Background : RscTablet {
+		};
+		class CTI_Menu_InfoListFrame2 : RscText {
+			x = "SafeZoneX + (SafeZoneW - (3/4*SafeZoneH))/2+ (3/4*SafeZoneH) *0.191";
+			y = "SafeZoneY+safezoneH*0.275";
+			w = "(3/4*SafeZoneH)*0.615";
+			h = "SafeZoneH*0.451";
+			colorBackground[] = {0,0,0,1};
+			text="";
+		};
+
+		class CTI_Menu_InfoListFrame : RscFrame {
+			x = "SafeZoneX + (SafeZoneW - (3/4*SafeZoneH))/2+ (3/4*SafeZoneH) *0.191+(3/4*SafeZoneH)*0.615*0.02";
+			y = "SafeZoneY+safezoneH*0.280";
+			w = "(3/4*SafeZoneH)*0.615*0.36";
+			h = "SafeZoneH*(0.436-0.04-0.01-0.04-0.01)";
+		};
+
+		class CTI_Control_Exit : RscButton {
+			idc = 22555;
+
+			x = "SafeZoneX + (SafeZoneW - (3/4*SafeZoneH))/2+ (3/4*SafeZoneH) *0.191+(3/4*SafeZoneH)*0.615*0.02";
+			y = "SafeZoneY+safezoneH*(0.666+0.005)";
+			w = "(3/4*SafeZoneH)*0.615*0.36";
+			h = "SafeZoneH * 0.04";
+
+			text = $STR_Control_Exit;
+			action = "closeDialog 0";
+		};
+
+	};
+
+	class controls {
+		class CTI_Menu_List_Players : RscListBox {
+			idc = 999001;
+
+			x = "SafeZoneX + (SafeZoneW - (3/4*SafeZoneH))/2+ (3/4*SafeZoneH) *0.191+(3/4*SafeZoneH)*0.615*0.02";
+			y = "SafeZoneY+safezoneH*0.280";
+			w = "(3/4*SafeZoneH)*0.615*0.36";
+			h = "SafeZoneH*(0.436-0.04-0.01-0.04-0.01)";
+
+			rowHeight = "1.5 * 			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
+			sizeEx = "0.78 * 			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
+
+			colorText[] = {1,1,1,1};
+			colorBackground[] = {0,0,0,0};
+			onLBSelChanged = "['onLBSelChanged', _this select 1] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Old_Com_Eject\Events_UI_combl.sqf'";
+
+		};
+		class CTI_Control_SetBlacklist : RscButton {
+			idc = 999002;
+			x = "SafeZoneX + (SafeZoneW - (3/4*SafeZoneH))/2+ (3/4*SafeZoneH) *0.191+(3/4*SafeZoneH)*0.615*0.02";
+			w = "(3/4*SafeZoneH)*0.615*0.36";
+			h = "SafeZoneH * 0.04";
+
+			y = "SafeZoneY+safezoneH*(0.666+0.005 - 0.04-0.005)";
+
+
+			text = "Blacklist";
+			action = "['onBlacklist'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Old_Com_Eject\Events_UI_combl.sqf'";
+		};
+
 	};
 };
 
