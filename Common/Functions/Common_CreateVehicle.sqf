@@ -63,7 +63,7 @@ if (typeName _position == "OBJECT") then {_position = getPos _position};
 if (typeName _side == "SIDE") then {_side = (_side) call CTI_CO_FNC_GetSideID};
 
 
- 
+
 _vehicle = if ( isNull _created) then {createVehicle [_type, _position, [], 7, _special]} else {_created};
 _vehicle setVariable ["_spawn_location", _position];
 if(!_can_be_removed) then {_vehicle setVariable ["cti_gc_noremove", true,true]};
@@ -84,7 +84,7 @@ _handle_fail_spawns = {
 			} forEach (fullCrew _unit);
 		};
 };
-	
+
 
 //Ensures the vehicle spawns correctly.
 _EH_Dammaged = _vehicle addEventHandler ["Dammaged", _handle_fail_spawns];
@@ -158,9 +158,9 @@ if (isNull _created) then {
 
 	//if (_special == "FORM") then {_vehicle setPos [(getPos _vehicle) select 0, (getPos _vehicle) select 1, 0.75];}; //--- Make the vehicle spawn above the ground level to prevent any bisteries
 	if (_special == "FORM") then {_vehicle setPos [(getPos _vehicle) select 0, (getPos _vehicle) select 1];};
-	
+
 	if (unitIsUAV _vehicle) then {
-		createVehicleCrew _vehicle; 
+		createVehicleCrew _vehicle;
 	};
 
 
@@ -257,6 +257,9 @@ if (isNull _created) then {
 		if (_vehicle isKindOf "I_MBT_03_cannon_F") then {[_vehicle, nil, ["HideTurret",1,"HideHull",1]] call BIS_fnc_initVehicle;};
 		if (_vehicle isKindOf "O_MBT_02_cannon_F" || _vehicle isKindOf "O_T_MBT_02_cannon_ghex_F") then {[_vehicle, nil, ["showLog",1]] call BIS_fnc_initVehicle;};
 		if (_vehicle isKindOf "O_APC_Tracked_02_AA_F" || _vehicle isKindOf "O_T_APC_Tracked_02_AA_ghex_F") then {[_vehicle, nil, ["showTracks",1]] call BIS_fnc_initVehicle;};
+		if (_side == CTI_RESISTANCE_ID) then {
+			[_vehicle, FALSE, ["showcamonethull", 0.2, "showcamonetturret", 0.2, "showcamonetcannon", 0.2, "showslathull", 0.2]] call BIS_fnc_initVehicle; // Res: 20% chance for camo net and slat cage
+		};
 	};
 	if (_vehicle isKindOf "Offroad_01_base_F") then {
 		_offroads = ["I_G_Offroad_01_F", "I_G_Offroad_01_armed_F", "I_G_Offroad_01_AT_F", "B_G_Offroad_01_F", "B_G_Offroad_01_armed_F", "B_G_Offroad_01_AT_F", "O_G_Offroad_01_F", "O_G_Offroad_01_armed_F", "O_G_Offroad_01_AT_F"];
