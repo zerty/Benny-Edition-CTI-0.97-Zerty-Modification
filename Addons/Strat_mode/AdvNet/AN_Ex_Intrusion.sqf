@@ -6,7 +6,7 @@ AN_E_Intrusion_Loop={
 	_hackers=[];
 	diag_log format [":: HACK :: starting loop for %1", _vehicle];
 	while {(_vehicle getVariable ["AN_Hacked",0])>0 && alive _vehicle} do {
-		waitUntil {(_vehicle getvariable "CTI_NET") ==  (_vehicle getvariable "AN_iNET") &&( _vehicle getVariable ['AN_Hack_started',false])};
+		waitUntil {(_vehicle getvariable ['CTI_NET',200]) == (_vehicle getvariable ['AN_iNET',300]) && ( _vehicle getVariable ['AN_Hack_started',false])};
 		_last_time=time;
 		diag_log format [":: HACK ::  loop for %1 at %2 ", _vehicle,_last_time];
 		{if (!alive _x || ! (vehicle _x == _vehicle)) then {_x setVariable ["CTI_NET",((side _x )   call CTI_CO_FNC_GetSideID),true];_hackers=_hackers-[_x];};true}  count _hackers;
