@@ -46,6 +46,7 @@ _direction = getDir _hq_wreck;
 //_position =[_position, 50] call CTI_CO_FNC_GetEmptyPosition;
 _ep = _position findEmptyPosition [0,100,"O_T_VTOL_02_vehicle_dynamicLoadout_F"];
 if (count _ep == 0) then {_ep = _position findEmptyPosition [0,250,"O_T_VTOL_02_vehicle_dynamicLoadout_F"];};
+if (count _ep == 0 && surfaceIsWater _position) then {_ep = [_position select 0, _position select 1, 0];}; // for repair HQ in water
 _position = _ep;
 
 //_position = _position findEmptyPosition [0,50,typeOf ((_side) call CTI_CO_FNC_GetSideHQ)];
@@ -78,7 +79,7 @@ _logic setVariable ["cti_hq", _hq, true];
 	_hq = _this select 0;
 	_logic = _this select 1;
 	_side = _this select 2;
-	
+
 	sleep(5);
 	_hq setVelocity [0, 5, 0]; //move it a little to check if its inside an object
 	sleep(5);
