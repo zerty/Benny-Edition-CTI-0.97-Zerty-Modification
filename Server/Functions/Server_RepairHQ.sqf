@@ -47,6 +47,7 @@ _direction = getDir _hq_wreck;
 _ep = _position findEmptyPosition [0,100,"O_T_VTOL_02_vehicle_dynamicLoadout_F"];
 if (count _ep == 0) then {_ep = _position findEmptyPosition [0,250,"O_T_VTOL_02_vehicle_dynamicLoadout_F"];};
 if (count _ep == 0 && surfaceIsWater _position) then {_ep = [_position select 0, _position select 1, 0];}; // for repair HQ in water
+if (count _ep == 0) then {_ep = _position;};
 _position = _ep;
 
 //_position = _position findEmptyPosition [0,50,typeOf ((_side) call CTI_CO_FNC_GetSideHQ)];
