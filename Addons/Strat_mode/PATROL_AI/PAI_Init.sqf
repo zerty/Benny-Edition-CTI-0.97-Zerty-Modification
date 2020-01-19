@@ -18,7 +18,7 @@ with missionNamespace do {
 	CTI_PVF_Patrol_Create={
 		_patrol= 0 call PAI_CREATE_PATROL;
 		_patrol spawn PAI_PATROL_AI;
-		waitUntil {!isNull (_patrol select 0)};
+		waitUntil {if (!isNull (_patrol select 0)) exitWith {true}; false};
 		CTI_GUER setvariable ["patrols",(CTI_GUER getVariable ["patrols",[]])+ [_patrol select 0]-[grpNull],true];
 		if !(CTI_isServer) then {
 			["SERVER", "Server_Patrol_WD",_patrol] call CTI_CO_FNC_NetSend;
