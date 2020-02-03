@@ -1159,11 +1159,11 @@ _p = _p		+ [5000];
 if (ISLAND != 1 && CTI_SHOPS_HEAVY==1) then {
 _i = _i		+ ["B_Mortar_01_support_F"];
 _u = _u		+ [3];
-_p = _p		+ [5];
+_p = _p		+ [2000];
 
 _i = _i		+ ["B_Mortar_01_weapon_F"];
 _u = _u		+ [3];
-_p = _p		+ [2995];
+_p = _p		+ [8000];
 };
 
 _i = _i		+ ["B_TacticalPack_blk"];

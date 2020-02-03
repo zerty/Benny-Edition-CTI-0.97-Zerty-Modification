@@ -403,7 +403,7 @@ _categories = _categories 	+ ["Defense"];
 if (ISLAND != 1) then {
 _headers = _headers 		+ ["Mortar"];
 _classes = _classes 		+ ["B_Mortar_01_F"];
-_prices = _prices 			+ [3000];
+_prices = _prices 			+ [10000];
 _placements = _placements 	+ [[180, 5]];
 _categories = _categories 	+ ["Defense"];
 };
