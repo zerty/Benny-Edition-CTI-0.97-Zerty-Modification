@@ -1142,8 +1142,8 @@
 				<Russian>Уволить Рабочего</Russian>
 			</Key>
 			<Key ID="STR_Menu_Control_Sell">
-				<Original>Sell Structure</Original>
-				<Russian>Продать Завод</Russian>
+				<Original>Remove Structure</Original>
+				<Russian>Удалить Завод</Russian>
 			</Key>
 			<Key ID="STR_Menu_Control_Accept">
 				<Original>Accept</Original>
