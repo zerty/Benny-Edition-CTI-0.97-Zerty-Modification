@@ -138,6 +138,8 @@ CTI_LOADOUT_B_APC_Tracked_01_AA_F_MNT_OPTIONS =
 		]
 	]
 ];
+CTI_LOADOUT_B_T_APC_Tracked_01_AA_F_MNT_OPTIONS = CTI_LOADOUT_B_APC_Tracked_01_AA_F_MNT_OPTIONS;
+
 //Opfor
 CTI_LOADOUT_O_APC_Tracked_02_AA_F_MNT_OPTIONS =
 [
@@ -190,6 +192,7 @@ CTI_LOADOUT_O_APC_Tracked_02_AA_F_MNT_OPTIONS =
 		]
 	]
 ];
+CTI_LOADOUT_O_T_APC_Tracked_02_AA_ghex_F_MNT_OPTIONS = CTI_LOADOUT_O_APC_Tracked_02_AA_F_MNT_OPTIONS;
 
 // ***************************
 // BLUFOR - Vehicle loadout options
