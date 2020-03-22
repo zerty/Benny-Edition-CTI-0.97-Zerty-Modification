@@ -412,8 +412,6 @@ if (CTI_IsClient) then {
 
   	// Statics on offroads handlers
   	0 execVM "Addons\Strat_mode\Functions\SM_AttachStatics.sqf";
- 	if ( (missionNamespace getVariable 'CTI_SM_STRATEGIC')==1) then { 0 call CTI_SM_Draw_Connect_Towns;};
-
 
 	//adaptative group size
 	if ( CTI_PLAYERS_GROUPSIZE == 0) then {
@@ -455,10 +453,9 @@ if (CTI_IsClient) then {
 		waitUntil {!isNil 'CTI_InitTowns'};
 		sleep 1;
 		if !(CTI_P_SideJoined == resistance) then {
-
 			execFSM "Addons\Strat_mode\FSM\town_markers.fsm";
-
 		};
+		if ((missionNamespace getVariable 'CTI_SM_STRATEGIC')==1) then {0 call CTI_SM_Draw_Connect_Towns;};
 	};
 
 	// HUD
