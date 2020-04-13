@@ -981,13 +981,13 @@ _u = _u		+ [2];
 _p = _p		+ [5000];
 
 //Helms
-_i = _i		+ ["H_HelmetO_ViperSP_hex_F"];
+/*_i = _i		+ ["H_HelmetO_ViperSP_hex_F"]; // remove becuase 3rd person thermic abuse
 _u = _u		+ [3];
 _p = _p		+ [1500];
 
 _i = _i		+ ["H_HelmetO_ViperSP_ghex_F"];
 _u = _u		+ [3];
-_p = _p		+ [1500];
+_p = _p		+ [1500];*/
 
 _i = _i		+ ["H_HelmetLeaderO_ghex_F"];
 _u = _u		+ [3];
