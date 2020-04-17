@@ -226,7 +226,7 @@ _u = ['O_Soldier_F'];
 _u = _u		+ ['O_supplyCrate_F'];
 _u = _u		+ ['O_Quadbike_01_F'];
 _u = _u		+ ['O_G_Offroad_01_F'];
-_u = _u		+ ['O_G_Offroad_01_armed_F'];
-_u = _u		+ ['O_G_Offroad_01_AT_F'];
+//u = _u		+ ['O_G_Offroad_01_armed_F']; Prevent abuse
+//_u = _u		+ ['O_G_Offroad_01_AT_F'];
 
 missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_FTOWN], _u];
