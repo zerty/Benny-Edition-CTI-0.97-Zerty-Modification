@@ -78,7 +78,7 @@ _asked= missionNamespace getVariable "CTI_BASE_STARTUP_PLACEMENT";
 waitUntil {CTI_InitTowns};
 _eastLocation=CENTER_POS;
 _westLocation=CENTER_POS;
-while {(_eastLocation distance _westLocation) <(_asked)*0.95 ||(_eastLocation distance _westLocation) >( _asked)*1.25 || {(_x distance _eastLocation)<600} count CTI_Towns>0 || {(_x distance _westLocation)<600} count CTI_Towns>0 ||(_eastLocation distance CENTER_POS) > ( _asked)*1.2 ||(_westLocation distance CENTER_POS) > ( _asked)*1.2 } do {
+while {(_eastLocation distance _westLocation) <(_asked)*0.95 ||(_eastLocation distance _westLocation) >( _asked)*1.25 || {(_x distance _eastLocation)<600} count CTI_Towns>0 || {(_x distance _westLocation)<600} count CTI_Towns>0 ||(_eastLocation distance CENTER_POS) > ( _asked)*0.75 ||(_westLocation distance CENTER_POS) > ( _asked)*0.75 } do {
 	while {random(1)>0.2}do {
 		_a="BiS pseudo-random number Generator is crappy";
 	};
@@ -320,11 +320,11 @@ if (missionNamespace getvariable "CTI_PERSISTANT" == 1) then {
 				 ["Map", worldName]
 				];
 		diag_log _arr;
-		
+
 		_east_sl = (east) call CTI_CO_FNC_GetSideLogic;
 		_west_sl = (west) call CTI_CO_FNC_GetSideLogic;
 		while {!CTI_GameOver} do {
-			
+
 			_towns = count(_east_sl getVariable  ["CTI_ACTIVE",[]]) + count(_west_sl getVariable  ["CTI_ACTIVE",[]]);
 
 			//build player array, splitting at 800 to ensure char limit of 1000 is not reached
@@ -376,7 +376,7 @@ if (missionNamespace getvariable "CTI_PERSISTANT" == 1) then {
 						["players", _x]];
 				_dataP = _dataP+1;
 			} forEach _players;
-			
+
 			//Logging more detailed data about team
 			_east_hq = ((east) call CTI_CO_FNC_GetSideHQ);
 			_west_hq = ((west) call CTI_CO_FNC_GetSideHQ);
@@ -384,7 +384,7 @@ if (missionNamespace getvariable "CTI_PERSISTANT" == 1) then {
 					["hq_east", [getPos _east_hq, alive _east_hq]],
 					["hq_west", [getPos _west_hq, alive _west_hq]]];
 			_dataP = _dataP+1;
-			
+
 			diag_log[["CTI_DataPacket", format ["Data_EOD_%1", _dataP]], //Marking package as "last"
 					["bases_east", _east_sl getVariable ["cti_structures_areas",[]]],
 					["bases_west", _west_sl getVariable ["cti_structures_areas",[]]],
