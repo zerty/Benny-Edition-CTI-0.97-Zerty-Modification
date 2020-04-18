@@ -380,7 +380,7 @@ class Params {
 		values[] = {0,25,50,75,100};
 		texts[] = {"Null","Normal","Hard","Very hard","HELL"};
 		default = 75;
-	};	
+	};
 	class CTI_TOWNS_RESISTANCE_INACTIVE_MAX {
 		title = $STR_CTI_TOWNS_RESISTANCE_INACTIVE_MAX;
 		values[] = {30,60,120,240};
@@ -404,7 +404,7 @@ class Params {
 		values[] = {1,0};
 		texts[] = {$STR_CTI_ENABLED, $STR_CTI_DISABLED};
 		default = 1;
-	};	
+	};
 
 	class CTI_WEATHER_INITIAL {
 		title = $STR_CTI_WEATHER_INITIAL;
@@ -441,7 +441,7 @@ class Params {
 		title = $STR_CTI_SM_BASEP_M;
 		values[] = {0,-1,2,5,10,20,50,100};
 		texts[] = {$STR_CTI_DISABLED,"Hard Protection","Dmg reduced by 2","Dmg reduced by 5","Dmg reduced by 10","Dmg reduced by 20","Dmg reduced by 50","Dmg reduced by 100"};
-		default = 10;
+		default = -1;
 	};
 
 	class CTI_SM_PATROLS {
@@ -473,7 +473,7 @@ class Params {
 		title = $STR_CTI_SM_STRATEGIC;
 		values[] = {0,1};
 		texts[] = {$STR_CTI_DISABLED,$STR_CTI_ENABLED};
-		default = 0;
+		default = 1;
 	};
 	class CTI_SM_STRATEGIC_NB {
 		title = $STR_CTI_SM_STRATEGIC_NB;

@@ -12,7 +12,7 @@ link2[] = {2,1};
 link3[] = {2,4};
 link4[] = {4,3};
 globals[] = {0.000000,0,0,0,0,640,480,1,133,6316128,1,-422.283691,326.652069,345.310455,-698.696411,632,884,1};
-window[] = {2,-1,-1,-1,-1,768,156,1192,156,3,650};
+window[] = {2,-1,-1,-1,-1,820,208,1244,208,3,650};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -67,7 +67,7 @@ class FSM
                          "" \n
                          "	if (_availlable || CTI_P_SideJoined == resistance) then {" \n
                          "			if (markerAlpha _marker_area == 0) then { _marker_area setMarkerAlphaLocal CTI_MARKERS_OPACITY };" \n
-                         "			if (markerAlpha _town_marker == 0) then { _town_marker setMarkerAlphaLocal 1 };" \n
+                         "			//if (markerAlpha _town_marker == 0) then { _town_marker setMarkerAlphaLocal 1 };" \n
                          "			_marker_area setMarkerColorLocal  ""ColorWhite"";" \n
                          "" \n
                          "	}else {" \n
