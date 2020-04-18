@@ -225,6 +225,36 @@ _prices = [];
 _placements = [];
 _categories = [];
 
+_headers = _headers 		+ ["MG Defense"];
+_classes = _classes 		+ ["O_HMG_01_High_F"];
+_prices = _prices 			+ [200];
+_placements = _placements 	+ [[180, 5]];
+_categories = _categories 	+ ["Defense"];
+
+_headers = _headers 		+ ["GL Defense"];
+_classes = _classes 		+ ["O_GMG_01_high_F"];
+_prices = _prices 			+ [350];
+_placements = _placements 	+ [[180, 5]];
+_categories = _categories 	+ ["Defense"];
+
+_headers = _headers 		+ ["AT Defense"];
+_classes = _classes 		+ ["O_static_AT_F"];
+_prices = _prices 			+ [900];
+_placements = _placements 	+ [[180, 5]];
+_categories = _categories 	+ ["Defense"];
+
+_headers = _headers 		+ ["AA Defense"];
+_classes = _classes 		+ ["O_static_AA_F"];
+_prices = _prices 			+ [800];
+_placements = _placements 	+ [[180, 5]];
+_categories = _categories 	+ ["Defense"];
+if (ISLAND != 1) then {
+_headers = _headers 		+ ["Mortar"];
+_classes = _classes 		+ ["O_Mortar_01_F"];
+_prices = _prices 			+ [10000];
+_placements = _placements 	+ [[180, 5]];
+_categories = _categories 	+ ["Defense"];
+};
 
 _headers = _headers 		+ [["Praetorian 1C - Only on BASE Areas", [["DMG_Reduce", 10]]]];
 _classes = _classes 		+ ["B_AAA_System_01_F"];
@@ -375,36 +405,7 @@ if ((missionNamespace getVariable "CTI_RESPAWN_FOB_RANGE")> 0) then {
 	_placements = _placements 	+ [[180, 15]];
 	_categories = _categories 	+ ["Fortification"];
 };
-_headers = _headers 		+ ["MG Defense"];
-_classes = _classes 		+ ["O_HMG_01_High_F"];
-_prices = _prices 			+ [200];
-_placements = _placements 	+ [[180, 5]];
-_categories = _categories 	+ ["Defense"];
 
-_headers = _headers 		+ ["GL Defense"];
-_classes = _classes 		+ ["O_GMG_01_high_F"];
-_prices = _prices 			+ [350];
-_placements = _placements 	+ [[180, 5]];
-_categories = _categories 	+ ["Defense"];
-
-_headers = _headers 		+ ["AT Defense"];
-_classes = _classes 		+ ["O_static_AT_F"];
-_prices = _prices 			+ [900];
-_placements = _placements 	+ [[180, 5]];
-_categories = _categories 	+ ["Defense"];
-
-_headers = _headers 		+ ["AA Defense"];
-_classes = _classes 		+ ["O_static_AA_F"];
-_prices = _prices 			+ [800];
-_placements = _placements 	+ [[180, 5]];
-_categories = _categories 	+ ["Defense"];
-if (ISLAND != 1) then {
-_headers = _headers 		+ ["Mortar"];
-_classes = _classes 		+ ["O_Mortar_01_F"];
-_prices = _prices 			+ [10000];
-_placements = _placements 	+ [[180, 5]];
-_categories = _categories 	+ ["Defense"];
-};
 
 _headers = _headers 		+ ["Camo net"];
 _classes = _classes 		+ ["CamoNet_OPFOR_F"];
