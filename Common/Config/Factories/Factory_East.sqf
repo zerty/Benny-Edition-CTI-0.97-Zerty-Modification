@@ -26,7 +26,7 @@ missionNamespace setVariable [format["CTI_%1_Vehicles_Startup", _side], [
 		["Toolkit", 3],
 		["B_FieldPack_ocamo", 4],
 		["Binocular", 2]
-	]],
+	]]/*,
 	["O_MRAP_02_F", [
 		["firstaidkit", 10],
 		["30Rnd_556x45_Stanag", 15],
@@ -34,7 +34,7 @@ missionNamespace setVariable [format["CTI_%1_Vehicles_Startup", _side], [
 		["launch_RPG7_F", 2], ["RPG7_F", 6],
 		["Binocular", 1],
 		["Toolkit", 1]
-	]]
+	]]*/
 	//,	["O_Heli_Light_02_unarmed_F", []]
 ]];
 
