@@ -441,7 +441,7 @@ class Params {
 		title = $STR_CTI_SM_BASEP_M;
 		values[] = {0,-1,2,5,10,20,50,100};
 		texts[] = {$STR_CTI_DISABLED,"Hard Protection","Dmg reduced by 2","Dmg reduced by 5","Dmg reduced by 10","Dmg reduced by 20","Dmg reduced by 50","Dmg reduced by 100"};
-		default = -1;
+		default = 50;
 	};
 
 	class CTI_SM_PATROLS {
