@@ -15,7 +15,7 @@
 CTI_GET_MAGAZINES = {
 	private ["_magazines", "_well"];
 	params ["_weapon"];
-	
+
 	_magazines = [];
 	{
 		if (_x == "this") then {
@@ -219,7 +219,13 @@ CTI_UI_Gear_DisplayShoppingItems = {
 			if !(isNil "_get") then {
 				if (((_get select 0) select 0) <= _upgrade_gear) then { //--- Add the item if it's equal or below the upgrade level
 					_row = lbAdd [70108, format ["%1 -- ($%2)",getText(configFile >> _get select 2 >> _x >> 'displayName'), (_get select 0) select 1]];
-					lbSetPicture [70108, _row, getText(configFile >> _get select 2 >> _x >> 'picture')];
+					_dlc= getText(configFile >> _get select 2 >> _x >> 'DLC') ;
+					_dlcid = getNumber (configFile >> "CfgMods" >> _dlc >> "appId");
+					if (_dlcid in (getDLCs 1)||_dlcid == 0 || ( _get select 2) == "CfgMagazines") then {
+						lbSetPicture [70108, _row, getText(configFile >> _get select 2 >> _x >> 'picture')];
+					} else {
+						lbSetPicture [70108, _row, getText(configFile >> "CfgMods" >> _dlc >> 'picture')];
+					};
 					lbSetPictureColor [70108, _row, [1, 1, 1, 1]];
 					lbSetData [70108,_row, _x];
 				};

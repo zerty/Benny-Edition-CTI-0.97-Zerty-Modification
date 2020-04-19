@@ -76,7 +76,7 @@ CTI_UI_Purchase_FillUnitsList = {
 		if !(isNil '_var') then {
 			//--- Upgradeable?
 			_load = true;
-			if (_upgrade > -1) then {
+			if (_upgrade > -1 || CTI_Debug) then {
 				if (_upgrades select (_var select 5) < _var select CTI_UNIT_UPGRADE) then {_load = false};
 			};
 
@@ -85,7 +85,15 @@ CTI_UI_Purchase_FillUnitsList = {
 				if (_type== CTI_FTOWN) then {_cost=_cost*CTI_TOWNS_SHOPS};
 				_row = ((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 111007) lnbAddRow [format ["$%1",_cost] , _var select CTI_UNIT_LABEL];
 				((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 111007) lnbSetData [[_row, 0], _x];
-				((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 111007) lnbSetPicture [[_row, 0], _var select CTI_UNIT_PICTURE];
+				_dlc= getText(configFile >> "CfgVehicles" >> _x >> 'DLC') ;
+				_dlcid = getNumber (configFile >> "CfgMods" >> _dlc >> "appId");
+				if (_dlcid in (getDLCs 1)||_dlcid == 0 ) then {
+					((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 111007) lnbSetPicture [[_row, 0], _var select CTI_UNIT_PICTURE];
+				} else {
+					((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 111007) lnbSetPicture [[_row, 0], getText(configFile >> "CfgMods" >> _dlc >> 'picture')];
+				};
+
+
 				((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 111007) lnbSetPictureColor [[_row, 0],[1,1,1,1]];
 			};
 		};
