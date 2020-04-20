@@ -448,7 +448,7 @@ class Params {
 		title = $STR_CTI_SM_PATROLS;
 		values[] = {0,1};
 		texts[] = {$STR_CTI_DISABLED,$STR_CTI_ENABLED};
-		default = 1;
+		default = 0;
 	};
 	/*class CTI_SM_PATROLS_NUMBER {
 		title = "Zerty: Strategic: Patrols number";

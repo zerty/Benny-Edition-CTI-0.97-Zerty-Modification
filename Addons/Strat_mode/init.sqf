@@ -59,6 +59,9 @@ with missionNamespace do {
 	   	CTI_SM_Mines_script = compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Functions\SM_Mines.sqf";
 
 	   	TASKS_LOOP= compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Functions\TASKS_loop.sqf";
+
+	   	SM_ST_Init = compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Functions\SM_Map_Statics.sqf";
+
 };
 
 //Common stuff
@@ -372,6 +375,9 @@ if (CTI_IsServer) then {
 		};
 		// Tasks loop
 		{_x spawn TASKS_LOOP;} foreach [east,west];
+
+		//Statics
+		0 call SM_ST_Init;
 
 };
 
