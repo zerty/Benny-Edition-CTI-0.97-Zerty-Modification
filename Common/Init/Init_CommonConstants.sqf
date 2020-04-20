@@ -609,7 +609,7 @@ with missionNamespace do {
 	if (isNil 'CTI_BASEBUILDING') then {CTI_BASEBUILDING = 1}; //DOn
 	if (isNil 'CTI_TEAMSWAP') then {CTI_TEAMSWAP = 1}; //DOn
 	if (isNil 'CTI_TEAMSTACK') then {CTI_TEAMSTACK = 1}; //DOn
-	if (isNil 'CTI_MAX_MISSION_TIME') then {CTI_MAX_MISSION_TIME = 12}; //DOne
+	if (isNil 'CTI_MAX_MISSION_TIME') then {CTI_MAX_MISSION_TIME = 0}; //DOne
 	if (isNil 'CTI_VICTORY_HQ') then {CTI_VICTORY_HQ = 0}; //Done
 	if (isNil 'CTI_HALO_POLES') then {CTI_HALO_POLES = 1};
 	if (isNil 'CTI_PLAYERS_GROUPSIZE') then {CTI_PLAYERS_GROUPSIZE = 10}; //Done

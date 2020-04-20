@@ -18,11 +18,9 @@ switch (_type) do
 		[_veh, "I_crew_F", _group, CTI_RESISTANCE_ID] call CTI_CO_FNC_ManVehicle;
 		// remove fuel
 		_veh setFuel 0 ;
-
-
-
-
 	};
+
+
 	case "AT":
 	{
 		//Find location
