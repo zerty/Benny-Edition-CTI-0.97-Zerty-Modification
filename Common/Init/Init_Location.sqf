@@ -31,6 +31,7 @@ if (CTI_IsServer || CTI_IsHeadless) then {
 
 		if !((typeOf _town) ==  "Flagpole_F") then {
 			_flag= createVehicle ["Flagpole_F", getPos _town, [], 0, "CAN_COLLIDE"];
+			_flag setPosATL [getPos _flag select 0,getPos _flag select 1,0];
 			_flag allowDamage false;
 			_town setVariable ["cti_town_flag",_flag,true];
 		} else {
