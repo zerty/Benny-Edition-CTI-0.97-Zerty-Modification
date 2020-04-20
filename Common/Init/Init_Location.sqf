@@ -29,9 +29,14 @@ if (CTI_IsServer || CTI_IsHeadless) then {
 		_current_side = _sideID call CTI_CO_FNC_GetSideFromID;
 
 
-		_flag= createVehicle ["Flagpole_F", getPos _town, [], 0, "CAN_COLLIDE"];
-		_flag allowDamage false;
-		_town setVariable ["cti_town_flag",_flag,true];
+		if !((typeOf _town) ==  "Flagpole_F") then {
+			_flag= createVehicle ["Flagpole_F", getPos _town, [], 0, "CAN_COLLIDE"];
+			_flag allowDamage false;
+			_town setVariable ["cti_town_flag",_flag,true];
+		} else {
+		 	_town setVariable ["cti_town_flag",_town,true];
+		};
+
 
 
 		(_town getVariable ["cti_town_flag",objnull])  setFlagTexture ( _current_side call CTI_CO_FNC_GetSideFlag);
