@@ -30,5 +30,5 @@ while {!CTI_GameOver} do
 		true
 	}count SM_ST_Groups;
 
-	sleep 30;
+	sleep 10;
 };

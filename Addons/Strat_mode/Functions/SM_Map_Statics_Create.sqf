@@ -20,6 +20,7 @@ switch (_type) do
 			_veh setformdir  (random(360));
 			removeUniform _veh;
 			_veh forceAddUniform "U_I_GhillieSuit";
+			_veh  addWeapon "Laserdesignator_03";
 			_veh disableAI "PATH";
 			_veh disableAI "COVER";
 			_veh disableAI "SUPPRESSION";
