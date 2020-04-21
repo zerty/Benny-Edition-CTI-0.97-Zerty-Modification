@@ -7,7 +7,8 @@ while {!CTI_GameOver} do
 {
 	waitUntil {!isnil "SM_ST_Groups"};
 	{
-
+		_x setformdir  (random(360));
+		_x setCombatMode "YELLOW";
 
 		//rearm
 		{
@@ -20,13 +21,12 @@ while {!CTI_GameOver} do
 				_x addItemToBackpack "Titan_AA";
 	   			_x addItemToBackpack "Titan_AA";
 			};
+			if ( {(_x select 2) in [east,west]} count(_x nearTargets 2500) == 0  )  then {_x selectWeapon "Laserdesignator_03";};
 			true
 		} count (units _x);
 
 		//set active
-		_x setformdir  (random(360));
-		_x setCombatMode "RED";
-		_x  setBehaviourStrong "COMBAT";
+
 		true
 	}count SM_ST_Groups;
 
