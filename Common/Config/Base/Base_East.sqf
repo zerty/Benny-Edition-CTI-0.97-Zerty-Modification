@@ -261,7 +261,7 @@ _classes = _classes 		+ ["B_AAA_System_01_F"];
 _prices = _prices 			+ [25000];
 _placements = _placements 	+ [[180, 15]];
 _categories = _categories 	+ ["Defense"];
-
+if (ISLAND != 1) then {
 _headers = _headers 		+ [["Mk49 Spartan - Only on BASE Areas", [["DMG_Reduce", 10]]]];
 _classes = _classes 		+ ["B_SAM_System_01_F"];
 _prices = _prices 			+ [40000];
@@ -273,7 +273,7 @@ _classes = _classes 		+ ["B_SAM_System_02_F"];
 _prices = _prices 			+ [80000];
 _placements = _placements 	+ [[180, 15]];
 _categories = _categories 	+ ["Defense"];
-
+};
 _headers = _headers 		+ ["R-750 Cronus Radar - Only on BASE Areas"];
 _classes = _classes 		+ ["O_Radar_System_02_F"];
 _prices = _prices 			+ [20000];
