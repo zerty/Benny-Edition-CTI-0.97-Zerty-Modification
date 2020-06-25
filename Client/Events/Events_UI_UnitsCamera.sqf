@@ -94,7 +94,7 @@ switch (_action) do {
 		((uiNamespace getVariable "cti_dialog_ui_unitscam") displayCtrl 180005) ctrlSetPosition [SafeZoneX + (SafeZoneW * 0.805), SafeZoneY + (SafezoneH * 0.41), SafeZoneW * 0.19, SafeZoneH * 0.03]; ((uiNamespace getVariable "cti_dialog_ui_unitscam") displayCtrl 180005) ctrlCommit 0;
 		{((uiNamespace getVariable "cti_dialog_ui_unitscam") displayCtrl _x) ctrlSetPosition [SafeZoneX + (SafeZoneW * 0.805), SafeZoneY + (SafezoneH * 0.45), SafeZoneW * 0.18, SafeZoneH * 0.15]; ((uiNamespace getVariable "cti_dialog_ui_unitscam") displayCtrl _x) ctrlCommit 0} forEach [180006, 180101];
 
-		if (player call CTI_CL_FNC_IsPlayerCommander) then {
+		if (call CTI_CL_FNC_IsPlayerCommander) then {
 			((uiNamespace getVariable "cti_dialog_ui_unitscam") displayCtrl 180023) ctrlSetPosition [SafeZoneX + (SafeZoneW * 0.01), SafeZoneY + (SafeZoneH * 0.70), SafeZoneW * 0.14, SafeZoneH * 0.04]; ((uiNamespace getVariable "cti_dialog_ui_unitscam") displayCtrl 180023) ctrlCommit 0; //--- Bring back the button!
 		};
 
@@ -244,7 +244,7 @@ switch (_action) do {
 	case "onUnitDisband": {
 		_who = uiNamespace getVariable "cti_dialog_ui_unitscam_focus";
 
-		if (alive _who && !(isPlayer _who) && ((player == leader _who) || (!(isPlayer leader _who) && player call CTI_CL_FNC_IsPlayerCommander))) then {
+		if (alive _who && !(isPlayer _who) && ((player == leader _who) || (!(isPlayer leader _who) && call CTI_CL_FNC_IsPlayerCommander))) then {
 			deleteVehicle _who;
 		};
 	};
@@ -252,7 +252,7 @@ switch (_action) do {
 		_who = uiNamespace getVariable "cti_dialog_ui_unitscam_focus";
 		_dialog = uiNamespace getVariable 'cti_dialog_ui_unitscam';
 		if (alive _who ) then {
-			if ((player == leader _who) || !(isPlayer leader _who) && player call CTI_CL_FNC_IsPlayerCommander )then {
+			if ((player == leader _who) || !(isPlayer leader _who) && call CTI_CL_FNC_IsPlayerCommander) then {
 				_who spawn {
 					waitUntil {cameraOn == player};
 					sleep 0.5;
@@ -268,7 +268,7 @@ switch (_action) do {
 		_who_vehicle = vehicle _who;
 		if (alive _who && speed _who_vehicle < 5 && (getPos _who_vehicle select 2) < 5 && !isPlayer _who) then {
 			_unflip = false;
-			if (player call CTI_CL_FNC_IsPlayerCommander) then {
+			if (call CTI_CL_FNC_IsPlayerCommander) then {
 				_unflip = true
 			} else {
 				if (_who in units player) then {_unflip = true};
