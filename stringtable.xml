@@ -580,7 +580,7 @@
 			<Key ID="STR_CTI_TOWNS_RESISTANCE_GROUPS_RATIO">
 				<Original>Zerty: TOWNS: Resistance difficulty</Original>
 				<Russian>Уровень сопротивления в городах</Russian>
-			</Key>			
+			</Key>
 			<Key ID="STR_CTI_TOWNS_RESISTANCE_HEAVY">
 				<Original>Yoshi_E: TOWNS: Heavy vehicles in towns</Original>
 				<Russian>Тяжелая техника в городах</Russian>
@@ -592,7 +592,7 @@
 			<Key ID="STR_CTI_SHOPS_HEAVY">
 				<Original>Yoshi_E: SHOP: Heavy Vehicles/Equipment</Original>
 				<Russian>Тяжелая техника / Оборудование</Russian>
-			</Key>			
+			</Key>
 			<Key ID="STR_CTI_TOWNS_SHOPS">
 				<Original>Zerty: TOWNS: Shop price ratio</Original>
 				<Russian>Во сколько раз покупки в городах дороже, чем на базе</Russian>
@@ -944,7 +944,7 @@
 			<Key ID="STR_Icon_SlatCage">
 				<Original>Slat Cage $1500</Original>
 				<Russian>ламельная клетка $1500</Russian>
-			</Key>			
+			</Key>
 			<Key ID="STR_Icon_Reset">
 				<Original>Reset AI Crew</Original>
 				<Russian>Сбросить AI Crew</Russian>
@@ -2108,6 +2108,10 @@
 			<Key ID="STR_Common_CreateUnit_Remote_Control">
 				<Original>&lt;t color='#ff9900'&gt;Remote Control&lt;/t&gt;</Original>
 				<Russian>&lt;t color='#ff9900'&gt;Удаленное Управление&lt;/t&gt;</Russian>
+			</Key>
+			<Key ID="STR_Common_CreateUnit_Land">
+				<Original>&lt;t color='#ffff80'&gt;Land&lt;/t&gt;</Original>
+				<Russian>&lt;t color='#ffff80'&gt;приземлиться&lt;/t&gt;</Russian>
 			</Key>
 	</Package>
 	<Package name="Functions_UI_UpgradeMenu">
