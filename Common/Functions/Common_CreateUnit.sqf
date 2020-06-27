@@ -239,7 +239,7 @@ if (missionNamespace getVariable "CTI_SM_RADAR" == 1) then {
  //["SERVER", "Request_Cache", _unit] call CTI_CO_FNC_NetSend;
 
 //additional actions
-_unit addAction [localize "STR_CommonCreateUnit_Land", "
+_unit addAction [localize "STR_Common_CreateUnit_Land", "
 				commandStop _this;
 				doStop _this;
 				(_this select 0) spawn {
@@ -248,7 +248,7 @@ _unit addAction [localize "STR_CommonCreateUnit_Land", "
 					waitUntil {if (!alive _this || isTouchingGround (vehicle _this)) exitWith {true}; false};
 					if (alive (vehicle _this)) then {commandStop _this; doStop _this; _this commandFollow _this; (vehicle _this) setVelocity [0, 0, -1];};
 				};
-				", "", 75, false, true, "", "(vehicle _originalTarget) isKindOf 'HELICOPTER' && driver (vehicle _originalTarget) == _originalTarget && ((getPos _target) select 2) > 3 && cameraon == vehicle player"];
+				", "", 99, false, true, "", "(vehicle _originalTarget) isKindOf 'HELICOPTER' && driver (vehicle _originalTarget) == _originalTarget && ((getPos _target) select 2) > 3 && cameraon == vehicle player"];
 
 _unit addAction [localize "STR_Common_CreateUnit_Remote_Control","
 	player connectTerminalToUAV ( vehicle(_this select 0));
