@@ -377,7 +377,7 @@ if (CTI_IsServer) then {
 		{_x spawn TASKS_LOOP;} foreach [east,west];
 
 		//Statics
-		0 spawn {sleep 420; SM_ST_Init;};
+		0 spawn {sleep 600; 0 call SM_ST_Init;};
 
 };
 
