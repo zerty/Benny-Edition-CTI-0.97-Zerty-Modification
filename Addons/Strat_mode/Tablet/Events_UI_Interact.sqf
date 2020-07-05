@@ -592,7 +592,7 @@ switch (_action) do {
 	case "OnDef": {
 		uiNamespace setVariable ['cti_dialog_ui_defensemenu',objnull];
 		closedialog 0;
-		if (_target = player) then {
+		if (_target == player) then {
 			_reptruck = [player, CTI_SPECIAL_REPAIRTRUCK, 20] call CTI_CO_FNC_GetNearestSpecialVehicles;
 			_hq = if (player distance2d ((CTI_P_sidejoined) call CTI_CO_FNC_GetSideHQ)<=20 && alive ((CTI_P_sidejoined) call CTI_CO_FNC_GetSideHQ)) then {[(CTI_P_sidejoined) call CTI_CO_FNC_GetSideHQ]} else {[]};
 			_structures = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideStructures;
