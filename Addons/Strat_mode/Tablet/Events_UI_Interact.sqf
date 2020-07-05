@@ -596,7 +596,7 @@ switch (_action) do {
 			_reptruck = [player, CTI_SPECIAL_REPAIRTRUCK, 20] call CTI_CO_FNC_GetNearestSpecialVehicles;
 			_hq = if (player distance2d ((CTI_P_sidejoined) call CTI_CO_FNC_GetSideHQ)<=20 && alive ((CTI_P_sidejoined) call CTI_CO_FNC_GetSideHQ)) then {[(CTI_P_sidejoined) call CTI_CO_FNC_GetSideHQ]} else {[]};
 			_structures = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideStructures;
-			_repairs=  [CTI_REPAIR, player, _structures, CTI_BASE_AREA_RANGE] call CTI_CO_FNC_GetClosestStructure);
+			_repairs = [CTI_REPAIR, player, _structures, CTI_BASE_AREA_RANGE] call CTI_CO_FNC_GetClosestStructure;
 			_total = _reptruck+_hq+_repairs;
 			_target=[player, _total] call CTI_CO_FNC_GetClosestEntity;
 		};
