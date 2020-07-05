@@ -27,7 +27,7 @@ if (CTI_IsServer || CTI_IsHeadless) then {
 		_town setVariable ["CTI_Neigh",[],true];
 		_town setVariable ["cti_structure_type",CTI_FTOWN,true];
 		_current_side = _sideID call CTI_CO_FNC_GetSideFromID;
-
+		_town setPosATL [( (getPosATL _town) select 0 ),( (getPosATL _town) select 1),0];
 
 		if !((typeOf _town) ==  "Flagpole_F") then {
 			_flag= createVehicle ["Flagpole_F", getPos _town, [], 0, "CAN_COLLIDE"];
