@@ -1781,7 +1781,7 @@ _i = _i		+ ["NVGoggles_tna_F"];
 _u = _u		+ [1];
 _p = _p		+ [30];
 
-_i = _i		+ ["NVGogglesB_grn_F"];
+/*_i = _i		+ ["NVGogglesB_grn_F"];
 _u = _u		+ [3];
 _p = _p		+ [500];
 
@@ -1791,7 +1791,7 @@ _p = _p		+ [500];
 
 _i = _i		+ ["NVGogglesB_blk_F"];
 _u = _u		+ [3];
-_p = _p		+ [500];
+_p = _p		+ [500];*/
 
 _i = _i		+ ["Rangefinder"];
 _u = _u		+ [1];
