@@ -3,6 +3,21 @@ _last_running = -1;
 _last_upgrades_check = -1;
 _last_upgrades_tcheck = -1;
 
+_levels_orig = (missionNamespace getVariable Format["CTI_%1_UPGRADES_LEVELS", CTI_P_SideJoined]);
+_levels =+ _levels_orig;
+_to_delete = [];
+_n = 0;
+{
+	if (!_x) then {_to_delete pushBack _n;};
+	_n = _n + 1;
+	true
+} count (missionNamespace getVariable format["CTI_%1_UPGRADES_ENABLED", CTI_P_SideJoined]);
+
+for "_i" from 0 to (count _to_delete) do
+{
+  _levels deleteAt ((_to_delete select _i)-_i);
+};
+
 while { true } do {
 	if (isNil {uiNamespace getVariable "cti_dialog_ui_upgrademenu"}) exitWith {}; //--- Menu is closed.
 
@@ -20,14 +35,20 @@ while { true } do {
 
 	if (time - _last_upgrades_check > .75) then {
 		_last_upgrades_check = time;
-		_upgrades = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideUpgrades;
 		_need_reload = false;
+
+		_upgrades_orig = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideUpgrades;
+		_upgrades =+ _upgrades_orig;
+		for "_i" from 0 to (count _to_delete) do
+		{
+		  _upgrades deleteAt ((_to_delete select _i)-_i);
+		};
 
 		for '_i' from 0 to ((lnbSize 250002) select 0)-1 do {
 			_value = lnbValue[250002, [_i, 0]];
 			if ((_upgrades select _i) != _value) then {
 				if (_i == _selected) then {_need_reload = true};
-				((uiNamespace getVariable "cti_dialog_ui_upgrademenu") displayCtrl 250002) lnbSetText [[_i, 0], format["%1/%2", _upgrades select _i, (missionNamespace getVariable Format["CTI_%1_UPGRADES_LEVELS", CTI_P_SideJoined]) select _i]];
+				((uiNamespace getVariable "cti_dialog_ui_upgrademenu") displayCtrl 250002) lnbSetText [[_i, 0], format["%1/%2", _upgrades select _i, _levels select _i]];
 				((uiNamespace getVariable "cti_dialog_ui_upgrademenu") displayCtrl 250002) lnbSetValue [[_i, 0], _upgrades select _i];
 			};
 		};
