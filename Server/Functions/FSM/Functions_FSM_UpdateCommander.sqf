@@ -173,6 +173,11 @@ CTI_FSM_UpdateCommander_GetStructureEmplacement = {
 		_i = _i + 1;
 	};
 
+	// set first base area on first building position if need
+	if ((count _position) > 0 && (count (_sideLogic getVariable "cti_structures_areas")) == 0) then {
+		_sideLogic setVariable ["cti_structures_areas", [[_position select 0, _position select 1]], true];
+	};
+
 	_position set [2, 0];
 	_position
 };
