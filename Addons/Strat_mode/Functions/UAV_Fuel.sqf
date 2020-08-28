@@ -9,7 +9,7 @@ private ["_uav","_last_fuel","_newfuel"];
 _uav=_this;
 _last_fuel=fuel _uav;
 
-while {!CTI_GameOver && alive _uav} do {
+while {!CTI_GameOver && alive _uav && _uav isKindOf "Air"} do {
 	if (local _uav) then {
 		if (fuel _uav <0.05) then {_uav setDammage 1};
 		if (fuel _uav < _last_fuel) then {
