@@ -5,7 +5,7 @@
 
 while {!CTI_GameOver} do
 {
-	waitUntil {!isnil "SM_ST_Groups"};
+	waitUntil {CTI_InitTowns && !isnil "SM_ST_Groups"};
 	{
 		_x setformdir  (random(360));
 		_x setCombatMode "YELLOW";
@@ -22,6 +22,7 @@ while {!CTI_GameOver} do
 	   			_x addItemToBackpack "Titan_AA";
 			};
 			if ( {(_x select 2) in [east,west]} count(_x nearTargets 2500) == 0  )  then {_x selectWeapon "Laserdesignator_03";};
+			if ((([_x, CTI_RESISTANCE_ID] call CTI_CO_FNC_GetClosestFriendlyTown) != ((_x) call CTI_CO_FNC_GetClosestTown)) && !(((_x) call CTI_CO_FNC_GetClosestTown) getVariable "cti_town_resistance_active")) then {deleteVehicle _x;};
 			true
 		} count (units _x);
 
@@ -30,5 +31,5 @@ while {!CTI_GameOver} do
 		true
 	}count SM_ST_Groups;
 
-	sleep 10;
+	sleep 30;
 };
