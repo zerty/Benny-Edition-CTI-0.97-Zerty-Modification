@@ -22,6 +22,8 @@ while {!CTI_GameOver} do
 	   			_x addItemToBackpack "Titan_AA";
 			};
 			if ( {(_x select 2) in [east,west]} count(_x nearTargets 2500) == 0  )  then {_x selectWeapon "Laserdesignator_03";};
+			_town = _x getVariable "cti_duty_place";
+			if (((_town getVariable "cti_town_sideID") != CTI_RESISTANCE_ID) && !(_town getVariable "cti_town_resistance_active")) then {deleteVehicle _x;};
 			true
 		} count (units _x);
 
@@ -30,5 +32,5 @@ while {!CTI_GameOver} do
 		true
 	}count SM_ST_Groups;
 
-	sleep 10;
+	sleep 30;
 };
