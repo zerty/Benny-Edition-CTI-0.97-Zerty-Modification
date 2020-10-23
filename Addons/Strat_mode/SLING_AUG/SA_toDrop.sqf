@@ -10,7 +10,15 @@ if (!(_target iskindof "Helicopter") || (isNull  (getSlingLoad _target) && count
 _drop=objNull;
 _attached=false;
 
-if (count (attachedObjects _target) >=1) then {_drop=(attachedObjects _target) select 0;_attached=true;};
+if (count (attachedObjects _target) >=1) then {
+	{
+		if !(isNull _x ) then {
+			_drop=_x;
+			_attached=true;
+		};
+	} forEach (attachedObjects _target);
+
+};
 if !(isNull  (getSlingLoad _target)) then {_drop=getSlingLoad _target};
 
 if(!(isNull _drop)) then {
@@ -21,7 +29,7 @@ if(!(isNull _drop)) then {
 		_target enableRopeAttach true;
 		_target setmass (_target getvariable "initial_mass");
 		_target setcenterofmass (_target getvariable "initial_COM");
-		
+
 		[_target , _drop] spawn {
 			params ["_target", "_drop"];
 			sleep 2;
