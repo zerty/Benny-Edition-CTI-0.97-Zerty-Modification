@@ -305,8 +305,8 @@ class Params {
 	};
 	class CTI_BASEBUILDING {
 		title = $STR_CTI_BASEBUILDING;
-		values[] = {0,1};
-		texts[] = {$STR_CTI_BASEBUILDING_WK,$STR_CTI_BASEBUILDING_PL};
+		values[] = {0,1,2};
+		texts[] = {$STR_CTI_BASEBUILDING_WK,$STR_CTI_BASEBUILDING_PL,$STR_CTI_BASEBUILDING_BOTH};
 		default = 1;
 	};
 	class CTI_GAMEPLAY_DARTER {

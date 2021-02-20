@@ -489,6 +489,10 @@
 				<Original>Players</Original>
 				<Russian>Игроки</Russian>
 			</Key>
+			<Key ID="STR_CTI_BASEBUILDING_BOTH">
+				<Original>Both</Original>
+				<Russian>обе</Russian>
+			</Key>
 			<Key ID="STR_CTI_GAMEPLAY_DARTER">
 				<Original>Zerty: GAMEPLAY: Darter Range limitation</Original>
 				<Russian>Дальность связи с маленькими БПЛА</Russian>

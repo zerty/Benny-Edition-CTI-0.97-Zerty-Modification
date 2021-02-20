@@ -19,7 +19,7 @@ while { true } do {
 		((uiNamespace getVariable "cti_dialog_ui_buildmenu") displayCtrl 100008) ctrlSetStructuredText (parseText format["Resources: <t color='%2'>$%1</t>", _funds, CTI_P_Coloration_Money]);
 	};
 
-	if (_last_workercount != _count&& (missionnamespace getVariable "CTI_BASEBUILDING") < 1) then {
+	if (_last_workercount != _count&& (missionnamespace getVariable "CTI_BASEBUILDING") != 1) then {
 		((uiNamespace getVariable "cti_dialog_ui_buildmenu") displayCtrl 100009) ctrlSetStructuredText (parseText format["Workers: <t color='#66baff'>%1</t>/%2", _count, CTI_BASE_WORKERS_LIMIT]);
 	};
 
