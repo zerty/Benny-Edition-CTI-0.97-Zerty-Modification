@@ -1,11 +1,13 @@
 SM_ST_Create = compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Functions\SM_Map_Statics_Create.sqf";
 SM_ST_Loop = compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Functions\SM_Map_Statics_Loop.sqf";
 
-SM_ST_PARAM=[["AT",10],["AA",10]];
+_towns = []+CTI_Towns;
+
+_number = ceil ((count _towns)/6);
+
+SM_ST_PARAM=[["AT",_number],["AA",_number]];
 
 SM_ST_Groups=[];
-
-_towns = []+CTI_Towns;
 
 
 {
