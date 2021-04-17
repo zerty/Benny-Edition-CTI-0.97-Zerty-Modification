@@ -6,7 +6,7 @@ respawnDialog = false;
 //--- Require briefing.html to show up.
 onLoadMission = "BECTI - Zerty/HTom/Yoshi_E 1.3.5.3";
 onLoadMissionTime = false;
-onLoadName = "BECTI - Zerty/HTom/Yoshi_E";
+onLoadName = "BECTI Altis";
 
 briefingName = "BECTI - Zerty/HTom/Yoshi_E 1.3.5.3";
 
