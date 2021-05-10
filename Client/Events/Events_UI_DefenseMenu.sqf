@@ -7,6 +7,11 @@ switch (_action) do {
 		if (isNil 'CTI_P_WallsAutoAlign') then { CTI_P_WallsAutoAlign = true };
 		if (CTI_P_WallsAutoAlign) then { ctrlSetText [200003, "Auto-Align Walls: On"] } else { ctrlSetText [200003, "Auto-Align Walls: Off"] };
 
+		if (isNil 'CTI_P_DefensesAutoManning') then { CTI_P_DefensesAutoManning = false };
+		_def_count=count (units ((CTI_P_SideLogic getVariable ["cti_defensive_team",grpNull])));
+		if (CTI_P_DefensesAutoManning) then { ctrlSetText [200004, format [localize "STR_Defenses_On",ctrlText ((uiNamespace getVariable "cti_dialog_ui_defensemenu") displayCtrl 200004),_def_count,CTI_BASE_DEFENSES_AUTO_LIMIT ]] } else { ctrlSetText [200004,ctrlSetText [200004, format [localize "STR_Defenses_Off",ctrlText ((uiNamespace getVariable "cti_dialog_ui_defensemenu") displayCtrl 200004),_def_count,CTI_BASE_DEFENSES_AUTO_LIMIT ]] ] };
+		if !(call CTI_CL_FNC_IsPlayerCommander) then { ((uiNamespace getVariable "cti_dialog_ui_defensemenu") displayCtrl 200004) ctrlEnable false; };
+
 		{
 			_var = missionNamespace getVariable _x;
 
@@ -48,6 +53,11 @@ switch (_action) do {
 	case "onAutoAlign": {
 		CTI_P_WallsAutoAlign = !CTI_P_WallsAutoAlign;
 		if (CTI_P_WallsAutoAlign) then { ctrlSetText [200003, "Auto-Align Walls: On"] } else { ctrlSetText [200003, "Auto-Align Walls: Off"] };
+	};
+	case "onAutoManning": {
+		CTI_P_DefensesAutoManning = !CTI_P_DefensesAutoManning;
+		_def_count=count (units ((CTI_P_SideLogic getVariable ["cti_defensive_team",grpNull])));
+		if (CTI_P_DefensesAutoManning) then { ctrlSetText [200004, format [localize "STR_Defenses_On",ctrlText ((uiNamespace getVariable "cti_dialog_ui_defensemenu") displayCtrl 200004),_def_count,CTI_BASE_DEFENSES_AUTO_LIMIT ]] } else { ctrlSetText [200004,ctrlSetText [200004, format [localize "STR_Defenses_Off",ctrlText ((uiNamespace getVariable "cti_dialog_ui_defensemenu") displayCtrl 200004),_def_count,CTI_BASE_DEFENSES_AUTO_LIMIT ]] ] };
 	};
 	case "onUndoDefense": {
 		if !(isNull CTI_P_LastDefenseBuilt) then {

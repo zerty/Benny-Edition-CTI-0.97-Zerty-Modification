@@ -1961,6 +1961,15 @@ class CTI_RscTabletDefenseMenu {
 			text = "";
 			action = "['onAutoAlign'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_DefenseMenu.sqf'";
 		};
+		class CTI_Menu_Control_AutoManning : CTI_Menu_Control_Undo {
+			idc = 200004;
+
+			y = "SafeZoneY+safezoneH*(0.280+0.06+0.005*4+0.04*3)";
+
+			text = "";
+			tooltip = $STR_Defenses_Tooltip;
+			action = "['onAutoManning'] call compile preprocessFileLineNumbers 'Client\Events\Events_UI_DefenseMenu.sqf'";
+		};
 
 		class CTI_Menu_Control_BuildingList : RscListNBox {
 			idc = 200007;
