@@ -225,6 +225,18 @@ _prices = [];
 _placements = [];
 _categories = [];
 
+_headers = _headers 		+ ["M2 HMG .50 (low)"];
+_classes = _classes 		+ ["O_G_HMG_02_F"];
+_prices = _prices 			+ [150];
+_placements = _placements 	+ [[180, 5]];
+_categories = _categories 	+ ["Defense"];
+
+_headers = _headers 		+ ["M2 HMG .50 (raised)"];
+_classes = _classes 		+ ["O_G_HMG_02_high_F"];
+_prices = _prices 			+ [150];
+_placements = _placements 	+ [[180, 5]];
+_categories = _categories 	+ ["Defense"];
+
 _headers = _headers 		+ ["MG Defense"];
 _classes = _classes 		+ ["O_HMG_01_High_F"];
 _prices = _prices 			+ [200];
