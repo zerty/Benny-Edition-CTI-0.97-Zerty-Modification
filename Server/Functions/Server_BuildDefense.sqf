@@ -127,6 +127,10 @@ if (_defense isKindOf "B_supplyCrate_F") then {
 	clearWeaponCargoGlobal _defense;
 };
 
+if (_defense isKindOf "O_G_HMG_02_high_F" || _defense isKindOf "B_G_HMG_02_high_F" || _defense isKindOf "O_G_HMG_02_F" || _defense isKindOf "B_G_HMG_02_F") then {
+	[_defense, nil, ["Hide_Rail",0,"Hide_Shield",0]] call BIS_fnc_initVehicle;
+};
+
 if (_defense isKindOf "B_AAA_System_01_F" || _defense isKindOf "B_SAM_System_01_F" || _defense isKindOf "B_SAM_System_02_F") then {
 	_def_pos = getPos _defense;
 	_defense setPos [0,0,9000];
