@@ -56,7 +56,7 @@ if (_skill < 0.05) then {
 };
 
 // Set how the skill is affecting each skill type.
-_aimingAccuracyLevel = _skill * 0.7;
+_aimingAccuracyLevel = _skill * 0.6;
 _aimingShakeLevel    = _skill * 1.0;
 _aimingSpeedLevel    = _skill * 0.7;
 _spotDistanceLevel   = _skill * 2.0;
