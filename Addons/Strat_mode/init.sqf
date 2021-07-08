@@ -203,6 +203,7 @@ if (CTI_IsServer) then {
 
 
 		CTI_PVF_Server_Addeditable= {
+		(_this select 0) addCuratorAddons (configSourceAddonList (configFile >> "CfgVehicles" >> typeof (_this select 1)));
     	(_this select 0) addCuratorEditableObjects [[_this select 1],true] ;
 		};
 

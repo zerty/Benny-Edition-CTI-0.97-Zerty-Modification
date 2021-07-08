@@ -219,6 +219,7 @@ if !( isNil "ADMIN_ZEUS"  ) then {
 	if !(isServer) then {
 		["SERVER", "Server_Addeditable",[ADMIN_ZEUS,_unit]] call CTI_CO_FNC_NetSend;
 	} else {
+		ADMIN_ZEUS addCuratorAddons (configSourceAddonList (configFile >> "CfgVehicles" >> typeof _unit));
 		ADMIN_ZEUS addCuratorEditableObjects [[_unit],true] ;
 	};
 };

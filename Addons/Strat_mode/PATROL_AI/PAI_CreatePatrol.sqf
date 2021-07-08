@@ -20,7 +20,7 @@ if (count _roads >0 ) then {
 	//waitUntil {!isnull _group && !isNull _v};
 	_group=createGroup resistance;
 	[_v,_group] call bis_fnc_spawncrew;
-	if !( isNil "ADMIN_ZEUS") then { ADMIN_ZEUS addCuratorEditableObjects [[_v],true];};
+	if !( isNil "ADMIN_ZEUS") then {ADMIN_ZEUS addCuratorAddons (configSourceAddonList (configFile >> "CfgVehicles" >> typeof _v)); ADMIN_ZEUS addCuratorEditableObjects [[_v],true];};
 	_group setvariable ["defending",false,true];
 	["SERVER", "Request_HandleAction", ["empty", [_v]]] call CTI_CO_FNC_NetSend;
 	diag_log format [":: Patrols :: Creating %1 :: %2",_v,position _pos];
