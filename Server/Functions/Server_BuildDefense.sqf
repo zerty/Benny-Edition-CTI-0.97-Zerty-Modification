@@ -164,6 +164,9 @@ if (missionNamespace getVariable "CTI_SM_RADAR" == 1) then {
 };
 
 
-if !( isNil "ADMIN_ZEUS") then { ADMIN_ZEUS addCuratorEditableObjects [[_defense],true];};
+if !( isNil "ADMIN_ZEUS") then {
+	ADMIN_ZEUS addCuratorAddons (configSourceAddonList (configFile >> "CfgVehicles" >> typeof _defense));
+	ADMIN_ZEUS addCuratorEditableObjects [[_defense],true];
+};
 
 _defense
