@@ -285,7 +285,11 @@ switch (_action) do {
 			    };
 			    case 22: { // CTI_Icon_rephq
 			    	if ((missionNamespace getVariable "CTI_BASE_HQ_REPAIR") > 0 && (missionNamespace getVariable [format ["%1", typeOf _target],["","","","","","","",""]]) select 7 == "service-repairtruck" &&  !alive(CTI_P_SideJoined call CTI_CO_FNC_GetSideHQ) ) then  {
-			    		if ((CTI_P_SideJoined call CTI_CO_FNC_GetSideHQ) distance _target <= CTI_BASE_HQ_REPAIR_RANGE && (0 call CTI_CL_FNC_GetPlayerFunds) >= CTI_BASE_HQ_REPAIR_PRICE && !(missionNamespace getVariable [format["CTI_HQ_Repair_Lock_%1", CTI_P_SideJoined], false])) then {
+			    		_base_repair_HQ_cost = CTI_BASE_HQ_REPAIR_PRICE;
+						//Reduce repair cost in early game
+						if (scoreSide CTI_P_SideJoined <= 1000) then {_base_repair_HQ_cost = round(_base_repair_HQ_cost / 2);};
+						if (scoreSide CTI_P_SideJoined <= 500) then {_base_repair_HQ_cost = round(_base_repair_HQ_cost / 4);};
+			    		if ((CTI_P_SideJoined call CTI_CO_FNC_GetSideHQ) distance _target <= CTI_BASE_HQ_REPAIR_RANGE && (0 call CTI_CL_FNC_GetPlayerFunds) >= _base_repair_HQ_cost && !(missionNamespace getVariable [format["CTI_HQ_Repair_Lock_%1", CTI_P_SideJoined], false])) then {
 			    			((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTextColor [0,0,1,1];
 			    		}else {
 			    			((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTextColor [0.3,0.3,0.3,1];
