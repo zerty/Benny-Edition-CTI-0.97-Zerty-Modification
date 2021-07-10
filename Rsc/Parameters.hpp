@@ -307,7 +307,7 @@ class Params {
 		title = $STR_CTI_BASEBUILDING;
 		values[] = {0,1,2};
 		texts[] = {$STR_CTI_BASEBUILDING_WK,$STR_CTI_BASEBUILDING_PL,$STR_CTI_BASEBUILDING_BOTH};
-		default = 1;
+		default = 2;
 	};
 	class CTI_GAMEPLAY_DARTER {
 		title = $STR_CTI_GAMEPLAY_DARTER;
@@ -473,7 +473,7 @@ class Params {
 		title = $STR_CTI_SM_STRATEGIC;
 		values[] = {0,1};
 		texts[] = {$STR_CTI_DISABLED,$STR_CTI_ENABLED};
-		default = 1;
+		default = 0;
 	};
 	class CTI_SM_STRATEGIC_NB {
 		title = $STR_CTI_SM_STRATEGIC_NB;
