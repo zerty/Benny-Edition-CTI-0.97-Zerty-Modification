@@ -172,7 +172,7 @@ _classes = _classes 		+ [["Land_i_House_Small_03_V1_F", "Land_House_Small_03_V1_
 _prices = _prices 			+ [3000];
 _times = _times 			+ [90];
 _placements = _placements 	+ [[180, 20]];
-_specials = _specials		+ [[["Connected"],["DMG_Alternative"],["DMG_Reduce", 0.2]]];
+_specials = _specials		+ [[["Connected"],["DMG_Alternative"],["DMG_Reduce", 0.5]]];
 
 _headers = _headers 		+ [[CTI_HEAVY, localize "STR_Heavy_Vehicle_Factory", localize "STR_Heavy_Vehicle_Factory_1"]];
 _classes = _classes 		+ [["Land_Cargo_HQ_V1_F", "Land_Cargo_HQ_V1_ruins_F"]];
