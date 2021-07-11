@@ -144,7 +144,7 @@ switch (_action) do {
 			    	};
 			    };
 				case 12: { // CTI_Icon_Def // ok
-			    	if (vehicle player == player && alive _target) then {
+			    	if (vehicle player == player && alive _target && !(player getvariable ["REV_UNC",false])) then {
 			    		_reptrucknear = if (count([player, CTI_SPECIAL_REPAIRTRUCK, 20] call CTI_CO_FNC_GetNearestSpecialVehicles)>0) then {true} else {false};
 						_hqnear = if (player distance2d ((CTI_P_sidejoined) call CTI_CO_FNC_GetSideHQ)<=20 && alive ((CTI_P_sidejoined) call CTI_CO_FNC_GetSideHQ)) then {true} else {false};
 						_structures = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideStructures;
@@ -168,7 +168,7 @@ switch (_action) do {
 					if ((_target iskindof "Car" || _target iskindof "Tank" || _target iskindof "Air"|| _target iskindof "Ship" || _target iskindof "Wheeled_APC_F" || _target iskindof "Truck_F") && !(_target iskindof "parachutebase" || _target iskindof "UAV_01_base_F")) then {
 					_hps = {_x != 0} count (getAllHitPointsDamage _target select 2);
 					};
-			    	if (vehicle player == player && _hps > 0 && (_target iskindof "Car" || _target iskindof "Tank" || _target iskindof "Air"|| _target iskindof "Ship" || _target iskindof "Wheeled_APC_F"|| _target iskindof "Truck_F") && alive _target) then  {
+			    	if (vehicle player == player && _hps > 0 && (_target iskindof "Car" || _target iskindof "Tank" || _target iskindof "Air"|| _target iskindof "Ship" || _target iskindof "Wheeled_APC_F"|| _target iskindof "Truck_F") && alive _target && !(player getvariable ["REV_UNC",false])) then  {
 
 
 		    			if ((({_x == "Toolkit"} count (backpackItems player)) + ({_x == "Toolkit"} count (vestItems player)) + ({_x == "Toolkit"} count (itemCargo _target))) >0) then {
@@ -321,7 +321,7 @@ switch (_action) do {
 			    case 25: { // CTI_Icon_pack
 			    	_hqs=[];
 					//{_hqs set [count _hqs, _x call CTI_CO_FNC_GetSideHQ];true} count [east,west];
-			    	if (vehicle player == player && (_target iskindof "Tank" || _target iskindof "Wheeled_APC_F" || _target iskindof "Truck_F" || (typeof _target) in ["Land_Pod_Heli_Transport_04_box_F","B_Slingload_01_Cargo_F"])&& alive _target && !(_target in _hqs || _target isKindOf "UGV_02_Base_F")) then  {
+			    	if (vehicle player == player && !(player getvariable ["REV_UNC",false]) && (_target iskindof "Tank" || _target iskindof "Wheeled_APC_F" || _target iskindof "Truck_F" || (typeof _target) in ["Land_Pod_Heli_Transport_04_box_F","B_Slingload_01_Cargo_F"])&& alive _target && !(_target in _hqs || _target isKindOf "UGV_02_Base_F")) then  {
 			    		if (({alive _x} count (crew _target) == 0) && abs (speed _target) <1 && locked _target <2 ) then {
 			    			((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTextColor [0,0,1,1];
 			    		} else {
@@ -362,7 +362,7 @@ switch (_action) do {
 			    	};
 			    };
 			    case 28: { // CTI_Icon_build
-			    	if (vehicle player == player && _target in (CTI_P_SideLogic getVariable ["cti_structures_wip",[]])&& (missionNamespace getVariable "CTI_BASEBUILDING") > 0) then  {
+			    	if (vehicle player == player && !(player getvariable ["REV_UNC",false]) && _target in (CTI_P_SideLogic getVariable ["cti_structures_wip",[]])&& (missionNamespace getVariable "CTI_BASEBUILDING") > 0) then  {
 			    		((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTextColor [0,0,1,1];
 			    		((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetPosition [_base_x+(_offset*_base_w),_base_y+_h_offset*_base_h,_base_w,_base_h];
 			    		_offset=_offset+1;
@@ -371,7 +371,7 @@ switch (_action) do {
 			    	};
 			    };
 			    case 29: { // CTI_Icon_srep
-			    	if (vehicle player == player && _target in (CTI_P_SideLogic getVariable ["cti_structures",[]])&&( getDammage _target >0 ||  _target getVariable ["cti_altdmg",-1] >0) && (missionNamespace getVariable "CTI_BASEBUILDING") > 0) then  {
+			    	if (vehicle player == player && !(player getvariable ["REV_UNC",false]) && _target in (CTI_P_SideLogic getVariable ["cti_structures",[]])&&( getDammage _target >0 ||  _target getVariable ["cti_altdmg",-1] >0) && (missionNamespace getVariable "CTI_BASEBUILDING") > 0) then  {
 			    		((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTextColor [0,0,1,1];
 			    		((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetPosition [_base_x+(_offset*_base_w),_base_y+_h_offset*_base_h,_base_w,_base_h];
 			    		_offset=_offset+1;
@@ -458,7 +458,7 @@ switch (_action) do {
 			    };
 			   case 35: {// Dismount defense
 
-			    	if (vehicle player == player && (_target in (CTI_WEST getVariable ["cti_defences", []]) +(CTI_EAST getVariable ["cti_defences", []]))&& (missionNamespace getVariable "CTI_BASEBUILDING") > 0) then  {
+			    	if (vehicle player == player && !(player getvariable ["REV_UNC",false]) && (_target in (CTI_WEST getVariable ["cti_defences", []]) +(CTI_EAST getVariable ["cti_defences", []]))&& (missionNamespace getVariable "CTI_BASEBUILDING") > 0) then  {
 			    			((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTextColor [1,0,0,1];
 
 			    			((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetPosition [_base_x+(_offset*_base_w),_base_y+_h_offset*_base_h,_base_w,_base_h];
