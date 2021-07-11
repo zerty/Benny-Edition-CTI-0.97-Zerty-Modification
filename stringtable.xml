@@ -2234,8 +2234,8 @@
 				<Russian>Технологии AAF</Russian>
 			</Key>
 			<Key ID="STR_Up_AAF_technologies_Descr">
-				<Original>Unlock AAF units (1::MRAPS and VANS, 2::APC, 3::TRACKED, 4::CHOPPERS, 5::PLANES, 6::ARTILLERY)</Original>
-				<Russian>Разблокировать технику AAF (1::Легкая Техника и фургоны, 2::БТР 3::БМП, Танки 4::Вертолёты, 5::Самолёты, 6::АРТИЛЛЕРИЯ)</Russian>
+				<Original>Unlock AAF units (1::MRAPS, VANS and BOAT, 2::APC, 3::TRACKED, 4::CHOPPERS, 5::PLANES, 6::ARTILLERY)</Original>
+				<Russian>Разблокировать технику AAF (1::Легкая Техника, фургоны и лодка, 2::БТР 3::БМП, Танки 4::Вертолёты, 5::Самолёты, 6::АРТИЛЛЕРИЯ)</Russian>
 			</Key>
 			<Key ID="STR_Up_Aircraft_FFAR">
 				<Original>Air: Aircraft FFAR</Original>

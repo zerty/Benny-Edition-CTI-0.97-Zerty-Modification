@@ -1044,6 +1044,15 @@ _u = _u + [0];
 _f = _f + [CTI_FACTORY_NAVAL];
 _s = _s + [""];
 
+_c = _c + ['I_C_Boat_Transport_02_F'];
+_p = _p + [''];
+_n = _n + [''];
+_o = _o + [325];
+_t = _t + [20];
+_u = _u + [1];
+_f = _f + [4];
+_s = _s + [""];
+
 _c = _c + ['O_Boat_Armed_01_hmg_F'];
 _p = _p + [''];
 _n = _n + [''];
