@@ -1841,6 +1841,10 @@
 				<Original>Vote against Com. from Player %1 </Original>
 				<Russian>Игрок %1 проголосовал против Командира</Russian>
 			</Key>
+			<Key ID="STR_Area_Warning">
+				<Original>The vehicle has left the combat zone!</Original>
+				<Russian>Машина покинула зону боевых действий!</Russian>
+			</Key>
 	</Package>
 	<Package name="Client_OnPlayerKilled">
 			<Key ID="STR_Begin_Tutorial">
