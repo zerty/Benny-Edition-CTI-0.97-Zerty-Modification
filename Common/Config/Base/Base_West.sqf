@@ -10,7 +10,9 @@ missionNamespace setVariable [format["CTI_%1_Base_Template", _side], [
 	[CTI_HEAVY, 0, [-30,-40]],
 	[CTI_AIR, 180, [-60,37]],
 	[CTI_REPAIR, 180, [60,37]],
-	[CTI_AMMO, 180, [80,37]]
+	[CTI_AMMO, 180, [80,37]],
+	[CTI_RADAR, 0, [-60,-40]],
+	[CTI_NAVAL, 0, [60,-40]]
 ]];
 
 // checks: structure -> not in WIP and still alive & kicking & can build with area?
