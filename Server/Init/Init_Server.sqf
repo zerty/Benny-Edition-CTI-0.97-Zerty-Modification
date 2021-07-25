@@ -72,6 +72,14 @@ CENTER_POS=getMarkerPos "CENTER_POS";
 "CENTER_POS" setmarkeralpha 0;
 CENTER_RADIUS=(getMarkerSize "CENTER_POS")select 0;
 _locations= CENTER_POS nearroads CENTER_RADIUS;
+if (ISLAND == 3) then { // Remove small jungel paths and bridges from spawn positions
+	_not_roads = [];
+	for "_i" from 0 to ((count _locations) - 1) do
+	{
+		if !(isOnRoad (_locations select _i)) then {_not_roads pushback (_locations select _i);};
+	};
+	_locations = _locations - _not_roads;
+};
 _attempts = 0;
 _real_attempts = 0;
 _asked= missionNamespace getVariable "CTI_BASE_STARTUP_PLACEMENT";
