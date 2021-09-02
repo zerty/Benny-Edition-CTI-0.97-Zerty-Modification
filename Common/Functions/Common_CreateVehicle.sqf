@@ -400,7 +400,6 @@ _vehicle spawn {
 	while { !isNull _this && alive _this && ! cti_gameover } do {
 		    sleep 20;
 		    if (!isNull _this && alive _this && !((position _this) inArea [[worldSize/2, worldSize/2, 6000], worldSize/2, worldSize/2, 0, true, 6500]) && (getPos _this select 2) < 50000) then {(driver _this) groupChat (localize "STR_Area_Warning");};
-		    if (!isNull _this && alive _this && !((position _this) inArea [[worldSize/2, worldSize/2, 6000], (worldSize/2) + 2000, (worldSize/2) + 2000, 0, true, 8500]) && (getPos _this select 2) < 50000) then {_this setDamage 1};
 		    if ((([_this,getMarkerPos "CTI_TUTORIAL"] call  BIS_fnc_distance2D) < 1000) && !isNull _this && alive _this && (getPos _this select 2) < 100) then {_this setDamage 1};
 		};
 };
