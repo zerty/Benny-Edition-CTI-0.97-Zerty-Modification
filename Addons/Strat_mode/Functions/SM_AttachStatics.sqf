@@ -63,7 +63,7 @@ with missionNamespace do {
   };
   CTI_PVF_Reply_load={
     if (_this select 2) then {
-      CTI_P_ChatID commandChat format [localize "STR_ST_Load",typeof (_this select 1),_this select 0];
+      CTI_P_ChatID commandChat format [localize "STR_ST_Load",getText (configfile >> "CfgVehicles" >> typeof (_this select 1) >> "displayName"),_this select 0];
       (_this select 1) setdir (_this select 3);
       (_this select 1)  addEventHandler ["GetOut", {(_this select 2) attachto [(_this select 0),[-3,-1,-0.65]]; detach (_this select 2);}];
       (_this select 0) lock false;
@@ -72,7 +72,7 @@ with missionNamespace do {
       (_this select 0) lockCargo [0,false];
       STATIC_TRY=false;
     } else {
-      CTI_P_ChatID commandChat format [localize "STR_ST_Unload",typeof(_this select 1),_this select 0];
+      CTI_P_ChatID commandChat format [localize "STR_ST_Unload",getText (configfile >> "CfgVehicles" >> typeof (_this select 1) >> "displayName"),_this select 0];
       (_this select 0) lockCargo false;
       STATIC_TRY=false;
     };
