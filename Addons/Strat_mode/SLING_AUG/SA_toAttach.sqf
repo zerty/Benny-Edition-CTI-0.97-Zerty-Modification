@@ -24,8 +24,12 @@ _new_masscenter=[];
 
 
 {ropeUnwind [_x,max_speed,target_length];true}count (ropes _target);
-waitUntil {!alive _pod ||!alive _target ||(ropelength (ropes _target select 0))<min_length};
-if (!alive _pod || !alive _target) exitwith {false};
+waitUntil {
+	if (!alive _pod || !alive _target || count (ropes _target) == 0 || getSlingLoad _target isEqualTo objNull) exitwith {true};
+	if (!alive _pod || !alive _target || (ropelength (ropes _target select 0)) < min_length) exitwith {true};
+	false
+};
+if (!alive _pod || !alive _target || count (ropes _target) == 0 || getSlingLoad _target isEqualTo objNull) exitwith {false};
 
 _pod attachto [_target,offset];
 {ropeDestroy _x;true} count (ropes _target);

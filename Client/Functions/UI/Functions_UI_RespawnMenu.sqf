@@ -38,11 +38,6 @@ CTI_UI_Respawn_GetAvailableLocations = {
 	_ignore_mobile_crew = [];
 	if ((missionNamespace getVariable "CTI_RESPAWN_MOBILE") > 0) then {
 		_mobile = (CTI_DeathPosition) call CTI_UI_Respawn_GetMobileRespawn;
-		_mobile_at_sky = [];
-		for "_i" from 0 to ((count _mobile) - 1) do {
-		if ((getposATL (_mobile select _i) select 2) > 4) then {_mobile_at_sky = _mobile_at_sky + [_mobile select _i]};
-		};
-		_mobile = _mobile - _mobile_at_sky;
 		_list = _list + _mobile;
 		{{if (group _x == group player) then {_ignore_mobile_crew pushBack _x}} forEach crew _x} forEach _mobile;
 	};
@@ -65,7 +60,7 @@ CTI_UI_Respawn_GetMobileRespawn = {
 	_available = [];
 
 	{
-		if (CTI_SPECIAL_MEDICALVEHICLE in (_x getVariable ["cti_spec", []]) && (_x getVariable ["cti_net", -1]) == CTI_P_SideID && ((getPosASL _x) select 2)>0) then {_available pushBack _x};
+		if (CTI_SPECIAL_MEDICALVEHICLE in (_x getVariable ["cti_spec", []]) && (_x getVariable ["cti_net", -1]) == CTI_P_SideID && ((getPosASL _x) select 2)>0 && ((getPosAtl _x) select 2)<4) then {_available pushBack _x};
 	} forEach (_center nearEntities [["Car","Air","Tank","Ship","Thing","StaticWeapon"], _range]);
 	_available
 };

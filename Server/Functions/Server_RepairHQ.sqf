@@ -46,6 +46,8 @@ _direction = getDir _hq_wreck;
 //_position =[_position, 50] call CTI_CO_FNC_GetEmptyPosition;
 _ep = _position findEmptyPosition [0,100,"O_T_VTOL_02_vehicle_dynamicLoadout_F"];
 if (count _ep == 0) then {_ep = _position findEmptyPosition [0,250,"O_T_VTOL_02_vehicle_dynamicLoadout_F"];};
+if (count _ep == 0 && surfaceIsWater _position) then {_ep = [_position select 0, _position select 1, 0];}; // for repair HQ in water
+if (count _ep == 0) then {_ep = _position;};
 _position = _ep;
 
 //_position = _position findEmptyPosition [0,50,typeOf ((_side) call CTI_CO_FNC_GetSideHQ)];
@@ -54,7 +56,7 @@ _position = _ep;
 if (alive _hq_wreck) exitWith {};
 deleteVehicle _hq_wreck;
 
-_hq = [missionNamespace getVariable Format["CTI_%1_HQ", _side], _position, _direction, _side, true, false] call CTI_CO_FNC_CreateVehicle;
+_hq = [missionNamespace getVariable Format["CTI_%1_HQ", _side], _position, _direction, _side, true, false, false, "FORM", objNull, false] call CTI_CO_FNC_CreateVehicle;
 _hq setVariable ["cti_gc_noremove", true]; //--- HQ wreck cannot be removed nor salvaged
 _hq setVariable ["cti_ai_prohib", true]; //--- HQ may not be used by AI as a commandable vehicle
 _hq addEventHandler ["getIn", {_this spawn CTI_CO_FNC_OnUnitGetOut}];

@@ -244,17 +244,15 @@ switch (_action) do {
 	case "onUnitDisband": {
 		_who = uiNamespace getVariable "cti_dialog_ui_unitscam_focus";
 
-		if (alive _who && call CTI_CL_FNC_IsPlayerCommander) then {
-			if !(isPlayer leader _who) then {
-				_who setDammage 1;
-			};
+		if (alive _who && !(isPlayer _who) && ((player == leader _who) || (!(isPlayer leader _who) && call CTI_CL_FNC_IsPlayerCommander))) then {
+			deleteVehicle _who;
 		};
 	};
 	case "onRemote": {
 		_who = uiNamespace getVariable "cti_dialog_ui_unitscam_focus";
 		_dialog = uiNamespace getVariable 'cti_dialog_ui_unitscam';
 		if (alive _who ) then {
-			if ((player == leader _who) || !(isPlayer leader _who) && call CTI_CL_FNC_IsPlayerCommander )then {
+			if ((player == leader _who) || !(isPlayer leader _who) && call CTI_CL_FNC_IsPlayerCommander) then {
 				_who spawn {
 					waitUntil {cameraOn == player};
 					sleep 0.5;

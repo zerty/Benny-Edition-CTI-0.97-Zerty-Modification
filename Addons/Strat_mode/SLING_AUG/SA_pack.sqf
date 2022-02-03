@@ -25,7 +25,7 @@ _target allowdamage false;
 
 
 
-_packobject=[_pack, _initial_pos, _initial_dir, CTI_P_sideJoined, false, true, false, "CAN_COLLIDE"] call CTI_CO_FNC_CreateVehicle;
+_packobject=[_pack, _initial_pos, _initial_dir, CTI_P_sideJoined, false, true, false, "CAN_COLLIDE", objNull, false] call CTI_CO_FNC_CreateVehicle;
 
 clearBackpackCargoGlobal _packobject;
 clearMagazineCargoGlobal  _packobject;

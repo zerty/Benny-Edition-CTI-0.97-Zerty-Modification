@@ -104,7 +104,7 @@ while { time <= _req_time_out && alive _factory } do { sleep .25 };
 if !(alive _factory) exitWith { diag_log "the factory is dead" };
 
 
-if (_factory in CTI_TOWNS && ( ! ((_factory getvariable ["cti_town_sideID",-1]) == CTI_P_SideID) || (_factory getvariable ["cti_town_capture",-1]) != CTI_TOWNS_CAPTURE_VALUE_CEIL || ({!(side _x == CTI_P_SideJoined)} count (_factory nearEntities ["CAManBase", CTI_TOWNS_CAPTURE_RANGE])) >0 ) ) exitWith { ["SERVER", "Answer_Purchase", [_req_seed, _req_classname, _req_buyer, _factory]] call CTI_CO_FNC_NetSend; hint parseText format ["<t size='1.3' color='#BB0000'>Information</t><br /><br />%2<t>Your <t color='#ccffaf'>%1</t> order has been <t color='#fcffaf'>Denied</t>, Flag area is not clear.", _var_classname select CTI_UNIT_LABEL, _picture];};
+if (_factory in CTI_TOWNS && ( ! ((_factory getvariable ["cti_town_sideID",-1]) == CTI_P_SideID) || (_factory getvariable ["cti_town_capture",-1]) != CTI_TOWNS_CAPTURE_VALUE_CEIL || ({!(side _x == CTI_P_SideJoined || side _x == civilian)} count (_factory nearEntities ["CAManBase", CTI_TOWNS_CAPTURE_RANGE])) >0 ) ) exitWith { ["SERVER", "Answer_Purchase", [_req_seed, _req_classname, _req_buyer, _factory]] call CTI_CO_FNC_NetSend; hint parseText format ["<t size='1.3' color='#BB0000'>Information</t><br /><br />%2<t>Your <t color='#ccffaf'>%1</t> order has been <t color='#fcffaf'>Denied</t>, Flag area is not clear.", _var_classname select CTI_UNIT_LABEL, _picture];};
 
 
 //--- Check if the group can handle the current unit without breaking the group size limit
@@ -152,7 +152,7 @@ if (_model isKindOf "Man") then {
 		_group = _this select 1;
 		_cost = _this select 2;
 		_var_classname = _this select 3;
-		sleep(15);
+		sleep(10);
 		if(!alive _veh) then {
 			//delete wreck & refound cash
 			deleteVehicle _veh;
@@ -160,8 +160,8 @@ if (_model isKindOf "Man") then {
 			hint parseText format [localize "STR_OnPurchase_RefundUnit", _var_classname select CTI_UNIT_LABEL];
 		};
 	};
-
-	if (_veh_infos select 0 || _veh_infos select 1 || _veh_infos select 2 || _veh_infos select 3) then { //--- Not empty.
+	sleep(1); //Wait for the vehicle to spawn correctly (or die on spawn)
+	if (alive _vehicle && (_veh_infos select 0 || _veh_infos select 1 || _veh_infos select 2 || _veh_infos select 3)) then { //--- Not empty.
 		_crew = switch (true) do { case (_model isKindOf "Tank"): {"Crew"}; case (_model isKindOf "Air"): {"Pilot"}; default {"Soldier"}};
 		_crew = missionNamespace getVariable format["CTI_%1_%2", CTI_P_SideJoined, _crew];
 
@@ -191,9 +191,10 @@ if (_model isKindOf "Man") then {
 			};
 		} forEach (_var_classname select CTI_UNIT_TURRETS);
 	};
-
-	_vehicle addAction ["<t color='#86F078'>Unlock</t>","Client\Actions\Action_ToggleLock.sqf", [], 99, false, true, '', '_this != player &&alive _target && locked _target == 2'];
-	_vehicle addAction ["<t color='#86F078'>Lock</t>","Client\Actions\Action_ToggleLock.sqf", [], 99, false, true, '', '_this != player &&alive _target && locked _target == 0'];
+	if (! (unitIsUAV _vehicle)) then {
+		_vehicle addAction ["<t color='#86F078'>Unlock</t>","Client\Actions\Action_ToggleLock.sqf", [], 99, false, true, '', '_this != player &&alive _target && locked _target == 2'];
+		_vehicle addAction ["<t color='#86F078'>Lock</t>","Client\Actions\Action_ToggleLock.sqf", [], 99, false, true, '', '_this != player &&alive _target && locked _target == 0'];
+	};
 	if (! (_vehicle isKindOf "Thing") && !( _vehicle isKindOf "StaticWeapon")) then {_vehicle setVariable ["v_keys",[getPlayerUID player,group player],true]};
 	player reveal _vehicle;
 

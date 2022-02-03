@@ -489,6 +489,10 @@
 				<Original>Players</Original>
 				<Russian>Игроки</Russian>
 			</Key>
+			<Key ID="STR_CTI_BASEBUILDING_BOTH">
+				<Original>Both</Original>
+				<Russian>обе</Russian>
+			</Key>
 			<Key ID="STR_CTI_GAMEPLAY_DARTER">
 				<Original>Zerty: GAMEPLAY: Darter Range limitation</Original>
 				<Russian>Дальность связи с маленькими БПЛА</Russian>
@@ -578,15 +582,23 @@
 				<Russian>За сколько метров активируется город</Russian>
 			</Key>
 			<Key ID="STR_CTI_TOWNS_RESISTANCE_GROUPS_RATIO">
-				<Original>Zerty: TOWNS : Resistance difficulty</Original>
+				<Original>Zerty: TOWNS: Resistance difficulty</Original>
 				<Russian>Уровень сопротивления в городах</Russian>
 			</Key>
+			<Key ID="STR_CTI_TOWNS_RESISTANCE_HEAVY">
+				<Original>Yoshi_E: TOWNS: Heavy vehicles in towns</Original>
+				<Russian>Тяжелая техника в городах</Russian>
+			</Key>
 			<Key ID="STR_CTI_TOWNS_RESISTANCE_INACTIVE_MAX">
-				<Original>Zerty: TOWNS : Resistance despawn Timer</Original>
+				<Original>Zerty: TOWNS: Resistance despawn Timer</Original>
 				<Russian>Дезактивация захваченного города</Russian>
 			</Key>
+			<Key ID="STR_CTI_SHOPS_HEAVY">
+				<Original>Yoshi_E: SHOP: Heavy Vehicles/Equipment</Original>
+				<Russian>Тяжелая техника / Оборудование</Russian>
+			</Key>
 			<Key ID="STR_CTI_TOWNS_SHOPS">
-				<Original>Zerty: TOWNS : Shop price ratio</Original>
+				<Original>Zerty: TOWNS: Shop price ratio</Original>
 				<Russian>Во сколько раз покупки в городах дороже, чем на базе</Russian>
 			</Key>
 			<Key ID="STR_CTI_WEATHER_INITIAL">
@@ -937,6 +949,10 @@
 				<Original>Slat Cage $1500</Original>
 				<Russian>ламельная клетка $1500</Russian>
 			</Key>
+			<Key ID="STR_Icon_Reset">
+				<Original>Reset AI Crew</Original>
+				<Russian>Сбросить AI Crew</Russian>
+			</Key>
 			<Key ID="STR_Menu_Options_OnlineHelp">
 				<Original>Online Help</Original>
 				<Russian>Помощь</Russian>
@@ -1130,8 +1146,8 @@
 				<Russian>Уволить Рабочего</Russian>
 			</Key>
 			<Key ID="STR_Menu_Control_Sell">
-				<Original>Sell Structure</Original>
-				<Russian>Продать Завод</Russian>
+				<Original>Remove Structure</Original>
+				<Russian>Удалить Завод</Russian>
 			</Key>
 			<Key ID="STR_Menu_Control_Accept">
 				<Original>Accept</Original>
@@ -1825,6 +1841,10 @@
 				<Original>Vote against Com. from Player %1 </Original>
 				<Russian>Игрок %1 проголосовал против Командира</Russian>
 			</Key>
+			<Key ID="STR_Area_Warning">
+				<Original>The vehicle has left the combat zone!</Original>
+				<Russian>Машина покинула зону боевых действий!</Russian>
+			</Key>
 	</Package>
 	<Package name="Client_OnPlayerKilled">
 			<Key ID="STR_Begin_Tutorial">
@@ -2097,6 +2117,10 @@
 				<Original>&lt;t color='#ff9900'&gt;Remote Control&lt;/t&gt;</Original>
 				<Russian>&lt;t color='#ff9900'&gt;Удаленное Управление&lt;/t&gt;</Russian>
 			</Key>
+			<Key ID="STR_Common_CreateUnit_Land">
+				<Original>&lt;t color='#ffff80'&gt;Land&lt;/t&gt;</Original>
+				<Russian>&lt;t color='#ffff80'&gt;приземлиться&lt;/t&gt;</Russian>
+			</Key>
 	</Package>
 	<Package name="Functions_UI_UpgradeMenu">
 			<Key ID="STR_UI_Dependencies">
@@ -2214,8 +2238,8 @@
 				<Russian>Технологии AAF</Russian>
 			</Key>
 			<Key ID="STR_Up_AAF_technologies_Descr">
-				<Original>Unlock AAF units (1::MRAPS and VANS, 2::APC, 3::TRACKED, 4::CHOPPERS, 5::PLANES, 6::ARTILLERY)</Original>
-				<Russian>Разблокировать технику AAF (1::Легкая Техника и фургоны, 2::БТР 3::БМП, Танки 4::Вертолёты, 5::Самолёты, 6::АРТИЛЛЕРИЯ)</Russian>
+				<Original>Unlock AAF units (1::MRAPS, VANS and BOAT, 2::APC, 3::TRACKED, 4::CHOPPERS, 5::PLANES, 6::ARTILLERY)</Original>
+				<Russian>Разблокировать технику AAF (1::Легкая Техника, фургоны и лодка, 2::БТР 3::БМП, Танки 4::Вертолёты, 5::Самолёты, 6::АРТИЛЛЕРИЯ)</Russian>
 			</Key>
 			<Key ID="STR_Up_Aircraft_FFAR">
 				<Original>Air: Aircraft FFAR</Original>

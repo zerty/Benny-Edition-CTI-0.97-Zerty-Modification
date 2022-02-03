@@ -72,13 +72,21 @@ CENTER_POS=getMarkerPos "CENTER_POS";
 "CENTER_POS" setmarkeralpha 0;
 CENTER_RADIUS=(getMarkerSize "CENTER_POS")select 0;
 _locations= CENTER_POS nearroads CENTER_RADIUS;
+if (ISLAND == 3) then { // Remove small jungel paths and bridges from spawn positions
+	_not_roads = [];
+	for "_i" from 0 to ((count _locations) - 1) do
+	{
+		if !(isOnRoad (_locations select _i)) then {_not_roads pushback (_locations select _i);};
+	};
+	_locations = _locations - _not_roads;
+};
 _attempts = 0;
 _real_attempts = 0;
 _asked= missionNamespace getVariable "CTI_BASE_STARTUP_PLACEMENT";
 waitUntil {CTI_InitTowns};
 _eastLocation=CENTER_POS;
 _westLocation=CENTER_POS;
-while {(_eastLocation distance _westLocation) <(_asked)*0.95 ||(_eastLocation distance _westLocation) >( _asked)*1.25 || {(_x distance _eastLocation)<600} count CTI_Towns>0 || {(_x distance _westLocation)<600} count CTI_Towns>0 ||(_eastLocation distance CENTER_POS) > ( _asked)*1.2 ||(_westLocation distance CENTER_POS) > ( _asked)*1.2 } do {
+while {(_eastLocation distance _westLocation) <(_asked)*0.95 ||(_eastLocation distance _westLocation) >( _asked)*1.25 || {(_x distance _eastLocation)<600} count CTI_Towns>0 || {(_x distance _westLocation)<600} count CTI_Towns>0 ||(_eastLocation distance CENTER_POS) > ( _asked)*0.75 ||(_westLocation distance CENTER_POS) > ( _asked)*0.75 } do {
 	while {random(1)>0.2}do {
 		_a="BiS pseudo-random number Generator is crappy";
 	};
@@ -314,15 +322,17 @@ if (missionNamespace getvariable "CTI_PERSISTANT" == 1) then {
 //Logging of varius values
 0 spawn {
 		sleep 100; //wait for everything to finish loading
-		_version = 3; //version of DiscordBot logReader
+		_version = 4; //version of DiscordBot logReader
 		_arr = 	[["CTI_DataPacket", "Header"],
 				 ["Version", _version],
 				 ["Map", worldName]
 				];
 		diag_log _arr;
+
+		_east_sl = (east) call CTI_CO_FNC_GetSideLogic;
+		_west_sl = (west) call CTI_CO_FNC_GetSideLogic;
 		while {!CTI_GameOver} do {
-			_east_sl = (east) call CTI_CO_FNC_GetSideLogic;
-			_west_sl = (west) call CTI_CO_FNC_GetSideLogic;
+
 			_towns = count(_east_sl getVariable  ["CTI_ACTIVE",[]]) + count(_west_sl getVariable  ["CTI_ACTIVE",[]]);
 
 			//build player array, splitting at 800 to ensure char limit of 1000 is not reached
@@ -374,6 +384,14 @@ if (missionNamespace getvariable "CTI_PERSISTANT" == 1) then {
 						["players", _x]];
 				_dataP = _dataP+1;
 			} forEach _players;
+
+			//Logging more detailed data about team
+			_east_hq = ((east) call CTI_CO_FNC_GetSideHQ);
+			_west_hq = ((west) call CTI_CO_FNC_GetSideHQ);
+			diag_log[["CTI_DataPacket", format ["Data_%1", _dataP]],
+					["hq_east", [getPos _east_hq, alive _east_hq]],
+					["hq_west", [getPos _west_hq, alive _west_hq]]];
+			_dataP = _dataP+1;
 
 			diag_log[["CTI_DataPacket", format ["Data_EOD_%1", _dataP]], //Marking package as "last"
 					["bases_east", _east_sl getVariable ["cti_structures_areas",[]]],

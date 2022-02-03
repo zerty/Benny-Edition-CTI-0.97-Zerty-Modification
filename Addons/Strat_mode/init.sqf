@@ -46,6 +46,8 @@ with missionNamespace do {
 	    SM_COM_Init = compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Old_Com_Eject\SM_COM_init.sqf";
 
 	   	UAV_FUEL = compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Functions\UAV_Fuel.sqf";
+	   	UAV_FUELDEATH = compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Functions\UAV_FuelDeath.sqf";
+	   	UAV_FIX_CREW = compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Functions\UAV_Fix_Crew.sqf";
 	   	UAV_RANGE = compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Functions\UAV_Range.sqf";
 	   	DYNG_WAIT = compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Functions\DYNG_waitforgroup.sqf";
 	   	DYNG_SERVERLOOP = compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Functions\DYNG_serverloop.sqf";
@@ -57,6 +59,9 @@ with missionNamespace do {
 	   	CTI_SM_Mines_script = compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Functions\SM_Mines.sqf";
 
 	   	TASKS_LOOP= compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Functions\TASKS_loop.sqf";
+
+	   	SM_ST_Init = compileFinal preprocessFileLineNumbers "Addons\Strat_mode\Functions\SM_Map_Statics.sqf";
+
 };
 
 //Common stuff
@@ -104,6 +109,7 @@ if (CTI_IsServer) then {
 		if (count (_sl getVariable ["CTI_BASES_FOUND",[]]) == 0) then {
 			_sl setVariable ["CTI_BASES_FOUND",[],true];
 		};
+		_sl setVariable ["CTI_COM_BLACKLIST_GLOBAL",profileNamespace getVariable ["CTI_COM_BLACKLIST_GLOBAL",[]],true];
 	true
 	} count [east,west];
 
@@ -197,11 +203,31 @@ if (CTI_IsServer) then {
 
 
 		CTI_PVF_Server_Addeditable= {
+		(_this select 0) addCuratorAddons (configSourceAddonList (configFile >> "CfgVehicles" >> typeof (_this select 1)));
     	(_this select 0) addCuratorEditableObjects [[_this select 1],true] ;
 		};
 
 		CTI_PVF_Server_Assign_Zeus= {
   		_this  assignCurator ADMIN_ZEUS;
+		};
+
+		CTI_PVF_Server_Update_BL= {
+			_pfbl= profileNamespace getVariable ["CTI_COM_BLACKLIST_GLOBAL",[]];
+			_index=(_pfbl find _this);
+			if (_index >=0) then{
+				_pfbl deleteAt _index;
+			} else {
+				_pfbl pushBack _this;
+
+			};
+			profileNamespace setVariable ["CTI_COM_BLACKLIST_GLOBAL",_pfbl];
+			saveProfileNamespace;
+			{
+				_sl=_x call CTI_CO_FNC_GetSideLogic;
+				_sl setVariable ["CTI_COM_BLACKLIST_GLOBAL",profileNamespace getVariable ["CTI_COM_BLACKLIST_GLOBAL",[]],true];
+				true
+			} count [east,west];
+
 		};
 	};
 
@@ -241,6 +267,7 @@ if (CTI_IsClient) then {
 		};
 		CTI_PVF_Client_UAVSetFuel={
 			if (_this isKindOf "Helicopter_Base_F") then {_this spawn UAV_FUEL;};
+			if (_this isKindOf "UGV_02_Base_F") then {_this spawn UAV_FUELDEATH;};
 		};
 	};
 
@@ -329,11 +356,14 @@ if (CTI_IsServer) then {
 
 		// time compression
 		0 spawn {
-			_day_ratio=14/CTI_WEATHER_FAST;
-			_nigth_ratio=10/CTI_WEATHER_FAST_NIGTH;
 			_sunrise = 5;
 			_sunset = 19;
-			if (ISLAND == 3) then {_sunrise = 7; _sunset = 18;};
+			switch (true) do {
+				case (ISLAND == 3): {_sunrise = 7; _sunset = 18;};
+				case (ISLAND == 6): {_sunrise = 4; _sunset = 20;};
+			};
+			_day_ratio = (_sunset - _sunrise) / CTI_WEATHER_FAST;
+			_nigth_ratio = (24 - (_sunset - _sunrise)) / CTI_WEATHER_FAST_NIGTH;
 			while {!CTI_Gameover} do {
 				if (daytime > _sunrise && daytime < _sunset) then {
 					if (timeMultiplier != _day_ratio) then  {setTimeMultiplier _day_ratio;};
@@ -346,6 +376,9 @@ if (CTI_IsServer) then {
 		};
 		// Tasks loop
 		{_x spawn TASKS_LOOP;} foreach [east,west];
+
+		//Statics
+		0 spawn {sleep 600; 0 call SM_ST_Init;};
 
 };
 
@@ -386,8 +419,6 @@ if (CTI_IsClient) then {
 
   	// Statics on offroads handlers
   	0 execVM "Addons\Strat_mode\Functions\SM_AttachStatics.sqf";
- 	if ( (missionNamespace getVariable 'CTI_SM_STRATEGIC')==1) then { 0 call CTI_SM_Draw_Connect_Towns;};
-
 
 	//adaptative group size
 	if ( CTI_PLAYERS_GROUPSIZE == 0) then {
@@ -429,10 +460,9 @@ if (CTI_IsClient) then {
 		waitUntil {!isNil 'CTI_InitTowns'};
 		sleep 1;
 		if !(CTI_P_SideJoined == resistance) then {
-
 			execFSM "Addons\Strat_mode\FSM\town_markers.fsm";
-
 		};
+		if ((missionNamespace getVariable 'CTI_SM_STRATEGIC')==1) then {0 call CTI_SM_Draw_Connect_Towns;};
 	};
 
 	// HUD

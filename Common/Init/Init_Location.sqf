@@ -11,10 +11,7 @@ _CENTER_RADIUS=(getMarkerSize "CENTER_POS")select 0;
 
 if ((_town distance _CENTER_POS)>_CENTER_RADIUS) exitwith {true};
 
-if (count _this > 4) then {
-	_forced_neigh= _this select 4;
-	_town setVariable ["cti_town_fneigh", _forced_neigh];
-};
+
 _town setVariable ["cti_town_name", _town_name];
 
 
@@ -27,9 +24,23 @@ if (CTI_IsServer || CTI_IsHeadless) then {
 		_town setVariable ["cti_town_sideID", _sideID, true];
 		_town setVariable ["cti_town_lastSideID", _sideID, true];
 		_town setVariable ["cti_town_value", _town_value, true];
-		_town setVariable ["cti_structure_type",CTI_FTOWN,true],
+		_town setVariable ["CTI_Neigh",[],true];
+		_town setVariable ["cti_structure_type",CTI_FTOWN,true];
 		_current_side = _sideID call CTI_CO_FNC_GetSideFromID;
-		_town setFlagTexture ( _current_side call CTI_CO_FNC_GetSideFlag);
+		_town setPosATL [( (getPosATL _town) select 0 ),( (getPosATL _town) select 1),0];
+
+		if !((typeOf _town) ==  "Flagpole_F") then {
+			_flag= createVehicle ["Flagpole_F", getPos _town, [], 0, "CAN_COLLIDE"];
+			_flag setPosATL [getPos _flag select 0,getPos _flag select 1,0];
+			_flag allowDamage false;
+			_town setVariable ["cti_town_flag",_flag,true];
+		} else {
+		 	_town setVariable ["cti_town_flag",_town,true];
+		};
+
+
+
+		(_town getVariable ["cti_town_flag",objnull])  setFlagTexture ( _current_side call CTI_CO_FNC_GetSideFlag);
 		/*if (missionNamespace getVariable "CTI_SM_STRATEGIC" == 0) then {
 			(_town) execFSM "Server\FSM\town_capture.fsm";
 		} else {*/

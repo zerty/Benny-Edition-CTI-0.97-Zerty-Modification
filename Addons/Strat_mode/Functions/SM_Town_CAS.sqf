@@ -15,7 +15,7 @@ SM_TCAS_MAINLOOP=compile '
 	_v=[_type, _pos, _dir, resistance, true, true, true, _fly] call CTI_CO_FNC_CreateVehicle;
 
 	[_v,_group] call bis_fnc_spawncrew;
-	if !( isNil "ADMIN_ZEUS") then { ADMIN_ZEUS addCuratorEditableObjects [([_v]),true];};
+	if !( isNil "ADMIN_ZEUS") then { ADMIN_ZEUS addCuratorAddons (configSourceAddonList (configFile >> "CfgVehicles" >> typeof _v)); ADMIN_ZEUS addCuratorEditableObjects [([_v]),true];};
 	if !( isNil "ADMIN_ZEUS") then { ADMIN_ZEUS addCuratorEditableObjects [(units _group),true];};
 	//_v flyInHeight 300;
 	_AISkill = missionNamespace getVariable "CTI_AI_SKILL";

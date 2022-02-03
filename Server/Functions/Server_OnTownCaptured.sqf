@@ -47,7 +47,7 @@ _town setVariable ["cti_town_lastSideID", _currentSideID, true];
 
 _town setVariable ["CTI_Net", _newSideID, true];
 
-_town setFlagTexture ( _newSide call CTI_CO_FNC_GetSideFlag);
+(_town getVariable ["cti_town_flag",objnull]) setFlagTexture ( _newSide call CTI_CO_FNC_GetSideFlag);
 
 
 ["CLIENT", "Client_OnTownCaptured", [_town, _newSideID, _currentSideID]] call CTI_CO_FNC_NetSend;

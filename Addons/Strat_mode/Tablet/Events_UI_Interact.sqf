@@ -9,7 +9,7 @@ _base_w=safezoneH * 0.04;
 _base_h=safezoneH * 0.04;
 _offset=-5;
 _h_offset=-1;
-_max_ctrl=40;
+_max_ctrl=41;
 
 
 
@@ -25,7 +25,7 @@ switch (_action) do {
 		    		_offset=_offset+1;
 			    };
 			    case 2: { // CTI_Icon_units
-					if (!CTI_P_PreBuilding &&(Client_AN_Connected && (CTI_Base_BarracksInRange || CTI_Base_LightInRange || CTI_Base_HeavyInRange || CTI_Base_AirInRange || CTI_Base_AmmoInRange || CTI_Base_RepairInRange || CTI_Base_NavalInRange )) ||  CTI_Town_InRange) then {
+					if (!CTI_P_PreBuilding &&((Client_AN_Connected || CTI_InBaseArea) && (CTI_Base_BarracksInRange || CTI_Base_LightInRange || CTI_Base_HeavyInRange || CTI_Base_AirInRange || CTI_Base_AmmoInRange || CTI_Base_RepairInRange || CTI_Base_NavalInRange )) ||  CTI_Town_InRange) then {
 
 						((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTextColor [1,1,0,1];
 					} else {
@@ -129,7 +129,7 @@ switch (_action) do {
 			    };
 
 			    case 11: { // CTI_Icon_Net // ok
-					if ( alive _target && (missionNamespace getVariable "CTI_EW_ANET" == 1) && ( _target iskindof "Car" || _target iskindof "Tank" || _target iskindof "Truck" || _target iskindof "Air"|| _target iskindof "Ship") && !(_target isKindOf "UAV_01_base_F" || _target isKindOf "UAV_06_base_F")) then  {
+					if ( alive _target && (missionNamespace getVariable "CTI_EW_ANET" == 1) && ( _target iskindof "Car" || _target iskindof "Tank" || _target iskindof "Truck" || _target iskindof "Air"|| _target iskindof "Ship") && !(_target isKindOf "UAV_01_base_F" || _target isKindOf "UAV_06_base_F" || _target isKindOf "UGV_02_Base_F")) then  {
 						((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetPosition [_base_x+(_offset*_base_w),_base_y+_h_offset*_base_h,_base_w,_base_h];
 						if (locked _target >0 ) Then {
 							((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTextColor [0.3,0.3,0.3,1];
@@ -144,27 +144,14 @@ switch (_action) do {
 			    	};
 			    };
 				case 12: { // CTI_Icon_Def // ok
-			    	if (vehicle player == player && alive _target) then {
-			    		_ok=false;
-			    		_reptrucknear = [player, CTI_SPECIAL_REPAIRTRUCK, 20] call CTI_CO_FNC_GetNearestSpecialVehicles;
-						if (count _reptrucknear > 0) then {_ok=true};
-						_hq = (CTI_P_sidejoined) call CTI_CO_FNC_GetSideHQ;
-						if ((player distance2D _hq) < 20 && alive _hq) then {_ok=true};
+			    	if (vehicle player == player && alive _target && !(player getvariable ["REV_UNC",false])) then {
+			    		_reptrucknear = if (count([player, CTI_SPECIAL_REPAIRTRUCK, 20] call CTI_CO_FNC_GetNearestSpecialVehicles)>0) then {true} else {false};
+						_hqnear = if (player distance2d ((CTI_P_sidejoined) call CTI_CO_FNC_GetSideHQ)<=20 && alive ((CTI_P_sidejoined) call CTI_CO_FNC_GetSideHQ)) then {true} else {false};
 						_structures = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideStructures;
-			    		_rep_depots = [CTI_REPAIR, _structures] call CTI_CO_FNC_GetSideStructuresByType;
-			    		_available_rep_depots = [player, _rep_depots, 20] call CTI_UI_Service_GetBaseDepots;
-						if (count _available_rep_depots > 0) then {_ok=true};
-						/*
-			    		if (_target == ((CTI_P_sidejoined) call CTI_CO_FNC_GetSideHQ)) then {_ok=true};
-			    		if (_target in (CTI_P_SideLogic getVariable ["cti_structures",[]]) ) then {
-			    			if ((((missionNamespace getVariable [format ["CTI_%1_%2", CTI_P_SideJoined, typeOf _target],[[""]]]) select 0) select 0  == CTI_REPAIR )) then {_ok=true;};
-			    		};
-			    		if (_target in ((CTI_WEST getvariable ["cti_service", []]) + (CTI_EAST getvariable ["cti_service", []])) ) then {
-			    			if ((missionNamespace getVariable [format ["%1", typeOf _target],["","","","","","","",""]]) select 7 == "service-repairtruck") then {_ok=true;};
-			    		};
-			    		*/
-			    		//if (_target == ((CTI_P_sidejoined) call CTI_CO_FNC_GetSideHQ) || (missionNamespace getVariable [format ["%1", typeOf _target],["","","","","","","",""]]) select 7 == "service-repairtruck"  || ((missionNamespace getVariable [format ["CTI_%1_%2", CTI_P_SideJoined, typeOf _target],[[""]]]) select 0) select 0  == CTI_REPAIR )) then  {
-						if (_ok) then {
+						_repairinrange=  if !(isNull ([CTI_REPAIR, player, _structures, CTI_BASE_AREA_RANGE] call CTI_CO_FNC_GetClosestStructure)) then {true} else {false};
+
+
+						if (_reptrucknear || _hqnear || _repairinrange && CTI_InBaseArea) then {
 				    		((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTextColor [0,0,1,1];
 				    		((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetPosition [_base_x+(_offset*_base_w),_base_y+_h_offset*_base_h,_base_w,_base_h];
 				    		_offset=_offset+1;
@@ -181,7 +168,7 @@ switch (_action) do {
 					if ((_target iskindof "Car" || _target iskindof "Tank" || _target iskindof "Air"|| _target iskindof "Ship" || _target iskindof "Wheeled_APC_F" || _target iskindof "Truck_F") && !(_target iskindof "parachutebase" || _target iskindof "UAV_01_base_F")) then {
 					_hps = {_x != 0} count (getAllHitPointsDamage _target select 2);
 					};
-			    	if (vehicle player == player && _hps > 0 && (_target iskindof "Car" || _target iskindof "Tank" || _target iskindof "Air"|| _target iskindof "Ship" || _target iskindof "Wheeled_APC_F"|| _target iskindof "Truck_F") && alive _target) then  {
+			    	if (vehicle player == player && _hps > 0 && (_target iskindof "Car" || _target iskindof "Tank" || _target iskindof "Air"|| _target iskindof "Ship" || _target iskindof "Wheeled_APC_F"|| _target iskindof "Truck_F") && alive _target && !(player getvariable ["REV_UNC",false])) then  {
 
 
 		    			if ((({_x == "Toolkit"} count (backpackItems player)) + ({_x == "Toolkit"} count (vestItems player)) + ({_x == "Toolkit"} count (itemCargo _target))) >0) then {
@@ -201,7 +188,7 @@ switch (_action) do {
 				case 14: { // CTI_Icon_fl //ok
 					_hqs=[];
 					{_hqs set [count _hqs, _x call CTI_CO_FNC_GetSideHQ];true} count [east,west];
-					if (vehicle player == player && (_target iskindof "Car" || _target iskindof "Ship" || _target iskindof "Wheeled_APC_F" || _target iskindof "Truck_F") && alive _target && !( getplayeruid player in (_target getVariable ["v_keys",[]])) && !(_target getVariable ["cti_occupant",civilian] == CTI_P_SideJoined)&& !(_target in _hqs || _target isKindOf "UAV_01_base_F" || _target isKindOf "UAV_06_base_F")) then {
+					if (vehicle player == player && (_target iskindof "Car" || _target iskindof "Ship" || _target iskindof "Wheeled_APC_F" || _target iskindof "Truck_F") && alive _target && !( getplayeruid player in (_target getVariable ["v_keys",[]])) && !(_target getVariable ["cti_occupant",civilian] == CTI_P_SideJoined)&& !(_target in _hqs || _target isKindOf "UAV_01_base_F" || _target isKindOf "UAV_06_base_F" || _target isKindOf "UGV_02_Base_F")) then {
 						if ((({_x == "Toolkit"} count (backpackItems player)) +({_x == "Toolkit"} count (vestItems player))) >0) then {
 			    			((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTextColor [0,0,1,1];
 			    			((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTooltip localize "STR_Icon_FL";
@@ -212,7 +199,7 @@ switch (_action) do {
 			    		((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetPosition [_base_x+(_offset*_base_w),_base_y+_h_offset*_base_h,_base_w,_base_h];
 			    		_offset=_offset+1;
 			    	} else {
-						if (vehicle player == player && (_target iskindof "Tank" || _target iskindof "Air") && !(_target isKindOf "UAV_01_base_F" || _target isKindOf "UAV_06_base_F") && alive _target && !( getplayeruid player in (_target getVariable ["v_keys",[]])) && !(_target getVariable ["cti_occupant",civilian] == CTI_P_SideJoined)&& !(_target in _hqs)) then {
+						if (vehicle player == player && (_target iskindof "Tank" || _target iskindof "Air") && !(_target isKindOf "UAV_01_base_F" || _target isKindOf "UAV_06_base_F" || _target isKindOf "UGV_02_Base_F") && alive _target && !( getplayeruid player in (_target getVariable ["v_keys",[]])) && !(_target getVariable ["cti_occupant",civilian] == CTI_P_SideJoined)&& !(_target in _hqs)) then {
 						_rt = 0;
 						_reptruck = [_target, CTI_SPECIAL_REPAIRTRUCK, 50] call CTI_CO_FNC_GetNearestSpecialVehicles;
 						if (count _reptruck > 0) then {_rt = 1;};
@@ -268,7 +255,7 @@ switch (_action) do {
 			    	};
 			    };
 			    case 19: { // CTI_Icon_load //ok
-			    	if (vehicle player != player && driver vehicle player ==player && (_target iskindof "I_G_Offroad_01_F" || _target iskindOf "B_G_Van_02_vehicle_F" || _target iskindOf "O_G_Van_02_vehicle_F") && speed _target <1 && speed _target >-1 && alive _target &&  ! STATIC_TRY) then  {
+			    	if (vehicle player != player && driver vehicle player ==player && (_target iskindof "I_G_Offroad_01_F" || _target iskindOf "B_G_Van_02_vehicle_F" || _target iskindOf "O_G_Van_02_vehicle_F") && speed _target <1 && speed _target >-1 && alive _target &&  !(missionNameSpace getVariable ["STATIC_TRY",false])) then  {
 			    		((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTextColor [0,0,1,1];
 			    		((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetPosition [_base_x+(_offset*_base_w),_base_y+_h_offset*_base_h,_base_w,_base_h];
 			    		_offset=_offset+1;
@@ -298,7 +285,11 @@ switch (_action) do {
 			    };
 			    case 22: { // CTI_Icon_rephq
 			    	if ((missionNamespace getVariable "CTI_BASE_HQ_REPAIR") > 0 && (missionNamespace getVariable [format ["%1", typeOf _target],["","","","","","","",""]]) select 7 == "service-repairtruck" &&  !alive(CTI_P_SideJoined call CTI_CO_FNC_GetSideHQ) ) then  {
-			    		if ((CTI_P_SideJoined call CTI_CO_FNC_GetSideHQ) distance _target <= CTI_BASE_HQ_REPAIR_RANGE && (0 call CTI_CL_FNC_GetPlayerFunds) >= CTI_BASE_HQ_REPAIR_PRICE && !(missionNamespace getVariable [format["CTI_HQ_Repair_Lock_%1", CTI_P_SideJoined], false])) then {
+			    		_base_repair_HQ_cost = CTI_BASE_HQ_REPAIR_PRICE;
+						//Reduce repair cost in early game
+						if (scoreSide CTI_P_SideJoined <= 1000) then {_base_repair_HQ_cost = round(_base_repair_HQ_cost / 2);};
+						if (scoreSide CTI_P_SideJoined <= 500) then {_base_repair_HQ_cost = round(_base_repair_HQ_cost / 4);};
+			    		if ((CTI_P_SideJoined call CTI_CO_FNC_GetSideHQ) distance _target <= CTI_BASE_HQ_REPAIR_RANGE && (0 call CTI_CL_FNC_GetPlayerFunds) >= _base_repair_HQ_cost && !(missionNamespace getVariable [format["CTI_HQ_Repair_Lock_%1", CTI_P_SideJoined], false])) then {
 			    			((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTextColor [0,0,1,1];
 			    		}else {
 			    			((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTextColor [0.3,0.3,0.3,1];
@@ -330,7 +321,7 @@ switch (_action) do {
 			    case 25: { // CTI_Icon_pack
 			    	_hqs=[];
 					//{_hqs set [count _hqs, _x call CTI_CO_FNC_GetSideHQ];true} count [east,west];
-			    	if (vehicle player == player && (_target iskindof "Tank" || _target iskindof "Wheeled_APC_F" || _target iskindof "Truck_F" || (typeof _target) in ["Land_Pod_Heli_Transport_04_box_F","B_Slingload_01_Cargo_F"])&& alive _target && !(_target in _hqs)) then  {
+			    	if (vehicle player == player && !(player getvariable ["REV_UNC",false]) && (_target iskindof "Tank" || _target iskindof "Wheeled_APC_F" || _target iskindof "Truck_F" || (typeof _target) in ["Land_Pod_Heli_Transport_04_box_F","B_Slingload_01_Cargo_F"])&& alive _target && !(_target in _hqs || _target isKindOf "UGV_02_Base_F")) then  {
 			    		if (({alive _x} count (crew _target) == 0) && abs (speed _target) <1 && locked _target <2 ) then {
 			    			((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTextColor [0,0,1,1];
 			    		} else {
@@ -345,7 +336,7 @@ switch (_action) do {
 			    };
 			    case 26: { // CTI_Icon_attach
 			    	if (vehicle player != player && driver vehicle player ==player && (typeof _target) == "O_Heli_Transport_04_F"  ) then  {
-			    		if (isNull (getSlingLoad _target) || !((typeof (getSlingLoad _target)) in ["Land_Pod_Heli_Transport_04_fuel_F","Land_Pod_Heli_Transport_04_ammo_F","Land_Pod_Heli_Transport_04_bench_F","Land_Pod_Heli_Transport_04_box_F","Land_Pod_Heli_Transport_04_repair_F","Land_Pod_Heli_Transport_04_medevac_F"])) then {((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTextColor [0.3,0.3,0.3,1];} else {
+			    		if (isNull (getSlingLoad _target) || !((typeof (getSlingLoad _target)) in ["Land_Pod_Heli_Transport_04_fuel_F","Land_Pod_Heli_Transport_04_ammo_F","Land_Pod_Heli_Transport_04_bench_F","Land_Pod_Heli_Transport_04_box_F","Land_Pod_Heli_Transport_04_covered_F","Land_Pod_Heli_Transport_04_repair_F","Land_Pod_Heli_Transport_04_medevac_F"])) then {((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTextColor [0.3,0.3,0.3,1];} else {
 			    		((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTextColor [0,0,1,1];
 			    		};
 			    		((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetPosition [_base_x+(_offset*_base_w),_base_y+_h_offset*_base_h,_base_w,_base_h];
@@ -371,7 +362,7 @@ switch (_action) do {
 			    	};
 			    };
 			    case 28: { // CTI_Icon_build
-			    	if (vehicle player == player && _target in (CTI_P_SideLogic getVariable ["cti_structures_wip",[]])&& (missionNamespace getVariable "CTI_BASEBUILDING") > 0) then  {
+			    	if (vehicle player == player && !(player getvariable ["REV_UNC",false]) && _target in (CTI_P_SideLogic getVariable ["cti_structures_wip",[]])&& (missionNamespace getVariable "CTI_BASEBUILDING") > 0) then  {
 			    		((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTextColor [0,0,1,1];
 			    		((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetPosition [_base_x+(_offset*_base_w),_base_y+_h_offset*_base_h,_base_w,_base_h];
 			    		_offset=_offset+1;
@@ -380,7 +371,7 @@ switch (_action) do {
 			    	};
 			    };
 			    case 29: { // CTI_Icon_srep
-			    	if (vehicle player == player && _target in (CTI_P_SideLogic getVariable ["cti_structures",[]])&&( getDammage _target >0 ||  _target getVariable ["cti_altdmg",-1] >0) && (missionNamespace getVariable "CTI_BASEBUILDING") > 0) then  {
+			    	if (vehicle player == player && !(player getvariable ["REV_UNC",false]) && _target in (CTI_P_SideLogic getVariable ["cti_structures",[]])&&( getDammage _target >0 ||  _target getVariable ["cti_altdmg",-1] >0) && (missionNamespace getVariable "CTI_BASEBUILDING") > 0) then  {
 			    		((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTextColor [0,0,1,1];
 			    		((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetPosition [_base_x+(_offset*_base_w),_base_y+_h_offset*_base_h,_base_w,_base_h];
 			    		_offset=_offset+1;
@@ -407,7 +398,7 @@ switch (_action) do {
 			    };
 				case 31: {// CTI_Icon_Com
 			    	if (! isnull _target && alive _target && (_target == (CTI_P_SideJoined call CTI_CO_FNC_GetSideHQ) || _target in (CTI_P_SideJoined call CTI_CO_FNC_GetSideStructures)) ) then  {
-			    		if (isNull (CTI_P_SideJoined  call CTI_CO_FNC_GetSideCommander )&& !( (getplayeruid player) in (CTI_P_SideLogic getVariable ["CTI_COM_BLACKLIST",[] ]))) then {
+			    		if (isNull (CTI_P_SideJoined  call CTI_CO_FNC_GetSideCommander )&& !( (getplayeruid player) in (CTI_P_SideLogic getVariable ["CTI_COM_BLACKLIST",[] ])) && !( (getplayeruid player) in (CTI_P_SideLogic getvariable ["CTI_COM_BLACKLIST_GLOBAL",[]] ))) then {
 			    			((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTextColor [1,1,0,1];
 			    		} else {
 			    			((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTextColor [0.3,0.3,0.3,1];
@@ -467,7 +458,7 @@ switch (_action) do {
 			    };
 			   case 35: {// Dismount defense
 
-			    	if (vehicle player == player && (_target in (CTI_WEST getVariable ["cti_defences", []]) +(CTI_EAST getVariable ["cti_defences", []]))&& (missionNamespace getVariable "CTI_BASEBUILDING") > 0) then  {
+			    	if (vehicle player == player && !(player getvariable ["REV_UNC",false]) && (_target in (CTI_WEST getVariable ["cti_defences", []]) +(CTI_EAST getVariable ["cti_defences", []]))&& (missionNamespace getVariable "CTI_BASEBUILDING") > 0) then  {
 			    			((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTextColor [1,0,0,1];
 
 			    			((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetPosition [_base_x+(_offset*_base_w),_base_y+_h_offset*_base_h,_base_w,_base_h];
@@ -547,7 +538,17 @@ switch (_action) do {
 			    		((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetPosition [_base_x+(_offset*_base_w),_base_y+5,_base_w,_base_h];
 			    	};
 			    };
+				case 39: { //OnResetDroneAI - Yoshi_E
+					_uav = getConnectedUAV player;
+					if (alive _uav && unitIsUAV _uav) then {
+						((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTextColor [1,0,0,1];
 
+						((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetPosition [_base_x+(_offset*_base_w),_base_y+_h_offset*_base_h,_base_w,_base_h];
+			    		_offset=_offset+1;
+					} else {
+			    		((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetPosition [_base_x+(_offset*_base_w),_base_y+5,_base_w,_base_h];
+			    	};
+				};
 			};
 		};
 		//if (_offset == 0) exitwith {false};
@@ -595,6 +596,14 @@ switch (_action) do {
 	case "OnDef": {
 		uiNamespace setVariable ['cti_dialog_ui_defensemenu',objnull];
 		closedialog 0;
+		if (_target == player) then {
+			_reptruck = [player, CTI_SPECIAL_REPAIRTRUCK, 20] call CTI_CO_FNC_GetNearestSpecialVehicles;
+			_hq = if (player distance2d ((CTI_P_sidejoined) call CTI_CO_FNC_GetSideHQ)<=20 && alive ((CTI_P_sidejoined) call CTI_CO_FNC_GetSideHQ)) then {[(CTI_P_sidejoined) call CTI_CO_FNC_GetSideHQ]} else {[]};
+			_structures = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideStructures;
+			_repairs = [[CTI_REPAIR, player, _structures, CTI_BASE_AREA_RANGE] call CTI_CO_FNC_GetClosestStructure];
+			_total = _reptruck + _hq + _repairs - [objNull];
+			_target=[player, _total] call CTI_CO_FNC_GetClosestEntity;
+		};
 		[_target] execVM  "Client\Actions\Action_DefenseMenu.sqf";
 	};
 	case "OnRepair": {
@@ -677,7 +686,7 @@ switch (_action) do {
 	case "OnUnits": {
 		closedialog 0;
 		//uiNamespace setVariable ['cti_dialog_ui_purchasemenu',objnull];
-		if (!CTI_P_PreBuilding &&(Client_AN_Connected && (CTI_Base_BarracksInRange || CTI_Base_LightInRange || CTI_Base_HeavyInRange || CTI_Base_AirInRange || CTI_Base_AmmoInRange || CTI_Base_RepairInRange || CTI_Base_NavalInRange )) ||  CTI_Town_InRange) then {
+		if (!CTI_P_PreBuilding &&((Client_AN_Connected || CTI_InBaseArea) && (CTI_Base_BarracksInRange || CTI_Base_LightInRange || CTI_Base_HeavyInRange || CTI_Base_AirInRange || CTI_Base_AmmoInRange || CTI_Base_RepairInRange || CTI_Base_NavalInRange )) ||  CTI_Town_InRange) then {
 			[_target] execVM "Client\Actions\Action_UseNearestFactory.sqf";
 		};
 	};
@@ -735,7 +744,7 @@ switch (_action) do {
 		};
 	};
 	case "OnCom": {
-		if (isNull (CTI_P_SideJoined  call CTI_CO_FNC_GetSideCommander )&& !( (getplayeruid player) in (CTI_P_SideLogic getVariable ["CTI_COM_BLACKLIST",[]] ))) then {
+		if (isNull (CTI_P_SideJoined  call CTI_CO_FNC_GetSideCommander )&& !( (getplayeruid player) in (CTI_P_SideLogic getVariable ["CTI_COM_BLACKLIST",[]] )) && !( (getplayeruid player) in (CTI_P_SideLogic getvariable ["CTI_COM_BLACKLIST_GLOBAL",[]] ))) then {
 			closedialog 0;
 			0 call CTI_COM_SET_CLIENT;
 		};
@@ -752,7 +761,9 @@ switch (_action) do {
 	};
 	case "OnPilot": {
 		closedialog 0;
-		if  (isNull (driver _target)) then {player moveInDriver _target} else {0 spawn { hint "There is already a pilot";sleep 3;hintSilent "";}};
+		if (locked _target < 2) then {
+			if (isNull (driver _target)) then {player moveInDriver _target} else {0 spawn {hint "There is already a pilot"; sleep 3; hintSilent "";};};
+		};
 	};
 	case "OnHalo": {
 		if !(vehicle player == player && !CTI_P_PreBuilding && CTI_Base_HaloInRange && [CTI_P_SideJoined, CTI_UPGRADE_HALO, 1] call CTI_CO_FNC_HasUpgrade && ( (missionNamespace getVariable 'CTI_SM_HALO')==1 && !(player getvariable ["REV_UNC",false])) && (time - CTI_HALO_LASTTIME >= CTI_HALO_COOLDOWN)) exitwith {false};
@@ -869,5 +880,10 @@ switch (_action) do {
 			[_target, nil, _orig] call BIS_fnc_initVehicle;
 			[group player, CTI_P_SideJoined, - 1500] call CTI_CO_FNC_ChangeFunds;
 		};
+	};
+	case "OnResetDroneAI": {
+		closedialog 0;
+		_drone = getConnectedUAV player;
+		[_drone, player] spawn UAV_FIX_CREW;
 	};
 };

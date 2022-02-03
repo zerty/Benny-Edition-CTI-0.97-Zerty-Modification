@@ -19,6 +19,8 @@
     5	{Optionnal} [Boolean]: Determine if the vehicle should be "public" or not
     6	{Optionnal} [Boolean]: Determine if the vehicle should be handled upon destruction or not (bounty...tk...)
     7	{Optionnal} [String]: Set a special spawn mode for the vehicle
+    8	{Optionnal} [Object]: Vehicle if already create
+    9	{Optionnal} [Boolean]: Vehicle can be deleted
 
   # RETURNED VALUE #
 	[Object]: The created vehicle
@@ -55,21 +57,62 @@ _net = if (count _this > 5) then {_this select 5} else {false};
 _handle = if (count _this > 6) then {_this select 6} else {false};
 _special = if (count _this > 7) then {_this select 7} else {"FORM"};
 _created = if (count _this > 8) then {_this select 8} else {objNull};
+_can_be_removed = if (count _this > 9) then {_this select 9} else {true};
 _t_side=if (typeName _side == "SCALAR") then {(_side call CTI_CO_FNC_GetSideFromID)} else {_side};
 if (typeName _position == "OBJECT") then {_position = getPos _position};
 if (typeName _side == "SIDE") then {_side = (_side) call CTI_CO_FNC_GetSideID};
 
 
+
 _vehicle = if ( isNull _created) then {createVehicle [_type, _position, [], 7, _special]} else {_created};
+_vehicle setVariable ["_spawn_location", _position];
+if(!_can_be_removed) then {_vehicle setVariable ["cti_gc_noremove", true,true]};
+_handle_fail_spawns = {
+		params ["_unit"];
+		//TODO check if shot, and if yes do nothing
+		if(damage _unit > 0.9) then {
+			if(_unit getVariable ["cti_gc_noremove", false] isEqualTo false) then {
+				{
+					if(isPlayer (_x select 0)) then {moveOut (_x select 0);} else {deleteVehicle (_x select 0);};
+				} forEach (fullCrew _unit);
+				deleteVehicle _unit;
+			};
+		} else {
+			_unit setDammage 0;
+			{
+				(_x select 0) setDammage 0;
+			} forEach (fullCrew _unit);
+		};
+};
+
+
+//Ensures the vehicle spawns correctly.
+_EH_Dammaged = _vehicle addEventHandler ["Dammaged", _handle_fail_spawns];
+_EH_Killed = _vehicle addEventHandler ["Killed", _handle_fail_spawns];
+
+[_vehicle, _EH_Dammaged, _EH_Killed] spawn {
+	params ["_vehicle", "_EH_Dammaged", "_EH_Killed"];
+	sleep(1);
+	//Check if vehicle flew away after spawn (due to physics glitching)
+	if(!(_vehicle isKindOf "Air")) then {
+		_pos = _vehicle getVariable ["_spawn_location", [0,0,0]];
+		if(_pos distance (getPos _vehicle) > 500) then {
+			{
+				if(isPlayer (_x select 0)) then {moveOut (_x select 0);} else {deleteVehicle (_x select 0);};
+			} forEach (fullCrew _vehicle);
+			deleteVehicle _vehicle;
+		};
+	};
+	sleep(2);
+	 _vehicle removeEventHandler ["Dammaged", _EH_Dammaged];
+	 _vehicle removeEventHandler ["Killed", _EH_Killed];
+};
 
 
 // henroth air loadout
 //Does a gun config exsist?
 _gun_config = missionNamespace getVariable ( format [ "CTI_LOADOUT_%1_MNT_OPTIONS" , typeOf _vehicle ] );
-if (
-( 	((typeOf _vehicle) == "O_APC_Tracked_02_AA_F")
-	|| ((typeOf _vehicle) == "B_APC_Tracked_01_AA_F")
-	|| _type isKindOf "Air")
+if ((/*((typeOf _vehicle) == "O_APC_Tracked_02_AA_F") || ((typeOf _vehicle) == "B_APC_Tracked_01_AA_F") ||*/ _type isKindOf "Air")
 && (missionNamespace getVariable "CTI_AC_ENABLED")>0
 && _side != CTI_RESISTANCE_ID
 && CTI_isCLient
@@ -88,6 +131,8 @@ if (isNull _created) then {
 	if (_vehicle isKindOf "CAR" || _vehicle isKindOf "TANK") then {
 		_ep = (getPos _vehicle) findEmptyPosition [0,100,"O_T_VTOL_02_vehicle_dynamicLoadout_F"];
 		if (count _ep == 0) then {_ep = (getPos _vehicle) findEmptyPosition [0,250,"O_T_VTOL_02_vehicle_dynamicLoadout_F"];};
+		if (count _ep == 0 && surfaceIsWater position _vehicle) then {_ep = [getPos _vehicle select 0, getPos _vehicle select 1, 0];}; // for repair HQ in water
+		if (count _ep == 0) then {_ep = getPos _vehicle;};
 		_vehicle setPos _ep;
 	};
 
@@ -112,10 +157,10 @@ if (isNull _created) then {
 
 	//if (_special == "FORM") then {_vehicle setPos [(getPos _vehicle) select 0, (getPos _vehicle) select 1, 0.75];}; //--- Make the vehicle spawn above the ground level to prevent any bisteries
 	if (_special == "FORM") then {_vehicle setPos [(getPos _vehicle) select 0, (getPos _vehicle) select 1];};
-	// --- Zerty edit
-	if (_type isKindOf "UAV" || _type isKindOf "UGV_01_base_F") then {createVehicleCrew _vehicle};
 
-	if (_vehicle isKindOf "B_T_UAV_03_dynamicLoadout_F") then {createVehicleCrew _vehicle};
+	if (unitIsUAV _vehicle) then {
+		createVehicleCrew _vehicle;
+	};
 
 
 	//Ensures any air vehicle does not have a weapon that is not researched (SanitizeAircraft)
@@ -211,6 +256,9 @@ if (isNull _created) then {
 		if (_vehicle isKindOf "I_MBT_03_cannon_F") then {[_vehicle, nil, ["HideTurret",1,"HideHull",1]] call BIS_fnc_initVehicle;};
 		if (_vehicle isKindOf "O_MBT_02_cannon_F" || _vehicle isKindOf "O_T_MBT_02_cannon_ghex_F") then {[_vehicle, nil, ["showLog",1]] call BIS_fnc_initVehicle;};
 		if (_vehicle isKindOf "O_APC_Tracked_02_AA_F" || _vehicle isKindOf "O_T_APC_Tracked_02_AA_ghex_F") then {[_vehicle, nil, ["showTracks",1]] call BIS_fnc_initVehicle;};
+		if (_side == CTI_RESISTANCE_ID) then {
+			[_vehicle, FALSE, ["showcamonethull", 0.2, "showcamonetturret", 0.2, "showcamonetcannon", 0.2, "showslathull", 0.2]] call BIS_fnc_initVehicle; // Res: 20% chance for camo net and slat cage
+		};
 	};
 	if (_vehicle isKindOf "Offroad_01_base_F") then {
 		_offroads = ["I_G_Offroad_01_F", "I_G_Offroad_01_armed_F", "I_G_Offroad_01_AT_F", "B_G_Offroad_01_F", "B_G_Offroad_01_armed_F", "B_G_Offroad_01_AT_F", "O_G_Offroad_01_F", "O_G_Offroad_01_armed_F", "O_G_Offroad_01_AT_F"];
@@ -300,6 +348,7 @@ if !( isNil "ADMIN_ZEUS") then {
 	if !(CTI_isServer) then {
 		["SERVER", "Server_Addeditable",[ADMIN_ZEUS,_vehicle]] call CTI_CO_FNC_NetSend;
 	} else {
+		ADMIN_ZEUS addCuratorAddons (configSourceAddonList (configFile >> "CfgVehicles" >> typeof _vehicle));
 		ADMIN_ZEUS addCuratorEditableObjects [[_vehicle],true] ;
 	};
 };
@@ -347,7 +396,8 @@ _vehicle setRepairCargo 0;
 _vehicle spawn {
 	while { !isNull _this && alive _this && ! cti_gameover } do {
 		    sleep 20;
-		    if ((([_this,getMarkerPos "CTI_TUTORIAL"] call  BIS_fnc_distance2D) < 1000) && !isNull _this && alive _this) then {_this setDamage 1};
+		    if (!isNull _this && alive _this && !((position _this) inArea [[worldSize/2, worldSize/2, 6000], worldSize/2, worldSize/2, 0, true, 6500]) && (getPos _this select 2) < 50000) then {(driver _this) groupChat (localize "STR_Area_Warning");};
+		    if ((([_this,getMarkerPos "CTI_TUTORIAL"] call  BIS_fnc_distance2D) < 1000) && !isNull _this && alive _this && (getPos _this select 2) < 100) then {_this setDamage 1};
 		};
 };
 

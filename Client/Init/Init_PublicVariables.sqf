@@ -132,7 +132,11 @@ with missionNamespace do {
 		_marker setMarkerSizeLocal [0.75, 0.75];
 		//_type = _structure getVariable ["cti_structure_type", ""];
 		_type = (missionNamespace getVariable format ["CTI_%1_%2", CTI_P_SideJoined, _structure getVariable ["cti_structure_type",""]]) select 0 select 2;
-		_marker setMarkerTextLocal _type;
+		if(isNil "_type") then {
+			_marker setMarkerTextLocal ""; 
+		} else {
+			_marker setMarkerTextLocal _type; 
+		};
 		[_structure,_marker] spawn {
 			private ["_structure","_marker"];
 			_structure = _this	 select 0;

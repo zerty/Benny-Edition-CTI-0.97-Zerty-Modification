@@ -16,7 +16,7 @@ if (daytime >= 8 && daytime <= 16) then {
 	_c = selectRandom [_a, _a, _b];
 	_nexttime setfog _c;
 };
-_nextover=random 1;
+_nextover=random [1,0,1];
 if (CTI_WEATHER_ALLOWRAIN == 0) then {_nexttime setRain 0;} else {
 	if (_nextover > 0.7) then {_nexttime setRain random(_nextover);} else {_nexttime setRain 0;};
 };

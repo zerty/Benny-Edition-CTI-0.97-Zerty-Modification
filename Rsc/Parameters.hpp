@@ -275,8 +275,8 @@ class Params {
 
 	class CTI_PLAYERS_GROUPSIZE {
 		title = $STR_CTI_PLAYERS_GROUPSIZE;
-		values[] = {0,1,2,3,4,5,8,10,12,14,16};
-		texts[] = {$STR_CTI_PLAYERS_GROUPSIZE_AUTO,"1","2","3","4","5","8","10","12","14","16"};
+		values[] = {-10,0,1,2,3,4,5,8,10,12,14,16};
+		texts[] = {$STR_CTI_DISABLED, $STR_CTI_PLAYERS_GROUPSIZE_AUTO,"1","2","3","4","5","8","10","12","14","16"};
 		default = 0;
 	};
 	class CTI_GAMEPLAY_MISSILES_RANGE {
@@ -305,9 +305,9 @@ class Params {
 	};
 	class CTI_BASEBUILDING {
 		title = $STR_CTI_BASEBUILDING;
-		values[] = {0,1};
-		texts[] = {$STR_CTI_BASEBUILDING_WK,$STR_CTI_BASEBUILDING_PL};
-		default = 1;
+		values[] = {0,1,2};
+		texts[] = {$STR_CTI_BASEBUILDING_WK,$STR_CTI_BASEBUILDING_PL,$STR_CTI_BASEBUILDING_BOTH};
+		default = 2;
 	};
 	class CTI_GAMEPLAY_DARTER {
 		title = $STR_CTI_GAMEPLAY_DARTER;
@@ -393,6 +393,18 @@ class Params {
 		texts[] = {"1","2","3","5","10","100"};
 		default = 1;
 	};
+	class CTI_TOWNS_RESISTANCE_HEAVY {
+		title = $STR_CTI_TOWNS_RESISTANCE_HEAVY;
+		values[] = {1,0};
+		texts[] = {$STR_CTI_ENABLED, $STR_CTI_DISABLED};
+		default = 1;
+	};
+	class CTI_SHOPS_HEAVY {
+		title = $STR_CTI_SHOPS_HEAVY;
+		values[] = {1,0};
+		texts[] = {$STR_CTI_ENABLED, $STR_CTI_DISABLED};
+		default = 1;
+	};
 
 	class CTI_WEATHER_INITIAL {
 		title = $STR_CTI_WEATHER_INITIAL;
@@ -429,14 +441,14 @@ class Params {
 		title = $STR_CTI_SM_BASEP_M;
 		values[] = {0,-1,2,5,10,20,50,100};
 		texts[] = {$STR_CTI_DISABLED,"Hard Protection","Dmg reduced by 2","Dmg reduced by 5","Dmg reduced by 10","Dmg reduced by 20","Dmg reduced by 50","Dmg reduced by 100"};
-		default = 10;
+		default = 50;
 	};
 
 	class CTI_SM_PATROLS {
 		title = $STR_CTI_SM_PATROLS;
 		values[] = {0,1};
 		texts[] = {$STR_CTI_DISABLED,$STR_CTI_ENABLED};
-		default = 1;
+		default = 0;
 	};
 	/*class CTI_SM_PATROLS_NUMBER {
 		title = "Zerty: Strategic: Patrols number";

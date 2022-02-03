@@ -163,6 +163,14 @@ _i = _i		+ ["30Rnd_65x39_caseless_khaki_mag_Tracer"];
 _u = _u		+ [1];
 _p = _p		+ [20];
 
+_i = _i		+ ["30Rnd_65x39_caseless_msbs_mag"];
+_u = _u		+ [2];
+_p = _p		+ [25];
+
+_i = _i		+ ["30Rnd_65x39_caseless_msbs_mag_Tracer"];
+_u = _u		+ [2];
+_p = _p		+ [25];
+
 _i = _i		+ ["30Rnd_556x45_Stanag"];
 _u = _u		+ [0];
 _p = _p		+ [10];
@@ -214,6 +222,22 @@ _p = _p		+ [10];
 _i = _i		+ ["20Rnd_556x45_UW_mag"];
 _u = _u		+ [2];
 _p = _p		+ [50];
+
+_i = _i		+ ["2Rnd_12Gauge_Pellets"];
+_u = _u		+ [0];
+_p = _p		+ [5];
+
+_i = _i		+ ["2Rnd_12Gauge_Slug"];
+_u = _u		+ [0];
+_p = _p		+ [5];
+
+_i = _i		+ ["6Rnd_12Gauge_Pellets"];
+_u = _u		+ [3];
+_p = _p		+ [20];
+
+_i = _i		+ ["6Rnd_12Gauge_Slug"];
+_u = _u		+ [3];
+_p = _p		+ [20];
 
 //MG Ammo
 _i = _i		+ ["100Rnd_65x39_caseless_mag"];
@@ -328,7 +352,7 @@ _p = _p		+ [100];
 
 _i = _i		+ ["Titan_AT"];
 _u = _u		+ [3];
-_p = _p		+ [250];
+_p = _p		+ [550];
 
 //Grenades
 _i = _i		+ ["HandGrenade"];
@@ -421,7 +445,6 @@ _p = _p		+ [10];
 _i = _i		+ ["1Rnd_SmokeOrange_Grenade_shell"];
 _u = _u		+ [1];
 _p = _p		+ [10];
-
 
 _i = _i		+ ["UGL_FlareWhite_F"];
 _u = _u		+ [0];
@@ -608,6 +631,38 @@ _i = _i		+ ["arifle_MXM_khk_F"];
 _u = _u		+ [1];
 _p = _p		+ [150];
 
+_i = _i		+ ["arifle_MSBS65_black_F"];
+_u = _u		+ [2];
+_p = _p		+ [100];
+
+_i = _i		+ ["arifle_MSBS65_sand_F"];
+_u = _u		+ [2];
+_p = _p		+ [100];
+
+_i = _i		+ ["arifle_MSBS65_GL_black_F"];
+_u = _u		+ [2];
+_p = _p		+ [125];
+
+_i = _i		+ ["arifle_MSBS65_GL_sand_F"];
+_u = _u		+ [2];
+_p = _p		+ [125];
+
+_i = _i		+ ["arifle_MSBS65_Mark_black_F"];
+_u = _u		+ [3];
+_p = _p		+ [125];
+
+_i = _i		+ ["arifle_MSBS65_Mark_sand_F"];
+_u = _u		+ [3];
+_p = _p		+ [125];
+
+_i = _i		+ ["arifle_MSBS65_UBS_black_F"];
+_u = _u		+ [3];
+_p = _p		+ [150];
+
+_i = _i		+ ["arifle_MSBS65_UBS_sand_F"];
+_u = _u		+ [3];
+_p = _p		+ [150];
+
 _i = _i		+ ["arifle_SPAR_01_blk_F"];
 _u = _u		+ [1];
 _p = _p		+ [50];
@@ -732,6 +787,10 @@ _i = _i		+ ["srifle_LRR_tna_F"];
 _u = _u		+ [3];
 _p = _p		+ [500];
 
+_i = _i		+ ["sgun_HunterShotgun_01_F"];
+_u = _u		+ [0];
+_p = _p		+ [25];
+
 //Launchers
 _i = _i		+ ["launch_B_Titan_short_F"];
 _u = _u		+ [3];
@@ -743,11 +802,11 @@ _p = _p		+ [250];
 
 _i = _i		+ ["launch_B_Titan_F"];
 _u = _u		+ [2];
-_p = _p		+ [125];
+_p = _p		+ [200];
 
 _i = _i		+ ["launch_B_Titan_tna_F"];
 _u = _u		+ [2];
-_p = _p		+ [125];
+_p = _p		+ [200];
 
 _i = _i		+ ["launch_MRAWS_sand_F"];
 _u = _u		+ [2];
@@ -1052,7 +1111,7 @@ _p = _p		+ [150];
 _i = _i		+ ["B_Carryall_oli"];
 _u = _u		+ [3];
 _p = _p		+ [150];
-
+if(CTI_SHOPS_HEAVY==1) then {
 _i = _i		+ ["B_Bergen_mcamo_F"];
 _u = _u		+ [3];
 _p = _p		+ [1000];
@@ -1060,10 +1119,14 @@ _p = _p		+ [1000];
 _i = _i		+ ["B_Bergen_tna_F"];
 _u = _u		+ [3];
 _p = _p		+ [1000];
-
+};
 _i = _i		+ ["B_UAV_01_backpack_F"];
 _u = _u		+ [3];
 _p = _p		+ [2500];
+
+_i = _i		+ ["B_UGV_02_Demining_backpack_F"];
+_u = _u		+ [2];
+_p = _p		+ [1000];
 
 _i = _i		+ ["B_UAV_06_backpack_F"];
 _u = _u		+ [2];
@@ -1093,14 +1156,14 @@ _i = _i		+ ["B_Static_Designator_01_weapon_F"];
 _u = _u		+ [2];
 _p = _p		+ [5000];
 
-if (ISLAND != 1) then {
+if (ISLAND != 1 && CTI_SHOPS_HEAVY==1) then {
 _i = _i		+ ["B_Mortar_01_support_F"];
 _u = _u		+ [3];
-_p = _p		+ [5];
+_p = _p		+ [2000];
 
 _i = _i		+ ["B_Mortar_01_weapon_F"];
 _u = _u		+ [3];
-_p = _p		+ [2995];
+_p = _p		+ [8000];
 };
 
 _i = _i		+ ["B_TacticalPack_blk"];
@@ -1497,6 +1560,10 @@ _i = _i		+ ["G_Combat_Goggles_tna_F"];
 _u = _u		+ [0];
 _p = _p		+ [10];
 
+_i = _i		+ ["G_AirPurifyingRespirator_01_F"];
+_u = _u		+ [1];
+_p = _p		+ [10];
+
 _i = _i		+ ["G_B_Diving"];
 _u = _u		+ [2];
 _p = _p		+ [50];
@@ -1714,7 +1781,7 @@ _i = _i		+ ["NVGoggles_tna_F"];
 _u = _u		+ [1];
 _p = _p		+ [30];
 
-_i = _i		+ ["NVGogglesB_grn_F"];
+/*_i = _i		+ ["NVGogglesB_grn_F"];
 _u = _u		+ [3];
 _p = _p		+ [500];
 
@@ -1724,7 +1791,7 @@ _p = _p		+ [500];
 
 _i = _i		+ ["NVGogglesB_blk_F"];
 _u = _u		+ [3];
-_p = _p		+ [500];
+_p = _p		+ [500];*/
 
 _i = _i		+ ["Rangefinder"];
 _u = _u		+ [1];

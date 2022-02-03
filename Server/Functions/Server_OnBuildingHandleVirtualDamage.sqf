@@ -7,7 +7,7 @@
 					The damages are virtual so we return 0 all the time.
 	Author: 		Benny
 	Creation Date:	20-09-2013
-	Revision Date:	20-09-2013
+	Revision Date:	10-07-2021 - [H] Tom
 
   # PARAMETERS #
     0	[Object]: The hit structure
@@ -19,12 +19,13 @@
     6	[Number]: The structure's direction
     7	[Number]: The structure completion speed ratio
     8	[Number]: Damage reduction
+    9	[String]: The hitpoint
 
   # RETURNED VALUE #
 	[Number]: The negated afflicted damage
 
   # SYNTAX #
-	[STRUCTURE, DAMAGES, SHOOTER, STRUCTURE VARIABLE, SIDE ID, POSITION, DIRECTION, COMPLETION RATIO, POSITION] call CTI_SE_FNC_OnBuildingHandleDamage
+	[STRUCTURE, DAMAGES, SHOOTER, STRUCTURE VARIABLE, SIDE ID, POSITION, DIRECTION, COMPLETION RATIO, REDUCTION, HITPOINT] call CTI_SE_FNC_OnBuildingHandleVirtualDamage
 
   # DEPENDENCIES #
 	Common Function: CTI_CO_FNC_GetSideFromID
@@ -33,10 +34,10 @@
 	Server Function: CTI_SE_FNC_OnBuildingDestroyed
 
   # EXAMPLE #
-    _structure addEventHandler ["handledamage", format ["[_this select 0, _this select 2, _this select 3, '%1', %2, %3, %4, %5, %6] call CTI_SE_FNC_OnBuildingHandleVirtualDamage", _variable, (_side) call CTI_CO_FNC_GetSideID, _position, _direction, _completion_ratio, _reduce_damages]];
+    _structure addEventHandler ["handledamage", format ["[_this select 0, _this select 2, _this select 3, '%1', %2, %3, %4, %5, %6, _this select 7] call CTI_SE_FNC_OnBuildingHandleVirtualDamage", _variable, (_side) call CTI_CO_FNC_GetSideID, _position, _direction, _completion_ratio, _reduce_damages]];
 */
 
-private ["_completion_ratio", "_damage", "_damaged", "_direction", "_logic", "_position", "_reduce_damages", "_shooter", "_side", "_sideID", "_variable", "_virtual_damages"];
+private ["_completion_ratio", "_damage", "_damaged", "_direction", "_logic", "_position", "_reduce_damages", "_shooter", "_side", "_sideID", "_variable", "_virtual_damages", "_hitpoint"];
 
 _damaged = _this select 0;
 _damage = _this select 1;
@@ -47,6 +48,7 @@ _position = _this select 5;
 _direction = _this select 6;
 _completion_ratio = _this select 7;
 _reduce_damages = _this select 8;
+_hitpoint = _this select 9;
 
 _side = (_sideID) call CTI_CO_FNC_GetSideFromID;
 _logic = (_side) call CTI_CO_FNC_GetSideLogic;
@@ -57,6 +59,7 @@ if (CTI_BASE_NOOBPROTECTION == 1 && side _shooter in [_side, sideEnemy]) exitWit
 _ratio=if (_damaged getvariable ["CTI_protected",false]&& CTI_SM_BASEP_M > 0) then { CTI_SM_BASEP_M} else {1};
 _damage= _damage / _ratio;
 if (_reduce_damages > 0) then {_damage = _damage / _reduce_damages};
+if ("glass" in _hitpoint) then {_damage = 0;};
 
 _virtual_damages = _damaged getVariable "cti_altdmg";
 if (isNil '_virtual_damages') then {_virtual_damages = 0};

@@ -8,7 +8,7 @@ switch (_action) do {
 		_def_count=count (units ((CTI_P_SideLogic getVariable ["cti_defensive_team",grpNull])));
 
 		if (CTI_P_DefensesAutoManning) then { ctrlSetText [100011, format [localize "STR_Defenses_On",ctrlText ((uiNamespace getVariable "cti_dialog_ui_buildmenu") displayCtrl 100011),_def_count,CTI_BASE_DEFENSES_AUTO_LIMIT ]] } else { ctrlSetText [100011,ctrlSetText [100011, format [localize "STR_Defenses_Off",ctrlText ((uiNamespace getVariable "cti_dialog_ui_buildmenu") displayCtrl 100011),_def_count,CTI_BASE_DEFENSES_AUTO_LIMIT ]] ] };
-		if ((missionnamespace getVariable "CTI_BASEBUILDING") < 1) then {
+		if ((missionnamespace getVariable "CTI_BASEBUILDING") != 1) then {
 			((uiNamespace getVariable "cti_dialog_ui_buildmenu") displayCtrl 100005) ctrlSetText format [localize "STR_Add_Worker", CTI_BASE_WORKERS_PRICE];
 			((uiNamespace getVariable "cti_dialog_ui_buildmenu") displayCtrl 100009) ctrlshow true;
 			((uiNamespace getVariable "cti_dialog_ui_buildmenu") displayCtrl 100005) ctrlshow true;

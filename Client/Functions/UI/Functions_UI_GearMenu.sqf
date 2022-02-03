@@ -12,6 +12,27 @@
 	 Still no way to set the current magazines...
 */
 
+CTI_GET_MAGAZINES = {
+	private ["_magazines", "_well"];
+	params ["_weapon"];
+
+	_magazines = [];
+	{
+		if (_x == "this") then {
+			_magazines = _magazines + getArray(configFile >> 'CfgWeapons' >> _weapon >> 'magazines');
+		} else {
+			_magazines = _magazines + getArray(configfile >> 'CfgWeapons' >> _weapon >> _x >> 'magazines');
+		};
+		_well = getArray(configfile >> "CfgWeapons" >> _weapon >> "magazineWell");
+		if(count _well > 0) then {
+			_magazines = _magazines + getArray(configfile >> "CfgMagazineWells" >>  _well select 0  >> "BI_Magazines");
+			_magazines = _magazines + getArray(configfile >> "CfgMagazineWells" >>  _well select 0  >> "BI_Enoch_Magazines");
+		};
+	} forEach (getArray(configFile >> 'CfgWeapons' >> _weapon >> 'muzzles'));
+	_magazines = _magazines arrayIntersect _magazines;
+	_magazines;
+};
+
 //--- Display the gear on the Gear UI
 CTI_UI_Gear_DisplayInventory = {
 	private ["_config_base", "_gear", "_load", "_startidc", "_startidc_current_mag", "_use", "_use_id"];
@@ -198,7 +219,13 @@ CTI_UI_Gear_DisplayShoppingItems = {
 			if !(isNil "_get") then {
 				if (((_get select 0) select 0) <= _upgrade_gear) then { //--- Add the item if it's equal or below the upgrade level
 					_row = lbAdd [70108, format ["%1 -- ($%2)",getText(configFile >> _get select 2 >> _x >> 'displayName'), (_get select 0) select 1]];
-					lbSetPicture [70108, _row, getText(configFile >> _get select 2 >> _x >> 'picture')];
+					_dlc= getText(configFile >> _get select 2 >> _x >> 'DLC') ;
+					_dlcid = getNumber (configFile >> "CfgMods" >> _dlc >> "appId");
+					if (_dlcid in (getDLCs 1)||_dlcid == 0 || ( _get select 2) == "CfgMagazines") then {
+						lbSetPicture [70108, _row, getText(configFile >> _get select 2 >> _x >> 'picture')];
+					} else {
+						lbSetPicture [70108, _row, getText(configFile >> "CfgMods" >> _dlc >> 'picture')];
+					};
 					lbSetPictureColor [70108, _row, [1, 1, 1, 1]];
 					lbSetData [70108,_row, _x];
 				};
@@ -605,8 +632,8 @@ CTI_UI_Gear_CheckMagazines = {
 
 	_gear = uiNamespace getVariable "cti_dialog_ui_gear_target_gear";
 
-	_magazines_old = (getArray(configFile >> 'CfgWeapons' >> _weapon_old >> 'magazines')) call CTI_CO_FNC_ArrayToLower;
-	_magazines = (getArray(configFile >> 'CfgWeapons' >> _weapon >> 'magazines')) call CTI_CO_FNC_ArrayToLower;
+	_magazines_old = ([_weapon_old] call CTI_GET_MAGAZINES) call CTI_CO_FNC_ArrayToLower;
+	_magazines = ([_weapon] call CTI_GET_MAGAZINES) call CTI_CO_FNC_ArrayToLower;
 
 	_replace = [];
 	{
@@ -1004,7 +1031,7 @@ CTI_UI_Gear_OnShoppingItemDrag = {
 				_gear_sub = (_gear select 0) select _i;
 
 				if (_gear_sub select 0 != "") then { //--- There is a weapon
-					_magazines = (getArray(configFile >> 'CfgWeapons' >> (_gear_sub select 0) >> 'magazines')) call CTI_CO_FNC_ArrayToLower;
+					_magazines = ([_gear_sub select 0] call CTI_GET_MAGAZINES) call CTI_CO_FNC_ArrayToLower;
 
 					if (_item in _magazines) then {	_idcs = _idcs + [77901+_i] };
 				};
@@ -1049,7 +1076,7 @@ CTI_UI_Gear_OnShoppingItemDrag = {
 							//--- Where does it fit?
 							{
 								if ((_x select 0) != "") then {
-									if (_item in (getArray(configFile >> _config_type >> (_x select 0) >> 'WeaponSlotsInfo' >> 'MuzzleSlot' >> 'compatibleItems') call CTI_CO_FNC_ArrayToLower)) then {_idcs = _idcs + [_acc_idcs select _forEachIndex]};
+									if((toLower _item) in (((_x select 0) call bis_fnc_compatibleItems) call CTI_CO_FNC_ArrayToLower)) then {_idcs = _idcs + [_acc_idcs select _forEachIndex]};
 								};
 							} forEach (_gear select 0);
 						};
@@ -1058,7 +1085,7 @@ CTI_UI_Gear_OnShoppingItemDrag = {
 							//--- Where does it fit?
 							{
 								if ((_x select 0) != "") then {
-									if (_item in (getArray(configFile >> _config_type >> (_x select 0) >> 'WeaponSlotsInfo' >> 'CowsSlot' >> 'compatibleItems') call CTI_CO_FNC_ArrayToLower)) then {_idcs = _idcs + [_acc_idcs select _forEachIndex]};
+									if((toLower _item) in (((_x select 0) call bis_fnc_compatibleItems) call CTI_CO_FNC_ArrayToLower)) then {_idcs = _idcs + [_acc_idcs select _forEachIndex]};
 								};
 							} forEach (_gear select 0);
 						};
@@ -1067,7 +1094,7 @@ CTI_UI_Gear_OnShoppingItemDrag = {
 							//--- Where does it fit?
 							{
 								if ((_x select 0) != "") then {
-									if (_item in (getArray(configFile >> _config_type >> (_x select 0) >> 'WeaponSlotsInfo' >> 'PointerSlot' >> 'compatibleItems') call CTI_CO_FNC_ArrayToLower)) then {_idcs = _idcs + [_acc_idcs select _forEachIndex]};
+									if((toLower _item) in (((_x select 0) call bis_fnc_compatibleItems) call CTI_CO_FNC_ArrayToLower)) then {_idcs = _idcs + [_acc_idcs select _forEachIndex]};
 								};
 							} forEach (_gear select 0);
 						};
@@ -1076,7 +1103,7 @@ CTI_UI_Gear_OnShoppingItemDrag = {
 							//--- Where does it fit?
 							{
 								if ((_x select 0) != "") then {
-									if (_item in (getArray(configFile >> _config_type >> (_x select 0) >> 'WeaponSlotsInfo' >> 'UnderBarrelSlot' >> 'compatibleItems') call CTI_CO_FNC_ArrayToLower)) then {_idcs = _idcs + [_acc_idcs select _forEachIndex]};
+									if((toLower _item) in (((_x select 0) call bis_fnc_compatibleItems) call CTI_CO_FNC_ArrayToLower)) then {_idcs = _idcs + [_acc_idcs select _forEachIndex]};
 								};
 							} forEach (_gear select 0);
 						};
@@ -1226,7 +1253,7 @@ CTI_UI_Gear_ChangeCurrentMagazine = {
 };
 
 CTI_UI_Gear_UpdateLinkedItems = {
-	private ["_config_type", "_get", "_item", "_magazines"];
+	private ["_config_type", "_get", "_item", "_magazines", "_well"];
 	_item = _this;
 
 	_config_type = (_item) call CTI_UI_Gear_GetItemBaseConfig;
@@ -1234,16 +1261,7 @@ CTI_UI_Gear_UpdateLinkedItems = {
 	if ((lbSize 70601) > 0) then {lbClear 70601};
 
 	if (_config_type == "CfgWeapons") then {
-		// _magazines = (getArray(configFile >> 'CfgWeapons' >> _item >> 'magazines')) call CTI_CO_FNC_ArrayToLower;
-		_magazines = [];
-		{
-			if (_x == "this") then {
-				_magazines = _magazines + getArray(configFile >> 'CfgWeapons' >> _item >> 'magazines');
-			} else {
-				_magazines = _magazines + getArray(configfile >> 'CfgWeapons' >> _item >> _x >> 'magazines')
-			};
-		} forEach (getArray(configFile >> 'CfgWeapons' >> _item >> 'muzzles'));
-
+		_magazines = [_item] call CTI_GET_MAGAZINES;
 		{
 			_get = missionNamespace getVariable _x;
 

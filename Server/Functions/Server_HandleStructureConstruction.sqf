@@ -98,7 +98,7 @@ if (_completion >= 100) then {
 	{if ("DMG_Alternative" in _x) then {_alternative_damages = true}; if ("DMG_Reduce" in _x) then {_reduce_damages = _x select 1}; if ("Connected" in _x) then {_structure setVariable ["AN_iNet",_side_id,true]; _structure setVariable ["AN_Parrents",[_structure],false];} } forEach (_var select 5);
 	if (_alternative_damages) then {
 		_structure setVariable ["cti_altdmg", 0,true];
-		_structure addEventHandler ["handledamage", format ["[_this select 0, _this select 2, _this select 3, '%1', %2, %3, %4, %5, %6] call CTI_SE_FNC_OnBuildingHandleVirtualDamage", _variable, (_side) call CTI_CO_FNC_GetSideID, _position, _direction, _completion_ratio, _reduce_damages]];
+		_structure addEventHandler ["handledamage", format ["[_this select 0, _this select 2, _this select 3, '%1', %2, %3, %4, %5, %6, _this select 7] call CTI_SE_FNC_OnBuildingHandleVirtualDamage", _variable, (_side) call CTI_CO_FNC_GetSideID, _position, _direction, _completion_ratio, _reduce_damages]];
 	} else {
 		_structure addEventHandler ["killed", format ["[_this select 0, _this select 1, '%1', %2, %3, %4, %5] spawn CTI_SE_FNC_OnBuildingDestroyed", _variable, (_side) call CTI_CO_FNC_GetSideID, _position, _direction, _completion_ratio]];
 		if (_reduce_damages > 0 || CTI_BASE_NOOBPROTECTION == 1) then {
@@ -140,4 +140,7 @@ if (_completion >= 100) then {
 	//todo: add message bout structure expiration
 };
 
-if !( isNil "ADMIN_ZEUS") then { ADMIN_ZEUS addCuratorEditableObjects [[_structure],true];};
+if !( isNil "ADMIN_ZEUS") then {
+	ADMIN_ZEUS addCuratorAddons (configSourceAddonList (configFile >> "CfgVehicles" >> typeof _structure));
+	ADMIN_ZEUS addCuratorEditableObjects [[_structure],true];
+};

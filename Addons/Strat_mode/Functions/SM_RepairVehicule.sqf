@@ -116,11 +116,13 @@ SM_Force_entry={
 			_x action [ "eject", _target];
 		} forEach crew _target;
 
-		_target addAction [localize "STR_Action_Unlock","Client\Actions\Action_ToggleLock.sqf", [], 99, false, true, '', '_this != player && alive _target && locked _target == 2'];
-		_target addAction [localize "STR_Action_Lock","Client\Actions\Action_ToggleLock.sqf", [], 99, false, true, '', '_this != player && alive _target && locked _target == 0'];
-		_target setVariable ["v_keys",[getPlayerUID player,group player],true];
+		if(! (unitIsUAV _target)) then {
+			_target addAction [localize "STR_Action_Unlock","Client\Actions\Action_ToggleLock.sqf", [], 99, false, true, '', '_this != player && alive _target && locked _target == 2'];
+			_target addAction [localize "STR_Action_Lock","Client\Actions\Action_ToggleLock.sqf", [], 99, false, true, '', '_this != player && alive _target && locked _target == 0'];
+			_target setVariable ["v_keys",[getPlayerUID player,group player],true];
+		};
 		_target setVariable ["forced",true,true];
-
+		
 		0 call HUD_PBar_stop;
 		CTI_P_Repairing = false ;
 

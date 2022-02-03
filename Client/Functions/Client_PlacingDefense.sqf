@@ -68,6 +68,9 @@ _distance_structure = (_var select 4) select 1;
 {_local disableCollisionWith _x} forEach (player nearObjects 150);
 _local enableSimulation false;
 _local setpos (getPos player);
+if (_local isKindOf "O_G_HMG_02_high_F" || _local isKindOf "B_G_HMG_02_high_F" || _local isKindOf "O_G_HMG_02_F" || _local isKindOf "B_G_HMG_02_F") then {
+	[_local, nil, ["Hide_Rail",0,"Hide_Shield",0]] call BIS_fnc_initVehicle;
+};
 
 _last_collision_update = -600;
 _condition = {true};

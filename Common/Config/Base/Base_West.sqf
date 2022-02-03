@@ -10,7 +10,9 @@ missionNamespace setVariable [format["CTI_%1_Base_Template", _side], [
 	[CTI_HEAVY, 0, [-30,-40]],
 	[CTI_AIR, 180, [-60,37]],
 	[CTI_REPAIR, 180, [60,37]],
-	[CTI_AMMO, 180, [80,37]]
+	[CTI_AMMO, 180, [80,37]],
+	[CTI_RADAR, 0, [-60,-40]],
+	[CTI_NAVAL, 0, [60,-40]]
 ]];
 
 // checks: structure -> not in WIP and still alive & kicking & can build with area?
@@ -177,7 +179,7 @@ _classes = _classes 		+ [["Land_i_House_Small_03_V1_F", "Land_House_Small_03_V1_
 _prices = _prices 			+ [3000];
 _times = _times 			+ [90];
 _placements = _placements 	+ [[180, 20]];
-_specials = _specials		+ [[["Connected"],["DMG_Alternative"],["DMG_Reduce", 0.2]]];
+_specials = _specials		+ [[["Connected"],["DMG_Alternative"],["DMG_Reduce", 0.5]]];
 
 _headers = _headers 		+ [[CTI_HEAVY, localize "STR_Heavy_Vehicle_Factory", localize "STR_Heavy_Vehicle_Factory_1"]];
 _classes = _classes 		+ [["Land_Cargo_HQ_V1_F", "Land_Cargo_HQ_V1_ruins_F"]];
@@ -231,33 +233,76 @@ _placements = [];
 _categories = [];
 
 
+_headers = _headers 		+ ["M2 HMG .50 (low)"];
+_classes = _classes 		+ ["B_G_HMG_02_F"];
+_prices = _prices 			+ [150];
+_placements = _placements 	+ [[180, 5]];
+_categories = _categories 	+ ["Defense"];
+
+_headers = _headers 		+ ["M2 HMG .50 (raised)"];
+_classes = _classes 		+ ["B_G_HMG_02_high_F"];
+_prices = _prices 			+ [150];
+_placements = _placements 	+ [[180, 5]];
+_categories = _categories 	+ ["Defense"];
+
+_headers = _headers 		+ ["MG Defense"];
+_classes = _classes 		+ ["B_HMG_01_High_F"];
+_prices = _prices 			+ [200];
+_placements = _placements 	+ [[180, 5]];
+_categories = _categories 	+ ["Defense"];
+
+_headers = _headers 		+ ["GL Defense"];
+_classes = _classes 		+ ["B_GMG_01_high_F"];
+_prices = _prices 			+ [350];
+_placements = _placements 	+ [[180, 5]];
+_categories = _categories 	+ ["Defense"];
+
+_headers = _headers 		+ ["AT Defense"];
+_classes = _classes 		+ ["B_static_AT_F"];
+_prices = _prices 			+ [900];
+_placements = _placements 	+ [[180, 5]];
+_categories = _categories 	+ ["Defense"];
+
+_headers = _headers 		+ ["AA Defense"];
+_classes = _classes 		+ ["B_static_AA_F"];
+_prices = _prices 			+ [800];
+_placements = _placements 	+ [[180, 5]];
+_categories = _categories 	+ ["Defense"];
+if (ISLAND != 1) then {
+_headers = _headers 		+ ["Mortar"];
+_classes = _classes 		+ ["B_Mortar_01_F"];
+_prices = _prices 			+ [10000];
+_placements = _placements 	+ [[180, 5]];
+_categories = _categories 	+ ["Defense"];
+};
+
 _headers = _headers 		+ [["Praetorian 1C - Only on BASE Areas", [["DMG_Reduce", 10]]]];
 _classes = _classes 		+ ["B_AAA_System_01_F"];
+_prices = _prices 			+ [25000];
+_placements = _placements 	+ [[180, 15]];
+_categories = _categories 	+ ["Defense"];
+if (ISLAND != 1) then {
+_headers = _headers 		+ [["Mk49 Spartan - Only on BASE Areas", [["DMG_Reduce", 10]]]];
+_classes = _classes 		+ ["B_SAM_System_01_F"];
 _prices = _prices 			+ [40000];
 _placements = _placements 	+ [[180, 15]];
 _categories = _categories 	+ ["Defense"];
 
-_headers = _headers 		+ [["Mk49 Spartan - Only on BASE Areas", [["DMG_Reduce", 10]]]];
-_classes = _classes 		+ ["B_SAM_System_01_F"];
-_prices = _prices 			+ [60000];
-_placements = _placements 	+ [[180, 15]];
-_categories = _categories 	+ ["Defense"];
-
-_headers = _headers 		+ [["Mk21 Centurion - Only on BASE Areas", [["DMG_Reduce", 10]]]];
-_classes = _classes 		+ ["B_SAM_System_02_F"];
-_prices = _prices 			+ [80000];
-_placements = _placements 	+ [[180, 15]];
-_categories = _categories 	+ ["Defense"];
-
+//_headers = _headers 		+ [["Mk21 Centurion - Only on BASE Areas", [["DMG_Reduce", 10]]]];
+//_classes = _classes 		+ ["B_SAM_System_02_F"];
+//_prices = _prices 			+ [80000];
+//_placements = _placements 	+ [[180, 15]];
+//_categories = _categories 	+ ["Defense"];
+};
 _headers = _headers 		+ ["AN/MPQ-105 Radar - Only on BASE Areas"];
 _classes = _classes 		+ ["B_Radar_System_01_F"];
-_prices = _prices 			+ [12000];
+_prices = _prices 			+ [20000];
 _placements = _placements 	+ [[180, 15]];
 _categories = _categories 	+ ["Defense"];
 
 _headers = _headers 		+ ["MIM-145 Defender - Only on BASE Areas"];
 _classes = _classes 		+ ["B_SAM_System_03_F"];
-_prices = _prices 			+ [40000];
+_prices = _prices 			+ [50000];
 _placements = _placements 	+ [[180, 15]];
 _categories = _categories 	+ ["Defense"];
 
@@ -377,36 +422,7 @@ if ((missionNamespace getVariable "CTI_RESPAWN_FOB_RANGE")> 0) then {
 	_placements = _placements 	+ [[180, 15]];
 	_categories = _categories 	+ ["Fortification"];
 };
-_headers = _headers 		+ ["MG Defense"];
-_classes = _classes 		+ ["B_HMG_01_High_F"];
-_prices = _prices 			+ [200];
-_placements = _placements 	+ [[180, 5]];
-_categories = _categories 	+ ["Defense"];
 
-_headers = _headers 		+ ["GL Defense"];
-_classes = _classes 		+ ["B_GMG_01_high_F"];
-_prices = _prices 			+ [350];
-_placements = _placements 	+ [[180, 5]];
-_categories = _categories 	+ ["Defense"];
-
-_headers = _headers 		+ ["AT Defense"];
-_classes = _classes 		+ ["B_static_AT_F"];
-_prices = _prices 			+ [900];
-_placements = _placements 	+ [[180, 5]];
-_categories = _categories 	+ ["Defense"];
-
-_headers = _headers 		+ ["AA Defense"];
-_classes = _classes 		+ ["B_static_AA_F"];
-_prices = _prices 			+ [800];
-_placements = _placements 	+ [[180, 5]];
-_categories = _categories 	+ ["Defense"];
-if (ISLAND != 1) then {
-_headers = _headers 		+ ["Mortar"];
-_classes = _classes 		+ ["B_Mortar_01_F"];
-_prices = _prices 			+ [3000];
-_placements = _placements 	+ [[180, 5]];
-_categories = _categories 	+ ["Defense"];
-};
 
 _headers = _headers 		+ ["Camo net"];
 _classes = _classes 		+ ["CamoNet_BLUFOR_F"];

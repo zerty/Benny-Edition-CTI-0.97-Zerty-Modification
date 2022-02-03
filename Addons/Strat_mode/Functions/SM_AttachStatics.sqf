@@ -1,8 +1,8 @@
-STATICS_MG = ["I_HMG_01_high_F","I_GMG_01_high_F","O_HMG_01_high_F","O_GMG_01_high_F","B_HMG_01_high_F","B_GMG_01_high_F"];
-STATICS_LMG = ["I_HMG_01_F","I_GMG_01_F","O_HMG_01_F","O_GMG_01_F","B_HMG_01_F","B_GMG_01_F","B_T_GMG_01_F","B_T_HMG_01_F"];
+STATICS_MG = ["I_HMG_01_high_F","I_GMG_01_high_F","O_HMG_01_high_F","O_GMG_01_high_F","B_HMG_01_high_F","B_GMG_01_high_F","O_G_HMG_02_high_F","B_G_HMG_02_high_F"];
+STATICS_LMG = ["I_HMG_01_F","I_GMG_01_F","O_HMG_01_F","O_GMG_01_F","B_HMG_01_F","B_GMG_01_F","B_T_GMG_01_F","B_T_HMG_01_F","O_G_HMG_02_F","B_G_HMG_02_F"];
 STATICS_L = ["I_static_AA_F","I_static_AT_F","O_static_AA_F","O_static_AT_F","B_static_AA_F","B_static_AT_F","B_T_Static_AA_F","B_T_Static_AT_F"];
 STATICS_M = ["ReammoBox_F"];
-STATICS_NOTSTATICS = ["B_Slingload_01_Cargo_F","B_Slingload_01_Medevac_F","B_Slingload_01_Fuel_F","B_Slingload_01_Repair_F","B_Slingload_01_Ammo_F"];
+STATICS_NOTSTATICS = ["B_Slingload_01_Cargo_F","B_Slingload_01_Medevac_F","B_Slingload_01_Fuel_F","B_Slingload_01_Repair_F","B_Slingload_01_Ammo_F","Land_Pod_Heli_Transport_04_medevac_F","Land_Pod_Heli_Transport_04_covered_F","Land_Pod_Heli_Transport_04_bench_F","Land_Pod_Heli_Transport_04_repair_F","Land_Pod_Heli_Transport_04_fuel_F","Land_Pod_Heli_Transport_04_ammo_F","Land_Pod_Heli_Transport_04_medevac_black_F","Land_Pod_Heli_Transport_04_covered_black_F","Land_Pod_Heli_Transport_04_bench_black_F","Land_Pod_Heli_Transport_04_repair_black_F","Land_Pod_Heli_Transport_04_fuel_black_F","Land_Pod_Heli_Transport_04_ammo_black_F"];
 STATICS_ALL=STATICS_MG + STATICS_LMG  + STATICS_L + STATICS_M;
 
 STATIC_TRY=false;
@@ -63,7 +63,7 @@ with missionNamespace do {
   };
   CTI_PVF_Reply_load={
     if (_this select 2) then {
-      CTI_P_ChatID commandChat format [localize "STR_ST_Load",typeof (_this select 1),_this select 0];
+      CTI_P_ChatID commandChat format [localize "STR_ST_Load",getText (configfile >> "CfgVehicles" >> typeof (_this select 1) >> "displayName"),_this select 0];
       (_this select 1) setdir (_this select 3);
       (_this select 1)  addEventHandler ["GetOut", {(_this select 2) attachto [(_this select 0),[-3,-1,-0.65]]; detach (_this select 2);}];
       (_this select 0) lock false;
@@ -72,7 +72,7 @@ with missionNamespace do {
       (_this select 0) lockCargo [0,false];
       STATIC_TRY=false;
     } else {
-      CTI_P_ChatID commandChat format [localize "STR_ST_Unload",typeof(_this select 1),_this select 0];
+      CTI_P_ChatID commandChat format [localize "STR_ST_Unload",getText (configfile >> "CfgVehicles" >> typeof (_this select 1) >> "displayName"),_this select 0];
       (_this select 0) lockCargo false;
       STATIC_TRY=false;
     };

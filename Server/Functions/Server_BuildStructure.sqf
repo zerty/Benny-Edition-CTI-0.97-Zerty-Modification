@@ -63,6 +63,9 @@ if !(isNull _origin) then {
 	[["CLIENT", _origin], "Client_ReceiveStructureBase", _structure] call CTI_CO_FNC_NetSend;
 };
 
-if !( isNil "ADMIN_ZEUS") then { ADMIN_ZEUS addCuratorEditableObjects [[_structure],true];};
+if !( isNil "ADMIN_ZEUS") then {
+	ADMIN_ZEUS addCuratorAddons (configSourceAddonList (configFile >> "CfgVehicles" >> typeof _structure));
+	ADMIN_ZEUS addCuratorEditableObjects [[_structure],true];
+};
 
 _structure
