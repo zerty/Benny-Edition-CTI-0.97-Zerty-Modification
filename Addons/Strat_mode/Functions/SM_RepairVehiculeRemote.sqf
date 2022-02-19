@@ -21,6 +21,7 @@ while {alive _caller && alive _target  && _hps > 0 && (_caller distance2d _targe
 
 
 	_hitpointdamage = getallhitpointsdamage _target select 2;
+	if (isNil "_hitpointdamage") then {diag_log format [":: ERROR :: Try repair %1, Alive: %2", typeOf _target, alive _target];};
 	for '_i' from 0 to count(_hitpointname)-1 do {
 		if ((_hitpointdamage select _i) >= _repvalue) then {
         _target setHitIndex [_i, ((_hitpointdamage select _i) - _repvalue)];
