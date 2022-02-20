@@ -117,10 +117,10 @@ switch (_action) do {
 
 				["SERVER", "Request_Worker", [CTI_P_SideJoined]] call CTI_CO_FNC_NetSend;
 			} else {
-				hint "not enough funds dude";
+				hint parseText localize "STR_No_Funds_Info";
 			};
 		} else {
-			hint "worker limit reached";
+			hint parseText localize "STR_Worker_Limit_Info";
 		};
 	};
 	case "onUndoDefense": {

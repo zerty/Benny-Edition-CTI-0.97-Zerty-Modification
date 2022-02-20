@@ -1581,6 +1581,14 @@
 				<Original>Add Worker ($%1)</Original>
 				<Russian>Добавить Рабочего ($%1)</Russian>
 			</Key>
+			<Key ID="STR_No_Funds_Info">
+				<Original>&lt;t size='1.3' color='#2394ef'&gt;Information&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;You do not have enough funds.</Original>
+				<Russian>&lt;t size='1.3' color='#2394ef'&gt;Информация&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;У вас недостаточно средств.</Russian>
+			</Key>
+			<Key ID="STR_Worker_Limit_Info">
+				<Original>&lt;t size='1.3' color='#2394ef'&gt;Information&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Worker limit reached!</Original>
+				<Russian>&lt;t size='1.3' color='#2394ef'&gt;Информация&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;Достигнуто максимальное количество сотрудников!</Russian>
+			</Key>
 			<Key ID="STR_BuildMenu_Info">
 				<Original>&lt;t size='1.3' color='#2394ef'&gt;Information&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;You do not have enough funds to place that defense.</Original>
 				<Russian>&lt;t size='1.3' color='#2394ef'&gt;Информация&lt;/t&gt;&lt;br /&gt;&lt;br /&gt;У вас не хватает средств, чтобы построить это.</Russian>
