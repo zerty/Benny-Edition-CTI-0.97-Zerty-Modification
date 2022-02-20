@@ -43,15 +43,13 @@ if(((_t_side) call CTI_CO_FNC_GetSideUpgrades) select CTI_UPGRADE_DATA == 1) the
 
 // Fix for air vehicles ... uses sanatise script to clean up afterwards
 //enable for && (!(_vehicle isKindOf "O_Plane_Fighter_02_F")) && (!(_vehicle isKindOf "B_Plane_Fighter_01_F")) && (!(_vehicle isKindOf "I_Plane_Fighter_04_F"))
-if (	(((typeOf _vehicle) == "O_APC_Tracked_02_AA_F") 
-		|| ((typeOf _vehicle) == "B_APC_Tracked_01_AA_F")
-		|| _vehicle isKindOf "Air") 
+if ((/*((typeOf _vehicle) == "O_APC_Tracked_02_AA_F") || ((typeOf _vehicle) == "B_APC_Tracked_01_AA_F") ||*/ _type isKindOf "Air")
 		&& (missionNamespace getVariable "CTI_AC_ENABLED")>0
 		&& CTI_isCLient) then
 {
 	_loadout = _vehicle getVariable "CTI_AC_AIRCRAFT_LOADOUT_MOUNTED";
 	if(!isNil "_loadout") then {
-	
+
 		_vehicle call CTI_AC_PURGE_ALL_WEAPONS;
 		[_vehicle, _t_side] call CTI_AC_REFRESH_LOADOUT_ON_MOUNTED;
 		//Not needed if loadout_mounted if (_vehicle isKindOf "Air") then {[_vehicle, _side] call CTI_CO_FNC_SanitizeAircraft};
@@ -61,7 +59,7 @@ if (	(((typeOf _vehicle) == "O_APC_Tracked_02_AA_F")
 	//--- Driver
 	{_vehicle removeMagazineTurret [_x, [-1]];} forEach (getArray(configFile >> "CfgVehicles" >> _type >> "magazines"));
 	{_vehicle addMagazineTurret [_x, [-1]]} forEach (getArray(configFile >> "CfgVehicles" >> _type >> "magazines"));
-	
+
 	//--- Turrets
 	if (!(_vehicle isKindOf "B_SAM_System_01_F" || _vehicle isKindOf "B_SAM_System_02_F" || _vehicle isKindOf "B_AAA_System_01_F")) then {
 	_config = configFile >> "CfgVehicles" >> _type >> "turrets";
@@ -84,8 +82,8 @@ if (	(((typeOf _vehicle) == "O_APC_Tracked_02_AA_F")
 
 	//--- Sanitize the artillery loadout, mines may lag the server for instance
 	if (CTI_ARTILLERY_FILTER == 1) then {if (typeOf _vehicle in (missionNamespace getVariable ["CTI_ARTILLERY", []])) then {(_vehicle) call CTI_CO_FNC_SanitizeArtillery}};
-	
-	
+
+
 	if (_vehicle isKindOf "tank" || _vehicle isKindOf "Wheeled_APC_F") then {
 		_ammo=if (! (count ((_side) call CTI_CO_FNC_GetSideUpgrades) == 0)) then {2+2*(((_side) call CTI_CO_FNC_GetSideUpgrades) select CTI_UPGRADE_TRA)} else {2};
 		_vehicle setVariable ["TROPHY_time_l",time-10000,true];
@@ -94,7 +92,7 @@ if (	(((typeOf _vehicle) == "O_APC_Tracked_02_AA_F")
 		_vehicle setVariable ["TROPHY_ammo_r",ceil(_ammo/2),true];
 
 	};
-	
+
 	if (_vehicle isKindOf "B_SAM_System_01_F" || _vehicle isKindOf "B_SAM_System_02_F" || _vehicle isKindOf "B_AAA_System_01_F") then {
 		["SERVER", "Request_Locality", [_vehicle,player]] call CTI_CO_FNC_NetSend;
 		if (local _vehicle) then {

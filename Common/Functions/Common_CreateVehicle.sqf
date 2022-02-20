@@ -169,8 +169,8 @@ if (isNull _created) then {
 	&& CTI_isCLient
 	&& !(isNil "CTI_ALM_AA_RESEARCHED_MAGAZINES") //makes sure henroths loadouts are set
 	&& (_type isKindOf "Air"
-		|| (_vehicle isKindOf "O_APC_Tracked_02_AA_F")
-		|| (_vehicle isKindOf "B_APC_Tracked_01_AA_F"))
+		/*|| (_vehicle isKindOf "O_APC_Tracked_02_AA_F")
+		|| (_vehicle isKindOf "B_APC_Tracked_01_AA_F")*/)
 	) then {
 		//Setting default loadout for given aircraft
 		if ((missionNamespace getVariable "CTI_AC_ENABLED")>0 && !isNil "_gun_config") then {
