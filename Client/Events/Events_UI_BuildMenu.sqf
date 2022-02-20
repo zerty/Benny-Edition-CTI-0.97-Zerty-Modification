@@ -7,7 +7,11 @@ switch (_action) do {
 		if (CTI_P_WallsAutoAlign) then { ctrlSetText [100003, localize "STR_Walls_On"] } else { ctrlSetText [100003, localize "STR_Walls_Off"] };
 		_def_count=count (units ((CTI_P_SideLogic getVariable ["cti_defensive_team",grpNull])));
 
-		if (CTI_P_DefensesAutoManning) then { ctrlSetText [100011, format [localize "STR_Defenses_On",ctrlText ((uiNamespace getVariable "cti_dialog_ui_buildmenu") displayCtrl 100011),_def_count,CTI_BASE_DEFENSES_AUTO_LIMIT ]] } else { ctrlSetText [100011,ctrlSetText [100011, format [localize "STR_Defenses_Off",ctrlText ((uiNamespace getVariable "cti_dialog_ui_buildmenu") displayCtrl 100011),_def_count,CTI_BASE_DEFENSES_AUTO_LIMIT ]] ] };
+		if (CTI_P_DefensesAutoManning) then {
+			ctrlSetText [100011, format [localize "STR_Defenses_On",ctrlText ((uiNamespace getVariable "cti_dialog_ui_buildmenu") displayCtrl 100011),_def_count,CTI_BASE_DEFENSES_AUTO_LIMIT]]
+		} else {
+			ctrlSetText [100011, format [localize "STR_Defenses_Off",ctrlText ((uiNamespace getVariable "cti_dialog_ui_buildmenu") displayCtrl 100011),_def_count,CTI_BASE_DEFENSES_AUTO_LIMIT]]
+		};
 		if ((missionnamespace getVariable "CTI_BASEBUILDING") != 1) then {
 			((uiNamespace getVariable "cti_dialog_ui_buildmenu") displayCtrl 100005) ctrlSetText format [localize "STR_Add_Worker", CTI_BASE_WORKERS_PRICE];
 			((uiNamespace getVariable "cti_dialog_ui_buildmenu") displayCtrl 100009) ctrlshow true;
@@ -95,7 +99,11 @@ switch (_action) do {
 	case "onAutoManning": {
 		CTI_P_DefensesAutoManning = !CTI_P_DefensesAutoManning;
 		_def_count=count (units ((CTI_P_SideLogic getVariable ["cti_defensive_team",grpNull])));
-		if (CTI_P_DefensesAutoManning) then { ctrlSetText [100011, format [localize "STR_Defenses_On",ctrlText ((uiNamespace getVariable "cti_dialog_ui_buildmenu") displayCtrl 100011),_def_count,CTI_BASE_DEFENSES_AUTO_LIMIT ]] } else { ctrlSetText [100011,ctrlSetText [100011, format [localize "STR_Defenses_Off",ctrlText ((uiNamespace getVariable "cti_dialog_ui_buildmenu") displayCtrl 100011),_def_count,CTI_BASE_DEFENSES_AUTO_LIMIT ]] ] };
+		if (CTI_P_DefensesAutoManning) then {
+			ctrlSetText [100011, format [localize "STR_Defenses_On",ctrlText ((uiNamespace getVariable "cti_dialog_ui_buildmenu") displayCtrl 100011),_def_count,CTI_BASE_DEFENSES_AUTO_LIMIT]]
+		} else {
+			ctrlSetText [100011, format [localize "STR_Defenses_Off",ctrlText ((uiNamespace getVariable "cti_dialog_ui_buildmenu") displayCtrl 100011),_def_count,CTI_BASE_DEFENSES_AUTO_LIMIT]]
+		};
 	};
 	case "onAddWorker": {
 		//--- Check the worker limit
